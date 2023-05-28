@@ -3,8 +3,9 @@ import { Icon } from '@iconify/react';
 
 import { BaseInputProps } from './types';
 import { baseInputStyles } from './styles';
+import { Typography } from '../Typography';
 
-export function BaseInput(props: BaseInputProps) {
+export function BaseInput(props: BaseInputProps<any>) {
   const {
     control,
     name,
@@ -17,6 +18,7 @@ export function BaseInput(props: BaseInputProps) {
     defaultValue,
     startIcon,
     endIcon,
+    intent,
     size,
   } = props;
   return (
@@ -25,8 +27,8 @@ export function BaseInput(props: BaseInputProps) {
       control={control}
       rules={rules}
       defaultValue={defaultValue}
-      render={({ field }) => (
-        <div>
+      render={({ field, fieldState: { error } }) => (
+        <div className={`${fullWidth && 'w-full'}`}>
           {label && (
             <label
               htmlFor={id}
@@ -36,7 +38,7 @@ export function BaseInput(props: BaseInputProps) {
             </label>
           )}
 
-          <div className="relative mb-3">
+          <div className="relative w-full">
             {startIcon && (
               <div className="absolute inset-y-0 left-0 flex items-center  pointer-events-none">
                 <Icon
@@ -50,28 +52,34 @@ export function BaseInput(props: BaseInputProps) {
             <input
               id={id}
               type="text"
+              dir="auto"
               name={field.name}
               value={field.value}
               onChange={field.onChange}
               className={baseInputStyles({
-                intent: 'primary',
-                className,
+                intent,
+                className: `${className} ${endIcon && 'pr-8'} ${
+                  startIcon && 'pl-8'
+                }`,
                 fullWidth,
                 size,
               })}
               placeholder={placeholder}
             />
             {endIcon && (
-              <div className="absolute inset-y-0 right-0 flex items-center pl-2 pointer-events-none">
+              <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <Icon
                   icon={endIcon}
-                  className="fill-current text-black ml-2"
+                  className="fill-current text-black "
                   width="18"
                   height="18"
                 />
               </div>
             )}
           </div>
+          <Typography size="sm" color="error" className="h-6">
+            {error?.message ?? ''}
+          </Typography>
         </div>
       )}
     />

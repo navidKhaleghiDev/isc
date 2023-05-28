@@ -3,6 +3,7 @@ export const ROUTES: Record<string, string> = {
   ui: 'ui',
   error403: '403',
   login: 'login',
+  resetPassword: 'reset-password',
   aboutUs: 'about-us',
   contactUs: 'contact-us',
   dashboard: 'dashboard',

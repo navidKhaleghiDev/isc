@@ -1,17 +1,18 @@
 import { cva } from 'class-variance-authority';
 
-export const typographyStyles = cva('font-bold', {
+export const typographyStyles = cva('', {
   variants: {
     color: {
       primary: 'text-sky-600',
+      error: 'text-red-600',
       default: 'text-gray-800',
     },
     size: {
       xs: 'text-sm',
-      sm: 'text-sm',
-      md: 'text-md',
-      lg: 'text-lg',
-      xl: 'text-lg',
+      sm: 'text-md',
+      md: 'text-lg',
+      lg: 'text-2xl',
+      xl: 'text-4xl',
     },
     weight: {
       bold: 'font-bold',

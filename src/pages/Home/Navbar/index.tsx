@@ -1,13 +1,14 @@
-import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
+import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms/BaseButton';
-import { Icon } from '@iconify/react';
+import { BaseInput } from '@ui/atoms/Inputs';
 import { IHomeRoutes, homeRoutes } from './routes';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function Navbar() {
+  const { control } = useForm();
   return (
     <nav className="bg-white w-full border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="flex  items-center justify-between p-4">
+      <div className="flex  items-start justify-between p-4">
         <div className="flex">
           <a href="#" className="flex items-center ml-6">
             <img
@@ -129,9 +130,17 @@ export function Navbar() {
           </div>
         </div>
         {/* search and button */}
-        <div className="hidden flex items-center justify-between w-full md:flex md:w-72">
-          <SearchInput name="search" id="search" />
+        <div className="hidden flex items-start justify-between w-full md:flex md:w-72">
+          <BaseInput
+            control={control}
+            name="search"
+            id="search"
+            placeholder="جستجو..."
+            className="pl-10 w-32 self-baseline"
+            startIcon="material-symbols:search"
+          />
           <BaseButton
+            onClick={() => {}}
             intent="outline"
             label="پشتیبانی"
             size="md"

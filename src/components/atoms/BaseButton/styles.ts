@@ -6,23 +6,23 @@ export const baseButtonStyles = cva(
     variants: {
       intent: {
         primary:
-          'text-white transition duration-150 ease-in-out rounded hover:bg-indigo-600 focus:outline-none border bg-sky-600 dark:hover:bg-indigo-500 dark:bg-indigo-400',
-        outline: 'border border-sky-600 text-sky-600',
+          'rounded-md text-white transition duration-150 ease-in-out hover:bg-indigo-600 focus:outline-none border bg-sky-600 dark:hover:bg-indigo-500 dark:bg-indigo-400',
+        outline: 'rounded-md bg-white border border-sky-600 text-sky-600',
         secondary:
           'bg-gray-300 hover:bg-gray-400 text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-700',
         danger: 'bg-red-500 text-white focus:ring-red-500 hover:border-red-900',
       },
       model: {
-        form: 'rounded-md w-64',
+        form: '',
         modal: '',
-        default: 'rounded-xl ',
+        default: '',
       },
       size: {
         xs: 'text-sm',
-        sm: 'text-sm',
-        md: 'text-md h-10 px-4 py-2',
-        lg: 'text-lg',
-        xl: 'text-lg',
+        sm: 'text-sm h-8 px-2 py-2',
+        md: 'text-lg h-10 px-4 py-2',
+        lg: 'text-xl',
+        xl: 'text-2xl',
       },
       fullWidth: {
         true: 'w-full',
@@ -30,7 +30,7 @@ export const baseButtonStyles = cva(
     },
     defaultVariants: {
       intent: 'primary',
-      size: 'md',
+      size: 'sm',
       model: 'default',
     },
   }

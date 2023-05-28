@@ -2,12 +2,13 @@ import { Icon } from '@iconify/react';
 
 import { baseButtonStyles, iconButtonStyles } from './styles';
 import { IBaseButton } from './types';
+import { Typography } from '../Typography';
 
 export function BaseButton({
+  onClick,
   label,
   submit,
   fullWidth,
-  onClick,
   className,
   startIcon,
   endIcon,

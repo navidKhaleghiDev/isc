@@ -1,5 +1,5 @@
 import { BaseButton } from '@ui/atoms/BaseButton';
-import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 
 import { Navbar } from './Navbar';
 
@@ -25,12 +25,14 @@ export function HomePage() {
           اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
           قرار گیرد.
         </p>
-        <BaseButton
-          label="login"
-          className="mt-6"
-          endIcon="ic:outline-login"
-          model="form"
-        />
+        <Link to="/login">
+          <BaseButton
+            label="login"
+            className="mt-6 w-64"
+            endIcon="ic:outline-login"
+            size="lg"
+          />
+        </Link>
       </div>
     </div>
   );

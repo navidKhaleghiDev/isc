@@ -1,15 +1,12 @@
-import { Avatar } from '@ui/atoms/Avatar';
 import { BaseButton } from '@ui/atoms/BaseButton';
-import { Link } from 'react-router-dom';
 import { Card } from '@ui/atoms/Card';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ROUTES } from '@src/routes/routesConstants';
 import { ILoginFieldValues } from './types';
 
-export function LoginPage() {
+export function ResetPasswordPage() {
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
@@ -22,14 +19,14 @@ export function LoginPage() {
 
   return (
     <div className="bg-sky-600  flex flex-col items-center justify-center min-h-screen">
-      <Card className="relative p-10 w-[29.375rem] h-[33rem] relative flex flex-col items-center justify-end ">
+      <Card className="relative p-10 w-[29.375rem] h-[33rem] relative flex flex-col items-center justify-center ">
         <form
           onSubmit={handleSubmit(handelSubmitForm)}
           className="flex flex-col w-full items-center"
         >
-          <div className="absolute top-[-6rem]">
-            <Avatar icon="ph:user" intent="grey" size="lg" />
-          </div>
+          <Typography size="lg" weight="bold" className="mb-10">
+            رمز عبور جدید
+          </Typography>
           {error && (
             <Typography color="error" className="mb-10">
               حساب کاربری یا ایمیل وارد شده وجود ندارد.
@@ -39,23 +36,22 @@ export function LoginPage() {
             <BaseInput
               fullWidth
               control={control}
-              placeholder="email"
+              placeholder="password"
+              type="password"
+              id="password"
+              name="password"
+              endIcon="carbon:password"
               rules={{
                 required: regexPattern.required,
-                pattern: regexPattern.email,
               }}
-              id="email"
-              name="email"
-              endIcon="ph:user"
-              intent="danger"
             />
             <BaseInput
               fullWidth
               control={control}
-              placeholder="password"
-              id="password"
-              name="password"
+              placeholder="password-r"
               type="password"
+              id="password-r"
+              name="password-r"
               endIcon="carbon:password"
               rules={{
                 required: regexPattern.required,
@@ -63,30 +59,15 @@ export function LoginPage() {
             />
             <BaseButton
               onClick={() => {}}
-              label="ورود به حساب کاربری"
-              endIcon="ic:round-login"
+              label="ذخیره تغییرات"
               className="mt-8"
               size="md"
               submit
               fullWidth
             />
-            <Link to={`/${ROUTES.resetPassword}`}>
-              <Typography color="primary" size="sm" className="mt-2">
-                رمز خود را فراموش کرده اید؟
-              </Typography>
-            </Link>
           </div>
         </form>
       </Card>
-      <Link to={`/${ROUTES.home}`}>
-        <BaseButton
-          label="خانه"
-          endIcon="ic:round-login"
-          className="mt-10"
-          size="md"
-          intent="outline"
-        />
-      </Link>
     </div>
   );
 }
