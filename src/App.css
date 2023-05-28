@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'iran-sans';
+  src: url('/src/assets/fonts/IRANSansXFaNum-Light.woff2');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'iran-sans';
+  src: url('/src/assets/fonts/IRANSansXFaNum-Light.woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'iran-sans';
+  src: url('/src/assets/fonts/IRANSansXFaNum-Light.woff2');
+  font-weight: 500;
+}
