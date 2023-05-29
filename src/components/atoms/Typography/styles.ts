@@ -5,7 +5,12 @@ export const typographyStyles = cva('', {
     color: {
       primary: 'text-sky-600',
       error: 'text-red-600',
-      default: 'text-gray-800',
+      default: '', // it should be empty
+    },
+    hoverColor: {
+      primary: 'hover:text-green-600',
+      error: 'hover:text-red-800',
+      default: '', // it should be empty
     },
     size: {
       xs: 'text-sm',
@@ -18,6 +23,7 @@ export const typographyStyles = cva('', {
       bold: 'font-bold',
       medium: 'font-medium',
       light: 'font-light',
+      hoverColor: 'default',
     },
   },
   defaultVariants: {

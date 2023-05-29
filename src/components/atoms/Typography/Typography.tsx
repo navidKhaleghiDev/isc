@@ -8,12 +8,21 @@ export function Typography({
   size,
   children,
   className,
+  hoverColor,
   type = 'p',
   weight,
 }: ITypography) {
   return createElement(
     type,
-    { className: typographyStyles({ color, weight, size, className }) },
+    {
+      className: typographyStyles({
+        color,
+        weight,
+        size,
+        hoverColor,
+        className,
+      }),
+    },
     children
   );
 }

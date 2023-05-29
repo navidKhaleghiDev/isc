@@ -8,9 +8,7 @@ export default function Layout() {
       <Navbar />
       <div className="w-full h-full grid grid-cols-12 gap-1 flex-1">
         <div className="bg-white w-full col-span-2">
-          <div className="w-full min-w-64">
-            <SideBar />
-          </div>
+          <SideBar />
         </div>
         <div className="bg-white w-full col-span-10">
           <Outlet />
