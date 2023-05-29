@@ -33,6 +33,7 @@ export interface BaseInputProps<T extends FieldValues>
   className?: string;
   startIcon?: string;
   endIcon?: string;
+  hiddenError?: boolean;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {

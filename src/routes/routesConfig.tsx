@@ -3,34 +3,34 @@ import { HomePage } from '@src/pages/Home';
 import { LoginPage } from '@src/pages/Login';
 import { ResetPasswordPage } from '@src/pages/ResetPassword';
 import { DashboardPage } from '@src/pages/Dashboard';
-import { ROUTES } from './routesConstants';
+import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
   {
-    path: `/${ROUTES.ui}`,
+    path: ROUTES_PATH.ui,
     element: <HomePage />,
   },
   {
-    path: `/${ROUTES.error403}`,
+    path: ROUTES_PATH.error403,
     element: <h1>{`403 | you don't have permission`}</h1>,
   },
   {
-    path: `/${ROUTES.home}`,
+    path: ROUTES_PATH.home,
     element: <HomePage />,
   },
   {
-    path: `/${ROUTES.login}`,
+    path: ROUTES_PATH.login,
     element: <LoginPage />,
   },
   {
-    path: `/${ROUTES.resetPassword}`,
+    path: ROUTES_PATH['reset-password'],
     element: <ResetPasswordPage />,
   },
   {
     element: <PrivateLayout />,
     children: [
       {
-        path: `/${ROUTES.dashboard}`,
+        path: ROUTES_PATH.dashboard,
         element: <DashboardPage />,
       },
     ],

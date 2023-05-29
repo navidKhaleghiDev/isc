@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar';
+import { SideBar } from './Sidebar';
 
 export default function Layout() {
   return (
@@ -7,7 +8,9 @@ export default function Layout() {
       <Navbar />
       <div className="w-full h-full grid grid-cols-12 gap-1 flex-1">
         <div className="bg-white w-full col-span-2">
-          <div className="w-full min-w-64">sidebar</div>
+          <div className="w-full min-w-64">
+            <SideBar />
+          </div>
         </div>
         <div className="bg-white w-full col-span-10">
           <Outlet />

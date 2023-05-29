@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput } from '@ui/atoms/Inputs';
+import Logo from '@src/assets/react.svg';
 import { IHomeRoutes, homeRoutes } from './routes';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -8,14 +9,10 @@ export function Navbar() {
   const { control } = useForm();
   return (
     <nav className="bg-white w-full border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="flex  items-start justify-between p-4">
+      <div className="flex items-center justify-between p-4">
         <div className="flex">
           <a href="#" className="flex items-center ml-6">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8 mr-3"
-              alt="Logo"
-            />
+            <img src={Logo} className="h-8 mr-3" alt="Logo" />
           </a>
           <button
             data-collapse-toggle="navbar-dropdown"
@@ -138,6 +135,7 @@ export function Navbar() {
             placeholder="جستجو..."
             className="pl-10 w-32 self-baseline"
             startIcon="material-symbols:search"
+            hiddenError
           />
           <BaseButton
             onClick={() => {}}

@@ -1,15 +1,16 @@
 import { Avatar } from '@ui/atoms/Avatar';
 import { BaseButton } from '@ui/atoms/BaseButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card } from '@ui/atoms/Card';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ROUTES } from '@src/routes/routesConstants';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { ILoginFieldValues } from './types';
 
 export function LoginPage() {
+  const navigate = useNavigate();
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
@@ -17,7 +18,7 @@ export function LoginPage() {
   const [error, setError] = useState<boolean>(false);
 
   const handelSubmitForm = async (data: ILoginFieldValues) => {
-    console.log({ data });
+    navigate(ROUTES_PATH.dashboard);
   };
 
   return (
@@ -70,7 +71,7 @@ export function LoginPage() {
               submit
               fullWidth
             />
-            <Link to={`/${ROUTES.resetPassword}`}>
+            <Link to={ROUTES_PATH['reset-password']}>
               <Typography color="primary" size="sm" className="mt-2">
                 رمز خود را فراموش کرده اید؟
               </Typography>
@@ -78,7 +79,7 @@ export function LoginPage() {
           </div>
         </form>
       </Card>
-      <Link to={`/${ROUTES.home}`}>
+      <Link to={ROUTES_PATH.home}>
         <BaseButton
           label="خانه"
           endIcon="ic:round-login"

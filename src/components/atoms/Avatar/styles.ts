@@ -30,7 +30,7 @@ export const iconAvatarStyles = cva('absolute dark:text-white ', {
       inactive: 'text-neutral-400 ',
     },
     size: {
-      sm: 'w-8 h-8 ',
+      sm: 'w-6 h-6 ',
       md: 'w-16 h-16 ',
       lg: 'w-36 h-36',
     },

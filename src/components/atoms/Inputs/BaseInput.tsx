@@ -20,6 +20,7 @@ export function BaseInput(props: BaseInputProps<any>) {
     endIcon,
     intent,
     size,
+    hiddenError,
   } = props;
   return (
     <Controller
@@ -77,9 +78,11 @@ export function BaseInput(props: BaseInputProps<any>) {
               </div>
             )}
           </div>
-          <Typography size="sm" color="error" className="h-6">
-            {error?.message ?? ''}
-          </Typography>
+          {!hiddenError && (
+            <Typography size="sm" color="error" className="h-6">
+              {error?.message ?? ''}
+            </Typography>
+          )}
         </div>
       )}
     />
