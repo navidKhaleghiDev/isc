@@ -1,9 +1,9 @@
-import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { ERoutes, ROUTES_PATH } from '@src/routes/routesConstants';
 
 export interface INavigation {
   id: string;
   label: string;
-  path: string;
+  path: ERoutes | string;
   icon?: string;
   items?: INavigation[];
 }
@@ -16,56 +16,61 @@ export const navigationSideBar: INavigation[] = [
   },
   {
     id: '2',
-    label: 'محصول',
-    path: ROUTES_PATH.dashboard,
-    icon: 'fluent-mdl2:product',
+    label: 'خدمات ',
+    path: ROUTES_PATH.services,
+    icon: 'radix-icons:dashboard',
     items: [
       {
         id: '1',
-        label: '1محصول',
-        path: ROUTES_PATH.dashboard,
+        label: 'محصولات',
+        path: ROUTES_PATH.product,
       },
       {
         id: '2',
-        label: '2محصول',
+        label: 'قوانین',
+        path: ROUTES_PATH.rules,
+      },
+      {
+        id: '3',
+        label: 'سیستم نظارتی امنیتی',
         path: ROUTES_PATH.dashboard,
       },
     ],
   },
   {
     id: '3',
-    label: 'کاربران',
-    path: ROUTES_PATH.dashboard,
-    icon: 'clarity:users-line',
-  },
-  {
-    id: '4',
-    label: 'قوانین',
-    path: ROUTES_PATH.dashboard,
-    icon: 'eos-icons:cluster-role',
-  },
-  {
-    id: '5',
-    label: 'پشتیبانی',
-    path: ROUTES_PATH.dashboard,
-    icon: 'bx:support',
+    label: 'محصولات من',
+    path: ROUTES_PATH['my-product'],
+    icon: 'fluent-mdl2:product',
     items: [
       {
         id: '1',
-        label: '1پشتیبانی',
-        path: ROUTES_PATH.dashboard,
+        label: 'محصولات من',
+        path: ROUTES_PATH['my-product'],
       },
       {
         id: '2',
-        label: 'پشتیبانی2',
+        label: 'قانون های من',
+        path: ROUTES_PATH['my-rules'],
+      },
+      {
+        id: '3',
+        label: 'سیستم نظارتی امنیتی',
         path: ROUTES_PATH.dashboard,
       },
     ],
   },
+
+  {
+    id: '4',
+    label: 'پشتیبانی',
+    path: ROUTES_PATH.support,
+    icon: 'bx:support',
+  },
   {
     id: '6',
     label: 'تنظیمات',
-    path: ROUTES_PATH.dashboard,
+    path: ROUTES_PATH.settings,
     icon: 'uil:setting',
   },
 ];

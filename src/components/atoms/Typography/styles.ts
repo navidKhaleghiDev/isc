@@ -1,10 +1,15 @@
+import { PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const typographyStyles = cva('', {
   variants: {
     color: {
-      primary: 'text-sky-600',
-      error: 'text-red-600',
+      primary: `${PALLET.LIGHT.TEXT_COLOR.PRIMARY} ${PALLET.DARK.TEXT_COLOR.PRIMARY}`,
+      success: `${PALLET.LIGHT.TEXT_COLOR.SUCCESS} ${PALLET.DARK.TEXT_COLOR.SUCCESS}`,
+      info: `${PALLET.LIGHT.TEXT_COLOR.INFO} ${PALLET.DARK.TEXT_COLOR.INFO}`,
+      error: `${PALLET.LIGHT.TEXT_COLOR.ERROR} ${PALLET.DARK.TEXT_COLOR.ERROR}`,
+      gray: `${PALLET.LIGHT.TEXT_COLOR.GRAY} ${PALLET.DARK.TEXT_COLOR.GRAY}`,
+      warning: `${PALLET.LIGHT.TEXT_COLOR.WARNING} ${PALLET.DARK.TEXT_COLOR.WARNING}`,
       default: '', // it should be empty
     },
     hoverColor: {

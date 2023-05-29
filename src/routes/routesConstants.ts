@@ -1,6 +1,13 @@
 export enum ERoutes {
   HOME = 'home',
+  SERVICES = 'services',
+  MY_PRODUCT = 'my-product',
+  PRODUCT = 'product',
+  SUPPORT = 'support',
+  RULES = 'rules',
+  MY_RULES = 'my-rules',
   DASHBOARD = 'dashboard',
+  SETTINGS = 'settings',
   UI = 'ui',
   ERROR_403 = 'error403',
   LOGIN = 'login',
@@ -9,14 +16,22 @@ export enum ERoutes {
   CONTACT_US = 'contactUs',
   PROFILE = 'profile',
 }
+
 export const ROUTES_PATH: Record<ERoutes, string> = {
   home: '/',
   ui: `/${ERoutes.UI}`,
+  services: `/${ERoutes.SERVICES}`,
+  product: `/${ERoutes.PRODUCT}`,
+  support: `/${ERoutes.SUPPORT}`,
+  settings: `/${ERoutes.SETTINGS}`,
+  rules: `/${ERoutes.RULES}`,
   error403: `/${ERoutes.ERROR_403}`,
   login: `/${ERoutes.LOGIN}`,
-  'reset-password': `/${ERoutes.RESET_PASSWORD}`,
   aboutUs: `/${ERoutes.ABOUT_US}`,
   contactUs: `/${ERoutes.CONTACT_US}`,
   dashboard: `/${ERoutes.DASHBOARD}`,
   profile: `/${ERoutes.PROFILE}`,
+  'my-product': `/${ERoutes.MY_PRODUCT}`,
+  'my-rules': `/${ERoutes.MY_RULES}`,
+  'reset-password': `/${ERoutes.RESET_PASSWORD}`,
 };

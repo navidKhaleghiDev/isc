@@ -19,7 +19,7 @@ export function ResetPasswordPage() {
 
   return (
     <div className="bg-sky-600  flex flex-col items-center justify-center min-h-screen">
-      <Card className="relative p-10 w-[29.375rem] h-[33rem] relative flex flex-col items-center justify-center ">
+      <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center justify-center ">
         <form
           onSubmit={handleSubmit(handelSubmitForm)}
           className="flex flex-col w-full items-center"

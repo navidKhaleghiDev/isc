@@ -23,7 +23,7 @@ export function LoginPage() {
 
   return (
     <div className="bg-sky-600  flex flex-col items-center justify-center min-h-screen">
-      <Card className="relative p-10 w-[29.375rem] h-[33rem] relative flex flex-col items-center justify-end ">
+      <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center justify-end ">
         <form
           onSubmit={handleSubmit(handelSubmitForm)}
           className="flex flex-col w-full items-center"

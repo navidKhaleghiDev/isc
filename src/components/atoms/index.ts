@@ -5,3 +5,4 @@ export { BaseButton } from './BaseButton';
 export { Card } from './Card';
 export { BaseInput } from './Inputs';
 export { Typography } from './Typography';
+export { Notification } from './Notification';
