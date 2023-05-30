@@ -3,6 +3,7 @@ import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput } from '@ui/atoms/Inputs';
 import Logo from '@src/assets/react.svg';
 import { IHomeRoutes, homeRoutes } from './routes';
+import { Typography } from '@ui/atoms';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function Navbar() {
@@ -43,14 +44,14 @@ export function Navbar() {
                 return (
                   <li
                     key={route.id}
-                    className="mx-3 p-3 text-gray-900 rounded hover:bg-gray-100  md:border-0 md:hover:text-blue-700  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                    className="mx-2 p-3 text-gray-900 rounded hover:bg-gray-100  md:border-0 md:hover:text-blue-700  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                   >
                     {!route.children ? (
                       <a
                         href={route.path}
                         className="block dark:hover:text-white"
                       >
-                        {route.label}
+                        <Typography>{route.label}</Typography>
                       </a>
                     ) : (
                       <>

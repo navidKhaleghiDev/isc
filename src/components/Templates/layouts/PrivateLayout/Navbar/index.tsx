@@ -18,9 +18,7 @@ export function Navbar() {
             <Typography type="h3" weight="bold" color="primary">
               مهدی بازرگان
             </Typography>
-            <Typography size="sm" color="primary">
-              ادمین
-            </Typography>
+            <Typography color="primary">ادمین</Typography>
           </div>
         </div>
         {/* search and button */}

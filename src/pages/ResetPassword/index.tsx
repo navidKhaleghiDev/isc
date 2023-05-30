@@ -24,7 +24,7 @@ export function ResetPasswordPage() {
           onSubmit={handleSubmit(handelSubmitForm)}
           className="flex flex-col w-full items-center"
         >
-          <Typography size="lg" weight="bold" className="mb-10">
+          <Typography weight="bold" className="mb-10">
             رمز عبور جدید
           </Typography>
           {error && (

@@ -72,7 +72,7 @@ export function LoginPage() {
               fullWidth
             />
             <Link to={ROUTES_PATH['reset-password']}>
-              <Typography color="primary" size="sm" className="mt-2">
+              <Typography color="primary" className="mt-2">
                 رمز خود را فراموش کرده اید؟
               </Typography>
             </Link>

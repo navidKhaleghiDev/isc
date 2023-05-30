@@ -79,7 +79,7 @@ export function BaseInput(props: BaseInputProps<any>) {
             )}
           </div>
           {!hiddenError && (
-            <Typography size="sm" color="error" className="h-6">
+            <Typography color="error" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}

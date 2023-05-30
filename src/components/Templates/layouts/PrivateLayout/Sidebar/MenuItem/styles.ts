@@ -6,7 +6,7 @@ export const menuItemStyles = cva(
   {
     variants: {
       active: {
-        true: `${PALLET.LIGHT.BG_COLOR.GRAY} ${PALLET.DARK.BG_COLOR.GRAY} ${PALLET.LIGHT.TEXT_COLOR.PRIMARY} ${PALLET.DARK.TEXT_COLOR.PRIMARY}`,
+        true: `${PALLET.LIGHT.BG_COLOR.GRAY} ${PALLET.LIGHT.TEXT_COLOR.PRIMARY}`,
         false: `hover:bg-neutral-100 hover:text-sky-600`,
       },
     },

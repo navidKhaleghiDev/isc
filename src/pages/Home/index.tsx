@@ -1,6 +1,7 @@
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { Link } from 'react-router-dom';
 
+import { Typography } from '@ui/atoms';
 import { Navbar } from './Navbar';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -8,11 +9,11 @@ export function HomePage() {
   return (
     <div
       dir="rtl"
-      className="font-iransans min-h-screen flex flex-col items-center"
+      className="font-on font-md min-h-screen flex flex-col items-center"
     >
       <Navbar />
       <div className="max-w-screen-sm flex flex-col justify-center items-center flex-1">
-        <p className="text-justify">
+        <Typography className="text-justify">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
           استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
           ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
@@ -24,7 +25,8 @@ export function HomePage() {
           شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
           اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
           قرار گیرد.
-        </p>
+        </Typography>
+
         <Link to="/login">
           <BaseButton
             label="login"

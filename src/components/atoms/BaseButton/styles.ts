@@ -1,9 +1,19 @@
+import { PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseButtonStyles = cva(
   'flex items-center justify-center transition duration-150 ease-in-out mx-1',
   {
     variants: {
+      type: {
+        primary: `${PALLET.LIGHT.BUTTON_COLOR.PRIMARY} ${PALLET.LIGHT.TEXT_COLOR.GRAY}`,
+        success: `${PALLET.LIGHT.BUTTON_COLOR.SUCCESS} `,
+        info: `${PALLET.LIGHT.BUTTON_COLOR.INFO} `,
+        error: `${PALLET.LIGHT.BUTTON_COLOR.ERROR} `,
+        gray: `${PALLET.LIGHT.BUTTON_COLOR.GRAY} `,
+        warning: `${PALLET.LIGHT.BUTTON_COLOR.WARNING} `,
+        default: `${PALLET.LIGHT.BUTTON_COLOR.DEFAULT} `,
+      },
       intent: {
         primary:
           'rounded-md text-white transition duration-150 ease-in-out hover:bg-indigo-600 focus:outline-none border bg-sky-600 dark:hover:bg-indigo-500 dark:bg-indigo-400',
@@ -13,9 +23,11 @@ export const baseButtonStyles = cva(
         danger: 'bg-red-500 text-white focus:ring-red-500 hover:border-red-900',
       },
       model: {
-        form: '',
-        modal: '',
         default: '',
+        disable: '',
+        shadow: '',
+        success: '',
+        navigate: '',
       },
       size: {
         xs: 'text-sm',

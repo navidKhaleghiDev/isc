@@ -4,12 +4,12 @@ import { cva } from 'class-variance-authority';
 export const typographyStyles = cva('', {
   variants: {
     color: {
-      primary: `${PALLET.LIGHT.TEXT_COLOR.PRIMARY} ${PALLET.DARK.TEXT_COLOR.PRIMARY}`,
-      success: `${PALLET.LIGHT.TEXT_COLOR.SUCCESS} ${PALLET.DARK.TEXT_COLOR.SUCCESS}`,
-      info: `${PALLET.LIGHT.TEXT_COLOR.INFO} ${PALLET.DARK.TEXT_COLOR.INFO}`,
-      error: `${PALLET.LIGHT.TEXT_COLOR.ERROR} ${PALLET.DARK.TEXT_COLOR.ERROR}`,
-      gray: `${PALLET.LIGHT.TEXT_COLOR.GRAY} ${PALLET.DARK.TEXT_COLOR.GRAY}`,
-      warning: `${PALLET.LIGHT.TEXT_COLOR.WARNING} ${PALLET.DARK.TEXT_COLOR.WARNING}`,
+      primary: `${PALLET.LIGHT.TEXT_COLOR.PRIMARY} `,
+      success: `${PALLET.LIGHT.TEXT_COLOR.SUCCESS} `,
+      info: `${PALLET.LIGHT.TEXT_COLOR.INFO} `,
+      error: `${PALLET.LIGHT.TEXT_COLOR.ERROR} `,
+      gray: `${PALLET.LIGHT.TEXT_COLOR.GRAY} `,
+      warning: `${PALLET.LIGHT.TEXT_COLOR.WARNING} `,
       default: '', // it should be empty
     },
     hoverColor: {
@@ -18,22 +18,28 @@ export const typographyStyles = cva('', {
       default: '', // it should be empty
     },
     size: {
-      xs: 'text-sm',
-      sm: 'text-md',
-      md: 'text-lg',
-      lg: 'text-2xl',
-      xl: 'text-4xl',
+      h1: 'text-7xl',
+      h2: 'text-6xl',
+      h3: 'text-5xl',
+      h4: 'text-4xl',
+      h5: 'text-2xl',
+      h6: 'text-xl',
+      body1: 'text-3xl',
+      body2: 'text-2xl',
+      body3: 'text-xl',
+      body4: 'text-base',
+      caption: 'text-xs',
     },
     weight: {
-      bold: 'font-bold',
-      medium: 'font-medium',
       light: 'font-light',
-      hoverColor: 'default',
+      normal: 'font-normal',
+      medium: 'font-medium',
+      bold: 'font-bold',
     },
   },
   defaultVariants: {
     color: 'default',
-    size: 'md',
-    weight: 'light',
+    size: 'body2',
+    weight: 'medium',
   },
 });

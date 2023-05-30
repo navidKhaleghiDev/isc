@@ -7,7 +7,7 @@ export default {
     extend: {},
     fontSize,
     fontFamily: {
-      iransans: ['iran-sans', 'sans-serif'],
+      on: ['on', 'sans-serif'],
     },
   },
   plugins: [],
