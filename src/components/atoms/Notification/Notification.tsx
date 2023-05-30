@@ -4,17 +4,21 @@ import { Typography } from '../Typography';
 import { notificationStyles } from './styles';
 import { INotification } from './types';
 
-export function Notification({ className, size, title, type }: INotification) {
+export function Notification({
+  className,
+  outline,
+  size,
+  title,
+  type,
+}: INotification) {
   return (
     <Card
-      className={notificationStyles({ size, className })}
-      type="default"
+      className={notificationStyles({ size, type, outline, className })}
       border
-      borderColor={type}
     >
-      <div className="flex items-center h-16 p-3">
-        <BaseIcon icon="carbon:security" color={type} />
-        <Typography className="mr-5" color={type}>
+      <div className="flex items-center">
+        <BaseIcon icon="carbon:security" className="ml-5" />
+        <Typography size="body3" weight="medium">
           {title}
         </Typography>
       </div>

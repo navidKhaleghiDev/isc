@@ -4,16 +4,13 @@ import { cva } from 'class-variance-authority';
 export const baseIconStyles = cva('fill-current', {
   variants: {
     color: {
-      primary: `${PALLET.LIGHT.TEXT_COLOR.PRIMARY} `,
-      success: `${PALLET.LIGHT.TEXT_COLOR.SUCCESS} `,
-      info: `${PALLET.LIGHT.TEXT_COLOR.INFO} `,
-      error: `${PALLET.LIGHT.TEXT_COLOR.ERROR} `,
-      gray: `${PALLET.LIGHT.TEXT_COLOR.GRAY} `,
-      warning: `${PALLET.LIGHT.TEXT_COLOR.WARNING} `,
-      default: '', // it should be empty
+      neutral: `${PALLET.TEXT_COLOR.NEUTRAL}`,
+      teal: `${PALLET.TEXT_COLOR.TEAL}`,
+      yellow: `${PALLET.TEXT_COLOR.YELLOW}`,
+      red: `${PALLET.TEXT_COLOR.RED}`,
     },
     hoverColor: {
-      primary: 'hover:text-sky-600',
+      primary: 'hover:text-teal-600',
       default: '', // it should be empty
     },
     size: {
@@ -23,10 +20,5 @@ export const baseIconStyles = cva('fill-current', {
       lg: 'h-18 w-18',
       xl: 'h-24 w-24',
     },
-  },
-  defaultVariants: {
-    color: 'default',
-    size: 'md',
-    hoverColor: 'default',
   },
 });

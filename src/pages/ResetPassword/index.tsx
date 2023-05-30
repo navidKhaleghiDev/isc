@@ -18,17 +18,17 @@ export function ResetPasswordPage() {
   };
 
   return (
-    <div className="bg-sky-600  flex flex-col items-center justify-center min-h-screen">
-      <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center justify-center ">
+    <div className="font-on bg-teal-600 flex flex-col items-center justify-center min-h-screen">
+      <Card className="p-10 w-[29.375rem] h-[33rem] flex flex-col items-center justify-center ">
         <form
           onSubmit={handleSubmit(handelSubmitForm)}
           className="flex flex-col w-full items-center"
         >
-          <Typography weight="bold" className="mb-10">
+          <Typography className="mb-10" size="h4" weight="bold">
             رمز عبور جدید
           </Typography>
           {error && (
-            <Typography color="error" className="mb-10">
+            <Typography color="red" size="body3" className="mb-10">
               حساب کاربری یا ایمیل وارد شده وجود ندارد.
             </Typography>
           )}

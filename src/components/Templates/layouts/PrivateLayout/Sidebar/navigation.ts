@@ -33,7 +33,7 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '3',
         label: 'سیستم نظارتی امنیتی',
-        path: ROUTES_PATH.dashboard,
+        path: ROUTES_PATH['monitoring-systems'],
       },
     ],
   },
@@ -56,7 +56,7 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '3',
         label: 'سیستم نظارتی امنیتی',
-        path: ROUTES_PATH.dashboard,
+        path: ROUTES_PATH['monitoring-systems'],
       },
     ],
   },

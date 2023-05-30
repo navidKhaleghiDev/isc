@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput } from '@ui/atoms/Inputs';
 import Logo from '@src/assets/react.svg';
-import { IHomeRoutes, homeRoutes } from './routes';
 import { Typography } from '@ui/atoms';
+import { IHomeRoutes, homeRoutes } from './routes';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function Navbar() {
@@ -128,19 +128,19 @@ export function Navbar() {
           </div>
         </div>
         {/* search and button */}
-        <div className="hidden flex items-start justify-between w-full md:flex md:w-72">
+        <div className="hidden p-2 items-start justify-between md:flex">
           <BaseInput
             control={control}
             name="search"
             id="search"
-            placeholder="جستجو..."
-            className="pl-10 w-32 self-baseline"
+            size="sm"
+            placeholder="...جستجو"
+            className="self-baseline ml-10"
             startIcon="material-symbols:search"
             hiddenError
           />
           <BaseButton
-            onClick={() => {}}
-            intent="outline"
+            type="outline"
             label="پشتیبانی"
             size="md"
             endIcon="ph:phone"

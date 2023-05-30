@@ -35,11 +35,11 @@ export function SideBar() {
           )
         )}
         <a
-          className="flex items-center w-full h-10 pr-3 my-2 rounded hover:bg-neutral-100 hover:text-sky-600"
+          className="flex items-center w-full h-10 pr-3 my-2 rounded hover:bg-neutral-100 hover:text-teal-600"
           href="#"
         >
-          <BaseIcon icon="material-symbols:logout-sharp" color="error" />
-          <Typography color="error" className="mr-3">
+          <BaseIcon icon="material-symbols:logout-sharp" color="red" />
+          <Typography color="red" className="mr-3" size="body2">
             خروج
           </Typography>
         </a>

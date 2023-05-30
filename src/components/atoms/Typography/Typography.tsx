@@ -8,7 +8,6 @@ export function Typography({
   size,
   children,
   className,
-  hoverColor,
   type = 'p',
   weight,
 }: ITypography) {
@@ -19,7 +18,6 @@ export function Typography({
         color,
         weight,
         size,
-        hoverColor,
         className,
       }),
     },

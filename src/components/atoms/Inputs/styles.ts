@@ -1,26 +1,45 @@
+import { SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-export const baseInputStyles = cva('px-2 flex block bg-translate rounded-lg', {
-  variants: {
-    intent: {
-      primary:
-        'text-neutral-600 border border-2 border-neutral-600 outline-sky-600 focus:ring-sky-600 focus:border-sky-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
-      secondary: '',
-      danger: 'border-2 border-neutral-600 ',
+export const baseInputStyles = cva(
+  'px-2.5 py-2.5 flex block bg-translate rounded-lg outline-none text-right text-rtl',
+  {
+    variants: {
+      intent: {
+        default:
+          'text-neutral-500 border border-2 border-neutral-500 focus:border-teal-600 focus:text-teal-500 focus:placeholder-teal-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:shadow-none',
+        error:
+          'text-red-600 border border-2 border-red-600 placeholder-red-400',
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
+      size: {
+        xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
+        sm: `w-[18.75rem] h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
+        md: `w-[27.5rem] h-10 text-lg ${SIZE.TYPOGRAPHY.BODY3}`,
+        lg: `w-[60rem] h-10 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
+        xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
+      },
     },
-    fullWidth: {
-      true: 'w-full',
+    defaultVariants: {
+      intent: 'default',
+      size: 'sm',
     },
-    size: {
-      xs: 'py-0.5 text-sm ',
-      sm: 'py-1 text-sm ',
-      md: 'py-1.5 text-md',
-      lg: 'py-3 text-lg ',
-      xl: 'py-4 text-xl ',
+  }
+);
+
+export const iconBaseInputStyles = cva(
+  'absolute inset-y-0 left-0 flex px-2 items-center pointer-events-none fill-current ',
+  {
+    variants: {
+      intent: {
+        default: 'text-neutral-500',
+        error: 'text-red-500',
+      },
     },
-  },
-  defaultVariants: {
-    intent: 'primary',
-    size: 'md',
-  },
-});
+    defaultVariants: {
+      intent: 'default',
+    },
+  }
+);

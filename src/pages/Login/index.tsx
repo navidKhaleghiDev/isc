@@ -22,7 +22,7 @@ export function LoginPage() {
   };
 
   return (
-    <div className="bg-sky-600  flex flex-col items-center justify-center min-h-screen">
+    <div className="font-on bg-teal-600  flex flex-col items-center justify-center min-h-screen">
       <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center justify-end ">
         <form
           onSubmit={handleSubmit(handelSubmitForm)}
@@ -32,7 +32,7 @@ export function LoginPage() {
             <Avatar icon="ph:user" intent="grey" size="lg" />
           </div>
           {error && (
-            <Typography color="error" className="mb-10">
+            <Typography color="red" size="body3" className="mb-10">
               حساب کاربری یا ایمیل وارد شده وجود ندارد.
             </Typography>
           )}
@@ -48,7 +48,6 @@ export function LoginPage() {
               id="email"
               name="email"
               endIcon="ph:user"
-              intent="danger"
             />
             <BaseInput
               fullWidth
@@ -72,7 +71,7 @@ export function LoginPage() {
               fullWidth
             />
             <Link to={ROUTES_PATH['reset-password']}>
-              <Typography color="primary" className="mt-2">
+              <Typography color="teal" className="mt-2">
                 رمز خود را فراموش کرده اید؟
               </Typography>
             </Link>
@@ -85,7 +84,7 @@ export function LoginPage() {
           endIcon="ic:round-login"
           className="mt-10"
           size="md"
-          intent="outline"
+          type="outline"
         />
       </Link>
     </div>

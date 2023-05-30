@@ -15,6 +15,7 @@ export enum ERoutes {
   ABOUT_US = 'aboutUs',
   CONTACT_US = 'contactUs',
   PROFILE = 'profile',
+  MONITORING_SYSTEM = 'monitoring-systems',
 }
 
 export const ROUTES_PATH: Record<ERoutes, string> = {
@@ -31,6 +32,7 @@ export const ROUTES_PATH: Record<ERoutes, string> = {
   contactUs: `/${ERoutes.CONTACT_US}`,
   dashboard: `/${ERoutes.DASHBOARD}`,
   profile: `/${ERoutes.PROFILE}`,
+  'monitoring-systems': `/${ERoutes.MONITORING_SYSTEM}`,
   'my-product': `/${ERoutes.MY_PRODUCT}`,
   'my-rules': `/${ERoutes.MY_RULES}`,
   'reset-password': `/${ERoutes.RESET_PASSWORD}`,

@@ -3,23 +3,18 @@ import { cva } from 'class-variance-authority';
 
 export const cardStyles = cva('', {
   variants: {
-    type: {
-      primary: `${PALLET.LIGHT.BG_COLOR.PRIMARY} `,
-      success: `${PALLET.LIGHT.BG_COLOR.SUCCESS} `,
-      info: `${PALLET.LIGHT.BG_COLOR.INFO} `,
-      error: `${PALLET.LIGHT.BG_COLOR.ERROR} `,
-      gray: `${PALLET.LIGHT.BG_COLOR.GRAY} `,
-      warning: `${PALLET.LIGHT.BG_COLOR.WARNING} `,
-      default: `${PALLET.LIGHT.BG_COLOR.DEFAULT} `,
+    color: {
+      neutral: `${PALLET.BG_COLOR.NEUTRAL} `,
+      teal: `${PALLET.BG_COLOR.TEAL} `,
+      yellow: `${PALLET.BG_COLOR.YELLOW} `,
+      red: `${PALLET.BG_COLOR.RED} `,
+      white: `bg-white dark:bg-neutral-300`,
     },
     borderColor: {
-      primary: `${PALLET.LIGHT.BORDER_COLOR.PRIMARY} `,
-      success: `${PALLET.LIGHT.BORDER_COLOR.SUCCESS} `,
-      info: `${PALLET.LIGHT.BORDER_COLOR.INFO} `,
-      error: `${PALLET.LIGHT.BORDER_COLOR.ERROR} `,
-      gray: `${PALLET.LIGHT.BORDER_COLOR.GRAY} `,
-      warning: `${PALLET.LIGHT.BORDER_COLOR.WARNING} `,
-      default: `${PALLET.LIGHT.BORDER_COLOR.DEFAULT} `,
+      neutral: `${PALLET.BORDER_COLOR.NEUTRAL} `,
+      teal: `${PALLET.BORDER_COLOR.TEAL} `,
+      yellow: `${PALLET.BORDER_COLOR.YELLOW} `,
+      red: `${PALLET.BORDER_COLOR.RED} `,
     },
     rounded: {
       sm: 'rounded-sm',
@@ -27,12 +22,19 @@ export const cardStyles = cva('', {
       lg: 'rounded-lg',
       xl: 'rounded-xl',
     },
+    shadow: {
+      sm: 'shadow-sm',
+      md: 'shadow-md',
+      lg: 'shadow-lg',
+      xl: 'shadow-xl',
+    },
     border: {
       true: 'border',
     },
   },
   defaultVariants: {
-    type: 'default',
+    color: 'white',
     rounded: 'md',
+    shadow: 'sm',
   },
 });

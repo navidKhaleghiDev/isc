@@ -1,8 +1,6 @@
-import { Icon } from '@iconify/react';
-
 import { baseButtonStyles, iconButtonStyles } from './styles';
 import { IBaseButton } from './types';
-import { Typography } from '../Typography';
+import { BaseIcon } from '../BaseIcon';
 
 export function BaseButton({
   onClick,
@@ -12,41 +10,31 @@ export function BaseButton({
   className,
   startIcon,
   endIcon,
-  intent = 'primary',
   size,
-  model,
+  type,
 }: IBaseButton) {
   return (
     <button
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
       className={baseButtonStyles({
-        intent,
-        model,
+        type,
         fullWidth,
         size,
         className,
       })}
     >
       {startIcon && (
-        <Icon
+        <BaseIcon
           icon={startIcon}
-          className="fill-current text-white ml-2"
-          width="18"
-          height="18"
+          className={iconButtonStyles({ type, size, className: 'ml-4' })}
         />
       )}
       {label}
       {endIcon && (
-        <Icon
+        <BaseIcon
           icon={endIcon}
-          className={iconButtonStyles({
-            intent,
-            size,
-            className: 'mr-2',
-          })}
-          width="18"
-          height="18"
+          className={iconButtonStyles({ type, className: 'mr-4' })}
         />
       )}
     </button>

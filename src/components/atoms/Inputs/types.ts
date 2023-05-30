@@ -43,3 +43,5 @@ export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
 }
+
+export type ColorIndent = 'default' | 'error' | undefined | null;

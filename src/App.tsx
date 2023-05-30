@@ -17,7 +17,7 @@ function App() {
 
   return (
     <SettingContext.Provider value={value}>
-      <div dir="rtl" className="">
+      <div dir="rtl">
         <Suspense>
           <RouterProvider router={router} />
         </Suspense>

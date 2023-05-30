@@ -1,34 +1,26 @@
-import { PALLET } from '@src/constants/theme';
+import { PALLET, SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const typographyStyles = cva('', {
   variants: {
     color: {
-      primary: `${PALLET.LIGHT.TEXT_COLOR.PRIMARY} `,
-      success: `${PALLET.LIGHT.TEXT_COLOR.SUCCESS} `,
-      info: `${PALLET.LIGHT.TEXT_COLOR.INFO} `,
-      error: `${PALLET.LIGHT.TEXT_COLOR.ERROR} `,
-      gray: `${PALLET.LIGHT.TEXT_COLOR.GRAY} `,
-      warning: `${PALLET.LIGHT.TEXT_COLOR.WARNING} `,
-      default: '', // it should be empty
-    },
-    hoverColor: {
-      primary: 'hover:text-green-600',
-      error: 'hover:text-red-800',
-      default: '', // it should be empty
+      teal: `${PALLET.TEXT_COLOR.TEAL} `,
+      neutral: `${PALLET.TEXT_COLOR.NEUTRAL}  `,
+      yellow: `${PALLET.TEXT_COLOR.YELLOW} `,
+      red: `${PALLET.TEXT_COLOR.RED} `,
     },
     size: {
-      h1: 'text-7xl',
-      h2: 'text-6xl',
-      h3: 'text-5xl',
-      h4: 'text-4xl',
-      h5: 'text-2xl',
-      h6: 'text-xl',
-      body1: 'text-3xl',
-      body2: 'text-2xl',
-      body3: 'text-xl',
-      body4: 'text-base',
-      caption: 'text-xs',
+      h1: SIZE.TYPOGRAPHY.H1,
+      h2: SIZE.TYPOGRAPHY.H2,
+      h3: SIZE.TYPOGRAPHY.H3,
+      h4: SIZE.TYPOGRAPHY.H4,
+      h5: SIZE.TYPOGRAPHY.H5,
+      h6: SIZE.TYPOGRAPHY.H6,
+      body1: SIZE.TYPOGRAPHY.BODY1,
+      body2: SIZE.TYPOGRAPHY.BODY2,
+      body3: SIZE.TYPOGRAPHY.BODY3,
+      body4: SIZE.TYPOGRAPHY.BODY4,
+      caption: SIZE.TYPOGRAPHY.CAPTION,
     },
     weight: {
       light: 'font-light',
@@ -36,10 +28,5 @@ export const typographyStyles = cva('', {
       medium: 'font-medium',
       bold: 'font-bold',
     },
-  },
-  defaultVariants: {
-    color: 'default',
-    size: 'body2',
-    weight: 'medium',
   },
 });

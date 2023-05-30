@@ -5,10 +5,10 @@ export function DashboardPage() {
     <div className="w-full flex flex-col h-full p-16">
       <div className="self-start flex flex-col w-full">
         <div className="flex w-full justify-between px-3 items-center h-16 bg-neutral-100 rounded-md">
-          <Typography color="primary" size="md" weight="bold">
+          <Typography color="teal" size="h4">
             چهارشنبه
           </Typography>
-          <Typography color="primary" size="md" weight="bold">
+          <Typography color="teal" size="h4">
             23 . اردیبهشت . 1402
           </Typography>
         </div>
@@ -19,16 +19,16 @@ export function DashboardPage() {
         />
       </div>
       <div className="mt-auto">
-        <Typography className="mb-2" color="primary" weight="bold">
+        <Typography className="mb-2" size="h5" color="teal">
           اعلان ها
         </Typography>
-        <Card className="h-96" type="gray">
+        <Card className="h-96" color="neutral">
           <div className="flex flex-col w-full p-5">
             <Notification
-              type="error"
+              outline="success"
               title="به روز رسانی صفحه با خطا رو به رو شد."
             />
-            <Notification type="success" title="ورود با موفقیت انجام شد." />
+            <Notification outline="error" title="ورود با موفقیت انجام شد." />
           </div>
         </Card>
       </div>

@@ -15,10 +15,12 @@ export function Navbar() {
             <Avatar icon="ph:user" intent="primary" size="sm" />
           </a>
           <div>
-            <Typography type="h3" weight="bold" color="primary">
+            <Typography type="h3" weight="bold" color="teal">
               مهدی بازرگان
             </Typography>
-            <Typography color="primary">ادمین</Typography>
+            <Typography color="teal" size="caption">
+              ادمین
+            </Typography>
           </div>
         </div>
         {/* search and button */}
@@ -26,8 +28,8 @@ export function Navbar() {
           control={control}
           name="search"
           id="search"
-          placeholder="جستجو..."
-          className="pl-10 w-32 self-baseline"
+          placeholder="...جستجو"
+          className="pl-10 self-baseline"
           startIcon="material-symbols:search"
           hiddenError
         />

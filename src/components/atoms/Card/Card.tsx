@@ -7,11 +7,19 @@ export function Card({
   rounded,
   borderColor,
   border,
-  type,
+  color,
+  shadow,
 }: ICard) {
   return (
     <div
-      className={cardStyles({ type, className, rounded, borderColor, border })}
+      className={cardStyles({
+        color,
+        shadow,
+        className,
+        rounded,
+        borderColor,
+        border,
+      })}
     >
       {children}
     </div>

@@ -7,13 +7,10 @@ import { Navbar } from './Navbar';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function HomePage() {
   return (
-    <div
-      dir="rtl"
-      className="font-on font-md min-h-screen flex flex-col items-center"
-    >
+    <div className="font-on min-h-screen flex flex-col items-center">
       <Navbar />
       <div className="max-w-screen-sm flex flex-col justify-center items-center flex-1">
-        <Typography className="text-justify">
+        <Typography className="text-justify" size="body2">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
           استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
           ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
