@@ -1,6 +1,6 @@
 import { VariantProps } from 'class-variance-authority';
 
-import { baseButtonStyles } from './styles';
+import { baseButtonStyles, iconButtonStyles } from './styles';
 
 export interface IBaseButton extends VariantProps<typeof baseButtonStyles> {
   onClick?: () => void;
@@ -9,4 +9,10 @@ export interface IBaseButton extends VariantProps<typeof baseButtonStyles> {
   className?: string;
   startIcon?: string;
   endIcon?: string;
+}
+
+export interface IIconButton extends VariantProps<typeof iconButtonStyles> {
+  onClick?: () => void;
+  icon: string;
+  className?: string;
 }

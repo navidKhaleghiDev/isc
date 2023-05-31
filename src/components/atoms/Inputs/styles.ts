@@ -2,12 +2,12 @@ import { SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  'px-2.5 py-2.5 flex block bg-translate rounded-lg outline-none text-right text-rtl',
+  'px-2.5 py-2.5 flex block rounded-lg outline-none text-right text-rtl',
   {
     variants: {
       intent: {
         default:
-          'text-neutral-500 border border-2 border-neutral-500 focus:border-teal-600 focus:text-teal-500 focus:placeholder-teal-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:shadow-none',
+          'bg-neutral-100 text-neutral-500 border border-2 border-neutral-500 focus:border-teal-600 focus:text-teal-500 focus:placeholder-teal-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:shadow-none',
         error:
           'text-red-600 border border-2 border-red-600 placeholder-red-400',
       },

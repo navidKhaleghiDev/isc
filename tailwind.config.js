@@ -8,6 +8,8 @@ export default {
     fontSize,
     fontFamily: {
       on: ['on', 'sans-serif'],
+      sans: ['ui-sans-serif', 'system-ui'],
+      serif: ['ui-serif', 'Georgia'],
     },
   },
   plugins: [],

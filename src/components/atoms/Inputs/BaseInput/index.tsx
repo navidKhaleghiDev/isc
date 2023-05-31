@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Controller } from 'react-hook-form';
 
-import { BaseInputProps } from './types';
-import { baseInputStyles } from './styles';
-import { Typography } from '../Typography';
-import { IconInput } from './IconInput';
+import { BaseInputProps } from '../types';
+import { baseInputStyles } from '../styles';
+import { Typography } from '../../Typography';
+import { IconInput } from '../IconInput';
 
 export function BaseInput(props: BaseInputProps<any>) {
   const {

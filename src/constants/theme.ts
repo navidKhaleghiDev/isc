@@ -9,7 +9,7 @@ export const PALLET = {
     TEAL: 'text-teal-600 dark:text-teal-600',
     RED: 'text-red-600 dark:text-red-600',
     YELLOW: 'text-yellow-600 dark:text-yellow-600',
-    NEUTRAL: 'text-neutral-600 dark:text-neutral-600',
+    NEUTRAL: 'text-neutral-400 dark:text-neutral-100',
   },
   BORDER_COLOR: {
     TEAL: 'border-teal-100 dark:border-teal-600',

@@ -29,7 +29,7 @@ export const baseButtonStyles = cva(
   }
 );
 
-export const iconButtonStyles = cva('fill-current ', {
+export const iconInButtonStyles = cva('fill-current ', {
   variants: {
     type: {
       primary: 'text-white',
@@ -50,3 +50,28 @@ export const iconButtonStyles = cva('fill-current ', {
     size: 'sm',
   },
 });
+
+export const iconButtonStyles = cva(
+  'fill-current rounded p-1 flex items-center justify-center',
+  {
+    variants: {
+      color: {
+        teal: 'bg-teal-600 text-neutral',
+        neutral: 'bg-neutral-200 text-teal-600',
+        yellow: 'bg-yellow-600 text-neutral-100',
+        red: 'bg-red-100 text-red-600',
+        white: 'bg-white text-teal-600',
+      },
+      size: {
+        sm: 'h-4 w-4',
+        md: 'h-5 w-5',
+        lg: 'h-6 w-6',
+        xl: 'h-8 w-8',
+      },
+    },
+    defaultVariants: {
+      color: 'teal',
+      size: 'lg',
+    },
+  }
+);
