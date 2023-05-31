@@ -9,12 +9,13 @@ import { MonitoringSystemsPage } from '@src/pages/MonitoringSystems';
 import { RulesPage } from '@src/pages/Services/Rules';
 import { RulesCodePage } from '@src/pages/Services/RulesCode';
 
+import { UiPage } from '@src/pages/Ui';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
   {
     path: ROUTES_PATH.ui,
-    element: <HomePage />,
+    element: <UiPage />,
   },
   {
     path: ROUTES_PATH.error403,
