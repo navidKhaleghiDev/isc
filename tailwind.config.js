@@ -12,5 +12,5 @@ export default {
       serif: ['ui-serif', 'Georgia'],
     },
   },
-  plugins: [],
+  plugins: [require('autoprefixer')],
 };

@@ -1,2 +1,2 @@
-export { Card } from './Select';
+export { Select } from './Select';
 export * from './types';

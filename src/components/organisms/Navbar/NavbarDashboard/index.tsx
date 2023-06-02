@@ -4,7 +4,7 @@ import { BaseInput } from '@ui/atoms/Inputs';
 import { useForm } from 'react-hook-form';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-export function Navbar() {
+export function NavbarDashboard() {
   const { control } = useForm();
 
   return (

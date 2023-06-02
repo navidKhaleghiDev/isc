@@ -6,7 +6,7 @@ import { Typography } from '@ui/atoms';
 import { IHomeRoutes, homeRoutes } from './routes';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-export function Navbar() {
+export function NavbarHome() {
   const { control } = useForm();
   return (
     <nav className="bg-white w-full border-gray-200 dark:bg-gray-900 dark:border-gray-700">

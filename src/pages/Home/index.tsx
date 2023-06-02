@@ -2,13 +2,13 @@ import { BaseButton } from '@ui/atoms/BaseButton';
 import { Link } from 'react-router-dom';
 
 import { Typography } from '@ui/atoms';
-import { Navbar } from './Navbar';
+import { NavbarHome } from '@ui/organisms/Navbar/NavbarHome';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function HomePage() {
   return (
     <div className="font-on min-h-screen flex flex-col items-center">
-      <Navbar />
+      <NavbarHome />
       <div className="max-w-screen-sm flex flex-col justify-center items-center flex-1">
         <Typography className="text-justify" size="body2">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با

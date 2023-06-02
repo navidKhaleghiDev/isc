@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { useState } from 'react';
 import { cardStyles } from './styles';
 import { ICard } from './types';
 
@@ -11,7 +12,7 @@ export function Select({
   color,
   shadow,
 }: ICard) {
-  const [label, setLabel];
+  const [label, setLabel] = useState<boolean>();
   return (
     <div className="relative w-[30rem]">
       <button
