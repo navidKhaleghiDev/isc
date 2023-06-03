@@ -10,6 +10,7 @@ export function BaseButton({
   className,
   startIcon,
   endIcon,
+  disabled,
   size,
   type,
 }: IBaseButton) {
@@ -17,6 +18,7 @@ export function BaseButton({
     <button
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
+      disabled={disabled}
       className={baseButtonStyles({
         type,
         fullWidth,

@@ -2,6 +2,7 @@ import { Avatar } from '@ui/atoms/Avatar';
 import { Typography } from '@ui/atoms/Typography/Typography';
 import { BaseInput } from '@ui/atoms/Inputs';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function NavbarDashboard() {
@@ -11,9 +12,12 @@ export function NavbarDashboard() {
     <nav className="bg-white w-full px-8 mb-1 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center">
-          <a href="#" className="ml-4">
+          <Link to="add-user" className="ml-4">
+            <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
+          </Link>
+          <Link to="profile" className="ml-4">
             <Avatar icon="ph:user" intent="primary" size="sm" />
-          </a>
+          </Link>
           <div>
             <Typography type="h3" weight="bold" color="teal">
               مهدی بازرگان

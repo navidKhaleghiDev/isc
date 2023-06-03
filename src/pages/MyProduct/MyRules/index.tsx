@@ -1,9 +1,9 @@
 import { FilterAndList } from '@ui/Templates/FilterAndList';
 import { RulesList } from '@ui/molecules/RulesList';
 
-export function RulesPage() {
+export function MyProductMyRulesPage() {
   return (
-    <FilterAndList>
+    <FilterAndList withIps>
       <RulesList />
     </FilterAndList>
   );

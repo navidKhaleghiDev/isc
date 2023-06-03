@@ -1,14 +1,18 @@
 import { PALLET, SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
+const disabledClass =
+  'disabled:opacity-100 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:border-2 disabled:shadow-none';
+const enabledShadowClass = '';
+
 export const baseButtonStyles = cva(
-  `flex items-center justify-center transition duration-150 ease-in-out rounded-md focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY2}`,
+  `flex items-center justify-center transition duration-150 ease-in-out rounded-md focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY2} ${disabledClass}`,
   {
     variants: {
       type: {
-        primary: `${PALLET.BUTTON_COLOR.TEAL}`,
-        outline: `${PALLET.BUTTON_COLOR.NEUTRAL} border border-neutral-600`,
-        shadow: `bg-white text-teal-600 shadow-lg`,
+        default: `${PALLET.BUTTON_COLOR.TEAL}`,
+        inactive: `${PALLET.BUTTON_COLOR.NEUTRAL} border border-neutral-600`,
+        shadow: `${PALLET.BUTTON_COLOR.SHADOW}`,
         secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
         red: `${PALLET.BUTTON_COLOR.RED} `,
       },
@@ -23,7 +27,7 @@ export const baseButtonStyles = cva(
       },
     },
     defaultVariants: {
-      type: 'primary',
+      type: 'default',
       size: 'md',
     },
   }
@@ -32,11 +36,11 @@ export const baseButtonStyles = cva(
 export const iconInButtonStyles = cva('fill-current ', {
   variants: {
     type: {
-      primary: 'text-white',
-      outline: 'text-teal-600',
-      shadow: 'text-red-600',
-      secondary: 'text-gray-600',
-      red: 'text-red-600',
+      default: `${PALLET.BUTTON_COLOR.TEAL}`,
+      inactive: `${PALLET.BUTTON_COLOR.NEUTRAL} border border-neutral-600`,
+      shadow: `bg-white text-teal-600 shadow-lg`,
+      secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
+      red: `${PALLET.BUTTON_COLOR.RED} `,
     },
     size: {
       sm: 'h-4 w-4',
@@ -46,7 +50,7 @@ export const iconInButtonStyles = cva('fill-current ', {
     },
   },
   defaultVariants: {
-    type: 'primary',
+    type: 'default',
     size: 'sm',
   },
 });
@@ -56,7 +60,7 @@ export const iconButtonStyles = cva(
   {
     variants: {
       color: {
-        teal: 'bg-teal-600 text-neutral',
+        teal: 'bg-teal-600 text-neutral-100',
         neutral: 'bg-neutral-200 text-teal-600',
         yellow: 'bg-yellow-600 text-neutral-100',
         red: 'bg-red-100 text-red-600',

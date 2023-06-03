@@ -5,6 +5,7 @@ import { baseButtonStyles, iconButtonStyles } from './styles';
 export interface IBaseButton extends VariantProps<typeof baseButtonStyles> {
   onClick?: () => void;
   label: string;
+  disabled?: boolean;
   submit?: boolean;
   className?: string;
   startIcon?: string;

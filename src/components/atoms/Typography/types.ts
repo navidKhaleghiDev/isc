@@ -1,6 +1,8 @@
+import { ComponentProps } from 'react';
 import { VariantProps } from 'class-variance-authority';
 
 import { typographyStyles } from './styles';
+import { BaseIcon } from '../BaseIcon';
 
 export interface ITypography extends VariantProps<typeof typographyStyles> {
   type?:
@@ -16,4 +18,13 @@ export interface ITypography extends VariantProps<typeof typographyStyles> {
     | 'div';
   className?: string;
   children: string;
+}
+
+type BaseIconProps = ComponentProps<typeof BaseIcon>;
+export interface ITypographyIcon extends Omit<ITypography, 'children'> {
+  text: string;
+  iconColor?: BaseIconProps['color'];
+  iconSize?: BaseIconProps['size'];
+  startIcon?: string;
+  endIcon?: string;
 }

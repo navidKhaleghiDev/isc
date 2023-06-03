@@ -20,6 +20,7 @@ export function BaseInput(props: BaseInputProps<any>) {
     endIcon,
     intent,
     size,
+    label,
     hiddenError,
   } = props;
   return (
@@ -30,14 +31,13 @@ export function BaseInput(props: BaseInputProps<any>) {
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <div className={`${className} ${fullWidth && 'w-full'}`}>
-          {/* {label && (
-            <label
-              htmlFor={id}
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              {label}
+          {label && (
+            <label htmlFor={id} className="block mb-1">
+              <Typography color="teal" size="h5">
+                {label}
+              </Typography>
             </label>
-          )} */}
+          )}
 
           <div className="relative">
             {startIcon && <IconInput icon={startIcon} intent={intent} />}

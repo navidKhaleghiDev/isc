@@ -28,6 +28,8 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'react/prop-types': 'off', // Since we do not use prop-types
+    'react/require-default-props': 'off', // Since we do not use prop-types
   },
   ignorePatterns: ['tailwind.config.js', 'postcss.config', 'postcss.config.js'],
 };

@@ -14,11 +14,12 @@ export const baseIconStyles = cva('fill-current', {
       default: '', // it should be empty
     },
     size: {
-      xs: 'h-3 w-3',
-      sm: 'h-4 w-4',
+      xs: 'h-4 w-4',
+      sm: 'h-5 w-5',
       md: 'h-6 w-6',
-      lg: 'h-18 w-18',
-      xl: 'h-24 w-24',
+      lg: 'h-8 w-8',
+      xl: 'h-12 w-12',
+      xxl: 'h-20 w-20',
     },
   },
 });
