@@ -18,11 +18,7 @@ export function SideBar() {
       <div className="flex flex-col items-center w-full mt-10 px-4">
         {navigationSideBar.map((item: INavigation, i: number) =>
           !item.items ? (
-            <MenuItem
-              key={item.id}
-              item={item}
-              active={item.path === pathname}
-            />
+            <MenuItem key={item.id} item={item} pathname={pathname} />
           ) : (
             <MenuItemAccordion
               key={item.id}
@@ -30,7 +26,7 @@ export function SideBar() {
               open={open}
               setOpen={handleOpen}
               index={i}
-              active={item.path === pathname}
+              pathname={pathname}
             />
           )
         )}

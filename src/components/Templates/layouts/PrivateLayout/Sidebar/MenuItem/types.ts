@@ -5,4 +5,5 @@ import { INavigation } from '../navigation';
 
 export interface IMenuItem extends VariantProps<typeof menuItemStyles> {
   item: INavigation;
+  pathname: string;
 }

@@ -6,11 +6,15 @@ export const menuItemStyles = cva(
   {
     variants: {
       active: {
-        true: `${PALLET.BG_COLOR.NEUTRAL} ${PALLET.TEXT_COLOR.TEAL} hover:bg-neutral-200`,
+        true: `${PALLET.BG_COLOR.NEUTRAL} ${PALLET.TEXT_COLOR.TEAL}`,
       },
       isChildren: {
-        true: `${PALLET.BG_COLOR.NEUTRAL} ${PALLET.TEXT_COLOR.TEAL} hover:bg-neutral-200 `,
-        undefined: 'my-2 rounded ',
+        true: `${PALLET.BG_COLOR.NEUTRAL} ${PALLET.TEXT_COLOR.TEAL} hover:bg-neutral-200`,
+        undefined: 'my-2 rounded',
+      },
+      isActiveChildren: {
+        true: `border-r-4 border-teal-600`,
+        undefined: '',
       },
     },
     defaultVariants: {

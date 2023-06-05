@@ -20,6 +20,7 @@ export function BaseInput(props: BaseInputProps<any>) {
     endIcon,
     intent,
     size,
+    type,
     label,
     hiddenError,
   } = props;
@@ -43,7 +44,8 @@ export function BaseInput(props: BaseInputProps<any>) {
             {startIcon && <IconInput icon={startIcon} intent={intent} />}
             <input
               id={id}
-              type="text"
+              type={type}
+              lang="fa-ir"
               dir="auto"
               name={field.name}
               value={field.value}

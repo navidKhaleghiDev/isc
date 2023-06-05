@@ -13,13 +13,17 @@ export function MenuItemAccordion({
   setOpen,
   index,
   item,
-  active,
+  pathname,
 }: IMenuItemAccordion) {
+  const isParentPath = pathname.split('/')[1] || 'false';
+
   return (
     <>
       <button
         type="button"
-        className={menuItemStyles({ active })}
+        className={menuItemStyles({
+          active: item.path === `/${isParentPath}`,
+        })}
         onClick={() => setOpen(open === index ? null : index)}
       >
         <BaseIcon icon="fluent-mdl2:product" />
@@ -33,7 +37,7 @@ export function MenuItemAccordion({
       </button>
       <div className={`${open !== index && 'hidden'} w-full`}>
         {item.items?.map((i: INavigation) => (
-          <MenuItem key={i.id} item={i} isChildren />
+          <MenuItem key={i.id} item={i} pathname={pathname} isChildren />
         ))}
       </div>
     </>

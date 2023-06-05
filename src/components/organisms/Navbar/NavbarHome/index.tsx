@@ -140,7 +140,7 @@ export function NavbarHome() {
             hiddenError
           />
           <BaseButton
-            type="outline"
+            type="shadow"
             label="پشتیبانی"
             size="md"
             endIcon="ph:phone"

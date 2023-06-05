@@ -47,6 +47,7 @@ export function AddUserPage() {
           <BaseInput
             name="date"
             id="date"
+            type="date"
             control={control}
             label="تاریخ و زمان"
             placeholder="1402/02/23  -  11:25 AM"

@@ -9,4 +9,5 @@ export interface IMenuItemAccordion
   setOpen: (open: number | null) => void;
   index: number;
   item: INavigation;
+  pathname: string;
 }
