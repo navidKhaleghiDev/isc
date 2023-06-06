@@ -1,6 +1,6 @@
 import { NavbarDashboard } from '@ui/organisms/Navbar/NavbarDashboard';
 import { Outlet } from 'react-router-dom';
-import { SideBar } from './Sidebar';
+import { SideBar } from '../../../organisms/Sidebar';
 
 export default function Layout() {
   return (
