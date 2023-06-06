@@ -5,6 +5,7 @@ import { BaseInputProps } from '../types';
 import { baseInputStyles } from '../styles';
 import { Typography } from '../../Typography';
 import { IconInput } from '../IconInput';
+import { IconButtonInput } from '../IconButtonInput';
 
 export function BaseInput(props: BaseInputProps<any>) {
   const {
@@ -23,6 +24,8 @@ export function BaseInput(props: BaseInputProps<any>) {
     type,
     label,
     hiddenError,
+    onClickIcon,
+    iconButtonIcon = 'fa-home',
   } = props;
   return (
     <Controller
@@ -45,19 +48,28 @@ export function BaseInput(props: BaseInputProps<any>) {
             <input
               id={id}
               type={type}
-              lang="fa-ir"
               dir="auto"
               name={field.name}
               value={field.value}
               onChange={field.onChange}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${endIcon && 'pr-8'} ${startIcon && 'pl-8'}`,
+                className: `${endIcon && 'pr-8'} ${
+                  (startIcon || onClickIcon) && 'pl-8'
+                }`,
                 fullWidth,
                 size,
               })}
               placeholder={placeholder}
             />
+
+            {onClickIcon && (
+              <IconButtonInput
+                icon={iconButtonIcon}
+                intent={intent}
+                onClick={onClickIcon}
+              />
+            )}
             {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (

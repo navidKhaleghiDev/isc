@@ -2,7 +2,7 @@ import { SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  'px-2.5 py-2.5 flex block rounded-lg outline-none text-right text-rtl',
+  'px-2.5 py-2.5 flex block rounded-lg outline-none placeholder:text-right placeholder:text-rtl',
   {
     variants: {
       intent: {
@@ -30,7 +30,7 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 left-0 flex px-2 items-center pointer-events-none fill-current ',
+  'absolute inset-y-0 left-0 flex px-2 items-center fill-current ',
   {
     variants: {
       intent: {
