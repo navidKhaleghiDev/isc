@@ -16,4 +16,5 @@ export interface IIconButton extends VariantProps<typeof iconButtonStyles> {
   onClick?: () => void;
   icon: string;
   className?: string;
+  classNameIcon?: string;
 }

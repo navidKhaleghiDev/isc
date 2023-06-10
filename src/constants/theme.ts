@@ -46,7 +46,7 @@ export const SIZE = {
     CAPTION: 'text-xs',
   },
   BUTTON: {
-    SMALL: 'h-6 w-20 px-4 py-2',
+    SMALL: 'h-6 w-20 px-2 py-2 text-xl',
     MEDIUM: 'h-8 w-36 px-4 py-2',
     LARGE: 'h-10 w-80',
     X_LARGE: 'h-10 w-[27.5rem]',

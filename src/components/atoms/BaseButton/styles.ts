@@ -14,7 +14,8 @@ export const baseButtonStyles = cva(
         inactive: `${PALLET.BUTTON_COLOR.NEUTRAL} border border-neutral-600`,
         shadow: `${PALLET.BUTTON_COLOR.SHADOW}`,
         secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
-        red: `${PALLET.BUTTON_COLOR.RED} `,
+        red: `${PALLET.BUTTON_COLOR.RED}`,
+        tealLink: `text-teal-600 hover:bg-neutral-200 rounded-none`,
       },
       size: {
         sm: SIZE.BUTTON.SMALL,
@@ -41,6 +42,7 @@ export const iconInButtonStyles = cva('fill-current ', {
       shadow: `bg-white text-teal-600 shadow-lg`,
       secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
       red: `${PALLET.BUTTON_COLOR.RED} `,
+      tealLink: ``,
     },
     size: {
       sm: 'h-4 w-4',
@@ -65,17 +67,21 @@ export const iconButtonStyles = cva(
         yellow: 'bg-yellow-600 text-neutral-100',
         red: 'bg-red-100 text-red-600',
         white: 'bg-white text-teal-600',
+        default: '',
       },
       size: {
         sm: 'h-4 w-4',
         md: 'h-5 w-5',
         lg: 'h-6 w-6',
         xl: 'h-8 w-8',
+        xxl: 'h-10 w-10',
+        xxxl: 'h-16 w-16',
+        default: 'h-fit w-fit',
       },
     },
     defaultVariants: {
-      color: 'teal',
-      size: 'lg',
+      color: 'default',
+      size: 'default',
     },
   }
 );

@@ -19,6 +19,7 @@ export type RoutePathType =
   | 'myProductName'
   | 'myProductMyRules'
   | 'myProductMyRulesName'
+  | 'myProductIpsList'
   | 'blog'
   | 'ourServices'
   | 'resetPassword';
@@ -71,6 +72,7 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   myProduct: `/${RoutesName.MY_PRODUCT}`,
   myProductName: `/${RoutesName.MY_PRODUCT}/:productName`,
   myProductMyRules: `/${RoutesName.MY_PRODUCT}/my-rules`,
+  myProductIpsList: `/${RoutesName.MY_PRODUCT}/ips-list`,
   myProductMyRulesName: `/${RoutesName.MY_PRODUCT}/my-rules/:rulesName`,
   resetPassword: `/${RoutesName.RESET_PASSWORD}`,
 };

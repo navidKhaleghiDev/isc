@@ -1,7 +1,7 @@
 import { PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-export const cardStyles = cva('', {
+export const selectStyles = cva('', {
   variants: {
     color: {
       neutral: `${PALLET.BG_COLOR.NEUTRAL} `,
@@ -10,31 +10,5 @@ export const cardStyles = cva('', {
       red: `${PALLET.BG_COLOR.RED} `,
       white: `bg-white dark:bg-neutral-300`,
     },
-    borderColor: {
-      neutral: `${PALLET.BORDER_COLOR.NEUTRAL} `,
-      teal: `${PALLET.BORDER_COLOR.TEAL} `,
-      yellow: `${PALLET.BORDER_COLOR.YELLOW} `,
-      red: `${PALLET.BORDER_COLOR.RED} `,
-    },
-    rounded: {
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      xl: 'rounded-xl',
-    },
-    shadow: {
-      sm: 'shadow-sm',
-      md: 'shadow-md',
-      lg: 'shadow-lg',
-      xl: 'shadow-xl',
-    },
-    border: {
-      true: 'border',
-    },
-  },
-  defaultVariants: {
-    color: 'white',
-    rounded: 'md',
-    shadow: 'sm',
   },
 });

@@ -1,7 +1,8 @@
 import { useMemo, useState, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
 import routesConfig from '@src/routes/routesConfig';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import {
   ISetting,
@@ -21,6 +22,7 @@ function App() {
         <Suspense>
           <RouterProvider router={router} />
         </Suspense>
+        <ToastContainer />
       </div>
     </SettingContext.Provider>
   );

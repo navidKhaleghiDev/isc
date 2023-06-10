@@ -5,6 +5,7 @@ import { BaseIcon } from '../BaseIcon';
 export function IconButton({
   onClick,
   className,
+  classNameIcon,
   icon,
   size,
   color,
@@ -19,7 +20,7 @@ export function IconButton({
         className,
       })}
     >
-      <BaseIcon icon={icon} />
+      <BaseIcon icon={icon} size={size} className={classNameIcon} />
     </button>
   );
 }

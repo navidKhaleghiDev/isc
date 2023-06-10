@@ -12,13 +12,13 @@ export const navigationSideBar: INavigation[] = [
     id: '1',
     label: 'داشبورد',
     path: ROUTES_PATH.dashboard,
-    icon: 'radix-icons:dashboard',
+    icon: 'ph:rows',
   },
   {
     id: '2',
     label: 'خدمات ',
     path: ROUTES_PATH.services,
-    icon: 'radix-icons:dashboard',
+    icon: 'ph:devices',
     items: [
       {
         id: '1',
@@ -27,50 +27,51 @@ export const navigationSideBar: INavigation[] = [
       },
       {
         id: '2',
-        label: 'قوانین',
+        label: 'لیست قوانین',
         path: ROUTES_PATH.servicesRules,
       },
       {
         id: '3',
-        label: 'سیستم نظارتی امنیتی',
+        label: 'راهنمای سیستم نظارتی',
         path: ROUTES_PATH.monitoringSystems,
       },
     ],
   },
   {
     id: '3',
-    label: 'محصولات من',
+    label: 'محصول من',
     path: ROUTES_PATH.myProduct,
-    icon: 'fluent-mdl2:product',
+    icon: 'ph:user',
+  },
+  {
+    id: '4',
+    label: 'سیستم نظارتی امنیتی',
+    path: ROUTES_PATH.monitoringSystems,
+    icon: 'ph:monitor',
     items: [
       {
         id: '1',
-        label: 'محصولات من',
-        path: ROUTES_PATH.myProduct,
+        label: 'سیستم نظارتی اول',
+        path: ROUTES_PATH.monitoringSystems,
       },
       {
         id: '2',
-        label: 'قانون های من',
-        path: ROUTES_PATH.myProductMyRules,
-      },
-      {
-        id: '3',
-        label: 'سیستم نظارتی امنیتی',
+        label: 'سیستم نظارتی دوم',
         path: ROUTES_PATH.monitoringSystems,
       },
     ],
   },
 
   {
-    id: '4',
-    label: 'پشتیبانی',
+    id: '5',
+    label: 'سوالات متداول',
     path: ROUTES_PATH.support,
-    icon: 'bx:support',
+    icon: 'ph:phone',
   },
   {
     id: '6',
     label: 'تنظیمات',
     path: ROUTES_PATH.settings,
-    icon: 'uil:setting',
+    icon: 'ph:gear',
   },
 ];

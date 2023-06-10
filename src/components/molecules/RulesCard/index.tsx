@@ -1,9 +1,11 @@
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Card, Typography } from '@ui/atoms';
-import { IconButton } from '@ui/atoms/BaseButton';
+import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
 import { Link } from 'react-router-dom';
 
-export function RulesCard() {
+type PropsType = { onClickAdd: (id: string) => void };
+export function RulesCard({ onClickAdd }: PropsType) {
+  const onClickAddButton = () => onClickAdd('1');
   return (
     <Card
       color="neutral"
@@ -13,6 +15,14 @@ export function RulesCard() {
         <Link to={`${ROUTES_PATH.servicesRules}/codeName`}>
           <IconButton icon="jam:more-vertical" color="white" />
         </Link>
+        <BaseButton
+          label="افزودن"
+          endIcon="ic:baseline-plus"
+          className="ml-auto mr-2"
+          type="shadow"
+          size="sm"
+          onClick={onClickAddButton}
+        />
         <Typography color="teal" size="body2" type="div">
           Rule name
         </Typography>

@@ -13,6 +13,7 @@ enum StatusCode {
   Forbidden = 403,
   TooManyRequests = 429,
   InternalServerError = 500,
+  BadRequestError = 400,
 }
 export const BASE_URL_CLIENT = 'http://192.168.1.57:8004';
 
@@ -20,7 +21,8 @@ const STORAGE_KEY = 'token';
 
 const headers: Readonly<Record<string, string | boolean>> = {
   Accept: 'application/json',
-  'Content-Type': 'application/json; charset=utf-8',
+  'Content-Type': 'application/json',
+  // 'Content-Type': 'application/json; charset=utf-8',
   // 'Access-Control-Allow-Credentials': true,
   // 'X-Requested-With': 'XMLHttpRequest',
 };
@@ -42,8 +44,6 @@ const injectToken = (
 
 type FetcherResponse<Data = unknown> = Data | Promise<Data>;
 class Http {
-  // token: string;
-
   private instance: AxiosInstance | null = null;
 
   private get http(): AxiosInstance {
@@ -128,6 +128,10 @@ class Http {
     if (axios.isAxiosError(error)) {
       const { status } = error;
       switch (status) {
+        case StatusCode.BadRequestError: {
+          // Handle InternalServerError
+          throw error.response?.data.error;
+        }
         case StatusCode.InternalServerError: {
           // Handle InternalServerError
           break;

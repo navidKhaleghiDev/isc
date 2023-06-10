@@ -6,8 +6,8 @@ import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { USERS_LOGIN } from '@src/services/endpoints/users';
-import { usePost } from '@src/services/http/httpClient';
+import { API_USERS_LOGIN } from '@src/services/users';
+import { toast } from 'react-toastify';
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
 export function LoginForm({ onChangeStep }: PropsFormType) {
@@ -15,16 +15,18 @@ export function LoginForm({ onChangeStep }: PropsFormType) {
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
-  const { trigger, data } = usePost(USERS_LOGIN, {});
 
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
-    const ddd = trigger({
-      email,
-      password,
-    });
-    console.log({ data, ddd });
+    await API_USERS_LOGIN({ email, password })
+      .then(({ data }) => {
+        toast.success('ورود با موفقیت انجام شد.');
+        navigate(ROUTES_PATH.dashboard);
+      })
+      .catch((err) => {
+        setError(err.data.error);
+      });
 
     // onChangeStep(ELoginStep.CHANGE_PASSWORD);
     // navigate(ROUTES_PATH.dashboard);

@@ -23,10 +23,10 @@ export const cardStyles = cva('', {
       xl: 'rounded-xl',
     },
     shadow: {
-      sm: 'shadow-sm',
-      md: 'shadow-md',
-      lg: 'shadow-lg',
-      xl: 'shadow-xl',
+      sm: 'shadow-sm border border-neutral-100',
+      md: 'shadow-md border border-neutral-100',
+      lg: 'shadow-lg border border-neutral-100',
+      xl: 'shadow-xl border border-neutral-100',
     },
     border: {
       true: 'border',
@@ -35,6 +35,5 @@ export const cardStyles = cva('', {
   defaultVariants: {
     color: 'white',
     rounded: 'md',
-    shadow: 'sm',
   },
 });
