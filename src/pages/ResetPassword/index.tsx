@@ -4,10 +4,15 @@ import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import {
+  getPasswordStrength,
+  getLabelPasswordStrength,
+  EPasswordStrengthColor,
+} from '@src/helper/utils/getPasswordStrength';
 import { ILoginFieldValues } from './types';
 
 export function ResetPasswordPage() {
-  const { control, handleSubmit } = useForm<ILoginFieldValues>({
+  const { control, handleSubmit, watch } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
 
@@ -16,6 +21,9 @@ export function ResetPasswordPage() {
   const handelSubmitForm = async (data: ILoginFieldValues) => {
     console.log({ data });
   };
+  const passwordStrength = getPasswordStrength(
+    watch('password')
+  ) as EPasswordStrengthColor;
 
   return (
     <div className="font-on bg-teal-600 flex flex-col items-center justify-center min-h-screen">
@@ -37,7 +45,7 @@ export function ResetPasswordPage() {
               fullWidth
               control={control}
               placeholder="password"
-              type="password"
+              type="text"
               id="password"
               name="password"
               endIcon="carbon:password"
@@ -57,6 +65,34 @@ export function ResetPasswordPage() {
                 required: regexPattern.required,
               }}
             />
+            <div className="flex justify-center items-center w-full">
+              {passwordStrength && (
+                <Typography className="mx-2" color={passwordStrength}>
+                  {getLabelPasswordStrength(passwordStrength)}
+                </Typography>
+              )}
+              <div
+                className={`h-1 w-full ${
+                  passwordStrength === 'teal'
+                    ? `bg-${passwordStrength}-500`
+                    : `bg-neutral-200`
+                } rounded mx-1`}
+              />
+              <div
+                className={`h-1 w-full ${
+                  passwordStrength === 'yellow' || passwordStrength === 'teal'
+                    ? `bg-${passwordStrength}-500`
+                    : `bg-neutral-200`
+                } rounded mx-1`}
+              />
+              <div
+                className={`h-1 w-full ${
+                  passwordStrength
+                    ? `bg-${passwordStrength}-500`
+                    : `bg-neutral-200`
+                } rounded mx-1`}
+              />
+            </div>
             <BaseButton
               onClick={() => {}}
               label="ذخیره تغییرات"
