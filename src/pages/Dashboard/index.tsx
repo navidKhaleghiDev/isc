@@ -12,13 +12,13 @@ export function DashboardPage() {
     <div className="w-full flex flex-col h-full p-16">
       <div className="grid grid-cols-3 gap-6 mb-16">
         <BoxDashboard
-          icon="fa-home"
+          icon="ph:calendar-check"
           title="چهارشنبه"
           description="23 . اردیبهشت . 1402"
         />
         <BoxDashboard
-          icon="ph:sign-in "
-          title="چهارشنبه"
+          icon="ph:sign-in"
+          title="آخرین ورود"
           description="23 . اردیبهشت . 1402"
         />
       </div>
@@ -85,7 +85,10 @@ export function DashboardPage() {
           </div>
         </div>
 
-        <Card className="flex justify-center items-center bg-neutral-300">
+        <Card
+          color="neutral"
+          className="flex justify-center items-center bg-neutral-200"
+        >
           <BaseIcon
             icon="mdi:panorama-variant-outline"
             size="xxl"

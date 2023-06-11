@@ -1,10 +1,8 @@
-import { FilterAndList } from '@ui/Templates/FilterAndList';
-import { ProductList } from '@ui/molecules/ProductList';
 import { BaseButton, BaseIcon, Card, Typography } from '@ui/atoms';
 import { PropsWithChildren } from 'react';
-import { productCardData } from './dataMock';
 import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { productCardData } from './dataMock';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -42,7 +40,10 @@ export function MyProductPage() {
             descriptin
           </Typography>
         </div>
-        <Card className="min-h-[14rem] bg-neutral-400 flex justify-center items-center">
+        <Card
+          color="neutral"
+          className="min-h-[14rem] bg-neutral-300 flex justify-center items-center"
+        >
           <BaseIcon icon="fa:home" color="neutral" size="xxl" />
         </Card>
       </GridMyProduct>

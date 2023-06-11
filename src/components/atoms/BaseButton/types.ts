@@ -2,7 +2,8 @@ import { VariantProps } from 'class-variance-authority';
 
 import { baseButtonStyles, iconButtonStyles } from './styles';
 
-export interface IBaseButton extends VariantProps<typeof baseButtonStyles> {
+export type BaseButtonStyleProps = VariantProps<typeof baseButtonStyles>;
+export interface IBaseButton extends BaseButtonStyleProps {
   onClick?: () => void;
   label: string;
   disabled?: boolean;
