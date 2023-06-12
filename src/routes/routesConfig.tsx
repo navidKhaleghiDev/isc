@@ -21,6 +21,7 @@ import { SettingsPage } from '@src/pages/Settings';
 import { SupportPage } from '@src/pages/Support';
 import { ProfilePage } from '@src/pages/Profile';
 import { AddUserPage } from '@src/pages/AddUser';
+import UnauthorizedPage from '@src/pages/Unauthorized';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
@@ -46,7 +47,7 @@ const routesConfig = [
   },
   {
     path: ROUTES_PATH.unauthorized,
-    element: <h1>{`403 | you don't have permission`}</h1>,
+    element: <UnauthorizedPage />,
   },
   {
     path: ROUTES_PATH.home,

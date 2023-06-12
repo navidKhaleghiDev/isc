@@ -50,11 +50,13 @@ export function BaseInput(props: BaseInputProps<any>) {
               type={type}
               dir="auto"
               name={field.name}
-              value={field.value}
+              value={field.value ?? ''}
               onChange={field.onChange}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${(endIcon||onClickIcon) && 'pl-8'} ${startIcon && 'pr-8'} `,
+                className: `${(endIcon || onClickIcon) && 'pl-8'} ${
+                  startIcon && 'pr-8'
+                } `,
                 fullWidth,
                 size,
               })}

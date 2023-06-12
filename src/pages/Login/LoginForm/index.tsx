@@ -3,33 +3,54 @@ import { BaseButton } from '@ui/atoms/BaseButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_USERS_LOGIN } from '@src/services/users';
 import { toast } from 'react-toastify';
+import { useUserContext } from '@context/user/userContext';
+import { http } from '@src/services/http';
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
 export function LoginForm({ onChangeStep }: PropsFormType) {
+  const { user, setUser } = useUserContext();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) {
+      http.removeAuthHeader();
+      navigate(ROUTES_PATH.login);
+    } else {
+      navigate(ROUTES_PATH.dashboard);
+    }
+  }, [navigate, user]);
+
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
-
   const [error, setError] = useState<string | null>(null);
 
   const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
     await API_USERS_LOGIN({ email, password })
       .then(({ data }) => {
-        toast.success('ورود با موفقیت انجام شد.');
-        navigate(ROUTES_PATH.dashboard);
+        http.setAuthHeader(data.access_token, data.refresh_token);
+        setUser(data);
+        if (data.is_authenticated) {
+          if (
+            email === import.meta.env.VITE_SUPER_USER_EMAIL &&
+            password === import.meta.env.VITE_SUPER_USER_PASSWORD
+          ) {
+            // user login as first time
+            onChangeStep(ELoginStep.CHANGE_PASSWORD);
+            return;
+          }
+
+          toast.success('ورود با موفقیت انجام شد.');
+          navigate(ROUTES_PATH.dashboard);
+        }
       })
       .catch((err) => {
         setError(err.data.error);
       });
-
-    // onChangeStep(ELoginStep.CHANGE_PASSWORD);
-    // navigate(ROUTES_PATH.dashboard);
   };
 
   return (
@@ -42,7 +63,7 @@ export function LoginForm({ onChangeStep }: PropsFormType) {
       </div>
       {error && (
         <Typography color="red" size="body3" className="mb-10">
-          حساب کاربری یا ایمیل وارد شده وجود ندارد.
+          {error}
         </Typography>
       )}
       <div className="w-full flex flex-col items-center justify-end pb-16">

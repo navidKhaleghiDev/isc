@@ -18,6 +18,7 @@ export function NavbarDashboard() {
           <Link to="profile" className="ml-4">
             <Avatar icon="ph:user" intent="primary" size="sm" />
           </Link>
+
           <div>
             <Typography type="h3" weight="bold" color="teal">
               مهدی بازرگان

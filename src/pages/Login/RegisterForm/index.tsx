@@ -1,21 +1,36 @@
-import { Avatar } from '@ui/atoms/Avatar';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { API_USERS_LOGIN, API_USERS_SERVER_AUTH } from '@src/services/users';
+import { toast } from 'react-toastify';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { useNavigate } from 'react-router-dom';
+
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
 export function RegisterForm({ onChangeStep }: PropsFormType) {
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
+  const navigate = useNavigate();
 
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handelSubmitForm = async (data: ILoginFieldValues) => {
-    onChangeStep(ELoginStep.LOGIN);
-    // navigate(ROUTES_PATH.dashboard);
+  // const handelSubmitForm = async (data: ILoginFieldValues) => {
+  //   onChangeStep(ELoginStep.LOGIN);
+  //   // navigate(ROUTES_PATH.dashboard);
+  // };
+  const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
+    await API_USERS_SERVER_AUTH({ email, password })
+      .then(({ data }) => {
+        toast.success('ورود با موفقیت انجام شد.');
+        navigate(ROUTES_PATH.dashboard);
+      })
+      .catch((err) => {
+        setError(err.data.error);
+      });
   };
 
   return (
@@ -23,15 +38,12 @@ export function RegisterForm({ onChangeStep }: PropsFormType) {
       onSubmit={handleSubmit(handelSubmitForm)}
       className="flex flex-col w-full items-center"
     >
-      <div className="absolute top-[-6rem]">
-        <Avatar icon="mdi:register-outline" intent="grey" size="lg" />
-      </div>
-      <Typography color="neutral" size="h4" className="mb-10">
-        ثبت کاربر ادمین
+      <Typography color="neutral" size="h5" className="mb-10">
+        برای احراز هویت ایمیل و کلمه عبور کاربری خود را وراد کنید.
       </Typography>
       {error && (
         <Typography color="red" size="body3" className="mb-10">
-          حساب کاربری یا ایمیل وارد شده وجود ندارد.
+          {error}
         </Typography>
       )}
 
@@ -39,9 +51,9 @@ export function RegisterForm({ onChangeStep }: PropsFormType) {
         <BaseInput
           fullWidth
           control={control}
-          placeholder="نام کاربری"
-          id="username"
-          name="username"
+          placeholder="email"
+          id="email"
+          name="email"
           endIcon="carbon:password"
           rules={{
             required: regexPattern.required,
@@ -62,8 +74,8 @@ export function RegisterForm({ onChangeStep }: PropsFormType) {
         />
         <BaseButton
           onClick={() => {}}
-          label="ثبت"
-          endIcon="ic:send"
+          label="ورود به حساب کاربری"
+          endIcon="ph:sign-in"
           className="mt-8"
           size="md"
           submit

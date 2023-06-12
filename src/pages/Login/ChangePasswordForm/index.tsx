@@ -4,6 +4,11 @@ import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useUserContext } from '@context/user/userContext';
+import { API_USERS_PATCH } from '@src/services/users';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
@@ -11,12 +16,32 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const [error] = useState<boolean>(false);
+  const { user } = useUserContext();
 
-  const handelSubmitForm = async (_data: ILoginFieldValues) => {
-    onChangeStep(ELoginStep.REGISTER);
-    // navigate(ROUTES_PATH.dashboard);
+  const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
+    if (!user) {
+      onChangeStep(ELoginStep.LOGIN);
+      return;
+    }
+    await API_USERS_PATCH(user.id, {
+      email,
+      password,
+    })
+      .then(({ data }) => {
+        if (data.is_authenticated) {
+          toast.success('ورود با موفقیت انجام شد.');
+          navigate(ROUTES_PATH.dashboard);
+        } else {
+          // show modal for register
+          onChangeStep(ELoginStep.REGISTER);
+        }
+      })
+      .catch((err) => {
+        setError(err.data.error);
+      });
   };
 
   return (
@@ -32,7 +57,7 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
       </Typography>
       {error && (
         <Typography color="red" size="body3" className="mb-10">
-          حساب کاربری یا ایمیل وارد شده وجود ندارد.
+          {error}
         </Typography>
       )}
 
@@ -40,11 +65,11 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
         <BaseInput
           fullWidth
           control={control}
-          placeholder="گذرواژه جدید"
-          id="password"
-          name="password"
-          type="password"
-          endIcon="carbon:password"
+          placeholder="ایمیل"
+          id="email"
+          name="email"
+          type="text"
+          endIcon="ph:user"
           rules={{
             required: regexPattern.required,
           }}
@@ -53,9 +78,9 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
         <BaseInput
           fullWidth
           control={control}
-          placeholder="تکرار گذرواژه جدید"
-          id="password-r"
-          name="password-r"
+          placeholder="گذرواژه جدید"
+          id="password"
+          name="password"
           type="password"
           endIcon="carbon:password"
           rules={{

@@ -2,6 +2,8 @@ import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Typography } from '@ui/atoms/Typography';
 import { BaseIcon } from '@ui/atoms/BaseIcon';
+import { useUserContext } from '@context/user/userContext';
+import { http } from '@src/services/http';
 import { INavigation, navigationSideBar } from './navigation';
 import { MenuItemAccordion } from './MenuItemAccordion';
 import { MenuItem } from './MenuItem';
@@ -12,6 +14,11 @@ export function SideBar() {
   const [open, setOpen] = useState<number | null>(null);
   const handleOpen = (value: number | null) => {
     setOpen(value);
+  };
+  const { setUser } = useUserContext();
+  const handleLogout = () => {
+    http.removeAuthHeader();
+    setUser(null);
   };
   return (
     <div className="flex flex-col items-center w-full h-full overflow-hidden text-gray-700 dark:bg-gray-500 rounded">
@@ -30,15 +37,16 @@ export function SideBar() {
             />
           )
         )}
-        <a
+        <button
+          type="button"
           className="flex items-center w-full h-10 pr-3 my-2 rounded hover:bg-neutral-100 hover:text-teal-600"
-          href="#"
+          onClick={handleLogout}
         >
           <BaseIcon icon="material-symbols:logout-sharp" color="red" />
           <Typography color="red" className="mr-3" size="body2">
             خروج
           </Typography>
-        </a>
+        </button>
       </div>
     </div>
   );

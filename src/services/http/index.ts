@@ -7,6 +7,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
+import cookie from 'js-cookie';
 
 enum StatusCode {
   Unauthorized = 401,
@@ -15,9 +16,10 @@ enum StatusCode {
   InternalServerError = 500,
   BadRequestError = 400,
 }
-export const BASE_URL_CLIENT = 'http://192.168.1.57:8004';
+export const BASE_URL_CLIENT = 'http://192.168.1.57:8000';
 
-const STORAGE_KEY = 'token';
+export const STORAGE_KEY_TOKEN = 't';
+export const STORAGE_KEY_REFRESH_TOKEN = 'r';
 
 const headers: Readonly<Record<string, string | boolean>> = {
   Accept: 'application/json',
@@ -31,7 +33,7 @@ const injectToken = (
   config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
   try {
-    const token = localStorage.getItem(STORAGE_KEY);
+    const token = cookie.get(STORAGE_KEY_TOKEN);
     const newConfig = config;
     if (token != null) {
       newConfig.headers.Authorization = `Bearer ${token}`;
@@ -99,8 +101,12 @@ class Http {
       .catch(this.handleError);
   }
 
-  patch<T>(url: string, data: object, config?: AxiosRequestConfig) {
-    return this.http.patch<T>(url, data, config);
+  async patch<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data?: T,
+    config?: AxiosRequestConfig
+  ): Promise<R> {
+    return this.http.patch<T, R>(url, data, config);
   }
 
   delete<T = any, R = AxiosResponse<T>>(
@@ -110,14 +116,16 @@ class Http {
     return this.http.delete<T, R>(url, config);
   }
 
-  setAuthHeader(token: string) {
+  setAuthHeader(token: string, refreshToken: string) {
     this.http.defaults.headers.common.Authorization = `Bearer ${token}`;
-    localStorage.setItem(STORAGE_KEY, token);
+    cookie.set(STORAGE_KEY_TOKEN, token);
+    localStorage.setItem(STORAGE_KEY_REFRESH_TOKEN, refreshToken);
   }
 
   removeAuthHeader() {
     this.http.defaults.headers.common.Authorization = '';
-    localStorage.removeItem(STORAGE_KEY);
+    cookie.remove(STORAGE_KEY_TOKEN);
+    localStorage.removeItem(STORAGE_KEY_REFRESH_TOKEN);
   }
 
   private handleSuccess<T>(response: AxiosResponse<T>) {
