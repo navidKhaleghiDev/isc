@@ -15,7 +15,7 @@ const loginSteps = {
 };
 
 export function LoginPage() {
-  const [step, setStep] = useState<ELoginStep>(ELoginStep.LOGIN);
+  const [step, setStep] = useState<ELoginStep>(ELoginStep.CHANGE_PASSWORD);
   const Step = loginSteps[step];
 
   return (

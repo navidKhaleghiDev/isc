@@ -13,6 +13,7 @@ export function Modal({
   buttonOne,
   buttonTow,
   content,
+  description,
 }: IModal) {
   const ref = useRef(null);
   useClickOutside({ ref, setValue: setOpen, value: open });
@@ -48,12 +49,17 @@ export function Modal({
             </div>
           )}
           {title && (
-            <Typography size="body2" color="neutral" className="my-6">
+            <Typography size="body2" color="neutral" className="mt-6">
               {title}
             </Typography>
           )}
+          {description && (
+            <Typography size="body3" color="neutral">
+              {description}
+            </Typography>
+          )}
           {content && content}
-          <div className="flex justify-center pt-2">
+          <div className="flex justify-center py-2">
             {buttonOne && (
               <BaseButton
                 label={buttonOne.label}
