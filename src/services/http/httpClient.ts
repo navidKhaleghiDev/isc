@@ -12,7 +12,7 @@ export type MutationPostOptions<T> = SWRMutationConfiguration<
 >;
 
 const useGet = <ResponseData = unknown, Error = unknown>(
-  url: string,
+  url: string | null,
   config?: SWRConfiguration
 ) => {
   const { data, error, isLoading, isValidating, mutate } = useSWR<

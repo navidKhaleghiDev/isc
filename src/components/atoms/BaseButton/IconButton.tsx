@@ -9,10 +9,11 @@ export function IconButton({
   icon,
   size,
   color,
+  type,
 }: IIconButton) {
   return (
     <button
-      type="button"
+      type={type === 'submit' ? 'submit' : 'button'}
       onClick={onClick}
       className={iconButtonStyles({
         color,

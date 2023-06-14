@@ -33,6 +33,7 @@ export function SideBar() {
               open={open}
               setOpen={handleOpen}
               index={i}
+              icon={item.icon}
               pathname={pathname}
             />
           )

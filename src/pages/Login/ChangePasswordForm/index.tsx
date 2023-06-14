@@ -6,7 +6,7 @@ import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useUserContext } from '@context/user/userContext';
-import { API_USERS_PATCH } from '@src/services/users';
+import { API_USERS_PATCH } from '@src/services/client/users';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
@@ -18,7 +18,7 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
     mode: 'onChange',
   });
   const [error, setError] = useState<string | null>(null);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
 
   const { user } = useUserContext();
@@ -55,8 +55,8 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
         <div className="absolute top-[-6rem]">
           <Avatar icon="ph:lock" intent="grey" size="lg" />
         </div>
-        <Typography color="neutral" size="h4" className="mb-10">
-          لطفا گذرواژه خود را تغییر دهید
+        <Typography color="neutral" size="h5" className="mb-10">
+          لطفا ایمیل و گذرواژه جدید خود را وارد کنید
         </Typography>
         {error && (
           <Typography color="red" size="body3" className="mb-10">

@@ -14,6 +14,7 @@ export function MenuItemAccordion({
   index,
   item,
   pathname,
+  icon,
 }: IMenuItemAccordion) {
   const isParentPath = pathname.split('/')[1] || 'false';
 
@@ -26,7 +27,7 @@ export function MenuItemAccordion({
         })}
         onClick={() => setOpen(open === index ? null : index)}
       >
-        <BaseIcon icon="fluent-mdl2:product" />
+        <BaseIcon icon={icon} />
         <Typography className="mr-3" size="body2">
           {item.label}
         </Typography>

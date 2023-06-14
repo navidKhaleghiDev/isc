@@ -58,7 +58,9 @@ export function Modal({
               {description}
             </Typography>
           )}
-          {content && content}
+          {content && (
+            <div className="flex justify-center items-center">{content}</div>
+          )}
           <div className="flex justify-center py-2">
             {buttonOne && (
               <BaseButton

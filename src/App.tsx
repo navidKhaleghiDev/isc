@@ -10,7 +10,7 @@ import './App.css';
 //   defaultSettingState,
 // } from '@context/settings/settingsContext';
 import { UserContext } from '@context/user/userContext';
-import { IUser } from './services/users/types';
+import { IUser } from './services/client/users/types';
 
 const router = createBrowserRouter(routesConfig);
 

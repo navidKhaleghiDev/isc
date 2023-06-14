@@ -10,4 +10,5 @@ export interface IMenuItemAccordion
   index: number;
   item: INavigation;
   pathname: string;
+  icon?: string;
 }

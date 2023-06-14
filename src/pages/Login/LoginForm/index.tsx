@@ -6,7 +6,7 @@ import { Typography } from '@ui/atoms/Typography';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { API_USERS_LOGIN } from '@src/services/users';
+import { API_USERS_LOGIN } from '@src/services/client/users';
 import { toast } from 'react-toastify';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';

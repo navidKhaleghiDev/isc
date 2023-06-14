@@ -45,8 +45,16 @@ const injectToken = (
 };
 
 type FetcherResponse<Data = unknown> = Data | Promise<Data>;
-class Http {
+export class Http {
   private instance: AxiosInstance | null = null;
+
+  baseUrl = import.meta.env.VITE_CLIENT_BASE_URL;
+
+  constructor(baseUrl?: string) {
+    if (baseUrl) {
+      this.baseUrl = baseUrl;
+    }
+  }
 
   private get http(): AxiosInstance {
     return this.instance != null ? this.instance : this.initHttp();
@@ -54,7 +62,7 @@ class Http {
 
   initHttp() {
     const http = axios.create({
-      baseURL: BASE_URL_CLIENT,
+      baseURL: this.baseUrl,
       headers,
       // withCredentials: true,
     });

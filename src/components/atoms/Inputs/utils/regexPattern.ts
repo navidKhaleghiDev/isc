@@ -1,21 +1,7 @@
 export const regexPattern = {
-  urlLink: {
-    value:
-      // eslint-disable-next-line no-useless-escape
-      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
-    message: 'لطفا لینک معتبر وارد کنید',
-  },
   onlyEnglishNdOtherCharacters: {
     value: /^(?!.*[\u0600-\u06E9\u200C])/,
     message: 'لطفا فقط از حروف انگلیسی استفاده کنید',
-  },
-  lessThan50: {
-    value: /^[0-9][0-9]?$|^50$/,
-    message: 'اعداد بین صفر الی صد وارد کنید',
-  },
-  lessThan100: {
-    value: /^[0-9][0-9]?$|^100$/,
-    message: 'اعداد بین صفر الی صد وارد کنید',
   },
   lettersDashUnderLineSpace: {
     value: /^[a-zA-Z\-_]*$/i,
@@ -41,10 +27,6 @@ export const regexPattern = {
   farsiLetters: {
     value: /[ا-ی]/gi,
     message: 'نام و نام‌خانوادگی خود را به فارسی وارد کنید',
-  },
-  accountNumber: {
-    value: /[0-9-]{9,16}/,
-    message: 'شماره حساب اشتباه است',
   },
   farsiLettersAndSpace: {
     value: /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ\u200c\s]+$/,
@@ -111,10 +93,6 @@ export const regexPattern = {
     value: true,
     message: 'درج این فیلد ضروریست.',
   },
-  jsonValidate: {
-    value: /[^\0-9]/,
-    message: 'باشد json فرمت باید',
-  },
   spaceFarstCharacter: {
     value: /^[^\s].*/,
     message: 'فاصله مجاز نیست.',
@@ -134,6 +112,11 @@ export const regexPattern = {
   price: {
     value: /^[۰-۹٠-٩0-9-,]+$/,
     message: 'لطفا فقط از اعداد استفاده کنید',
+  },
+  ip: {
+    value:
+      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/i,
+    message: 'لطفا فرمت صحیح آی پی را وارد نماپید',
   },
 };
 

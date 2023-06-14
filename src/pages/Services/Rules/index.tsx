@@ -3,8 +3,7 @@ import { Select } from '@ui/atoms/Select';
 import { Pagination } from '@ui/molecules/Pagination';
 import { RulesList } from '@ui/molecules/RulesList';
 import { useState } from 'react';
-
-type ButtonState = 'all' | 'suggest';
+import { ButtonState } from './types';
 
 export function RulesPage() {
   const [activeButton, setActiveButton] = useState<ButtonState>('suggest');
@@ -31,8 +30,8 @@ export function RulesPage() {
         />
         <Select label="مرتب سازی" />
       </Card>
-      <RulesList />
-      <Pagination />
+      <RulesList buttonState={activeButton} />
+      {/* <Pagination /> */}
     </div>
   );
 }

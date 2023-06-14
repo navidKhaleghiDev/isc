@@ -22,6 +22,7 @@ import { SupportPage } from '@src/pages/Support';
 import { ProfilePage } from '@src/pages/Profile';
 import { AddUserPage } from '@src/pages/AddUser';
 import UnauthorizedPage from '@src/pages/Unauthorized';
+import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
@@ -113,8 +114,8 @@ const routesConfig = [
         element: <MyProductPage />,
       },
       {
-        path: ROUTES_PATH.myProductName,
-        element: <ProductNamePage />,
+        path: ROUTES_PATH.myProductIpsList,
+        element: <IpsListPage />,
       },
       {
         path: ROUTES_PATH.myProductMyRules,

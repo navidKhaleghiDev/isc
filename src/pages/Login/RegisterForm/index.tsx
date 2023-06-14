@@ -3,7 +3,10 @@ import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { API_USERS_LOGIN, API_USERS_SERVER_AUTH } from '@src/services/users';
+import {
+  API_USERS_LOGIN,
+  API_USERS_SERVER_AUTH,
+} from '@src/services/client/users';
 import { toast } from 'react-toastify';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { useNavigate } from 'react-router-dom';
@@ -29,6 +32,8 @@ export function RegisterForm({ onChangeStep }: PropsFormType) {
         navigate(ROUTES_PATH.dashboard);
       })
       .catch((err) => {
+        console.log({ err });
+
         setError(err.data.error);
       });
   };
@@ -39,7 +44,7 @@ export function RegisterForm({ onChangeStep }: PropsFormType) {
       className="flex flex-col w-full items-center"
     >
       <Typography color="neutral" size="h5" className="mb-10">
-        برای احراز هویت ایمیل و کلمه عبور کاربری خود را وراد کنید.
+        برای احراز هویت ایمیل و کلمه عبور مشتری را وراد کنید.
       </Typography>
       {error && (
         <Typography color="red" size="body3" className="mb-10">
