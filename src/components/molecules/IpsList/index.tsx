@@ -3,16 +3,16 @@ import { IIp, ResponseSwr } from '@src/services/client/rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { Modal } from '../Modal';
-import { myRulesListData } from './dataMock';
 import { IpCard } from '../IpCard';
 import { UpdateIp } from './UpdateIp';
+import { IpsListData } from './dataMock';
 
 export function IpsList() {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
 
   const { data, isLoading } = useGet<ResponseSwr<IIp[]>>(E_RULES_VALID_IPS);
-  const list: IIp[] = data?.data ?? [];
+  const list: IIp[] = data?.data ?? IpsListData;
 
   const handleOnClickEdit = (id: string) => {
     setOpenModalEdit(true);
@@ -35,8 +35,9 @@ export function IpsList() {
       <Modal
         open={openModalEdit}
         setOpen={setOpenModalEdit}
-        content={<UpdateIp />}
-        type="success"
+        content={<UpdateIp ip={IpsListData[0]} setOpen={setOpenModalEdit} />}
+        classContainer="border border-teal-600"
+        type="none"
       />
       <Modal
         open={openModalDelete}

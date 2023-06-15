@@ -4,20 +4,17 @@ import { fetcherServer } from '@src/services/server/httpServer';
 import { ResponseSwr } from '@src/services/client/rules/types';
 
 import { IServerProducts } from '@src/services/server/products/types';
+import { ProductListData } from '@src/pages/Services/Products/dataMock';
 // import { Pagination } from '../Pagination';
-import { IProductCard, ProductCard } from '../ProductCard';
+import { ProductCard } from '../ProductCard';
 import { LoadingSpinner } from '../Loading';
 
-type PropsType = {
-  list: IProductCard[];
-};
-
-export function ProductList({ list }: PropsType) {
+export function ProductList() {
   const { data, isLoading } = useSWR<ResponseSwr<IServerProducts[]>>(
     E_SERVER_PRODUCT_DEVICE,
     fetcherServer
   );
-  const listProduct = data?.data ?? [];
+  const listProduct = data?.data ?? ProductListData;
 
   return isLoading ? (
     <LoadingSpinner />

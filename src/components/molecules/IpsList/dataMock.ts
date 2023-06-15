@@ -1,34 +1,40 @@
-import { IMyRulesCard } from '../MyRulesCard';
+import { IIp } from '@src/services/client/rules/types';
+import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
 
-export const myRulesListData: IMyRulesCard[] = [
+export const IpsListData: IIp[] = [
   {
     id: '1',
+    ip_type: EIpType.EXTERNAL,
     ip: '192.186.34.10',
-    createdDate: '1402/03/10',
-    updatedDate: '1402/10/30',
+    created_at: '1402/03/10',
+    updated_at: '1402/10/30',
   },
   {
     id: '2',
+    ip_type: EIpType.EXTERNAL,
     ip: '192.186.122.30',
-    createdDate: '1402/23/10',
-    updatedDate: '1402/02/17',
+    created_at: '1402/23/10',
+    updated_at: '1402/02/17',
   },
   {
     id: '3',
+    ip_type: EIpType.EXTERNAL,
     ip: '192.186.23.52',
-    createdDate: '1402/11/25',
-    updatedDate: '1402/02/10',
+    created_at: '1402/11/25',
+    updated_at: '1402/02/10',
   },
   {
     id: '4',
+    ip_type: EIpType.EXTERNAL,
     ip: '192.186.53.50',
-    createdDate: '1402/21/19',
-    updatedDate: '1402/02/18',
+    created_at: '1402/21/19',
+    updated_at: '1402/02/18',
   },
   {
     id: '5',
+    ip_type: EIpType.EXTERNAL,
     ip: '192.186.200.47',
-    createdDate: '1402/14/15',
-    updatedDate: '1402/02/17',
+    created_at: '1402/14/15',
+    updated_at: '1402/02/17',
   },
 ];

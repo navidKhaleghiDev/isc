@@ -10,7 +10,7 @@ import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { defaultValues } from './constants';
 
-enum EIpType {
+export enum EIpType {
   EXTERNAL = 'External',
   INTERNAL = 'Internal',
 }

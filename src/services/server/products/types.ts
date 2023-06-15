@@ -1,12 +1,12 @@
 export interface IServerProducts {
   id: string;
-  brand: {
+  brand?: {
     id: string;
     name: string;
     created_at: string;
     updated_at: string;
   };
-  category: {
+  category?: {
     id: string;
     name: string;
     created_at: string;

@@ -13,6 +13,7 @@ export interface IModal
   extends VariantProps<typeof headerStyles>,
     PropsWithChildren {
   title?: string;
+  classContainer?: string;
   description?: string;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;

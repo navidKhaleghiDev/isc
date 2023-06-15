@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 import { BaseIcon, Typography } from '@ui/atoms';
 import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
-import { headerStyles } from './styles';
+import { contentStyles, headerStyles } from './styles';
 import { IModal } from './types';
 
 export function Modal({
@@ -14,6 +14,7 @@ export function Modal({
   buttonTow,
   content,
   description,
+  classContainer,
 }: IModal) {
   const ref = useRef(null);
   useClickOutside({ ref, setValue: setOpen, value: open });
@@ -21,14 +22,14 @@ export function Modal({
 
   return open ? (
     <div
-      className={` main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal  h-100  overflow-hidden flex justify-center items-center`}
+      className={`main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal  h-100  overflow-hidden flex justify-center items-center `}
       style={{ background: 'rgba(0, 0, 0, 0.2)' }}
     >
       <div
         ref={ref}
-        className="rounded-lg shadow-lg modal-container bg-white w-[36rem] mx-auto z-50 overflow-y-auto"
+        className={`rounded-lg shadow-lg modal-container bg-white w-[36rem] mx-auto z-50 overflow-y-auto ${classContainer}`}
       >
-        <div className="modal-content text-center pb-4">
+        <div className={contentStyles({ type })}>
           {type !== 'none' && (
             <div className={headerStyles({ type })}>
               <div className="modal-close cursor-pointer z-50">
@@ -61,30 +62,32 @@ export function Modal({
           {content && (
             <div className="flex justify-center items-center">{content}</div>
           )}
-          <div className="flex justify-center py-2">
-            {buttonOne && (
-              <BaseButton
-                label={buttonOne.label}
-                onClick={() => {
-                  buttonOne.onClick();
-                  handleToggle();
-                }}
-                type={buttonOne.color}
-                className="m-1"
-              />
-            )}
-            {buttonTow && (
-              <BaseButton
-                label={buttonTow.label}
-                onClick={() => {
-                  buttonTow.onClick();
-                  handleToggle();
-                }}
-                type={buttonTow.color}
-                className="m-1"
-              />
-            )}
-          </div>
+          {(buttonOne || buttonTow) && (
+            <div className="flex justify-center py-2">
+              {buttonOne && (
+                <BaseButton
+                  label={buttonOne.label}
+                  onClick={() => {
+                    buttonOne.onClick();
+                    handleToggle();
+                  }}
+                  type={buttonOne.color}
+                  className="m-1"
+                />
+              )}
+              {buttonTow && (
+                <BaseButton
+                  label={buttonTow.label}
+                  onClick={() => {
+                    buttonTow.onClick();
+                    handleToggle();
+                  }}
+                  type={buttonTow.color}
+                  className="m-1"
+                />
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

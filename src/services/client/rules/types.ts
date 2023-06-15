@@ -1,3 +1,5 @@
+import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
+
 export interface IRules {
   id: string;
   name: string;
@@ -8,7 +10,7 @@ export interface IRules {
 
 export interface IIp {
   id?: string;
-  ip_type: string;
+  ip_type: EIpType;
   ip: string;
   created_at?: string;
   updated_at?: string;
