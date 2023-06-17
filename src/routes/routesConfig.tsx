@@ -102,7 +102,7 @@ const routesConfig = [
         element: <RulesPage />,
       },
       {
-        path: ROUTES_PATH.servicesRulesCodeName,
+        path: ROUTES_PATH.servicesRulesRetrieve,
         element: <RulesCodePage />,
       },
       {
@@ -122,8 +122,8 @@ const routesConfig = [
         element: <MyProductMyRulesPage />,
       },
       {
-        path: ROUTES_PATH.myProductMyRulesName,
-        element: <MyProductMyRulesNamePage />,
+        path: ROUTES_PATH.myProductMyRulesRetrieve,
+        element: <RulesCodePage />,
       },
     ],
   },

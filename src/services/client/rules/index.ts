@@ -5,6 +5,7 @@ import {
   E_RULES_VALID_IPS,
   E_RULES_MY_RULES,
   E_RULES_VALID_IPS_ID,
+  E_RULES_MY_RULES_ID,
 } from './endpoint';
 
 export const API_ADD_VALID_IPS = (body: IIp[]) =>
@@ -18,3 +19,6 @@ export const API_UPDATE_VALID_IPS = (id: string, body: BodyUpdateIp) =>
 
 export const API_ADD_RULE = (body: BodyId) =>
   http.post<BodyId>(E_RULES_MY_RULES, body);
+
+export const API_DELETE_MY_RULE = (id: string) =>
+  http.delete<string>(E_RULES_MY_RULES_ID(id));

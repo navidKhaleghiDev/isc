@@ -7,6 +7,7 @@ import { useGet } from '@src/services/http/httpClient';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { TitleMyProduct } from '@ui/molecules/TitleMyProduct';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -14,21 +15,6 @@ interface PropsType extends PropsWithChildren {
 function GridMyProduct({ children, className }: PropsType) {
   return (
     <div className={`grid grid-cols-3 gap-5 ${className}`}>{children}</div>
-  );
-}
-
-type CardTitleMyProductProps = {
-  title: string;
-};
-
-function CardTitleMyProduct({ title }: CardTitleMyProductProps) {
-  return (
-    <div className="flex items-center">
-      <Typography color="teal" size="h6" className="w-[6rem]">
-        {title}
-      </Typography>
-      <p className=" text-neutral-400 px-2">|</p>
-    </div>
   );
 }
 
@@ -68,7 +54,7 @@ export function MyProductPage() {
           </Typography>
         </Card>
         <Card color="neutral" className="flex items-center px-4">
-          <CardTitleMyProduct title="تعداد قوانین" />
+          <TitleMyProduct title="تعداد قوانین" />
           <Typography color="teal" size="h6" className="mr-auto">
             {product?.recommended_rules.length}
           </Typography>
@@ -76,13 +62,13 @@ export function MyProductPage() {
       </GridMyProduct>
       <GridMyProduct className="mt-4">
         <Card className="col-span-2 h-9 flex items-center px-4" color="neutral">
-          <CardTitleMyProduct title="آدرس ارسال شده" />
+          <TitleMyProduct title="آدرس ارسال شده" />
           <Typography color="neutral" size="h6" className="">
             {product?.address}
           </Typography>
         </Card>
         <Card color="neutral" className="flex items-center px-4">
-          <CardTitleMyProduct title="تاریخ ثبت" />
+          <TitleMyProduct title="تاریخ ثبت" />
           <Typography color="neutral" size="h6" className="mr-auto">
             {persianDateAndNumber(product?.created_at)}
           </Typography>
@@ -90,13 +76,13 @@ export function MyProductPage() {
       </GridMyProduct>
       <GridMyProduct className="mt-4">
         <Card className="col-span-2 h-9 flex items-center px-4" color="neutral">
-          <CardTitleMyProduct title="تلفن" />
+          <TitleMyProduct title="تلفن" />
           <Typography color="neutral" size="h6" className="">
             {product?.organization_number}
           </Typography>
         </Card>
         <Card color="neutral" className="flex items-center px-4">
-          <CardTitleMyProduct title="نام برند محصول" />
+          <TitleMyProduct title="نام برند محصول" />
 
           <Typography color="neutral" size="h6" className="mr-auto">
             {product?.device.brand.name}

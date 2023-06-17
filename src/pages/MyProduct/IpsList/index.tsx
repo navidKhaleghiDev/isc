@@ -6,7 +6,6 @@ export function IpsListPage() {
     <div className="w-full flex flex-col h-full py-6 px-24">
       <FilterIps />
       <IpsList />
-      {/* <Pagination /> */}
     </div>
   );
 }

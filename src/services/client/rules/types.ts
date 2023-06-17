@@ -27,3 +27,30 @@ export interface BodyId {
 export interface BodyUpdateIp {
   ip: string;
 }
+
+export interface IMyRule {
+  id?: string;
+  creator: {
+    id: string;
+    device_serial: string;
+    last_login: string;
+    first_name: string;
+    last_name: string;
+    is_staff: boolean;
+    is_active: boolean;
+    date_joined: string;
+    username: string;
+    email: string;
+    password: string;
+    is_superuser: boolean;
+    is_admin: boolean;
+    is_analyser: boolean;
+    groups: [];
+    user_permissions: [];
+  };
+  rule_name: string;
+  rule_code: string;
+  description: string;
+  created_at: string;
+  update_at: string;
+}

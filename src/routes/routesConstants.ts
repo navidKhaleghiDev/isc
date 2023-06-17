@@ -4,7 +4,7 @@ export type RoutePathType =
   | 'services'
   | 'servicesProducts'
   | 'servicesRules'
-  | 'servicesRulesCodeName'
+  | 'servicesRulesRetrieve'
   | 'support'
   | 'settings'
   | 'unauthorized'
@@ -18,7 +18,7 @@ export type RoutePathType =
   | 'myProduct'
   | 'myProductName'
   | 'myProductMyRules'
-  | 'myProductMyRulesName'
+  | 'myProductMyRulesRetrieve'
   | 'myProductIpsList'
   | 'blog'
   | 'ourServices'
@@ -57,7 +57,7 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   services: `/${RoutesName.SERVICES}`,
   servicesProducts: `/${RoutesName.SERVICES}/${RoutesName.PRODUCTS}`,
   servicesRules: `/${RoutesName.SERVICES}/${RoutesName.RULES}`,
-  servicesRulesCodeName: `/${RoutesName.SERVICES}/${RoutesName.RULES}/:rulesCodeName`,
+  servicesRulesRetrieve: `/${RoutesName.SERVICES}/${RoutesName.RULES}/:id`,
   support: `/${RoutesName.SUPPORT}`,
   ourServices: `/${RoutesName.OUR_SERVICES}`,
   blog: `/${RoutesName.BLOG}`,
@@ -71,8 +71,8 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   monitoringSystems: `/${RoutesName.SERVICES}/${RoutesName.MONITORING_SYSTEM}`,
   myProduct: `/${RoutesName.MY_PRODUCT}`,
   myProductName: `/${RoutesName.MY_PRODUCT}/:productName`,
-  myProductMyRules: `/${RoutesName.MY_PRODUCT}/my-rules`,
+  myProductMyRules: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}`,
   myProductIpsList: `/${RoutesName.MY_PRODUCT}/ips-list`,
-  myProductMyRulesName: `/${RoutesName.MY_PRODUCT}/my-rules/:rulesName`,
+  myProductMyRulesRetrieve: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}/:id`,
   resetPassword: `/${RoutesName.RESET_PASSWORD}`,
 };

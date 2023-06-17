@@ -20,6 +20,8 @@ const options: Intl.DateTimeFormatOptions = {
 const nowDate = new Date();
 
 export function persianDateNumber(date?: string) {
+  // ۱۴۰۲/۳/۲۴
+
   if (date) {
     return new Date(date).toLocaleDateString('fa-IR');
   }
@@ -27,6 +29,7 @@ export function persianDateNumber(date?: string) {
 }
 
 export function persianDateAndNumber(date?: string) {
+  // ۲۴ خرداد ۱۴۰۲
   if (date) {
     return new Date(date).toLocaleDateString('fa-IR', options);
   }

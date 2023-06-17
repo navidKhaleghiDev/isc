@@ -1,45 +1,40 @@
-import { useState } from 'react';
-import { Modal } from '../Modal';
-import { MyRulesCard } from '../MyRulesCard';
+import { useGet } from '@src/services/http/httpClient';
+import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
+import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
+import { MyRulesCard } from './MyRulesCard';
 import { myRulesListData } from './dataMock';
 
+const headerItem: any = {
+  rule_name: 'نام قانون',
+  created_at: 'تاریخ ثبت ',
+  creator: {
+    email: 'سازنده',
+  },
+};
 export function MyRulesList() {
-  const [openModalDelete, setOpenModalDelete] = useState(false);
-  const [openModalEdit, setOpenModalEdit] = useState(false);
+  const { data, mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
-  const handleOnClickEdit = (id: string) => {
-    setOpenModalEdit(true);
-  };
+  const list: IMyRule[] =
+    data && Array.isArray(data?.data) ? data?.data : myRulesListData;
 
-  const handleOnClickEDelete = (id: string) => {
-    setOpenModalDelete(true);
+  const handleMutate = () => {
+    mutate();
   };
 
   return (
     <div className="w-full mt-8">
-      {myRulesListData.map((item) => (
+      <MyRulesCard
+        mutateMyRulesList={handleMutate}
+        myRule={headerItem}
+        isHeader
+      />
+      {list.map((item) => (
         <MyRulesCard
           key={item.id}
-          onClickDelete={handleOnClickEDelete}
-          onClickedEdit={handleOnClickEdit}
-          data={item}
+          mutateMyRulesList={handleMutate}
+          myRule={item}
         />
       ))}
-      <Modal
-        open={openModalEdit}
-        setOpen={setOpenModalEdit}
-        type="success"
-        title="قانون جدید با موفقیت اضافه شد."
-        buttonOne={{ label: 'تایید', onClick: () => true }}
-      />
-      <Modal
-        open={openModalDelete}
-        setOpen={setOpenModalDelete}
-        type="error"
-        title="از حذف این IP مطمئن هستید؟"
-        buttonOne={{ label: 'خیر', onClick: () => true, color: 'red' }}
-        buttonTow={{ label: 'بله', onClick: () => true, color: 'red' }}
-      />
     </div>
   );
 }
