@@ -28,7 +28,7 @@ export function RulesPage() {
           type={activeButton === 'all' ? 'default' : 'shadow'}
           onClick={() => handleClickTab('all')}
         />
-        <Select label="مرتب سازی" />
+        {/* <Select label="مرتب سازی" /> */}
       </Card>
       <RulesList buttonState={activeButton} />
       {/* <Pagination /> */}

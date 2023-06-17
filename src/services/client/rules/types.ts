@@ -19,3 +19,11 @@ export interface IIp {
 export interface ResponseSwr<T> {
   data: T;
 }
+
+export interface BodyId {
+  id: string;
+}
+
+export interface BodyUpdateIp {
+  ip: string;
+}

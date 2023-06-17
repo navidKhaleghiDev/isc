@@ -5,6 +5,8 @@ import { IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_LIST } from '@src/services/client/rules/endpoint';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { IProduct } from '@src/services/client/users/types';
+import { API_ADD_RULE } from '@src/services/client/rules';
+import { toast } from 'react-toastify';
 
 import { Modal } from '../Modal';
 import { RulesCard } from '../RulesCard';
@@ -25,9 +27,25 @@ export function RulesList({ buttonState }: PropsType) {
   const rules = suggestData?.data.recommended_rules || allData?.data || [];
 
   const [openModal, setOpenModal] = useState(false);
+  const [ruleId, setRuleId] = useState<string>('');
+
   const handleOnClickAdd = (id: string) => {
+    setRuleId(id);
     setOpenModal(true);
   };
+
+  const handleRequestAdd = async () => {
+    setOpenModal(false);
+
+    await API_ADD_RULE({ id: ruleId })
+      .then(() => {
+        toast.success('با موفقیت اضافه شد');
+      })
+      .catch((err) => {
+        toast.error(err.data.error);
+      });
+  };
+
   return (
     <div className="w-full h-full mt-8">
       {rules.length > 0 ? (
@@ -40,7 +58,21 @@ export function RulesList({ buttonState }: PropsType) {
       ) : (
         <NoResult />
       )}
-      <Modal open={openModal} setOpen={setOpenModal} />
+      <Modal
+        open={openModal}
+        setOpen={setOpenModal}
+        type="success"
+        title="آیا مطمين هستید؟"
+        buttonOne={{
+          label: 'بله',
+          onClick: handleRequestAdd,
+        }}
+        buttonTow={{
+          color: 'red',
+          label: 'خیر',
+          onClick: () => setOpenModal(false),
+        }}
+      />
     </div>
   );
 }

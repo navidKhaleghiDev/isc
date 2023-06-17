@@ -37,7 +37,7 @@ export function FilterIps() {
 
     await API_ADD_VALID_IPS(body)
       .then(() => {
-        toast.success('با موفقت اضافه شد');
+        toast.success('با موفقیت اضافه شد');
         reset(defaultValues);
         mutate();
       })
@@ -74,7 +74,7 @@ export function FilterIps() {
                     size="xs"
                     key={item}
                     name={`ip_${item}`}
-                    placeholder="بنویسید"
+                    placeholder="مثال: 192.168.1.1"
                     id={`ip_${item}`}
                     control={control}
                     rules={{ pattern: regexPattern.ip }}
