@@ -1,7 +1,7 @@
 import { IRules } from '../rules/types';
 
 export interface IBodyUsersLogin {
-  email: string;
+  email?: string;
   password: string;
 }
 

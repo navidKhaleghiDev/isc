@@ -43,3 +43,29 @@ export const iconBaseInputStyles = cva(
     },
   }
 );
+
+export const baseTextareaStyles = cva(
+  'px-2.5 py-2.5 flex block rounded-lg outline-none placeholder:text-right placeholder:text-rtl',
+  {
+    variants: {
+      intent: {
+        default: '',
+        error: '',
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
+      size: {
+        xs: ``,
+        sm: ``,
+        md: ``,
+        lg: ``,
+        xl: ``,
+      },
+    },
+    defaultVariants: {
+      intent: 'default',
+      size: 'sm',
+    },
+  }
+);

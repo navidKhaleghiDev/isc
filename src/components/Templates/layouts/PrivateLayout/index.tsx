@@ -14,10 +14,10 @@ export default function Layout() {
   const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
-    // if (!user) {
-    //   http.removeAuthHeader();
-    //   navigate(ROUTES_PATH.login);
-    // }
+    if (!user) {
+      http.removeAuthHeader();
+      navigate(ROUTES_PATH.login);
+    }
     setLoading(false);
   }, [navigate, user]);
 

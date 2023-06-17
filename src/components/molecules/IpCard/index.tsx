@@ -27,6 +27,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
     await API_DELETE_VALID_IPS(item.id as string)
       .then(() => {
         toast.success('با موفقیت حذف شد');
+        toggleModalDelete();
         mutateIpList();
       })
       .catch((err) => {
@@ -38,6 +39,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
     await API_UPDATE_VALID_IPS(item.id as string, { ip: newIp })
       .then(() => {
         toast.success('با موفقیت ویرایش شد');
+        toggleModalEdit();
         mutateIpList();
       })
       .catch((err) => {

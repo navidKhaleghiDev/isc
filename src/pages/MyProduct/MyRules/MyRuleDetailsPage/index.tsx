@@ -1,10 +1,10 @@
 import { RulesCodeTemplate } from '@ui/Templates/RulesCode';
-import { RulesCodeList } from '@ui/molecules/RulesCodeList';
+import { MyRuleDetail } from '@ui/molecules/MyRuleDetail';
 
-export function RulesCodePage() {
+export function MyRuleDetailsPage() {
   return (
     <RulesCodeTemplate>
-      <RulesCodeList />
+      <MyRuleDetail />
     </RulesCodeTemplate>
   );
 }

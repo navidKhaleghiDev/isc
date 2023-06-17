@@ -6,6 +6,9 @@ export interface IRules {
   is_verified: boolean;
   is_public: boolean;
   version: number;
+  created_at?: string;
+  updated_at?: string;
+  description: string;
 }
 
 export interface IIp {

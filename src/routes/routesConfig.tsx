@@ -6,11 +6,11 @@ import { DashboardPage } from '@src/pages/Dashboard';
 import { ProductsPage } from '@src/pages/Services/Products';
 import { MonitoringSystemsPage } from '@src/pages/MonitoringSystems';
 import { RulesPage } from '@src/pages/Services/Rules';
-import { RulesCodePage } from '@src/pages/Services/Rules/RulesCode';
+import { RuleDetailsPage } from '@src/pages/Services/Rules/RuleDetailsPage';
 import { MyProductPage } from '@src/pages/MyProduct/MyProduct';
-import { ProductNamePage } from '@src/pages/MyProduct/MyProduct/ProductName';
+// import { ProductNamePage } from '@src/pages/MyProduct/MyProduct/ProductName';
 import { MyProductMyRulesPage } from '@src/pages/MyProduct/MyRules';
-import { MyProductMyRulesNamePage } from '@src/pages/MyProduct/MyRules/RulesName';
+// import { MyProductMyRulesNamePage } from '@src/pages/MyProduct/MyRules/RulesName';
 import { UiPage } from '@src/pages/Ui';
 import NotFoundPage from '@src/pages/NotFound';
 import { AboutUsPage } from '@src/pages/AboutUs';
@@ -23,6 +23,7 @@ import { ProfilePage } from '@src/pages/Profile';
 import { AddUserPage } from '@src/pages/AddUser';
 import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
+import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
@@ -103,7 +104,7 @@ const routesConfig = [
       },
       {
         path: ROUTES_PATH.servicesRulesRetrieve,
-        element: <RulesCodePage />,
+        element: <RuleDetailsPage />,
       },
       {
         path: ROUTES_PATH.monitoringSystems,
@@ -123,7 +124,7 @@ const routesConfig = [
       },
       {
         path: ROUTES_PATH.myProductMyRulesRetrieve,
-        element: <RulesCodePage />,
+        element: <MyRuleDetailsPage />,
       },
     ],
   },

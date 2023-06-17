@@ -12,7 +12,7 @@ export function FilterServices({ withIps }: PropsType) {
   const { control } = useForm();
   return (
     <>
-      <Card
+      {/* <Card
         color="neutral"
         className="self-start py-1 px-3 flex flex-col w-full"
       >
@@ -35,7 +35,7 @@ export function FilterServices({ withIps }: PropsType) {
             />
           </div>
         </>
-      </Card>
+      </Card> */}
       {withIps && <FilterIps />}
     </>
   );

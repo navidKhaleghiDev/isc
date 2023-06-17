@@ -37,6 +37,7 @@ export function persianDateAndNumber(date?: string) {
 }
 
 export function persianDayLabel(date?: string) {
+  // شنبه
   if (date) {
     return getLabelOfWeek(new Date(date).getDay());
   }
