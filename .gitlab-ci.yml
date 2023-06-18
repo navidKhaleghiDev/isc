@@ -1,0 +1,12 @@
+image:
+  name: nexus:443/node:16-alpine
+
+stages:
+  - build
+
+build:
+  stage: build
+script:
+    - npm install
+    - npm run build
+    - npm run test
