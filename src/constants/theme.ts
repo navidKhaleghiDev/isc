@@ -1,6 +1,7 @@
 export const PALLET = {
   BG_COLOR: {
     TEAL: 'bg-teal-100 dark:bg-teal-300', // #f0fdfa
+    TEAL_DARK: 'bg-teal-600 dark:bg-teal-300', // #f0fdfa
     RED: 'bg-red-100 dark:bg-red-300', // #fee2e2
     YELLOW: 'bg-yellow-100 dark:bg-yellow-300', // #f2e9dc
     NEUTRAL: 'bg-neutral-100 dark:bg-neutral-300', // #f5f5f5
@@ -9,7 +10,8 @@ export const PALLET = {
     TEAL: 'text-teal-600 dark:text-teal-500',
     RED: 'text-red-600 dark:text-red-600',
     YELLOW: 'text-yellow-600 dark:text-yellow-600',
-    NEUTRAL: 'text-neutral-400 dark:text-neutral-100',
+    NEUTRAL: 'text-neutral-600 dark:text-neutral-400',
+    NEUTRAL_LIGHT: 'text-neutral-100 dark:text-neutral-400',
   },
   BORDER_COLOR: {
     TEAL: 'border-teal-600 dark:border-teal-500',
@@ -44,7 +46,7 @@ export const SIZE = {
     CAPTION: 'text-xs',
   },
   BUTTON: {
-    SMALL: 'h-6 w-20 px-4 py-2',
+    SMALL: 'h-6 w-20 px-2 py-2 text-xl',
     MEDIUM: 'h-8 w-36 px-4 py-2',
     LARGE: 'h-10 w-80',
     X_LARGE: 'h-10 w-[27.5rem]',

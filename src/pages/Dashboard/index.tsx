@@ -1,9 +1,31 @@
-import { BaseButton, Card, Typography, Notification } from '@ui/atoms';
+import { useUserContext } from '@context/user/userContext';
+import {
+  persianDayLabel,
+  persianDateNumber,
+} from '@src/helper/utils/dateUtils';
+import { BoxDashboard } from './BoxDashboard';
+import { ProductBox } from './ProductBox';
 
 export function DashboardPage() {
+  const { user } = useUserContext();
   return (
     <div className="w-full flex flex-col h-full p-16">
-      <div className="self-start flex flex-col w-full">
+      <div className="grid grid-cols-3 gap-6 mb-16">
+        <BoxDashboard
+          icon="ph:calendar-check"
+          title={persianDayLabel()}
+          description={persianDateNumber()}
+        />
+        <BoxDashboard
+          icon="ph:sign-in"
+          title="آخرین ورود"
+          description={persianDateNumber(user?.last_login)}
+        />
+      </div>
+
+      <ProductBox />
+
+      {/* <div className="self-start flex flex-col w-full">
         <div className="flex w-full justify-between px-3 items-center h-16 bg-neutral-100 rounded-md">
           <Typography color="teal" size="h4">
             چهارشنبه
@@ -17,8 +39,8 @@ export function DashboardPage() {
           label="لیست مشتریان"
           endIcon="clarity:users-line"
         />
-      </div>
-      <div className="mt-auto">
+      </div> */}
+      {/* <div className="mt-auto">
         <Typography className="mb-2" size="h5" color="teal">
           اعلان ها
         </Typography>
@@ -31,7 +53,7 @@ export function DashboardPage() {
             <Notification outline="error" title="ورود با موفقیت انجام شد." />
           </div>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 }

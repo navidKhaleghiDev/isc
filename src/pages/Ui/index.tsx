@@ -5,10 +5,12 @@ import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 import { Modal } from '@ui/molecules/Modal';
 import { Divider } from '@ui/atoms/Divider';
 import { NavbarHome } from '@ui/organisms/Navbar/NavbarHome';
+import { useState } from 'react';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function UiPage() {
   const { control } = useForm();
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="font-on min-h-screen flex flex-col">
@@ -93,7 +95,8 @@ export function UiPage() {
         placeholder="بنویسید"
       />
       <Divider />
-      <Modal />
+      <BaseButton label="open modal" onClick={() => setOpenModal(!openModal)} />
+      <Modal open={openModal} setOpen={setOpenModal} />
     </div>
   );
 }

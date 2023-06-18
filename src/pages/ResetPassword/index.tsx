@@ -1,13 +1,14 @@
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { Card } from '@ui/atoms/Card';
-import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
+import { PasswordStrength } from '@ui/atoms/Inputs/PasswordInput/passwordStrength';
 import { ILoginFieldValues } from './types';
 
 export function ResetPasswordPage() {
-  const { control, handleSubmit } = useForm<ILoginFieldValues>({
+  const { control, handleSubmit, watch } = useForm<ILoginFieldValues>({
     mode: 'onChange',
   });
 
@@ -33,30 +34,18 @@ export function ResetPasswordPage() {
             </Typography>
           )}
           <div className="w-full flex flex-col items-center justify-end pb-16">
-            <BaseInput
-              fullWidth
-              control={control}
-              placeholder="password"
-              type="password"
-              id="password"
+            <PasswordInput
               name="password"
-              endIcon="carbon:password"
-              rules={{
-                required: regexPattern.required,
-              }}
-            />
-            <BaseInput
-              fullWidth
               control={control}
-              placeholder="password-r"
-              type="password"
-              id="password-r"
-              name="password-r"
-              endIcon="carbon:password"
-              rules={{
-                required: regexPattern.required,
-              }}
+              placeholder="گذرواژه فعلی"
             />
+
+            <PasswordInput
+              name="password-r"
+              control={control}
+              placeholder="تکرار گذرواژه فعلی"
+            />
+            <PasswordStrength password={watch('password')} />
             <BaseButton
               onClick={() => {}}
               label="ذخیره تغییرات"

@@ -1,7 +1,7 @@
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { IProduct } from '@ui/molecules/ProductCard';
+import { IProductCard } from '@ui/molecules/ProductCard';
 
-export const productCardData: IProduct[] = [
+export const productCardData: IProductCard[] = [
   {
     id: '1',
     ruleName: 'Rule name 1',

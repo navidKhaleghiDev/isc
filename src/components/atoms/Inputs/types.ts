@@ -34,6 +34,8 @@ export interface BaseInputProps<T extends FieldValues>
   startIcon?: string;
   endIcon?: string;
   hiddenError?: boolean;
+  onClickIcon?: () => void;
+  iconButtonIcon?: string;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {

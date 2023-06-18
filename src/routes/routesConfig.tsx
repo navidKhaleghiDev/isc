@@ -6,11 +6,11 @@ import { DashboardPage } from '@src/pages/Dashboard';
 import { ProductsPage } from '@src/pages/Services/Products';
 import { MonitoringSystemsPage } from '@src/pages/MonitoringSystems';
 import { RulesPage } from '@src/pages/Services/Rules';
-import { RulesCodePage } from '@src/pages/Services/Rules/RulesCode';
+import { RuleDetailsPage } from '@src/pages/Services/Rules/RuleDetailsPage';
 import { MyProductPage } from '@src/pages/MyProduct/MyProduct';
-import { ProductNamePage } from '@src/pages/MyProduct/MyProduct/ProductName';
+// import { ProductNamePage } from '@src/pages/MyProduct/MyProduct/ProductName';
 import { MyProductMyRulesPage } from '@src/pages/MyProduct/MyRules';
-import { MyProductMyRulesNamePage } from '@src/pages/MyProduct/MyRules/RulesName';
+// import { MyProductMyRulesNamePage } from '@src/pages/MyProduct/MyRules/RulesName';
 import { UiPage } from '@src/pages/Ui';
 import NotFoundPage from '@src/pages/NotFound';
 import { AboutUsPage } from '@src/pages/AboutUs';
@@ -21,6 +21,9 @@ import { SettingsPage } from '@src/pages/Settings';
 import { SupportPage } from '@src/pages/Support';
 import { ProfilePage } from '@src/pages/Profile';
 import { AddUserPage } from '@src/pages/AddUser';
+import UnauthorizedPage from '@src/pages/Unauthorized';
+import { IpsListPage } from '@src/pages/MyProduct/IpsList';
+import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
@@ -46,7 +49,7 @@ const routesConfig = [
   },
   {
     path: ROUTES_PATH.unauthorized,
-    element: <h1>{`403 | you don't have permission`}</h1>,
+    element: <UnauthorizedPage />,
   },
   {
     path: ROUTES_PATH.home,
@@ -100,8 +103,8 @@ const routesConfig = [
         element: <RulesPage />,
       },
       {
-        path: ROUTES_PATH.servicesRulesCodeName,
-        element: <RulesCodePage />,
+        path: ROUTES_PATH.servicesRulesRetrieve,
+        element: <RuleDetailsPage />,
       },
       {
         path: ROUTES_PATH.monitoringSystems,
@@ -112,16 +115,16 @@ const routesConfig = [
         element: <MyProductPage />,
       },
       {
-        path: ROUTES_PATH.myProductName,
-        element: <ProductNamePage />,
+        path: ROUTES_PATH.myProductIpsList,
+        element: <IpsListPage />,
       },
       {
         path: ROUTES_PATH.myProductMyRules,
         element: <MyProductMyRulesPage />,
       },
       {
-        path: ROUTES_PATH.myProductMyRulesName,
-        element: <MyProductMyRulesNamePage />,
+        path: ROUTES_PATH.myProductMyRulesRetrieve,
+        element: <MyRuleDetailsPage />,
       },
     ],
   },

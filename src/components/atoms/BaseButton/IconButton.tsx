@@ -5,13 +5,15 @@ import { BaseIcon } from '../BaseIcon';
 export function IconButton({
   onClick,
   className,
+  classNameIcon,
   icon,
   size,
   color,
+  type,
 }: IIconButton) {
   return (
     <button
-      type="button"
+      type={type === 'submit' ? 'submit' : 'button'}
       onClick={onClick}
       className={iconButtonStyles({
         color,
@@ -19,7 +21,7 @@ export function IconButton({
         className,
       })}
     >
-      <BaseIcon icon={icon} />
+      <BaseIcon icon={icon} size={size} className={classNameIcon} />
     </button>
   );
 }

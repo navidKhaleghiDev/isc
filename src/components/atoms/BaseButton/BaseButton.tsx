@@ -29,14 +29,21 @@ export function BaseButton({
       {startIcon && (
         <BaseIcon
           icon={startIcon}
-          className={iconInButtonStyles({ type, size, className: 'ml-4' })}
+          className={iconInButtonStyles({
+            type,
+            size,
+            className: `${size !== 'sm' && 'ml-4'}`,
+          })}
         />
       )}
       {label}
       {endIcon && (
         <BaseIcon
           icon={endIcon}
-          className={iconInButtonStyles({ type, className: 'mr-4' })}
+          className={iconInButtonStyles({
+            type,
+            className: `${size !== 'sm' && 'mr-4'}`,
+          })}
         />
       )}
     </button>

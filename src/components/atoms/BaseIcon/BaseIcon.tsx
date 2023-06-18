@@ -8,7 +8,7 @@ export function BaseIcon({
   size,
   hoverColor,
   className,
-  icon,
+  icon = 'fa:home',
 }: IBaseIcon) {
   return (
     <Icon

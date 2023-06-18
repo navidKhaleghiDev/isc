@@ -9,8 +9,13 @@ type PropsType = {
 
 export function IconInput({ icon, intent }: PropsType) {
   return (
-    <div className={iconBaseInputStyles({ intent })}>
-      <BaseIcon icon={icon} className="ml-2" />
+    <div
+      className={iconBaseInputStyles({
+        intent,
+        className: 'pointer-events-none',
+      })}
+    >
+      <BaseIcon icon={icon} className="mx-1" size="xs" />
     </div>
   );
 }
