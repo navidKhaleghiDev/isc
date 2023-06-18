@@ -9,6 +9,7 @@ export interface IRules {
   created_at?: string;
   updated_at?: string;
   description: string;
+  code: string;
 }
 
 export interface IIp {

@@ -1,11 +1,12 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { useLocation } from 'react-router-dom';
-// import { useForm } from 'react-hook-form';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
 import { CodeLine } from './CodeLine';
 import { TitleMyProduct } from '../TitleMyProduct';
 import { ruleData } from './dataMock';
@@ -19,9 +20,7 @@ export function RuleDetail() {
 
   const rule = data?.data || ruleData;
 
-  // console.log({ rule });
-
-  // const { control } = useForm();
+  const codes = getCodeList(rule.code);
 
   return (
     <>
@@ -55,12 +54,11 @@ export function RuleDetail() {
         </div>
       </div>
 
-      <Card color="neutral" className="p-8 h-[41rem] overflow-y-auto">
-        <>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((code: any) => {
-            return <CodeLine key={code} />;
+      <Card color="neutral" className="p-4 h-[41rem] overflow-y-auto">
+        {codes &&
+          codes.map((code: SliceOrderCodeType, index: number) => {
+            return <CodeLine key={`${index}_${code.order}`} code={code} />;
           })}
-        </>
       </Card>
       <div className="w-full mt-3 flex justify-end">
         <BaseButton label="ثبت" size="sm" />
