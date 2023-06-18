@@ -6,6 +6,7 @@ import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { IProduct } from '@src/services/client/users/types';
 import { RulesCard } from './RulesCard';
 import { NoResult } from '../NoResult';
+import { rulesListData } from './dataMock';
 
 type PropsType = {
   buttonState: ButtonState;
@@ -19,7 +20,8 @@ export function RulesList({ buttonState }: PropsType) {
     buttonState === 'suggest' ? E_USERS_PRODUCT : null
   );
 
-  const rules = suggestData?.data.recommended_rules || allData?.data || [];
+  const rules =
+    suggestData?.data.recommended_rules || allData?.data || rulesListData;
 
   return (
     <div className="w-full h-full mt-8">

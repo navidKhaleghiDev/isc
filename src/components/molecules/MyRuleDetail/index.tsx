@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { useLocation } from 'react-router-dom';
 // import { useForm } from 'react-hook-form';
@@ -5,25 +6,31 @@ import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_MY_RULES_ID } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { CodeLine } from './CodeLine';
 import { TitleMyProduct } from '../TitleMyProduct';
-import { myRruleData } from './dataMock';
-import { getListCodeFromStr } from './utils';
+import { myRuleData } from './dataMock';
 
 export function MyRuleDetail() {
+  const [codeList, setCodeList] = useState<SliceOrderCodeType[] | null>(null);
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
   const id = slugs[3];
 
   const { data } = useGet<ResponseSwr<IMyRule>>(E_RULES_MY_RULES_ID(id));
+  const myRule = data?.data || myRuleData;
 
-  const myRule = data?.data || myRruleData;
+  useEffect(() => {
+    setCodeList(getCodeList(myRule.rule_code));
+  }, [myRule]);
 
-  console.log({ myRule });
-
-  getListCodeFromStr(myRule.rule_code);
-  // const { control } = useForm();
-
+  const handleOnChangeOrder = (
+    { target: { value } }: ChangeEvent<HTMLSelectElement>,
+    index: number
+  ) => {
+    console.log({ value, index });
+  };
   return (
     <>
       <div className="grid grid-cols-3 gap-5 mb-16">
@@ -63,11 +70,18 @@ export function MyRuleDetail() {
       </div>
 
       <Card color="neutral" className="p-8 h-[41rem] overflow-y-auto">
-        <>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((code: any) => {
-            return <CodeLine key={code} />;
+        {codeList &&
+          codeList.map((code: SliceOrderCodeType, index: number) => {
+            return (
+              <CodeLine
+                key={`${index}_${code.order}`}
+                code={code}
+                onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
+                  handleOnChangeOrder(event, index)
+                }
+              />
+            );
           })}
-        </>
       </Card>
       <div className="w-full mt-3 flex justify-end">
         <BaseButton label="ثبت" size="sm" />
