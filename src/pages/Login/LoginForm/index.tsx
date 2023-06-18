@@ -46,6 +46,8 @@ export function LoginForm({ onChangeStep }: PropsFormType) {
 
           toast.success('ورود با موفقیت انجام شد.');
           navigate(ROUTES_PATH.dashboard);
+        } else {
+          onChangeStep(ELoginStep.REGISTER);
         }
       })
       .catch((err) => {
