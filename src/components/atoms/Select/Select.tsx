@@ -13,7 +13,7 @@ export function Select({ label, options = optionMock }: ICard) {
   const [open, setOpen] = useState<boolean>(false);
   useClickOutside({ ref, setValue: setOpen, value: open });
 
-  const handleClickSelected = (option: OptionType) => {
+  const handleClickSelected = (_option: OptionType) => {
     setOpen(false);
   };
 

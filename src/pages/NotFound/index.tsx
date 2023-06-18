@@ -13,7 +13,7 @@ function NotFoundPage() {
         <BaseButton
           className="mt-6"
           label="go to home"
-          type="primary"
+          type="default"
           size="lg"
         />
       </Link>

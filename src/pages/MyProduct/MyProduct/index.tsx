@@ -19,7 +19,7 @@ function GridMyProduct({ children, className }: PropsType) {
 }
 
 export function MyProductPage() {
-  const { data, isLoading } = useGet<ResponseSwr<IProduct>>(E_USERS_PRODUCT);
+  const { data } = useGet<ResponseSwr<IProduct>>(E_USERS_PRODUCT);
   const product = data?.data;
 
   return (

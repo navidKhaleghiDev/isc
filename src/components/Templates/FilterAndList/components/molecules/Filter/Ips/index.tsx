@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BaseButton, Card, BaseInput, Typography } from '@ui/atoms';
+import { BaseButton, Card, BaseInput } from '@ui/atoms';
 import { useForm } from 'react-hook-form';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { toast } from 'react-toastify';

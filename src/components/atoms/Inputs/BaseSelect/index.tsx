@@ -4,7 +4,6 @@ import { Controller } from 'react-hook-form';
 import { BaseInputProps } from '../types';
 import { baseInputStyles } from '../styles';
 import { Typography } from '../../Typography';
-import { IconInput } from '../IconInput';
 import { IOptionSelect, OptionSelect } from './OptionSelect';
 
 export function BaseSelect(props: BaseInputProps<any>) {

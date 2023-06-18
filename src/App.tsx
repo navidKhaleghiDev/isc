@@ -26,7 +26,7 @@ function App() {
 
   const pat = /[alert|drop|block|pass][\s\S]+?rev:[0-9];\)/gm;
 
-  const split = str.split(pat);
+  // const split = str.split(pat);
   const exec = str.match(pat);
 
   console.log({ exec });

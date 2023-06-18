@@ -1,4 +1,4 @@
-import { IMyRule, IRules } from '@src/services/client/rules/types';
+import { IRules } from '@src/services/client/rules/types';
 
 export const ruleData: IRules = {
   id: '16b32f97-5c87-4c58-9905-638c336cab1d',

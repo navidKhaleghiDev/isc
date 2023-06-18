@@ -1,5 +1,3 @@
-import { Typography } from '@ui/atoms/Typography';
-
 export interface IOptionSelect {
   id?: string;
   value?: string;

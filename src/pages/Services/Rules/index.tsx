@@ -1,6 +1,4 @@
 import { BaseButton, Card } from '@ui/atoms';
-import { Select } from '@ui/atoms/Select';
-import { Pagination } from '@ui/molecules/Pagination';
 import { RulesList } from '@ui/molecules/RulesList';
 import { useState } from 'react';
 import { ButtonState } from './types';

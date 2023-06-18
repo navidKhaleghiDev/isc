@@ -1,6 +1,6 @@
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { useLocation } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_MY_RULES_ID } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
@@ -15,16 +15,14 @@ export function MyRuleDetail() {
   const slugs = pathname.split('/');
   const id = slugs[3];
 
-  const { data, isLoading } = useGet<ResponseSwr<IMyRule>>(
-    E_RULES_MY_RULES_ID(id)
-  );
+  const { data } = useGet<ResponseSwr<IMyRule>>(E_RULES_MY_RULES_ID(id));
 
   const myRule = data?.data || myRruleData;
 
   console.log({ myRule });
 
   getListCodeFromStr(myRule.rule_code);
-  const { control } = useForm();
+  // const { control } = useForm();
 
   return (
     <>

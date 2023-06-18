@@ -12,7 +12,7 @@ export function ResetPasswordPage() {
     mode: 'onChange',
   });
 
-  const [error, setError] = useState<boolean>(false);
+  const [error] = useState<boolean>(false);
 
   const handelSubmitForm = async (data: ILoginFieldValues) => {
     console.log({ data });

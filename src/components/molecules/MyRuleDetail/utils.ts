@@ -1,4 +1,4 @@
 export function getListCodeFromStr(allCode: string) {
   // const removedR =
-  const codeList = allCode.split('alert');
+  return allCode.split('alert');
 }

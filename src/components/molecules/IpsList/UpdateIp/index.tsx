@@ -1,13 +1,8 @@
 import { BaseButton, BaseInput } from '@ui/atoms';
 import { FieldValues, useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { IIp } from '@src/services/client/rules/types';
-import { useGet } from '@src/services/http/httpClient';
-import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { IconButton } from '@ui/atoms/BaseButton';
-import { Dispatch, SetStateAction, memo } from 'react';
-import { API_UPDATE_VALID_IPS } from '@src/services/client/rules';
 
 type PropsType = {
   ip: IIp;
@@ -19,8 +14,6 @@ interface IUpdateIpValues extends FieldValues {
 }
 
 export function UpdateIp({ ip, onSubmit, onCloseModal }: PropsType) {
-  console.log({ ip });
-
   const { control, handleSubmit } = useForm<IUpdateIpValues>({
     mode: 'onChange',
     defaultValues: {

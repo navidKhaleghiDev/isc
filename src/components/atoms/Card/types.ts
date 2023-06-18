@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactElement } from 'react';
+import { PropsWithChildren } from 'react';
 import { VariantProps } from 'class-variance-authority';
 
 import { cardStyles } from './styles';

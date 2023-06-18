@@ -6,9 +6,9 @@ import { useState } from 'react';
 /* eslint-disable jsx-a11y/label-has-associated-control */
 export function BaseAccordion() {
   const [open, setOpen] = useState<number | null>(null);
-  const handleOpen = (value: number | null) => {
-    setOpen(value);
-  };
+  // const handleOpen = (value: number | null) => {
+  //   setOpen(value);
+  // };
   return (
     <div id="accordion-collapse bg-green-100" data-accordion="collapse">
       <h2 id="accordion-collapse-heading-1">

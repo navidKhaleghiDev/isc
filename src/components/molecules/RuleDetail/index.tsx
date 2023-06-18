@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { useLocation } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
@@ -14,13 +15,13 @@ export function RuleDetail() {
   const slugs = pathname.split('/');
   const id = slugs[3];
 
-  const { data, isLoading } = useGet<ResponseSwr<IRules>>(E_RULES_RETRIEVE(id));
+  const { data } = useGet<ResponseSwr<IRules>>(E_RULES_RETRIEVE(id));
 
   const rule = data?.data || ruleData;
 
-  console.log({ rule });
+  // console.log({ rule });
 
-  const { control } = useForm();
+  // const { control } = useForm();
 
   return (
     <>
