@@ -14,7 +14,7 @@ build:
 deploy:
   stage: deploy
   image:
-    name: williamyeh/ansible:ubuntu18.04
+    name: nexus:443/williamyeh/ansible:ubuntu18.04
   before_script:
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$ANSIBLE_PRIVATE_KEY")
