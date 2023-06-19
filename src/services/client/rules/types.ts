@@ -58,3 +58,12 @@ export interface IMyRule {
   created_at: string;
   update_at: string;
 }
+
+export interface IBodyUpdateMyRule {
+  rule_code: string;
+  description?: string;
+}
+
+export interface IBodyAssignOwner {
+  serial: string;
+}

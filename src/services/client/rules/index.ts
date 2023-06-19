@@ -1,11 +1,19 @@
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
-import { BodyId, BodyUpdateIp, IIp } from './types';
+import {
+  BodyId,
+  BodyUpdateIp,
+  IBodyAssignOwner,
+  IBodyUpdateMyRule,
+  IIp,
+  IMyRule,
+} from './types';
 import {
   E_RULES_VALID_IPS,
   E_RULES_MY_RULES,
   E_RULES_VALID_IPS_ID,
   E_RULES_MY_RULES_ID,
+  E_RULES_ASSIGN_OWNER,
 } from './endpoint';
 
 export const API_ADD_VALID_IPS = (body: IIp[]) =>
@@ -22,3 +30,9 @@ export const API_ADD_RULE = (body: BodyId) =>
 
 export const API_DELETE_MY_RULE = (id: string) =>
   http.delete<string>(E_RULES_MY_RULES_ID(id));
+
+export const API_UPDATE_MY_RULE = (id: string, body: IBodyUpdateMyRule) =>
+  http.patch<IBodyUpdateMyRule>(E_RULES_MY_RULES_ID(id), body);
+
+export const API_RULES_ASSIGN_OWNER = (body: IBodyAssignOwner) =>
+  http.post<IBodyAssignOwner>(E_RULES_ASSIGN_OWNER, body);

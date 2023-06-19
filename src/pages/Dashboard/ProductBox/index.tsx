@@ -4,11 +4,19 @@ import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { Card, Typography, BaseIcon } from '@ui/atoms';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
+import { useUserContext } from '@context/user/userContext';
+import { NotHaveDeviceSerial } from '../../../components/molecules/NotHaveDeviceSerial';
 
 export function ProductBox() {
-  const { data, isLoading } = useGet<ResponseSwr<IProduct>>(E_USERS_PRODUCT);
+  const { user } = useUserContext();
+  const { data, isLoading } = useGet<ResponseSwr<IProduct>>(
+    user?.device_serial ? E_USERS_PRODUCT : null
+  );
   const product = data?.data;
 
+  if (!user?.device_serial) {
+    return <NotHaveDeviceSerial title="جزپیات داشبورد" />;
+  }
   return isLoading ? (
     <LoadingSpinner />
   ) : (

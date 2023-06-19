@@ -4,7 +4,7 @@ export const myRuleData: IMyRule = {
   id: '56cfb497-7322-4f8d-8538-01968ef8f417',
   creator: {
     id: '470f29e7-55d2-45a7-ae76-1071bd010b6f',
-    device_serial: 'b9f069b3-d256-4e84-bc9c-5f9f55cdf0ac',
+    device_serial: 'b9f069b3-d256-4e84-bc9c-5f9f55cdf0acC',
     last_login: '2023-06-17T05:58:08.178666Z',
     first_name: '',
     last_name: '',
