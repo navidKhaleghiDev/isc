@@ -10,18 +10,27 @@ import { API_USERS_PATCH } from '@src/services/client/users';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
+import { UpdateSerialDevice } from '../LoginForm/UpdateSerialDevice';
+
+type ChangePasswordValues = {
+  email: string;
+  password: string;
+  password_r: string;
+};
 
 export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
-  const { control, handleSubmit } = useForm<ILoginFieldValues>({
+  const { control, handleSubmit } = useForm<ChangePasswordValues>({
     mode: 'onChange',
   });
   const [error, setError] = useState<string | null>(null);
-  const [openModal, setOpenModal] = useState(false);
-  const navigate = useNavigate();
+  const [openModalAuth, setOpenModalAuth] = useState(false);
+  const [openModalAssignSerial, setOpenModalAssignSerial] = useState(false);
 
-  const { user } = useUserContext();
+  const navigate = useNavigate();
+  const { user, setUser } = useUserContext();
 
   const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
     if (!user) {
@@ -33,17 +42,43 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
       password,
     })
       .then(({ data }) => {
-        if (data.is_authenticated) {
-          toast.success('ورود با موفقیت انجام شد.');
-          navigate(ROUTES_PATH.dashboard);
+        if (user.is_authenticated) {
+          // user is authenticated
+
+          if (!data.device_serial) {
+            // user not have device serial
+
+            setOpenModalAssignSerial(true);
+          } else {
+            // login is ok
+
+            toast.success('ورود با موفقیت انجام شد.');
+            navigate(ROUTES_PATH.dashboard);
+          }
         } else {
-          // show modal for register
-          onChangeStep(ELoginStep.REGISTER);
+          setOpenModalAuth(true);
         }
+
+        // if (data.is_authenticated) {
+        //   toast.success('ورود با موفقیت انجام شد.');
+        //   navigate(ROUTES_PATH.dashboard);
+        // } else {
+        //   // show modal for register
+        //   onChangeStep(ELoginStep.REGISTER);
+        // }
       })
       .catch((err) => {
         setError(err.data.error);
       });
+  };
+
+  const handleOnSuccessAddSerial = (serial: string) => {
+    if (user) {
+      const newUser = { ...user, device_serial: serial };
+      toast.success('سریال با موفقیت ثبت شد');
+      setUser(newUser);
+      navigate(ROUTES_PATH.dashboard);
+    }
   };
 
   return (
@@ -77,19 +112,17 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
               required: regexPattern.required,
             }}
           />
-
-          <BaseInput
-            fullWidth
+          <PasswordInput
+            name="password"
             control={control}
             placeholder="گذرواژه جدید"
-            id="password"
-            name="password"
-            type="password"
-            endIcon="carbon:password"
-            rules={{
-              required: regexPattern.required,
-            }}
           />
+          <PasswordInput
+            name="password_r"
+            control={control}
+            placeholder="تکرار گذرواژه جدید"
+          />
+
           <BaseButton
             onClick={() => {}}
             label="ارسال"
@@ -102,8 +135,21 @@ export function ChangePasswordForm({ onChangeStep }: PropsFormType) {
         </div>
       </form>
       <Modal
-        open={openModal}
-        setOpen={setOpenModal}
+        open={openModalAssignSerial}
+        setOpen={setOpenModalAssignSerial}
+        type="none"
+        classContainer="border border-teal-600"
+        content={
+          <UpdateSerialDevice
+            onCloseModal={() => setOpenModalAssignSerial(false)}
+            onSuccessAdd={handleOnSuccessAddSerial}
+          />
+        }
+      />
+
+      <Modal
+        open={openModalAuth}
+        setOpen={setOpenModalAuth}
         title="اکانت شما احراز هویت نشده است!!"
         description="بدون احراز هویت برخی خدمات برای شما نمایش داده نخواهد شد."
         type="error"

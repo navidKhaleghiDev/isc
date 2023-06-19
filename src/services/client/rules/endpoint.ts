@@ -5,3 +5,5 @@ export const E_RULES_LIST = '/rules/';
 export const E_RULES_RETRIEVE = (id: string) => `/rules/${id}/`;
 export const E_RULES_MY_RULES = '/rules/my_rules/';
 export const E_RULES_MY_RULES_ID = (id: string) => `/rules/my_rules/${id}/`;
+
+export const E_RULES_ASSIGN_OWNER = `rules/assign_owner/`;

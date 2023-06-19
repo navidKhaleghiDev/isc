@@ -3,6 +3,11 @@ export const regexPattern = {
     value: /^(?!.*[\u0600-\u06E9\u200C])/,
     message: 'لطفا فقط از حروف انگلیسی استفاده کنید',
   },
+  uuid4: {
+    value:
+      /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi,
+    message: 'فرمت صحیح uuid4  وارد کنید',
+  },
   lettersDashUnderLineSpace: {
     value: /^[a-zA-Z\-_]*$/i,
     message: 'لطفاً فقط از حروف انگلیسی استفاده کنید(عدد مجاز نمی‌باشد)',

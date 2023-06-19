@@ -1,22 +1,34 @@
 import { useUserContext } from '@context/user/userContext';
 import { API_USERS_PATCH } from '@src/services/client/users';
-import { http } from '@src/services/http';
-import { BaseButton } from '@ui/atoms';
+import { BaseButton, BaseInput, Typography } from '@ui/atoms';
+import { regexPattern } from '@ui/atoms/Inputs';
 import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 type SettingValues = {
+  email: string;
   password: string;
   password_r: string;
 };
-export function SettingsPage() {
-  const { control, handleSubmit, setError } = useForm<SettingValues>();
-  const { user, setUser } = useUserContext();
 
-  const handleFormSubmit = async ({ password, password_r }: SettingValues) => {
+export function SettingsPage() {
+  const {
+    control,
+    handleSubmit,
+    setError: setPasswordRrror,
+  } = useForm<SettingValues>();
+  const { user } = useUserContext();
+  const [error, setError] = useState<string | null>(null);
+
+  const handleFormSubmit = async ({
+    email,
+    password,
+    password_r,
+  }: SettingValues) => {
     if (password_r !== password) {
-      setError(
+      setPasswordRrror(
         'password_r',
         {
           message: 'تکرار گذرواژه صحیح نیست',
@@ -29,30 +41,41 @@ export function SettingsPage() {
     }
 
     await API_USERS_PATCH(user?.id as string, {
+      email,
       password,
     })
       .then(() => {
-        toast.success('تغییر گذرواژه با موفقیت انجام شد.');
-        http.removeAuthHeader();
-        setUser(null);
+        toast.success('تغییرات با موفقیت انجام شد.');
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        setError(err.data.error);
       });
   };
 
   return (
     <div className="h-full flex justify-center items-center">
+      {error && (
+        <Typography color="red" size="body3" className="mb-10">
+          {error}
+        </Typography>
+      )}
       <form
         className="h-full flex flex-col justify-around items-center p-12 max-w-xxl"
         onSubmit={handleSubmit(handleFormSubmit)}
       >
         <div className="w-full flex flex-col items-center justify-center">
-          {/* <PasswordInput
-            name="current"
+          <BaseInput
+            fullWidth
             control={control}
-            placeholder="کلمه عبور فعلی"
-          /> */}
+            placeholder="ایمیل"
+            id="email"
+            name="email"
+            type="text"
+            endIcon="ph:user"
+            rules={{
+              required: regexPattern.required,
+            }}
+          />
           <PasswordInput
             name="password"
             control={control}

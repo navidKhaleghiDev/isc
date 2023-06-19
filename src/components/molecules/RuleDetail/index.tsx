@@ -60,9 +60,6 @@ export function RuleDetail() {
             return <CodeLine key={`${index}_${code.order}`} code={code} />;
           })}
       </Card>
-      <div className="w-full mt-3 flex justify-end">
-        <BaseButton label="ثبت" size="sm" />
-      </div>
     </>
   );
 }
