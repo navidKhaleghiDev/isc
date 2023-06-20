@@ -21,25 +21,37 @@
       - snap
       - python3
       - python3-lxc
+      - lxc
+      - lxc-dev
+      - lxc-templates
+      - lxc-utils
+      - liblxc-common
+      - liblxc-dev
 
   - name: Install lxd using snap
     community.general.snap:
       name:
         - lxd
   
-  - name: Create front lxc container
-    community.general.lxc_container:
+  - name: Create front container
+    community.general.lxd_container:
       name: front
-      container_log: true
-      template: ubuntu:20.04
+      ignore_volatile_options: true
       state: started
+      source:
+        type: image
+        mode: pull
+        server: https://images.linuxcontainers.org
+        protocol: lxd # if you get a 404, try setting protocol: simplestreams
+        alias: ubuntu/jammy/amd64
+      profiles: ["default"]
+      wait_for_ipv4_addresses: true
+      timeout: 600
  
-  - name: Inastall nodejs
-    community.general.lxc_container:
-      name: front
-      container_command: |
-        apt-get update
-        apt-get dist-upgrade
-        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-        apt-get update
-        apt-get install nodejs
+  - name: Install python in container
+    delegate_to: mycontainer
+    ansible.builtin.raw: | 
+      apt-get update && apt-get dist-upgrade 
+      curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      apt-get update
+      apt-get install nodejs
