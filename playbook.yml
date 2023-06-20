@@ -32,9 +32,9 @@
       template: ubuntu:20.04
       state: started
  
-  - name: Install logstash, elasticsearch and kibana
+  - name: Inastall nodejs
     community.general.lxc_container:
-      name: elk
+      name: front
       container_command: |
         apt-get update
         apt-get dist-upgrade
