@@ -35,7 +35,7 @@
   
   - name: Create front container
     ansible.builtin.command:
-      cmd: /snap/bin/lxc launch ubuntu:20.04 front
+      cmd: /snap/bin/lxc launch ubuntu:20.04 front && sleep 5
       creates: /var/snap/lxd/common/lxd/containers/front
  
   - name: Install nodejs in container
