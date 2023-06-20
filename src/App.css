@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'on';
+  src: url('/src/assets/fonts/OnLight.ttf');
+}
+
+@font-face {
+  font-family: 'on';
+  src: url('/src/assets/fonts/OnNormal.ttf');
+}
+
+@font-face {
+  font-family: 'on';
+  src: url('/src/assets/fonts/OnMedium.ttf');
+}
+
+@font-face {
+  font-family: 'on';
+  src: url('/src/assets/fonts/OnBold.ttf');
+}
+
+@layer base {
+  select {
+    @apply bg-red-600;
+  }
+  h2 {
+    @apply bg-red-600;
+  }
+}
+
+@layer utilities {
+  .custom-class-name {
+    color: #f0f;
+    @apply bg-red-600;
+  }
+}
+
+/* @layer components {
+  .select2-dropdown {
+    @apply bg-red-600;
+  }
+  .select2-search {
+    @apply bg-red-800;
+  }
+  .select2-results__group {
+    @apply bg-red-600;
+  }
+} */

@@ -1,0 +1,43 @@
+- hosts: ics-sec
+  become: yes
+  become_user: root
+  gather_facts: yes
+
+  # Variables
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  # List of tasks
+  tasks:
+  - name: Run apt-get update
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install sanpd
+    ansible.builtin.apt:
+      name: snapd
+      state: present
+
+  - name: Install lxd using snap
+    community.general.snap:
+      name:
+        - lxd
+      options:
+        - channel: latest/stable
+  
+  - name: Create front lxc container
+    community.general.lxc_container:
+      name: front
+      container_log: true
+      template: ubuntu:20.04
+      state: started
+ 
+  - name: Install logstash, elasticsearch and kibana
+    community.general.lxc_container:
+      name: elk
+      container_command: |
+        apt-get update
+        apt-get dist-upgrade
+        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+        apt-get update
+        apt-get install nodejs
