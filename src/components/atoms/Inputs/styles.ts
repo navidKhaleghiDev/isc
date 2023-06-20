@@ -69,3 +69,26 @@ export const baseTextareaStyles = cva(
     },
   }
 );
+
+export const baseCheckBoxStyles = cva(
+  'w-5 h-5 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-teal-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600',
+  {
+    variants: {
+      intent: {
+        default: '',
+        error: '',
+      },
+      size: {
+        xs: ``,
+        sm: ``,
+        md: ``,
+        lg: ``,
+        xl: ``,
+      },
+    },
+    defaultVariants: {
+      intent: 'default',
+      size: 'sm',
+    },
+  }
+);

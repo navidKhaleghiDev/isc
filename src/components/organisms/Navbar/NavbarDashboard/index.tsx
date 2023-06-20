@@ -11,9 +11,11 @@ export function NavbarDashboard() {
     <nav className="bg-white w-full px-8 mb-1 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center">
-          <Link to="add-user" className="ml-4">
-            <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
-          </Link>
+          {user?.is_superuser && (
+            <Link to="add-user" className="ml-4">
+              <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
+            </Link>
+          )}
 
           <Avatar icon="ph:user" intent="primary" size="sm" className="ml-4" />
 
