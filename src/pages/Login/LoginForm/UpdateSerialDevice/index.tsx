@@ -5,6 +5,7 @@ import { IconButton } from '@ui/atoms/BaseButton';
 import { API_RULES_ASSIGN_OWNER } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
+import { delay } from '@src/helper/utils';
 
 type PropsType = {
   onCloseModal: () => void;
@@ -22,8 +23,10 @@ export function UpdateSerialDevice({ onCloseModal, onSuccessAdd }: PropsType) {
 
   const handelSubmitForm = async (dataForm: IUpdateIpValues) => {
     await API_RULES_ASSIGN_OWNER({ serial: dataForm.serial })
-      .then(() => {
-        setTimeout(() => onSuccessAdd(dataForm.serial), 2000);
+      .then(async () => {
+        delay(2000).then(() => {
+          onSuccessAdd(dataForm.serial);
+        });
       })
       .catch((err) => {
         toast.error(err.data.error);

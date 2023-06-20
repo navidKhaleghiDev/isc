@@ -5,6 +5,7 @@ import {
   E_USERS_PATCH,
   E_USERS_SERVER_AUTH,
   E_USERS,
+  E_USERS_PROFILE,
 } from './endpoint';
 import { IBodyAddUser, IBodyUsersLogin, IUser } from './types';
 
@@ -25,3 +26,5 @@ export const API_USERS_SERVER_AUTH = (body: IBodyUsersLogin) =>
     E_USERS_SERVER_AUTH,
     body
   );
+
+export const API_USERS_PROFILE = () => http.get<IUser>(E_USERS_PROFILE);

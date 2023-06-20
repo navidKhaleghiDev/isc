@@ -16,6 +16,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
     size,
     hiddenError,
     label,
+    className,
   } = props;
   return (
     <Controller
@@ -25,7 +26,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <>
-          <div className="flex items-center">
+          <div className={`flex items-center ${className}`}>
             <input
               id={id}
               type="checkbox"
