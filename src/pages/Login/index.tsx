@@ -22,9 +22,7 @@ const loginSteps = {
 };
 
 export function LoginPage() {
-  const [step, setStep] = useState<ELoginStep>(
-    ELoginStep.REGISTER_SERIAL_DEVICE
-  );
+  const [step, setStep] = useState<ELoginStep>(ELoginStep.LOGIN);
   const { setUser } = useUserContext();
   const navigate = useNavigate();
   const Step = loginSteps[step];
