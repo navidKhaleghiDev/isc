@@ -36,17 +36,15 @@
   - name: Create front container
     community.general.lxd_container:
       name: front
-      ignore_volatile_options: true
       state: started
       source:
         type: image
         mode: pull
-        server: https://images.linuxcontainers.org
-        protocol: lxd # if you get a 404, try setting protocol: simplestreams
-        alias: ubuntu/jammy/amd64
+        protocol: lxd
+        alias: ubuntu:20.04
       profiles: ["default"]
       wait_for_ipv4_addresses: true
       timeout: 600
  
   - name: Install nodejs in container
-    command: /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs"
+    command: /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y"
