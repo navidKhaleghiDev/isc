@@ -49,9 +49,10 @@
       timeout: 600
  
   - name: Install python in container
-    delegate_to: mycontainer
-    ansible.builtin.raw: | 
-      apt-get update && apt-get dist-upgrade 
-      curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-      apt-get update
-      apt-get install nodejs
+    community.general.lxc_container:
+      name: front
+      container_command: |
+        apt-get update && apt-get dist-upgrade 
+        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+        apt-get update
+        apt-get install nodejs
