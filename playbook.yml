@@ -48,11 +48,5 @@
       wait_for_ipv4_addresses: true
       timeout: 600
  
-  - name: Install python in container
-    community.general.lxc_container:
-      name: front
-      container_command: |
-        apt-get update && apt-get dist-upgrade 
-        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-        apt-get update
-        apt-get install nodejs
+  - name: Install nodejs in container
+    command: /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs"
