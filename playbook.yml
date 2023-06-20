@@ -34,8 +34,10 @@
         - lxd
   
   - name: Create front container
-    command: /snap/bin/lxc launch ubuntu:20.04 front
-    creates: /var/snap/lxd/common/lxd/containers/zeek
+    ansible.builtin.command:
+      cmd: /snap/bin/lxc launch ubuntu:20.04 front
+      creates: /var/snap/lxd/common/lxd/containers/zeek
  
   - name: Install nodejs in container
-    command: /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y"
+    ansible.builtin.command:
+      cmd: /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y"
