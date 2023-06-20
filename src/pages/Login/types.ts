@@ -8,7 +8,11 @@ export interface ILoginFieldValues extends FieldValues {
 export enum ELoginStep {
   LOGIN = 'login',
   CHANGE_PASSWORD = 'changePassword',
-  REGISTER = 'register',
+  AUTHENTICATION = 'authentication',
+  REGISTER_SERIAL_DEVICE = 'resisterSerialDevice',
 }
 
-export type PropsFormType = { onChangeStep: (step: ELoginStep) => void };
+export type PropsFormType = {
+  onChangeStep: (step: ELoginStep) => void;
+  getProfile: () => void;
+};
