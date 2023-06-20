@@ -1,7 +1,9 @@
+import { Typography } from '@ui/atoms';
+
 type PropsType = { description?: string };
 export function LoadingPage({ description }: PropsType) {
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
+    <div className="h-screen w-screen flex flex-col justify-center items-center">
       <svg
         aria-hidden="true"
         className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -18,7 +20,11 @@ export function LoadingPage({ description }: PropsType) {
           fill="currentFill"
         />
       </svg>
-      {description && <span className="sr-only">{description}</span>}
+      {description && (
+        <Typography color="neutral" className="mt-2">
+          {description}
+        </Typography>
+      )}
     </div>
   );
 }

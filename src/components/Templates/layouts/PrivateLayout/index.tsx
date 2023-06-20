@@ -5,21 +5,33 @@ import { useUserContext } from '@context/user/userContext';
 import { LoadingPage } from '@ui/molecules/Loading';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { API_USERS_PROFILE } from '@src/services/client/users';
 import { http } from '@src/services/http';
 import { SideBar } from '../../../organisms/Sidebar';
 
 export default function Layout() {
-  const { user } = useUserContext();
+  const { user, setUser } = useUserContext();
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
+    const getProfile = async () => {
+      await API_USERS_PROFILE()
+        .then(({ data }) => {
+          setUser(data);
+        })
+        .catch(() => {
+          http.removeAuthHeader();
+          navigate(ROUTES_PATH.login);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    };
     if (!user) {
-      http.removeAuthHeader();
-      navigate(ROUTES_PATH.login);
+      getProfile();
     }
-    setLoading(false);
-  }, [navigate, user]);
+  }, [navigate, setUser, user]);
 
   if (!loading) {
     return (
@@ -36,5 +48,5 @@ export default function Layout() {
       </div>
     );
   }
-  return <LoadingPage />;
+  return <LoadingPage description="لطفا شکیبا باشید" />;
 }

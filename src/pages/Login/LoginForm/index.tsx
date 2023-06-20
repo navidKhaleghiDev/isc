@@ -13,8 +13,11 @@ import { http } from '@src/services/http';
 import { Modal } from '@ui/molecules/Modal';
 import { IUser } from '@src/services/client/users/types';
 import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
+import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 import { UpdateSerialDevice } from './UpdateSerialDevice';
+
+export const STORAGE_KEY_REFRESH_TOKEN = 'refresh';
 
 export function LoginForm({ onChangeStep }: PropsFormType) {
   const { user, setUser } = useUserContext();
@@ -55,9 +58,17 @@ export function LoginForm({ onChangeStep }: PropsFormType) {
     }
   };
 
-  const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
+  const handelSubmitForm = async ({
+    email,
+    password,
+    remember_me,
+  }: ILoginFieldValues) => {
     await API_USERS_LOGIN({ email, password })
       .then(({ data }) => {
+        if (remember_me) {
+          localStorage.setItem(STORAGE_KEY_REFRESH_TOKEN, data.refresh_token);
+        }
+
         setUserState(data);
         http.setAuthHeader(data.access_token, data.refresh_token);
         if (
@@ -66,6 +77,7 @@ export function LoginForm({ onChangeStep }: PropsFormType) {
         ) {
           // user login as first time
           handleSetUserRedux(data);
+
           onChangeStep(ELoginStep.CHANGE_PASSWORD);
         } else if (data.is_authenticated) {
           // user is authenticated
@@ -120,18 +132,14 @@ export function LoginForm({ onChangeStep }: PropsFormType) {
             control={control}
             placeholder="password"
           />
-          {/* <BaseInput
-            fullWidth
+          <BaseCheckBox
             control={control}
-            placeholder="password"
-            id="password"
-            name="password"
-            type="password"
-            endIcon="carbon:password"
-            rules={{
-              required: regexPattern.required,
-            }}
-          /> */}
+            label="مرا به خاطر بسپار"
+            id="remember_me"
+            name="remember_me"
+            className="ml-auto"
+          />
+
           <BaseButton
             onClick={() => {}}
             label="ورود به حساب کاربری"
