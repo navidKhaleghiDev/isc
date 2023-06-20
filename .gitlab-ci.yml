@@ -15,16 +15,13 @@ deploy:
   stage: deploy
   image:
     name: nexus:443/ubuntu:20.04
-  before_script:
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$ANSIBLE_PRIVATE_KEY")
   script:
     - echo 'deb http://10.27.95.5:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe' > /etc/apt/sources.list -
     - echo 'deb http://10.27.95.5:8081/repository/apt-proxy/ubuntu jammy main restricted universe' >> /etc/apt/sources.list
-    - apt-get update && apt-get install -y python3 python3-pip 
-    - pip install --index-url http://10.27.95.5:8081/repository/pypi-all/simple --trusted-host 10.27.95.5 ansible
-    - mkdir inventory
-    - 'echo "10.27.95.1 ansible_host=ics-sec ansible_ssh_user=ansible" >inventory/hosts'
+    - apt-get update && apt-get install -y python3 python3-pip openssh-client sudo
+    - useradd -d /home/ansible -m -s /bin/bash ansible
+    - sudo -u ansible -s "pip install --index-url http://10.27.95.5:8081/repository/pypi-all/simple --trusted-host 10.27.95.5 ansible"
+    - sudo -u ansible 'mkdir /home/ansible/inventory; echo "10.27.95.1 ansible_host=ics-sec ansible_ssh_user=ansible" >inventory/hosts'
     - ls -la
     - whoami
     - ansible-playbook --version
