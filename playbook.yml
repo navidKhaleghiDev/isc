@@ -22,8 +22,6 @@
     community.general.snap:
       name:
         - lxd
-      options:
-        - channel: latest/stable
   
   - name: Create front lxc container
     community.general.lxc_container:
