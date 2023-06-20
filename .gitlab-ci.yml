@@ -26,4 +26,4 @@ deploy:
     - echo $ANSIBLE_PRIVATE_KEY | base64 -d > /home/ansible/.ssh/id_rsa; chown ansible:ansible /home/ansible/.ssh/id_rsa; chmod 0600 /home/ansible/.ssh/id_rsa
     - cp playbook.yml /home/ansible/playbook.yml; chown ansible:ansible /home/ansible/playbook.yml
     - sudo -u ansible -s /bin/bash -c '/usr/bin/ssh-keygen -f /home/ansible/.ssh/id_rsa -y > /home/ansible/.ssh/id_rsa.pub'
-    - sudo -u ansible -s /bin/bash -c '/home/ansible/.local/bin/ansible-playbook /home/ansible/playbook.yml -i ./ansible/inventory/hosts'
+    - sudo -u ansible -s /bin/bash -c '/home/ansible/.local/bin/ansible-playbook /home/ansible/playbook.yml -i /home/ansible/inventory/hosts'
