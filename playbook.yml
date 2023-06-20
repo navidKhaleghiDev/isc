@@ -34,17 +34,8 @@
         - lxd
   
   - name: Create front container
-    community.general.lxd_container:
-      name: front
-      state: started
-      source:
-        type: image
-        mode: pull
-        protocol: lxd
-        alias: ubuntu:20.04
-      profiles: ["default"]
-      wait_for_ipv4_addresses: true
-      timeout: 600
+    command: /snap/bin/lxc launch ubuntu:20.04 front
+    creates: /var/snap/lxd/common/lxd/containers/zeek
  
   - name: Install nodejs in container
     command: /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y"
