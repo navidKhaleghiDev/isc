@@ -5,6 +5,15 @@ export interface IBodyUsersLogin {
   password: string;
 }
 
+export interface IBodyAddUser {
+  first_name: string;
+  last_name: string;
+  date_joined: string;
+  email: string;
+  is_admin: boolean;
+  password: string;
+  is_analyser: string;
+}
 export interface IUser {
   id: string;
   last_login: string;
