@@ -56,7 +56,7 @@
       lxc list front -f csv -c s | grep RUNNING || /snap/bin/lxc start front
       sleep 5
       /snap/bin/lxc exec front -- /bin/bash -c "echo 10.27.95.5 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
-      /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y"
+      /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y -q && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y -q"
       /snap/bin/lxc file push /tmp/app.tar.gz front/tmp/app.tar.gz
       /snap/bin/lxc file push /tmp/front.service front/usr/lib/systemd/system/front.service
       /snap/bin/lxc file push /tmp/00-front.conf front/etc/rsyslog.d/00-front.conf
