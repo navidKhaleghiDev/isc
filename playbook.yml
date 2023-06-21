@@ -61,6 +61,6 @@
       /snap/bin/lxc file push /tmp/front.service front/usr/lib/systemd/system/front.service
       /snap/bin/lxc file push /tmp/00-front.conf front/etc/rsyslog.d/00-front.conf
       /snap/bin/lxc file push /tmp/frontapp front/etc/logrotate.d/frontapp
-      /snap/bin/lxc exec front -- /bin/bash -c "grep front /etc/passwd >/dev/null || useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front -xzf /tmp/app.tar.gz && systemctl enable front.service && systemctl restart rsyslogd"
+      /snap/bin/lxc exec front -- /bin/bash -c "grep front /etc/passwd >/dev/null || useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front -xzf /tmp/app.tar.gz && systemctl enable front.service && mkdir /var/log/frontapp && systemctl restart rsyslog"
       /snap/bin/lxc exec front -- /bin/bash -c "cd /home/front/ && npm install && npm run build && chown -R front:front /home/front/"
       /snap/bin/lxc exec front -- /bin/bash -c "systemctl restart front.service"
