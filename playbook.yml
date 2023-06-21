@@ -63,4 +63,3 @@
       /snap/bin/lxc file push /tmp/frontapp front/etc/logrotate.d/frontapp
       /snap/bin/lxc exec front -- /bin/bash -c "useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front xzf /tmp/app.tar.gz && chown -R front:front /home/front/ && systemctl enable front.service && systemctl restart rsyslogd"
 
-
