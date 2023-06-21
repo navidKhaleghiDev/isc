@@ -53,7 +53,7 @@
  
   - name: Install nodejs in container
     ansible.builtin.shell: |
-      lxc list front -f csv -c s | grep RUNNING || /snap/bin/lxc start front
+      lxc list front -f csv -c s | grep RUNNING >/dev/null 2>&1 || /snap/bin/lxc start front
       sleep 5
       /snap/bin/lxc exec front -- /bin/bash -c "echo 10.27.95.5 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
       /snap/bin/lxc exec front -- /bin/bash -c "apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y -q"
@@ -61,5 +61,5 @@
       /snap/bin/lxc file push /tmp/front.service front/usr/lib/systemd/system/front.service
       /snap/bin/lxc file push /tmp/00-front.conf front/etc/rsyslog.d/00-front.conf
       /snap/bin/lxc file push /tmp/frontapp front/etc/logrotate.d/frontapp
-      /snap/bin/lxc exec front -- /bin/bash -c "useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front -xzf /tmp/app.tar.gz && systemctl enable front.service && systemctl restart rsyslogd"
+      /snap/bin/lxc exec front -- /bin/bash -c "grep front /etc/passwd >/dev/null || useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front -xzf /tmp/app.tar.gz && systemctl enable front.service && systemctl restart rsyslogd"
       /snap/bin/lxc file front -- /bin/bash -c "cd /home/front/ && npm install && npm run build && chown -R front:front /home/front/"
