@@ -1,9 +1,10 @@
 import { BaseButton, Card } from '@ui/atoms';
 import { RulesList } from '@ui/molecules/RulesList';
 import { useState } from 'react';
+import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { ButtonState } from './types';
 
-export function RulesPage() {
+function RulesPageCP() {
   const [activeButton, setActiveButton] = useState<ButtonState>('suggest');
 
   const handleClickTab = (tab: ButtonState) => {
@@ -33,3 +34,6 @@ export function RulesPage() {
     </div>
   );
 }
+
+const RulesPage = WithPermission(RulesPageCP, EUserRole.ADMIN, true);
+export { RulesPage };

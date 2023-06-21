@@ -11,6 +11,7 @@ import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { TitleMyProduct } from '@ui/molecules/TitleMyProduct';
 import { useUserContext } from '@context/user/userContext';
 import { NotHaveDeviceSerial } from '@ui/molecules/NotHaveDeviceSerial';
+import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -21,7 +22,7 @@ function GridMyProduct({ children, className }: PropsType) {
   );
 }
 
-export function MyProductPage() {
+function MyProductPageCp() {
   const { user } = useUserContext();
   const { data } = useGet<ResponseSwr<IProduct>>(
     user?.device_serial ? E_USERS_PRODUCT : null
@@ -147,3 +148,6 @@ export function MyProductPage() {
     </div>
   );
 }
+
+const MyProductPage = WithPermission(MyProductPageCp, EUserRole.ADMIN, true);
+export { MyProductPage };

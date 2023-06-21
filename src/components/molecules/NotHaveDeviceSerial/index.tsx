@@ -4,10 +4,13 @@ import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
 import { UpdateSerialDevice } from '@src/pages/Login/LoginForm/UpdateSerialDevice';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 type PropsType = { title: string };
 export function NotHaveDeviceSerial({ title }: PropsType) {
   const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
+
   const [openModalAssignSerial, setOpenModalAssignSerial] = useState(false);
 
   const handleOnSuccessAddSerial = (serial: string) => {

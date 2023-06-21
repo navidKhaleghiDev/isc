@@ -24,6 +24,7 @@ import { AddUserPage } from '@src/pages/AddUser';
 import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
+import Layout from '@ui/Templates/layouts/Layout';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
@@ -125,6 +126,15 @@ const routesConfig = [
       {
         path: ROUTES_PATH.myProductMyRulesRetrieve,
         element: <MyRuleDetailsPage />,
+      },
+    ],
+  },
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: '/test',
+        element: <div>test</div>,
       },
     ],
   },

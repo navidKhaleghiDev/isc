@@ -119,7 +119,7 @@ export function MyRuleDetail() {
         </div>
       </div>
 
-      <Card color="neutral" className="p-4 h-[32rem] overflow-y-auto">
+      <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
         {codeList &&
           codeList.map((code: SliceOrderCodeType, index: number) => {
             return (

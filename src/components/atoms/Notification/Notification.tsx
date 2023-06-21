@@ -17,7 +17,10 @@ export function Notification({
       border
     >
       <div className="flex items-center">
-        <BaseIcon icon="carbon:security" className="ml-5" />
+        <BaseIcon
+          icon={type === 'error' ? 'ph:shield-warning' : 'carbon:security'}
+          className="ml-5"
+        />
         <Typography size="body3" weight="medium">
           {title}
         </Typography>

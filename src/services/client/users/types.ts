@@ -8,7 +8,7 @@ export interface IBodyUsersLogin {
 export interface IBodyAddUser {
   first_name: string;
   last_name: string;
-  date_joined: string;
+  // date_joined: string;
   email: string;
   is_admin: boolean;
   password: string;
@@ -28,6 +28,7 @@ export interface IUser {
   device_serial: string;
   is_superuser: boolean;
   is_admin: boolean;
+  is_analyser: boolean;
   // is_analyser: string;
   // groups: string;
   // user_permissions: string;

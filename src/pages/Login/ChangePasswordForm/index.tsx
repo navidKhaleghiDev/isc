@@ -25,7 +25,7 @@ export function ChangePasswordForm({
     mode: 'onChange',
   });
   const [error, setError] = useState<string | null>(null);
-  const [openModalAuth, setOpenModalAuth] = useState(true);
+  const [openModalAuth, setOpenModalAuth] = useState(false);
   const { user } = useUserContext();
 
   const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
