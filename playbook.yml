@@ -43,7 +43,7 @@
     with_items:
       - app.tar.gz
       - front.service
-      - 00-front.conf
+      - "00-front.conf"
       - frontapp
 
   - name: Create front container
