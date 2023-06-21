@@ -5,9 +5,10 @@ import { Card, Typography, BaseIcon } from '@ui/atoms';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
+import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { NotHaveDeviceSerial } from '../../../components/molecules/NotHaveDeviceSerial';
 
-export function ProductBox() {
+function ProductBoxCp() {
   const { user } = useUserContext();
   const { data, isLoading } = useGet<ResponseSwr<IProduct>>(
     user?.device_serial ? E_USERS_PRODUCT : null
@@ -15,7 +16,7 @@ export function ProductBox() {
   const product = data?.data;
 
   if (!user?.device_serial) {
-    return <NotHaveDeviceSerial title="جزپیات داشبورد" />;
+    return <NotHaveDeviceSerial title="جزییات داشبورد" />;
   }
   return isLoading ? (
     <LoadingSpinner />
@@ -95,3 +96,6 @@ export function ProductBox() {
     </div>
   );
 }
+
+const ProductBox = WithPermission(ProductBoxCp, EUserRole.ADMIN);
+export { ProductBox };

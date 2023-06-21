@@ -14,6 +14,7 @@ export function MenuItem({ item, pathname, isChildren }: IMenuItem) {
         isActiveChildren: isActive && isChildren,
       })}
       to={item.path}
+      target={item.isNewTab ? '_blank' : '_self'}
     >
       {item?.icon && <BaseIcon icon={item.icon} />}
       <Typography className="mr-3" size="body2">

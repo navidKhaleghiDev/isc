@@ -80,7 +80,7 @@ export function AddUserPage() {
             }}
             fullWidth
           />
-          <BaseInput
+          {/* <BaseInput
             name="date_joined"
             id="date_joined"
             type="date"
@@ -91,7 +91,7 @@ export function AddUserPage() {
             }}
             placeholder="1402/02/23  -  11:25 AM"
             fullWidth
-          />
+          /> */}
         </div>
         <div className="ml-auto mt-6">
           <BaseCheckBox

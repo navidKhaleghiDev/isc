@@ -1,8 +1,8 @@
-const getCodeListPattern = /[alert|drop|block|pass][\s\S]+?rev:[0-9];\)/gm;
+const getCodeListPattern = /[alert|drop|block|pass|reject][\s\S]+?\)/gm;
 // const getCodeListPattern =
 //   /[alert|drop|block|pass].+?[alert|drop|block|pass]\)/gm;
 
-const sliceOrderPattern = /^(alert|drop|block|pass)/;
+const sliceOrderPattern = /^(alert|drop|block|pass|reject)/;
 
 export type SliceOrderCodeType = {
   order: string;
@@ -20,8 +20,6 @@ export function splitOrderCode(singleCode: string): SliceOrderCodeType {
 
 export function getCodeList(data: string): SliceOrderCodeType[] | null {
   const list = data.match(getCodeListPattern);
-  console.log({ list });
-
   const newList: SliceOrderCodeType[] = [];
   list?.forEach((li) => {
     const { code, order } = splitOrderCode(li);

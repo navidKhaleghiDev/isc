@@ -17,6 +17,7 @@ export function CodeLineSelect({ value, onChange }: PropsType) {
       <option value="drop">DROP</option>
       <option value="block">BLOCK</option>
       <option value="pass">PASS</option>
+      <option value="reject">REJECT</option>
     </select>
   );
 }

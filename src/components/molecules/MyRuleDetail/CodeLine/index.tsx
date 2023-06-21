@@ -4,6 +4,9 @@ import { CodeLineSelect } from './CodeLineSelect';
 
 type PropsType = { code: SliceOrderCodeType; onChangeOrder: any };
 export function CodeLine({ code, onChangeOrder }: PropsType) {
+  if (!code.order || !code.code) {
+    return null;
+  }
   return (
     <div dir="ltr">
       <Card className="my-2 font-sans text-left p-2">

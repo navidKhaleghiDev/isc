@@ -54,7 +54,7 @@ export function RuleDetail() {
         </div>
       </div>
 
-      <Card color="neutral" className="p-4 h-[41rem] overflow-y-auto">
+      <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
         {codes &&
           codes.map((code: SliceOrderCodeType, index: number) => {
             return <CodeLine key={`${index}_${code.order}`} code={code} />;

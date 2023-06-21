@@ -3,6 +3,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { API_RULES_ASSIGN_OWNER } from '@src/services/client/rules';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { delay } from '@src/helper/utils';
 import { PropsFormType } from '../types';
 
@@ -16,12 +17,15 @@ export function RegisterSerialDeviceForm({ getProfile }: PropsFormType) {
   });
 
   const [error, setError] = useState<string | null>(null);
+  const [isSuccessAddSerial, setIsSuccessAddSerial] = useState(false);
 
   const handelSubmitForm = async (dataForm: IUpdateIpValues) => {
     await API_RULES_ASSIGN_OWNER({ serial: dataForm.serial })
       .then(async () => {
+        toast.success('سریال با موفقیت ثبت شد');
         delay(2000).then(() => {
           getProfile();
+          setIsSuccessAddSerial(true);
         });
       })
       .catch((err) => {
@@ -55,12 +59,21 @@ export function RegisterSerialDeviceForm({ getProfile }: PropsFormType) {
           }}
           fullWidth
         />
-        <BaseButton
-          label="ارسال شماره سریال"
-          size="lg"
-          className="mt-10"
-          submit
-        />
+        {!isSuccessAddSerial ? (
+          <BaseButton
+            label="ارسال شماره سریال"
+            size="lg"
+            className="mt-10"
+            submit
+          />
+        ) : (
+          <BaseButton
+            label="برو به داشبورد"
+            size="lg"
+            className="mt-10"
+            onClick={() => getProfile()}
+          />
+        )}
       </form>
     </div>
   );

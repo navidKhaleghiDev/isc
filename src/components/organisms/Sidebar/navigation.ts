@@ -4,6 +4,7 @@ export interface INavigation {
   id: string;
   label: string;
   path: RoutePathType | string;
+  isNewTab?: boolean;
   icon?: string;
   items?: INavigation[];
 }
@@ -52,7 +53,8 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '1',
         label: 'سیستم نظارتی اول',
-        path: ROUTES_PATH.monitoringSystems,
+        path: 'http://192.168.2.20:5601',
+        isNewTab: true,
       },
       {
         id: '2',
