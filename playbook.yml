@@ -33,6 +33,19 @@
       name:
         - lxd
   
+  - name: Copy application 
+    ansible.builtin.copy:
+      src: "/home/ansible/{{ item }}"
+      dest: "/tmp/{{ item }}"
+      owner: root
+      group: root
+      mode: '0644'
+    with_items:
+      - app.tar.gz
+      - front.service
+      - 00-front.conf
+      - frontapp
+
   - name: Create front container
     ansible.builtin.command:
       cmd: /snap/bin/lxc launch ubuntu:20.04 front
@@ -44,3 +57,7 @@
       sleep 5
       /snap/bin/lxc exec front -- /bin/bash -c "echo 10.27.95.5 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
       /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && apt-get dist-upgrade -y && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y"
+      /snap/bin/lxc file push /tmp/app.tar.gz front/tmp/app.tar.gz
+      /snap/bin/lxc exec front -- /bin/bash -c "useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front xzf /tmp/app.tar.gz && chown -R front:front /home/front/"
+
+
