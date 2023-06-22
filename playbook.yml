@@ -9,30 +9,6 @@
 
   # List of tasks
   tasks:
-  - name: Run apt-get update
-    ansible.builtin.apt:
-      update_cache: yes
-
-  - name: Install sanpd
-    ansible.builtin.apt:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - snap
-      - python3
-      - python3-lxc
-      - lxc
-      - lxc-dev
-      - lxc-templates
-      - lxc-utils
-      - liblxc-common
-      - liblxc-dev
-
-  - name: Install lxd using snap
-    community.general.snap:
-      name:
-        - lxd
-  
   - name: Copy application 
     ansible.builtin.copy:
       src: "/home/ansible/{{ item }}"
@@ -51,7 +27,7 @@
       cmd: /snap/bin/lxc launch ubuntu:20.04 front
       creates: /var/snap/lxd/common/lxd/containers/front
  
-  - name: Install nodejs in container
+  - name: Install nodejs and deploy application into the container
     ansible.builtin.shell: |
       lxc list front -f csv -c s | grep RUNNING >/dev/null 2>&1 || /snap/bin/lxc start front
       sleep 5
