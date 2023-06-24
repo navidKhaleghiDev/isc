@@ -42,7 +42,7 @@ export function FilterIps() {
         mutate();
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 

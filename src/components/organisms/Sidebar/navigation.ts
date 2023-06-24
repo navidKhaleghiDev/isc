@@ -76,4 +76,22 @@ export const navigationSideBar: INavigation[] = [
     path: ROUTES_PATH.settings,
     icon: 'ph:gear',
   },
+  {
+    id: '7',
+    label: 'کاربران ',
+    path: ROUTES_PATH.users,
+    icon: 'ph:users-three',
+    items: [
+      {
+        id: '1',
+        label: 'لیست کاربران',
+        path: ROUTES_PATH.users,
+      },
+      {
+        id: '2',
+        label: ' اضافه کردن کاربر',
+        path: ROUTES_PATH.addUser,
+      },
+    ],
+  },
 ];

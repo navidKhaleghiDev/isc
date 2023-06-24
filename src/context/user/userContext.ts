@@ -5,10 +5,14 @@ import { Dispatch, SetStateAction, createContext, useContext } from 'react';
 //   mode: 'light' | 'dark';
 //   direction: 'rtl' | 'ltr';
 // }
-
+interface IUserWithAuth extends IUser {
+  access_token: string;
+  refresh_token: string;
+  is_authenticated: boolean;
+}
 export interface IUserContext {
-  user: IUser | null;
-  setUser: Dispatch<SetStateAction<IUser | null>>;
+  user: IUserWithAuth | null;
+  setUser: Dispatch<SetStateAction<IUserWithAuth | null>>;
 }
 
 export const UserContext = createContext<IUserContext>({

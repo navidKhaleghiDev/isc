@@ -4,9 +4,10 @@ import { regexPattern } from '@ui/atoms/Inputs';
 import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 import { useForm } from 'react-hook-form';
 import { API_USERS_ADD } from '@src/services/client/users';
+import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { IAddUserFormValues } from './types';
 
-export function AddUserPage() {
+function AddUserPageCp() {
   const { control, handleSubmit } = useForm<IAddUserFormValues>({
     mode: 'onChange',
   });
@@ -17,7 +18,7 @@ export function AddUserPage() {
         toast.success('یوزر با موفقیت ثبت شد');
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 
@@ -80,18 +81,6 @@ export function AddUserPage() {
             }}
             fullWidth
           />
-          {/* <BaseInput
-            name="date_joined"
-            id="date_joined"
-            type="date"
-            control={control}
-            label="تاریخ و زمان"
-            rules={{
-              required: regexPattern.required,
-            }}
-            placeholder="1402/02/23  -  11:25 AM"
-            fullWidth
-          /> */}
         </div>
         <div className="ml-auto mt-6">
           <BaseCheckBox
@@ -109,7 +98,7 @@ export function AddUserPage() {
         </div>
         <BaseButton
           label="اضافه کردن کاربر جدید"
-          className="mt-24"
+          className="mt-16"
           size="xl"
           submit
         />
@@ -117,3 +106,6 @@ export function AddUserPage() {
     </div>
   );
 }
+
+const AddUserPage = WithPermission(AddUserPageCp, EUserRole.SUPER_USER, true);
+export { AddUserPage };

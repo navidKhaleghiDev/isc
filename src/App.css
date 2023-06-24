@@ -38,6 +38,11 @@
   }
 }
 
+/* toast container styles */
+.Toastify__toast-body {
+  font-family: on;
+}
+
 /* @layer components {
   .select2-dropdown {
     @apply bg-red-600;

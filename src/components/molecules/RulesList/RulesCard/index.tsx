@@ -23,7 +23,7 @@ export function RulesCard({ rule }: PropsType) {
         toast.success('با موفقیت اضافه شد');
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 

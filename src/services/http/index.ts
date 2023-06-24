@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-throw-literal */
 /* eslint-disable class-methods-use-this */
 
 import axios, {
@@ -8,6 +9,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 import cookie from 'js-cookie';
+import { toast } from 'react-toastify';
 
 enum StatusCode {
   Unauthorized = 401,
@@ -15,7 +17,9 @@ enum StatusCode {
   TooManyRequests = 429,
   InternalServerError = 500,
   BadRequestError = 400,
+  ProxyUnauthorized = 407,
 }
+
 export const BASE_URL_CLIENT = 'http://192.168.1.57:8000';
 
 export const STORAGE_KEY_TOKEN = 't';
@@ -24,6 +28,7 @@ export const STORAGE_KEY_REFRESH_TOKEN = 'r';
 const headers: Readonly<Record<string, string | boolean>> = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
+  'Accept-Language': 'fa',
   // 'Content-Type': 'application/json; charset=utf-8',
   // 'Access-Control-Allow-Credentials': true,
   // 'X-Requested-With': 'XMLHttpRequest',
@@ -74,8 +79,7 @@ export class Http {
     http.interceptors.response.use(
       (response) => response,
       (error) => {
-        const { response } = error;
-        return this.handleError(response);
+        return this.handleError(error);
       }
     );
 
@@ -103,10 +107,7 @@ export class Http {
   }
 
   async put<T>(url: string, data: object, config?: AxiosRequestConfig) {
-    return this.http
-      .put<T>(url, data, config)
-      .then((res) => this.handleSuccess<T>(res))
-      .catch(this.handleError);
+    return this.http.put<T>(url, data, config);
   }
 
   async patch<T = any, R = AxiosResponse<T>>(
@@ -142,19 +143,23 @@ export class Http {
 
   private handleError<T>(error: Error | AxiosError): T {
     if (axios.isAxiosError(error)) {
-      const { status } = error;
+      const response = error.response as AxiosResponse;
+      const { status, data } = response;
+
       switch (status) {
         case StatusCode.BadRequestError: {
           // Handle InternalServerError
-          throw error.response?.data.error;
-        }
-        case StatusCode.InternalServerError: {
-          // Handle InternalServerError
-          break;
-        }
-        case StatusCode.Forbidden: {
-          // Handle Forbidden
-          break;
+          let errorMessage = '';
+          Object.entries(data).forEach(([key, value]) => {
+            if (typeof value === 'string') {
+              errorMessage += `🔸${value}`;
+            } else if (Array.isArray(value)) {
+              value.forEach((err) => {
+                errorMessage += `🔸${key}: ${err}`;
+              });
+            }
+          });
+          throw errorMessage;
         }
         case StatusCode.Unauthorized: {
           // Handle Unauthorized
@@ -162,14 +167,27 @@ export class Http {
           window.location.reload();
           break;
         }
+        case StatusCode.Forbidden: {
+          // Handle Forbidden
+          toast.error('شما به این بخش دسترسی ندارید');
+          break;
+        }
+        case StatusCode.ProxyUnauthorized: {
+          // Handle proxy unauthorized
+          toast.error('شما نیاز به احراز هویت دارید');
+          break;
+        }
         case StatusCode.TooManyRequests: {
           // Handle TooManyRequests
           break;
         }
+        case StatusCode.InternalServerError: {
+          // Handle InternalServerError
+          break;
+        }
         default:
-          throw error.response?.data;
+          throw 'با پشتیبانی تماس بگیرید.';
       }
-      throw error.response?.data;
     }
     throw error;
   }

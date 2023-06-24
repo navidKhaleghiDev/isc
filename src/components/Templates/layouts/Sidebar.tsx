@@ -1,4 +1,5 @@
 import { useUserContext } from '@context/user/userContext';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { http } from '@src/services/http';
 import { BaseIcon, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
@@ -118,7 +119,7 @@ function Sidebar({ collapsed, shown, setCollapsed }: Props) {
             {!collapsed && (
               <div className="flex flex-col">
                 <span className="text-indigo-50 my-0">Tom Cook</span>
-                <Link to="/" className="text-indigo-200 text-sm">
+                <Link to={ROUTES_PATH.home} className="text-indigo-200 text-sm">
                   View Profile
                 </Link>
               </div>

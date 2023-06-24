@@ -22,6 +22,7 @@ export type RoutePathType =
   | 'myProductIpsList'
   | 'blog'
   | 'ourServices'
+  | 'users'
   | 'resetPassword';
 
 export const RoutesName = {
@@ -48,12 +49,13 @@ export const RoutesName = {
   PROFILE: 'profile',
   MONITORING_SYSTEM: 'monitoring-systems',
   ADD_USER: 'add-user',
+  USERS: 'users',
 };
 
 export const ROUTES_PATH: Record<RoutePathType, string> = {
   home: '/',
   ui: `/${RoutesName.UI}`,
-  addUser: `/${RoutesName.ADD_USER}`,
+  addUser: `/${RoutesName.USERS}/${RoutesName.ADD_USER}`,
   services: `/${RoutesName.SERVICES}`,
   servicesProducts: `/${RoutesName.SERVICES}/${RoutesName.PRODUCTS}`,
   servicesRules: `/${RoutesName.SERVICES}/${RoutesName.RULES}`,
@@ -75,4 +77,5 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   myProductIpsList: `/${RoutesName.MY_PRODUCT}/ips-list`,
   myProductMyRulesRetrieve: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}/:id`,
   resetPassword: `/${RoutesName.RESET_PASSWORD}`,
+  users: `/${RoutesName.USERS}`,
 };

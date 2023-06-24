@@ -30,7 +30,7 @@ export function AuthenticationForm({
         }
       })
       .catch((err) => {
-        setError(err.data.error);
+        setError(err);
       });
   };
 

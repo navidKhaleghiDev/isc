@@ -62,7 +62,7 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         }
       })
       .catch((err) => {
-        setError(err.data.error);
+        setError(err);
       });
   };
 

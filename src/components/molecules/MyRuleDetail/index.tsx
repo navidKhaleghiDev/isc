@@ -59,7 +59,7 @@ export function MyRuleDetail() {
         navigate(-1);
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 
@@ -77,7 +77,7 @@ export function MyRuleDetail() {
         mutate();
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 
