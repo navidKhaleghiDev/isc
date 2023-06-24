@@ -29,7 +29,7 @@ export function RegisterSerialDeviceForm({ getProfile }: PropsFormType) {
         });
       })
       .catch((err) => {
-        setError(err.data.error);
+        setError(err);
       });
   };
 

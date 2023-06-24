@@ -48,7 +48,7 @@ export function SettingsPage() {
         toast.success('تغییرات با موفقیت انجام شد.');
       })
       .catch((err) => {
-        setError(err.data.error);
+        setError(err);
       });
   };
 

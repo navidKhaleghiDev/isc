@@ -52,7 +52,7 @@ export function ChangePasswordForm({
         }
       })
       .catch((err) => {
-        setError(err.data.error);
+        setError(err);
       });
   };
 

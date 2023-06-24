@@ -1,3 +1,4 @@
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ function NotFoundPage() {
     >
       <h1 className="">Not Found</h1>
       <p>Oops! page not found.</p>
-      <Link to="/">
+      <Link to={ROUTES_PATH.home}>
         <BaseButton
           className="mt-6"
           label="go to home"

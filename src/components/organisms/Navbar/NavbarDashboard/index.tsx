@@ -2,6 +2,7 @@ import { useUserContext } from '@context/user/userContext';
 import { Avatar } from '@ui/atoms/Avatar';
 import { Typography } from '@ui/atoms/Typography/Typography';
 import { Link } from 'react-router-dom';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { getRoleUser } from './utils';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -12,7 +13,7 @@ export function NavbarDashboard() {
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center">
           {user?.is_superuser && (
-            <Link to="add-user" className="ml-4">
+            <Link to={ROUTES_PATH.addUser} className="ml-4">
               <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
             </Link>
           )}

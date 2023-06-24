@@ -31,7 +31,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         mutateIpList();
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 
@@ -43,7 +43,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         mutateIpList();
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 

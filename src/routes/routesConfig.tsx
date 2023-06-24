@@ -20,11 +20,12 @@ import { OurServicesPage } from '@src/pages/OurServices';
 import { SettingsPage } from '@src/pages/Settings';
 import { SupportPage } from '@src/pages/Support';
 import { ProfilePage } from '@src/pages/Profile';
-import { AddUserPage } from '@src/pages/AddUser';
+import { AddUserPage } from '@src/pages/Users/AddUser';
 import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import Layout from '@ui/Templates/layouts/Layout';
+import { UsersPage } from '@src/pages/Users';
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
@@ -78,6 +79,10 @@ const routesConfig = [
       {
         path: ROUTES_PATH.addUser,
         element: <AddUserPage />,
+      },
+      {
+        path: ROUTES_PATH.users,
+        element: <UsersPage />,
       },
       {
         path: ROUTES_PATH.dashboard,

@@ -1,6 +1,6 @@
 export const E_USERS_LOGIN = '/users/login/';
 
-export const E_USERS_PATCH = (id: string) => `/users/${id}/`;
+export const E_USERS_ID = (id: string) => `/users/${id}/`;
 
 export const E_USERS = `/users/`;
 

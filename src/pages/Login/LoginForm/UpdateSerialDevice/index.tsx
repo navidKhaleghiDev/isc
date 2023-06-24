@@ -29,7 +29,7 @@ export function UpdateSerialDevice({ onCloseModal, onSuccessAdd }: PropsType) {
         });
       })
       .catch((err) => {
-        toast.error(err.data.error);
+        toast.error(err);
       });
   };
 

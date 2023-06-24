@@ -15,26 +15,22 @@ export interface IBodyAddUser {
   is_analyser: string;
 }
 export interface IUser {
-  id: string;
-  last_login: string;
+  id?: string;
+  device_serial: string;
+  last_login: string | null;
   first_name: string;
   last_name: string;
-  // is_staff: string;
+  is_staff: boolean;
   is_active: boolean;
   date_joined: string;
-  username: string;
+  username: string | null;
   email: string;
-  // password: string;
-  device_serial: string;
+  password: string;
   is_superuser: boolean;
   is_admin: boolean;
   is_analyser: boolean;
-  // is_analyser: string;
-  // groups: string;
-  // user_permissions: string;
-  is_authenticated: string;
-  access_token: string;
-  refresh_token: string;
+  groups: string[];
+  user_permissions: string[];
 }
 
 export interface IProduct {

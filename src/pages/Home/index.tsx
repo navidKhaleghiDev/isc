@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Typography } from '@ui/atoms';
 import { NavbarHome } from '@ui/organisms/Navbar/NavbarHome';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function HomePage() {
@@ -24,7 +25,7 @@ export function HomePage() {
           قرار گیرد.
         </Typography>
 
-        <Link to="/login">
+        <Link to={ROUTES_PATH.login}>
           <BaseButton
             label="login"
             className="mt-6 w-64"
