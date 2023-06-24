@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { BaseButton, Card, Typography } from '@ui/atoms';
+import { Card, Typography } from '@ui/atoms';
 import { useLocation } from 'react-router-dom';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';

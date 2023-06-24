@@ -6,7 +6,6 @@ import {
   IBodyAssignOwner,
   IBodyUpdateMyRule,
   IIp,
-  IMyRule,
 } from './types';
 import {
   E_RULES_VALID_IPS,

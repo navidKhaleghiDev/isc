@@ -33,7 +33,7 @@ export function ChangePasswordForm({
       onChangeStep(ELoginStep.LOGIN);
       return;
     }
-    await API_USERS_PATCH(user.id, {
+    await API_USERS_PATCH(user.id as string, {
       email,
       password,
     })

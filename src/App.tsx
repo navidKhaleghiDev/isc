@@ -9,14 +9,13 @@ import './App.css';
 //   SettingContext,
 //   defaultSettingState,
 // } from '@context/settings/settingsContext';
-import { UserContext } from '@context/user/userContext';
-import { IUser } from './services/client/users/types';
+import { IUserWithAuth, UserContext } from '@context/user/userContext';
 
 const router = createBrowserRouter(routesConfig);
 
 function App() {
   // const [setting, setSetting] = useState<ISetting>(defaultSettingState);
-  const [user, setUser] = useState<IUser | null>(null);
+  const [user, setUser] = useState<IUserWithAuth | null>(null);
 
   // const settingValue = useMemo(() => ({ setting, setSetting }), [setting]);
   const userValue = useMemo(() => ({ user, setUser }), [user]);
