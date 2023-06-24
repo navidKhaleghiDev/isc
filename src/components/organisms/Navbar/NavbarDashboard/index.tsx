@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { getRoleUser } from './utils';
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 export function NavbarDashboard() {
   const { user } = useUserContext();
   return (
@@ -31,17 +30,9 @@ export function NavbarDashboard() {
             </Typography>
           </div>
         </div>
-        {/* search and button */}
-        {/* <BaseInput
-          control={control}
-          name="search"
-          id="search"
-          placeholder="...جستجو"
-          className="pl-10 self-baseline"
-          startIcon="material-symbols:search"
-          hiddenError
-        /> */}
-        <img src="/logo.jpg" alt="logo" />
+        <Link to={ROUTES_PATH.home}>
+          <img src="/logo.jpg" alt="logo" />
+        </Link>
       </div>
     </nav>
   );

@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput } from '@ui/atoms/Inputs';
-import Logo from '@src/assets/react.svg';
 import { Typography } from '@ui/atoms';
 import { IHomeRoutes, homeRoutes } from './routes';
 
@@ -13,7 +12,7 @@ export function NavbarHome() {
       <div className="flex items-center justify-between p-4">
         <div className="flex">
           <a href="#" className="flex items-center ml-6">
-            <img src={Logo} className="h-8 mr-3" alt="Logo" />
+            <img src="/logo.jpg" className="h-8 mr-3" alt="Logo" />
           </a>
           <button
             data-collapse-toggle="navbar-dropdown"
