@@ -107,7 +107,6 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
           />
 
           <BaseButton
-            onClick={() => {}}
             label="ورود به حساب کاربری"
             endIcon="ic:round-login"
             className="mt-8"
@@ -115,11 +114,11 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             submit
             fullWidth
           />
-          <Link to={ROUTES_PATH.resetPassword}>
+          {/* <Link to={ROUTES_PATH.resetPassword}>
             <Typography color="teal" className="mt-2">
               رمز خود را فراموش کرده اید؟
             </Typography>
-          </Link>
+          </Link> */}
         </div>
       </form>
       <Modal

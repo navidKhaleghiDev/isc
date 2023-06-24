@@ -1,7 +1,6 @@
 import PrivateLayout from '@src/components/Templates/layouts/PrivateLayout';
 import { HomePage } from '@src/pages/Home';
 import { LoginPage } from '@src/pages/Login';
-import { ResetPasswordPage } from '@src/pages/ResetPassword';
 import { DashboardPage } from '@src/pages/Dashboard';
 import { ProductsPage } from '@src/pages/Services/Products';
 import { MonitoringSystemsPage } from '@src/pages/MonitoringSystems';
@@ -60,10 +59,6 @@ const routesConfig = [
   {
     path: ROUTES_PATH.login,
     element: <LoginPage />,
-  },
-  {
-    path: ROUTES_PATH.resetPassword,
-    element: <ResetPasswordPage />,
   },
   {
     path: '*',

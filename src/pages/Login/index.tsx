@@ -7,6 +7,7 @@ import { API_USERS_PROFILE } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
 import { toast } from 'react-toastify';
+import { withNoAuth } from '@src/helper/hoc/withNoAuth';
 
 import { LoginForm } from './LoginForm';
 import { AuthenticationForm } from './AuthenticationForm';
@@ -21,7 +22,7 @@ const loginSteps = {
   resisterSerialDevice: RegisterSerialDeviceForm,
 };
 
-export function LoginPage() {
+function LoginPage() {
   const [step, setStep] = useState<ELoginStep>(ELoginStep.LOGIN);
   const { setUser } = useUserContext();
   const navigate = useNavigate();
@@ -57,3 +58,6 @@ export function LoginPage() {
     </div>
   );
 }
+
+// const LoginPage = withNoAuth(LoginPageCp);
+export { LoginPage };
