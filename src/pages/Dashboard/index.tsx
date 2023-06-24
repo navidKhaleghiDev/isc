@@ -19,7 +19,9 @@ export function DashboardPage() {
         <BoxDashboard
           icon="ph:sign-in"
           title="آخرین ورود"
-          description={persianDateNumber(user?.last_login)}
+          description={
+            user?.last_login ? persianDateNumber(user?.last_login) : '-'
+          }
         />
       </div>
       <ProductBox />

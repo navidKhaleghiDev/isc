@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction, createContext, useContext } from 'react';
 //   mode: 'light' | 'dark';
 //   direction: 'rtl' | 'ltr';
 // }
-interface IUserWithAuth extends IUser {
+export interface IUserWithAuth extends IUser {
   access_token: string;
   refresh_token: string;
   is_authenticated: boolean;

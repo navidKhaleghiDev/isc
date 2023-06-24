@@ -4,7 +4,6 @@ import { regexPattern } from '@ui/atoms/Inputs';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { API_RULES_ASSIGN_OWNER } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
 import { delay } from '@src/helper/utils';
 
 type PropsType = {

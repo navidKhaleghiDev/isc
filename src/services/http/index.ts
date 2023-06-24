@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-throw-literal */
 /* eslint-disable class-methods-use-this */
 
@@ -137,9 +138,9 @@ export class Http {
     localStorage.removeItem(STORAGE_KEY_REFRESH_TOKEN);
   }
 
-  private handleSuccess<T>(response: AxiosResponse<T>) {
-    return response.data;
-  }
+  // private handleSuccess<T>(response: AxiosResponse<T>) {
+  //   return response.data;
+  // }
 
   private handleError<T>(error: Error | AxiosError): T {
     if (axios.isAxiosError(error)) {
