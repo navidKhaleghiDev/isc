@@ -32,7 +32,12 @@ export function SideBar() {
       <div className="flex flex-col items-center w-full mt-10 px-4">
         {navigationSideBar.map((item: INavigation, i: number) =>
           !item.items ? (
-            <MenuItem key={item.id} item={item} pathname={pathname} />
+            <MenuItem
+              key={item.id}
+              item={item}
+              pathname={pathname}
+              collapsed={false}
+            />
           ) : (
             <MenuItemAccordion
               key={item.id}
@@ -42,6 +47,7 @@ export function SideBar() {
               index={i}
               icon={item.icon}
               pathname={pathname}
+              collapsed={false}
             />
           )
         )}

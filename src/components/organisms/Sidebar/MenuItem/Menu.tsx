@@ -4,7 +4,12 @@ import { BaseIcon, Typography } from '@ui/atoms';
 import { menuItemStyles } from './styles';
 import { IMenuItem } from './types';
 
-export function MenuItem({ item, pathname, isChildren }: IMenuItem) {
+export function MenuItem({
+  item,
+  pathname,
+  isChildren,
+  collapsed = false,
+}: IMenuItem) {
   const isActive = item.path === pathname;
   return (
     <Link
@@ -17,9 +22,11 @@ export function MenuItem({ item, pathname, isChildren }: IMenuItem) {
       target={item.isNewTab ? '_blank' : '_self'}
     >
       {item?.icon && <BaseIcon icon={item.icon} />}
-      <Typography className="mr-3" size="body2">
-        {item.label}
-      </Typography>
+      {!collapsed && (
+        <Typography className="mr-3" size="body2">
+          {item.label}
+        </Typography>
+      )}
     </Link>
   );
 }

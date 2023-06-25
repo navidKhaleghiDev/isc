@@ -33,14 +33,11 @@ function Sidebar({ collapsed, shown, setCollapsed }: Props) {
 
   return (
     <div
-      className={`h-full bg-neutral-100 text-zinc-50 z-20 transition-all duration-300 ease-in-out fixed md:static md:translate-x-0 ${
+      className={`h-full bg-neutral-100 z-20 transition-all duration-300 ease-in-out fixed md:static md:translate-x-0 ${
         collapsed ? 'w-16' : 'w-[300px]'
       } ${!shown && 'translate-x-full'}`}
     >
       <div className="flex flex-col justify-between h-full">
-        {/* navigationSideBar */}
-
-        {/* logo and collaps button */}
         <div
           className={`flex items-center border-b border-b-indigo-800 ${
             collapsed ? 'py-4 justify-center' : 'p-4 justify-between'
@@ -59,12 +56,16 @@ function Sidebar({ collapsed, shown, setCollapsed }: Props) {
           />
         </div>
 
-        {/* nav items part */}
         <nav className="flex-grow">
           <ul className="my-2 flex flex-col gap-2 items-stretch">
             {navigationSideBar.map((item: INavigation, i: number) =>
               !item.items ? (
-                <MenuItem key={item.id} item={item} pathname={pathname} />
+                <MenuItem
+                  key={item.id}
+                  item={item}
+                  pathname={pathname}
+                  collapsed={collapsed}
+                />
               ) : (
                 <MenuItemAccordion
                   key={item.id}
@@ -74,6 +75,7 @@ function Sidebar({ collapsed, shown, setCollapsed }: Props) {
                   index={i}
                   icon={item.icon}
                   pathname={pathname}
+                  collapsed={collapsed}
                 />
               )
             )}
@@ -83,27 +85,12 @@ function Sidebar({ collapsed, shown, setCollapsed }: Props) {
               onClick={handleLogout}
             >
               <BaseIcon icon="material-symbols:logout-sharp" color="red" />
-              <Typography color="red" className="mr-3" size="body2">
-                خروج
-              </Typography>
+              {!collapsed && (
+                <Typography color="red" className="mr-3" size="body2">
+                  خروج
+                </Typography>
+              )}
             </button>
-            {navigationSideBar.map((item) => {
-              return (
-                <li
-                  key={item.id}
-                  className={`text-indigo-100 hover:bg-indigo-900 flex transition-colors duration-300 ${
-                    collapsed
-                      ? 'rounded-full p-2 mx-3 w-10 h-10'
-                      : 'rounded-md p-2 mx-3 gap-4'
-                  }`}
-                >
-                  <Link to={item.path} className="flex gap-2">
-                    <BaseIcon icon={item.icon} />{' '}
-                    <span>{!collapsed && item.label}</span>
-                  </Link>
-                </li>
-              );
-            })}
           </ul>
         </nav>
 
