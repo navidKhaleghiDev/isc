@@ -8,10 +8,11 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_USERS_PROFILE } from '@src/services/client/users';
 import { STORAGE_KEY_TOKEN, http } from '@src/services/http';
 import cookie from 'js-cookie';
+import { withAuth } from '@src/helper/hoc/withAuth';
 
 import { SideBar } from '../../../organisms/Sidebar';
 
-export default function Layout() {
+function LayoutCp() {
   const { user, setUser } = useUserContext();
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(false);
@@ -35,6 +36,7 @@ export default function Layout() {
     if (!user && token) {
       getProfile();
     }
+    console.log({ user, token });
   }, [navigate, setUser, user, token]);
 
   if (!loading) {
@@ -54,3 +56,6 @@ export default function Layout() {
   }
   return <LoadingPage description="لطفا شکیبا باشید" />;
 }
+
+// export default withAuth(LayoutCp);
+export default LayoutCp;

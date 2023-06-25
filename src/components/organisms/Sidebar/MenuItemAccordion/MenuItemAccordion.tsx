@@ -15,6 +15,7 @@ export function MenuItemAccordion({
   item,
   pathname,
   icon,
+  collapsed = false,
 }: IMenuItemAccordion) {
   const isParentPath = pathname.split('/')[1] || 'false';
 
@@ -28,9 +29,11 @@ export function MenuItemAccordion({
         onClick={() => setOpen(open === index ? null : index)}
       >
         <BaseIcon icon={icon} />
-        <Typography className="mr-3" size="body2">
-          {item.label}
-        </Typography>
+        {!collapsed && (
+          <Typography className="mr-3" size="body2">
+            {item.label}
+          </Typography>
+        )}
         <BaseIcon
           icon="iconamoon:arrow-left-2-light"
           className={open === index ? '-rotate-90' : ''}
@@ -38,7 +41,13 @@ export function MenuItemAccordion({
       </button>
       <div className={`${open !== index && 'hidden'} w-full`}>
         {item.items?.map((i: INavigation) => (
-          <MenuItem key={i.id} item={i} pathname={pathname} isChildren />
+          <MenuItem
+            key={i.id}
+            item={i}
+            pathname={pathname}
+            isChildren
+            collapsed={collapsed}
+          />
         ))}
       </div>
     </>

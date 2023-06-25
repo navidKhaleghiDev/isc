@@ -11,4 +11,5 @@ export interface IMenuItemAccordion
   item: INavigation;
   pathname: string;
   icon?: string;
+  collapsed: boolean;
 }
