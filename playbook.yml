@@ -6,6 +6,11 @@
   # Variables
   vars:
     ansible_python_interpreter: /usr/bin/python3
+    containers:
+      clientapi:
+        ip_address: "10.27.95.200"
+      front:
+        ip_address: "10.27.95.201"
 
   # List of tasks
   tasks:
@@ -21,6 +26,17 @@
       - front.service
       - "00-front.conf"
       - frontapp
+
+  - name: Ensure front container IP address is present in dnsmasq configuration
+    ansible.builtin.lineinfile:
+      path: /etc/lxc/dnsmasq.conf
+      regexp: '^dhcp-host=front'
+      line: 'dhcp-host=front,{{ containers.front.ip_address }}'
+    notify:
+    - Restart lxd network
+
+  - name: Flush Handlers
+    meta: flush_handlers
 
   - name: Create front container
     ansible.builtin.command:
@@ -40,3 +56,9 @@
       /snap/bin/lxc exec front -- /bin/bash -c "grep front /etc/passwd >/dev/null || useradd -d /home/front -m -s /usr/sbin/nologin front && tar -C /home/front -xzf /tmp/app.tar.gz && systemctl enable front.service && mkdir /var/log/frontapp && chown syslog:adm /var/log/frontapp && systemctl restart rsyslog"
       /snap/bin/lxc exec front -- /bin/bash -c "cd /home/front/ && npm install && npm run build && chown -R front:front /home/front/"
       /snap/bin/lxc exec front -- /bin/bash -c "systemctl daemon-reload && systemctl restart front.service"
+
+  handlers:
+  - name: Make sure lxc-net service is restarted
+    ansible.builtin.systemd:
+      state: restarted
+      name: lxc-net
