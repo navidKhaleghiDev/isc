@@ -21,8 +21,6 @@ enum StatusCode {
   ProxyUnauthorized = 407,
 }
 
-export const BASE_URL_CLIENT = 'http://192.168.1.57:8000';
-
 export const STORAGE_KEY_TOKEN = 't';
 export const STORAGE_KEY_REFRESH_TOKEN = 'r';
 
@@ -144,53 +142,55 @@ export class Http {
 
   private handleError<T>(error: Error | AxiosError): T {
     if (axios.isAxiosError(error)) {
-      const response = error.response as AxiosResponse;
-      const { status, data } = response;
+      const response = error?.response as AxiosResponse;
+      if (response) {
+        const { status, data } = response;
 
-      switch (status) {
-        case StatusCode.BadRequestError: {
-          // Handle InternalServerError
-          let errorMessage = '';
-          Object.entries(data).forEach(([key, value]) => {
-            if (typeof value === 'string') {
-              errorMessage += `🔸${value}`;
-            } else if (Array.isArray(value)) {
-              value.forEach((err) => {
-                errorMessage += `🔸${key}: ${err}`;
-              });
-            }
-          });
-          throw errorMessage;
+        switch (status) {
+          case StatusCode.BadRequestError: {
+            // Handle InternalServerError
+            let errorMessage = '';
+            Object.entries(data).forEach(([key, value]) => {
+              if (typeof value === 'string') {
+                errorMessage += `🔸${value}`;
+              } else if (Array.isArray(value)) {
+                value.forEach((err) => {
+                  errorMessage += `🔸${key}: ${err}`;
+                });
+              }
+            });
+            throw errorMessage;
+          }
+          case StatusCode.Unauthorized: {
+            // Handle Unauthorized
+            this.removeAuthHeader();
+            window.location.reload();
+            break;
+          }
+          case StatusCode.Forbidden: {
+            // Handle Forbidden
+            toast.error('شما به این بخش دسترسی ندارید');
+            break;
+          }
+          case StatusCode.ProxyUnauthorized: {
+            // Handle proxy unauthorized
+            toast.error('شما نیاز به احراز هویت دارید');
+            break;
+          }
+          case StatusCode.TooManyRequests: {
+            // Handle TooManyRequests
+            break;
+          }
+          case StatusCode.InternalServerError: {
+            // Handle InternalServerError
+            break;
+          }
+          default:
+            throw 'با پشتیبانی تماس بگیرید.';
         }
-        case StatusCode.Unauthorized: {
-          // Handle Unauthorized
-          this.removeAuthHeader();
-          window.location.reload();
-          break;
-        }
-        case StatusCode.Forbidden: {
-          // Handle Forbidden
-          toast.error('شما به این بخش دسترسی ندارید');
-          break;
-        }
-        case StatusCode.ProxyUnauthorized: {
-          // Handle proxy unauthorized
-          toast.error('شما نیاز به احراز هویت دارید');
-          break;
-        }
-        case StatusCode.TooManyRequests: {
-          // Handle TooManyRequests
-          break;
-        }
-        case StatusCode.InternalServerError: {
-          // Handle InternalServerError
-          break;
-        }
-        default:
-          throw 'با پشتیبانی تماس بگیرید.';
       }
     }
-    throw error;
+    throw 'با پشتیبانی تماس بگیرید.';
   }
 }
 const http = new Http();

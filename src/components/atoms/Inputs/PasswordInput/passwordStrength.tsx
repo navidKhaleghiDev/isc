@@ -12,13 +12,9 @@ export function PasswordStrength({ password }: { password?: string }) {
     useState<EPasswordStrengthColor | null>(null);
 
   useEffect(() => {
-    // console.log(password);
-
     setColorStrength(getPasswordStrength(password));
   }, [password]);
   // const colorStrength = getPasswordStrength(password) as EPasswordStrengthColor;
-
-  // console.log({ colorStrength });
 
   return (
     <div className="flex justify-center items-center w-full ">

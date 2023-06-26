@@ -3,6 +3,7 @@ import {
   persianDayLabel,
   persianDateNumber,
 } from '@src/helper/utils/dateUtils';
+import { Card, Typography, Notification } from '@ui/atoms';
 import { BoxDashboard } from './BoxDashboard';
 import { ProductBox } from './ProductBox';
 
@@ -25,6 +26,20 @@ export function DashboardPage() {
         />
       </div>
       <ProductBox />
+      <div className="mt-auto">
+        <Typography className="mb-2" size="h5" color="teal">
+          اعلان ها
+        </Typography>
+        <Card className="h-96" color="neutral">
+          <div className="flex flex-col w-full p-5">
+            <Notification
+              outline="success"
+              title="به روز رسانی صفحه با خطا رو به رو شد."
+            />
+            <Notification outline="error" title="ورود با موفقیت انجام شد." />
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }

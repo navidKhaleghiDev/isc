@@ -22,7 +22,7 @@ const loginSteps = {
   resisterSerialDevice: RegisterSerialDeviceForm,
 };
 
-function LoginPage() {
+function LoginPageCp() {
   const [step, setStep] = useState<ELoginStep>(ELoginStep.LOGIN);
   const { setUser } = useUserContext();
   const navigate = useNavigate();
@@ -59,5 +59,5 @@ function LoginPage() {
   );
 }
 
-// const LoginPage = withNoAuth(LoginPageCp);
+const LoginPage = withNoAuth(LoginPageCp);
 export { LoginPage };
