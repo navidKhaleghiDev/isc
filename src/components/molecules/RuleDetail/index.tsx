@@ -60,6 +60,14 @@ export function RuleDetail() {
             return <CodeLine key={`${index}_${code.order}`} code={code} />;
           })}
       </Card>
+      {codes && (
+        <Typography
+          className="mt-4 bg-neutral-100 p-2 rounded-md w-48"
+          color="teal"
+        >
+          تعداد سیاست های قانون: {Object.entries(codes).length}
+        </Typography>
+      )}
     </>
   );
 }

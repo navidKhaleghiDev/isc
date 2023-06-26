@@ -143,6 +143,14 @@ export function MyRuleDetail() {
         />
         <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
       </div>
+      {codeList && (
+        <Typography
+          className=" bg-neutral-100 p-2 rounded-md w-48"
+          color="teal"
+        >
+          تعداد سیاست های قانون: {Object.entries(codeList).length}
+        </Typography>
+      )}
       <Modal
         open={openModalEdit}
         setOpen={setOpenModalEdit}

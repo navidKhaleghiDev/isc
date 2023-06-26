@@ -8,6 +8,7 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { INavigation, navigationSideBar } from './navigation';
 import { MenuItemAccordion } from './MenuItemAccordion';
 import { MenuItem } from './MenuItem';
+import { StatusServices } from './StatusServices';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function SideBar() {
@@ -61,6 +62,7 @@ export function SideBar() {
             خروج
           </Typography>
         </button>
+        <StatusServices />
       </div>
     </div>
   );

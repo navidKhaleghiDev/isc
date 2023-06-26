@@ -1,7 +1,7 @@
 import { useUserContext } from '@context/user/userContext';
 import {
   persianDayLabel,
-  persianDateNumber,
+  persianDateAndNumber,
 } from '@src/helper/utils/dateUtils';
 import { Card, Typography, Notification } from '@ui/atoms';
 import { BoxDashboard } from './BoxDashboard';
@@ -15,13 +15,20 @@ export function DashboardPage() {
         <BoxDashboard
           icon="ph:calendar-check"
           title={persianDayLabel()}
-          description={persianDateNumber()}
+          description={persianDateAndNumber()}
         />
         <BoxDashboard
           icon="ph:sign-in"
           title="آخرین ورود"
           description={
-            user?.last_login ? persianDateNumber(user?.last_login) : '-'
+            user?.last_login ? persianDateAndNumber(user?.last_login) : '-'
+          }
+        />
+        <BoxDashboard
+          icon="ph:cube"
+          title="آخرین به روزرسانی قوانین"
+          description={
+            user?.last_login ? persianDateAndNumber(user?.last_login) : '-'
           }
         />
       </div>
@@ -33,10 +40,11 @@ export function DashboardPage() {
         <Card className="h-96" color="neutral">
           <div className="flex flex-col w-full p-5">
             <Notification
-              outline="success"
+              outline="error"
               title="به روز رسانی صفحه با خطا رو به رو شد."
+              type="error"
             />
-            <Notification outline="error" title="ورود با موفقیت انجام شد." />
+            <Notification outline="success" title="ورود با موفقیت انجام شد." />
           </div>
         </Card>
       </div>

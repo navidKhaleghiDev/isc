@@ -6,3 +6,5 @@ export { Card } from './Card';
 export { BaseInput } from './Inputs';
 export { Typography } from './Typography';
 export { Notification } from './Notification';
+export { AccordionButton } from './AccordionButton';
+export { Accordion } from './Accordion';

@@ -50,6 +50,7 @@ export interface IProduct {
       updated_at: string;
     };
     model: string;
+    image: string;
     description: string;
     created_at: string;
     updated_at: string;
@@ -69,6 +70,7 @@ export interface IProduct {
     created_by: string;
   };
   recommended_rules: IRules[];
+  license_exp: string;
   address: string;
   organization_number: string;
   created_at: string;
