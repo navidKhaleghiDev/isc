@@ -23,7 +23,9 @@ export function getCodeList(data: string): SliceOrderCodeType[] | null {
   const newList: SliceOrderCodeType[] = [];
   list?.forEach((li) => {
     const { code, order } = splitOrderCode(li);
-    newList.push({ code, order });
+    if (code && order) {
+      newList.push({ code, order });
+    }
   });
   return newList;
 }

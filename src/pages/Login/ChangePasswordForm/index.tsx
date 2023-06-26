@@ -60,12 +60,12 @@ export function ChangePasswordForm({
     <>
       <form
         onSubmit={handleSubmit(handelSubmitForm)}
-        className="w-full h-full flex flex-col items-center justify-center"
+        className="w-full h-full flex flex-col items-center justify-end mt-auto"
       >
         <div className="absolute top-[-6rem]">
           <Avatar icon="ph:lock" intent="grey" size="lg" />
         </div>
-        <Typography color="neutral" size="h5" className="mb-10">
+        <Typography color="neutral" size="h5" className="mb-5">
           لطفا ایمیل و گذرواژه جدید خود را وارد کنید
         </Typography>
         {error && (
@@ -107,7 +107,11 @@ export function ChangePasswordForm({
             fullWidth
           />
         </div>
+        <Typography color="red" size="caption" className="my-2">
+          ⚠️ در صورت فراموشی اطلاعات قابلیت بازیابی ایمیل و گذرواژه وجود ندارد.
+        </Typography>
       </form>
+
       <Modal
         open={openModalAuth}
         setOpen={setOpenModalAuth}

@@ -10,13 +10,13 @@ export function ProductCard({ item }: PropsType) {
       color="neutral"
       className="border-l-[0.2rem] border-teal-600 flex h-28 items-center px-2 my-2"
     >
-      <div className="flex w-full items-center">
+      <div className="grid grid-cols-12  w-full items-center">
         {/* {item.link && (
           <Link to={`${item.link}/${item.id}`}>
             <IconButton icon="jam:more-vertical" color="white" />
           </Link>
         )} */}
-        <div className="ml-4 mr-auto">
+        <div className="col-span-10 ml-4 mr-auto te">
           <Typography
             color="teal"
             size="body2"
@@ -33,7 +33,13 @@ export function ProductCard({ item }: PropsType) {
             {item.description}
           </Typography>
         </div>
-        <div className="bg-teal-500 h-24 w-36 rounded-md" />
+        <div className="col-span-2 h-24 w-36 rounded-md p-1 shadow-md">
+          <img
+            src={item.image}
+            alt={item?.model}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </Card>
   );

@@ -22,6 +22,7 @@ export function PasswordInput({
       iconButtonIcon={showPassword ? 'ph:eye' : 'ph:eye-slash'}
       rules={{
         required: regexPattern.required,
+        // pattern: regexPattern.password,
       }}
       fullWidth
     />

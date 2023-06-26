@@ -50,6 +50,7 @@ export function RulesCard({ rule }: PropsType) {
           </Typography>
         </div>
       </Card>
+
       <Modal
         open={openModal}
         setOpen={setOpenModal}

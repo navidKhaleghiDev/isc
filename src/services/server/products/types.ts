@@ -12,6 +12,7 @@ export interface IServerProducts {
     created_at: string;
     updated_at: string;
   };
+  image: string;
   model: string;
   description: string;
   created_at: string;
