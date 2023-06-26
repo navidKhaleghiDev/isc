@@ -53,13 +53,13 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '1',
         label: 'سیستم نظارتی اول',
-        path: 'http://192.168.2.20:5601',
+        path: import.meta.env.VITE_SYSTEM_ANALYSER_ONE,
         isNewTab: true,
       },
       {
         id: '2',
         label: 'سیستم نظارتی دوم',
-        path: ROUTES_PATH.monitoringSystems,
+        path: import.meta.env.VITE_SYSTEM_ANALYSER_TOW,
       },
     ],
   },

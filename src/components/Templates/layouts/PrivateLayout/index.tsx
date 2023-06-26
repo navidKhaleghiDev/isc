@@ -36,7 +36,6 @@ function LayoutCp() {
     if (!user && token) {
       getProfile();
     }
-    console.log({ user, token });
   }, [navigate, setUser, user, token]);
 
   if (!loading) {
@@ -57,5 +56,5 @@ function LayoutCp() {
   return <LoadingPage description="لطفا شکیبا باشید" />;
 }
 
-// export default withAuth(LayoutCp);
-export default LayoutCp;
+export default withAuth(LayoutCp);
+// export default LayoutCp;
