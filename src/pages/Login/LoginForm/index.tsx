@@ -1,6 +1,6 @@
 import { Avatar } from '@ui/atoms/Avatar';
 import { BaseButton } from '@ui/atoms/BaseButton';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
