@@ -63,7 +63,7 @@
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SUPER_USER_EMAIL={{ credentials.clientapi.superuser_email }} >/home/front/.env"
       /snap/bin/lxc exec front -- /bin/bash -c "echo SUPER_USER_PASSWORD={{ credentials.clientapi.superuser_password }} >>/home/front/.env"
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SERVER_BASE_URL=http://netpardaz.net >>/home/front/.env"
-      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_CLIENT_BASE_URL=http://{{ containers.client.ip_address }}:{{ containers.client.port }} >>/home/front/.env"
+      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_CLIENT_BASE_URL=http://{{ containers.clientapi.ip_address }}:{{ containers.clientapi.port }} >>/home/front/.env"
       /snap/bin/lxc exec front -- /bin/bash -c "chown -R front:front /home/front/"
       /snap/bin/lxc exec front -- /bin/bash -c "systemctl daemon-reload && systemctl restart front.service"
 
