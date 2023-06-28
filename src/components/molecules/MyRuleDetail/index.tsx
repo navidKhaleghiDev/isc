@@ -51,9 +51,10 @@ function useAdditionalPolicy(
         codeListMyRule,
         getCodeList(rule.code)
       );
-      if (comparedList.length > 0) {
-        setAdditionalList(comparedList);
-      }
+      setAdditionalList(comparedList);
+      // if (comparedList.length > 0) {
+      //   setAdditionalList(comparedList);
+      // }
     }
   }, [codeListMyRule, data]);
 
@@ -204,7 +205,12 @@ export function MyRuleDetail() {
       </div>
       {additionalList && additionalList?.length > 0 && (
         <div className="mt-5">
-          <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
+          <Card
+            className="p-4 max-h-[24rem] overflow-y-auto"
+            color="neutral"
+            border
+            borderColor="teal"
+          >
             <div className="flex items-center justify-between">
               <Typography size="body2" color="yellow">
                 سیاست های زیر به این قانون اضافه شده است.
