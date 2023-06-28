@@ -49,6 +49,8 @@ export const myRulesListData: IMyRule[] = [
     description: '',
     created_at: '2023-06-17T05:50:16.183321Z',
     update_at: '2023-06-17T05:50:16.183373Z',
+    isUpdated: false,
+    version: 1,
   },
   {
     id: '2',
@@ -75,5 +77,7 @@ export const myRulesListData: IMyRule[] = [
     description: '',
     created_at: '2023-06-17T05:50:16.183321Z',
     update_at: '2023-06-17T05:50:16.183373Z',
+    isUpdated: false,
+    version: 1,
   },
 ];

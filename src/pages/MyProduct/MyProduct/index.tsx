@@ -47,11 +47,19 @@ function MyProductPageCp() {
               color="neutral"
               className="min-h-[14rem] bg-neutral-300 flex justify-center items-center"
             >
-              <BaseIcon
-                icon="icon-park-outline:ad-product"
-                color="neutral"
-                size="xxl"
-              />
+              {product?.device.image ? (
+                <img
+                  src={product?.device.image}
+                  alt={product?.device?.model}
+                  className="w-full h-full object-cover p-2"
+                />
+              ) : (
+                <BaseIcon
+                  icon="icon-park-outline:ad-product"
+                  color="neutral"
+                  size="xxl"
+                />
+              )}
             </Card>
           </GridMyProduct>
           <GridMyProduct className="mt-4">

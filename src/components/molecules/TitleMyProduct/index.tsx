@@ -10,7 +10,6 @@ export function TitleMyProduct({ title }: TitleMyProductProps) {
       <Typography color="teal" size="h6" className="w-[6rem]">
         {title}
       </Typography>
-      <p className=" text-neutral-400 px-2">|</p>
     </div>
   );
 }
