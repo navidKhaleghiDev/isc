@@ -103,7 +103,7 @@ function ProductBoxCp() {
           <img
             src={product.device.image}
             alt={product?.device?.model}
-            className="bg-neutral-100 p-2 rounded-md"
+            className="h-56 w-full object-cover p-2"
           />
         ) : (
           <BaseIcon
