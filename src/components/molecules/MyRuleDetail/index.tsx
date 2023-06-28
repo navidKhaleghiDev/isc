@@ -6,8 +6,9 @@ import { useGet } from '@src/services/http/httpClient';
 import {
   E_RULES_MY_RULES,
   E_RULES_MY_RULES_ID,
+  E_RULES_RETRIEVE,
 } from '@src/services/client/rules/endpoint';
-import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
+import { IMyRule, IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
 import { ChangeEvent, useEffect, useState } from 'react';
@@ -17,9 +18,47 @@ import {
 } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
 import { CodeLine } from './CodeLine';
-import { TitleMyProduct } from '../TitleMyProduct';
 import { myRuleData } from './dataMock';
 import { Modal } from '../Modal';
+import { CardRuleDetail } from '../CardRuleDetail';
+import { ruleData } from '../RuleDetail/dataMock';
+import { CodeLineRule } from '../RuleDetail/CodeLineRule';
+
+function comparPolicies(
+  oldPolicies: SliceOrderCodeType[],
+  newPolicies: SliceOrderCodeType[]
+): SliceOrderCodeType[] {
+  return newPolicies.filter(
+    (newRule) => !oldPolicies.some((oldRule) => newRule.code === oldRule.code)
+  );
+}
+
+function useAdditionalPolicy(
+  codeListMyRule: SliceOrderCodeType[] | null,
+  myRuleId?: string
+) {
+  const { data } = useGet<ResponseSwr<IRules>>(
+    myRuleId ? E_RULES_RETRIEVE(myRuleId) : null
+  );
+  const [additionalList, setAdditionalList] = useState<SliceOrderCodeType[]>(
+    []
+  );
+
+  useEffect(() => {
+    if (data && codeListMyRule) {
+      const rule = data?.data || ruleData;
+      const comparedList = comparPolicies(
+        codeListMyRule,
+        getCodeList(rule.code)
+      );
+      if (comparedList.length > 0) {
+        setAdditionalList(comparedList);
+      }
+    }
+  }, [codeListMyRule, data]);
+
+  return additionalList;
+}
 
 export function MyRuleDetail() {
   const [codeList, setCodeList] = useState<SliceOrderCodeType[] | null>(null);
@@ -31,7 +70,9 @@ export function MyRuleDetail() {
   const id = slugs[3];
   const { mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
   const { data } = useGet<ResponseSwr<IMyRule>>(E_RULES_MY_RULES_ID(id));
+
   const myRule = data?.data || myRuleData;
+  const additionalList = useAdditionalPolicy(codeList, myRule.id);
 
   useEffect(() => {
     setCodeList(getCodeList(myRule.rule_code));
@@ -81,28 +122,31 @@ export function MyRuleDetail() {
       });
   };
 
+  const handleOnClickAddAdditionalPolicies = () => {
+    const newList =
+      additionalList && codeList ? codeList.concat(additionalList) : codeList;
+    setCodeList(newList);
+  };
+
   return (
     <div className="pb-5">
       <div className="grid grid-cols-3 gap-5 mb-16">
         <div>
-          <Card color="neutral" className="flex items-center px-4 mb-5">
-            <TitleMyProduct title="سازنده" />
-            <Typography size="h6" className="mr-auto text-neutral-400">
-              {myRule.creator.email}
-            </Typography>
-          </Card>
-          <Card color="neutral" className="flex items-center px-4 mb-5">
-            <TitleMyProduct title="تاریخ ثبت" />
-            <Typography size="h6" className="mr-auto text-neutral-400">
-              {persianDateAndNumber(myRule.created_at)}
-            </Typography>
-          </Card>
-          <Card color="neutral" className="flex items-center px-4 ">
-            <TitleMyProduct title="آخرین ویرایش" />
-            <Typography size="h6" className="mr-auto text-neutral-400">
-              {persianDateAndNumber(myRule.update_at)}
-            </Typography>
-          </Card>
+          <CardRuleDetail
+            label="سازنده"
+            value={myRule.creator.email}
+            className="mt-5"
+          />
+          <CardRuleDetail
+            label="تاریخ ثبت"
+            value={persianDateAndNumber(myRule.created_at)}
+            className="mt-5"
+          />
+          <CardRuleDetail
+            label="آخرین ویرایش"
+            value={persianDateAndNumber(myRule.update_at)}
+            className="mt-5"
+          />
         </div>
         <div className="col-span-2 flex flex-col justify-start items-end">
           <Typography color="neutral" size="h4">
@@ -133,23 +177,52 @@ export function MyRuleDetail() {
             );
           })}
       </Card>
-      <div className="w-full mt-10 flex justify-end">
-        <BaseButton
-          label="حذف"
-          size="sm"
-          type="red"
-          className="ml-5"
-          onClick={toggleModalDelete}
-        />
-        <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
+      <div className="flex w-full justify-between items-center mt-8">
+        <div className="flex">
+          {codeList && (
+            <CardRuleDetail
+              label="سیاست ها"
+              value={`${Object.entries(codeList).length}`}
+              className="ml-5"
+            />
+          )}
+          <CardRuleDetail
+            label="تغییرداده‌شده‌ها"
+            value={`${additionalList?.length}`}
+          />
+        </div>
+        <div className="w-full flex justify-end">
+          <BaseButton
+            label="حذف"
+            size="sm"
+            type="red"
+            className="ml-5"
+            onClick={toggleModalDelete}
+          />
+          <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
+        </div>
       </div>
-      {codeList && (
-        <Typography
-          className=" bg-neutral-100 p-2 rounded-md w-48"
-          color="teal"
-        >
-          تعداد سیاست های قانون: {Object.entries(codeList).length}
-        </Typography>
+      {additionalList && additionalList?.length > 0 && (
+        <div className="mt-5">
+          <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
+            <div className="flex items-center justify-between">
+              <Typography size="body2" color="yellow">
+                سیاست های زیر به این قانون اضافه شده است.
+              </Typography>
+              <BaseButton
+                label="اضافه کن"
+                size="sm"
+                type="secondary"
+                onClick={handleOnClickAddAdditionalPolicies}
+              />
+            </div>
+            {additionalList.map((code: SliceOrderCodeType, index: number) => {
+              return (
+                <CodeLineRule key={`${index}_${code.order}`} code={code} />
+              );
+            })}
+          </Card>
+        </div>
       )}
       <Modal
         open={openModalEdit}

@@ -34,7 +34,7 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '3',
         label: 'راهنمای سیستم نظارتی',
-        path: ROUTES_PATH.monitoringSystems,
+        path: ROUTES_PATH.servicesMonitoringSystems,
       },
     ],
   },
@@ -53,13 +53,13 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '1',
         label: 'سیستم نظارتی اول',
-        path: import.meta.env.VITE_SYSTEM_ANALYSER_ONE,
-        isNewTab: true,
+        path: ROUTES_PATH.monitoringSystems,
       },
       {
         id: '2',
         label: 'سیستم نظارتی دوم',
         path: import.meta.env.VITE_SYSTEM_ANALYSER_TOW,
+        isNewTab: true,
       },
     ],
   },

@@ -1,6 +1,6 @@
 import { persianDateNumber } from '@src/helper/utils/dateUtils';
 import { IMyRule } from '@src/services/client/rules/types';
-import { Card, Typography } from '@ui/atoms';
+import { BaseIcon, Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -46,19 +46,18 @@ export function MyRulesCard({
         <div className="w-full flex justify-between items-center">
           <div className=" w-1/4">
             {!isHeader && (
-              <div className="flex">
+              <div className="flex items-center gap-2">
                 <Link to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}>
-                  <IconButton
-                    icon="jam:more-vertical"
-                    color="white"
-                    className="ml-2"
-                  />
+                  <IconButton icon="jam:more-vertical" color="white" />
                 </Link>
                 <IconButton
                   icon="ph:trash-simple"
                   color="red"
                   onClick={toggleModalDelete}
                 />
+                {myRule.isUpdated && (
+                  <BaseIcon icon="radix-icons:update" color="red" />
+                )}
               </div>
             )}
           </div>

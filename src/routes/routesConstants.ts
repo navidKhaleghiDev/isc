@@ -5,6 +5,7 @@ export type RoutePathType =
   | 'servicesProducts'
   | 'servicesRules'
   | 'servicesRulesRetrieve'
+  | 'servicesMonitoringSystems'
   | 'support'
   | 'settings'
   | 'unauthorized'
@@ -48,6 +49,7 @@ export const RoutesName = {
   CONTACT_US: 'contact-us',
   PROFILE: 'profile',
   MONITORING_SYSTEM: 'monitoring-systems',
+  MONITORING_SYSTEM_GUIDE: 'monitoring-systems-guide',
   ADD_USER: 'add-user',
   USERS: 'users',
 };
@@ -59,6 +61,7 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   services: `/${RoutesName.SERVICES}`,
   servicesProducts: `/${RoutesName.SERVICES}/${RoutesName.PRODUCTS}`,
   servicesRules: `/${RoutesName.SERVICES}/${RoutesName.RULES}`,
+  servicesMonitoringSystems: `/${RoutesName.SERVICES}/${RoutesName.MONITORING_SYSTEM_GUIDE}`,
   servicesRulesRetrieve: `/${RoutesName.SERVICES}/${RoutesName.RULES}/:id`,
   support: `/${RoutesName.SUPPORT}`,
   ourServices: `/${RoutesName.OUR_SERVICES}`,
@@ -70,12 +73,12 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   contactUs: `/${RoutesName.CONTACT_US}`,
   dashboard: `/${RoutesName.DASHBOARD}`,
   profile: `/${RoutesName.PROFILE}`,
-  monitoringSystems: `/${RoutesName.SERVICES}/${RoutesName.MONITORING_SYSTEM}`,
   myProduct: `/${RoutesName.MY_PRODUCT}`,
   myProductName: `/${RoutesName.MY_PRODUCT}/:productName`,
   myProductMyRules: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}`,
   myProductIpsList: `/${RoutesName.MY_PRODUCT}/ips-list`,
   myProductMyRulesRetrieve: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}/:id`,
+  monitoringSystems: `/${RoutesName.MONITORING_SYSTEM}`,
   resetPassword: `/${RoutesName.RESET_PASSWORD}`,
   users: `/${RoutesName.USERS}`,
 };

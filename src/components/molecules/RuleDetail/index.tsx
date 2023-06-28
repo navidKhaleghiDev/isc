@@ -7,7 +7,7 @@ import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
-import { CodeLine } from './CodeLine';
+import { CodeLineRule } from './CodeLineRule';
 import { TitleMyProduct } from '../TitleMyProduct';
 import { ruleData } from './dataMock';
 
@@ -57,7 +57,7 @@ export function RuleDetail() {
       <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
         {codes &&
           codes.map((code: SliceOrderCodeType, index: number) => {
-            return <CodeLine key={`${index}_${code.order}`} code={code} />;
+            return <CodeLineRule key={`${index}_${code.order}`} code={code} />;
           })}
       </Card>
       {codes && (

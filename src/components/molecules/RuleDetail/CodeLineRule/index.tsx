@@ -1,7 +1,7 @@
 import { Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 
-export function CodeLine({ code }: { code: SliceOrderCodeType }) {
+export function CodeLineRule({ code }: { code: SliceOrderCodeType }) {
   if (!code.order || !code.code) {
     return null;
   }

@@ -24,6 +24,7 @@ import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import Layout from '@ui/Templates/layouts/Layout';
+import { MonitoringSystemsGuidePage } from '@src/pages/MonitoringSystemsGuide';
 import { UsersPage } from '@src/pages/Users';
 import { ROUTES_PATH } from './routesConstants';
 
@@ -110,6 +111,10 @@ const routesConfig = [
       {
         path: ROUTES_PATH.monitoringSystems,
         element: <MonitoringSystemsPage />,
+      },
+      {
+        path: ROUTES_PATH.servicesMonitoringSystems,
+        element: <MonitoringSystemsGuidePage />,
       },
       {
         path: ROUTES_PATH.myProduct,

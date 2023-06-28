@@ -57,6 +57,8 @@ export interface IMyRule {
   description: string;
   created_at: string;
   update_at: string;
+  version: number;
+  isUpdated?: boolean;
 }
 
 export interface IBodyUpdateMyRule {
