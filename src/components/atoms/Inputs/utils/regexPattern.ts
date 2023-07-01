@@ -85,15 +85,14 @@ export const regexPattern = {
     value: /[A-Za-z]{3}/,
     message: 'checkpatern',
   },
-  eightchar_number_lower_uppercase: {
+  eightChar_number_lower_uppercase: {
     value:
       /(?=^.{8,64}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
     message: 'باید حداقل 8 کاراکتر و حاوی حروف بزرگ و کوچک لاتین باشد.',
   },
   password: {
     value: /(?=^.{8,64}$)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-    message:
-      'گذرواژه باید حداقل 8 کاراکتر و حاوی حروف بزرگ و کوچک لاتین و عدد باشد.',
+    message: 'گذرواژه باید حداقل 8 کاراکتر و حاوی حروف بزرگ و کوچک لاتین باشد.',
   },
   required: {
     value: true,

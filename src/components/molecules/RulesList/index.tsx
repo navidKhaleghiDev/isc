@@ -8,7 +8,7 @@ import { useUserContext } from '@context/user/userContext';
 import { RulesCard } from './RulesCard';
 import { NoResult } from '../NoResult';
 import { rulesListData } from './dataMock';
-import { NotHaveDeviceSerial } from '../NotHaveDeviceSerial';
+import { NotCompletedAuth } from '../NotCompletedAuth';
 
 type PropsType = {
   buttonState: ButtonState;
@@ -27,8 +27,16 @@ export function RulesList({ buttonState }: PropsType) {
   const rules =
     suggestData?.data.recommended_rules || allData?.data || rulesListData;
 
-  if (!user?.device_serial && buttonState === 'suggest') {
-    return <NotHaveDeviceSerial title="قوانین پیشنهادی" />;
+  if (
+    !user?.is_authenticated ||
+    (!user?.device_serial && buttonState === 'suggest')
+  ) {
+    return (
+      <NotCompletedAuth
+        title="قوانین پیشنهادی"
+        isUserAuth={!!user?.is_authenticated}
+      />
+    );
   }
 
   return (

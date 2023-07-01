@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { Card } from '@ui/atoms/Card';
@@ -6,7 +7,6 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_USERS_PROFILE } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
-import { toast } from 'react-toastify';
 import { withNoAuth } from '@src/helper/hoc/withNoAuth';
 
 import { LoginForm } from './LoginForm';
@@ -24,7 +24,7 @@ const loginSteps = {
 
 function LoginPageCp() {
   const [step, setStep] = useState<ELoginStep>(ELoginStep.LOGIN);
-  const { setUser } = useUserContext();
+  const { setUser, user } = useUserContext();
   const navigate = useNavigate();
   const Step = loginSteps[step];
 
@@ -46,9 +46,9 @@ function LoginPageCp() {
       <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center">
         <Step onChangeStep={setStep} getProfile={getProfile} />
       </Card>
-      <Link to={ROUTES_PATH.home}>
+      <Link to={user ? ROUTES_PATH.dashboard : ROUTES_PATH.home}>
         <BaseButton
-          label="خانه"
+          label={user ? 'داشبورد' : 'خانه'}
           endIcon="ic:round-login"
           className="mt-10"
           size="md"

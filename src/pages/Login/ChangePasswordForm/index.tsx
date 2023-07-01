@@ -33,12 +33,12 @@ export function ChangePasswordForm({
       onChangeStep(ELoginStep.LOGIN);
       return;
     }
-    await API_USERS_PATCH(user.id as string, {
+    await API_USERS_PATCH(user?.id as string, {
       email,
       password,
     })
       .then(({ data }) => {
-        if (user.is_authenticated) {
+        if (user?.is_authenticated) {
           // user is authenticated
           if (!data.device_serial) {
             // user not have device serial

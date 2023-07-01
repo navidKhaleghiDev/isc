@@ -6,8 +6,7 @@ import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
-
-import { NotHaveDeviceSerial } from '../../../components/molecules/NotHaveDeviceSerial';
+import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 
 function ProductBoxCp() {
   const { user } = useUserContext();
@@ -15,9 +14,13 @@ function ProductBoxCp() {
     user?.device_serial ? E_USERS_PRODUCT : null
   );
   const product = data?.data;
-
-  if (!user?.device_serial) {
-    return <NotHaveDeviceSerial title="جزییات داشبورد" />;
+  if (!user?.is_authenticated || !user?.device_serial) {
+    return (
+      <NotCompletedAuth
+        title="جزییات داشبورد"
+        isUserAuth={!!user?.is_authenticated}
+      />
+    );
   }
 
   if (error) {

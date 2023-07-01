@@ -13,7 +13,7 @@ export const headerStyles = cva(
   }
 );
 
-export const contentStyles = cva('modal-content text-center h-[12rem]', {
+export const contentStyles = cva('modal-content text-center min-h-[12rem]', {
   variants: {
     type: {
       error: '',
