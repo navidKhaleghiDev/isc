@@ -19,6 +19,7 @@ enum StatusCode {
   InternalServerError = 500,
   BadRequestError = 400,
   ProxyUnauthorized = 407,
+  NotAcceptable = 406,
 }
 
 export const STORAGE_KEY_TOKEN = 't';
@@ -32,6 +33,27 @@ const headers: Readonly<Record<string, string | boolean>> = {
   // 'Access-Control-Allow-Credentials': true,
   // 'X-Requested-With': 'XMLHttpRequest',
 };
+
+function handleResponseError(data: any): string {
+  let errorMessage = '';
+  Object.entries(data).forEach(([key, value]) => {
+    if (typeof value === 'string') {
+      errorMessage += `🔸${value}`;
+    } else if (Array.isArray(value)) {
+      value.forEach((err) => {
+        errorMessage += `🔸${key}: ${err}`;
+      });
+    } else if (value instanceof Object) {
+      Object.entries(value).forEach(([k, v]) => {
+        errorMessage += `🔸${k}: ${v}`;
+      });
+    } else {
+      errorMessage = 'با پشتیبانی تماس بگیرید.';
+    }
+  });
+
+  return errorMessage;
+}
 
 const injectToken = (
   config: InternalAxiosRequestConfig
@@ -149,17 +171,7 @@ export class Http {
         switch (status) {
           case StatusCode.BadRequestError: {
             // Handle InternalServerError
-            let errorMessage = '';
-            Object.entries(data).forEach(([key, value]) => {
-              if (typeof value === 'string') {
-                errorMessage += `🔸${value}`;
-              } else if (Array.isArray(value)) {
-                value.forEach((err) => {
-                  errorMessage += `🔸${key}: ${err}`;
-                });
-              }
-            });
-            throw errorMessage;
+            throw handleResponseError(data);
           }
           case StatusCode.Unauthorized: {
             // Handle Unauthorized
@@ -172,10 +184,10 @@ export class Http {
             toast.error('شما به این بخش دسترسی ندارید');
             break;
           }
-          case StatusCode.ProxyUnauthorized: {
+          case StatusCode.NotAcceptable: {
             // Handle proxy unauthorized
             toast.error('شما نیاز به احراز هویت دارید');
-            break;
+            throw handleResponseError(data);
           }
           case StatusCode.TooManyRequests: {
             // Handle TooManyRequests

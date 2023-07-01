@@ -11,7 +11,10 @@ interface IUpdateIpValues extends FieldValues {
   serial: string;
 }
 
-export function RegisterSerialDeviceForm({ getProfile }: PropsFormType) {
+export function RegisterSerialDeviceForm({
+  getProfile,
+  updateProfile,
+}: PropsFormType) {
   const { control, handleSubmit } = useForm<IUpdateIpValues>({
     mode: 'onChange',
   });
@@ -24,7 +27,11 @@ export function RegisterSerialDeviceForm({ getProfile }: PropsFormType) {
       .then(async () => {
         toast.success('سریال با موفقیت ثبت شد');
         delay(2000).then(() => {
-          getProfile();
+          if (updateProfile) {
+            updateProfile(dataForm.serial);
+          } else {
+            getProfile();
+          }
           setIsSuccessAddSerial(true);
         });
       })

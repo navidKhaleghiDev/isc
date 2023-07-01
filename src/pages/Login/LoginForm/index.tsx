@@ -87,7 +87,6 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             placeholder="email"
             rules={{
               required: regexPattern.required,
-              // pattern: regexPattern.email,
             }}
             id="email"
             name="email"
@@ -114,11 +113,6 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             submit
             fullWidth
           />
-          {/* <Link to={ROUTES_PATH.resetPassword}>
-            <Typography color="teal" className="mt-2">
-              رمز خود را فراموش کرده اید؟
-            </Typography>
-          </Link> */}
         </div>
       </form>
       <Modal

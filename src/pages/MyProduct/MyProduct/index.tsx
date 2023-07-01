@@ -3,15 +3,14 @@ import { BaseButton, BaseIcon, Card, Typography } from '@ui/atoms';
 import { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-// import { productCardData } from './dataMock';
 import { useGet } from '@src/services/http/httpClient';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { TitleMyProduct } from '@ui/molecules/TitleMyProduct';
 import { useUserContext } from '@context/user/userContext';
-import { NotHaveDeviceSerial } from '@ui/molecules/NotHaveDeviceSerial';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
+import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -115,7 +114,10 @@ function MyProductPageCp() {
           </GridMyProduct>
         </>
       ) : (
-        <NotHaveDeviceSerial title="جزییات محصول" />
+        <NotCompletedAuth
+          title="جزییات محصول"
+          isUserAuth={!!user?.is_authenticated}
+        />
       )}
       <div className="grid grid-cols-2 gap-5 mt-16">
         <div>

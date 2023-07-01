@@ -2,9 +2,11 @@ import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { API_USERS_SERVER_AUTH } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
+import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
@@ -21,6 +23,8 @@ export function AuthenticationForm({
   const handelSubmitForm = async ({ email, password }: ILoginFieldValues) => {
     await API_USERS_SERVER_AUTH({ email, password })
       .then(() => {
+        toast.success('احراز هویت با موفقیت انجام شد');
+
         if (!user?.device_serial) {
           // user not have device serial
           onChangeStep(ELoginStep.REGISTER_SERIAL_DEVICE);
@@ -55,24 +59,18 @@ export function AuthenticationForm({
           placeholder="email"
           id="email"
           name="email"
-          endIcon="carbon:password"
+          endIcon="carbon:email"
           rules={{
             required: regexPattern.required,
           }}
         />
 
-        <BaseInput
-          fullWidth
+        <PasswordInput
           control={control}
           placeholder="گذرواژه"
-          id="password"
           name="password"
-          type="password"
-          endIcon="carbon:password"
-          rules={{
-            required: regexPattern.required,
-          }}
         />
+
         <BaseButton
           onClick={() => {}}
           label="ثبت"

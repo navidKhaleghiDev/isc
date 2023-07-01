@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FieldValues } from 'react-hook-form';
 
 export interface ILoginFieldValues extends FieldValues {
@@ -15,4 +16,5 @@ export enum ELoginStep {
 export type PropsFormType = {
   onChangeStep: (step: ELoginStep) => void;
   getProfile: () => void;
+  updateProfile?: (value?: any) => void;
 };
