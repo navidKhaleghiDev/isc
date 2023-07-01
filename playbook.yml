@@ -48,10 +48,13 @@
       cmd: /snap/bin/lxc launch ubuntu:20.04 front
       creates: /var/snap/lxd/common/lxd/containers/front
  
+  - name: Make sure container is started
+    community.general.lxd_container:
+      name: front
+      state: started
+
   - name: Install nodejs and deploy application into the container
     ansible.builtin.shell: |
-      lxc list front -f csv -c s | grep RUNNING >/dev/null 2>&1 || /snap/bin/lxc start front
-      sleep 5
       /snap/bin/lxc exec front -- /bin/bash -c "echo 10.27.95.5 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
       /snap/bin/lxc exec front -- /bin/bash -c "apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y -q"
       /snap/bin/lxc file push /tmp/app.tar.gz front/tmp/app.tar.gz
