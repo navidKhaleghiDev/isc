@@ -16,6 +16,7 @@ import {
   API_DELETE_MY_RULE,
   API_UPDATE_MY_RULE,
 } from '@src/services/client/rules';
+import { getCountChangedTowArray } from '@src/helper/utils/comparArray';
 import { toast } from 'react-toastify';
 import { CodeLine } from './CodeLine';
 import { myRuleData } from './dataMock';
@@ -181,16 +182,21 @@ export function MyRuleDetail() {
       <div className="flex w-full justify-between items-center mt-8">
         <div className="flex">
           {codeList && (
-            <CardRuleDetail
-              label="سیاست ها"
-              value={`${Object.entries(codeList).length}`}
-              className="ml-5"
-            />
+            <>
+              <CardRuleDetail
+                label="سیاست ها"
+                value={`${Object.entries(codeList).length}`}
+                className="ml-5"
+              />
+              <CardRuleDetail
+                label="تغییرداده‌شده‌ها"
+                value={`${getCountChangedTowArray(
+                  getCodeList(myRule.rule_code),
+                  codeList
+                )}`}
+              />
+            </>
           )}
-          <CardRuleDetail
-            label="تغییرداده‌شده‌ها"
-            value={`${additionalList?.length}`}
-          />
         </div>
         <div className="w-full flex justify-end">
           <BaseButton
