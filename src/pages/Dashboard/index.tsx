@@ -3,7 +3,7 @@ import {
   persianDayLabel,
   persianDateAndNumber,
 } from '@src/helper/utils/dateUtils';
-import { Card, Typography, Notification } from '@ui/atoms';
+// import { Card, Typography, Notification } from '@ui/atoms';
 import { BoxDashboard } from './BoxDashboard';
 import { ProductBox } from './ProductBox';
 
@@ -33,7 +33,7 @@ export function DashboardPage() {
         />
       </div>
       <ProductBox />
-      <div className="mt-auto">
+      {/* <div className="mt-auto">
         <Typography className="mb-2" size="h5" color="teal">
           اعلان ها
         </Typography>
@@ -47,7 +47,7 @@ export function DashboardPage() {
             <Notification outline="success" title="ورود با موفقیت انجام شد." />
           </div>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 }

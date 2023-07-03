@@ -3,7 +3,9 @@ import { HomePage } from '@src/pages/Home';
 import { LoginPage } from '@src/pages/Login';
 import { DashboardPage } from '@src/pages/Dashboard';
 import { ProductsPage } from '@src/pages/Services/Products';
-import { MonitoringSystemsPage } from '@src/pages/MonitoringSystems';
+import { MonitoringSystemsOnePage } from '@src/pages/MonitoringSystemsOne';
+import { MonitoringSystemsTowPage } from '@src/pages/MonitoringSystemsTow';
+
 import { RulesPage } from '@src/pages/Services/Rules';
 import { RuleDetailsPage } from '@src/pages/Services/Rules/RuleDetailsPage';
 import { MyProductPage } from '@src/pages/MyProduct/MyProduct';
@@ -24,7 +26,7 @@ import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import Layout from '@ui/Templates/layouts/Layout';
-import { MonitoringSystemsGuidePage } from '@src/pages/MonitoringSystemsGuide';
+// import { MonitoringSystemsGuidePage } from '@src/pages/MonitoringSystemsGuide';
 import { UsersPage } from '@src/pages/Users';
 import { ROUTES_PATH } from './routesConstants';
 
@@ -109,13 +111,17 @@ const routesConfig = [
         element: <RuleDetailsPage />,
       },
       {
-        path: ROUTES_PATH.monitoringSystems,
-        element: <MonitoringSystemsPage />,
+        path: ROUTES_PATH.monitoringSystemsOne,
+        element: <MonitoringSystemsOnePage />,
       },
       {
-        path: ROUTES_PATH.servicesMonitoringSystems,
-        element: <MonitoringSystemsGuidePage />,
+        path: ROUTES_PATH.monitoringSystemsTow,
+        element: <MonitoringSystemsTowPage />,
       },
+      // {
+      //   path: ROUTES_PATH.servicesMonitoringSystems,
+      //   element: <MonitoringSystemsGuidePage />,
+      // },
       {
         path: ROUTES_PATH.myProduct,
         element: <MyProductPage />,

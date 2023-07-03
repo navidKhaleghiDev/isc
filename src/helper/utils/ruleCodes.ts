@@ -19,6 +19,9 @@ export function splitOrderCode(singleCode: string): SliceOrderCodeType {
 }
 
 export function getCodeList(data: string): SliceOrderCodeType[] {
+  if (!data) {
+    return [];
+  }
   const list = data.match(getCodeListPattern);
   const newList: SliceOrderCodeType[] = [];
   list?.forEach((li) => {

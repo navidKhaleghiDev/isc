@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 import { useForm } from 'react-hook-form';
+import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 import { API_USERS_ADD } from '@src/services/client/users';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { IAddUserFormValues } from './types';
@@ -70,16 +71,10 @@ function AddUserPageCp() {
             }}
             fullWidth
           />
-          <BaseInput
+          <PasswordInput
             name="password"
-            id="password"
             control={control}
-            label="گذرواژه"
             placeholder="بنویسید"
-            rules={{
-              required: regexPattern.required,
-            }}
-            fullWidth
           />
         </div>
         <div className="ml-auto mt-6">

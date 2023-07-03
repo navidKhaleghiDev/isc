@@ -31,11 +31,11 @@ export const navigationSideBar: INavigation[] = [
         label: 'لیست قوانین',
         path: ROUTES_PATH.servicesRules,
       },
-      {
-        id: '3',
-        label: 'راهنمای سیستم نظارتی',
-        path: ROUTES_PATH.servicesMonitoringSystems,
-      },
+      // {
+      //   id: '3',
+      //   label: 'راهنمای سیستم نظارتی',
+      //   path: ROUTES_PATH.servicesMonitoringSystems,
+      // },
     ],
   },
   {
@@ -53,31 +53,32 @@ export const navigationSideBar: INavigation[] = [
       {
         id: '1',
         label: 'سیستم نظارتی اول',
-        path: ROUTES_PATH.monitoringSystems,
+        path: ROUTES_PATH.monitoringSystemsOne,
       },
       {
         id: '2',
         label: 'سیستم نظارتی دوم',
-        path: import.meta.env.VITE_SYSTEM_ANALYSER_TOW,
-        isNewTab: true,
+        path: ROUTES_PATH.monitoringSystemsTow,
+        // path: import.meta.env.VITE_SYSTEM_ANALYSER_TOW,
+        // isNewTab: true,
       },
     ],
   },
 
+  // {
+  //   id: '5',
+  //   label: 'سوالات متداول',
+  //   path: ROUTES_PATH.support,
+  //   icon: 'ph:phone',
+  // },
   {
     id: '5',
-    label: 'سوالات متداول',
-    path: ROUTES_PATH.support,
-    icon: 'ph:phone',
-  },
-  {
-    id: '6',
     label: 'تنظیمات',
     path: ROUTES_PATH.settings,
     icon: 'ph:gear',
   },
   {
-    id: '7',
+    id: '6',
     label: 'کاربران ',
     path: ROUTES_PATH.users,
     icon: 'ph:users-three',

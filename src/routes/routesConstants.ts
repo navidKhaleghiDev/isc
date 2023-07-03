@@ -16,6 +16,8 @@ export type RoutePathType =
   | 'profile'
   | 'addUser'
   | 'monitoringSystems'
+  | 'monitoringSystemsOne'
+  | 'monitoringSystemsTow'
   | 'myProduct'
   | 'myProductName'
   | 'myProductMyRules'
@@ -79,6 +81,8 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   myProductIpsList: `/${RoutesName.MY_PRODUCT}/ips-list`,
   myProductMyRulesRetrieve: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}/:id`,
   monitoringSystems: `/${RoutesName.MONITORING_SYSTEM}`,
+  monitoringSystemsOne: `/${RoutesName.MONITORING_SYSTEM}/one`,
+  monitoringSystemsTow: `/${RoutesName.MONITORING_SYSTEM}/tow`,
   resetPassword: `/${RoutesName.RESET_PASSWORD}`,
   users: `/${RoutesName.USERS}`,
 };
