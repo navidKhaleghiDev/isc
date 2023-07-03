@@ -68,7 +68,7 @@
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SUPER_USER_EMAIL={{ credentials.clientapi.superuser_email }} >/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "echo SUPER_USER_PASSWORD={{ credentials.clientapi.superuser_password }} >>/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SERVER_BASE_URL=http://netpardaz.net >>/home/front/.env.production"
-      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SYSTEM_ANALYSER_ONE=http://{{ contaienrs.kibana.ip_address }}:{{ containers.kibana.port }} >>/home/front/.env.production"
+      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SYSTEM_ANALYSER_ONE=http://{{ containers.kibana.ip_address }}:{{ containers.kibana.port }} >>/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_CLIENT_BASE_URL=http://{{ containers.clientapi.ip_address }}:{{ containers.clientapi.port }} >>/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "cd /home/front/ && npm install && npm run build"
       /snap/bin/lxc exec front -- /bin/bash -c "chown -R front:front /home/front/"
