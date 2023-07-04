@@ -7,6 +7,7 @@ import {
   API_UPDATE_VALID_IPS,
 } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
+import { persianDateNumber } from '@src/helper/utils/dateUtils';
 
 import { Modal } from '../Modal';
 import { UpdateIp } from '../IpsList/UpdateIp';
@@ -67,7 +68,10 @@ export function IpCard({ item, mutateIpList }: PropsType) {
               onClick={toggleModalDelete}
             />
           </div>
-          <div className="flex ">
+          <Typography color="neutral" size="body3" type="div" className="px-3">
+            {persianDateNumber(item.created_at)}
+          </Typography>
+          {/* <div className="flex ">
             <Typography
               color="neutral"
               size="body3"
@@ -84,7 +88,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
             >
               {item.updated_at}
             </Typography>
-          </div>
+          </div> */}
           <div className="flex items-center">
             <Typography
               color="neutral"
