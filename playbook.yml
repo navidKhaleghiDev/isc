@@ -13,7 +13,7 @@
       front:
         ip_address: "10.27.95.201"
       kibana:
-        ip_address: "10.27.95.8"
+        ip_address: "192.168.1.50"
         port: "5601"
       server:
         url: "http://192.168.2.21:8000"
