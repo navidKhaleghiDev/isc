@@ -17,8 +17,6 @@
         port: "5601"
       server:
         url: "http://192.168.2.21:8000"
-      client:
-        url: "http://10.27.95.200:8000"
     credentials:
       clientapi:
         superuser_email: 'admin@admin.com'
@@ -72,9 +70,8 @@
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SUPER_USER_EMAIL={{ credentials.clientapi.superuser_email }} >/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "echo SUPER_USER_PASSWORD={{ credentials.clientapi.superuser_password }} >>/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SERVER_BASE_URL={{ containers.server.url }} >>/home/front/.env.production"
-      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_CLIENT_BASE_URL={{ containers.client.url }} >>/home/front/.env.production"      
+      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_CLIENT_BASE_URL=http://{{ containers.clientapi.ip_address }}:{{ containers.clientapi.port }} >>/home/front/.env.production"   
       /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_SYSTEM_ANALYSER_ONE=http://{{ containers.kibana.ip_address }}:{{ containers.kibana.port }} >>/home/front/.env.production"
-      /snap/bin/lxc exec front -- /bin/bash -c "echo VITE_CLIENT_BASE_URL=http://{{ containers.clientapi.ip_address }}:{{ containers.clientapi.port }} >>/home/front/.env.production"
       /snap/bin/lxc exec front -- /bin/bash -c "cd /home/front/ && npm install && npm run build"
       /snap/bin/lxc exec front -- /bin/bash -c "chown -R front:front /home/front/"
       /snap/bin/lxc exec front -- /bin/bash -c "systemctl daemon-reload && systemctl restart front.service"
