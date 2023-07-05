@@ -70,7 +70,7 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   blog: `/${RoutesName.BLOG}`,
   settings: `/${RoutesName.SETTINGS}`,
   unauthorized: `/${RoutesName.UNAUTHORIZED}`,
-  login: `/${RoutesName.LOGIN}`,
+  login: `/`,
   aboutUs: `/${RoutesName.ABOUT_US}`,
   contactUs: `/${RoutesName.CONTACT_US}`,
   dashboard: `/${RoutesName.DASHBOARD}`,
