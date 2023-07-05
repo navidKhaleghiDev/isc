@@ -54,7 +54,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         color="neutral"
         className="border-l-[0.2rem] border-teal-600 flex h-14 items-between px-2 my-2"
       >
-        <div className="w-full flex justify-between items-center">
+        <div className="w-full grid grid-cols-3 justify-between items-center">
           <div className="flex">
             <IconButton
               icon="ph:note-pencil"
@@ -68,28 +68,15 @@ export function IpCard({ item, mutateIpList }: PropsType) {
               onClick={toggleModalDelete}
             />
           </div>
-          <Typography color="neutral" size="body3" type="div" className="px-3">
+          <Typography
+            color="neutral"
+            size="body3"
+            type="div"
+            className="px-3 text-center"
+          >
             {persianDateNumber(item.created_at)}
           </Typography>
-          {/* <div className="flex ">
-            <Typography
-              color="neutral"
-              size="body3"
-              type="div"
-              className="px-3"
-            >
-              {item.created_at}
-            </Typography>
-            <Typography
-              color="neutral"
-              size="body3"
-              type="div"
-              className="px-3"
-            >
-              {item.updated_at}
-            </Typography>
-          </div> */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-end">
             <Typography
               color="neutral"
               size="body3"

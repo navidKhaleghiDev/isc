@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { BaseButton, BaseIcon, Card, Typography } from '@ui/atoms';
+import { BaseButton, Card, Typography } from '@ui/atoms';
 import { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
@@ -11,6 +11,7 @@ import { TitleMyProduct } from '@ui/molecules/TitleMyProduct';
 import { useUserContext } from '@context/user/userContext';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
+import { CardImage } from '@ui/atoms/BaseImage';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -33,7 +34,7 @@ function MyProductPageCp() {
     <div className="p-16">
       {user?.device_serial ? (
         <>
-          <GridMyProduct>
+          <GridMyProduct className="h-56">
             <div className="col-span-2 flex flex-col items-end">
               <Typography color="neutral" size="h4">
                 {product?.device?.model}
@@ -42,24 +43,11 @@ function MyProductPageCp() {
                 {product?.device?.description}
               </Typography>
             </div>
-            <Card
-              color="neutral"
-              className="min-h-[14rem] bg-neutral-300 flex justify-center items-center"
-            >
-              {product?.device.image ? (
-                <img
-                  src={product?.device.image}
-                  alt={product?.device?.model}
-                  className="w-full h-full object-cover p-2"
-                />
-              ) : (
-                <BaseIcon
-                  icon="icon-park-outline:ad-product"
-                  color="neutral"
-                  size="xxl"
-                />
-              )}
-            </Card>
+            <CardImage
+              src={product?.device.image}
+              alt={product?.device.image}
+              className="min-h-[14rem] p-2"
+            />
           </GridMyProduct>
           <GridMyProduct className="mt-4">
             <Card

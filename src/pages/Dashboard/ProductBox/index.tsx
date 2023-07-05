@@ -1,12 +1,13 @@
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { useGet } from '@src/services/http/httpClient';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
-import { Card, Typography, BaseIcon, Notification } from '@ui/atoms';
+import { Card, Typography, Notification } from '@ui/atoms';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
+import { CardImage } from '@ui/atoms/BaseImage';
 
 function ProductBoxCp() {
   const { user } = useUserContext();
@@ -37,7 +38,7 @@ function ProductBoxCp() {
     <LoadingSpinner />
   ) : (
     <div className="grid grid-cols-3 gap-6 mb-16">
-      <div className="col-span-2">
+      <div className="flex flex-col justify-between col-span-2 h-full">
         <Card color="neutral" className="flex justify-end items-center">
           <div className="flex flex-col justify-end items-end ml-4">
             <Typography color="neutral" size="h4">
@@ -97,25 +98,11 @@ function ProductBoxCp() {
           </Card>
         </div>
       </div>
-
-      <Card
-        color="neutral"
-        className="flex justify-center items-center bg-neutral-200"
-      >
-        {product?.device.image ? (
-          <img
-            src={product.device.image}
-            alt={product?.device?.model}
-            className="h-56 w-full object-cover p-2"
-          />
-        ) : (
-          <BaseIcon
-            icon="mdi:panorama-variant-outline"
-            size="xxl"
-            className="text-neutral-300"
-          />
-        )}
-      </Card>
+      <CardImage
+        src={product?.device.image}
+        alt={product?.device?.model}
+        className="h-60 p-2"
+      />
     </div>
   );
 }

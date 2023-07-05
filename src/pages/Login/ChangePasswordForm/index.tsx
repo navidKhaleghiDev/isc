@@ -69,7 +69,7 @@ export function ChangePasswordForm({
           لطفا ایمیل و گذرواژه جدید خود را وارد کنید
         </Typography>
         {error && (
-          <Typography color="red" size="body3" className="mb-10">
+          <Typography color="red" size="body3" className="mb-2">
             {error}
           </Typography>
         )}

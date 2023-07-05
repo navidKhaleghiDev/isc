@@ -8,6 +8,7 @@ import { ProductListData } from '@src/pages/Services/Products/dataMock';
 // import { Pagination } from '../Pagination';
 import { ProductCard } from '../ProductCard';
 import { LoadingSpinner } from '../Loading';
+import { NoResult } from '../NoResult';
 
 export function ProductList() {
   const { data, isLoading } = useSWR<ResponseSwr<IServerProducts[]>>(
@@ -19,13 +20,12 @@ export function ProductList() {
   return isLoading ? (
     <LoadingSpinner />
   ) : (
-    <div className="w-full h-full flex flex-col justify-between mt-8">
-      <div>
-        {listProduct.map((item) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
-      </div>
-      {/* <Pagination /> */}
+    <div>
+      {listProduct.length > 0 ? (
+        listProduct.map((item) => <ProductCard key={item.id} item={item} />)
+      ) : (
+        <NoResult />
+      )}
     </div>
   );
 }

@@ -6,8 +6,9 @@ import { regexPattern } from '../utils/regexPattern';
 export function PasswordInput({
   name,
   control,
+  label,
   placeholder,
-}: Pick<BaseInputProps<any>, 'name' | 'control' | 'placeholder'>) {
+}: Pick<BaseInputProps<any>, 'name' | 'control' | 'placeholder' | 'label'>) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -15,6 +16,7 @@ export function PasswordInput({
       name={name}
       size="md"
       id={name}
+      label={label}
       control={control}
       placeholder={placeholder}
       type={showPassword ? 'text' : 'password'}

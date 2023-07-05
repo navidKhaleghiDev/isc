@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +10,21 @@ import { useUserContext } from '@context/user/userContext';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export function HomePage() {
   const { user } = useUserContext();
-
+  console.log(
+    'VITE_SYSTEM_ANALYSER_ONE',
+    import.meta.env.VITE_SYSTEM_ANALYSER_ONE
+  );
+  console.log('VITE_SUPER_USER_EMAIL', import.meta.env.VITE_SUPER_USER_EMAIL);
+  console.log(
+    'VITE_SUPER_USER_PASSWORD',
+    import.meta.env.VITE_SUPER_USER_PASSWORD
+  );
+  console.log('VITE_SERVER_BASE_URL', import.meta.env.VITE_SERVER_BASE_URL);
+  console.log('VITE_CLIENT_BASE_URL', import.meta.env.VITE_CLIENT_BASE_URL);
+  console.log(
+    'VITE_SYSTEM_ANALYSER_TOW',
+    import.meta.env.VITE_SYSTEM_ANALYSER_TOW
+  );
   return (
     <div className="font-on min-h-screen flex flex-col items-center">
       <NavbarHome />

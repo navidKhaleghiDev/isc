@@ -4,6 +4,7 @@ import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
 import { MyRulesCard } from './MyRulesCard';
 import { useCheckRuleVersion } from './hook/useCheckedRuleVersion';
+import { NoResult } from '../NoResult';
 
 const headerItem: any = {
   rule_name: 'نام قانون',
@@ -26,14 +27,17 @@ export function MyRulesList() {
         myRule={headerItem}
         isHeader
       />
-      {checkedRulesList &&
+      {checkedRulesList.length > 0 ? (
         checkedRulesList.map((item) => (
           <MyRulesCard
             key={item.id}
             mutateMyRulesList={handleMutate}
             myRule={item}
           />
-        ))}
+        ))
+      ) : (
+        <NoResult />
+      )}
     </div>
   );
 }
