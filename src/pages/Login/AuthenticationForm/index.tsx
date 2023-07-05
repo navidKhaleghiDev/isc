@@ -47,7 +47,7 @@ export function AuthenticationForm({
         برای احراز هویت ایمیل و کلمه عبور مشتری را وراد کنید.
       </Typography>
       {error && (
-        <Typography color="red" size="body3" className="mb-10">
+        <Typography color="red" size="body3" className="mb-2">
           {error}
         </Typography>
       )}

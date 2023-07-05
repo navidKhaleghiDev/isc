@@ -75,8 +75,11 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         <div className="absolute top-[-6rem]">
           <Avatar icon="ph:user" intent="grey" size="lg" />
         </div>
+        <Typography color="neutral" size="h5" className="mb-5">
+          لطفا ایمیل و گذرواژه خود را وارد کنید
+        </Typography>
         {error && (
-          <Typography color="red" size="body3" className="mb-10">
+          <Typography color="red" size="body3" className="mb-2">
             {error}
           </Typography>
         )}

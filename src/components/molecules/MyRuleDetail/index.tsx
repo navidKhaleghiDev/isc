@@ -24,6 +24,7 @@ import { Modal } from '../Modal';
 import { CardRuleDetail } from '../CardRuleDetail';
 import { ruleData } from '../RuleDetail/dataMock';
 import { CodeLineRule } from '../RuleDetail/CodeLineRule';
+import { NoResult } from '../NoResult';
 
 function comparPolicies(
   oldPolicies: SliceOrderCodeType[],
@@ -166,7 +167,7 @@ export function MyRuleDetail() {
       </div>
 
       <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
-        {codeList &&
+        {codeList && codeList.length > 0 ? (
           codeList.map((code: SliceOrderCodeType, index: number) => {
             return (
               <CodeLine
@@ -177,7 +178,10 @@ export function MyRuleDetail() {
                 }
               />
             );
-          })}
+          })
+        ) : (
+          <NoResult />
+        )}
       </Card>
       <div className="flex w-full justify-between items-center mt-8">
         <div className="flex">

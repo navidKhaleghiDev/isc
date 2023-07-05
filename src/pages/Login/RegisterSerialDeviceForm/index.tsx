@@ -46,7 +46,7 @@ export function RegisterSerialDeviceForm({
         شماره سریال مورد نظر را وارد کنید
       </Typography>
       {error && (
-        <Typography color="red" size="body3" className="">
+        <Typography color="red" size="body3" className="mb-2">
           {error}
         </Typography>
       )}

@@ -4,6 +4,7 @@ import { E_USERS } from '@src/services/client/users/endpoint';
 import { IUser } from '@src/services/client/users/types';
 import { UserCard } from './UserCard';
 import { myRulesListData } from './dataMock';
+import { NoResult } from '../NoResult';
 
 const headerItem: any = {
   id: 'ویرایش',
@@ -25,9 +26,13 @@ export function UsersList() {
   return (
     <div className="w-full mt-8">
       <UserCard mutateUserList={handleMutate} user={headerItem} isHeader />
-      {list.map((item) => (
-        <UserCard key={item.id} mutateUserList={handleMutate} user={item} />
-      ))}
+      {list.length > 0 ? (
+        list.map((item) => (
+          <UserCard key={item.id} mutateUserList={handleMutate} user={item} />
+        ))
+      ) : (
+        <NoResult />
+      )}
     </div>
   );
 }

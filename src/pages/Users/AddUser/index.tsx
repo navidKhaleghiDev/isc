@@ -40,7 +40,6 @@ function AddUserPageCp() {
             id="first_name"
             control={control}
             label="نام"
-            placeholder="بنویسید"
             rules={{
               required: regexPattern.required,
               pattern: regexPattern.farsiLettersAndSpace,
@@ -52,7 +51,6 @@ function AddUserPageCp() {
             id="last_name"
             control={control}
             label="نام خانوادگی"
-            placeholder="بنویسید"
             rules={{
               required: regexPattern.required,
               pattern: regexPattern.farsiLettersAndSpace,
@@ -71,11 +69,7 @@ function AddUserPageCp() {
             }}
             fullWidth
           />
-          <PasswordInput
-            name="password"
-            control={control}
-            placeholder="بنویسید"
-          />
+          <PasswordInput name="password" control={control} label="گذرواژه" />
         </div>
         <div className="ml-auto mt-6">
           <BaseCheckBox
