@@ -46,15 +46,17 @@ function LoginPageCp() {
       <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center">
         <Step onChangeStep={setStep} getProfile={getProfile} />
       </Card>
-      <Link to={user ? ROUTES_PATH.dashboard : ROUTES_PATH.home}>
-        <BaseButton
-          label={user ? 'داشبورد' : 'خانه'}
-          endIcon="ic:round-login"
-          className="mt-10"
-          size="md"
-          type="shadow"
-        />
-      </Link>
+      {user && (
+        <Link to={ROUTES_PATH.dashboard}>
+          <BaseButton
+            label="داشبورد"
+            endIcon="ic:round-login"
+            className="mt-10"
+            size="md"
+            type="shadow"
+          />
+        </Link>
+      )}
     </div>
   );
 }
