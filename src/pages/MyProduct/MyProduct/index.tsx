@@ -7,11 +7,12 @@ import { useGet } from '@src/services/http/httpClient';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
-import { TitleMyProduct } from '@ui/molecules/TitleMyProduct';
 import { useUserContext } from '@context/user/userContext';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 import { CardImage } from '@ui/atoms/BaseImage';
+import { NoResult } from '@ui/molecules/NoResult';
+import { CardProductBox } from './CardProductBox';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -33,74 +34,69 @@ function MyProductPageCp() {
   return (
     <div className="p-16">
       {user?.device_serial ? (
-        <>
-          <GridMyProduct className="h-56">
-            <div className="col-span-2 flex flex-col items-end">
-              <Typography color="neutral" size="h4">
-                {product?.device?.model}
-              </Typography>
-              <Typography color="neutral" size="body3">
-                {product?.device?.description}
-              </Typography>
-            </div>
-            <CardImage
-              src={product?.device.image}
-              alt={product?.device.image}
-              className="min-h-[14rem] p-2"
-            />
-          </GridMyProduct>
-          <GridMyProduct className="mt-4">
-            <Card
-              className="col-span-2 h-9 flex justify-center items-center"
-              color="neutral"
-            >
-              <Typography size="h6" color="neutral" className="text-center ">
-                {product?.id}
-              </Typography>
-            </Card>
-            <Card color="neutral" className="flex items-center px-4">
-              <TitleMyProduct title="تعداد قوانین" />
-              <Typography color="teal" size="h6" className="mr-auto">
-                {product?.recommended_rules.length}
-              </Typography>
-            </Card>
-          </GridMyProduct>
-          <GridMyProduct className="mt-4">
-            <Card
-              className="col-span-2 h-9 flex items-center px-4"
-              color="neutral"
-            >
-              <TitleMyProduct title="آدرس ارسال شده" />
-              <Typography color="neutral" size="h6" className="">
-                {product?.address}
-              </Typography>
-            </Card>
-            <Card color="neutral" className="flex items-center px-4">
-              <TitleMyProduct title="تاریخ ثبت" />
-              <Typography color="neutral" size="h6" className="mr-auto">
-                {persianDateAndNumber(product?.created_at)}
-              </Typography>
-            </Card>
-          </GridMyProduct>
-          <GridMyProduct className="mt-4">
-            <Card
-              className="col-span-2 h-9 flex items-center px-4"
-              color="neutral"
-            >
-              <TitleMyProduct title="تلفن" />
-              <Typography color="neutral" size="h6" className="">
-                {product?.organization_number}
-              </Typography>
-            </Card>
-            <Card color="neutral" className="flex items-center px-4">
-              <TitleMyProduct title="نام برند محصول" />
-
-              <Typography color="neutral" size="h6" className="mr-auto">
-                {product?.device.brand.name}
-              </Typography>
-            </Card>
-          </GridMyProduct>
-        </>
+        product ? (
+          <>
+            <GridMyProduct className="h-56">
+              <div className="col-span-2 flex flex-col items-end">
+                <Typography color="neutral" size="h4">
+                  {product?.device?.model}
+                </Typography>
+                <Typography color="neutral" size="body3">
+                  {product?.device?.description}
+                </Typography>
+              </div>
+              <CardImage
+                src={product?.device.image}
+                alt={product?.device.image}
+                className="min-h-[14rem] p-2"
+              />
+            </GridMyProduct>
+            <GridMyProduct className="mt-4">
+              <Card
+                className="col-span-2 h-9 flex justify-center items-center"
+                color="neutral"
+              >
+                <Typography size="h6" color="neutral" className="text-center ">
+                  {product?.id}
+                </Typography>
+              </Card>
+              <CardProductBox
+                label="تعداد قوانین"
+                value={product.recommended_rules.length}
+                className="px-4"
+                valueColor="teal"
+              />
+            </GridMyProduct>
+            <GridMyProduct className="mt-4">
+              <CardProductBox
+                label="آدرس ارسال شده"
+                value={product.address}
+                className="col-span-2 px-4"
+                isValueLeft
+              />
+              <CardProductBox
+                label="تاریخ ثبت"
+                value={persianDateAndNumber(product.created_at)}
+                className=" px-4"
+              />
+            </GridMyProduct>
+            <GridMyProduct className="mt-4">
+              <CardProductBox
+                label="تلفن"
+                value={product.organization_number}
+                className="col-span-2 px-4"
+                isValueLeft
+              />
+              <CardProductBox
+                label="نام برند محصول"
+                value={product.device.brand.name}
+                className="px-4"
+              />
+            </GridMyProduct>
+          </>
+        ) : (
+          <NoResult />
+        )
       ) : (
         <NotCompletedAuth
           title="جزییات محصول"

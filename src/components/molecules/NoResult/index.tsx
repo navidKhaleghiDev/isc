@@ -12,11 +12,7 @@ export function NoResult({ isPage, description }: PropsType) {
       } flex flex-col justify-center items-center`}
     >
       <img src="/not-found.jpg" alt="not found" />
-      {description ? (
-        <Typography>{description}</Typography>
-      ) : (
-        <Typography>موردی یافت نشد</Typography>
-      )}{' '}
+      <Typography color="neutral">{description ?? `موردی یافت نشد`}</Typography>
     </div>
   );
 }

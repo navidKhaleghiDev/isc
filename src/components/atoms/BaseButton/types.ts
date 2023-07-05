@@ -11,6 +11,7 @@ export interface IBaseButton extends BaseButtonStyleProps {
   className?: string;
   startIcon?: string;
   endIcon?: string;
+  loading?: boolean;
 }
 
 export interface IIconButton extends VariantProps<typeof iconButtonStyles> {

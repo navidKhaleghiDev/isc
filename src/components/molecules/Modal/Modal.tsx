@@ -73,6 +73,7 @@ export function Modal({
                   }}
                   type={buttonOne.color}
                   className="m-1"
+                  loading
                 />
               )}
               {buttonTow && (

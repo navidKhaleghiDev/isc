@@ -9,6 +9,12 @@ import { BaseButtonStyleProps } from '@ui/atoms/BaseButton';
 
 import { headerStyles } from './styles';
 
+type ModalButtonType = {
+  label: string;
+  onClick: () => void;
+  color?: BaseButtonStyleProps['type'];
+  loading?: boolean;
+};
 export interface IModal
   extends VariantProps<typeof headerStyles>,
     PropsWithChildren {
@@ -18,15 +24,7 @@ export interface IModal
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   className?: string;
-  buttonOne?: {
-    label: string;
-    onClick: () => void;
-    color?: BaseButtonStyleProps['type'];
-  };
-  buttonTow?: {
-    label: string;
-    onClick: () => void;
-    color?: BaseButtonStyleProps['type'];
-  };
+  buttonOne?: ModalButtonType;
+  buttonTow?: ModalButtonType;
   content?: ReactElement;
 }

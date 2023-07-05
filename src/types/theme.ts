@@ -6,3 +6,5 @@ export type ColorType =
   | 'info'
   | 'default'
   | 'error';
+
+export type DesignColorType = 'neutral' | 'teal' | 'yellow' | 'red' | 'white';

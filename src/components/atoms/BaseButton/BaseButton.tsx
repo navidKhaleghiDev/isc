@@ -1,6 +1,7 @@
 import { baseButtonStyles, iconInButtonStyles } from './styles';
 import { IBaseButton } from './types';
 import { BaseIcon } from '../BaseIcon';
+import { LoadingSvg } from '../Svgs/LoadingSvg';
 
 export function BaseButton({
   onClick,
@@ -13,12 +14,13 @@ export function BaseButton({
   disabled,
   size,
   type,
+  loading,
 }: IBaseButton) {
   return (
     <button
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
-      disabled={disabled}
+      disabled={loading ?? disabled}
       className={baseButtonStyles({
         type,
         fullWidth,
@@ -36,7 +38,7 @@ export function BaseButton({
           })}
         />
       )}
-      {label}
+      {loading ? <LoadingSvg /> : label}
       {endIcon && (
         <BaseIcon
           icon={endIcon}
