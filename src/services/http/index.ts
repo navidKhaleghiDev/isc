@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 enum StatusCode {
   Unauthorized = 401,
   Forbidden = 403,
+  NotFound = 404,
   TooManyRequests = 429,
   InternalServerError = 500,
   BadRequestError = 400,
@@ -170,31 +171,35 @@ export class Http {
 
         switch (status) {
           case StatusCode.BadRequestError: {
-            // Handle InternalServerError
+            // 400 - Handle InternalServerError
             throw handleResponseError(data);
           }
           case StatusCode.Unauthorized: {
-            // Handle Unauthorized
+            // 401 - Handle Unauthorized
             this.removeAuthHeader();
             window.location.reload();
             break;
           }
           case StatusCode.Forbidden: {
-            // Handle Forbidden
+            // 403 - Handle Forbidden
             toast.error('شما به این بخش دسترسی ندارید');
             break;
           }
+          case StatusCode.NotFound: {
+            // 404 - Handle Not found
+            throw handleResponseError(data);
+          }
           case StatusCode.NotAcceptable: {
-            // Handle proxy unauthorized
+            // 406 - Handle proxy unauthorized
             toast.error('شما نیاز به احراز هویت دارید');
             throw handleResponseError(data);
           }
           case StatusCode.TooManyRequests: {
-            // Handle TooManyRequests
+            // 429 - Handle TooManyRequests
             break;
           }
           case StatusCode.InternalServerError: {
-            // Handle InternalServerError
+            // 500 - Handle InternalServerError
             break;
           }
           default:

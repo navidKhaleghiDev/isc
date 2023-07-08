@@ -8,12 +8,13 @@ type PropsType = {
   ip: IIp;
   onSubmit: (newIp: string) => void;
   onCloseModal: () => void;
+  loading?: boolean;
 };
 interface IUpdateIpValues extends FieldValues {
   ip: string;
 }
 
-export function UpdateIp({ ip, onSubmit, onCloseModal }: PropsType) {
+export function UpdateIp({ ip, onSubmit, onCloseModal, loading }: PropsType) {
   const { control, handleSubmit } = useForm<IUpdateIpValues>({
     mode: 'onChange',
     defaultValues: {
@@ -60,7 +61,7 @@ export function UpdateIp({ ip, onSubmit, onCloseModal }: PropsType) {
           }}
           fullWidth
         />
-        <BaseButton label="ثبت تغییرات" submit />
+        <BaseButton label="ثبت تغییرات" loading={loading} submit />
       </form>
     </div>
   );

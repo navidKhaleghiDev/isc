@@ -67,6 +67,11 @@ export function MyRuleDetail() {
   const [codeList, setCodeList] = useState<SliceOrderCodeType[] | null>(null);
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
+  const [modalsLoading, setModalsLoading] = useState({
+    deleteButton: false,
+    editButton: false,
+  });
+
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
@@ -96,18 +101,25 @@ export function MyRuleDetail() {
   };
 
   const handleDeleteMyRule = async () => {
+    setModalsLoading((prev) => ({ ...prev, deleteButton: true }));
+
     await API_DELETE_MY_RULE(myRule?.id as string)
       .then(() => {
         toast.success('با موفقیت حذف شد');
         mutate();
+        toggleModalDelete();
         navigate(-1);
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setModalsLoading((prev) => ({ ...prev, deleteButton: false }));
       });
   };
 
   const handleAddMyRule = async () => {
+    setModalsLoading((prev) => ({ ...prev, editButton: true }));
     let ruleCode = '';
     if (codeList) {
       codeList.forEach((code) => {
@@ -119,9 +131,13 @@ export function MyRuleDetail() {
       .then(() => {
         toast.success('با موفقیت ویرایش شد');
         mutate();
+        toggleModalEdit();
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setModalsLoading((prev) => ({ ...prev, editButton: false }));
       });
   };
 
@@ -244,7 +260,11 @@ export function MyRuleDetail() {
         open={openModalEdit}
         setOpen={setOpenModalEdit}
         title="از ویرایش این قانون مطمئن هستید؟"
-        buttonOne={{ label: 'بله', onClick: handleAddMyRule }}
+        buttonOne={{
+          label: 'بله',
+          onClick: handleAddMyRule,
+          loading: modalsLoading.editButton,
+        }}
         buttonTow={{
           label: 'خیر',
           onClick: toggleModalEdit,
@@ -257,7 +277,11 @@ export function MyRuleDetail() {
         setOpen={setOpenModalDelete}
         type="error"
         title="از حذف این قانون مطمئن هستید؟"
-        buttonOne={{ label: 'بله', onClick: handleDeleteMyRule }}
+        buttonOne={{
+          label: 'بله',
+          onClick: handleDeleteMyRule,
+          loading: modalsLoading.deleteButton,
+        }}
         buttonTow={{
           label: 'خیر',
           onClick: toggleModalDelete,

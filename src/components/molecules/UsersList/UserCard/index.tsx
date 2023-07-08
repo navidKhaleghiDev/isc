@@ -15,17 +15,23 @@ type PropsType = {
 
 export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
 
   const handleRequestDelete = async () => {
+    setDeleteLoading(true);
     await API_USERS_DELETE(user.id as string)
       .then(() => {
         toast.success('با موفقیت حذف شد');
         mutateUserList();
+        toggleModalDelete();
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setDeleteLoading(true);
       });
   };
 
@@ -85,7 +91,11 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
         setOpen={setOpenModalDelete}
         type="error"
         title="از حذف این کاربر مطمئن هستید؟"
-        buttonOne={{ label: 'بله', onClick: handleRequestDelete }}
+        buttonOne={{
+          label: 'بله',
+          onClick: handleRequestDelete,
+          loading: deleteLoading,
+        }}
         buttonTow={{
           label: 'خیر',
           onClick: toggleModalDelete,

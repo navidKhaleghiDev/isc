@@ -20,11 +20,15 @@ type PropsType = {
 export function IpCard({ item, mutateIpList }: PropsType) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
-
+  const [modalsLoading, setModalsLoading] = useState({
+    deleteButton: false,
+    editButton: false,
+  });
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
   const toggleModalEdit = () => setOpenModalEdit(!openModalEdit);
 
   const handleRequestDelete = async () => {
+    setModalsLoading((prev) => ({ ...prev, deleteButton: true }));
     await API_DELETE_VALID_IPS(item.id as string)
       .then(() => {
         toast.success('با موفقیت حذف شد');
@@ -33,10 +37,14 @@ export function IpCard({ item, mutateIpList }: PropsType) {
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setModalsLoading((prev) => ({ ...prev, deleteButton: false }));
       });
   };
 
   const handleRequestUpdate = async (newIp: string) => {
+    setModalsLoading((prev) => ({ ...prev, editButton: true }));
     await API_UPDATE_VALID_IPS(item.id as string, { ip: newIp })
       .then(() => {
         toast.success('با موفقیت ویرایش شد');
@@ -45,6 +53,9 @@ export function IpCard({ item, mutateIpList }: PropsType) {
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setModalsLoading((prev) => ({ ...prev, editButton: false }));
       });
   };
 
@@ -99,6 +110,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
             ip={item}
             onSubmit={handleRequestUpdate}
             onCloseModal={toggleModalEdit}
+            loading={modalsLoading.editButton}
           />
         }
         classContainer="border border-teal-600"
@@ -109,7 +121,11 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         setOpen={setOpenModalDelete}
         type="error"
         title="از حذف این IP مطمئن هستید؟"
-        buttonOne={{ label: 'بله', onClick: handleRequestDelete }}
+        buttonOne={{
+          label: 'بله',
+          onClick: handleRequestDelete,
+          loading: modalsLoading.deleteButton,
+        }}
         buttonTow={{
           label: 'خیر',
           onClick: toggleModalDelete,

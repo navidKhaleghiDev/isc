@@ -67,22 +67,17 @@ export function Modal({
               {buttonOne && (
                 <BaseButton
                   label={buttonOne.label}
-                  onClick={() => {
-                    buttonOne.onClick();
-                    handleToggle();
-                  }}
+                  onClick={buttonOne.onClick}
                   type={buttonOne.color}
                   className="m-1"
-                  loading
+                  loading={buttonOne.loading}
                 />
               )}
               {buttonTow && (
                 <BaseButton
                   label={buttonTow.label}
-                  onClick={() => {
-                    buttonTow.onClick();
-                    handleToggle();
-                  }}
+                  onClick={buttonTow.onClick}
+                  loading={buttonTow.loading}
                   type={buttonTow.color}
                   className="m-1"
                 />

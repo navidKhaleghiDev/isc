@@ -12,18 +12,23 @@ type PropsType = { rule: IRules };
 
 export function RulesCard({ rule }: PropsType) {
   const [openModal, setOpenModal] = useState(false);
+  const [addLoading, setAddLoading] = useState(false);
 
   const onClickAddButton = () => setOpenModal(true);
 
   const handleRequestAdd = async () => {
-    setOpenModal(false);
+    setAddLoading(true);
 
     await API_ADD_RULE({ id: rule.id })
       .then(() => {
         toast.success('با موفقیت اضافه شد');
+        setOpenModal(false);
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setAddLoading(false);
       });
   };
 
@@ -59,6 +64,7 @@ export function RulesCard({ rule }: PropsType) {
         buttonOne={{
           label: 'بله',
           onClick: handleRequestAdd,
+          loading: addLoading,
         }}
         buttonTow={{
           color: 'red',

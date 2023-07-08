@@ -21,17 +21,23 @@ export function MyRulesCard({
   isHeader,
 }: PropsType) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
 
   const handleRequestDelete = async () => {
+    setDeleteLoading(true);
     await API_DELETE_MY_RULE(myRule.id as string)
       .then(() => {
         toast.success('با موفقیت حذف شد');
+        toggleModalDelete();
         mutateMyRulesList();
       })
       .catch((err) => {
         toast.error(err);
+      })
+      .finally(() => {
+        setDeleteLoading(false);
       });
   };
 
@@ -96,7 +102,11 @@ export function MyRulesCard({
         setOpen={setOpenModalDelete}
         type="error"
         title="از حذف این قانون مطمئن هستید؟"
-        buttonOne={{ label: 'بله', onClick: handleRequestDelete }}
+        buttonOne={{
+          label: 'بله',
+          onClick: handleRequestDelete,
+          loading: deleteLoading,
+        }}
         buttonTow={{
           label: 'خیر',
           onClick: toggleModalDelete,
