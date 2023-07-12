@@ -3,14 +3,12 @@ import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 
 import { IpCard } from '../IpCard';
-import { IpsListData } from './dataMock';
 import { NoResult } from '../NoResult';
 
 export function IpsList() {
   const { data, mutate } = useGet<ResponseSwr<IIp[]>>(E_RULES_VALID_IPS);
 
-  const list: IIp[] =
-    data && Array.isArray(data?.data) ? data?.data : IpsListData;
+  const list: IIp[] = data && Array.isArray(data?.data) ? data?.data : [];
 
   const handleMutate = () => {
     mutate();

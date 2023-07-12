@@ -7,7 +7,6 @@ import { IProduct } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
 import { RulesCard } from './RulesCard';
 import { NoResult } from '../NoResult';
-import { rulesListData } from './dataMock';
 import { NotCompletedAuth } from '../NotCompletedAuth';
 
 type PropsType = {
@@ -24,8 +23,7 @@ export function RulesList({ buttonState }: PropsType) {
     buttonState === 'suggest' && user?.device_serial ? E_USERS_PRODUCT : null
   );
 
-  const rules =
-    suggestData?.data.recommended_rules || allData?.data || rulesListData;
+  const rules = suggestData?.data.recommended_rules || allData?.data || [];
 
   if (
     !user?.is_authenticated ||
