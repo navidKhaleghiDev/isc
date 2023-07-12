@@ -15,7 +15,7 @@
         ip_address: "192.168.1.50"
         port: "5601"
       server:
-        url: "https://ips.npd-co.com:4433"
+        url: "https://ips.npd-co.com"
     credentials:
       clientapi:
         superuser_email: 'admin@admin.com'
