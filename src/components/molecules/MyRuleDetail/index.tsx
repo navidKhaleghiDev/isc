@@ -19,10 +19,8 @@ import {
 import { getCountChangedTowArray } from '@src/helper/utils/comparArray';
 import { toast } from 'react-toastify';
 import { CodeLine } from './CodeLine';
-import { myRuleData } from './dataMock';
 import { Modal } from '../Modal';
 import { CardRuleDetail } from '../CardRuleDetail';
-import { ruleData } from '../RuleDetail/dataMock';
 import { CodeLineRule } from '../RuleDetail/CodeLineRule';
 import { NoResult } from '../NoResult';
 
@@ -48,15 +46,12 @@ function useAdditionalPolicy(
 
   useEffect(() => {
     if (data && codeListMyRule) {
-      const rule = data?.data || ruleData;
+      const rule: IRules | undefined = data?.data;
       const comparedList = comparPolicies(
         codeListMyRule,
         getCodeList(rule.code)
       );
       setAdditionalList(comparedList);
-      // if (comparedList.length > 0) {
-      //   setAdditionalList(comparedList);
-      // }
     }
   }, [codeListMyRule, data]);
 
@@ -64,21 +59,21 @@ function useAdditionalPolicy(
 }
 
 export function MyRuleDetail() {
-  const [codeList, setCodeList] = useState<SliceOrderCodeType[] | null>(null);
-  const [openModalDelete, setOpenModalDelete] = useState(false);
-  const [openModalEdit, setOpenModalEdit] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
+  const [codeList, setCodeList] = useState<SliceOrderCodeType[] | null>(null);
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [openModalEdit, setOpenModalEdit] = useState(false);
   const id = slugs[3];
   const { mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
   const { data } = useGet<ResponseSwr<IMyRule>>(E_RULES_MY_RULES_ID(id));
 
-  const myRule = data?.data || myRuleData;
-  const additionalList = useAdditionalPolicy(codeList, myRule.id);
+  const myRule: IMyRule | undefined = data?.data;
+  const additionalList = useAdditionalPolicy(codeList, myRule?.id);
 
   useEffect(() => {
-    setCodeList(getCodeList(myRule.rule_code));
+    setCodeList(getCodeList(myRule?.rule_code));
   }, [myRule]);
 
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
@@ -131,7 +126,7 @@ export function MyRuleDetail() {
     setCodeList(newList);
   };
 
-  return (
+  return myRule ? (
     <div className="pb-5">
       <div className="grid grid-cols-3 gap-5 mb-16">
         <div>
@@ -195,7 +190,7 @@ export function MyRuleDetail() {
               <CardRuleDetail
                 label="تغییرداده‌شده‌ها"
                 value={`${getCountChangedTowArray(
-                  getCodeList(myRule.rule_code),
+                  getCodeList(myRule?.rule_code),
                   codeList
                 )}`}
               />
@@ -265,5 +260,7 @@ export function MyRuleDetail() {
         }}
       />
     </div>
+  ) : (
+    <NoResult />
   );
 }

@@ -4,8 +4,6 @@ import { fetcherServer } from '@src/services/server/httpServer';
 import { ResponseSwr } from '@src/services/client/rules/types';
 
 import { IServerProducts } from '@src/services/server/products/types';
-import { ProductListData } from '@src/pages/Services/Products/dataMock';
-// import { Pagination } from '../Pagination';
 import { ProductCard } from '../ProductCard';
 import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
@@ -15,7 +13,7 @@ export function ProductList() {
     E_SERVER_PRODUCT_DEVICE,
     fetcherServer
   );
-  const listProduct = data?.data ?? ProductListData;
+  const listProduct = data?.data ?? [];
 
   return isLoading ? (
     <LoadingSpinner />

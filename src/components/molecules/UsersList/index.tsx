@@ -3,7 +3,6 @@ import { ResponseSwr } from '@src/services/client/rules/types';
 import { E_USERS } from '@src/services/client/users/endpoint';
 import { IUser } from '@src/services/client/users/types';
 import { UserCard } from './UserCard';
-import { myRulesListData } from './dataMock';
 import { NoResult } from '../NoResult';
 
 const headerItem: any = {
@@ -16,8 +15,7 @@ const headerItem: any = {
 export function UsersList() {
   const { data, mutate } = useGet<ResponseSwr<IUser[]>>(E_USERS);
 
-  const list: IUser[] =
-    data && Array.isArray(data?.data) ? data?.data : myRulesListData;
+  const list: IUser[] = data && Array.isArray(data?.data) ? data?.data : [];
 
   const handleMutate = () => {
     mutate();
