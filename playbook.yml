@@ -8,9 +8,9 @@
     ansible_python_interpreter: /usr/bin/python3
     containers:
       clientapi:
-        url: "http://10.27.95.200:8000"
+        url: "http://192.168.1.50:8000"
       front:
-        ip_address: "10.27.95.201"
+        ip_address: "192.168.1.50:4173"
       kibana:
         ip_address: "192.168.1.50"
         port: "5601"
