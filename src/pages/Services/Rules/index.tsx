@@ -30,7 +30,6 @@ function RulesPageCP() {
         {/* <Select label="مرتب سازی" /> */}
       </Card>
       <RulesList buttonState={activeButton} />
-      {/* <Pagination /> */}
     </div>
   );
 }

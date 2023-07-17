@@ -24,10 +24,13 @@ export function BaseInput(props: BaseInputProps<any>) {
     type,
     label,
     hiddenError,
+    pureOnChange,
+    pureValue,
     onClickIcon,
+    pureError,
     iconButtonIcon = 'fa-home',
   } = props;
-  return (
+  return control ? (
     <Controller
       name={name}
       control={control}
@@ -79,6 +82,24 @@ export function BaseInput(props: BaseInputProps<any>) {
           )}
         </div>
       )}
+    />
+  ) : (
+    <input
+      id={id}
+      type={type}
+      dir="auto"
+      name={name}
+      value={pureValue}
+      onChange={pureOnChange}
+      className={baseInputStyles({
+        intent: pureError ? 'error' : intent,
+        className: `${(endIcon || onClickIcon) && 'pl-8'} ${
+          startIcon && 'pr-8'
+        } `,
+        fullWidth,
+        size,
+      })}
+      placeholder={placeholder}
     />
   );
 }

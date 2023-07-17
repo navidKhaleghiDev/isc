@@ -118,7 +118,7 @@ export function MyRuleDetail() {
     let ruleCode = '';
     if (codeList) {
       codeList.forEach((code) => {
-        ruleCode += `${code.order}${code.code} \r\n\r `;
+        ruleCode += `${code.order}${code.code} \n `;
       });
     }
     // const body = codeList.for

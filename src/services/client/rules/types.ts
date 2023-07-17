@@ -12,6 +12,13 @@ export interface IRules {
   code: string;
 }
 
+export interface IResponseRules {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: IRules[];
+}
+
 export interface IIp {
   id?: string;
   ip_type: EIpType;
@@ -68,4 +75,10 @@ export interface IBodyUpdateMyRule {
 
 export interface IBodyAssignOwner {
   serial: string;
+}
+
+export interface IParamsRules {
+  pageSize: number;
+  page: number;
+  search: string;
 }

@@ -36,6 +36,9 @@ export interface BaseInputProps<T extends FieldValues>
   hiddenError?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string;
+  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  pureValue?: string;
+  pureError?: string;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {
