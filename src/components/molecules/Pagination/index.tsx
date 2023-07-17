@@ -4,7 +4,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 const mClass =
-  'flex w-8 h-8 mx-0.5 p-0 justify-center items-center rounded-md leading-tight text-xl text-teal-600 bg-white border border-teal-600 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white';
+  'flex w-8 h-8 mx-0.5 p-0 justify-center items-center rounded-md leading-tight text-xl text-teal-500 bg-white border border-teal-500 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white';
 export function Pagination({
   currentPage,
   totalPages,

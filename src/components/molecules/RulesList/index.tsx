@@ -26,16 +26,10 @@ const LIMIT_RULES_LIST = 10;
 export function RulesList({ buttonState }: PropsType) {
   const { user } = useUserContext();
   const [currentPage, setCurrentPage] = useState(1);
-  // const [search, setSearch] = useState('');
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
-  // const handleOnSearch = (value: string) => {
-  //   setSearch(value);
-  // };
-
   const { data: allData } = useGet<ResponseSwr<IResponseRules>>(
     buttonState === 'all'
       ? E_RULES_LIST({

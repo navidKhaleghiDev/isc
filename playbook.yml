@@ -7,15 +7,13 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
     containers:
-      clientapi:
-        url: "http://192.168.1.50:8000"
       front:
         ip_address: "10.27.95.201"
-      kibana:
-        ip_address: "192.168.1.50"
-        port: "5601"
-      server:
-        url: "http://192.168.1.54:8000"
+    urls:
+      clientapi: "http://192.168.1.50:8000"
+      front: "192.168.1.50:4173"
+      kibana: "http://192.168.1.50:5601"
+      server: "https://ips.npd-co.com"
     credentials:
       clientapi:
         superuser_email: 'admin@admin.com'
@@ -65,7 +63,7 @@
 
   - name: Install nodejs and deploy application into the container
     ansible.builtin.shell: |
-      /snap/bin/lxc exec front -- /bin/bash -c "echo 10.27.95.5 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
+      /snap/bin/lxc exec front -- /bin/bash -c "echo 192.168.1.50 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
       /snap/bin/lxc exec front -- /bin/bash -c "apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y -q"
       /snap/bin/lxc file push /tmp/app.tar.gz front/tmp/app.tar.gz
       /snap/bin/lxc file push /tmp/front.service front/usr/lib/systemd/system/front.service

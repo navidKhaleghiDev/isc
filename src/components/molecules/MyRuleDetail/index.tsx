@@ -29,7 +29,7 @@ function comparPolicies(
   newPolicies: SliceOrderCodeType[]
 ): SliceOrderCodeType[] {
   return newPolicies.filter(
-    (newRule) => !oldPolicies.some((oldRule) => newRule.code === oldRule.code)
+    (newRule) => !oldPolicies.some((oldRule) => newRule?.code === oldRule?.code)
   );
 }
 
@@ -47,9 +47,10 @@ function useAdditionalPolicy(
   useEffect(() => {
     if (data && codeListMyRule) {
       const rule: IRules | undefined = data?.data;
+
       const comparedList = comparPolicies(
         codeListMyRule,
-        getCodeList(rule.code)
+        getCodeList(rule?.code)
       );
       setAdditionalList(comparedList);
     }
@@ -73,8 +74,8 @@ export function MyRuleDetail() {
 
   const { mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
   const { data } = useGet<ResponseSwr<IMyRule>>(E_RULES_MY_RULES_ID(id));
-
   const myRule: IMyRule | undefined = data?.data;
+
   const additionalList = useAdditionalPolicy(codeList, myRule?.id);
 
   useEffect(() => {
@@ -118,7 +119,7 @@ export function MyRuleDetail() {
     let ruleCode = '';
     if (codeList) {
       codeList.forEach((code) => {
-        ruleCode += `${code.order}${code.code} \n `;
+        ruleCode += `${code.order}${code.code} \r\n\r `;
       });
     }
     // const body = codeList.for

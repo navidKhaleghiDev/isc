@@ -16,7 +16,9 @@ const headerItem: any = {
 
 export function MyRulesList() {
   const { data, mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
+
   const checkedRulesList = useCheckRuleVersion(data?.data);
+
   const handleMutate = () => {
     mutate();
   };

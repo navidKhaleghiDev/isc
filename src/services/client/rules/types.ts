@@ -78,7 +78,7 @@ export interface IBodyAssignOwner {
 }
 
 export interface IParamsRules {
-  pageSize: number;
-  page: number;
-  search: string;
+  pageSize?: number;
+  page?: number;
+  search?: string;
 }

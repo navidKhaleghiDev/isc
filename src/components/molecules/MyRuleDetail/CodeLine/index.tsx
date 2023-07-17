@@ -4,7 +4,7 @@ import { CodeLineSelect } from './CodeLineSelect';
 
 type PropsType = { code: SliceOrderCodeType; onChangeOrder: any };
 export function CodeLine({ code, onChangeOrder }: PropsType) {
-  if (!code.order || !code.code) {
+  if (!code?.order || !code?.code) {
     return null;
   }
   return (
@@ -12,7 +12,7 @@ export function CodeLine({ code, onChangeOrder }: PropsType) {
       <Card className="my-2 font-sans text-left p-2">
         <CodeLineSelect value={code.order} onChange={onChangeOrder} />
         <Typography type="span" size="body3" className="text-neutral-400">
-          {code.code}
+          {code?.code}
         </Typography>
       </Card>
     </div>
