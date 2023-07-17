@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
+    'no-console': 'error',
     'prettier/prettier': [
       'error',
       {

@@ -1,4 +1,5 @@
-import { RoutePathType, ROUTES_PATH } from '@src/routes/routesConstants';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { RoutePathType } from '@src/routes/types';
 
 export interface INavigation {
   id: string;
@@ -31,11 +32,6 @@ export const navigationSideBar: INavigation[] = [
         label: 'لیست قوانین',
         path: ROUTES_PATH.servicesRules,
       },
-      // {
-      //   id: '3',
-      //   label: 'راهنمای سیستم نظارتی',
-      //   path: ROUTES_PATH.servicesMonitoringSystems,
-      // },
     ],
   },
   {
@@ -59,18 +55,9 @@ export const navigationSideBar: INavigation[] = [
         id: '2',
         label: 'سیستم نظارتی دوم',
         path: ROUTES_PATH.monitoringSystemsTow,
-        // path: import.meta.env.VITE_SYSTEM_ANALYSER_TOW,
-        // isNewTab: true,
       },
     ],
   },
-
-  // {
-  //   id: '5',
-  //   label: 'سوالات متداول',
-  //   path: ROUTES_PATH.support,
-  //   icon: 'ph:phone',
-  // },
   {
     id: '5',
     label: 'تنظیمات',

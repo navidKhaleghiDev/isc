@@ -37,20 +37,3 @@
     @apply bg-red-600;
   }
 }
-
-/* toast container styles */
-.Toastify__toast-body {
-  font-family: on;
-}
-
-/* @layer components {
-  .select2-dropdown {
-    @apply bg-red-600;
-  }
-  .select2-search {
-    @apply bg-red-800;
-  }
-  .select2-results__group {
-    @apply bg-red-600;
-  }
-} */

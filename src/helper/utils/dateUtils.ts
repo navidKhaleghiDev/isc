@@ -7,6 +7,7 @@ const weekLabels = [
   'جمعه',
   'شنبه',
 ];
+
 function getLabelOfWeek(day: number) {
   return weekLabels[day];
 }

@@ -1,32 +1,4 @@
-export type RoutePathType =
-  | 'home'
-  | 'ui'
-  | 'services'
-  | 'servicesProducts'
-  | 'servicesRules'
-  | 'servicesRulesRetrieve'
-  | 'servicesMonitoringSystems'
-  | 'support'
-  | 'settings'
-  | 'unauthorized'
-  | 'login'
-  | 'aboutUs'
-  | 'contactUs'
-  | 'dashboard'
-  | 'profile'
-  | 'addUser'
-  | 'monitoringSystems'
-  | 'monitoringSystemsOne'
-  | 'monitoringSystemsTow'
-  | 'myProduct'
-  | 'myProductName'
-  | 'myProductMyRules'
-  | 'myProductMyRulesRetrieve'
-  | 'myProductIpsList'
-  | 'blog'
-  | 'ourServices'
-  | 'users'
-  | 'resetPassword';
+import { RoutePathType } from './types';
 
 export const RoutesName = {
   HOME: 'home',
@@ -38,18 +10,12 @@ export const RoutesName = {
   MY_PRODUCT: 'my-product',
   RULES_NAME: 'rules-name',
   SUPPORT: 'support',
-  BLOG: 'blog',
   RULES_CODE: 'rules-code',
   MY_RULES: 'my-rules',
   DASHBOARD: 'dashboard',
   SETTINGS: 'settings',
-  UI: 'ui',
   UNAUTHORIZED: 'unauthorized',
-  LOGIN: 'login',
   RESET_PASSWORD: 'reset-password',
-  ABOUT_US: 'about-us',
-  CONTACT_US: 'contact-us',
-  PROFILE: 'profile',
   MONITORING_SYSTEM: 'monitoring-systems',
   MONITORING_SYSTEM_GUIDE: 'monitoring-systems-guide',
   ADD_USER: 'add-user',
@@ -58,7 +24,6 @@ export const RoutesName = {
 
 export const ROUTES_PATH: Record<RoutePathType, string> = {
   home: '/',
-  ui: `/${RoutesName.UI}`,
   addUser: `/${RoutesName.USERS}/${RoutesName.ADD_USER}`,
   services: `/${RoutesName.SERVICES}`,
   servicesProducts: `/${RoutesName.SERVICES}/${RoutesName.PRODUCTS}`,
@@ -67,14 +32,10 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   servicesRulesRetrieve: `/${RoutesName.SERVICES}/${RoutesName.RULES}/:id`,
   support: `/${RoutesName.SUPPORT}`,
   ourServices: `/${RoutesName.OUR_SERVICES}`,
-  blog: `/${RoutesName.BLOG}`,
   settings: `/${RoutesName.SETTINGS}`,
   unauthorized: `/${RoutesName.UNAUTHORIZED}`,
   login: `/`,
-  aboutUs: `/${RoutesName.ABOUT_US}`,
-  contactUs: `/${RoutesName.CONTACT_US}`,
   dashboard: `/${RoutesName.DASHBOARD}`,
-  profile: `/${RoutesName.PROFILE}`,
   myProduct: `/${RoutesName.MY_PRODUCT}`,
   myProductName: `/${RoutesName.MY_PRODUCT}/:productName`,
   myProductMyRules: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}`,
@@ -83,6 +44,5 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   monitoringSystems: `/${RoutesName.MONITORING_SYSTEM}`,
   monitoringSystemsOne: `/${RoutesName.MONITORING_SYSTEM}/one`,
   monitoringSystemsTow: `/${RoutesName.MONITORING_SYSTEM}/tow`,
-  resetPassword: `/${RoutesName.RESET_PASSWORD}`,
   users: `/${RoutesName.USERS}`,
 };

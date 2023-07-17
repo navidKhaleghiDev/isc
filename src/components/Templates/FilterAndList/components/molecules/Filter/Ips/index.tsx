@@ -50,14 +50,14 @@ export function FilterIps() {
     <>
       <div className="flex w-full justify-center items-center my-6">
         <BaseButton
-          label="ثبت آی پی های مجاز خارجی"
+          label="ثبت آی پی های غیرمجاز خارجی"
           size="lg"
           type={openIps === EIpType.EXTERNAL ? 'default' : 'shadow'}
           onClick={() => setOpenIps(EIpType.EXTERNAL)}
           className="mx-2"
         />
         <BaseButton
-          label="ثبت آی پی های مجاز داخلی"
+          label="ثبت آی پی های غیرمجاز داخلی"
           size="lg"
           type={openIps === EIpType.INTERNAL ? 'default' : 'shadow'}
           onClick={() => setOpenIps(EIpType.INTERNAL)}

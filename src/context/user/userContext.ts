@@ -1,10 +1,6 @@
 import { IUser } from '@src/services/client/users/types';
 import { Dispatch, SetStateAction, createContext, useContext } from 'react';
 
-// export interface ISetting {
-//   mode: 'light' | 'dark';
-//   direction: 'rtl' | 'ltr';
-// }
 export interface IUserWithAuth extends IUser {
   access_token: string;
   refresh_token: string;
