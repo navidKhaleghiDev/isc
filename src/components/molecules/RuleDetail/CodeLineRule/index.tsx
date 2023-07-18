@@ -2,7 +2,7 @@ import { Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 
 export function CodeLineRule({ code }: { code: SliceOrderCodeType }) {
-  if (!code.order || !code.code) {
+  if (!code?.order || !code?.code) {
     return null;
   }
   return (
@@ -11,7 +11,7 @@ export function CodeLineRule({ code }: { code: SliceOrderCodeType }) {
         <Typography type="span" color="teal" size="h6" className="mr-2">
           {code.order && code.order.toLocaleUpperCase()}
         </Typography>
-        {code.code}
+        {code?.code}
       </Typography>
     </Card>
   );

@@ -29,7 +29,7 @@ function comparPolicies(
   newPolicies: SliceOrderCodeType[]
 ): SliceOrderCodeType[] {
   return newPolicies.filter(
-    (newRule) => !oldPolicies.some((oldRule) => newRule.code === oldRule.code)
+    (newRule) => !oldPolicies.some((oldRule) => newRule?.code === oldRule?.code)
   );
 }
 
@@ -49,7 +49,7 @@ function useAdditionalPolicy(
       const rule: IRules | undefined = data?.data;
       const comparedList = comparPolicies(
         codeListMyRule,
-        getCodeList(rule.code)
+        getCodeList(rule?.code)
       );
       setAdditionalList(comparedList);
     }
@@ -118,7 +118,7 @@ export function MyRuleDetail() {
     let ruleCode = '';
     if (codeList) {
       codeList.forEach((code) => {
-        ruleCode += `${code.order}${code.code} \r\n\r `;
+        ruleCode += `${code?.order}${code?.code} \r\n\r `;
       });
     }
     // const body = codeList.for
