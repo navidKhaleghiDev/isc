@@ -4,7 +4,13 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 const mClass =
-  'flex w-8 h-8 mx-0.5 p-0 justify-center items-center rounded-md leading-tight text-xl text-teal-500 bg-white border border-teal-500 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white';
+  'flex w-8 h-8 mx-0.5 p-0 justify-center items-center rounded-md leading-tight text-xl border border-teal-500 ';
+
+const disableClass =
+  'bg-gray-300 text-gray-500 cursor-not-allowed border-gray-400';
+const activeClass = 'bg-teal-500 text-white cursor-not-allowed';
+const arrowButtonClass = 'bg-teal-500 text-white';
+
 export function Pagination({
   currentPage,
   totalPages,
@@ -28,11 +34,7 @@ export function Pagination({
     <div className="flex justify-center items-center mt-4">
       <button
         type="button"
-        className={`${mClass} ${
-          isFirstPage
-            ? 'bg-gray-300 cursor-not-allowed'
-            : 'bg-teal-500 text-white'
-        }`}
+        className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={isFirstPage}
       >
@@ -45,9 +47,7 @@ export function Pagination({
             type="button"
             key={page}
             className={`${mClass} ${
-              currentPage === page
-                ? 'bg-teal-500 text-white cursor-not-allowed'
-                : 'bg-gray-300 cursor-pointer'
+              currentPage === page ? activeClass : 'bg-white text-teal-500'
             }`}
             onClick={() => handlePageChange(page)}
             disabled={currentPage === page}
@@ -59,11 +59,7 @@ export function Pagination({
 
       <button
         type="button"
-        className={`${mClass} ${
-          isLastPage
-            ? 'bg-gray-300 cursor-not-allowed'
-            : 'bg-teal-500 text-white'
-        }`}
+        className={`${mClass} ${isLastPage ? disableClass : arrowButtonClass}`}
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={isLastPage}
       >
