@@ -48,21 +48,4 @@ function usePost<T = object, R = AxiosResponse<T>>(
   return { data: responseData, error, trigger, isMutating };
 }
 
-// function usePatch<T>(
-//   mutationURL: string,
-//   postURL: string,
-//   options?: MutationPostOptions<T>
-// ) {
-//   const patch = (_url: string, { arg }: unknown) =>
-//     http.patch(postURL, arg) as FetcherResponse<T>;
-//   const {
-//     data: responseData,
-//     error,
-//     trigger,
-//     isMutating,
-//   } = useSWRMutation(mutationURL, patch, options);
-
-//   return { data: responseData, error, trigger, isMutating };
-// }
-
 export { useGet, usePost };

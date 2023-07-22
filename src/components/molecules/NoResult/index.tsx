@@ -7,9 +7,9 @@ type PropsType = {
 export function NoResult({ isPage, description }: PropsType) {
   return (
     <div
-      className={`w-full ${
-        isPage ? 'min-h-full' : 'h-64'
-      } flex flex-col justify-center items-center`}
+      className={`py-8 flex flex-col justify-center items-center ${
+        isPage && 'min-h-full'
+      }`}
     >
       <img src="/not-found.jpg" alt="not found" />
       <Typography color="neutral">{description ?? `موردی یافت نشد`}</Typography>

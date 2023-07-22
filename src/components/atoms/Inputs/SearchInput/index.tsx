@@ -1,5 +1,5 @@
 import { useDebounce } from '@src/helper/hooks/useDebounce';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BaseInput } from '../BaseInput';
 
 interface SearchInputProps {
@@ -9,7 +9,8 @@ interface SearchInputProps {
 
 export function SearchInput({ value, onChange }: SearchInputProps) {
   const [searchValue, setSearchValue] = useState(value);
-  const debouncedSearchValue = useDebounce(searchValue, 2000);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const debouncedSearchValue = useDebounce(searchValue, 500);
 
   useEffect(() => {
     onChange(debouncedSearchValue);
@@ -24,15 +25,11 @@ export function SearchInput({ value, onChange }: SearchInputProps) {
       <BaseInput
         size="sm"
         name="ip"
-        placeholder="بنویسید"
+        placeholder="جستجو کنید"
         id="ip"
         pureOnChange={handleSearchChange}
         pureValue={searchValue}
-        // defaultValue={ip.ip}
-        // rules={{
-        //   pattern: regexPattern.ip,
-        //   required: regexPattern.required,
-        // }}
+        ref={inputRef}
         fullWidth
       />
     </div>

@@ -1,2 +1,2 @@
-export { LoadingPage } from './Page';
-export { LoadingSpinner } from './Spinner';
+export { LoadingPage } from './LoadingPage';
+export { LoadingSpinner } from './LoadingSpinner';
