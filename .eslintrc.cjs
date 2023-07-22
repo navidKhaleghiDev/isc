@@ -32,5 +32,10 @@ module.exports = {
     'react/prop-types': 'off', // Since we do not use prop-types
     'react/require-default-props': 'off', // Since we do not use prop-types
   },
-  ignorePatterns: ['tailwind.config.js', 'postcss.config', 'postcss.config.js'],
+  ignorePatterns: [
+    'tailwind.config.js',
+    'postcss.config',
+    'postcss.config.js',
+    'sonarqube-scanner.js',
+  ],
 };
