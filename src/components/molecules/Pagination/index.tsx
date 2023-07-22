@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -27,41 +28,84 @@ export function Pagination({
     onPageChange(page);
   };
 
+  const handlePreviousClick = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else if (currentPage <= 3) {
+      for (let i = 1; i <= 5; i++) {
+        pageNumbers.push(i);
+      }
+      pageNumbers.push('...');
+      pageNumbers.push(totalPages);
+    } else if (currentPage >= totalPages - 2) {
+      pageNumbers.push(1);
+      pageNumbers.push('...');
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      pageNumbers.push(1);
+      pageNumbers.push('...');
+      for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        pageNumbers.push(i);
+      }
+      pageNumbers.push('...');
+      pageNumbers.push(totalPages);
+    }
+
+    return pageNumbers.map((number) => {
+      const isEllipsis = number === '...';
+
+      return (
+        <button
+          type="button"
+          className={`${mClass} ${
+            currentPage === number ? activeClass : 'bg-white text-teal-500'
+          }`}
+          disabled={isEllipsis}
+          key={number}
+          onClick={() => handlePageChange(number as number)}
+        >
+          {number}
+        </button>
+      );
+    });
+  };
+
   if (totalPages < 8) {
     return null;
   }
+
   return (
     <div className="flex justify-center items-center mt-4">
       <button
         type="button"
         className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={isFirstPage}
+        onClick={handlePreviousClick}
       >
         {`<<`}
       </button>
-
-      <div className="flex">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            type="button"
-            key={page}
-            className={`${mClass} ${
-              currentPage === page ? activeClass : 'bg-white text-teal-500'
-            }`}
-            onClick={() => handlePageChange(page)}
-            disabled={currentPage === page}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
-
+      {renderPageNumbers()}
       <button
         type="button"
         className={`${mClass} ${isLastPage ? disableClass : arrowButtonClass}`}
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={isLastPage}
+        onClick={handleNextClick}
       >
         {`>>`}
       </button>
