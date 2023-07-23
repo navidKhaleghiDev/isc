@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import { useForm } from 'react-hook-form';
 import { useGet } from '@src/services/http/httpClient';
 import {
   E_RULES_MY_RULES,
@@ -23,6 +22,7 @@ import { Modal } from '../Modal';
 import { CardRuleDetail } from '../CardRuleDetail';
 import { CodeLineRule } from '../RuleDetail/CodeLineRule';
 import { NoResult } from '../NoResult';
+import { CodeLineSelect } from './CodeLine/CodeLineSelect';
 
 function comparPolicies(
   oldPolicies: SliceOrderCodeType[],
@@ -94,6 +94,15 @@ export function MyRuleDetail() {
       newCodeList[index].order = value;
       setCodeList(newCodeList);
     }
+  };
+
+  const onChangeAllOrder = ({
+    target: { value },
+  }: ChangeEvent<HTMLSelectElement>) => {
+    const updatedList = codeList
+      ? codeList.map((obj) => ({ ...obj, order: value }))
+      : null;
+    setCodeList(updatedList);
   };
 
   const handleDeleteMyRule = async () => {
@@ -177,7 +186,10 @@ export function MyRuleDetail() {
           </Card>
         </div>
       </div>
-
+      <div className="flex w-100 justify-between">
+        <Typography>اعمال تغییرات برای تمام پالیسی ها: </Typography>
+        <CodeLineSelect value="alert" onChange={onChangeAllOrder} />
+      </div>
       <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
         {codeList && codeList.length > 0 ? (
           codeList.map((code: SliceOrderCodeType, index: number) => {
