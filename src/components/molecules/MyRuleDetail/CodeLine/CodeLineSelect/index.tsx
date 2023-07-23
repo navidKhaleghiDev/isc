@@ -1,8 +1,8 @@
-import { FormEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 type PropsType = {
   value: string;
-  onChange: (e: FormEvent<HTMLSelectElement>) => void;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 export function CodeLineSelect({ value, onChange }: PropsType) {
   return (
