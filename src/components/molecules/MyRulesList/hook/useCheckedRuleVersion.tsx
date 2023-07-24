@@ -18,10 +18,17 @@ export function useCheckRuleVersion(myRules?: IMyRule[]): IMyRule[] {
   useEffect(() => {
     if (myRules && rules) {
       const newList = myRules.map((myRule: IMyRule) => {
-        const myRuleInRules = rules.find(
-          (rule: IRules) => rule.id === myRule.id
-        );
-        if (myRuleInRules?.version !== myRule.version) {
+        const myRuleInRules = rules.find((rule: IRules) => {
+          // console.log({ ruleId: rule.id, myRuleId: myRule.id });
+
+          return rule.id === myRule.id;
+        });
+        // console.log({ myRuleInRules });
+
+        if (
+          myRuleInRules?.version &&
+          myRuleInRules.version !== myRule.version
+        ) {
           return { ...myRule, isUpdated: true };
         }
         return myRule;

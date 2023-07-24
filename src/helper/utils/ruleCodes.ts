@@ -7,13 +7,16 @@ const sliceOrderPattern = /^(alert|drop|block|pass|reject)/;
 export type SliceOrderCodeType = {
   order: string;
   code: string;
+  id: number;
 };
 
 export function splitCodesAsList(code: string): string[] | null {
   return code.match(getCodeListPattern);
 }
 
-export function splitOrderCode(singleCode: string): SliceOrderCodeType {
+export function splitOrderCode(
+  singleCode: string
+): Omit<SliceOrderCodeType, 'id'> {
   const splitted = singleCode.split(sliceOrderPattern);
   return { order: splitted[1], code: splitted[2] };
 }
@@ -24,10 +27,10 @@ export function getCodeList(data?: string): SliceOrderCodeType[] {
   }
   const list = data.match(getCodeListPattern);
   const newList: SliceOrderCodeType[] = [];
-  list?.forEach((li) => {
+  list?.forEach((li, index) => {
     const { code, order } = splitOrderCode(li);
     if (code && order) {
-      newList.push({ code, order });
+      newList.push({ code, order, id: index });
     }
   });
   return newList;

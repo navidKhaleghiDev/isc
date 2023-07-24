@@ -20,44 +20,9 @@ import { toast } from 'react-toastify';
 import { CodeLine } from './CodeLine';
 import { Modal } from '../Modal';
 import { CardRuleDetail } from '../CardRuleDetail';
-import { CodeLineRule } from '../RuleDetail/CodeLineRule';
 import { NoResult } from '../NoResult';
 import { CodeLineSelect } from './CodeLine/CodeLineSelect';
-
-function comparPolicies(
-  oldPolicies: SliceOrderCodeType[],
-  newPolicies: SliceOrderCodeType[]
-): SliceOrderCodeType[] {
-  return newPolicies.filter(
-    (newRule) => !oldPolicies.some((oldRule) => newRule?.code === oldRule?.code)
-  );
-}
-
-function useAdditionalPolicy(
-  codeListMyRule: SliceOrderCodeType[] | null,
-  myRuleId?: string
-) {
-  const { data } = useGet<ResponseSwr<IRules>>(
-    myRuleId ? E_RULES_RETRIEVE(myRuleId) : null
-  );
-  const [additionalList, setAdditionalList] = useState<SliceOrderCodeType[]>(
-    []
-  );
-
-  useEffect(() => {
-    if (data && codeListMyRule) {
-      const rule: IRules | undefined = data?.data;
-
-      const comparedList = comparPolicies(
-        codeListMyRule,
-        getCodeList(rule?.code)
-      );
-      setAdditionalList(comparedList);
-    }
-  }, [codeListMyRule, data]);
-
-  return additionalList;
-}
+import { AdditionalList } from './AdditionalList';
 
 export function MyRuleDetail() {
   const navigate = useNavigate();
@@ -65,7 +30,9 @@ export function MyRuleDetail() {
   const slugs = pathname.split('/');
   const id = slugs[3];
   const [codeList, setCodeList] = useState<SliceOrderCodeType[] | null>(null);
+  const [isSetAdditional, setIsSetAdditional] = useState(false);
   const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [valueCodeLineSelect, setValueCodeLineSelect] = useState('');
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [modalsLoading, setModalsLoading] = useState({
     deleteButton: false,
@@ -73,10 +40,14 @@ export function MyRuleDetail() {
   });
 
   const { mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
-  const { data } = useGet<ResponseSwr<IMyRule>>(E_RULES_MY_RULES_ID(id));
-  const myRule: IMyRule | undefined = data?.data;
-
-  const additionalList = useAdditionalPolicy(codeList, myRule?.id);
+  const { data: dataMyRule } = useGet<ResponseSwr<IMyRule>>(
+    E_RULES_MY_RULES_ID(id)
+  );
+  const myRule: IMyRule | undefined = dataMyRule?.data;
+  const { data: dataRule } = useGet<ResponseSwr<IRules>>(
+    !isSetAdditional && myRule?.id ? E_RULES_RETRIEVE(myRule.id) : null
+  );
+  const rule: IRules | undefined = dataRule?.data;
 
   useEffect(() => {
     setCodeList(getCodeList(myRule?.rule_code));
@@ -99,6 +70,7 @@ export function MyRuleDetail() {
   const onChangeAllOrder = ({
     target: { value },
   }: ChangeEvent<HTMLSelectElement>) => {
+    setValueCodeLineSelect(value);
     const updatedList = codeList
       ? codeList.map((obj) => ({ ...obj, order: value }))
       : null;
@@ -146,10 +118,9 @@ export function MyRuleDetail() {
       });
   };
 
-  const handleOnClickAddAdditionalPolicies = () => {
-    const newList =
-      additionalList && codeList ? codeList.concat(additionalList) : codeList;
-    setCodeList(newList);
+  const addHandler = (additional: SliceOrderCodeType[]) => {
+    setCodeList(additional);
+    setIsSetAdditional(true);
   };
 
   return myRule ? (
@@ -186,9 +157,15 @@ export function MyRuleDetail() {
           </Card>
         </div>
       </div>
-      <div className="flex w-100 justify-between">
-        <Typography>اعمال تغییرات برای تمام پالیسی ها: </Typography>
-        <CodeLineSelect value="alert" onChange={onChangeAllOrder} />
+      <div className="flex w-100 justify-between bg-neutral-100 rounded mb-2 px-2">
+        <Typography size="body1" color="neutral">
+          اعمال تغییرات برای تمام پالیسی ها:
+        </Typography>
+        <CodeLineSelect
+          value={valueCodeLineSelect}
+          onChange={onChangeAllOrder}
+          className="text-2xl"
+        />
       </div>
       <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
         {codeList && codeList.length > 0 ? (
@@ -237,32 +214,13 @@ export function MyRuleDetail() {
           <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
         </div>
       </div>
-      {additionalList && additionalList?.length > 0 && (
-        <div className="mt-5">
-          <Card
-            className="p-4 max-h-[24rem] overflow-y-auto"
-            color="neutral"
-            border
-            borderColor="teal"
-          >
-            <div className="flex items-center justify-between">
-              <Typography size="body2" color="yellow">
-                سیاست های زیر به این قانون اضافه شده است.
-              </Typography>
-              <BaseButton
-                label="اضافه کن"
-                size="sm"
-                type="secondary"
-                onClick={handleOnClickAddAdditionalPolicies}
-              />
-            </div>
-            {additionalList.map((code: SliceOrderCodeType, index: number) => {
-              return (
-                <CodeLineRule key={`${index}_${code.order}`} code={code} />
-              );
-            })}
-          </Card>
-        </div>
+      {myRule && rule && (
+        <AdditionalList
+          myRuleCodeList={getCodeList(myRule?.rule_code)}
+          ruleCodeList={getCodeList(rule?.code)}
+          isSetAdditional={isSetAdditional}
+          onAddHandler={addHandler}
+        />
       )}
       <Modal
         open={openModalEdit}
