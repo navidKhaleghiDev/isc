@@ -29,3 +29,37 @@ export const myRuleData: IMyRule = {
   created_at: '2023-06-17T05:50:16.183321Z',
   update_at: '2023-06-17T05:50:16.183373Z',
 };
+
+export const myRuleDataList = [
+  {
+    code: 'code 1',
+    order: 'alert',
+  },
+  {
+    code: 'code 2',
+    order: 'pass',
+  },
+  {
+    code: 'code 3',
+    order: 'reject',
+  },
+];
+
+export const ruleDataList = [
+  {
+    code: 'code 1',
+    order: 'alert',
+  },
+  {
+    code: 'code 2',
+    order: 'pass',
+  },
+  // {
+  //   code: 'code 4',
+  //   order: 'reject',
+  // },
+  // {
+  //   code: 'code 5',
+  //   order: 'drop',
+  // },
+];

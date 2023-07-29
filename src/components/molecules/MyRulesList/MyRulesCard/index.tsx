@@ -53,7 +53,10 @@ export function MyRulesCard({
           <div className=" w-1/4">
             {!isHeader && (
               <div className="flex items-center gap-2">
-                <Link to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}>
+                <Link
+                  to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}
+                  state={{ isUpdated: myRule.isUpdated }}
+                >
                   <IconButton icon="jam:more-vertical" color="white" />
                 </Link>
                 <IconButton
