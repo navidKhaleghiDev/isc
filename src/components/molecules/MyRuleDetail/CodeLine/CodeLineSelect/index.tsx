@@ -4,12 +4,14 @@ type PropsType = {
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
+  id: string;
 };
-export function CodeLineSelect({ value, onChange, className }: PropsType) {
+
+export function CodeLineSelect({ value, onChange, className, id }: PropsType) {
   return (
     <select
       name="codeAction"
-      id="code-action"
+      id={id}
       className={`bg-transparent text-teal-600 cursor-pointer font-bold ${className}`}
       value={value}
       onChange={onChange}

@@ -31,7 +31,7 @@ export function NavbarDashboard() {
           </div>
         </div>
         <Link to={ROUTES_PATH.home}>
-          <img src="/logo.jpg" alt="logo" />
+          <img src="/logo.jpg" alt="logo" className="h-8" />
         </Link>
       </div>
     </nav>

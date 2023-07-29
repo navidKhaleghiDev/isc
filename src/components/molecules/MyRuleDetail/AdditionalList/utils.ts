@@ -1,5 +1,4 @@
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
-import { comparArrayListObject } from '@src/helper/utils/comparArrayListObject';
 import { ReturnArrayDifferenceType } from './types';
 
 type PropsType = {
@@ -7,47 +6,31 @@ type PropsType = {
   oldList?: SliceOrderCodeType[];
 };
 
-const isSamePolicy = (a: SliceOrderCodeType, b: SliceOrderCodeType) =>
-  a.code === b.code;
-
 export const getCodeListDifference = ({
   newList,
   oldList,
 }: PropsType): ReturnArrayDifferenceType => {
   let removedList: SliceOrderCodeType[] = [];
-  let addedList: SliceOrderCodeType[] = [];
   let changedList: SliceOrderCodeType[] = [];
 
   if (oldList && newList) {
-    if (newList.length > oldList.length) {
-      // added on list
-      addedList = comparArrayListObject<SliceOrderCodeType>(
-        newList,
-        oldList,
-        isSamePolicy
-      );
-    } else if (newList.length < oldList.length) {
-      // removed on list
-      removedList = comparArrayListObject<SliceOrderCodeType>(
-        oldList,
-        newList,
-        isSamePolicy
+    if (newList.length < oldList.length) {
+      // removed
+      removedList = oldList.filter(
+        (oldP) => !newList.some((newP) => newP.code === oldP.code)
       );
     } else {
-      changedList = comparArrayListObject<SliceOrderCodeType>(
-        newList,
-        oldList,
-        isSamePolicy
+      // added or changed
+      changedList = newList.filter(
+        (newP) => !oldList.some((oldP) => newP.code === oldP.code)
       );
     }
   }
 
   return {
-    isAdded: !!addedList.length,
     isRemoved: !!removedList.length,
-    changedList: [...changedList, ...removedList, ...addedList],
+    changedList: [...changedList, ...removedList],
     removedList,
-    addedList,
   };
 };
 
