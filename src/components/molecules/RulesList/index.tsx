@@ -22,7 +22,7 @@ type PropsType = {
   searchValue: string;
 };
 
-const LIMIT_RULES_LIST = 5;
+const LIMIT_RULES_LIST = 8;
 
 export function RulesList({ buttonState, searchValue }: PropsType) {
   const { user } = useUserContext();
