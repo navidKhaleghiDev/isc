@@ -51,15 +51,15 @@ export const ruleDataList = [
     order: '1',
   },
   {
-    code: 'code 7',
+    code: 'code 2',
     order: '2',
   },
-  // {
-  //   code: 'code 5',
-  //   order: '3',
-  // },
-  // {
-  //   code: 'code 4',
-  //   order: '4',
-  // },
+  {
+    code: 'code 4',
+    order: '3',
+  },
+  {
+    code: 'code 5',
+    order: '4',
+  },
 ];

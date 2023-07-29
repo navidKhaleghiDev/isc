@@ -114,7 +114,6 @@ export function MyRulePolicies({ myRule }: any) {
   const handleSetChangedPolicyCont = (changedCount: string) => {
     setChangedPolicyCount(changedCount);
   };
-  console.count('MyRulePolicies');
 
   return (
     <>

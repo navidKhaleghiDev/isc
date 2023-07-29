@@ -7,8 +7,6 @@ import { MyRulePolicies } from './MyRulePolicies';
 type PropsType = { myRule?: IMyRule };
 
 export function MyRuleDetail({ myRule }: PropsType) {
-  console.count('MyRuleDetail');
-
   return myRule ? (
     <div className="pb-5">
       <MyRuleInformation myRule={myRule} />

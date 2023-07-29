@@ -1,7 +1,6 @@
+import { useLocation } from 'react-router-dom';
 import { RulesCodeTemplate } from '@ui/Templates/RulesCode';
 import { MyRuleDetail } from '@ui/molecules/MyRuleDetail';
-
-import { useLocation } from 'react-router-dom';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_MY_RULES_ID } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
@@ -16,8 +15,6 @@ export function MyRuleDetailsPage() {
   );
 
   const myRule: IMyRule | undefined = dataMyRule?.data;
-
-  console.count('MyRuleDetailsPage');
 
   return (
     <RulesCodeTemplate>

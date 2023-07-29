@@ -2,15 +2,26 @@
 /* eslint-disable react/no-array-index-key */
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
-import { CodeLineRule } from '@ui/molecules/RuleDetail/CodeLineRule';
 import { useGet } from '@src/services/http/httpClient';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { getCodeListDifference, getDifference } from './utils';
+import { getCodeListDifference } from './utils';
 import { PropsAdditionalList } from './types';
 import { CodeLine } from '../CodeLine';
 import { ruleDataList } from '../dataMock';
+
+type AdditionalStateType = {
+  codeList: SliceOrderCodeType[];
+  isAdded: boolean;
+  isRemoved: boolean;
+};
+
+const initAdditionalState = {
+  codeList: [],
+  isAdded: false,
+  isRemoved: false,
+};
 
 export function AdditionalList({
   onAddHandler,
@@ -19,7 +30,8 @@ export function AdditionalList({
   onSetChangedCount,
 }: PropsAdditionalList) {
   const [isSetAdditional, setIsSetAdditional] = useState(false);
-  const [codeList, setCodeList] = useState<SliceOrderCodeType[]>([]);
+  const [additional, setAdditional] =
+    useState<AdditionalStateType>(initAdditionalState);
   const { data: dataRule } = useGet<ResponseSwr<IRules>>(
     myRuleId && !isSetAdditional ? E_RULES_RETRIEVE(myRuleId) : null
   );
@@ -32,50 +44,37 @@ export function AdditionalList({
         newList: ruleDataList,
         // newList: getCodeList(rule?.code),
       });
-      setCodeList(changedList);
+      setAdditional({ codeList: changedList, isAdded, isRemoved });
       onSetChangedCount(`${changedList.length}`);
     }
-    // console.log({ changedList: getCodeList(rule?.code) });
   }, [myRuleCodeList, onSetChangedCount, rule]);
-
-  // const { isAdded, isRemoved, changedList } = getCodeListDifference({
-  //   oldList: myRuleCodeList,
-  //   newList: getCodeList(rule?.code),
-  // });
-
-  // const { added, removed, edited } = getDifference(oldList, newList);
-  // useEffect(() => {
-  //   onSetChangedCount(`${changedList.length}`);
-  // }, [changedList.length, onSetChangedCount]);
-
-  // console.count('AdditionalList');
-  // console.log({ newCodeList });
-  // console.log({ added, removed, edited });
 
   if (!rule) {
     return null;
   }
 
-  // const compairedList = comparCodeList(newList, oldList, isSamePolicy);
-  // console.log({ compairedList });
-
   const handleOnClickAddAdditionalPolicies = () => {
     setIsSetAdditional(true);
-    onAddHandler(getCodeList(rule?.code));
+    // onAddHandler(getCodeList(rule?.code));
+    onAddHandler(ruleDataList);
   };
 
   const handleOnChangeOrder = (
     { target: { value } }: ChangeEvent<HTMLSelectElement>,
     index: number
   ) => {
-    if (codeList) {
-      const newCodeList = codeList.slice();
+    if (additional.codeList) {
+      const newCodeList = additional.codeList.slice();
       newCodeList[index].order = value;
-      setCodeList(newCodeList);
+      setAdditional({
+        codeList: newCodeList,
+        isAdded: false,
+        isRemoved: false,
+      });
     }
   };
 
-  return codeList?.length > 0 ? (
+  return additional.codeList?.length > 0 ? (
     <div className="mt-5">
       <Card
         className="p-4 max-h-[24rem] overflow-y-auto"
@@ -85,10 +84,9 @@ export function AdditionalList({
       >
         <div className="flex items-center justify-between">
           <Typography size="body2" color="yellow">
-            تغییرات زیر جدید می باشد
-            {/* {`سیاست های زیر ${
-              !isAdded && !isRemoved ? 'تغییر داده' : isAdded ? 'اضافه' : 'کم'
-            } شده است.`} */}
+            {`سیاست های زیر ${
+              additional.isAdded ? 'اضافه' : 'کم'
+            } و یا تغییر یافته است.`}
           </Typography>
           <BaseButton
             label="اعمال تغییرات"
@@ -98,7 +96,7 @@ export function AdditionalList({
             onClick={handleOnClickAddAdditionalPolicies}
           />
         </div>
-        {codeList.map((code: SliceOrderCodeType, index: number) => {
+        {additional.codeList.map((code: SliceOrderCodeType, index: number) => {
           return (
             <CodeLine
               key={`${index}_${code.order}`}

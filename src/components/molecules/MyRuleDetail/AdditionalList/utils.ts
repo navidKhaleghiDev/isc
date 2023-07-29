@@ -40,38 +40,7 @@ export const getCodeListDifference = ({
         isSamePolicy
       );
     }
-    // const nnnnnnnn = oldList.filter((oldP) => {
-    //   return newList.some((newP) => newP.code === oldP.code);
-    // });
-    // console.log({ oldList, newList, nnnnnnnn });
-
-    // if (oldList.length < newList.length) {
-    //   // added policy on newList list
-    //   isAdded = true;
-    //   addedList = newList.filter(
-    //     (newP) => !oldList.some((oldP) => oldP.code === newP.code)
-    //   );
-    // } else if (oldList.length > newList.length) {
-    //   // removed policy
-    //   isRemoved = true;
-
-    //   removedList = oldList.filter(
-    //     (oldP) => !newList.some((newP) => newP.code === oldP.code)
-    //   );
-    // } else {
-    //   changedList = newList.filter(
-    //     (newP) => !oldList.some((oldP) => oldP.code === newP.code)
-    //   );
-    // }
   }
-
-  console.log({
-    isAdded: !!addedList.length,
-    isRemoved: !!removedList.length,
-    changedList,
-    removedList,
-    addedList,
-  });
 
   return {
     isAdded: !!addedList.length,
