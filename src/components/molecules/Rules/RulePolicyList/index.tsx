@@ -101,35 +101,39 @@ export function RulePolicyList({
             value={`${countDifferenceOrder}`}
           />
         </div>
-        <div className="w-full flex justify-end">
-          {onDeleteRule && (
-            <BaseButton
-              label="حذف"
-              size="sm"
-              type="red"
-              className="ml-5"
-              onClick={toggleModalDelete}
-            />
-          )}
-          <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
-        </div>
+        {countDifferenceOrder > 0 && (
+          <div className="w-full flex justify-end">
+            {onDeleteRule && (
+              <BaseButton
+                label="حذف"
+                size="sm"
+                type="red"
+                className="ml-5"
+                onClick={toggleModalDelete}
+              />
+            )}
+            <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
+          </div>
+        )}
       </div>
-      <Modal
-        open={openModalEdit}
-        setOpen={setOpenModalEdit}
-        title="از ثبت تغییرات این قانون مطمئن هستید؟"
-        buttonOne={{
-          label: 'بله',
-          onClick: onRegisterRule,
-          loading: modalsLoading.editButton,
-        }}
-        buttonTow={{
-          label: 'خیر',
-          onClick: toggleModalEdit,
-          color: 'red',
-        }}
-        type="success"
-      />
+      {countDifferenceOrder > 0 && (
+        <Modal
+          open={openModalEdit}
+          setOpen={setOpenModalEdit}
+          title="از ثبت تغییرات این قانون مطمئن هستید؟"
+          buttonOne={{
+            label: 'بله',
+            onClick: onRegisterRule,
+            loading: modalsLoading.editButton,
+          }}
+          buttonTow={{
+            label: 'خیر',
+            onClick: toggleModalEdit,
+            color: 'red',
+          }}
+          type="success"
+        />
+      )}
       {onDeleteRule && (
         <Modal
           open={openModalDelete}

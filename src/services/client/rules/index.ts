@@ -1,7 +1,6 @@
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
 import {
-  BodyId,
   BodyUpdateIp,
   IBodyAddRule,
   IBodyAssignOwner,

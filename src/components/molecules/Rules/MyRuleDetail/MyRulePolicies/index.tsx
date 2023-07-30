@@ -37,10 +37,10 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
   const toggleModalEdit = () => setOpenModalEdit(!openModalEdit);
 
-  const countDifferenceOrder = getCountDifferenceOrder(
-    slicedCodeList,
-    codeList
-  );
+  const countDifferenceOrder =
+    !!slicedCodeList.length && !!codeList.length
+      ? getCountDifferenceOrder(slicedCodeList, codeList)
+      : 0;
 
   const handleDeleteMyRule = async () => {
     setModalsLoading((prev) => ({ ...prev, deleteButton: true }));

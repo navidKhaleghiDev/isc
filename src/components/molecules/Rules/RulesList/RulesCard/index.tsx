@@ -19,7 +19,7 @@ export function RulesCard({ rule }: PropsType) {
   const handleRequestAdd = async () => {
     setAddLoading(true);
 
-    await API_ADD_RULE({ id: rule.id, rule_code: rule.code })
+    await API_ADD_RULE({ id: rule.id })
       .then(() => {
         toast.success('با موفقیت اضافه شد');
         setOpenModal(false);

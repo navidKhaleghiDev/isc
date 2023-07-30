@@ -24,13 +24,15 @@ export function RuleDetail() {
     deleteButton: false,
     editButton: false,
   });
+
   const slicedCodeList: SliceOrderCodeType[] = getCodeList(rule?.code);
-  const [codeList, setCodeList] =
-    useState<SliceOrderCodeType[]>(slicedCodeList);
-  const countDifferenceOrder = getCountDifferenceOrder(
-    slicedCodeList,
-    codeList
+  const [codeList, setCodeList] = useState<SliceOrderCodeType[]>(
+    getCodeList(rule?.code)
   );
+  const countDifferenceOrder =
+    !!slicedCodeList.length && !!codeList.length
+      ? getCountDifferenceOrder(slicedCodeList, codeList)
+      : 0;
 
   const handleAddRule = async () => {
     if (rule) {

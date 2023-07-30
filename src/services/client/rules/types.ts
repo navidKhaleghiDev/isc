@@ -82,6 +82,6 @@ export interface IParamsRules {
   search?: string;
 }
 export interface IBodyAddRule {
-  rule_code: string;
+  rule_code?: string;
   id: string;
 }

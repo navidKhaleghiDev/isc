@@ -11,8 +11,6 @@ import { IUserWithAuth, UserContext } from '@context/user/userContext';
 const router = createBrowserRouter(routesConfig);
 
 function App() {
-  console.count('App');
-
   const [user, setUser] = useState<IUserWithAuth | null>(null);
 
   const userValue = useMemo(() => ({ user, setUser }), [user]);
