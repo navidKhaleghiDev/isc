@@ -1,5 +1,4 @@
-// import { Pagination } from '@ui/molecules/Pagination';
-import { MyRulesList } from '@ui/molecules/MyRulesList';
+import { MyRulesList } from '@ui/molecules/Rules/MyRulesList';
 
 export function MyProductMyRulesPage() {
   return (
