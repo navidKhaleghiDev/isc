@@ -11,13 +11,14 @@
         ip_address: "10.27.95.201"
     urls:
       clientapi: "https://api.npd-co.com"
-      front: "46.209.120.198:4173"
-      kibana: "https://46.209.120.198:5601"
+      front: "https://app.npd-co.com"
+      kibana: "https://efk.npd-co.com"
       server: "https://ips.npd-co.com"
+      monitoring: "https://monitoring.npd-co.com"
     credentials:
       clientapi:
         superuser_email: 'admin@admin.com'
-        superuser_password: 'Admin@11'
+        superuser_password: 'Admin@12'
 
   # List of tasks
   tasks:
