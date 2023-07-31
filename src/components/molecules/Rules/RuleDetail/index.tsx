@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
@@ -11,20 +11,17 @@ import { toast } from 'react-toastify';
 import { API_ADD_RULE } from '@src/services/client/rules';
 
 import { RuleInformation } from '../RuleInformation';
-import { RulePolicyList } from '../RulePolicyList';
+import { IRulePolicyListRef, RulePolicyList } from '../RulePolicyList';
 
 export function RuleDetail() {
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
   const id = slugs[3];
-
-  const { data, isLoading } = useGet<ResponseSwr<IRules>>(E_RULES_RETRIEVE(id));
+  const rulePolicyListRef = useRef<IRulePolicyListRef>(null);
+  const { data, isLoading, mutate } = useGet<ResponseSwr<IRules>>(
+    E_RULES_RETRIEVE(id)
+  );
   const rule: IRules | undefined = data?.data;
-  const [modalsLoading, setModalsLoading] = useState({
-    deleteButton: false,
-    editButton: false,
-  });
-
   const slicedCodeList: SliceOrderCodeType[] = getCodeList(rule?.code);
   const [codeList, setCodeList] = useState<SliceOrderCodeType[]>([]);
   useEffect(() => {
@@ -40,7 +37,11 @@ export function RuleDetail() {
 
   const handleAddRule = async () => {
     if (rule) {
-      setModalsLoading((prev) => ({ ...prev, editButton: true }));
+      rulePolicyListRef?.current?.setModalsLoadingParent({
+        deleteButton: false,
+        editButton: true,
+      });
+
       let ruleCode = '';
 
       if (codeList) {
@@ -50,13 +51,14 @@ export function RuleDetail() {
       }
       await API_ADD_RULE({ id: rule.id, rule_code: ruleCode })
         .then(() => {
+          mutate();
           toast.success('با موفقیت اضافه شد');
         })
         .catch((err) => {
           toast.error(err);
         })
         .finally(() => {
-          setModalsLoading((prev) => ({ ...prev, editButton: false }));
+          rulePolicyListRef?.current?.toggleModalEdit();
         });
     }
   };
@@ -74,9 +76,9 @@ export function RuleDetail() {
         description={rule.description}
       />
       <RulePolicyList
+        ref={rulePolicyListRef}
         codeList={codeList}
         setCodeList={setCodeList}
-        modalsLoading={modalsLoading}
         onRegisterRule={handleAddRule}
         countDifferenceOrder={countDifferenceOrder}
       />

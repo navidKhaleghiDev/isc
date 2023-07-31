@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, forwardRef, useImperativeHandle, useState } from 'react';
 import { NoResult } from '@ui/molecules/NoResult';
 import { CardRuleDetail } from '@ui/molecules/Rules/CardRuleDetail';
 import { Modal } from '@ui/molecules/Modal';
@@ -11,29 +11,57 @@ import { CodeLineSelect } from '@ui/molecules/Rules/MyRuleDetail/CodeLine/CodeLi
 type RulePolicyListProps = {
   onDeleteRule?: () => void;
   onRegisterRule: () => void;
-  modalsLoading: {
-    deleteButton: boolean;
-    editButton: boolean;
-  };
   codeList: SliceOrderCodeType[];
   setCodeList: (codeLIst: SliceOrderCodeType[]) => void;
   countDifferenceOrder: number;
 };
 
-export function RulePolicyList({
-  codeList,
-  setCodeList,
-  onDeleteRule,
-  onRegisterRule,
-  modalsLoading,
-  countDifferenceOrder,
-}: RulePolicyListProps) {
+type ModalsLoadingType = {
+  deleteButton: boolean;
+  editButton: boolean;
+};
+export interface IRulePolicyListRef {
+  setModalsLoadingParent: (values: ModalsLoadingType) => void;
+  toggleModalEdit: () => void;
+  toggleModalDelete: () => void;
+}
+
+function RulePolicyListCp(
+  {
+    codeList,
+    setCodeList,
+    onDeleteRule,
+    onRegisterRule,
+    countDifferenceOrder,
+  }: RulePolicyListProps,
+  ref: React.Ref<IRulePolicyListRef>
+) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [valueAllCodeLineSelect, setValueAllCodeLineSelect] = useState('');
   const [openModalEdit, setOpenModalEdit] = useState(false);
+  const [modalsLoading, setModalsLoading] = useState({
+    deleteButton: false,
+    editButton: false,
+  });
 
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
   const toggleModalEdit = () => setOpenModalEdit(!openModalEdit);
+
+  const setModalsLoadingParent = ({
+    deleteButton,
+    editButton,
+  }: ModalsLoadingType) => {
+    setModalsLoading({
+      deleteButton,
+      editButton,
+    });
+  };
+
+  useImperativeHandle(ref, () => ({
+    setModalsLoadingParent,
+    toggleModalEdit,
+    toggleModalDelete,
+  }));
 
   const handleOnChangeOrder = (
     { target: { value } }: ChangeEvent<HTMLSelectElement>,
@@ -155,3 +183,4 @@ export function RulePolicyList({
     </>
   );
 }
+export const RulePolicyList = forwardRef(RulePolicyListCp);

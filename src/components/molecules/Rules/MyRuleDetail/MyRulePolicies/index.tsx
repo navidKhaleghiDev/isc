@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   API_DELETE_MY_RULE,
   API_UPDATE_MY_RULE,
@@ -12,7 +12,7 @@ import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { getCountDifferenceOrder } from '@src/helper/utils/getCountDifferenceOrder';
 
 import { AdditionalList } from '../AdditionalList';
-import { RulePolicyList } from '../../RulePolicyList';
+import { IRulePolicyListRef, RulePolicyList } from '../../RulePolicyList';
 
 type MyRulePoliciesProps = {
   myRule: IMyRule;
@@ -21,14 +21,12 @@ type MyRulePoliciesProps = {
 export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
   const navigate = useNavigate();
   const slicedCodeList: SliceOrderCodeType[] = getCodeList(myRule?.rule_code);
+  const rulePolicyListRef = useRef<IRulePolicyListRef>(null);
+
   const [codeList, setCodeList] =
     useState<SliceOrderCodeType[]>(slicedCodeList);
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
-  const [modalsLoading, setModalsLoading] = useState({
-    deleteButton: false,
-    editButton: false,
-  });
   const { state } = useLocation();
 
   const { mutate: mutateMyRules } =
@@ -43,7 +41,10 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
       : 0;
 
   const handleDeleteMyRule = async () => {
-    setModalsLoading((prev) => ({ ...prev, deleteButton: true }));
+    rulePolicyListRef?.current?.setModalsLoadingParent({
+      deleteButton: true,
+      editButton: false,
+    });
 
     await API_DELETE_MY_RULE(myRule?.id as string)
       .then(() => {
@@ -56,12 +57,16 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         toast.error(err);
       })
       .finally(() => {
-        setModalsLoading((prev) => ({ ...prev, deleteButton: false }));
+        rulePolicyListRef?.current?.toggleModalDelete();
       });
   };
 
   const handleAddMyRule = async () => {
-    setModalsLoading((prev) => ({ ...prev, editButton: true }));
+    rulePolicyListRef?.current?.setModalsLoadingParent({
+      deleteButton: false,
+      editButton: true,
+    });
+
     let ruleCode = '';
     if (codeList) {
       codeList.forEach((code) => {
@@ -79,7 +84,7 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         toast.error(err);
       })
       .finally(() => {
-        setModalsLoading((prev) => ({ ...prev, editButton: false }));
+        rulePolicyListRef?.current?.toggleModalEdit();
       });
   };
 
@@ -90,9 +95,9 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
   return (
     <>
       <RulePolicyList
+        ref={rulePolicyListRef}
         codeList={codeList}
         setCodeList={setCodeList}
-        modalsLoading={modalsLoading}
         onDeleteRule={handleDeleteMyRule}
         onRegisterRule={handleAddMyRule}
         countDifferenceOrder={countDifferenceOrder}

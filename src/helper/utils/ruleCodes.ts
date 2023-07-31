@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { generateUniqueId } from '.';
-
 // pattern for convert rule_code to codeLine list
 const getCodeListPattern = /[alert|drop|block|pass|reject][\s\S]*?;\)/gm;
 
@@ -10,7 +7,6 @@ const sliceOrderPattern = /^(alert|drop|block|pass|reject)/;
 export type SliceOrderCodeType = {
   order: string;
   code: string;
-  id: string;
 };
 
 export function splitCodesAsList(code: string): string[] | null {
@@ -19,7 +15,7 @@ export function splitCodesAsList(code: string): string[] | null {
 
 export function splitOrderCode(singleCode: string): SliceOrderCodeType {
   const splitted = singleCode.split(sliceOrderPattern);
-  return { order: splitted[1], code: splitted[2], id: generateUniqueId() };
+  return { order: splitted[1], code: splitted[2] };
 }
 
 export function getCodeList(data?: string): SliceOrderCodeType[] {
@@ -29,9 +25,9 @@ export function getCodeList(data?: string): SliceOrderCodeType[] {
   const list = data.match(getCodeListPattern);
   const newList: SliceOrderCodeType[] = [];
   list?.forEach((li) => {
-    const { code, order, id } = splitOrderCode(li);
+    const { code, order } = splitOrderCode(li);
     if (code && order) {
-      newList.push({ code, order, id });
+      newList.push({ code, order });
     }
   });
   return newList;
