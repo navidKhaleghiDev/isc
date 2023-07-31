@@ -1,8 +1,9 @@
-import { BaseButton, Card } from '@ui/atoms';
-import { RulesList } from '@ui/molecules/RulesList';
 import { useState } from 'react';
+import { BaseButton, Card } from '@ui/atoms';
+import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
+
 import { ButtonState } from './types';
 
 function RulesPageCP() {

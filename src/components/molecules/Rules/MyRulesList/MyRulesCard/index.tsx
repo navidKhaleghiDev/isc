@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_DELETE_MY_RULE } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
-import { Modal } from '../../Modal';
+import { Modal } from '@ui/molecules/Modal';
 
 type PropsType = {
   myRule: IMyRule;
@@ -53,7 +53,10 @@ export function MyRulesCard({
           <div className=" w-1/4">
             {!isHeader && (
               <div className="flex items-center gap-2">
-                <Link to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}>
+                <Link
+                  to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}
+                  state={{ isUpdated: myRule.isUpdated }}
+                >
                   <IconButton icon="jam:more-vertical" color="white" />
                 </Link>
                 <IconButton

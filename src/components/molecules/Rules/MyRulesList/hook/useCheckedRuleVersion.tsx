@@ -5,8 +5,10 @@ import {
   IRules,
   ResponseSwr,
 } from '@src/services/client/rules/types';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { E_RULES_LIST } from '@src/services/client/rules/endpoint';
+import { IProduct } from '@src/services/client/users/types';
+import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 
 export function useCheckRuleVersion(myRules?: IMyRule[]): IMyRule[] {
   const { data } = useGet<ResponseSwr<IResponseRules>>(
@@ -16,14 +18,31 @@ export function useCheckRuleVersion(myRules?: IMyRule[]): IMyRule[] {
     })
   );
 
+  const { data: productData } = useGet<ResponseSwr<IProduct>>(E_USERS_PRODUCT);
   const [checkedList, setCheckedList] = useState<IMyRule[]>([]);
   const rules: IRules[] | null =
     data && Array.isArray(data?.data?.results) ? data?.data?.results : null;
 
+  const recommendedRules: IRules[] | null =
+    productData && Array.isArray(productData?.data.recommended_rules)
+      ? productData?.data.recommended_rules
+      : null;
+
+  const mergedRules = useMemo(() => {
+    return rules && recommendedRules
+      ? [
+          ...rules,
+          ...recommendedRules.filter(
+            (obj2) => !rules.some((obj1) => obj1.id === obj2.id)
+          ),
+        ]
+      : null;
+  }, [recommendedRules, rules]);
+
   useEffect(() => {
-    if (myRules && rules) {
+    if (myRules && mergedRules) {
       const newList = myRules.map((myRule: IMyRule) => {
-        const myRuleInRules = rules.find(
+        const myRuleInRules = mergedRules.find(
           (rule: IRules) => rule.id === myRule.id
         );
         if (
@@ -37,7 +56,7 @@ export function useCheckRuleVersion(myRules?: IMyRule[]): IMyRule[] {
       });
       setCheckedList(newList);
     }
-  }, [rules, myRules]);
+  }, [mergedRules, myRules]);
 
   return checkedList;
 }

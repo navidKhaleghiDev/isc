@@ -11,11 +11,12 @@ import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { IProduct } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
 import { useEffect, useState } from 'react';
+import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
+import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
+import Pagination from '@ui/molecules/Pagination';
+import { NoResult } from '@ui/molecules/NoResult';
+
 import { RulesCard } from './RulesCard';
-import { NoResult } from '../NoResult';
-import { NotCompletedAuth } from '../NotCompletedAuth';
-import { Pagination } from '../Pagination';
-import { LoadingWrapper } from '../Loading/LoadingWrapper';
 
 type PropsType = {
   buttonState: ButtonState;

@@ -1,8 +1,8 @@
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
 import {
-  BodyId,
   BodyUpdateIp,
+  IBodyAddRule,
   IBodyAssignOwner,
   IBodyUpdateMyRule,
   IIp,
@@ -24,8 +24,8 @@ export const API_DELETE_VALID_IPS = (id: string) =>
 export const API_UPDATE_VALID_IPS = (id: string, body: BodyUpdateIp) =>
   http.patch<BodyUpdateIp>(E_RULES_VALID_IPS_ID(id), body);
 
-export const API_ADD_RULE = (body: BodyId) =>
-  http.post<BodyId>(E_RULES_MY_RULES, body);
+export const API_ADD_RULE = (body: IBodyAddRule) =>
+  http.post<IBodyAddRule>(E_RULES_MY_RULES, body);
 
 export const API_DELETE_MY_RULE = (id: string) =>
   http.delete<string>(E_RULES_MY_RULES_ID(id));

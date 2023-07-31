@@ -1,17 +1,5 @@
 import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
 
-export interface IRules {
-  id: string;
-  name: string;
-  is_verified: boolean;
-  is_public: boolean;
-  version: number;
-  created_at?: string;
-  updated_at?: string;
-  description: string;
-  code: string;
-}
-
 export interface IResponseRules {
   count: number;
   next: string | null;
@@ -68,6 +56,17 @@ export interface IMyRule {
   isUpdated?: boolean;
 }
 
+export interface IRules {
+  id: string;
+  name: string;
+  is_verified: boolean;
+  is_public: boolean;
+  version: number;
+  created_at?: string;
+  updated_at?: string;
+  description: string;
+  code: string;
+}
 export interface IBodyUpdateMyRule {
   rule_code: string;
   description?: string;
@@ -81,4 +80,8 @@ export interface IParamsRules {
   pageSize?: number;
   page?: number;
   search?: string;
+}
+export interface IBodyAddRule {
+  rule_code?: string;
+  id: string;
 }

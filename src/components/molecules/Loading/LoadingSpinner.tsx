@@ -1,7 +1,7 @@
 type PropsType = { description?: string };
 export function LoadingSpinner({ description }: PropsType) {
   return (
-    <div className="h-full w-full flex justify-center items-center">
+    <div className="w-full flex justify-center items-center p-2">
       <svg
         aria-hidden="true"
         className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
