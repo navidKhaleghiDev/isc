@@ -129,20 +129,20 @@ function RulePolicyListCp(
             value={`${countDifferenceOrder}`}
           />
         </div>
-        {countDifferenceOrder > 0 && (
-          <div className="w-full flex justify-end">
-            {onDeleteRule && (
-              <BaseButton
-                label="حذف"
-                size="sm"
-                type="red"
-                className="ml-5"
-                onClick={toggleModalDelete}
-              />
-            )}
+        <div className="w-full flex justify-end">
+          {onDeleteRule && (
+            <BaseButton
+              label="حذف"
+              size="sm"
+              type="red"
+              className="ml-5"
+              onClick={toggleModalDelete}
+            />
+          )}
+          {countDifferenceOrder > 0 && (
             <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       {countDifferenceOrder > 0 && (
         <Modal
