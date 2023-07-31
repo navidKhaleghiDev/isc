@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
@@ -26,9 +26,13 @@ export function RuleDetail() {
   });
 
   const slicedCodeList: SliceOrderCodeType[] = getCodeList(rule?.code);
-  const [codeList, setCodeList] = useState<SliceOrderCodeType[]>(
-    getCodeList(rule?.code)
-  );
+  const [codeList, setCodeList] = useState<SliceOrderCodeType[]>([]);
+  useEffect(() => {
+    if (getCodeList(rule?.code).length > 0) {
+      setCodeList(getCodeList(rule?.code));
+    }
+  }, [rule?.code]);
+
   const countDifferenceOrder =
     !!slicedCodeList.length && !!codeList.length
       ? getCountDifferenceOrder(slicedCodeList, codeList)
