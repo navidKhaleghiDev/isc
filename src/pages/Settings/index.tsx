@@ -53,14 +53,14 @@ export function SettingsPage() {
   };
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="h-full flex justify-center items-center  p-16">
       {error && (
         <Typography color="red" size="body3" className="mb-10">
           {error}
         </Typography>
       )}
       <form
-        className="h-full flex flex-col justify-around items-center p-12 max-w-xxl"
+        className="h-full flex flex-col justify-around items-center max-w-xxl"
         onSubmit={handleSubmit(handleFormSubmit)}
       >
         <div className="w-full flex flex-col items-center justify-center">

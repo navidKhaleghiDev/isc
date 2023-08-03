@@ -58,6 +58,10 @@ export function RuleDetail() {
           toast.error(err);
         })
         .finally(() => {
+          rulePolicyListRef?.current?.setModalsLoadingParent({
+            deleteButton: false,
+            editButton: false,
+          });
           rulePolicyListRef?.current?.toggleModalEdit();
         });
     }

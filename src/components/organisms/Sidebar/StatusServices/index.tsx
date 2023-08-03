@@ -3,6 +3,7 @@ import { E_HEALTH_CHECK } from '@src/services/client/healthCheck/endpoint';
 import { IHealthCheck } from '@src/services/client/healthCheck/types';
 import { Typography } from '@ui/atoms';
 import { Accordion } from '@ui/atoms/Accordion';
+import { LoadingSpinner } from '@ui/molecules/Loading';
 
 const initState: IHealthCheck = {
   ids: false,
@@ -13,10 +14,11 @@ const initState: IHealthCheck = {
 };
 
 function LabelsStatus() {
-  const { data } = useFetch<IHealthCheck>(E_HEALTH_CHECK, initState);
+  const { data, loading } = useFetch<IHealthCheck>(E_HEALTH_CHECK, initState);
   return (
     <div className="w-full">
-      {data &&
+      {!loading ? (
+        data &&
         Object.entries(data).map(([key, value]) => {
           return (
             <div key={key} className="flex justify-between items-center">
@@ -30,7 +32,10 @@ function LabelsStatus() {
               </Typography>
             </div>
           );
-        })}
+        })
+      ) : (
+        <LoadingSpinner />
+      )}
     </div>
   );
 }

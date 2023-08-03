@@ -5,6 +5,7 @@ import { E_RULES_MY_RULES_ID } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { MyRuleDetail } from '@ui/molecules/Rules/MyRuleDetail';
+import { PageBackButton } from '@ui/atoms/BackButton';
 
 export function MyRuleDetailsPage() {
   const { pathname } = useLocation();
@@ -23,6 +24,7 @@ export function MyRuleDetailsPage() {
 
   return (
     <RulesCodeTemplate>
+      <PageBackButton />
       <MyRuleDetail myRule={myRule} />
     </RulesCodeTemplate>
   );

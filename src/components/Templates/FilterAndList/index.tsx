@@ -7,7 +7,7 @@ interface PropsType extends PropsWithChildren {
 }
 export function FilterAndList({ children, withIps }: PropsType) {
   return (
-    <div className="w-full flex flex-col h-full py-6 px-24">
+    <div className="w-full flex flex-col h-full p-16">
       <FilterServices withIps={withIps} />
       {children}
     </div>

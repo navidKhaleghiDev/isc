@@ -46,7 +46,7 @@ function LayoutCp() {
           <div className="bg-white w-full col-span-2 ">
             <SideBar />
           </div>
-          <div className="bg-white w-full col-span-10 ">
+          <div className="bg-white w-full col-span-10">
             <Outlet />
           </div>
         </div>
