@@ -19,7 +19,7 @@ function RulesPageCP() {
   };
 
   return (
-    <div className="w-full flex flex-col h-full py-6 px-24">
+    <div className="w-full flex flex-col h-full p-16">
       <Card
         color="neutral"
         className="p-4 flex justify-center items-center gap-4"

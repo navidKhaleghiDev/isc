@@ -57,6 +57,10 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         toast.error(err);
       })
       .finally(() => {
+        rulePolicyListRef?.current?.setModalsLoadingParent({
+          deleteButton: false,
+          editButton: false,
+        });
         rulePolicyListRef?.current?.toggleModalDelete();
       });
   };
@@ -84,6 +88,10 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         toast.error(err);
       })
       .finally(() => {
+        rulePolicyListRef?.current?.setModalsLoadingParent({
+          deleteButton: false,
+          editButton: false,
+        });
         rulePolicyListRef?.current?.toggleModalEdit();
       });
   };

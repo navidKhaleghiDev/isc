@@ -8,7 +8,7 @@ import { useState } from 'react';
 export function SupportPage() {
   const [open, setOpen] = useState<string | null>(null);
   return (
-    <div className="p-24">
+    <div className="p-16">
       {accordionButtonData.map((item: IAccordionButton) => (
         <AccordionButton
           key={item.id}

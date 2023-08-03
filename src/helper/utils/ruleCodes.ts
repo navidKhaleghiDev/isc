@@ -1,4 +1,5 @@
 // pattern for convert rule_code to codeLine list
+// const getCodeListPattern = /(alert|drop|block|pass|reject)[\s\S]*?;\)/gm;
 const getCodeListPattern = /[alert|drop|block|pass|reject][\s\S]*?;\)/gm;
 
 // pattern for split codeLine to SliceOrderCode
