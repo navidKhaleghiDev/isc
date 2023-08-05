@@ -20,6 +20,8 @@ export const STORAGE_KEY_REFRESH_TOKEN = 'refresh';
 export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
   const { setUser } = useUserContext();
   const [error, setError] = useState<string | null>(null);
+  const [loadingButton, setLoadingButton] = useState(false);
+
   const [openModalSerialDevice, setOpenModalSerialDevice] = useState(false);
   const navigate = useNavigate();
   const { control, handleSubmit } = useForm<ILoginFieldValues>({
@@ -31,6 +33,7 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
     password,
     remember_me,
   }: ILoginFieldValues) => {
+    setLoadingButton(true);
     await API_USERS_LOGIN({ email, password })
       .then(({ data }) => {
         http.setAuthHeader(data.access_token, data.refresh_token);
@@ -60,6 +63,9 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
       })
       .catch((err) => {
         setError(err);
+      })
+      .finally(() => {
+        setLoadingButton(false);
       });
   };
 
@@ -109,6 +115,7 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             label="ورود به حساب کاربری"
             endIcon="ic:round-login"
             className="mt-8"
+            loading={loadingButton}
             size="md"
             submit
             fullWidth

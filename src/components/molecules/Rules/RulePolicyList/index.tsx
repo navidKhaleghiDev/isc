@@ -139,29 +139,25 @@ function RulePolicyListCp(
               onClick={toggleModalDelete}
             />
           )}
-          {countDifferenceOrder > 0 && (
-            <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
-          )}
+          <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
         </div>
       </div>
-      {countDifferenceOrder > 0 && (
-        <Modal
-          open={openModalEdit}
-          setOpen={setOpenModalEdit}
-          title="از ثبت تغییرات این قانون مطمئن هستید؟"
-          buttonOne={{
-            label: 'بله',
-            onClick: onRegisterRule,
-            loading: modalsLoading.editButton,
-          }}
-          buttonTow={{
-            label: 'خیر',
-            onClick: toggleModalEdit,
-            color: 'red',
-          }}
-          type="success"
-        />
-      )}
+      <Modal
+        open={openModalEdit}
+        setOpen={setOpenModalEdit}
+        title="از ثبت تغییرات این قانون مطمئن هستید؟"
+        buttonOne={{
+          label: 'بله',
+          onClick: onRegisterRule,
+          loading: modalsLoading.editButton,
+        }}
+        buttonTow={{
+          label: 'خیر',
+          onClick: toggleModalEdit,
+          color: 'red',
+        }}
+        type="success"
+      />
       {onDeleteRule && (
         <Modal
           open={openModalDelete}

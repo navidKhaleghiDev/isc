@@ -4,6 +4,7 @@ import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useState } from 'react';
 import { API_USERS_DELETE } from '@src/services/client/users';
+import { useUserContext } from '@context/user/userContext';
 import { toast } from 'react-toastify';
 import { Modal } from '../../Modal';
 
@@ -16,6 +17,7 @@ type PropsType = {
 export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const { user: currentUser } = useUserContext();
 
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
 
@@ -25,13 +27,13 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
       .then(() => {
         toast.success('با موفقیت حذف شد');
         mutateUserList();
-        toggleModalDelete();
       })
       .catch((err) => {
         toast.error(err);
       })
       .finally(() => {
-        setDeleteLoading(true);
+        toggleModalDelete();
+        setDeleteLoading(false);
       });
   };
 
@@ -74,7 +76,7 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
             </Typography>
           </div>
           <div className="w-1/12">
-            {!isHeader && (
+            {!isHeader && user.email !== currentUser?.email && (
               <div className="flex justify-end">
                 <IconButton
                   icon="ph:trash-simple"

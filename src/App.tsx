@@ -21,7 +21,7 @@ function App() {
         <Suspense>
           <RouterProvider router={router} />
         </Suspense>
-        <ToastContainer rtl />
+        <ToastContainer rtl style={{ direction: 'rtl', fontSize: 20 }} />
       </div>
     </UserContext.Provider>
   );
