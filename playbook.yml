@@ -11,7 +11,7 @@
         ip_address: '10.27.95.201'
     urls:
       clientapi: 'https://api.npd-co.com'
-      kibana: 'https://elk.npd-co.com'
+      kibana: 'https://efk.npd-co.com'
       server: 'https://ips.npd-co.com'
       monitoring: 'https://monitoring.npd-co.com'
 
