@@ -131,28 +131,6 @@ export function AdditionalList({
             />
           );
         })}
-        {/* 
-        {additional.removedList.length > 0 && (
-          <div className="">
-            <Typography size="body2" color="yellow">
-              سیاست های زیر کم شده است.
-            </Typography>
-            {additional.removedList.map(
-              (code: SliceOrderCodeType, index: number) => {
-                return (
-                  <CodeLine
-                    id={`additional-${index}`}
-                    key={`${index}_${code.order}`}
-                    code={code}
-                    onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
-                      handleOnChangeOrder(event, index)
-                    }
-                  />
-                );
-              }
-            )}
-          </div>
-        )} */}
       </Card>
       <Modal
         open={openModalSetChanged}

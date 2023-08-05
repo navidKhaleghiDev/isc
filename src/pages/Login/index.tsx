@@ -8,6 +8,7 @@ import { API_USERS_PROFILE } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
 import { withNoAuth } from '@src/helper/hoc/withNoAuth';
+import { LoadingPage } from '@ui/molecules/Loading';
 
 import { LoginForm } from './LoginForm';
 import { AuthenticationForm } from './AuthenticationForm';
@@ -24,11 +25,14 @@ const loginSteps = {
 
 function LoginPageCp() {
   const [step, setStep] = useState<ELoginStep>(ELoginStep.LOGIN);
+  const [loading, setLoading] = useState(false);
+
   const { setUser, user } = useUserContext();
   const navigate = useNavigate();
   const Step = loginSteps[step];
 
   const getProfile = async () => {
+    setLoading(true);
     await API_USERS_PROFILE()
       .then(({ data }) => {
         setUser(data);
@@ -41,6 +45,9 @@ function LoginPageCp() {
       });
   };
 
+  if (loading) {
+    return <LoadingPage description="لطفا شکیبا باشید" />;
+  }
   return (
     <div className="font-on bg-teal-600  flex flex-col items-center justify-center min-h-screen ">
       <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center">

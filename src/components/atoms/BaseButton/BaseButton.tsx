@@ -28,7 +28,7 @@ export function BaseButton({
         className,
       })}
     >
-      {startIcon && (
+      {startIcon && !loading && (
         <BaseIcon
           icon={startIcon}
           className={iconInButtonStyles({
@@ -39,7 +39,7 @@ export function BaseButton({
         />
       )}
       {loading ? <LoadingSvg /> : label}
-      {endIcon && (
+      {endIcon && !loading && (
         <BaseIcon
           icon={endIcon}
           className={iconInButtonStyles({
