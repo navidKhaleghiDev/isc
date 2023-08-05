@@ -43,13 +43,17 @@ export function RuleDetail() {
       });
 
       let ruleCode = '';
-
+      console.log({ count: codeList.length });
       if (codeList) {
         codeList.forEach((code) => {
           ruleCode += `${code.order}${code.code} \r\n\r `;
         });
       }
-      await API_ADD_RULE({ id: rule.id, rule_code: ruleCode })
+      await API_ADD_RULE({
+        id: rule.id,
+        rule_code: ruleCode,
+        without_action_code: codeList,
+      })
         .then(() => {
           mutate();
           toast.success('با موفقیت اضافه شد');

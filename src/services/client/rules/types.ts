@@ -1,3 +1,4 @@
+import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
 
 export interface IResponseRules {
@@ -83,5 +84,6 @@ export interface IParamsRules {
 }
 export interface IBodyAddRule {
   rule_code?: string;
+  without_action_code?: SliceOrderCodeType[];
   id: string;
 }
