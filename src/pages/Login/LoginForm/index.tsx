@@ -38,10 +38,7 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         if (remember_me) {
           localStorage.setItem(STORAGE_KEY_REFRESH_TOKEN, data.refresh_token);
         }
-        if (
-          email === import.meta.env.VITE_SUPER_USER_EMAIL &&
-          password === import.meta.env.VITE_SUPER_USER_PASSWORD
-        ) {
+        if (data.force_change) {
           // user login as first time
           onChangeStep(ELoginStep.CHANGE_PASSWORD);
         } else if (data.is_authenticated) {
