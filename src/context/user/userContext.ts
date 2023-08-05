@@ -5,6 +5,7 @@ export interface IUserWithAuth extends IUser {
   access_token: string;
   refresh_token: string;
   is_authenticated: boolean;
+  force_change: boolean;
 }
 export interface IUserContext {
   user: IUserWithAuth | null;

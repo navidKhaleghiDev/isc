@@ -4,7 +4,7 @@ export function MonitoringSystemsTowPage() {
       <iframe
         width="100%"
         height="100%"
-        src={import.meta.env.VITE_SYSTEM_ANALYSER_TOW}
+        src={import.meta.env.VITE_SYSTEM_ANALYSER_TWO}
         title="Analyze panel"
       />
     </div>
