@@ -12,7 +12,7 @@
     urls:
       clientapi: 'https://api.npd-co.com'
       kibana: 'https://efk.npd-co.com'
-      server: 'http://ips.npd-co.com'
+      server: 'https://ips.npd-co.com'
       monitoring: 'https://monitoring.npd-co.com'
 
   # List of tasks
