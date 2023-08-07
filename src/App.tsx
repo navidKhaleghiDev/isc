@@ -2,10 +2,6 @@ import { useMemo, useState, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import routesConfig from '@src/routes/routesConfig';
-
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
-
 import { IUserWithAuth, UserContext } from '@context/user/userContext';
 
 const router = createBrowserRouter(routesConfig);
