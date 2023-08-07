@@ -4,22 +4,26 @@
 
 @font-face {
   font-family: 'on';
-  src: url('/src/assets/fonts/OnLight.ttf');
+  src: url('/src/assets/fonts/OnLight.woff2'),
+    url('/src/assets/fonts/OnLight.woff');
 }
 
 @font-face {
   font-family: 'on';
-  src: url('/src/assets/fonts/OnNormal.ttf');
+  src: url('/src/assets/fonts/OnNormal.woff2'),
+    url('/src/assets/fonts/OnNormal.woff');
 }
 
 @font-face {
   font-family: 'on';
-  src: url('/src/assets/fonts/OnMedium.ttf');
+  src: url('/src/assets/fonts/OnMedium.woff2'),
+    url('/src/assets/fonts/OnMedium.woff');
 }
 
 @font-face {
   font-family: 'on';
-  src: url('/src/assets/fonts/OnBold.ttf');
+  src: url('/src/assets/fonts/OnBold.woff2'),
+    url('/src/assets/fonts/OnBold.woff');
 }
 
 @layer base {

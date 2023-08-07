@@ -88,7 +88,7 @@ export function Pagination({
     });
   };
 
-  if (totalPages < 8) {
+  if (totalPages < 2) {
     return null;
   }
 
