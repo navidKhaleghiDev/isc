@@ -8,8 +8,8 @@ import { getRoleUser } from './utils';
 export function NavbarDashboard() {
   const { user } = useUserContext();
   return (
-    <nav className="bg-white w-full px-8 mb-1 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="flex items-center justify-between p-3">
+    <nav className="bg-white w-full h-20 px-8 mb-1">
+      <div className="flex items-center justify-between p-3 ">
         <div className="flex items-center">
           {user?.is_superuser && (
             <Link to={ROUTES_PATH.addUser} className="ml-4">

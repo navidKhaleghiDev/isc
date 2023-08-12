@@ -40,13 +40,13 @@ function LayoutCp() {
 
   if (!loading) {
     return (
-      <div className="font-on w-full min-h-screen bg-gray-200 flex flex-col 2xl:container 2xl:mx-auto">
+      <div className="font-on w-full h-screen bg-gray-200 flex flex-col 2xl:container 2xl:mx-auto overflow-y-hidden">
         <NavbarDashboard />
         <div className="w-full h-full grid grid-cols-12 gap-1 flex-1">
-          <div className="bg-white w-full col-span-2 ">
+          <div className="bg-white h-full w-full col-span-2">
             <SideBar />
           </div>
-          <div className="bg-white w-full col-span-10">
+          <div className="bg-white w-full col-span-10 overflow-y-auto">
             <Outlet />
           </div>
         </div>
@@ -57,4 +57,3 @@ function LayoutCp() {
 }
 
 export default withAuth(LayoutCp);
-// export default LayoutCp;
