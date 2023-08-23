@@ -48,8 +48,14 @@
 
     - name: Install nodejs and deploy application into the container
       ansible.builtin.shell: |
-        /snap/bin/lxc exec front -- /bin/bash -c "echo 192.168.1.50 nexus >/etc/hosts && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
-        /snap/bin/lxc exec front -- /bin/bash -c "apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && apt-get install nodejs -y -q"
+        sleep 5
+        /snap/bin/lxc config device add front eth0 nic name=eth0 nictype=bridged parent=vsys0
+        /snap/bin/lxc exec front -- /bin/bash -c "egrep '^192.168.1.50\snexus$' /etc/hosts || echo 192.168.1.50 nexus >>/etc/hosts"
+        /snap/bin/lxc exec front -- /bin/bash -c "echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy-updates main restricted universe > /etc/apt/sources.list && echo deb http://nexus:8081/repository/apt-proxy/ubuntu jammy main restricted universe >> /etc/apt/sources.list"
+
+        apt-get update && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade  -y -q
+        /snap/bin/lxc exec front -- /bin/bash -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' -y -q"
+        /snap/bin/lxc exec front -- /bin/bash -c "curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install nodejs -y -q"
         /snap/bin/lxc file push /tmp/app.tar.gz front/tmp/app.tar.gz
         /snap/bin/lxc file push /tmp/front.service front/usr/lib/systemd/system/front.service
         /snap/bin/lxc file push /tmp/00-front.conf front/etc/rsyslog.d/00-front.conf
@@ -70,19 +76,19 @@
 
     - name: Create a symbolic link to front.conf from enabled sites of nginx
       ansible.builtin.file:
-        src: /opt/nginx/sites-availabe/front.conf
+        src: /opt/nginx/sites-available/front.conf
         dest: /opt/nginx/sites-enabled/front.conf
         state: link
       notify:
       - Restart nginx service
 
   handlers:
-  - name: Restart lxd network
-    ansible.builtin.systemd:
-      state: restarted
-      name: lxc-net
+    - name: Restart lxd network
+      ansible.builtin.systemd:
+        state: restarted
+        name: lxc-net
 
-  - name: Restart nginx service
-    ansible.builtin.systemd:
-      state: restarted
-      name: nginx
+    - name: Restart nginx service
+      ansible.builtin.systemd:
+        state: restarted
+        name: nginx
