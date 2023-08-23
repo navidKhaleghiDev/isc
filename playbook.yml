@@ -9,11 +9,6 @@
     containers:
       front:
         ip_address: '10.27.95.201'
-    urls:
-      clientapi: 'https://api.npd-co.com'
-      kibana: 'https://efk.npd-co.com'
-      server: 'https://ips.npd-co.com'
-      monitoring: 'https://monitoring.npd-co.com'
 
   # List of tasks
   tasks:
@@ -29,12 +24,6 @@
         - front.service
         - '00-front.conf'
         - frontapp
-
-    - name: Copy env template to temp
-      ansible.builtin.template:
-        src: '/home/ansible/env.production.j2'
-        dest: /tmp/.env.production
-        mode: '0644'
 
     - name: Ensure front container IP address is present in dnsmasq configuration
       ansible.builtin.lineinfile:
@@ -71,8 +60,29 @@
         /snap/bin/lxc exec front -- /bin/bash -c "chown -R front:front /home/front/"
         /snap/bin/lxc exec front -- /bin/bash -c "systemctl daemon-reload && systemctl restart front.service"
 
+    - name: template front.conf to nginx
+      ansible.builtin.template:
+        src: front.conf.j2
+        dest: /opt/nginx/sites-available/front.conf
+        mode: '0644'
+      notify:
+      - Restart nginx service
+
+    - name: Create a symbolic link to front.conf from enabled sites of nginx
+      ansible.builtin.file:
+        src: /opt/nginx/sites-availabe/front.conf
+        dest: /opt/nginx/sites-enabled/front.conf
+        state: link
+      notify:
+      - Restart nginx service
+
   handlers:
-    - name: Restart lxd network
-      ansible.builtin.systemd:
-        state: restarted
-        name: lxc-net
+  - name: Restart lxd network
+    ansible.builtin.systemd:
+      state: restarted
+      name: lxc-net
+
+  - name: Restart nginx service
+    ansible.builtin.systemd:
+      state: restarted
+      name: nginx
