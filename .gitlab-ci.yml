@@ -13,14 +13,26 @@ build:
 
 deploy:
   stage: deploy
-  only:
-    - main
+  only: [ "main", "stage"]
   image:
     name: nexus:443/netpardaz/ubuntu-ansible:20.04
+  before_script:
+    - source branch_env/.${CI_COMMIT_REF_NAME}.env
   script:
+    - |+
+      cat >.env.production <<_EOF_
+      VITE_SERVER_BASE_URL=${VITE_SERVER_BASE_URL}
+      VITE_CLIENT_BASE_URL=${VITE_CLIENT_BASE_URL}
+      VITE_SYSTEM_ANALYSER_ONE=${VITE_SYSTEM_ANALYSER_ONE}
+      VITE_SYSTEM_ANALYSER_TWO=${VITE_SYSTEM_ANALYSER_TWO}
+      _EOF_
     - mkdir /home/ansible/inventory
-    - tar czf /home/ansible/app.tar.gz . && cp playbook.yml front.service 00-front.conf frontapp env.production.j2 /home/ansible
-    - echo ics-sec ansible_host=10.27.95.1 ansible_ssh_user=ansible ansible_become_pass=`echo $ANSIBLE_PASSWORD | base64 -d` >/home/ansible/inventory/hosts
+    - tar czf /home/ansible/app.tar.gz . && cp playbook.yml front.conf.j2 front.service 00-front.conf frontapp /home/ansible/
+    - echo ics-sec ansible_host=$ANSIBLE_HOST ansible_ssh_user=ansible ansible_become_pass=`echo $ANSIBLE_PASSWORD | base64 -d` >/home/ansible/inventory/hosts
+    - echo "ANSIBLE_PRIVATE_KEY $ANSIBLE_PRIVATE_KEY"
+    - echo "ANSIBLE_HOST $ANSIBLE_HOST"
+    - echo "ANSIBLE_PASSWORD $ANSIBLE_PASSWORD"
     - echo $ANSIBLE_PRIVATE_KEY | base64 -d > /home/ansible/.ssh/id_rsa; chmod 0600 /home/ansible/.ssh/id_rsa
     - /usr/bin/ssh-keygen -f /home/ansible/.ssh/id_rsa -y > /home/ansible/.ssh/id_rsa.pub
     - export ANSIBLE_HOST_KEY_CHECKING=False; /home/ansible/.local/bin/ansible-playbook /home/ansible/playbook.yml -i /home/ansible/inventory/hosts
+
