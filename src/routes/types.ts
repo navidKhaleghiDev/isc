@@ -20,4 +20,5 @@ export type RoutePathType =
   | 'myProductMyRulesRetrieve'
   | 'myProductIpsList'
   | 'ourServices'
+  | 'ai'
   | 'users';

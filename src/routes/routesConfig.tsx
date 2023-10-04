@@ -16,6 +16,7 @@ import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import { UsersPage } from '@src/pages/Users';
+import { AiPage } from '@src/pages/Ai';
 
 import { ROUTES_PATH } from './routesConstants';
 
@@ -50,6 +51,10 @@ const routesConfig = [
       {
         path: ROUTES_PATH.support,
         element: <SupportPage />,
+      },
+      {
+        path: ROUTES_PATH.ai,
+        element: <AiPage />,
       },
       {
         path: ROUTES_PATH.settings,

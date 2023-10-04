@@ -68,7 +68,6 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         setLoadingButton(false);
       });
   };
-
   return (
     <>
       <form

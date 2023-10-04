@@ -20,6 +20,7 @@ export const RoutesName = {
   MONITORING_SYSTEM_GUIDE: 'monitoring-systems-guide',
   ADD_USER: 'add-user',
   USERS: 'users',
+  AI: 'ai',
 };
 
 export const ROUTES_PATH: Record<RoutePathType, string> = {
@@ -45,4 +46,5 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   monitoringSystemsOne: `/${RoutesName.MONITORING_SYSTEM}/one`,
   monitoringSystemsTow: `/${RoutesName.MONITORING_SYSTEM}/tow`,
   users: `/${RoutesName.USERS}`,
+  ai: `/${RoutesName.AI}`,
 };

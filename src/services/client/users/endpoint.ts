@@ -9,3 +9,5 @@ export const E_USERS_SERVER_AUTH = '/users/server_auth/';
 export const E_USERS_PRODUCT = 'users/product/';
 
 export const E_USERS_PROFILE = 'users/profile/';
+
+export const E_TOKEN_REFRESH = 'users/token/refresh/';
