@@ -25,6 +25,7 @@ export interface BaseInputProps<T extends FieldValues>
     | 'tel'
     | 'text'
     | 'url'
+    | 'file'
     | 'date'
     | 'datetime-local'
     | 'time';

@@ -32,7 +32,7 @@ export function BaseButton({
         <BaseIcon
           icon={startIcon}
           className={iconInButtonStyles({
-            type,
+            type: 'noBg',
             size,
             className: `${size !== 'sm' && 'ml-4'}`,
           })}
@@ -43,7 +43,7 @@ export function BaseButton({
         <BaseIcon
           icon={endIcon}
           className={iconInButtonStyles({
-            type,
+            type: 'noBg',
             className: `${size !== 'sm' && 'mr-4'}`,
           })}
         />

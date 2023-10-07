@@ -45,3 +45,11 @@
 :root {
   --toastify-font-family: on;
 }
+
+.base-input .icon {
+  color: red; /* Change as needed */
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+  filter: invert(0.4);
+}

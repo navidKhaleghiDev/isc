@@ -1,48 +1,69 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-multi-date-picker';
-import { useForm, Controller } from 'react-hook-form';
+import MultiDatePicker from 'react-multi-date-picker';
+import persian from 'react-date-object/calendars/persian';
+import persian_fa from 'react-date-object/locales/persian_fa';
+import { Controller } from 'react-hook-form';
+import { Typography } from '@ui/atoms/Typography';
+import { BaseInputProps } from '../types';
+import { baseInputStyles } from '../styles';
+import { IconInput } from '../IconInput';
 
-export function BaseDatePicker() {
-  const { control, handleSubmit } = useForm();
-  const [submittedDate, setSubmittedDate] = useState();
-
-  const onSubmit = ({ date }) => {
-    setSubmittedDate(date);
-  };
-
+export function DatePicker(props: BaseInputProps<any>) {
+  const {
+    control,
+    name,
+    id,
+    placeholder,
+    rules,
+    fullWidth,
+    defaultValue,
+    intent,
+    label,
+    hiddenError,
+    className,
+  } = props;
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          control={control}
-          name="date"
-          rules={{ required: true }} //optional
-          render={({
-            field: { onChange, name, value },
-            fieldState: { invalid, isDirty }, //optional
-            formState: { errors }, //optional, but necessary if you want to show an error message
-          }) => (
-            <>
-              <DatePicker
-                value={value || ''}
-                onChange={(date) => {
-                  onChange(date?.isValid ? date : '');
-                }}
-                format="MM/DD/YYYY"
-                calendar="persian"
-                locale="fa"
-                calendarPosition="bottom-right"
-              />
-              {errors && errors[name] && errors[name].type === 'required' && (
-                //if you want to show an error message
-                <span>your error message !</span>
-              )}
-            </>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue}
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <div className={`${fullWidth ? 'w-full' : 'w-36'} ${className ?? ''}`}>
+          {label && (
+            <label htmlFor={id} className="block mb-1">
+              <Typography color="teal" size="h5">
+                {label}
+              </Typography>
+            </label>
           )}
-        />
-        <input type="submit" />
-      </form>
-      <p>تاریخ ارسال شده: {submittedDate?.format?.('D MMMM YYYY')}</p>
-    </>
+          <div className="relative">
+            <IconInput icon="ph:calendar" intent={intent} />
+            <MultiDatePicker
+              value={value || ''}
+              onChange={(date) => {
+                onChange(date?.isValid ? date?.toDate?.() : '');
+              }}
+              format="YYYY/MM/DD"
+              calendar={persian}
+              locale={persian_fa}
+              placeholder={placeholder}
+              calendarPosition="bottom-right"
+              containerClassName={fullWidth ? 'w-full' : 'w-36'}
+              inputClass={baseInputStyles({
+                intent: error?.message ? 'error' : intent,
+                className: `${fullWidth ? 'w-full' : 'w-36'} h-10 ${className}`,
+                fullWidth,
+                size: 'none',
+              })}
+            />
+          </div>
+          {!hiddenError && (
+            <Typography color="red" size="caption" className="h-6">
+              {error?.message ?? ''}
+            </Typography>
+          )}
+        </div>
+      )}
+    />
   );
 }

@@ -1,4 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
+import { IconifyIcon } from '@iconify/react';
 
 import { baseButtonStyles, iconButtonStyles } from './styles';
 
@@ -9,8 +10,8 @@ export interface IBaseButton extends BaseButtonStyleProps {
   disabled?: boolean;
   submit?: boolean;
   className?: string;
-  startIcon?: string;
-  endIcon?: string;
+  startIcon?: string | IconifyIcon;
+  endIcon?: string | IconifyIcon;
   loading?: boolean;
 }
 
