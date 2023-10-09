@@ -1,4 +1,6 @@
 import { iconButtonStyles } from './styles';
+import { LoadingSvg } from '../Svgs/LoadingSvg';
+
 import { IIconButton } from './types';
 import { BaseIcon } from '../BaseIcon';
 
@@ -10,6 +12,7 @@ export function IconButton({
   size,
   color,
   type,
+  loading,
 }: IIconButton) {
   return (
     <button
@@ -20,8 +23,13 @@ export function IconButton({
         size,
         className,
       })}
+      disabled={loading}
     >
-      <BaseIcon icon={icon} size={size} className={classNameIcon} />
+      {loading ? (
+        <LoadingSvg />
+      ) : (
+        <BaseIcon icon={icon} size={size} className={classNameIcon} />
+      )}
     </button>
   );
 }

@@ -17,21 +17,27 @@ import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import { UsersPage } from '@src/pages/Users';
 import { AiPage } from '@src/pages/Ai';
+import DefaultLayout from '@ui/Templates/layouts/DefaultLayout';
 
 import { ROUTES_PATH } from './routesConstants';
 
 const routesConfig = [
   {
-    path: ROUTES_PATH.unauthorized,
-    element: <UnauthorizedPage />,
-  },
-  {
-    path: ROUTES_PATH.home,
-    element: <LoginPage />,
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: ROUTES_PATH.unauthorized,
+        element: <UnauthorizedPage />,
+      },
+      {
+        path: ROUTES_PATH.home,
+        element: <LoginPage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+    ],
   },
   {
     element: <PrivateLayout />,
@@ -99,6 +105,18 @@ const routesConfig = [
       {
         path: ROUTES_PATH.myProductMyRulesRetrieve,
         element: <MyRuleDetailsPage />,
+      },
+      {
+        path: ROUTES_PATH.myProductAiListener,
+        element: <AiPage />,
+      },
+      {
+        path: ROUTES_PATH.myProductAiLearner,
+        element: <AiPage />,
+      },
+      {
+        path: ROUTES_PATH.myProductAiDetector,
+        element: <AiPage />,
       },
     ],
   },

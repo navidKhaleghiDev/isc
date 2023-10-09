@@ -2,7 +2,9 @@ import { useForm } from 'react-hook-form';
 import { BaseButton, BaseInput } from '@ui/atoms';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { useState } from 'react';
-import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
+import { API_CREATE_MY_LISTENERS } from '@src/services/client/ai';
+// import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
+import { toast } from 'react-toastify';
 
 import { ProtocolDropDown } from '../ProtocolDropDown';
 import { IStartListenerValues } from './types';
@@ -10,43 +12,19 @@ import { IStartListenerValues } from './types';
 export function StartListener() {
   const { control, handleSubmit } = useForm<IStartListenerValues>();
   const [loadingButton, setLoadingButton] = useState(false);
-  const handelSubmitForm = async (data: IStartListenerValues) => {
-    console.log({ data });
 
-    // setLoadingButton(true);
-    // await API_USERS_LOGIN({ email, password })
-    //   .then(({ data }) => {
-    //     http.setAuthHeader(data.access_token, data.refresh_token);
-    //     setUser(data);
-    //     if (remember_me) {
-    //       localStorage.setItem(STORAGE_KEY_REFRESH_TOKEN, data.refresh_token);
-    //     }
-    //     if (data.force_change) {
-    //       // user login as first time
-    //       onChangeStep(ELoginStep.CHANGE_PASSWORD);
-    //     } else if (data.is_authenticated) {
-    //       // user is authenticated
-    //       if (!data.device_serial) {
-    //         // user not have device serial
-    //         if (data.is_admin || data.is_superuser) {
-    //           onChangeStep(ELoginStep.REGISTER_SERIAL_DEVICE);
-    //         } else {
-    //           getProfile();
-    //         }
-    //       } else {
-    //         // login is ok
-    //         getProfile();
-    //       }
-    //     } else {
-    //       onChangeStep(ELoginStep.AUTHENTICATION);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setError(err);
-    //   })
-    //   .finally(() => {
-    //     setLoadingButton(false);
-    //   });
+  const handelSubmitForm = async (dataForm: IStartListenerValues) => {
+    setLoadingButton(true);
+    await API_CREATE_MY_LISTENERS(dataForm)
+      .then(() => {
+        toast.success('با موفقیت اضافه شد.');
+      })
+      .catch((err) => {
+        toast.error(err);
+      })
+      .finally(() => {
+        setLoadingButton(false);
+      });
   };
 
   return (
@@ -83,7 +61,7 @@ export function StartListener() {
           name="port"
           className="col-span-12 lg:col-span-4"
         />
-        <div className="col-start-1 col-span-12 lg:col-span-4 lg:col-start-5 gap-4 flex justify-between">
+        {/* <div className="col-start-1 col-span-12 lg:col-span-4 lg:col-start-5 gap-4 flex justify-between">
           <BaseInput
             control={control}
             placeholder="وارد کنید"
@@ -104,8 +82,41 @@ export function StartListener() {
             size="fullWidth"
             className="w-36"
           />
+        </div> */}
+        <div className="col-span-12 lg:col-span-4 gap-8 flex justify-between">
+          <BaseInput
+            control={control}
+            placeholder="به روز"
+            label="زمان مشاهده"
+            rules={{
+              required: regexPattern.required,
+              // pattern: regexPattern.numbers,
+            }}
+            type="number"
+            id="days"
+            name="days"
+            size="freeWidth"
+            min={1}
+            max={365}
+            fullWidth
+          />
+          <BaseInput
+            control={control}
+            placeholder="به ساعت"
+            label=" "
+            rules={{
+              required: regexPattern.required,
+              pattern: regexPattern.numbers,
+            }}
+            min={0}
+            max={24}
+            type="number"
+            id="hours"
+            name="hours"
+            fullWidth
+          />
         </div>
-        <div className="col-span-12 lg:col-span-4 flex justify-between">
+        {/* <div className="col-span-12 lg:col-span-4 flex justify-between">
           <DatePicker
             control={control}
             label="تاریخ شروع"
@@ -121,7 +132,7 @@ export function StartListener() {
             name="endDate"
             startIcon="ph:x"
           />
-        </div>
+        </div> */}
 
         <div className="col-span-12 flex justify-center">
           <BaseButton

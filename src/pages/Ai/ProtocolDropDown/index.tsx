@@ -1,8 +1,8 @@
 import { Control, FieldValues, Path } from 'react-hook-form';
 import { Dropdown } from '@ui/atoms/DropDown';
 import { IOptionSelect } from '@ui/atoms/DropDown/type';
-import { EProtocol } from './types';
 import { regexPattern } from '@ui/atoms/Inputs';
+import { EProtocol } from '@src/services/client/ai/types';
 
 export const optionsStatus: IOptionSelect[] = [
   {

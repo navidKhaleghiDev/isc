@@ -38,22 +38,34 @@ function LayoutCp() {
     }
   }, [navigate, setUser, user, token]);
 
-  if (!loading) {
-    return (
-      <div className="font-on w-full h-screen bg-gray-200 flex flex-col 2xl:container 2xl:mx-auto overflow-y-hidden">
-        <NavbarDashboard />
-        <div className="w-full h-full grid grid-cols-12 gap-1 flex-1">
-          <div className="bg-white h-full w-full col-span-2">
-            <SideBar />
-          </div>
-          <div className="bg-white w-full col-span-10 overflow-y-auto">
-            <Outlet />
-          </div>
+  if (loading) {
+    return <LoadingPage description="لطفا شکیبا باشید" />;
+  }
+  return (
+    <div className="font-on flex h-screen bg-white">
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <header className="border-b-4 border-neutral-200">
+          <NavbarDashboard />
+        </header>
+        <div className="flex h-full 2xl:container 2xl:mx-auto">
+          <nav className="flex w-80 h-full">
+            <div className="w-full flex mx-auto">
+              <div className="w-full h-full flex items-center justify-center border-l-4 border-neutral-200">
+                <SideBar />
+              </div>
+            </div>
+          </nav>
+          <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
+            <div className="flex w-full mx-auto">
+              <div className="flex flex-col w-full h-full ">
+                <Outlet />
+              </div>
+            </div>
+          </main>
         </div>
       </div>
-    );
-  }
-  return <LoadingPage description="لطفا شکیبا باشید" />;
+    </div>
+  );
 }
 
 export default withAuth(LayoutCp);

@@ -1,5 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
-import { HTMLInputTypeAttribute } from 'react';
+import { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
 import {
   Control,
   FieldPath,
@@ -40,6 +40,9 @@ export interface BaseInputProps<T extends FieldValues>
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   pureValue?: string;
   pureError?: string;
+  // inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  min?: string | number;
+  max?: string | number;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {

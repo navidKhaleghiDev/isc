@@ -113,6 +113,9 @@ export class Http {
     return this.get(url, config);
   }
 
+  fetcherSWR = <Data>(url: string, config?: AxiosRequestConfig) =>
+    this.get<Data, AxiosResponse<Data>>(url, config);
+
   async get<T = any, R = AxiosResponse<T>>(
     url: string,
     config?: AxiosRequestConfig
@@ -134,7 +137,7 @@ export class Http {
 
   async patch<T = any, R = AxiosResponse<T>>(
     url: string,
-    data?: T,
+    data?: Partial<T>,
     config?: AxiosRequestConfig
   ): Promise<R> {
     return this.http.patch<T, R>(url, data, config);

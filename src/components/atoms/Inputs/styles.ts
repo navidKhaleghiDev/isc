@@ -21,7 +21,7 @@ export const baseInputStyles = cva(
         md: `w-[27.5rem] h-10 text-lg ${SIZE.TYPOGRAPHY.BODY3}`,
         lg: `w-[60rem] h-10 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
         xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
-        fullWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
+        freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },
     },
     defaultVariants: {

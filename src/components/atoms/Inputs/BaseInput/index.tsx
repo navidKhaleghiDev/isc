@@ -28,6 +28,8 @@ export function BaseInput(props: BaseInputProps<any>) {
     pureValue,
     onClickIcon,
     pureError,
+    min,
+    max,
     iconButtonIcon = 'ph:x',
   } = props;
   return control ? (
@@ -39,7 +41,7 @@ export function BaseInput(props: BaseInputProps<any>) {
       render={({ field, fieldState: { error } }) => (
         <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
           {label && (
-            <label htmlFor={id} className="block mb-1">
+            <label htmlFor={id} className="block mb-1 h-8">
               <Typography color="teal" size="h5">
                 {label}
               </Typography>
@@ -70,6 +72,8 @@ export function BaseInput(props: BaseInputProps<any>) {
                 size,
               })}
               placeholder={placeholder}
+              min={min}
+              max={max}
             />
 
             {onClickIcon && (
@@ -91,6 +95,13 @@ export function BaseInput(props: BaseInputProps<any>) {
     />
   ) : (
     <div className="w-full flex flex-col">
+      {label && (
+        <label htmlFor={id} className="block mb-1 h-8">
+          <Typography color="teal" size="h5">
+            {label}
+          </Typography>
+        </label>
+      )}
       <input
         id={id}
         type={type}
