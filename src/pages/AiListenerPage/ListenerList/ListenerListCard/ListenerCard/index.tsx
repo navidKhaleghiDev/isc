@@ -1,36 +1,36 @@
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import stopFillIcon from '@iconify-icons/ph/stop-fill';
-
 import { IMyListeners } from '@src/services/client/ai/types';
-// import { IMyListeners } from '@src/services/client/ai/types';
-import { API_ADD_RULE } from '@src/services/client/rules';
-import { IRules } from '@src/services/client/rules/types';
 import { Card, Typography } from '@ui/atoms';
-import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
+import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { API_UPDATE_MY_LISTENERS } from '@src/services/client/ai';
-import { Popover } from '@ui/atoms/Popover';
-import useSWR from 'swr';
-import { E_AI_MY_LISTENERS } from '@src/services/client/ai/endpoint';
-import { http } from '@src/services/http';
+import { KeyedMutator } from 'swr';
+import { PaginationResponseSwr } from '@src/types/services';
 
 type PropsType =
-  | { isHeader: true; item?: Partial<Record<keyof IMyListeners, string>> }
-  | { isHeader?: false; item: IMyListeners };
+  | {
+      isHeader: true;
+      item?: Partial<Record<keyof IMyListeners, string>>;
+      mutate?: KeyedMutator<PaginationResponseSwr<IMyListeners[]>>;
+    }
+  | {
+      isHeader?: false;
+      item: IMyListeners;
+      mutate?: KeyedMutator<PaginationResponseSwr<IMyListeners[]>>;
+    };
 
-type StatusPropsType = { isActive: boolean; id: number };
+type StatusPropsType = {
+  isActive: boolean;
+  id: number;
+  mutate?: KeyedMutator<PaginationResponseSwr<IMyListeners[]>>;
+};
 
-function StopListenerIcon({ id }: any) {
+function StopListenerIcon({ id, mutate }: any) {
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const { mutate } = useSWR(E_AI_MY_LISTENERS, http.fetcherSWR, {
-    revalidateOnFocus: false,
-    errorRetryCount: 0,
-  });
 
   const handelSubmit = async () => {
     setLoading(true);
@@ -80,10 +80,10 @@ function StopListenerIcon({ id }: any) {
   );
 }
 
-function Status({ isActive, id }: StatusPropsType) {
+function Status({ isActive, id, mutate }: StatusPropsType) {
   return (
     <div className="flex justify-center items-center">
-      {isActive && <StopListenerIcon id={id} />}
+      {isActive && <StopListenerIcon id={id} mutate={mutate} />}
       <Typography color={!isActive ? 'neutral' : 'teal'} size="body3">
         {isActive ? 'در حال انجام' : 'انجام شده'}
       </Typography>
@@ -91,7 +91,7 @@ function Status({ isActive, id }: StatusPropsType) {
   );
 }
 
-export function ListenerCard({ item, isHeader }: PropsType) {
+export function ListenerCard({ item, isHeader, mutate }: PropsType) {
   return (
     <Card
       color="neutral"
@@ -101,7 +101,7 @@ export function ListenerCard({ item, isHeader }: PropsType) {
     >
       <div className="w-2/12 text-center text-neutral-400">
         {!isHeader ? (
-          <Status isActive={item.is_active} id={item.id} />
+          <Status isActive={item.is_active} id={item.id} mutate={mutate} />
         ) : (
           <Typography color={isHeader ? 'neutral' : null} size="body3">
             {item?.is_active}

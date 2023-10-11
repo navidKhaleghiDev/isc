@@ -32,16 +32,21 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 left-0 flex px-2 items-center fill-current ',
+  'absolute inset-y-0 flex px-2 items-center fill-current ',
   {
     variants: {
       intent: {
         default: 'text-neutral-500',
         error: 'text-red-500',
       },
+      right: {
+        true: 'right-0',
+        false: 'left-0',
+      },
     },
     defaultVariants: {
       intent: 'default',
+      right: false,
     },
   }
 );

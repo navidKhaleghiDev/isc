@@ -1,13 +1,43 @@
-import MultiDatePicker from 'react-multi-date-picker';
+import MultiDatePicker, { DateObject } from 'react-multi-date-picker';
+import xIcon from '@iconify-icons/ph/x';
+import calendarIcon from '@iconify-icons/ph/calendar';
 import persian from 'react-date-object/calendars/persian';
+import gregorian from 'react-date-object/calendars/gregorian';
 import persian_fa from 'react-date-object/locales/persian_fa';
 import { Controller } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
-import { BaseInputProps } from '../types';
+
+import { DatePickerProps } from '../types';
 import { baseInputStyles } from '../styles';
 import { IconInput } from '../IconInput';
+import { IconButtonInput } from '../IconButtonInput';
 
-export function DatePicker(props: BaseInputProps<any>) {
+export function convertI2ToAD(
+  i2Date?: DateObject | DateObject[] | null
+): string | string[] | null {
+  if (!i2Date) return null;
+
+  // If i2Date is an array of DateObject(s)
+  if (Array.isArray(i2Date)) {
+    return i2Date.map((date) => {
+      const gregorianDate = new DateObject({
+        date: date.toDate(),
+        calendar: gregorian,
+      });
+      return gregorianDate.format('YYYY-MM-DD');
+    });
+  }
+
+  // If i2Date is a single DateObject
+  const gregorianDate = new DateObject({
+    date: i2Date.toDate(),
+    calendar: gregorian,
+  });
+
+  return gregorianDate.format('YYYY-MM-DD');
+}
+
+export function DatePicker(props: DatePickerProps) {
   const {
     control,
     name,
@@ -20,6 +50,8 @@ export function DatePicker(props: BaseInputProps<any>) {
     label,
     hiddenError,
     className,
+    maxDate,
+    minDate,
   } = props;
   return (
     <Controller
@@ -37,12 +69,19 @@ export function DatePicker(props: BaseInputProps<any>) {
             </label>
           )}
           <div className="relative">
-            <IconInput icon="ph:calendar" intent={intent} />
+            {value ? (
+              <IconButtonInput
+                icon={xIcon}
+                intent={intent}
+                onClick={() => onChange(null)}
+              />
+            ) : (
+              <IconInput icon={calendarIcon} intent={intent} />
+            )}
+
             <MultiDatePicker
               value={value || ''}
-              onChange={(date) => {
-                onChange(date?.isValid ? date?.toDate?.() : '');
-              }}
+              onChange={(newDate) => onChange(newDate ?? '')}
               format="YYYY/MM/DD"
               calendar={persian}
               locale={persian_fa}
@@ -51,10 +90,14 @@ export function DatePicker(props: BaseInputProps<any>) {
               containerClassName={fullWidth ? 'w-full' : 'w-36'}
               inputClass={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${fullWidth ? 'w-full' : 'w-36'} h-10 ${className}`,
+                className: `${
+                  fullWidth ? 'w-full' : 'w-36'
+                } h-10 ${className} ${value ? 'pr-8' : ''}`,
                 fullWidth,
                 size: 'none',
               })}
+              minDate={minDate}
+              maxDate={maxDate}
             />
           </div>
           {!hiddenError && (

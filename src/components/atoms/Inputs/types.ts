@@ -1,5 +1,6 @@
 import { VariantProps } from 'class-variance-authority';
-import { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
+import { HTMLInputTypeAttribute } from 'react';
+import { DateObject } from 'react-multi-date-picker';
 import {
   Control,
   FieldPath,
@@ -43,6 +44,11 @@ export interface BaseInputProps<T extends FieldValues>
   // inputProps?: InputHTMLAttributes<HTMLInputElement>;
   min?: string | number;
   max?: string | number;
+}
+
+export interface DatePickerProps extends BaseInputProps<any> {
+  minDate?: string | number | DateObject | Date;
+  maxDate?: string | number | DateObject | Date;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {

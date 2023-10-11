@@ -6,6 +6,7 @@ import { DropdownProps, IOptionSelect, StateType } from './type';
 import { optionSelectStyles, baseDropDownStyles } from './styles';
 import { BaseIcon } from '../BaseIcon';
 import { Typography } from '../Typography';
+import { LoadingSvg } from '../Svgs/LoadingSvg';
 
 const initState = {
   activeOption: null,
@@ -22,6 +23,8 @@ export function Dropdown<T extends FieldValues>({
   defaultValue,
   className,
   label,
+  loading,
+  leftLabel,
 }: DropdownProps<T>) {
   const ref = useRef(null);
   const [state, setState] = useState<StateType>(initState);
@@ -65,17 +68,27 @@ export function Dropdown<T extends FieldValues>({
               intent: error ? 'error' : 'default',
               className,
             })}
+            disabled={loading}
           >
-            {options.find((option) => option.id === value)?.label ??
-              placeHolder}
-            {/* <BaseIcon icon="ic:round-close" /> */}
-            <BaseIcon
-              icon={
-                state.openOptions
-                  ? `ph:caret-circle-down`
-                  : `ph:caret-circle-left`
-              }
-            />
+            {loading ? (
+              // <LoadingSpinner />
+              <div className="w-full flex justify-center">
+                <LoadingSvg />
+              </div>
+            ) : (
+              <>
+                {options.find((option) => option.id === value)?.label ??
+                  placeHolder}
+                {/* <BaseIcon icon="ic:round-close" /> */}
+                <BaseIcon
+                  icon={
+                    state.openOptions
+                      ? `ph:caret-circle-down`
+                      : `ph:caret-circle-left`
+                  }
+                />
+              </>
+            )}
           </button>
 
           <div
@@ -100,7 +113,9 @@ export function Dropdown<T extends FieldValues>({
               <button
                 type="button"
                 key={option.id}
-                className="w-full p-3 text-right text-teal-600 hover:bg-gray-200"
+                className={`w-full p-3 text-teal-600 hover:bg-gray-200 ${
+                  leftLabel ? 'text-left' : 'text-right'
+                }`}
                 onClick={() => {
                   handleOnChange(option);
                   onChange(option.id);

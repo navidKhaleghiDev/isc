@@ -6,8 +6,8 @@ import {
 } from 'react-hook-form';
 
 export interface IOptionSelect {
-  id?: string;
-  value?: string;
+  id?: string | number;
+  value?: string | number;
   label: string;
 }
 
@@ -22,6 +22,8 @@ export interface DropdownProps<T extends FieldValues> {
   className?: string;
   defaultValue?: any;
   label?: string;
+  loading?: boolean;
+  leftLabel?: boolean;
 }
 
 export type StateType = {

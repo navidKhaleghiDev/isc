@@ -16,7 +16,8 @@ import UnauthorizedPage from '@src/pages/Unauthorized';
 import { IpsListPage } from '@src/pages/MyProduct/IpsList';
 import { MyRuleDetailsPage } from '@src/pages/MyProduct/MyRules/MyRuleDetailsPage';
 import { UsersPage } from '@src/pages/Users';
-import { AiPage } from '@src/pages/Ai';
+import { AiListenerPage } from '@src/pages/AiListenerPage';
+import { AiLearnerPage } from '@src/pages/AiLearnerPage';
 import DefaultLayout from '@ui/Templates/layouts/DefaultLayout';
 
 import { ROUTES_PATH } from './routesConstants';
@@ -60,7 +61,7 @@ const routesConfig = [
       },
       {
         path: ROUTES_PATH.ai,
-        element: <AiPage />,
+        element: <AiListenerPage />,
       },
       {
         path: ROUTES_PATH.settings,
@@ -108,15 +109,15 @@ const routesConfig = [
       },
       {
         path: ROUTES_PATH.myProductAiListener,
-        element: <AiPage />,
+        element: <AiListenerPage />,
       },
       {
         path: ROUTES_PATH.myProductAiLearner,
-        element: <AiPage />,
+        element: <AiLearnerPage />,
       },
       {
         path: ROUTES_PATH.myProductAiDetector,
-        element: <AiPage />,
+        element: <AiListenerPage />,
       },
     ],
   },

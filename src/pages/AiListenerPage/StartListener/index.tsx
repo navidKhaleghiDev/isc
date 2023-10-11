@@ -137,7 +137,7 @@ export function StartListener() {
         <div className="col-span-12 flex justify-center">
           <BaseButton
             label="شروع فرآیند مشاهده داده"
-            className="mt-8"
+            className="mt-4"
             loading={loadingButton}
             type="default"
             size="lg"

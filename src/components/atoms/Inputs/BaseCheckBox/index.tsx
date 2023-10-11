@@ -17,8 +17,12 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
     hiddenError,
     label,
     className,
+    pureOnChange,
+    pureValue,
+    pureError,
+    checked,
   } = props;
-  return (
+  return control ? (
     <Controller
       name={name}
       control={control}
@@ -53,6 +57,20 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
           )}
         </>
       )}
+    />
+  ) : (
+    <input
+      id={id}
+      type="checkbox"
+      checked={checked}
+      name={name}
+      value={pureValue}
+      onChange={pureOnChange}
+      className={baseCheckBoxStyles({
+        intent: pureError ? 'error' : intent,
+        className: 'pl-8',
+        size,
+      })}
     />
   );
 }
