@@ -1,97 +1,43 @@
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
-import stopFillIcon from '@iconify-icons/ph/stop-fill';
-import { IMyListeners } from '@src/services/client/ai/types';
+import { IMyLearner } from '@src/services/client/ai/types';
+import moreIcon from '@iconify-icons/ph/dots-three-outline-vertical-fill';
+
 import { Card, Typography } from '@ui/atoms';
-import { IconButton } from '@ui/atoms/BaseButton';
-import { Modal } from '@ui/molecules/Modal';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-import { API_UPDATE_MY_LISTENERS } from '@src/services/client/ai';
 import { KeyedMutator } from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
+import { Link } from 'react-router-dom';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { IconButton } from '@ui/atoms/BaseButton';
 
 type PropsType =
   | {
       isHeader: true;
-      item?: Partial<Record<keyof IMyListeners, string>>;
-      mutate?: KeyedMutator<PaginationResponseSwr<IMyListeners[]>>;
+      item?: Partial<Record<keyof IMyLearner, string>>;
+      mutate?: KeyedMutator<PaginationResponseSwr<IMyLearner[]>>;
     }
   | {
       isHeader?: false;
-      item: IMyListeners;
-      mutate?: KeyedMutator<PaginationResponseSwr<IMyListeners[]>>;
+      item: IMyLearner;
+      mutate?: KeyedMutator<PaginationResponseSwr<IMyLearner[]>>;
     };
 
 type StatusPropsType = {
-  isActive: boolean;
-  id: number;
-  mutate?: KeyedMutator<PaginationResponseSwr<IMyListeners[]>>;
+  idFinished?: 'False' | 'True';
 };
 
-function StopListenerIcon({ id, mutate }: any) {
-  const [loading, setLoading] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-
-  const handelSubmit = async () => {
-    setLoading(true);
-    await API_UPDATE_MY_LISTENERS({
-      id,
-      is_active: false,
-    })
-      .then(() => {
-        mutate();
-        toast.success('با موفقیت انجام شد.');
-        setOpenModal(false);
-      })
-      .catch((err) => {
-        toast.error(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  return (
-    <>
-      <IconButton
-        icon={stopFillIcon}
-        color="red"
-        onClick={() => setOpenModal(true)}
-        loading={loading}
-        className="mx-2"
-      />
-      <Modal
-        open={openModal}
-        setOpen={setOpenModal}
-        type="error"
-        title="از متوقف کردن این عملیات مطمئن هستید؟"
-        buttonOne={{
-          label: 'بله',
-          onClick: handelSubmit,
-          loading,
-        }}
-        buttonTow={{
-          label: 'خیر',
-          onClick: () => setOpenModal(false),
-          color: 'red',
-        }}
-      />
-    </>
-  );
-}
-
-function Status({ isActive, id, mutate }: StatusPropsType) {
+function Status({ idFinished }: StatusPropsType) {
   return (
     <div className="flex justify-center items-center">
-      {isActive && <StopListenerIcon id={id} mutate={mutate} />}
-      <Typography color={!isActive ? 'neutral' : 'teal'} size="body3">
-        {isActive ? 'در حال انجام' : 'انجام شده'}
+      <Typography color={!idFinished ? 'neutral' : 'teal'} size="body3">
+        {idFinished === 'False' ? 'در حال انجام' : 'انجام شده'}
       </Typography>
     </div>
   );
 }
 
-export function LearnerCard({ item, isHeader, mutate }: PropsType) {
+export const LEARNER_NAME = 'تحلیل گر';
+
+export function LearnerCard({ item, isHeader }: PropsType) {
   return (
     <Card
       color="neutral"
@@ -99,12 +45,20 @@ export function LearnerCard({ item, isHeader, mutate }: PropsType) {
         !isHeader && 'border-l-[0.2rem] border-teal-600'
       } flex items-center ${isHeader ? 'h-10' : 'h-16 '} px-2 my-2 `}
     >
+      <div className="w-1/12 text-center text-neutral-400">
+        {!isHeader && (
+          <Link to={`${ROUTES_PATH.myProductAiLearner}/${item.id}`}>
+            <IconButton icon={moreIcon} color="tealNoBg" />
+          </Link>
+        )}
+      </div>
+
       <div className="w-2/12 text-center text-neutral-400">
         {!isHeader ? (
-          <Status isActive={item.is_active} id={item.id} mutate={mutate} />
+          <Status idFinished={item.is_finished} />
         ) : (
           <Typography color={isHeader ? 'neutral' : null} size="body3">
-            {item?.is_active}
+            {item?.is_finished}
           </Typography>
         )}
       </div>
@@ -115,7 +69,7 @@ export function LearnerCard({ item, isHeader, mutate }: PropsType) {
         type="div"
         className="w-2/12 text-center text-neutral-400"
       >
-        {!isHeader ? persianDateAndNumber(item.created_at) : item?.created_at}
+        {!isHeader ? persianDateAndNumber(item.time_from) : item?.time_from}
       </Typography>
       <Typography
         color={isHeader ? 'neutral' : null}
@@ -123,33 +77,18 @@ export function LearnerCard({ item, isHeader, mutate }: PropsType) {
         type="div"
         className="w-2/12 text-center text-neutral-400"
       >
-        {!isHeader ? persianDateAndNumber(item.stoped_at) : item?.stoped_at}
+        {!isHeader ? persianDateAndNumber(item.time_to) : item?.time_to}
       </Typography>
       <Typography
         color={isHeader ? 'neutral' : null}
         size="body3"
         type="div"
-        className="w-2/12 text-center text-neutral-400"
+        className="w-5/12 text-left text-neutral-400"
       >
-        {item?.port}
+        {!isHeader
+          ? `${LEARNER_NAME} - ${persianDateAndNumber(item.created_at)}`
+          : item?.created_at}
       </Typography>
-      <Typography
-        color={isHeader ? 'neutral' : null}
-        size="body3"
-        type="div"
-        className="w-2/12 text-center text-neutral-400"
-      >
-        {item?.protocol}
-      </Typography>
-      <Typography
-        color={isHeader ? 'neutral' : null}
-        size="body3"
-        type="div"
-        className="w-2/12 text-center text-neutral-400"
-      >
-        {item?.interface}
-      </Typography>
-      {item?.id}
     </Card>
   );
 }

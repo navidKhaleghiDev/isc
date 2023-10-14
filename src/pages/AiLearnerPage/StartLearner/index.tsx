@@ -1,25 +1,34 @@
 import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms';
 import { useState } from 'react';
-import { API_CREATE_MY_LISTENERS } from '@src/services/client/ai';
+import { API_CREATE_MY_LEARNER } from '@src/services/client/ai';
 import { toast } from 'react-toastify';
+import { convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
 
 import { ListenerDropDown } from '../ListenerDropDown';
-import { IStartListenerValues } from './types';
+import { IStartLearnerValues } from './types';
 import { SetRunTimeDate } from './SetRunTimeDate';
 import { CollectButtons, ECollectButtonsValue } from './CollectButtons';
 
 export function StartLearner() {
-  const { control, handleSubmit, watch } = useForm<IStartListenerValues>();
+  const { control, handleSubmit, watch } = useForm<IStartLearnerValues>();
   const [loadingButton, setLoadingButton] = useState(false);
   const [collectButtonsValue, setCollectButtonsValue] =
     useState<ECollectButtonsValue>(ECollectButtonsValue.ALL);
 
-  const handelSubmitForm = async (dataForm: IStartListenerValues) => {
+  const handelSubmitForm = async (dataForm: IStartLearnerValues) => {
     setLoadingButton(true);
-    await API_CREATE_MY_LISTENERS(dataForm)
+    await API_CREATE_MY_LEARNER({
+      ...dataForm,
+      first_record_time: convertI2ToAD(dataForm.first_record_time) as
+        | string
+        | undefined,
+      last_record_time: convertI2ToAD(dataForm.last_record_time) as
+        | string
+        | undefined,
+    })
       .then(() => {
-        toast.success('با موفقیت اضافه شد.');
+        toast.success('با موفقیت ثبت شد.');
       })
       .catch((err) => {
         toast.error(err);
@@ -29,7 +38,7 @@ export function StartLearner() {
       });
   };
 
-  const listenerId = watch('listener');
+  const listenerId = watch('listener_id');
   return (
     <form onSubmit={handleSubmit(handelSubmitForm)} className="w-full">
       <div className="grid grid-cols-12 gap-4">
@@ -50,12 +59,16 @@ export function StartLearner() {
 
         <div className="col-span-12 flex justify-center">
           <BaseButton
-            label="لیست مدل های آموزش دیده"
+            label="شروع فرآیند یادگیری"
             className="mt-4"
             loading={loadingButton}
             type="default"
             size="lg"
-            disabled={!listenerId}
+            disabled={
+              collectButtonsValue === ECollectButtonsValue.PERIOD
+                ? !listenerId
+                : false
+            }
             submit
           />
         </div>

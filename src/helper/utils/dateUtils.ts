@@ -12,10 +12,21 @@ function getLabelOfWeek(day: number) {
   return weekLabels[day];
 }
 
-const options: Intl.DateTimeFormatOptions = {
+const persianOptions: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+};
+
+export const gregorianDateOptions: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+  numberingSystem: 'latn', // Use 'latn' to specify Western Arabic numerals.
 };
 
 export const currentDate = new Date();
@@ -43,7 +54,7 @@ export const firstDayOfNextMonth = new Date(
 export function getLocaleDateString(
   date: Date,
   locales?: Intl.LocalesArgument,
-  options?: Intl.DateTimeFormatOptions | undefined
+  options?: Intl.DateTimeFormatOptions
 ) {
   return date.toLocaleDateString(locales, options);
 }
@@ -57,12 +68,30 @@ export function persianDateNumber(date?: string) {
   return today.toLocaleDateString('fa-IR');
 }
 
-export function persianDateAndNumber(date?: string) {
+export function gregorianDateNumber(date?: string) {
+  // ۱۴۰۲/۳/۲۴
+
+  if (date) {
+    return new Date(date).toLocaleDateString('en');
+  }
+  return today.toLocaleDateString('en');
+}
+
+export function persianDateAndNumber(
+  date?: string,
+  option?: Intl.DateTimeFormatOptions
+) {
   // ۲۴ خرداد ۱۴۰۲
   if (date) {
-    return new Date(date).toLocaleDateString('fa-IR', options);
+    return new Date(date).toLocaleDateString('fa-IR', {
+      ...persianOptions,
+      ...option,
+    });
   }
-  return today.toLocaleDateString('fa-IR', options);
+  return today.toLocaleDateString('fa-IR', {
+    ...persianOptions,
+    ...option,
+  });
 }
 
 export function persianDayLabel(date?: string) {

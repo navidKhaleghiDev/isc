@@ -6,6 +6,8 @@ import gregorian from 'react-date-object/calendars/gregorian';
 import persian_fa from 'react-date-object/locales/persian_fa';
 import { Controller } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
+import TimePicker from 'react-multi-date-picker/plugins/time_picker';
+// import TimePicker from 'react-multi-date-picker/plugins/analog_time_picker';
 
 import { DatePickerProps } from '../types';
 import { baseInputStyles } from '../styles';
@@ -13,10 +15,10 @@ import { IconInput } from '../IconInput';
 import { IconButtonInput } from '../IconButtonInput';
 
 export function convertI2ToAD(
-  i2Date?: DateObject | DateObject[] | null
-): string | string[] | null {
-  if (!i2Date) return null;
-
+  i2Date?: DateObject | DateObject[] | undefined,
+  format?: string
+): string | string[] | undefined {
+  if (!i2Date) return undefined;
   // If i2Date is an array of DateObject(s)
   if (Array.isArray(i2Date)) {
     return i2Date.map((date) => {
@@ -24,7 +26,7 @@ export function convertI2ToAD(
         date: date.toDate(),
         calendar: gregorian,
       });
-      return gregorianDate.format('YYYY-MM-DD');
+      return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
     });
   }
 
@@ -34,7 +36,7 @@ export function convertI2ToAD(
     calendar: gregorian,
   });
 
-  return gregorianDate.format('YYYY-MM-DD');
+  return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
 }
 
 export function DatePicker(props: DatePickerProps) {
@@ -52,6 +54,8 @@ export function DatePicker(props: DatePickerProps) {
     className,
     maxDate,
     minDate,
+    showTimePicker,
+    format,
   } = props;
   return (
     <Controller
@@ -81,8 +85,12 @@ export function DatePicker(props: DatePickerProps) {
 
             <MultiDatePicker
               value={value || ''}
-              onChange={(newDate) => onChange(newDate ?? '')}
-              format="YYYY/MM/DD"
+              onChange={(newDate) => {
+                // console.log('date.toDate()', newDate.toDate());
+
+                onChange(newDate ?? '');
+              }}
+              format={format ?? 'HH:mm:ss YYYY/MM/DD'}
               calendar={persian}
               locale={persian_fa}
               placeholder={placeholder}
@@ -98,6 +106,11 @@ export function DatePicker(props: DatePickerProps) {
               })}
               minDate={minDate}
               maxDate={maxDate}
+              plugins={
+                showTimePicker
+                  ? [<TimePicker position="left" key="time-picker" />]
+                  : undefined
+              }
             />
           </div>
           {!hiddenError && (

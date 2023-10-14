@@ -73,7 +73,7 @@ export function ListenerList() {
     <div className="w-full mt-8">
       <div className="text-center mb-4">
         <Typography color="teal" size="h4">
-          لیست مشاهده‌گر‌ها
+          لیست آنالیز کنندگان
         </Typography>
       </div>
       <div className="grid grid-cols-12 gap-4">

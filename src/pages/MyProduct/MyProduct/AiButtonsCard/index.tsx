@@ -16,7 +16,7 @@ export function AiButtonsCard() {
         <Link to={ROUTES_PATH.myProductAiListener}>
           <BaseButton
             fullWidth
-            label="مشاهده گر"
+            label="آنالیز کننده"
             size="lg"
             startIcon={numberOne}
           />

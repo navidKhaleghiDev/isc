@@ -87,7 +87,7 @@ export function StartListener() {
           <BaseInput
             control={control}
             placeholder="به روز"
-            label="زمان مشاهده"
+            label="زمان آنالیز"
             rules={{
               required: regexPattern.required,
               // pattern: regexPattern.numbers,
@@ -136,7 +136,7 @@ export function StartListener() {
 
         <div className="col-span-12 flex justify-center">
           <BaseButton
-            label="شروع فرآیند مشاهده داده"
+            label="شروع فرآیند آنالیز داده"
             className="mt-4"
             loading={loadingButton}
             type="default"

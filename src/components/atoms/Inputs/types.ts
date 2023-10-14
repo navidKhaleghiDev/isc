@@ -49,6 +49,8 @@ export interface BaseInputProps<T extends FieldValues>
 export interface DatePickerProps extends BaseInputProps<any> {
   minDate?: string | number | DateObject | Date;
   maxDate?: string | number | DateObject | Date;
+  showTimePicker?: boolean;
+  format?: string;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {

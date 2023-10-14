@@ -5,10 +5,14 @@ import { E_AI_LEARNING_DATA_PERIOD } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { LoadingSvg } from '@ui/atoms/Svgs/LoadingSvg';
 import { Typography } from '@ui/atoms';
+import {
+  gregorianDateOptions,
+  persianDateAndNumber,
+} from '@src/helper/utils/dateUtils';
 
 type IResponseLearningDataPeriod = {
-  first_record: string;
-  last_record: string;
+  first_record_time: string;
+  last_record_time: string;
 };
 export function SetRunTimeDate({ control, idListener }: any) {
   const { data, isLoading } = useSWR<
@@ -21,7 +25,9 @@ export function SetRunTimeDate({ control, idListener }: any) {
       errorRetryCount: 0,
     }
   );
-  console.log({ data });
+
+  const firstRecordTime = data?.data?.first_record_time;
+  const lastRecordTime = data?.data?.last_record_time;
 
   return idListener ? (
     <div className="w-full flex justify-center">
@@ -32,12 +38,16 @@ export function SetRunTimeDate({ control, idListener }: any) {
           <DatePicker
             control={control}
             label="تاریخ شروع"
-            // placeholder="2023.09.22"
+            placeholder="2023.09.22"
             id="startData"
             fullWidth
             name="startDate"
-            minDate="1402-7-18"
-            maxDate="1402-7-18"
+            minDate={persianDateAndNumber(
+              firstRecordTime,
+              gregorianDateOptions
+            )}
+            maxDate={persianDateAndNumber(lastRecordTime, gregorianDateOptions)}
+            showTimePicker
           />
           <DatePicker
             control={control}
@@ -47,15 +57,18 @@ export function SetRunTimeDate({ control, idListener }: any) {
             name="endDate"
             fullWidth
             startIcon="ph:x"
-            // minDate="1402-7-18"
-            // maxDate="1402-7-18"
+            minDate={persianDateAndNumber(
+              firstRecordTime,
+              gregorianDateOptions
+            )}
+            maxDate={persianDateAndNumber(lastRecordTime, gregorianDateOptions)}
           />
         </div>
       )}
     </div>
   ) : (
     <div className="flex items-center">
-      <Typography color="red">لطفا یک مشاهده گر انتخاب نماپید</Typography>
+      <Typography color="red">لطفا یک آنالیز کننده انتخاب نماپید</Typography>
     </div>
   );
 }

@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import DateObject from 'react-date-object';
 import { FieldValues } from 'react-hook-form';
 
-export interface IStartListenerValues extends FieldValues {
-  protocol: string;
-  interface: string;
-  port: number;
-  days: number;
-  hours: number;
-  // startDate: string;
-  // endDate: string;
-  // startTime: string;
-  // endTime: string;
+export interface IStartLearnerValues extends FieldValues {
+  listener_id: string;
+  first_record_time?: DateObject;
+  last_record_time?: DateObject;
 }

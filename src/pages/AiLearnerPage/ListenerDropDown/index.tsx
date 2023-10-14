@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import { E_AI_MY_LISTENERS } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { persianDateNumber } from '@src/helper/utils/dateUtils';
+import { regexPattern } from '@ui/atoms/Inputs';
 
 type PropsType<T extends FieldValues> = {
   control: Control<T>;
@@ -43,12 +44,15 @@ export function ListenerDropDown<T extends FieldValues>({
   return (
     <Dropdown<T>
       options={list}
-      placeHolder="انتخاب مشاهده گر"
+      placeHolder="انتخاب آنالیز کننده"
       control={control}
+      rules={{
+        required: regexPattern.required,
+      }}
       fullWidth
-      id="listener"
-      label={!withoutLabel ? 'انتخاب مشاهده گر' : undefined}
-      name={`listener` as Path<T>}
+      id="listener_id"
+      label={!withoutLabel ? 'انتخاب آنالیز کننده' : undefined}
+      name={`listener_id` as Path<T>}
       loading={isLoading}
       leftLabel
     />
