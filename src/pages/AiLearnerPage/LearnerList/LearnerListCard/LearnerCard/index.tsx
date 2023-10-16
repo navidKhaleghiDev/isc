@@ -1,6 +1,6 @@
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { IMyLearner } from '@src/services/client/ai/types';
-import moreIcon from '@iconify-icons/ph/dots-three-outline-vertical-fill';
+import moreIcon from '@iconify-icons/ph/dots-three-outline-vertical-fill'; // انجام شده فالس
 
 import { Card, Typography } from '@ui/atoms';
 import { KeyedMutator } from 'swr';

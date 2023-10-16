@@ -11,6 +11,10 @@ export interface IBodyCreateMyListeners {
   hours: number;
 }
 
+export interface IBodyCreateMyDetector {
+  learner_id: string;
+}
+
 export interface IBodyCreateMyLearner {
   listener_id: string;
   first_record_time?: string;
@@ -20,6 +24,10 @@ export interface IBodyCreateMyLearner {
 export interface IBodyUpdateMyListeners
   extends Omit<Partial<IMyListeners>, 'id'> {
   id: string;
+}
+export interface IBodyUpdateMyMyDetector
+  extends Omit<Partial<IMyDetector>, 'id'> {
+  id: number;
 }
 
 export interface IResponseGetMyListeners {
@@ -62,4 +70,28 @@ export interface IMyLearner {
   listener: number;
   count: number;
   mean_square_error: number;
+}
+export interface IMyDetector {
+  id: number;
+  created_at: string;
+  stoped_at: string;
+  is_running: boolean;
+  predict_thread_id: number;
+  sniffing_thread_id: number;
+  learner: number;
+  listener: number;
+}
+
+export interface IMyDetectorData {
+  id: number;
+  time: string;
+  src_ip: string;
+  dst_ip: string;
+  src_port: number;
+  dst_port: number;
+  src_mac: string;
+  dst_mac: string;
+  fc_request: number;
+  is_attack: number;
+  test_instance: number;
 }

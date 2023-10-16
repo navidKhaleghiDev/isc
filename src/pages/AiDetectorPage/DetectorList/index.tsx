@@ -1,53 +1,50 @@
 import { useState } from 'react';
 import { Typography } from '@ui/atoms';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
-import { convertI2ToAD, DatePicker } from '@ui/atoms/Inputs/DatePicker';
+import { DatePicker, convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
 import useSWR from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
-import { E_AI_MY_LISTENERS_PAGINATION } from '@src/services/client/ai/endpoint';
+import { E_AI_MY_DETECTOR_PAGINATION } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
-import { IMyListeners } from '@src/services/client/ai/types';
+import { IMyDetector } from '@src/services/client/ai/types';
 import { NoResult } from '@ui/molecules/NoResult';
 
-import { IStartListenerValues } from './types';
-import { ListenerCard } from './ListenerListCard/ListenerCard';
-import { ProtocolDropDown } from '../ProtocolDropDown';
+import { IFilterDetectorValues } from './types';
+import { DetectorCard } from './DetectorListCard/DetectorCard';
+import { DETECTOR_LABEL } from '../constant';
 
-const headerItem: Partial<Record<keyof IMyListeners, string>> = {
-  id: 'آیدی',
-  protocol: 'پروتکل',
-  interface: 'رابط',
-  port: 'پورت',
-  is_active: 'وضعیت', // انجام شده فالس
+const headerItem: Partial<Record<keyof IMyDetector, string>> = {
+  id: DETECTOR_LABEL,
+  is_running: 'وضعیت',
   created_at: 'تاریخ شروع',
   stoped_at: 'تاریخ پایان',
 };
 
 const LIMIT_MU_LISTENER_LIST = 3;
 
-export function ListenerList() {
+export function DetectorList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
-  const { control, watch } = useForm<IStartListenerValues>({
+  const { control, watch } = useForm<IFilterDetectorValues>({
     mode: 'onChange',
   });
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
   const { data, isLoading, mutate } = useSWR<
-    PaginationResponseSwr<IMyListeners[]>
+    PaginationResponseSwr<IMyDetector[]>
   >(
-    E_AI_MY_LISTENERS_PAGINATION({
+    E_AI_MY_DETECTOR_PAGINATION({
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,
       created_at: convertI2ToAD(watch('startDate')),
       stoped_at: convertI2ToAD(watch('endDate')),
-      protocol: watch('protocol'),
     }),
     http.fetcherSWR,
     {
@@ -63,17 +60,13 @@ export function ListenerList() {
   };
 
   return (
-    <div className="w-full mt-8">
+    <div className="w-full">
       <div className="text-center mb-4">
         <Typography color="teal" size="h4">
-          لیست آنالیز کنندگان
+          لیست شناسایی کنندگان
         </Typography>
       </div>
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 lg:col-span-4">
-          <ProtocolDropDown control={control} withoutLabel />
-        </div>
-
         <div className="col-span-12 lg:col-span-4 gap-4 flex ">
           <DatePicker
             control={control}
@@ -82,6 +75,8 @@ export function ListenerList() {
             name="startDate"
             fullWidth
           />
+        </div>
+        <div className="col-span-12 lg:col-span-4">
           <DatePicker
             control={control}
             placeholder="تاریخ پایان"
@@ -96,12 +91,12 @@ export function ListenerList() {
         </div>
       </div>
 
-      <ListenerCard isHeader item={headerItem} />
+      <DetectorCard isHeader item={headerItem} />
       <LoadingWrapper isLoading={isLoading}>
         {list.length > 0 ? (
           <>
-            {list.map((item: IMyListeners) => (
-              <ListenerCard key={item.id} item={item} mutate={mutate} />
+            {list.map((item: IMyDetector) => (
+              <DetectorCard key={item.id} item={item} mutate={mutate} />
             ))}
             {!!countPage && (
               <Pagination

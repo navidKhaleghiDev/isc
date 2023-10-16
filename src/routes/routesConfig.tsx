@@ -20,6 +20,8 @@ import { AiListenerPage } from '@src/pages/AiListenerPage';
 import { AiLearnerPage } from '@src/pages/AiLearnerPage';
 import DefaultLayout from '@ui/Templates/layouts/DefaultLayout';
 import { AiLearnerDetailsPage } from '@src/pages/AiLearnerDetailsPage';
+import { AiDetectorPage } from '@src/pages/AiDetectorPage';
+import { AiDetectorDetailsPage } from '@src/pages/AiDetectorDetailsPage';
 
 import { ROUTES_PATH } from './routesConstants';
 
@@ -122,7 +124,11 @@ const routesConfig = [
       },
       {
         path: ROUTES_PATH.myProductAiDetector,
-        element: <AiListenerPage />,
+        element: <AiDetectorPage />,
+      },
+      {
+        path: `${ROUTES_PATH.myProductAiDetector}/:id`,
+        element: <AiDetectorDetailsPage />,
       },
     ],
   },

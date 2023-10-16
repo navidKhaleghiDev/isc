@@ -1,3 +1,4 @@
+import { memo, useState } from 'react';
 import MultiDatePicker, { DateObject } from 'react-multi-date-picker';
 import xIcon from '@iconify-icons/ph/x';
 import calendarIcon from '@iconify-icons/ph/calendar';
@@ -14,112 +15,127 @@ import { baseInputStyles } from '../styles';
 import { IconInput } from '../IconInput';
 import { IconButtonInput } from '../IconButtonInput';
 
+// export function convertI2ToAD(
+//   i2Date?: DateObject | DateObject[] | undefined,
+//   format?: string
+// ): string | string[] | undefined {
+//   if (!i2Date) return undefined;
+//   // If i2Date is an array of DateObject(s)
+//   if (Array.isArray(i2Date)) {
+//     return i2Date.map((date) => {
+//       const gregorianDate = new DateObject({
+//         date: date.toDate(),
+//         calendar: gregorian,
+//       });
+//       return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
+//     });
+//   }
+
+//   // If i2Date is a single DateObject
+//   const gregorianDate = new DateObject({
+//     date: i2Date.toDate(),
+//     calendar: gregorian,
+//   });
+
+//   return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
+// }
+
 export function convertI2ToAD(
   i2Date?: DateObject | DateObject[] | undefined,
-  format?: string
+  format = 'YYYY-MM-DD hh:mm:ss'
 ): string | string[] | undefined {
   if (!i2Date) return undefined;
-  // If i2Date is an array of DateObject(s)
-  if (Array.isArray(i2Date)) {
-    return i2Date.map((date) => {
-      const gregorianDate = new DateObject({
-        date: date.toDate(),
-        calendar: gregorian,
-      });
-      return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
-    });
-  }
 
-  // If i2Date is a single DateObject
-  const gregorianDate = new DateObject({
-    date: i2Date.toDate(),
-    calendar: gregorian,
-  });
+  const convertDate = (date: DateObject) =>
+    new DateObject({
+      date: date.toDate(),
+      calendar: gregorian,
+    }).format(format);
 
-  return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
+  return Array.isArray(i2Date) ? i2Date.map(convertDate) : convertDate(i2Date);
 }
 
-export function DatePicker(props: DatePickerProps) {
-  const {
-    control,
-    name,
-    id,
-    placeholder,
-    rules,
-    fullWidth,
-    defaultValue,
+export const DatePicker = memo(function DatePicker({
+  control,
+  name,
+  id,
+  placeholder,
+  rules,
+  fullWidth = false,
+  defaultValue,
+  intent,
+  label,
+  hiddenError,
+  className,
+  maxDate,
+  minDate,
+  showTimePicker = false,
+  format = 'YYYY/MM/DD',
+}: DatePickerProps) {
+  const containerClass = `${fullWidth ? 'w-full' : 'w-36'} ${className || ''}`;
+  const inputClass = baseInputStyles({
     intent,
-    label,
-    hiddenError,
-    className,
-    maxDate,
-    minDate,
-    showTimePicker,
-    format,
-  } = props;
+    className: `${fullWidth ? 'w-full' : 'w-36'} h-10 ${className || ''}`,
+    fullWidth,
+    size: 'none',
+  });
+
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
       defaultValue={defaultValue}
-      render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <div className={`${fullWidth ? 'w-full' : 'w-36'} ${className ?? ''}`}>
-          {label && (
-            <label htmlFor={id} className="block mb-1">
-              <Typography color="teal" size="h5">
-                {label}
-              </Typography>
-            </label>
-          )}
-          <div className="relative">
-            {value ? (
-              <IconButtonInput
-                icon={xIcon}
-                intent={intent}
-                onClick={() => onChange(null)}
-              />
-            ) : (
-              <IconInput icon={calendarIcon} intent={intent} />
+      render={({ field: { onChange, value }, fieldState: { error } }) => {
+        return (
+          <div className={containerClass}>
+            {label && (
+              <label htmlFor={id} className="block mb-1">
+                <Typography color="teal" size="h5">
+                  {label}
+                </Typography>
+              </label>
             )}
+            <div className="relative">
+              {value ? (
+                <IconButtonInput
+                  icon={xIcon}
+                  intent={intent}
+                  onClick={() => onChange(null)}
+                />
+              ) : (
+                <IconInput icon={calendarIcon} intent={intent} />
+              )}
 
-            <MultiDatePicker
-              value={value || ''}
-              onChange={(newDate) => {
-                // console.log('date.toDate()', newDate.toDate());
-
-                onChange(newDate ?? '');
-              }}
-              format={format ?? 'HH:mm:ss YYYY/MM/DD'}
-              calendar={persian}
-              locale={persian_fa}
-              placeholder={placeholder}
-              calendarPosition="bottom-right"
-              containerClassName={fullWidth ? 'w-full' : 'w-36'}
-              inputClass={baseInputStyles({
-                intent: error?.message ? 'error' : intent,
-                className: `${
-                  fullWidth ? 'w-full' : 'w-36'
-                } h-10 ${className} ${value ? 'pr-8' : ''}`,
-                fullWidth,
-                size: 'none',
-              })}
-              minDate={minDate}
-              maxDate={maxDate}
-              plugins={
-                showTimePicker
-                  ? [<TimePicker position="left" key="time-picker" />]
-                  : undefined
-              }
-            />
+              <MultiDatePicker
+                onFocusedDateChange={(newDate) =>
+                  onChange(newDate?.isValid ? newDate : '')
+                }
+                value={value}
+                format={format}
+                calendar={persian}
+                locale={persian_fa}
+                placeholder={placeholder}
+                calendarPosition="bottom-right"
+                containerClassName={containerClass}
+                inputClass={inputClass}
+                minDate={minDate}
+                maxDate={maxDate}
+                plugins={
+                  showTimePicker
+                    ? [<TimePicker position="left" key="time-picker" />]
+                    : undefined
+                }
+              />
+            </div>
+            {!hiddenError && (
+              <Typography color="red" size="caption" className="h-6">
+                {error?.message ?? ''}
+              </Typography>
+            )}
           </div>
-          {!hiddenError && (
-            <Typography color="red" size="caption" className="h-6">
-              {error?.message ?? ''}
-            </Typography>
-          )}
-        </div>
-      )}
+        );
+      }}
     />
   );
-}
+});
