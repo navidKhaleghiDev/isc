@@ -46,7 +46,7 @@ export function AiLearnerDetailsPage() {
   );
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner centerParent />;
   }
 
   const myLearner: IMyLearner | undefined = data?.data;

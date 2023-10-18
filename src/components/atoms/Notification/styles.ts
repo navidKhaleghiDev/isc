@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-export const notificationStyles = cva('my-2 h-[3.75rem] pr-5 py-3.5', {
+export const notificationStyles = cva('my-2 h-[3.75rem] px-5 py-3.5', {
   variants: {
     type: {
       success: 'bg-teal-100 text-teal-600 ',

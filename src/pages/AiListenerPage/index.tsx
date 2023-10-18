@@ -9,7 +9,7 @@ export function AiListenerPage() {
       <StartListener />
       <ListenerList />
       <div className="absolute bottom-10 left-10">
-        <PageBackButton withLabel />
+        <PageBackButton withLabel backToReferrer />
       </div>
     </ContainerDashboard>
   );

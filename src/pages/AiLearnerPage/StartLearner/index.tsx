@@ -20,12 +20,14 @@ export function StartLearner() {
     setLoadingButton(true);
     await API_CREATE_MY_LEARNER({
       ...dataForm,
-      first_record_time: convertI2ToAD(dataForm.first_record_time) as
-        | string
-        | undefined,
-      last_record_time: convertI2ToAD(dataForm.last_record_time) as
-        | string
-        | undefined,
+      first_record_time: convertI2ToAD(
+        dataForm.first_record_time,
+        'YYYY-MM-DD'
+      ) as string | undefined,
+      last_record_time: convertI2ToAD(
+        dataForm.last_record_time,
+        'YYYY-MM-DD'
+      ) as string | undefined,
     })
       .then(() => {
         toast.success('با موفقیت ثبت شد.');

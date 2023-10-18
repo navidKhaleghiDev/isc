@@ -45,8 +45,8 @@ export function ListenerList() {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,
-      created_at: convertI2ToAD(watch('startDate')),
-      stoped_at: convertI2ToAD(watch('endDate')),
+      created_at: convertI2ToAD(watch('startDate'), 'YYYY-MM-DD'),
+      stoped_at: convertI2ToAD(watch('endDate'), 'YYYY-MM-DD'),
       protocol: watch('protocol'),
     }),
     http.fetcherSWR,
@@ -80,6 +80,7 @@ export function ListenerList() {
             placeholder="تاریخ شروع"
             id="startData"
             name="startDate"
+            format="YYYY/MM/DD"
             fullWidth
           />
           <DatePicker
@@ -87,7 +88,7 @@ export function ListenerList() {
             placeholder="تاریخ پایان"
             id="endData"
             name="endDate"
-            startIcon="ph:x"
+            format="YYYY/MM/DD"
             fullWidth
           />
         </div>

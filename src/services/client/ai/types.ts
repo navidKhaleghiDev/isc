@@ -95,3 +95,9 @@ export interface IMyDetectorData {
   is_attack: number;
   test_instance: number;
 }
+
+export interface IResponseAllObjectsInfo {
+  has_listener: boolean;
+  has_learner: boolean;
+  has_detectors: boolean;
+}

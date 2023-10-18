@@ -34,7 +34,7 @@ export function BaseButton({
           className={iconInButtonStyles({
             type: 'noBg',
             size,
-            className: `${size !== 'sm' && 'ml-4'}`,
+            className: `${size !== 'sm' && 'ml-2'}`,
           })}
         />
       )}

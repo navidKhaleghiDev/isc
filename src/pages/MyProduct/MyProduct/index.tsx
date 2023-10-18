@@ -105,15 +105,23 @@ function MyProductPageCp() {
           isUserAuth={!!user?.is_authenticated}
         />
       )}
-      <div className="grid grid-cols-2 gap-16 mt-16 ">
-        <Link to={ROUTES_PATH.myProductIpsList}>
+      <div className="grid grid-cols-2 gap-16 mt-16">
+        <Link
+          to={ROUTES_PATH.myProductIpsList}
+          className="col-span-2 md:col-span-1"
+        >
           <BaseButton fullWidth label="لیست آی پی ها" size="lg" />
         </Link>
 
-        <Link to={ROUTES_PATH.myProductMyRules}>
+        <Link
+          to={ROUTES_PATH.myProductMyRules}
+          className="col-span-2 md:col-span-1"
+        >
           <BaseButton fullWidth label="قوانین من" size="lg" />
         </Link>
-        <AiButtonsCard />
+        <div className="col-span-2 md:col-span-1 md:col-start-2">
+          <AiButtonsCard />
+        </div>
       </div>
     </div>
   );

@@ -43,8 +43,8 @@ export function DetectorList() {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,
-      created_at: convertI2ToAD(watch('startDate')),
-      stoped_at: convertI2ToAD(watch('endDate')),
+      created_at: convertI2ToAD(watch('startDate'), 'YYYY-MM-DD'),
+      stoped_at: convertI2ToAD(watch('endDate'), 'YYYY-MM-DD'),
     }),
     http.fetcherSWR,
     {
