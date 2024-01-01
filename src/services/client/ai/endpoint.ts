@@ -9,6 +9,8 @@ export const E_AI_MY_DETECTOR = '/Ai/my_detectioner/';
 
 export const E_AI_ALL_OBJECTS_INFO = '/Ai/all_objects_info/';
 
+export const E_AI_INTERFACES_LIST = '/Ai/interfaces_list/';
+
 export const E_AI_LEARNING_DATA_PERIOD = (id: string) =>
   `Ai/learning_data_period/${id}/`;
 

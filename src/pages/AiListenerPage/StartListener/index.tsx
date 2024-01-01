@@ -3,11 +3,11 @@ import { BaseButton, BaseInput } from '@ui/atoms';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { useState } from 'react';
 import { API_CREATE_MY_LISTENERS } from '@src/services/client/ai';
-// import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
 import { toast } from 'react-toastify';
 
 import { ProtocolDropDown } from '../ProtocolDropDown';
 import { IStartListenerValues } from './types';
+import { InterfaceDropDown } from '../InterfaceDropDown';
 
 export function StartListener() {
   const { control, handleSubmit } = useForm<IStartListenerValues>();
@@ -33,21 +33,9 @@ export function StartListener() {
         <div className="col-span-12 lg:col-span-4">
           <ProtocolDropDown control={control} />
         </div>
-
-        <BaseInput
-          fullWidth
-          control={control}
-          placeholder="وارد کنید"
-          label="رابط"
-          rules={{
-            required: regexPattern.required,
-          }}
-          id="interface"
-          name="interface"
-          className="col-span-12 lg:col-span-4"
-          startIcon="ph:x"
-          endIcon="ph:x"
-        />
+        <div className="col-span-12 lg:col-span-4">
+          <InterfaceDropDown control={control} />
+        </div>
         <BaseInput
           fullWidth
           control={control}
