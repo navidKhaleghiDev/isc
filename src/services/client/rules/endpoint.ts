@@ -12,8 +12,13 @@ export const E_RULES_LIST = ({ pageSize, page, search }: IParamsRules) => {
 
   return api;
 };
+
 export const E_RULES_RETRIEVE = (id: string) => `/rules/${id}/`;
 export const E_RULES_MY_RULES = '/rules/my_rules/';
 export const E_RULES_MY_RULES_ID = (id: string) => `/rules/my_rules/${id}/`;
 
 export const E_RULES_ASSIGN_OWNER = `rules/assign_owner/`;
+
+// logs
+export const E_RULES_LOGS = `rules/logs/`;
+export const E_RULES_LOGS_UPDATE = (id: number) => `${E_RULES_LOGS}${id}/`;

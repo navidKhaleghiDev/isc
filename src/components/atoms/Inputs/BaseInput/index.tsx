@@ -30,6 +30,7 @@ export function BaseInput(props: BaseInputProps<any>) {
     pureError,
     min,
     max,
+    ltrLabel = false,
     iconButtonIcon = 'ph:x',
   } = props;
   return control ? (
@@ -41,7 +42,12 @@ export function BaseInput(props: BaseInputProps<any>) {
       render={({ field, fieldState: { error } }) => (
         <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
           {label && (
-            <label htmlFor={id} className="block mb-1 h-8">
+            <label
+              htmlFor={id}
+              className={`block mb-1 h-8 ${
+                ltrLabel ? 'text-left uppercase' : 'text-right'
+              }`}
+            >
               <Typography color="teal" size="h5">
                 {label}
               </Typography>
@@ -68,6 +74,7 @@ export function BaseInput(props: BaseInputProps<any>) {
                 className: `${(endIcon || onClickIcon) && 'pl-8'} ${
                   startIcon && 'pr-8'
                 } `,
+                ltrPlaceHolder: ltrLabel,
                 fullWidth,
                 size,
               })}

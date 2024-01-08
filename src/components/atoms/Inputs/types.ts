@@ -41,6 +41,8 @@ export interface BaseInputProps<T extends FieldValues>
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   pureValue?: string;
   pureError?: string;
+  ltrLabel?: boolean;
+
   // inputProps?: InputHTMLAttributes<HTMLInputElement>;
   min?: string | number;
   max?: string | number;

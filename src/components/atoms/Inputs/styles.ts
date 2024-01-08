@@ -14,6 +14,10 @@ export const baseInputStyles = cva(
       fullWidth: {
         true: 'w-full',
       },
+      ltrPlaceHolder: {
+        true: 'placeholder:text-left',
+        false: 'placeholder:text-right placeholder:text-rtl',
+      },
       size: {
         none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
