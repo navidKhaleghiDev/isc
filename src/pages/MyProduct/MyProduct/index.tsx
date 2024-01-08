@@ -12,7 +12,9 @@ import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 import { CardImage } from '@ui/atoms/BaseImage';
 import { NoResult } from '@ui/molecules/NoResult';
+
 import { CardProductBox } from './CardProductBox';
+import { AiButtonsCard } from './AiButtonsCard';
 
 interface PropsType extends PropsWithChildren {
   className?: string;
@@ -103,40 +105,22 @@ function MyProductPageCp() {
           isUserAuth={!!user?.is_authenticated}
         />
       )}
-      <div className="grid grid-cols-2 gap-5 mt-16">
-        <div>
-          <Link to={ROUTES_PATH.myProductIpsList}>
-            <BaseButton fullWidth label="لیست آی پی ها" size="lg" />
-          </Link>
-          {/* <Card
-            color="neutral"
-            className="flex justify-around items-center w-full mt-4"
-          >
-            <Typography color="teal" size="h6">
-              آخرین به روز رسانی
-            </Typography>
-            <p className=" text-neutral-400">|</p>
-            <Typography color="neutral" size="h6">
-              23 . اردیبهشت . 1402
-            </Typography>
-          </Card> */}
-        </div>
-        <div>
-          <Link to={ROUTES_PATH.myProductMyRules}>
-            <BaseButton fullWidth label="قوانین من" size="lg" />
-          </Link>
-          {/* <Card
-            color="neutral"
-            className="flex justify-around items-center w-full mt-4"
-          >
-            <Typography color="teal" size="h6">
-              آخرین به روز رسانی
-            </Typography>
-            <p className=" text-neutral-400">|</p>
-            <Typography color="neutral" size="h6">
-              23 . اردیبهشت . 1402
-            </Typography>
-          </Card> */}
+      <div className="grid grid-cols-2 gap-16 mt-16">
+        <Link
+          to={ROUTES_PATH.myProductIpsList}
+          className="col-span-2 md:col-span-1"
+        >
+          <BaseButton fullWidth label="لیست آی پی ها" size="lg" />
+        </Link>
+
+        <Link
+          to={ROUTES_PATH.myProductMyRules}
+          className="col-span-2 md:col-span-1"
+        >
+          <BaseButton fullWidth label="قوانین من" size="lg" />
+        </Link>
+        <div className="col-span-2 md:col-span-1 md:col-start-2">
+          <AiButtonsCard />
         </div>
       </div>
     </div>

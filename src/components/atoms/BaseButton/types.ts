@@ -1,4 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
+import { IconType } from '@src/types/global';
 
 import { baseButtonStyles, iconButtonStyles } from './styles';
 
@@ -9,15 +10,16 @@ export interface IBaseButton extends BaseButtonStyleProps {
   disabled?: boolean;
   submit?: boolean;
   className?: string;
-  startIcon?: string;
-  endIcon?: string;
+  startIcon?: IconType;
+  endIcon?: IconType;
   loading?: boolean;
 }
 
 export interface IIconButton extends VariantProps<typeof iconButtonStyles> {
   onClick?: () => void;
-  icon: string;
+  icon: IconType;
   className?: string;
   classNameIcon?: string;
   type?: 'submit' | 'button';
+  loading?: boolean;
 }

@@ -14,12 +14,18 @@ export const baseInputStyles = cva(
       fullWidth: {
         true: 'w-full',
       },
+      ltrPlaceHolder: {
+        true: 'placeholder:text-left',
+        false: 'placeholder:text-right placeholder:text-rtl',
+      },
       size: {
+        none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
         sm: `w-[18.75rem] h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
         md: `w-[27.5rem] h-10 text-lg ${SIZE.TYPOGRAPHY.BODY3}`,
         lg: `w-[60rem] h-10 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
         xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
+        freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },
     },
     defaultVariants: {
@@ -30,16 +36,21 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 left-0 flex px-2 items-center fill-current ',
+  'absolute inset-y-0 flex px-2 items-center fill-current ',
   {
     variants: {
       intent: {
         default: 'text-neutral-500',
         error: 'text-red-500',
       },
+      right: {
+        true: 'right-0',
+        false: 'left-0',
+      },
     },
     defaultVariants: {
       intent: 'default',
+      right: false,
     },
   }
 );

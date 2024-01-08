@@ -4,10 +4,11 @@ import { BaseInput } from '../BaseInput';
 
 interface SearchInputProps {
   value: string;
+  label?: string;
   onChange: (value: string) => void;
 }
 
-export function SearchInput({ value, onChange }: SearchInputProps) {
+export function SearchInput({ value, label, onChange }: SearchInputProps) {
   const [searchValue, setSearchValue] = useState(value);
   const debouncedSearchValue = useDebounce(searchValue, 500);
 
@@ -28,6 +29,7 @@ export function SearchInput({ value, onChange }: SearchInputProps) {
         id="ip"
         pureOnChange={handleSearchChange}
         pureValue={searchValue}
+        label={label}
         fullWidth
       />
     </div>

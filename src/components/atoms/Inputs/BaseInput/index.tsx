@@ -28,7 +28,10 @@ export function BaseInput(props: BaseInputProps<any>) {
     pureValue,
     onClickIcon,
     pureError,
-    iconButtonIcon = 'fa-home',
+    min,
+    max,
+    ltrLabel = false,
+    iconButtonIcon = 'ph:x',
   } = props;
   return control ? (
     <Controller
@@ -37,33 +40,47 @@ export function BaseInput(props: BaseInputProps<any>) {
       rules={rules}
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
-        <div className={`${className} ${fullWidth && 'w-full'}`}>
+        <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
           {label && (
-            <label htmlFor={id} className="block mb-1">
+            <label
+              htmlFor={id}
+              className={`block mb-1 h-8 ${
+                ltrLabel ? 'text-left uppercase' : 'text-right'
+              }`}
+            >
               <Typography color="teal" size="h5">
                 {label}
               </Typography>
             </label>
           )}
 
-          <div className="relative">
+          <div className="relative base-input">
             {startIcon && <IconInput icon={startIcon} intent={intent} />}
             <input
               id={id}
               type={type}
               dir="auto"
               name={field.name}
-              value={field.value ?? ''}
-              onChange={field.onChange}
+              value={type !== 'file' ? field.value ?? '' : undefined}
+              onChange={(e) => {
+                if (type !== 'file') {
+                  field.onChange(e);
+                } else {
+                  field.onChange(e.target.files);
+                }
+              }}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
                 className: `${(endIcon || onClickIcon) && 'pl-8'} ${
                   startIcon && 'pr-8'
                 } `,
+                ltrPlaceHolder: ltrLabel,
                 fullWidth,
                 size,
               })}
               placeholder={placeholder}
+              min={min}
+              max={max}
             />
 
             {onClickIcon && (
@@ -84,22 +101,36 @@ export function BaseInput(props: BaseInputProps<any>) {
       )}
     />
   ) : (
-    <input
-      id={id}
-      type={type}
-      dir="auto"
-      name={name}
-      value={pureValue}
-      onChange={pureOnChange}
-      className={baseInputStyles({
-        intent: pureError ? 'error' : intent,
-        className: `${(endIcon || onClickIcon) && 'pl-8'} ${
-          startIcon && 'pr-8'
-        } `,
-        fullWidth,
-        size,
-      })}
-      placeholder={placeholder}
-    />
+    <div className="w-full flex flex-col">
+      {label && (
+        <label htmlFor={id} className="block mb-1 h-8">
+          <Typography color="teal" size="h5">
+            {label}
+          </Typography>
+        </label>
+      )}
+      <input
+        id={id}
+        type={type}
+        dir="auto"
+        name={name}
+        value={pureValue}
+        onChange={pureOnChange}
+        className={baseInputStyles({
+          intent: pureError ? 'error' : intent,
+          className: `${(endIcon || onClickIcon) && 'pl-8'} ${
+            startIcon && 'pr-8'
+          } `,
+          fullWidth,
+          size,
+        })}
+        placeholder={placeholder}
+      />
+      {pureError && (
+        <Typography color="red" size="caption" className="h-6">
+          {pureError}
+        </Typography>
+      )}
+    </div>
   );
 }

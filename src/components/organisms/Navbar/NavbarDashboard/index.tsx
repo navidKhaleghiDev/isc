@@ -8,32 +8,30 @@ import { getRoleUser } from './utils';
 export function NavbarDashboard() {
   const { user } = useUserContext();
   return (
-    <nav className="bg-white w-full h-20 px-8 mb-1">
-      <div className="flex items-center justify-between p-3 ">
-        <div className="flex items-center">
-          {user?.is_superuser && (
-            <Link to={ROUTES_PATH.addUser} className="ml-4">
-              <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
-            </Link>
-          )}
+    <div className="flex h-20 items-center justify-between p-3 2xl:container 2xl:mx-auto">
+      <div className="flex items-center">
+        {user?.is_superuser && (
+          <Link to={ROUTES_PATH.addUser} className="ml-4">
+            <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
+          </Link>
+        )}
 
-          <Avatar icon="ph:user" intent="primary" size="sm" className="ml-4" />
+        <Avatar icon="ph:user" intent="primary" size="sm" className="ml-4" />
 
-          <div>
-            <Typography type="h3" weight="bold" color="teal">
-              {user?.first_name || user?.last_name
-                ? `${user?.first_name} ${user?.last_name}`
-                : user?.email}
-            </Typography>
-            <Typography color="teal" size="caption">
-              {getRoleUser(user?.is_superuser, user?.is_admin)}
-            </Typography>
-          </div>
+        <div>
+          <Typography type="h3" weight="bold" color="teal">
+            {user?.first_name || user?.last_name
+              ? `${user?.first_name} ${user?.last_name}`
+              : user?.email}
+          </Typography>
+          <Typography color="teal" size="caption">
+            {getRoleUser(user?.is_superuser, user?.is_admin)}
+          </Typography>
         </div>
-        <Link to={ROUTES_PATH.home}>
-          <img src="/logo.jpg" alt="logo" className="h-8" />
-        </Link>
       </div>
-    </nav>
+      <Link to={ROUTES_PATH.home}>
+        <img src="/logo.jpg" alt="logo" className="h-8" />
+      </Link>
+    </div>
   );
 }

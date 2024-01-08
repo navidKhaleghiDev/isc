@@ -11,7 +11,7 @@ export function NoResult({ isPage, description }: PropsType) {
         isPage && 'min-h-full'
       }`}
     >
-      <img src="/not-found.jpg" alt="not found" />
+      <img src="/not-found.jpg" alt="not found" width={150} height={150} />
       <Typography color="neutral">{description ?? `موردی یافت نشد`}</Typography>
     </div>
   );

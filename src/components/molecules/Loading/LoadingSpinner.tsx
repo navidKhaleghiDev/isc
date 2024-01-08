@@ -1,7 +1,11 @@
-type PropsType = { description?: string };
-export function LoadingSpinner({ description }: PropsType) {
+type PropsType = { description?: string; centerParent?: boolean };
+export function LoadingSpinner({ description, centerParent }: PropsType) {
   return (
-    <div className="w-full flex justify-center items-center p-2">
+    <div
+      className={
+        centerParent ? 'w-full h-full flex justify-center items-center p-2' : ''
+      }
+    >
       <svg
         aria-hidden="true"
         className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"

@@ -8,6 +8,7 @@ export const typographyStyles = cva('', {
       neutral: `${PALLET.TEXT_COLOR.NEUTRAL}  `,
       yellow: `${PALLET.TEXT_COLOR.YELLOW} `,
       red: `${PALLET.TEXT_COLOR.RED} `,
+      white: `${PALLET.TEXT_COLOR.WHITE} `,
     },
     size: {
       h1: SIZE.TYPOGRAPHY.H1,

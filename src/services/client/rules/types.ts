@@ -85,3 +85,12 @@ export interface IBodyAddRule {
   rule_code?: string;
   id: string;
 }
+
+export interface IRulesLogs {
+  id?: number | null;
+  created_at: string;
+  updated_at: string;
+  log_server_host: string;
+
+  log_server_port: number;
+}

@@ -20,6 +20,7 @@ export const RoutesName = {
   MONITORING_SYSTEM_GUIDE: 'monitoring-systems-guide',
   ADD_USER: 'add-user',
   USERS: 'users',
+  AI: 'ai',
 };
 
 export const ROUTES_PATH: Record<RoutePathType, string> = {
@@ -37,6 +38,9 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   login: `/`,
   dashboard: `/${RoutesName.DASHBOARD}`,
   myProduct: `/${RoutesName.MY_PRODUCT}`,
+  myProductAiListener: `/${RoutesName.MY_PRODUCT}/ai-listener`,
+  myProductAiLearner: `/${RoutesName.MY_PRODUCT}/ai-learner`,
+  myProductAiDetector: `/${RoutesName.MY_PRODUCT}/ai-detector`,
   myProductName: `/${RoutesName.MY_PRODUCT}/:productName`,
   myProductMyRules: `/${RoutesName.MY_PRODUCT}/${RoutesName.MY_RULES}`,
   myProductIpsList: `/${RoutesName.MY_PRODUCT}/ips-list`,
@@ -45,4 +49,5 @@ export const ROUTES_PATH: Record<RoutePathType, string> = {
   monitoringSystemsOne: `/${RoutesName.MONITORING_SYSTEM}/one`,
   monitoringSystemsTow: `/${RoutesName.MONITORING_SYSTEM}/tow`,
   users: `/${RoutesName.USERS}`,
+  ai: `/${RoutesName.AI}`,
 };

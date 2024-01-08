@@ -1,12 +1,20 @@
 import ToolTip from '../Tooltip';
-import { BackButton } from './BackButton';
+import { BackButton, BackButtonProps } from './BackButton';
 
-export function PageBackButton() {
-  return (
-    <div className="flex justify-end mb-4">
-      <ToolTip tooltip="صفحه قبل" position="right">
-        <BackButton />
-      </ToolTip>
-    </div>
+export function PageBackButton({
+  withLabel,
+  onClick,
+  backToReferrer,
+}: BackButtonProps) {
+  return !withLabel ? (
+    <ToolTip tooltip="صفحه قبل" position="right">
+      <BackButton />
+    </ToolTip>
+  ) : (
+    <BackButton
+      withLabel={withLabel}
+      onClick={onClick}
+      backToReferrer={backToReferrer}
+    />
   );
 }

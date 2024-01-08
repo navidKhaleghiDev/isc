@@ -15,9 +15,13 @@ export type RoutePathType =
   | 'monitoringSystemsOne'
   | 'monitoringSystemsTow'
   | 'myProduct'
+  | 'myProductAiListener'
+  | 'myProductAiLearner'
+  | 'myProductAiDetector'
   | 'myProductName'
   | 'myProductMyRules'
   | 'myProductMyRulesRetrieve'
   | 'myProductIpsList'
   | 'ourServices'
+  | 'ai'
   | 'users';

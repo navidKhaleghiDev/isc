@@ -1,5 +1,6 @@
 import { VariantProps } from 'class-variance-authority';
 import { HTMLInputTypeAttribute } from 'react';
+import { DateObject } from 'react-multi-date-picker';
 import {
   Control,
   FieldPath,
@@ -25,6 +26,7 @@ export interface BaseInputProps<T extends FieldValues>
     | 'tel'
     | 'text'
     | 'url'
+    | 'file'
     | 'date'
     | 'datetime-local'
     | 'time';
@@ -39,6 +41,18 @@ export interface BaseInputProps<T extends FieldValues>
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   pureValue?: string;
   pureError?: string;
+  ltrLabel?: boolean;
+
+  // inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  min?: string | number;
+  max?: string | number;
+}
+
+export interface DatePickerProps extends BaseInputProps<any> {
+  minDate?: string | number | DateObject | Date;
+  maxDate?: string | number | DateObject | Date;
+  showTimePicker?: boolean;
+  format?: string;
 }
 
 export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {

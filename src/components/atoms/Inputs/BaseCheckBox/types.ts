@@ -19,4 +19,8 @@ export interface BaseCheckBoxProps<T extends FieldValues>
   label?: string;
   hiddenError?: boolean;
   className?: string;
+  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  pureValue?: boolean;
+  pureError?: string;
+  checked?: boolean;
 }
