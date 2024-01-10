@@ -82,7 +82,7 @@ export function LogsSetting() {
       .finally(() => setLoadingButton(false));
   };
 
-  return myRulesLogs ? (
+  return (
     <>
       <TitleSection label="log server" />
       <Divider />
@@ -134,7 +134,5 @@ export function LogsSetting() {
         />
       </form>
     </>
-  ) : (
-    <NoResult />
   );
 }

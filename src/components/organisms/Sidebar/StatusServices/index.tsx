@@ -31,7 +31,7 @@ function LabelsStatus() {
           );
         })
       ) : (
-        <LoadingSpinner />
+        <LoadingSpinner centerParent />
       )}
     </div>
   );
