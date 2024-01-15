@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import MultiDatePicker, { DateObject } from 'react-multi-date-picker';
 import xIcon from '@iconify-icons/ph/x';
 import calendarIcon from '@iconify-icons/ph/calendar';

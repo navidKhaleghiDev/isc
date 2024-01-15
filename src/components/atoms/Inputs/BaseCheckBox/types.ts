@@ -20,7 +20,7 @@ export interface BaseCheckBoxProps<T extends FieldValues>
   hiddenError?: boolean;
   className?: string;
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  pureValue?: boolean;
+  pureValue?: string | number | readonly string[];
   pureError?: string;
   checked?: boolean;
 }

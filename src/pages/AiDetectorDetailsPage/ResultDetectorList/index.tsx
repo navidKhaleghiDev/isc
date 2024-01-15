@@ -32,25 +32,16 @@ const LIMIT_MU_LISTENER_LIST = 3;
 
 export function ResultDetectorList({ detectionId }: { detectionId?: number }) {
   const [currentPage, setCurrentPage] = useState(1);
-  // const [search, setSearch] = useState('');
-  // const { control, watch } = useForm<IFilterDetectorValues>({
-  //   mode: 'onChange',
-  // });
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  const { data, isLoading, mutate } = useSWR<
-    PaginationResponseSwr<IMyDetectorData[]>
-  >(
+  const { data, isLoading } = useSWR<PaginationResponseSwr<IMyDetectorData[]>>(
     detectionId
       ? E_AI_MY_DETECTOR_DATA(detectionId, {
           page: currentPage,
           pageSize: LIMIT_MU_LISTENER_LIST,
-          // search,
-          // created_at: convertI2ToAD(watch('startDate')),
-          // stoped_at: convertI2ToAD(watch('endDate')),
         })
       : null,
     http.fetcherSWR,
@@ -61,10 +52,6 @@ export function ResultDetectorList({ detectionId }: { detectionId?: number }) {
   );
   const list = data?.data?.results || [];
   const countPage = data?.data?.count || 0;
-
-  // const handleOnSearch = (value: string) => {
-  //   setSearch(value);
-  // };
 
   return (
     <div className="w-full">

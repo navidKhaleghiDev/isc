@@ -2,12 +2,7 @@ import { useState } from 'react';
 import { containerTooltipStyles, tooltipStyles } from './styles';
 import { IPopover } from './types';
 
-export function Popover({
-  children,
-  position,
-  isOpen,
-  setIsOpen,
-}: IPopover): JSX.Element {
+export function Popover({ children, position }: IPopover): JSX.Element {
   const [show, setShow] = useState(false);
   return (
     <div className="group relative inline-block">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BaseButton, BaseInput, Typography } from '@ui/atoms';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -14,7 +14,6 @@ import {
 import useSWR from 'swr';
 import { IServerResponse } from '@src/types/services';
 import { E_RULES_LOGS } from '@src/services/client/rules/endpoint';
-import { NoResult } from '@ui/molecules/NoResult';
 import { http } from '@src/services/http';
 
 function TitleSection({ label }: { label: string }) {
