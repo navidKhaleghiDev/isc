@@ -11,7 +11,7 @@ export function DashboardPage() {
   const { user } = useUserContext();
   return (
     <div className="w-full flex flex-col h-full p-16">
-      <div className="grid grid-cols-3 gap-6 mb-16">
+      <div className="grid grid-cols-4 gap-6 mb-16">
         <BoxDashboard
           icon="ph:calendar-check"
           title={persianDayLabel()}
@@ -30,6 +30,11 @@ export function DashboardPage() {
           description={
             user?.last_login ? persianDateAndNumber(user?.last_login) : '-'
           }
+        />
+        <BoxDashboard
+          icon="ph:code-block-bold"
+          title="ورژن"
+          description="1.0.1"
         />
       </div>
       <ProductBox />
