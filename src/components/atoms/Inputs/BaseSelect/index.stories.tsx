@@ -14,23 +14,75 @@ const meta : Meta< typeof BaseSelect> = {
     parameters : {
         layout : "centered"
     },
-    tags : ["autodocs"]
+    tags : ["autodocs"],
+    args : {
+        name : "select",
+        id : "select" , 
+        placeholder : "انتخاب" , 
+        intent : "default",
+    }
 
 };
 
-//rendering component of story
-const renderBaseInput : StoryFn<typeof BaseSelect> = (args) =>
+// to use this component we need to add function because of 
+// control of useForm hook
+const renderBaseSelect : StoryFn<typeof BaseSelect> = (args) =>
     {
         const {control} = useForm()
         return <BaseSelect  control={control} {...args}/>
     }
 
-export const textInput : StoryBaseSelect = {
-    render : renderBaseInput,
+// stories that are base on size & intent
+export const optionInputDefault : StoryBaseSelect = {
+    render : renderBaseSelect,
     args : {
         id : "sort-as",
         name : "sortAs",
         placeholder : "بنویسید"
+
+    }
+};
+
+export const optionInputError : StoryBaseSelect = {
+    render : renderBaseSelect,
+    args : {
+        id : "sort-as",
+        name : "sortAs",
+        placeholder : "بنویسید",
+        intent : "error"
+
+    }
+};
+
+export const optionInputSm : StoryBaseSelect = {
+    render : renderBaseSelect,
+    args : {
+        id : "sort-as",
+        name : "sortAs",
+        placeholder : "بنویسید",
+        size :"sm"
+
+    }
+};
+
+export const optionInputMd : StoryBaseSelect = {
+    render : renderBaseSelect,
+    args : {
+        id : "sort-as",
+        name : "sortAs",
+        placeholder : "بنویسید",
+        size : "md"
+
+    }
+};
+
+export const optionInputLg : StoryBaseSelect = {
+    render : renderBaseSelect,
+    args : {
+        id : "sort-as",
+        name : "sortAs",
+        placeholder : "بنویسید",
+        size : "lg"
 
     }
 };

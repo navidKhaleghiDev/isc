@@ -14,11 +14,17 @@ const meta : Meta< typeof PasswordInput> = {
     parameters : {
         layout : "centered"
     },
-    tags : ["autodocs"]
-
+    tags : ["autodocs"],
+    args: {
+        name: 'password',
+        label: 'Password',
+        placeholder: 'Enter your password',
+          },
+    
 };
 
-//rendering component of story
+// to use this component we need to add function because of 
+// control of useForm hook
 const renderBaseInput : StoryFn<typeof PasswordInput> = (args) =>
     {
         const {control} = useForm()
@@ -30,8 +36,7 @@ export const passWordInput : StoryPasswordInput = {
     args : {
         name : "userPassword",
         placeholder : "گذرواژه",
-         label : "گذرواژه",
-
+        label : "گذرواژه",
     }
 };
 

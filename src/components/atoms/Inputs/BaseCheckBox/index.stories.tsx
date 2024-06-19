@@ -1,7 +1,7 @@
 import { BaseCheckBox } from ".";
 
 //Custom Types for storyBook
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 
 type StoryBaseCheckBox = StoryObj<typeof BaseCheckBox>
 
@@ -13,19 +13,34 @@ const meta : Meta< typeof BaseCheckBox> = {
     parameters : {
         layout : "centered"
     },
+    args : {
+        name : "checkbox",
+        id : "check",
+        intent : "default",
+        size : "md",
+        label : "checkbox",
+    },
+    argTypes : {
+        pureOnChange : {action : "pure on change"}
+    } , 
     tags : ["autodocs"]
 
 };
 
-//rendering component of story
-const renderBaseCheckBox : StoryFn<typeof BaseCheckBox> = (args) => <BaseCheckBox  {...args}/>
 
-export const textInput : StoryBaseCheckBox = {
-    render : renderBaseCheckBox,
+
+// Define different stories base on size and error
+export const defaultCheckBox : StoryBaseCheckBox = {
     args : {
-        id :"checkBox",
-        name : "نام کاربری",
+        intent : "default",
+        size : "xl"
+    }
+};
 
+export const errorCheckBox : StoryBaseCheckBox = {
+    args : {
+        intent : "error",
+        size : "xl"
     }
 };
 

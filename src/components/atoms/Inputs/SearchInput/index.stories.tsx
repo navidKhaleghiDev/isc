@@ -1,7 +1,7 @@
 import { SearchInput } from ".";
 
 //Custom Types for storyBook
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 
 type StorySearchInput = StoryObj<typeof SearchInput>
 
@@ -13,25 +13,22 @@ const meta : Meta< typeof SearchInput> = {
     parameters : {
         layout : "centered"
     },
-    tags : ["autodocs"]
+    tags : ["autodocs"],
+    args : {
+        label: "جست و جو ",
+        value : ""
+    },
+    argTypes : {
+        onChange : {action : "changed"}
+    }
 
 };
 
-//rendering component of story
-const renderBaseInput : StoryFn<typeof SearchInput> = (args) => <SearchInput {...args} />
-
-export const textInput : StorySearchInput = {
-    render : renderBaseInput,
+// Define story 
+export const searchInput : StorySearchInput = {
     args : {
         value : "",
-         onChange(value) {
-             console.log(value)
-         },
-
     }
 };
 
 export default meta;
-
-
-

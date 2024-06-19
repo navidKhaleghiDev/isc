@@ -14,11 +14,20 @@ const meta : Meta< typeof DatePicker> = {
     parameters : {
         layout : "centered"
     },
+    args : {
+        name : "Data picker",
+        id : "DataPickerSolar",
+        placeholder : "تاریخ شمسی",
+        intent : "default",
+        showTimePicker : false,
+        format : 'YYYY/MM/DD',
+    },
     tags : ["autodocs"]
 
 };
 
-//rendering component of story
+// to use this component we need to add function because of 
+// control of useForm hook
 const renderDatePicker : StoryFn<typeof DatePicker> = (args) => {
 
     const {control} = useForm()
@@ -26,7 +35,8 @@ const renderDatePicker : StoryFn<typeof DatePicker> = (args) => {
 
 }
 
-export const textInput : StoryDatePicker = {
+// Defining stories base on intent 
+export const datePickerWithTimePicker : StoryDatePicker = {
     render : renderDatePicker,
     args : {
         id :"calenderPicker",
@@ -36,6 +46,35 @@ export const textInput : StoryDatePicker = {
 
     }
 };
+
+export const datePickerWithOutTImePicker : StoryDatePicker = {
+    render : renderDatePicker,
+    args : {
+        id :"calenderPicker",
+        name : "solarCalender",
+        type : "date",
+        showTimePicker : false
+
+    }
+};
+
+export const datePickerError : StoryDatePicker = {
+    render : renderDatePicker,
+    args : {
+        id :"calenderPicker",
+        name : "solarCalender",
+        type : "date",
+        intent : "error",
+        showTimePicker : true
+
+    }
+};
+
+
+
+
+
+
 
 export default meta;
 
