@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Accordion } from './Accordion';
-import { accordionButtonData } from './dataMock';
-import { IAccordion } from './types';
 
 const meta: Meta<typeof Accordion> = {
   title: 'atom/Accordion',
@@ -41,19 +39,4 @@ export const Default: Story = {
       </div>
     ),
   },
-};
-
-export const WithData: Story = {
-  render: () => (
-    <div>
-      {accordionButtonData.map((item: IAccordion) => (
-        <Accordion
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          content={item.content}
-        />
-      ))}
-    </div>
-  ),
 };
