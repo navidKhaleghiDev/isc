@@ -28,6 +28,14 @@ const meta: Meta<typeof BaseInput> = {
     onClickIcon : {action : "changed"},
     pureOnChange : {action : "pure Change"}
   },
+  //Adding font family
+  decorators: [
+    (Story) => (
+      <div style={{fontFamily : "on"}}>
+        <Story />
+      </div>
+    ),
+  ],
   
   render: (args) => <BaseInput {...args} />,
 };

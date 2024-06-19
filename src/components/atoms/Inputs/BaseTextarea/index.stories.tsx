@@ -20,7 +20,15 @@ const meta : Meta< typeof BaseTextarea> = {
         id :  "textArea",
         placeholder : "متن خود را وارد کنید",
         className : "border-2 border-cyan-600",
-    }
+    },
+    // Adding font family
+    decorators: [
+        (Story) => (
+          <div style={{fontFamily : "on"}}>
+            <Story />
+          </div>
+        ),
+    ]
 
 };
 

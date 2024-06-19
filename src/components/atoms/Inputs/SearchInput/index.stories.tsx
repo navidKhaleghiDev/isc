@@ -20,7 +20,15 @@ const meta : Meta< typeof SearchInput> = {
     },
     argTypes : {
         onChange : {action : "changed"}
-    }
+    },
+    // Adding font family
+    decorators: [
+        (Story) => (
+          <div style={{fontFamily : "on"}}>
+            <Story />
+          </div>
+        ),
+    ]
 
 };
 

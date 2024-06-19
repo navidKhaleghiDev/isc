@@ -22,7 +22,15 @@ const meta : Meta< typeof DatePicker> = {
         showTimePicker : false,
         format : 'YYYY/MM/DD',
     },
-    tags : ["autodocs"]
+    //Adding font family 
+    tags : ["autodocs"],
+    decorators: [
+        (Story) => (
+          <div style={{fontFamily : "on"}}>
+            <Story />
+          </div>
+        ),
+    ]
 
 };
 

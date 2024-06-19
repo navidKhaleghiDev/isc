@@ -20,7 +20,15 @@ const meta : Meta< typeof BaseSelect> = {
         id : "select" , 
         placeholder : "انتخاب" , 
         intent : "default",
-    }
+    },
+    //Adding font family
+    decorators: [
+        (Story) => (
+          <div style={{fontFamily : "on"}}>
+            <Story />
+          </div>
+        ),
+    ]
 
 };
 

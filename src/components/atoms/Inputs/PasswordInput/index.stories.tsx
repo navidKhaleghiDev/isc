@@ -19,8 +19,15 @@ const meta : Meta< typeof PasswordInput> = {
         name: 'password',
         label: 'Password',
         placeholder: 'Enter your password',
-          },
-    
+    },
+    //Adding font family
+    decorators: [
+        (Story) => (
+          <div style={{fontFamily : "on"}}>
+            <Story />
+          </div>
+        ),
+    ]  
 };
 
 // to use this component we need to add function because of 

@@ -31,8 +31,14 @@ const meta : Meta< typeof Dropdown> = {
         label : "task",
         loading : false, 
     },
-    // Added (on) font-family to storyBook
-
+    // Adding (on) font-family 
+    decorators: [
+        (Story) => (
+          <div style={{fontFamily : "on"}}>
+            <Story />
+          </div>
+        ),
+      ]
 };
 
 // to use this component we need to add function because of 

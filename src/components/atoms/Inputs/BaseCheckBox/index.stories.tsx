@@ -23,7 +23,15 @@ const meta : Meta< typeof BaseCheckBox> = {
     argTypes : {
         pureOnChange : {action : "pure on change"}
     } , 
-    tags : ["autodocs"]
+    tags : ["autodocs"],
+    // Adding font family
+    decorators: [
+        (Story) => (
+        <div style={{fontFamily : "on"}}>
+            <Story />
+        </div>
+        ),
+    ]
 
 };
 
