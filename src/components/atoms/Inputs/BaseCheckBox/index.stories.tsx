@@ -27,7 +27,7 @@ const meta : Meta< typeof BaseCheckBox> = {
     // Adding font family
     decorators: [
         (Story) => (
-        <div style={{fontFamily : "on"}}>
+        <div dir="rtl" style={{fontFamily : "on"}}>
             <Story />
         </div>
         ),

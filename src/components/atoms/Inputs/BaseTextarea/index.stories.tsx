@@ -24,7 +24,7 @@ const meta : Meta< typeof BaseTextarea> = {
     // Adding font family
     decorators: [
         (Story) => (
-          <div style={{fontFamily : "on"}}>
+          <div dir="rtl" style={{fontFamily : "on"}}>
             <Story />
           </div>
         ),

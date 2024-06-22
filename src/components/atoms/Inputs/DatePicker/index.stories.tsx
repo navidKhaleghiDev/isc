@@ -26,7 +26,7 @@ const meta : Meta< typeof DatePicker> = {
     tags : ["autodocs"],
     decorators: [
         (Story) => (
-          <div style={{fontFamily : "on"}}>
+          <div dir="rtl" style={{fontFamily : "on"}}>
             <Story />
           </div>
         ),

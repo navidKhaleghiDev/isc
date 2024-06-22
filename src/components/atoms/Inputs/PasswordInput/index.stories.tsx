@@ -23,7 +23,7 @@ const meta : Meta< typeof PasswordInput> = {
     //Adding font family
     decorators: [
         (Story) => (
-          <div style={{fontFamily : "on"}}>
+          <div dir="rtl" style={{fontFamily : "on"}}>
             <Story />
           </div>
         ),
