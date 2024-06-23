@@ -58,6 +58,7 @@ const setModalDelete = (): void => {};
  * These functions are defined as samples because they are part of the main component's props.
  */
 const handleRequestSuccess = (): void => {
+  // eslint-disable-next-line no-alert
   alert('با موفقیت ویرایش شد');
 };
 
@@ -65,6 +66,7 @@ const handleRequestSuccess = (): void => {
  * These functions are defined as samples because they are part of the main component's props.
  */
 const handleRequestDelete = (): void => {
+  // eslint-disable-next-line no-alert
   alert('با موفقیت حذف شد');
 };
 

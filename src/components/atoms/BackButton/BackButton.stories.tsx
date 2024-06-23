@@ -35,6 +35,7 @@ export const IconOnly: Story = {
 
 export const CustomOnClick: Story = {
   args: {
+    // eslint-disable-next-line no-alert
     onClick: () => alert('Custom onClick handler'),
     backToReferrer: false,
   },
