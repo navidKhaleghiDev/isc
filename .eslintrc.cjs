@@ -32,14 +32,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off', // Since we do not use prop-types
     'react/require-default-props': 'off', // Since we do not use prop-types
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: false,
-        optionalDependencies: false,
-        peerDependencies: false,
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
   },
   ignorePatterns: [
     'tailwind.config.js',
