@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { PasswordInput } from '.';
 
-//Custom Types for storyBook
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+// Custom Types for storyBook
 
 type StoryPasswordInput = StoryObj<typeof PasswordInput>;
 
@@ -19,7 +19,7 @@ const meta: Meta<typeof PasswordInput> = {
     label: 'Password',
     placeholder: 'Enter your password',
   },
-  //Adding font family
+  // Adding font family
   decorators: [
     (Story) => (
       <div dir="rtl" style={{ fontFamily: 'on' }}>
@@ -31,13 +31,23 @@ const meta: Meta<typeof PasswordInput> = {
 
 // to use this component we need to add function because of
 // control of useForm hook
-const renderBaseInput: StoryFn<typeof PasswordInput> = (args) => {
+const RenderBaseInput: StoryFn<typeof PasswordInput> = function RenderBaseInput(
+  args
+) {
+  const { label, name, placeholder } = args;
   const { control } = useForm();
-  return <PasswordInput control={control} {...args} />;
+  return (
+    <PasswordInput
+      control={control}
+      label={label}
+      name={name}
+      placeholder={placeholder}
+    />
+  );
 };
 
 export const passWordInput: StoryPasswordInput = {
-  render: renderBaseInput,
+  render: RenderBaseInput,
   args: {
     name: 'userPassword',
     placeholder: 'گذرواژه',

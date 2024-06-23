@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { BaseTextarea } from '.';
 
-//Custom Types for storyBook
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+// Custom Types for storyBook
 
 type StoryBaseTextarea = StoryObj<typeof BaseTextarea>;
 
@@ -32,11 +32,21 @@ const meta: Meta<typeof BaseTextarea> = {
 
 // to use this component we need to add function because of
 // control of useForm hook
-const renderBaseTextarea: StoryFn<typeof BaseTextarea> = (args) => {
-  const { control } = useForm();
+const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
+  function RenderBaseTextarea(args) {
+    const { id, name, placeholder, intent } = args;
+    const { control } = useForm();
 
-  return <BaseTextarea control={control} {...args} />;
-};
+    return (
+      <BaseTextarea
+        control={control}
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        intent={intent}
+      />
+    );
+  };
 
 // Define different stories based on size & intent
 export const textInputDefault: StoryBaseTextarea = {

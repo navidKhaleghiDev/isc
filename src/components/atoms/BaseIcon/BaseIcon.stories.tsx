@@ -73,10 +73,18 @@ export default meta;
  * @param args {icon, color, size, hoverColor, className}
  * @returns
  */
-export const Default = (args: IBaseIcon) => {
-  const iconValue = iconOptions[args.icon as keyof typeof iconOptions];
-  return <BaseIcon {...args} icon={iconValue} />;
-};
+export function Default(args: IBaseIcon) {
+  const { icon, color, size, hoverColor, className } = args;
+  return (
+    <BaseIcon
+      icon={icon}
+      color={color}
+      size={size}
+      hoverColor={hoverColor}
+      className={className}
+    />
+  );
+}
 
 Default.args = {
   icon: 'User',
@@ -91,10 +99,18 @@ Default.args = {
  * @param args {icon, color, size, hoverColor, className}
  * @returns
  */
-export const User = (args: IBaseIcon) => {
-  const iconValue = iconOptions[args.icon as keyof typeof iconOptions];
-  return <BaseIcon {...args} icon={iconValue} />;
-};
+export function User(args: IBaseIcon) {
+  const { icon, color, size, hoverColor, className } = args;
+  return (
+    <BaseIcon
+      icon={icon}
+      color={color}
+      size={size}
+      hoverColor={hoverColor}
+      className={className}
+    />
+  );
+}
 
 User.args = {
   icon: 'User',

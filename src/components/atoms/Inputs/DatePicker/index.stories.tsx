@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { DatePicker } from '.';
 
-//Custom Types for storyBook
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+// Custom Types for storyBook
 
 type StoryDatePicker = StoryObj<typeof DatePicker>;
 
@@ -21,7 +21,7 @@ const meta: Meta<typeof DatePicker> = {
     showTimePicker: false,
     format: 'YYYY/MM/DD',
   },
-  //Adding font family
+  // Adding font family
   tags: ['autodocs'],
   decorators: [
     (Story) => (
@@ -34,9 +34,20 @@ const meta: Meta<typeof DatePicker> = {
 
 // to use this component we need to add function because of
 // control of useForm hook
-const renderDatePicker: StoryFn<typeof DatePicker> = (args) => {
+const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
+  args
+) {
+  const { id, name, type, showTimePicker } = args;
   const { control } = useForm();
-  return <DatePicker control={control} {...args} />;
+  return (
+    <DatePicker
+      control={control}
+      id={id}
+      name={name}
+      type={type}
+      showTimePicker={showTimePicker}
+    />
+  );
 };
 
 // Defining stories base on intent

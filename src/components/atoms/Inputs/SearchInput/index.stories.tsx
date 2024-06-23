@@ -1,7 +1,7 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import { SearchInput } from '.';
 
-//Custom Types for storyBook
-import { type Meta, type StoryObj } from '@storybook/react';
+// Custom Types for storyBook
 
 type StorySearchInput = StoryObj<typeof SearchInput>;
 

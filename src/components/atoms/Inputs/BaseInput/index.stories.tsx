@@ -1,7 +1,7 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import { BaseInput } from '.';
 
 // Custom Types for Storybook
-import { type Meta, type StoryObj } from '@storybook/react';
 
 // Type definition for a story based on BaseInput
 type StoryBaseInput = StoryObj<typeof BaseInput>;
@@ -26,7 +26,7 @@ const meta: Meta<typeof BaseInput> = {
     onClickIcon: { action: 'changed' },
     pureOnChange: { action: 'pure Change' },
   },
-  //Adding font family
+  // Adding font family
   decorators: [
     (Story) => (
       <div dir="rtl" style={{ fontFamily: 'on' }}>
@@ -35,7 +35,15 @@ const meta: Meta<typeof BaseInput> = {
     ),
   ],
 
-  render: (args) => <BaseInput {...args} />,
+  render: (args) => (
+    <BaseInput
+      name={args.name}
+      id={args.id}
+      type={args.type}
+      placeholder={args.placeholder}
+      label={args.label}
+    />
+  ),
 };
 
 export default meta;

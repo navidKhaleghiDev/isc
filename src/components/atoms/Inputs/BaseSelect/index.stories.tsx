@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { BaseSelect } from '.';
 
-//Custom Types for storyBook
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+// Custom Types for storyBook
 
 type StoryBaseSelect = StoryObj<typeof BaseSelect>;
 
@@ -20,7 +20,7 @@ const meta: Meta<typeof BaseSelect> = {
     placeholder: 'انتخاب',
     intent: 'default',
   },
-  //Adding font family
+  // Adding font family
   decorators: [
     (Story) => (
       <div dir="rtl" style={{ fontFamily: 'on' }}>
@@ -32,14 +32,24 @@ const meta: Meta<typeof BaseSelect> = {
 
 // to use this component we need to add function because of
 // control of useForm hook
-const renderBaseSelect: StoryFn<typeof BaseSelect> = (args) => {
+const RenderBaseSelect: StoryFn<typeof BaseSelect> = function RenderBaseSelect(
+  args
+) {
+  const { id, name, placeholder } = args;
   const { control } = useForm();
-  return <BaseSelect control={control} {...args} />;
+  return (
+    <BaseSelect
+      control={control}
+      id={id}
+      name={name}
+      placeholder={placeholder}
+    />
+  );
 };
 
 // stories that are base on size & intent
 export const optionInputDefault: StoryBaseSelect = {
-  render: renderBaseSelect,
+  render: RenderBaseSelect,
   args: {
     id: 'sort-as',
     name: 'sortAs',
@@ -48,7 +58,7 @@ export const optionInputDefault: StoryBaseSelect = {
 };
 
 export const optionInputError: StoryBaseSelect = {
-  render: renderBaseSelect,
+  render: RenderBaseSelect,
   args: {
     id: 'sort-as',
     name: 'sortAs',
@@ -58,7 +68,7 @@ export const optionInputError: StoryBaseSelect = {
 };
 
 export const optionInputSm: StoryBaseSelect = {
-  render: renderBaseSelect,
+  render: RenderBaseSelect,
   args: {
     id: 'sort-as',
     name: 'sortAs',
@@ -68,7 +78,7 @@ export const optionInputSm: StoryBaseSelect = {
 };
 
 export const optionInputMd: StoryBaseSelect = {
-  render: renderBaseSelect,
+  render: RenderBaseSelect,
   args: {
     id: 'sort-as',
     name: 'sortAs',
@@ -78,7 +88,7 @@ export const optionInputMd: StoryBaseSelect = {
 };
 
 export const optionInputLg: StoryBaseSelect = {
-  render: renderBaseSelect,
+  render: RenderBaseSelect,
   args: {
     id: 'sort-as',
     name: 'sortAs',

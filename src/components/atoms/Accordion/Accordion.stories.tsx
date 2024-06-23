@@ -30,7 +30,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => <Accordion {...args} />,
+  render: (args) => (
+    <Accordion title={args.title} id={args.id} content={args.content} />
+  ),
   args: {
     id: '1',
     title: <h3>داشبورد</h3>,

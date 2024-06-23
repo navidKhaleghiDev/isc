@@ -29,7 +29,6 @@ export const BaseTabs: React.FC<IBaseTabsProps> = ({ children, label }) => {
           if (React.isValidElement<IBaseTabProps>(child)) {
             const { label: labelTab } = child.props;
             return (
-              // eslint-disable-next-line react/button-has-type
               <button
                 type="button"
                 className={`uppercase px-4 py-2 ${

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import Pagination from '.';
+import { Pagination } from './index';
 
 const meta: Meta<typeof Pagination> = {
   title: 'molecules/Pagination',

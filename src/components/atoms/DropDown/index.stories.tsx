@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
+import { type Meta, type StoryFn, type StoryObj } from '@storybook/react';
 import { Dropdown } from '.';
 import { regexPattern } from '../Inputs';
 
-//Custom Types for storyBook
-import { type Meta, type StoryFn, type StoryObj } from '@storybook/react';
+// Custom Types for storyBook
 
 type StoryDropdown = StoryObj<typeof Dropdown>;
 
@@ -16,7 +16,7 @@ const meta: Meta<typeof Dropdown> = {
   },
   tags: ['autodocs'],
   args: {
-    //Fake options for dopDown
+    // Fake options for dopDown
     options: [
       { id: '1', label: 'انجام شده' },
       { id: '2', label: 'به تعویق افتاده' },
@@ -43,29 +43,39 @@ const meta: Meta<typeof Dropdown> = {
 
 // to use this component we need to add function because of
 // {control} of useForm hook
-const renderDropdown: StoryFn<typeof Dropdown> = (args) => {
+const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
+  const { loading, id, name, options, placeHolder } = args;
   const { control } = useForm();
 
-  return <Dropdown control={control} {...args} />;
+  return (
+    <Dropdown
+      control={control}
+      loading={loading}
+      id={id}
+      name={name}
+      options={options}
+      placeHolder={placeHolder}
+    />
+  );
 };
 
 // Define different stories based loading state & label & size
 export const dropDown: StoryDropdown = {
-  render: renderDropdown,
+  render: RenderDropdown,
   args: {
     loading: false,
   },
 };
 
 export const dropDownLoading: StoryDropdown = {
-  render: renderDropdown,
+  render: RenderDropdown,
   args: {
     loading: true,
   },
 };
 
 export const dropDownLeftLabel: StoryDropdown = {
-  render: renderDropdown,
+  render: RenderDropdown,
   args: {
     leftLabel: true,
   },
