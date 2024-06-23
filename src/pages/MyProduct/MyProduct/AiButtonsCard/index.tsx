@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { Card, Typography } from '@ui/atoms';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';

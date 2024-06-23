@@ -1,13 +1,9 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
 import { BaseIcon, Typography } from '@ui/atoms';
 import { INavigation } from '../navigation';
 import { MenuItem } from '../MenuItem/Menu';
 import { IMenuItemAccordion } from './types';
 import { menuItemStyles } from '../MenuItem/styles';
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
 export function MenuItemAccordion({
   open,
   setOpen,

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ButtonState } from '@src/pages/Services/Rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import {

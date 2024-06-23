@@ -10,7 +10,6 @@ import { MenuItemAccordion } from './MenuItemAccordion';
 import { MenuItem } from './MenuItem';
 import { StatusServices } from './StatusServices';
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 export function SideBar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();

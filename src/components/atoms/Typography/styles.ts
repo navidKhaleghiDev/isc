@@ -9,7 +9,7 @@ export const typographyStyles = cva('', {
       yellow: `${PALLET.TEXT_COLOR.YELLOW} `,
       red: `${PALLET.TEXT_COLOR.RED} `,
       white: `${PALLET.TEXT_COLOR.WHITE} `,
-      black:`${PALLET.TEXT_COLOR.BLACK}`,
+      black: `${PALLET.TEXT_COLOR.BLACK}`,
     },
     size: {
       h1: SIZE.TYPOGRAPHY.H1,

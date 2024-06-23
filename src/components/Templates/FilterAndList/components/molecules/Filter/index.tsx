@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 // import { useForm } from 'react-hook-form';
 import { FilterIps } from './Ips';
 

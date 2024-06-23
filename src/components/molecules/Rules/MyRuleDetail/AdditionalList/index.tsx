@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/no-array-index-key */
 import { ChangeEvent, useEffect, useState } from 'react';
 import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
@@ -123,6 +121,7 @@ export function AdditionalList({
           return (
             <CodeLine
               id={`additional-${index}`}
+              // eslint-disable-next-line react/no-array-index-key
               key={`${index}_${code.order}`}
               code={code}
               onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>

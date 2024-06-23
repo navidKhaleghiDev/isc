@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { PropsWithChildren } from 'react';
 import { FilterServices } from './components/molecules/Filter';
 

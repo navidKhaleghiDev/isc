@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Card, Typography, BaseInput } from '@ui/atoms';
 import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 import { useForm } from 'react-hook-form';

@@ -10,7 +10,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:storybook/recommended',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -32,6 +31,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off', // Since we do not use prop-types
     'react/require-default-props': 'off', // Since we do not use prop-types
+    '@typescript-eslint/no-explicit-any': 'off',
     'import/no-extraneous-dependencies': 'off',
   },
   ignorePatterns: [

@@ -13,7 +13,7 @@ export const PALLET = {
     NEUTRAL: 'text-neutral-600 dark:text-neutral-400',
     NEUTRAL_LIGHT: 'text-neutral-100 dark:text-neutral-400',
     WHITE: 'text-white dark:text-black',
-    BLACK:'text-black dark:text-white',
+    BLACK: 'text-black dark:text-white',
   },
   BORDER_COLOR: {
     TEAL: 'border-teal-600 dark:border-teal-500',

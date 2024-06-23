@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-throw-literal */
-/* eslint-disable class-methods-use-this */
 
 import axios, {
   AxiosError,

@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useGet } from '@src/services/http/httpClient';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';

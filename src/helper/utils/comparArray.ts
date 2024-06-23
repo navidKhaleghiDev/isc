@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export function getCountChangedTowArray(arr1: any[], arr2: any[]): string {
   if (arr1.length <= 0 || arr2.length <= 0) {
     return '0';
