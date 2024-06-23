@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import { IconButton } from './IconButton';
 
 const meta: Meta<typeof IconButton> = {
-  title: 'atom/IconButton',
+  title: 'atoms/IconButton',
   component: IconButton,
   parameters: {
     layout: 'centered',

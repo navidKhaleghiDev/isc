@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { BackButton } from './BackButton';
 
 const meta: Meta<typeof BackButton> = {
-  title: 'atom/BackButton',
+  title: 'atoms/BackButton',
   component: BackButton,
   parameters: {
     layout: 'centered',

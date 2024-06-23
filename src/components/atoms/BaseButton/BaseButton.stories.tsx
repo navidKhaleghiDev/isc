@@ -4,7 +4,7 @@ import { fn } from '@storybook/test';
 import { BaseButton } from './BaseButton';
 
 const meta: Meta<typeof BaseButton> = {
-  title: 'atom/BaseButton',
+  title: 'atoms/BaseButton',
   component: BaseButton,
   parameters: {
     layout: 'centered',

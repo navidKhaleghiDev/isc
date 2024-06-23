@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import Pagination from './index';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'molecule/Pagination',
+  title: 'molecules/Pagination',
   component: Pagination,
   parameters: {
     layout: 'centered',

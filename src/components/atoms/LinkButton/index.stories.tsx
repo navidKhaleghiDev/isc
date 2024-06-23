@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { LinkButton } from './index';
 
 const meta: Meta<typeof LinkButton> = {
-  title: 'atom/LinkButton',
+  title: 'atoms/LinkButton',
   component: LinkButton,
   parameters: {
     layout: 'centered',
