@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { Meta, StoryObj } from '@storybook/react';
 import { RulesCard } from '.';
-import { MemoryRouter } from 'react-router-dom';
 
 const meta = {
   title: 'molecules/RulesCard',
@@ -21,14 +21,14 @@ const meta = {
   argTypes: {},
   decorators: [
     (Story): ReactElement => (
-      <div dir='rtl' className='font-on'>
+      <div dir="rtl" className="font-on">
         <MemoryRouter>
           <Story />
         </MemoryRouter>
       </div>
     ),
   ],
-} satisfies Meta<typeof RulesCard>;;
+} satisfies Meta<typeof RulesCard>;
 
 export default meta;
 
