@@ -7,12 +7,12 @@ const meta = {
   title: 'molecules/RulesCard',
   component: RulesCard,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
-        toc: true,
         component: `
-            
+            نمایش تک کارت مربوط به قوانین
+            Displays a single card related to rules.
             `,
       },
     },
@@ -21,7 +21,11 @@ const meta = {
   argTypes: {},
   decorators: [
     (Story): ReactElement => (
-      <div dir="rtl" className="font-on">
+      <div
+        dir="rtl"
+        className="font-on"
+        style={{ width: '60vw', height: '20vh' }}
+      >
         <MemoryRouter>
           <Story />
         </MemoryRouter>
@@ -34,6 +38,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * Displays a single card related to rules.
+ */
 export const Default: Story = {
   args: {
     rule: {
