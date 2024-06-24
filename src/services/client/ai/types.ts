@@ -42,17 +42,7 @@ export interface IResponseGetMyListeners {
   consumer_thread_id: number;
 }
 
-export interface IMyListeners {
-  id: number;
-  protocol: EProtocol;
-  interface: string;
-  port: number;
-  is_active: boolean;
-  created_at: string;
-  stoped_at: string;
-  sniffer_thread_id: number;
-  consumer_thread_id: number;
-}
+export type IMyListeners = IResponseGetMyListeners;
 
 export interface IMyLearner {
   id: number;

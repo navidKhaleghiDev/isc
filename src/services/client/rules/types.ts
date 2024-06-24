@@ -1,4 +1,7 @@
-import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
+export enum EIpType {
+  EXTERNAL = 'External',
+  INTERNAL = 'Internal',
+}
 
 export interface IResponseRules {
   count: number;

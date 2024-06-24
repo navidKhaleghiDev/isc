@@ -1,6 +1,4 @@
-import { QueryParams } from '@src/types/global';
-
-export const objectToUrlParameters = <T>(data: QueryParams<T>): string => {
+export const objectToUrlParameters = <T>(data: Partial<T>): string => {
   return Object.entries(data)
     .map(
       ([key, value]) =>
