@@ -6,7 +6,7 @@ const meta = {
   title: 'atoms/Notification',
   component: Notification,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component: `
@@ -44,7 +44,7 @@ const meta = {
   },
   decorators: [
     (Story): ReactElement => (
-      <div dir="rtl" className="font-on" style={{ width: '60vw' }}>
+      <div dir="rtl" className="font-on">
         <Story />
       </div>
     ),
