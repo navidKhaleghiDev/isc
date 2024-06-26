@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { BaseIcon, Typography } from '@ui/atoms';
-
 import { menuItemStyles } from './styles';
 import { IMenuItem } from './types';
 
