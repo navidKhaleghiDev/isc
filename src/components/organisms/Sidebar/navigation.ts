@@ -1,14 +1,6 @@
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { RoutePathType } from '@src/routes/types';
+import { INavigation } from './types';
 
-export interface INavigation {
-  id: string;
-  label: string;
-  path: RoutePathType | string;
-  isNewTab?: boolean;
-  icon?: string;
-  items?: INavigation[];
-}
 export const navigationSideBar: INavigation[] = [
   {
     id: '1',

@@ -5,6 +5,18 @@ import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { getRoleUser } from './utils';
 
+/**
+ * NavbarDashboard Component
+ *
+ * This component renders the navigation bar for the dashboard. It includes the user's avatar, name,
+ * role, and links to various routes based on the user's permissions.
+ *
+ * @example
+ * <NavbarDashboard />
+ *
+ * @returns {JSX.Element} The rendered NavbarDashboard component.
+ */
+
 export function NavbarDashboard() {
   const { user } = useUserContext();
   return (
