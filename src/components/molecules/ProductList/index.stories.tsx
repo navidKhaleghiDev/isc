@@ -10,8 +10,7 @@ const meta = {
     docs: {
       description: {
         component: `
-                نمایش لیست محصولات
-                Displays a list of products
+                
                 `,
       },
     },
@@ -32,7 +31,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/**
- * Displays a list of products.
- */
 export const Default: Story = {};
