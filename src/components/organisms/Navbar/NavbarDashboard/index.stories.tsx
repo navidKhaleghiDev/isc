@@ -4,7 +4,7 @@ import { IUserWithAuth, UserContext } from '@context/user/userContext';
 import { NavbarDashboard } from '.';
 
 const meta: Meta<typeof NavbarDashboard> = {
-  title: 'molecules/NavbarDashboard',
+  title: 'organisms/NavbarDashboard',
   component: NavbarDashboard,
   tags: ['autodocs'],
   decorators: [
