@@ -31,7 +31,7 @@ export function PasswordStrength({ password }: { password?: string }) {
         } rounded mx-1`}
       />
       <div
-        className={`border border-blue-400 h-1 w-full ${
+        className={`border border-blue-400 h-1 w-full  ${
           colorStrength === 'yellow' || colorStrength === 'teal'
             ? `bg-${colorStrength}-500`
             : `bg-neutral-200`
