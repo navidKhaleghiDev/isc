@@ -91,3 +91,13 @@ export interface IResponseAllObjectsInfo {
   has_learner: boolean;
   has_detectors: boolean;
 }
+
+export type EndPoints =
+  | 'my_listeners'
+  | 'my_learner'
+  | 'my_detectioner'
+  | 'all_objects_info'
+  | 'interfaces_list'
+  | 'learning_data_period'
+  | 'my_detectioner'
+  | 'model_learning_diagram';

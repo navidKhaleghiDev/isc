@@ -4,7 +4,7 @@ import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { convertI2ToAD, DatePicker } from '@ui/atoms/Inputs/DatePicker';
 import useSWR from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
-import { E_AI_MY_LISTENERS_PAGINATION } from '@src/services/client/ai/endpoint';
+import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
@@ -41,7 +41,7 @@ export function ListenerList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyListeners[]>
   >(
-    E_AI_MY_LISTENERS_PAGINATION({
+    aiEndPoint('my_listeners', undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,

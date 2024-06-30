@@ -4,7 +4,7 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import numberOne from '@iconify-icons/ph/number-one';
 import numberTwo from '@iconify-icons/ph/number-two';
 import numberThree from '@iconify-icons/ph/number-three';
-import { E_AI_ALL_OBJECTS_INFO } from '@src/services/client/ai/endpoint';
+import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import useSWR from 'swr';
 import { LoadingSpinner } from '@ui/molecules/Loading';
@@ -14,7 +14,7 @@ import { LinkButton } from '@ui/atoms/LinkButton';
 
 export function AiButtonsCard() {
   const { data, isLoading } = useSWR<IServerResponse<IResponseAllObjectsInfo>>(
-    E_AI_ALL_OBJECTS_INFO,
+    aiEndPoint('all_objects_info'),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

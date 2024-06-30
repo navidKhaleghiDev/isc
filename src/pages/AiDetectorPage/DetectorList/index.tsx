@@ -4,7 +4,7 @@ import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { DatePicker, convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
 import useSWR from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
-import { E_AI_MY_DETECTOR_PAGINATION } from '@src/services/client/ai/endpoint';
+import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
@@ -39,7 +39,7 @@ export function DetectorList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyDetector[]>
   >(
-    E_AI_MY_DETECTOR_PAGINATION({
+    aiEndPoint('my_detectioner', undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,

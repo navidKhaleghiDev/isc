@@ -1,7 +1,7 @@
 import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
 import { IServerResponse } from '@src/types/services';
 import useSWR from 'swr';
-import { E_AI_LEARNING_DATA_PERIOD } from '@src/services/client/ai/endpoint';
+import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { LoadingSvg } from '@ui/atoms/Svgs/LoadingSvg';
 import { Typography } from '@ui/atoms';
@@ -18,7 +18,7 @@ export function SetRunTimeDate({ control, idListener }: any) {
   const { data, isLoading } = useSWR<
     IServerResponse<IResponseLearningDataPeriod>
   >(
-    idListener ? E_AI_LEARNING_DATA_PERIOD(idListener) : null,
+    idListener ? aiEndPoint('learning_data_period', idListener) : null,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

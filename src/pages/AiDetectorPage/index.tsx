@@ -4,8 +4,8 @@ import { PageBackButton } from '@ui/atoms/BackButton';
 import { PaginationResponseSwr } from '@src/types/services';
 import { IMyListeners } from '@src/services/client/ai/types';
 import useSWR from 'swr';
-import { E_AI_MY_LEARNER } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
+import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { Notification, Typography } from '@ui/atoms';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ import { DetectorList } from './DetectorList';
 
 export function AiDetectorPage() {
   const { data, isLoading } = useSWR<PaginationResponseSwr<IMyListeners[]>>(
-    E_AI_MY_LEARNER,
+    aiEndPoint('my_learner'),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,
