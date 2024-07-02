@@ -6,7 +6,7 @@ import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { API_UPDATE_MY_DETECTOR } from '@src/services/client/ai';
+import { API_UPDATE } from '@src/services/client/ai';
 import { KeyedMutator } from 'swr';
 import moreIcon from '@iconify-icons/ph/dots-three-outline-vertical-fill';
 
@@ -45,10 +45,13 @@ function StopListenerIcon({ id, mutate }: StopListenerIconProps) {
 
   const handelSubmit = async () => {
     setLoading(true);
-    await API_UPDATE_MY_DETECTOR({
-      id,
-      is_running: false,
-    })
+    await API_UPDATE(
+      {
+        id,
+        is_running: false,
+      },
+      'my_detectioner'
+    )
       .then(() => {
         if (mutate) {
           mutate();
