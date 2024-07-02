@@ -92,7 +92,7 @@ export interface IResponseAllObjectsInfo {
   has_detectors: boolean;
 }
 
-export type EndPoints =
+export type AiEndPoints =
   | 'my_listeners'
   | 'my_learner'
   | 'my_detectioner'

@@ -7,7 +7,7 @@ import {
 } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
 import { useGet } from '@src/services/http/httpClient';
-import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
+import { E_RULES } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { getCountDifferenceOrder } from '@src/helper/utils/getCountDifferenceOrder';
 
@@ -29,8 +29,9 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const { state } = useLocation();
 
-  const { mutate: mutateMyRules } =
-    useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
+  const { mutate: mutateMyRules } = useGet<ResponseSwr<IMyRule[]>>(
+    E_RULES('my_rules')
+  );
 
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
   const toggleModalEdit = () => setOpenModalEdit(!openModalEdit);

@@ -7,12 +7,12 @@ import {
   IBodyUpdateMyListeners,
   IBodyCreateMyDetector,
   IBodyUpdateMyMyDetector,
-  EndPoints,
+  AiEndPoints,
 } from './types';
 
 export const API_CREATE = (
   body: IBodyCreateMyDetector | IBodyCreateMyListeners | IBodyCreateMyLearner,
-  end_point: EndPoints
+  end_point: AiEndPoints
 ) => {
   return http.post<
     IBodyCreateMyDetector | IBodyCreateMyListeners | IBodyCreateMyLearner,
@@ -22,7 +22,7 @@ export const API_CREATE = (
 
 export const API_UPDATE = (
   body: IBodyUpdateMyMyDetector | IBodyUpdateMyListeners,
-  end_point: EndPoints
+  end_point: AiEndPoints
 ) => {
   return http.patch<
     IBodyUpdateMyMyDetector | IBodyUpdateMyListeners,

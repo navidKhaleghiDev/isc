@@ -3,7 +3,7 @@ import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
 import { useGet } from '@src/services/http/httpClient';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
-import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
+import { E_RULES } from '@src/services/client/rules/endpoint';
 import { Modal } from '@ui/molecules/Modal';
 import { getCodeListDifference } from './utils';
 import { PropsAdditionalList } from './types';
@@ -34,7 +34,7 @@ export function AdditionalList({
     useState<AdditionalStateType>(initAdditionalState);
 
   const { data: dataRule } = useGet<ResponseSwr<IRules>>(
-    myRuleId && !isSetAdditional ? E_RULES_RETRIEVE(myRuleId) : null
+    myRuleId && !isSetAdditional ? E_RULES('', myRuleId) : null
   );
 
   const rule: IRules | undefined = dataRule?.data;
