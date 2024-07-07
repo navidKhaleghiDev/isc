@@ -3,10 +3,13 @@ import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
 import { LoadingSvg } from '@ui/atoms/Svgs/LoadingSvg';
+import { AiEndPoints } from '@src/services/client/ai/types';
 
 export function ChartImageLearningDiagram({ learnerId }: any) {
   const { data, isLoading } = useSWR<IServerResponse<{ plot: string }>>(
-    learnerId ? aiEndPoint('model_learning_diagram', learnerId) : null,
+    learnerId
+      ? aiEndPoint(AiEndPoints.MODEL_LEARNING_DIAGRAM, learnerId)
+      : null,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

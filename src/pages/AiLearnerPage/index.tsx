@@ -1,6 +1,6 @@
 import { ContainerDashboard } from '@ui/Templates/ContainerDashboard';
 import { PaginationResponseSwr } from '@src/types/services';
-import { IMyListeners } from '@src/services/client/ai/types';
+import { AiEndPoints, IMyListeners } from '@src/services/client/ai/types';
 import useSWR from 'swr';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { aiEndPoint } from '@src/services/client/ai/endpoint';
@@ -15,7 +15,7 @@ import { LearnerList } from './LearnerList';
 
 export function AiLearnerPage() {
   const { data, isLoading } = useSWR<PaginationResponseSwr<IMyListeners[]>>(
-    aiEndPoint('my_listeners'),
+    aiEndPoint(AiEndPoints.MY_LISTENER),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

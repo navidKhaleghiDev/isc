@@ -2,7 +2,7 @@ import { ContainerDashboard } from '@ui/Templates/ContainerDashboard';
 import { PageBackButton } from '@ui/atoms/BackButton';
 
 import { PaginationResponseSwr } from '@src/types/services';
-import { IMyListeners } from '@src/services/client/ai/types';
+import { AiEndPoints, IMyListeners } from '@src/services/client/ai/types';
 import useSWR from 'swr';
 import { http } from '@src/services/http';
 import { aiEndPoint } from '@src/services/client/ai/endpoint';
@@ -16,7 +16,7 @@ import { DetectorList } from './DetectorList';
 
 export function AiDetectorPage() {
   const { data, isLoading } = useSWR<PaginationResponseSwr<IMyListeners[]>>(
-    aiEndPoint('my_learner'),
+    aiEndPoint(AiEndPoints.MY_LEANER),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

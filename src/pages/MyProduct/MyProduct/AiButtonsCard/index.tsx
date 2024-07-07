@@ -9,12 +9,15 @@ import { http } from '@src/services/http';
 import useSWR from 'swr';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IServerResponse } from '@src/types/services';
-import { IResponseAllObjectsInfo } from '@src/services/client/ai/types';
+import {
+  AiEndPoints,
+  IResponseAllObjectsInfo,
+} from '@src/services/client/ai/types';
 import { LinkButton } from '@ui/atoms/LinkButton';
 
 export function AiButtonsCard() {
   const { data, isLoading } = useSWR<IServerResponse<IResponseAllObjectsInfo>>(
-    aiEndPoint('all_objects_info'),
+    aiEndPoint(AiEndPoints.ALL_OBJECTS_INFO),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

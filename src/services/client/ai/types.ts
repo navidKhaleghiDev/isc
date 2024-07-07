@@ -42,7 +42,7 @@ export interface IResponseGetMyListeners {
   consumer_thread_id: number;
 }
 
-interface IMyListeners {
+export interface IMyListeners {
   id: number;
   protocol: EProtocol;
   interface: string;
