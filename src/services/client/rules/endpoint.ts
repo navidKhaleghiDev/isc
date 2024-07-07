@@ -1,10 +1,8 @@
 import { IParamsRules } from './types';
 
-type RulesEndPoints = 'invalid_ips' | 'logs' | 'assign_owner' | 'my_rules' | '';
-
-export const E_RULES_MY_RULES_ID = (id: string) => `/rules/my_rules/${id}/`;
-
+export const E_RULES_VALID_IPS = '/rules/invalid_ips/';
 export const E_RULES_VALID_IPS_ID = (id: string) => `/rules/invalid_ips/${id}/`;
+
 export const E_RULES_LIST = ({ pageSize, page, search }: IParamsRules) => {
   const api = `/rules${
     pageSize || page || (search && search !== '') ? '?' : ''
@@ -15,8 +13,12 @@ export const E_RULES_LIST = ({ pageSize, page, search }: IParamsRules) => {
   return api;
 };
 
-// logs
-export const E_RULES_LOGS_UPDATE = (id: number) => `${E_RULES('logs')}${id}/`;
+export const E_RULES_RETRIEVE = (id: string) => `/rules/${id}/`;
+export const E_RULES_MY_RULES = '/rules/my_rules/';
+export const E_RULES_MY_RULES_ID = (id: string) => `/rules/my_rules/${id}/`;
 
-export const E_RULES = (endpoint: RulesEndPoints, id?: string) =>
-  `rules/${endpoint}/${id || ''} `;
+export const E_RULES_ASSIGN_OWNER = `rules/assign_owner/`;
+
+// logs
+export const E_RULES_LOGS = `rules/logs/`;
+export const E_RULES_LOGS_UPDATE = (id: number) => `${E_RULES_LOGS}${id}/`;

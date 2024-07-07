@@ -42,7 +42,17 @@ export interface IResponseGetMyListeners {
   consumer_thread_id: number;
 }
 
-export type IMyListeners = IResponseGetMyListeners;
+interface IMyListeners {
+  id: number;
+  protocol: EProtocol;
+  interface: string;
+  port: number;
+  is_active: boolean;
+  created_at: string;
+  stoped_at: string;
+  sniffer_thread_id: number;
+  consumer_thread_id: number;
+}
 
 export interface IMyLearner {
   id: number;
@@ -92,12 +102,12 @@ export interface IResponseAllObjectsInfo {
   has_detectors: boolean;
 }
 
-export type AiEndPoints =
-  | 'my_listeners'
-  | 'my_learner'
-  | 'my_detectioner'
-  | 'all_objects_info'
-  | 'interfaces_list'
-  | 'learning_data_period'
-  | 'my_detectioner'
-  | 'model_learning_diagram';
+export enum AiEndPoints {
+  MY_LISTENER = 'my_listeners',
+  MY_LEANER = 'my_learner',
+  MY_DETECTION = 'my_detectioner',
+  ALL_OBJECTS_INFO = 'all_objects_info',
+  INTERFACE_LIST = 'interfaces_list',
+  LEARNING_DATA_PERIOD = 'learning_data_period',
+  MODEL_LEARNING_DIAGRAM = 'model_learning_diagram',
+}

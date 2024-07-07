@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms';
 import { useState } from 'react';
-import { API_CREATE } from '@src/services/client/ai';
+import { API_CREATE_MY_DETECTOR } from '@src/services/client/ai';
 import { toast } from 'react-toastify';
 
 import { LearnerDropDown } from '../LearnerDropDown';
@@ -13,7 +13,7 @@ export function StartDetect() {
 
   const handelSubmitForm = async (dataForm: IStartDetectorValues) => {
     setLoadingButton(true);
-    await API_CREATE(dataForm, 'my_detectioner')
+    await API_CREATE_MY_DETECTOR(dataForm)
       .then(() => {
         toast.success('با موفقیت ثبت شد.');
       })

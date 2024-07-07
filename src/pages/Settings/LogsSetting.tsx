@@ -13,7 +13,7 @@ import {
 } from '@src/services/client/rules';
 import useSWR from 'swr';
 import { IServerResponse } from '@src/types/services';
-import { E_RULES } from '@src/services/client/rules/endpoint';
+import { E_RULES_LOGS } from '@src/services/client/rules/endpoint';
 import { http } from '@src/services/http';
 
 function TitleSection({ label }: { label: string }) {
@@ -33,7 +33,7 @@ export function LogsSetting() {
   // const [loading, setLoading] = useState(true);
 
   const { data, isLoading } = useSWR<IServerResponse<IRulesLogs[]>>(
-    E_RULES('logs'),
+    E_RULES_LOGS,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

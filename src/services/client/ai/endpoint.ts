@@ -15,7 +15,7 @@ export const aiEndPoint = <T>(
   endpoint: AiEndPoints,
   id?: string | number,
   filters?: Partial<T>
-) => {
+): string => {
   const filtersParameter = filters ? objectToUrlParameters(filters) : '';
   return `Ai/${endpoint}/${id || filtersParameter} `;
 };

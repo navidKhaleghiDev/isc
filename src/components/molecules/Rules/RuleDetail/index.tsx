@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useGet } from '@src/services/http/httpClient';
-import { E_RULES } from '@src/services/client/rules/endpoint';
+import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { SliceOrderCodeType, getCodeList } from '@src/helper/utils/ruleCodes';
 import { getCountDifferenceOrder } from '@src/helper/utils/getCountDifferenceOrder';
@@ -19,7 +19,7 @@ export function RuleDetail() {
   const id = slugs[3];
   const rulePolicyListRef = useRef<IRulePolicyListRef>(null);
   const { data, isLoading, mutate } = useGet<ResponseSwr<IRules>>(
-    E_RULES('', id)
+    E_RULES_RETRIEVE(id)
   );
   const rule: IRules | undefined = data?.data;
   const slicedCodeList: SliceOrderCodeType[] = getCodeList(rule?.code);

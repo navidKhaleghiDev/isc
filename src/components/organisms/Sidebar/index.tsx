@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { BaseButton } from '@ui/atoms';
+import { BaseIcon, Typography } from '@ui/atoms';
 import { navigationSideBar } from './navigation';
 import { INavigation } from './types';
 import { MenuItemAccordion } from './MenuItemAccordion';
@@ -62,13 +62,16 @@ export function SideBar() {
             />
           )
         )}
-        <BaseButton
-          type="neutral"
-          className=" flex items-center justify-start w-full h-10 pr-3 my-2 rounded bg-transparent text-red-600 hover:bg-neutral-100 "
+        <button
+          type="button"
+          className="flex items-center w-full h-10 pr-3 my-2 rounded hover:bg-neutral-100 hover:text-teal-600"
           onClick={handleLogout}
-          label="خروج"
-          startIcon="material-symbols:logout-sharp"
-        />
+        >
+          <BaseIcon icon="material-symbols:logout-sharp" color="red" />
+          <Typography color="red" className="mr-3" size="body2">
+            خروج
+          </Typography>
+        </button>
         <StatusServices />
       </div>
     </div>

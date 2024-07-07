@@ -2,7 +2,7 @@
 
 import { useGet } from '@src/services/http/httpClient';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
-import { E_RULES } from '@src/services/client/rules/endpoint';
+import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { NoResult } from '@ui/molecules/NoResult';
 
@@ -18,9 +18,8 @@ const headerItem: any = {
 };
 
 export function MyRulesList() {
-  const { data, mutate, isLoading } = useGet<ResponseSwr<IMyRule[]>>(
-    E_RULES('my_rules')
-  );
+  const { data, mutate, isLoading } =
+    useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
   const checkedRulesList = useCheckRuleVersion(data?.data);
 

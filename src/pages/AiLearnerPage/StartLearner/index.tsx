@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { BaseButton } from '@ui/atoms';
 import { useState } from 'react';
-import { API_CREATE } from '@src/services/client/ai';
+import { API_CREATE_MY_LEARNER } from '@src/services/client/ai';
 import { toast } from 'react-toastify';
 import { convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
 
@@ -18,20 +18,17 @@ export function StartLearner() {
 
   const handelSubmitForm = async (dataForm: IStartLearnerValues) => {
     setLoadingButton(true);
-    await API_CREATE(
-      {
-        ...dataForm,
-        first_record_time: convertI2ToAD(
-          dataForm.first_record_time,
-          'YYYY-MM-DD'
-        ) as string | undefined,
-        last_record_time: convertI2ToAD(
-          dataForm.last_record_time,
-          'YYYY-MM-DD'
-        ) as string | undefined,
-      },
-      'my_learner'
-    )
+    await API_CREATE_MY_LEARNER({
+      ...dataForm,
+      first_record_time: convertI2ToAD(
+        dataForm.first_record_time,
+        'YYYY-MM-DD'
+      ) as string | undefined,
+      last_record_time: convertI2ToAD(
+        dataForm.last_record_time,
+        'YYYY-MM-DD'
+      ) as string | undefined,
+    })
       .then(() => {
         toast.success('با موفقیت ثبت شد.');
       })

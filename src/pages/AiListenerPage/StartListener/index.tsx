@@ -2,8 +2,9 @@ import { useForm } from 'react-hook-form';
 import { BaseButton, BaseInput } from '@ui/atoms';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { useState } from 'react';
+import { API_CREATE_MY_LISTENERS } from '@src/services/client/ai';
 import { toast } from 'react-toastify';
-import { API_CREATE } from '@src/services/client/ai';
+
 import { ProtocolDropDown } from '../ProtocolDropDown';
 import { IStartListenerValues } from './types';
 import { InterfaceDropDown } from '../InterfaceDropDown';
@@ -14,7 +15,7 @@ export function StartListener() {
 
   const handelSubmitForm = async (dataForm: IStartListenerValues) => {
     setLoadingButton(true);
-    await API_CREATE(dataForm, 'my_listeners')
+    await API_CREATE_MY_LISTENERS(dataForm)
       .then(() => {
         toast.success('با موفقیت اضافه شد.');
       })

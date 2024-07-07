@@ -6,7 +6,7 @@ import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { API_UPDATE } from '@src/services/client/ai';
+import { API_UPDATE_MY_LISTENERS } from '@src/services/client/ai';
 import { KeyedMutator } from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
 
@@ -34,13 +34,10 @@ function StopListenerIcon({ id, mutate }: any) {
 
   const handelSubmit = async () => {
     setLoading(true);
-    await API_UPDATE(
-      {
-        id,
-        is_active: false,
-      },
-      'my_listeners'
-    )
+    await API_UPDATE_MY_LISTENERS({
+      id,
+      is_active: false,
+    })
       .then(() => {
         mutate();
         toast.success('با موفقیت انجام شد.');

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { RulesCodeTemplate } from '@ui/Templates/RulesCode';
 import { useGet } from '@src/services/http/httpClient';
-import { E_RULES } from '@src/services/client/rules/endpoint';
+import { E_RULES_MY_RULES_ID } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { MyRuleDetail } from '@ui/molecules/Rules/MyRuleDetail';
@@ -13,7 +13,7 @@ export function MyRuleDetailsPage() {
   const id = slugs[3];
 
   const { data: dataMyRule, isLoading } = useGet<ResponseSwr<IMyRule>>(
-    E_RULES('my_rules', id)
+    E_RULES_MY_RULES_ID(id)
   );
 
   if (isLoading) {
