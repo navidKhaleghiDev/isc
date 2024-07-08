@@ -8,6 +8,12 @@ const meta: Meta<typeof BackButton> = {
   component: BackButton,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `This BackButton component allows navigation to the previous page.
+          `,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -16,22 +22,17 @@ const meta: Meta<typeof BackButton> = {
   args: { onClick: fn() },
   decorators: [
     (Story) => (
-      <MemoryRouter initialEntries={['/']}>
-        <Story />
-      </MemoryRouter>
+      <div dir="rtl" style={{ fontFamily: 'on' }}>
+        <MemoryRouter initialEntries={['/']}>
+          <Story />
+        </MemoryRouter>
+      </div>
     ),
   ],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-export const IconOnly: Story = {
-  args: {
-    withLabel: false,
-    backToReferrer: true,
-  },
-};
 
 export const CustomOnClick: Story = {
   args: {

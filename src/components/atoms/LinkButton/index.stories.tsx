@@ -8,35 +8,32 @@ const meta: Meta<typeof LinkButton> = {
   component: LinkButton,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `
+        This LinkButton component combines a button with a link.
+          `,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
-    link: { control: 'text' },
-    skip: { control: 'boolean' },
-    onClick: { action: 'clicked' },
-    label: { control: 'text' },
-    disabled: { control: 'boolean' },
-    submit: { control: 'boolean' },
-    className: { control: 'text' },
-    startIcon: { control: 'text' },
-    endIcon: { control: 'text' },
-    loading: { control: 'boolean' },
     size: {
       control: { type: 'select', options: ['sm', 'md', 'lg', 'xl'] },
     },
     type: {
       control: {
         type: 'select',
-        options: [
-          'default',
-          'inactive',
-          'shadow',
-          'secondary',
-          'red',
-          'tealLink',
-          'neutral',
-        ],
       },
+      options: [
+        'default',
+        'inactive',
+        'shadow',
+        'secondary',
+        'red',
+        'tealLink',
+        'neutral',
+      ],
     },
     fullWidth: { control: 'boolean' },
   },
@@ -53,9 +50,11 @@ const meta: Meta<typeof LinkButton> = {
   },
   decorators: [
     (Story) => (
-      <MemoryRouter initialEntries={['/']}>
-        <Story />
-      </MemoryRouter>
+      <div dir="rtl" style={{ fontFamily: 'on' }}>
+        <MemoryRouter initialEntries={['/']}>
+          <Story />
+        </MemoryRouter>
+      </div>
     ),
   ],
 };
@@ -66,45 +65,3 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {},
 };
-
-export const WithStartIcon: Story = {
-  args: {
-    startIcon: 'fa:home',
-  },
-};
-
-export const WithEndIcon: Story = {
-  args: {
-    endIcon: 'ph:arrow-right',
-  },
-};
-
-export const LoadingState: Story = {
-  args: {
-    loading: true,
-  },
-};
-
-export const DisabledState: Story = {
-  args: {
-    disabled: true,
-  },
-};
-
-export const SubmitType: Story = {
-  args: {
-    submit: true,
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    fullWidth: true,
-  },
-};
-
-// export const SkippedLink: Story = {
-//   args: {
-//     skip: false,
-//   },
-// };

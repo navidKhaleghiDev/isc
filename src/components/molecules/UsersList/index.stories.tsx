@@ -3,6 +3,13 @@ import { UsersList } from './index';
 
 const meta: Meta<typeof UsersList> = {
   title: 'molecules/UsersList',
+  parameters: {
+    docs: {
+      description: {
+        component: `UsersList component fetches and displays a list of users.`,
+      },
+    },
+  },
   component: UsersList,
   tags: ['autodocs'],
   decorators: [
