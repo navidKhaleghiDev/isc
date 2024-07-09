@@ -9,12 +9,20 @@ export type ToastPropsType = {
 };
 
 /**
+ * Toast Component
  *
- * @param className
- * @param status ['success', 'error', 'default']
- * @param message notification messages
- * @returns button and toast container
+ * This component renders a button to trigger toast notifications using ReactToastify library.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the Toast component.
+ * @param {string} [className] - Custom className for the container of the Toast component.
+ * @param {'success' | 'error' | 'default'} status - Status of the toast notification (success, error, default).
+ * @param {string} message - Message to be displayed in the toast notification.
+ *
+ * @returns {JSX.Element} Returns the rendered toast component.
  */
+
 export function Toast({ className, status, message }: ToastPropsType) {
   const notify = () => {
     switch (status) {

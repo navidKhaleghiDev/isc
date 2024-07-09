@@ -4,6 +4,23 @@ import { Typography } from '../Typography';
 import { notificationStyles } from './styles';
 import { INotification } from './types';
 
+/**
+ * Notification Component
+ *
+ * This component renders a notification card with an icon and title.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the Notification component.
+ * @param {string} [className] - Custom className for the notification card.
+ * @param {boolean} [outline] - Determines if the card should have an outline.
+ * @param {string} [size] - Size of the notification card (e.g., xs, sm, md, lg).
+ * @param {string} title - Title text to be displayed in the notification.
+ * @param {'error' | 'info' | 'warning'} type - Type of notification (error, info, warning).
+ *
+ * @returns {JSX.Element} Returns the rendered notification component.
+ */
+
 export function Notification({
   className,
   outline,
