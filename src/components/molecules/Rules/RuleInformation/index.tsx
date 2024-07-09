@@ -10,6 +10,23 @@ type RuleInformationProps = {
   description: string;
 };
 
+/**
+ * RuleInformation Component
+ *
+ * This component renders rule detail section in the my-product/my-rule.
+ *
+ * @component
+ *
+ * @param {RuleInformationProps} props - The props for the RuleInformation component.
+ * @param {string} [creator] - Includes the rule creator's information.
+ * @param {string} [createdDate] - Includes the rule create date information.
+ * @param {string} [updateDate] - Includes the rule update date information.
+ * @param {string} name - Include the rule name.
+ * @param {string} description - Include the rule description.
+ *
+ * @returns {JSX.Element} The returned rule information section
+ */
+
 export function RuleInformation({
   creator,
   createdDate,

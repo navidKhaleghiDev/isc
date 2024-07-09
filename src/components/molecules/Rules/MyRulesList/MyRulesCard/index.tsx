@@ -15,6 +15,22 @@ type PropsType = {
   mutateMyRulesList: () => void;
 };
 
+/**
+ * MyRulesCard Component
+ *
+ * This component renders a card displaying information about a user's rule.
+ * It includes options for viewing more details and deleting the rule.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the MyRulesCard component.
+ * @param {IMyRule} props.myRule - The rule information to be displayed in the card.
+ * @param {boolean} [props.isHeader] - Flag to indicate if the card is a header.
+ * @param {function(): void} props.mutateMyRulesList - Function to refresh the rules list after deletion.
+ *
+ * @returns {JSX.Element} The rendered MyRulesCard component.
+ */
+
 export function MyRulesCard({
   myRule,
   mutateMyRulesList,

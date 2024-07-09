@@ -1,6 +1,19 @@
 import { Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 
+/**
+ * CodeLineRule Component
+ *
+ * This component renders a card displaying a code and its order.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the CodeLineRule component.
+ * @param {SliceOrderCodeType} props.code - The code object containing order and code.
+ *
+ * @returns {JSX.Element | null} The rendered CodeLineRule component or null if order or code is missing.
+ */
+
 export function CodeLineRule({ code }: { code: SliceOrderCodeType }) {
   if (!code?.order || !code?.code) {
     return null;

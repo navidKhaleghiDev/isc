@@ -17,6 +17,17 @@ const headerItem: any = {
   },
 };
 
+/**
+ * MyRulesList Component
+ *
+ * This component fetches and displays a list of user's rules.
+ * It handles loading state, no result state, and displays each rule using MyRulesCard component.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered MyRulesList component.
+ */
+
 export function MyRulesList() {
   const { data, mutate, isLoading } =
     useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
