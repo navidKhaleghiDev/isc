@@ -10,7 +10,6 @@ export function BaseSelect(props: BaseInputProps<any>) {
     control,
     name,
     id,
-    placeholder,
     rules,
     className,
     fullWidth,
@@ -50,7 +49,6 @@ export function BaseSelect(props: BaseInputProps<any>) {
               fullWidth,
               size,
             })}
-            placeholder={placeholder}
           >
             <OptionSelect option={{ label: 'انتخاب کنید', value: '' }} />
             {[

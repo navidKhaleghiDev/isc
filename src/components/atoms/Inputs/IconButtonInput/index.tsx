@@ -17,6 +17,7 @@ export function IconButtonInput({ icon, intent, onClick }: PropsType) {
       className={iconBaseInputStyles({
         intent,
       })}
+      aria-label="button"
     >
       <BaseIcon icon={icon} className="mx-1" size="xs" />
     </button>
