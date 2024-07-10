@@ -1,7 +1,7 @@
 import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
 import { IServerResponse } from '@src/types/services';
 import useSWR from 'swr';
-import { aiEndPoint } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { LoadingSvg } from '@ui/atoms/Svgs/LoadingSvg';
 import { Typography } from '@ui/atoms';
@@ -20,7 +20,7 @@ export function SetRunTimeDate({ control, idListener }: any) {
     IServerResponse<IResponseLearningDataPeriod>
   >(
     idListener
-      ? aiEndPoint(EAiEndpoints.LEARNING_DATA_PERIOD, idListener)
+      ? aiEndpoint(EAiEndpoints.LEARNING_DATA_PERIOD, idListener)
       : null,
     http.fetcherSWR,
     {

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import useSWR from 'swr';
-import { aiEndPoint } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
 import { EAiEndpoints, IMyLearner } from '@src/services/client/ai/types';
@@ -37,7 +37,7 @@ export function AiLearnerDetailsPage() {
   const id = slugs[3];
 
   const { data, isLoading } = useSWR<IServerResponse<IMyLearner>>(
-    id ? aiEndPoint(EAiEndpoints.MY_LEANER, id) : null,
+    id ? aiEndpoint(EAiEndpoints.MY_LEANER, id) : null,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

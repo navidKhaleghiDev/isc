@@ -4,7 +4,7 @@ import { IOptionSelect } from '@ui/atoms/DropDown/type';
 import { regexPattern } from '@ui/atoms/Inputs';
 import useSWR from 'swr';
 import { ResponseSwr } from '@src/services/client/rules/types';
-import { aiEndPoint } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { memo } from 'react';
 import { EAiEndpoints } from '@src/services/client/ai/types';
@@ -20,7 +20,7 @@ export const InterfaceDropDown = memo(function InterfaceDropDown({
   withoutLabel,
 }: PropsType) {
   const { data, isLoading } = useSWR<ResponseSwr<string[]>>(
-    aiEndPoint(EAiEndpoints.INTERFACE_LIST),
+    aiEndpoint(EAiEndpoints.INTERFACE_LIST),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

@@ -4,7 +4,7 @@ import { IOptionSelect } from '@ui/atoms/DropDown/type';
 import { EAiEndpoints, IMyListeners } from '@src/services/client/ai/types';
 import { PaginationResponseSwr } from '@src/types/services';
 import useSWR from 'swr';
-import { aiEndPoint } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { persianDateNumber } from '@src/helper/utils/dateUtils';
 import { regexPattern } from '@ui/atoms/Inputs';
@@ -31,7 +31,7 @@ export function ListenerDropDown<T extends FieldValues>({
   withoutLabel,
 }: PropsType<T>) {
   const { data, isLoading } = useSWR<PaginationResponseSwr<IMyListeners[]>>(
-    aiEndPoint(EAiEndpoints.MY_LISTENER),
+    aiEndpoint(EAiEndpoints.MY_LISTENER),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

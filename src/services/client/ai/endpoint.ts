@@ -11,7 +11,7 @@ import { EAiEndpoints } from './types';
  * @returns {string} The constructed URL.
  */
 
-export const aiEndPoint = <T>(
+export const aiEndpoint = <T>(
   endpoint: EAiEndpoints,
   id?: string | number,
   filters?: Partial<T>
