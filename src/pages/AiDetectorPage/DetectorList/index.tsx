@@ -9,7 +9,7 @@ import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
-import { AiEndPoints, IMyDetector } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyDetector } from '@src/services/client/ai/types';
 import { NoResult } from '@ui/molecules/NoResult';
 
 import { IFilterDetectorValues } from './types';
@@ -39,7 +39,7 @@ export function DetectorList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyDetector[]>
   >(
-    aiEndPoint(AiEndPoints.MY_DETECTION, undefined, {
+    aiEndPoint(EAiEndpoints.MY_DETECTION, undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,

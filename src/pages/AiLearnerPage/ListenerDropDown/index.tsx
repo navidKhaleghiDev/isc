@@ -1,7 +1,7 @@
 import { Control, FieldValues, Path } from 'react-hook-form';
 import { Dropdown } from '@ui/atoms/DropDown';
 import { IOptionSelect } from '@ui/atoms/DropDown/type';
-import { AiEndPoints, IMyListeners } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyListeners } from '@src/services/client/ai/types';
 import { PaginationResponseSwr } from '@src/types/services';
 import useSWR from 'swr';
 import { aiEndPoint } from '@src/services/client/ai/endpoint';
@@ -31,7 +31,7 @@ export function ListenerDropDown<T extends FieldValues>({
   withoutLabel,
 }: PropsType<T>) {
   const { data, isLoading } = useSWR<PaginationResponseSwr<IMyListeners[]>>(
-    aiEndPoint(AiEndPoints.MY_LISTENER),
+    aiEndPoint(EAiEndpoints.MY_LISTENER),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

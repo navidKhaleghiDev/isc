@@ -10,14 +10,14 @@ import useSWR from 'swr';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IServerResponse } from '@src/types/services';
 import {
-  AiEndPoints,
+  EAiEndpoints,
   IResponseAllObjectsInfo,
 } from '@src/services/client/ai/types';
 import { LinkButton } from '@ui/atoms/LinkButton';
 
 export function AiButtonsCard() {
   const { data, isLoading } = useSWR<IServerResponse<IResponseAllObjectsInfo>>(
-    aiEndPoint(AiEndPoints.ALL_OBJECTS_INFO),
+    aiEndPoint(EAiEndpoints.ALL_OBJECTS_INFO),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

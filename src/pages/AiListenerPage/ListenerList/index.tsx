@@ -9,7 +9,7 @@ import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
-import { AiEndPoints, IMyListeners } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyListeners } from '@src/services/client/ai/types';
 import { NoResult } from '@ui/molecules/NoResult';
 
 import { IStartListenerValues } from './types';
@@ -41,7 +41,7 @@ export function ListenerList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyListeners[]>
   >(
-    aiEndPoint(AiEndPoints.MY_LISTENER, undefined, {
+    aiEndPoint(EAiEndpoints.MY_LISTENER, undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,

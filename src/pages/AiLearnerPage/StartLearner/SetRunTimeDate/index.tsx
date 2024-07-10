@@ -9,7 +9,7 @@ import {
   gregorianDateOptions,
   persianDateAndNumber,
 } from '@src/helper/utils/dateUtils';
-import { AiEndPoints } from '@src/services/client/ai/types';
+import { EAiEndpoints } from '@src/services/client/ai/types';
 
 type IResponseLearningDataPeriod = {
   first_record_time: string;
@@ -20,7 +20,7 @@ export function SetRunTimeDate({ control, idListener }: any) {
     IServerResponse<IResponseLearningDataPeriod>
   >(
     idListener
-      ? aiEndPoint(AiEndPoints.LEARNING_DATA_PERIOD, idListener)
+      ? aiEndPoint(EAiEndpoints.LEARNING_DATA_PERIOD, idListener)
       : null,
     http.fetcherSWR,
     {

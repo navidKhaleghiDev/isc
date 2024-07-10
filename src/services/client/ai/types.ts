@@ -102,7 +102,7 @@ export interface IResponseAllObjectsInfo {
   has_detectors: boolean;
 }
 
-export enum AiEndPoints {
+export enum EAiEndpoints {
   MY_LISTENER = 'my_listeners',
   MY_LEANER = 'my_learner',
   MY_DETECTION = 'my_detectioner',

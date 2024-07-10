@@ -8,7 +8,7 @@ import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
-import { AiEndPoints, IMyLearner } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyLearner } from '@src/services/client/ai/types';
 import { NoResult } from '@ui/molecules/NoResult';
 
 import { IStartListenerValues } from './types';
@@ -36,7 +36,7 @@ export function LearnerList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyLearner[]>
   >(
-    aiEndPoint(AiEndPoints.MY_LEANER, undefined, {
+    aiEndPoint(EAiEndpoints.MY_LEANER, undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       time_from: convertI2ToAD(watch('startDate'), 'YYYY-MM-DD'),

@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
-import { AiEndPoints, IMyDetector } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyDetector } from '@src/services/client/ai/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 
 import { DETECTOR_LABEL } from '../AiDetectorPage/constant';
@@ -37,7 +37,7 @@ export function AiDetectorDetailsPage() {
   const id = slugs[3];
 
   const { data, isLoading } = useSWR<IServerResponse<IMyDetector>>(
-    id ? aiEndPoint(AiEndPoints.MY_DETECTION, id) : null,
+    id ? aiEndPoint(EAiEndpoints.MY_DETECTION, id) : null,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

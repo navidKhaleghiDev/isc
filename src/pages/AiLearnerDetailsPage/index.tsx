@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
-import { AiEndPoints, IMyLearner } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyLearner } from '@src/services/client/ai/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 
 import { ChartImageLearningDiagram } from './ChartImageLearningDiagram';
@@ -37,7 +37,7 @@ export function AiLearnerDetailsPage() {
   const id = slugs[3];
 
   const { data, isLoading } = useSWR<IServerResponse<IMyLearner>>(
-    id ? aiEndPoint(AiEndPoints.MY_LEANER, id) : null,
+    id ? aiEndPoint(EAiEndpoints.MY_LEANER, id) : null,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

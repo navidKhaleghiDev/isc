@@ -7,7 +7,7 @@ import { ResponseSwr } from '@src/services/client/rules/types';
 import { aiEndPoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { memo } from 'react';
-import { AiEndPoints } from '@src/services/client/ai/types';
+import { EAiEndpoints } from '@src/services/client/ai/types';
 import { IStartListenerValues } from '../StartListener/types';
 
 type PropsType = {
@@ -20,7 +20,7 @@ export const InterfaceDropDown = memo(function InterfaceDropDown({
   withoutLabel,
 }: PropsType) {
   const { data, isLoading } = useSWR<ResponseSwr<string[]>>(
-    aiEndPoint(AiEndPoints.INTERFACE_LIST),
+    aiEndPoint(EAiEndpoints.INTERFACE_LIST),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

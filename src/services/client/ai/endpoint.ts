@@ -1,5 +1,5 @@
 import { objectToUrlParameters } from '@src/helper/utils/urlParameters';
-import { AiEndPoints } from './types';
+import { EAiEndpoints } from './types';
 
 /**
  * Constructs an AI endpoint URL based on the provided parameters.
@@ -12,7 +12,7 @@ import { AiEndPoints } from './types';
  */
 
 export const aiEndPoint = <T>(
-  endpoint: AiEndPoints,
+  endpoint: EAiEndpoints,
   id?: string | number,
   filters?: Partial<T>
 ): string => {
