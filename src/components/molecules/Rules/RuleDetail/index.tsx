@@ -13,6 +13,17 @@ import { API_ADD_RULE } from '@src/services/client/rules';
 import { RuleInformation } from '../RuleInformation';
 import { IRulePolicyListRef, RulePolicyList } from '../RulePolicyList';
 
+/**
+ * RuleDetail Component
+ *
+ * This component fetches and displays the details of a specific rule.
+ * It allows updating the rule policies and handles loading and error states.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered RuleDetail component.
+ */
+
 export function RuleDetail() {
   const { pathname } = useLocation();
   const slugs = pathname.split('/');

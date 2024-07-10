@@ -1,3 +1,13 @@
+/**
+ * CodeLineSelect Component
+ *
+ * This component renders a select & options for code action in rule list
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered a select & options.
+ */
+
 export function CodeLineSelect() {
   return (
     <select

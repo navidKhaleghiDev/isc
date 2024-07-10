@@ -8,6 +8,16 @@ import { ProductCard } from '../ProductCard';
 import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
 
+/**
+ * ProductList Component
+ *
+ * This component fetches and renders a list of products using SWR.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} Returns a component that displays a list of products.
+ */
+
 export function ProductList() {
   const { data, isLoading } = useSWR<ResponseSwr<IServerProducts[]>>(
     E_SERVER_PRODUCT_DEVICE,

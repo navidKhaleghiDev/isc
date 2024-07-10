@@ -22,6 +22,21 @@ const initAdditionalState = {
   isRemoved: false,
 };
 
+/**
+ * AdditionalList Component
+ *
+ * This component renders and manages a list of additional or modified policies for a user's rule.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the AdditionalList component.
+ * @param {function(SliceOrderCodeType[]): void} props.onAddHandler - Function to handle adding policies.
+ * @param {string} props.myRuleId - The ID of the user's rule.
+ * @param {SliceOrderCodeType[]} props.myRuleCodeList - The list of code slices for the user's rule.
+ *
+ * @returns {JSX.Element | null} The rendered AdditionalList component or null if no rule data is available.
+ */
+
 export function AdditionalList({
   onAddHandler,
   myRuleId,
@@ -53,6 +68,11 @@ export function AdditionalList({
     return null;
   }
 
+  /**
+   * Handles the addition of additional policies.
+   * @function handleOnClickAddAdditionalPolicies
+   */
+
   const handleOnClickAddAdditionalPolicies = () => {
     setIsSetAdditional(true);
     const uniqueArray: SliceOrderCodeType[] = [];
@@ -81,6 +101,13 @@ export function AdditionalList({
     });
     onAddHandler(uniqueArray);
   };
+
+  /**
+   * Handles changing the order of a code in the additional list.
+   * @function handleOnChangeOrder
+   * @param {ChangeEvent<HTMLSelectElement>} event - The change event from the select element.
+   * @param {number} index - The index of the code in the additional list.
+   */
 
   const handleOnChangeOrder = (
     { target: { value } }: ChangeEvent<HTMLSelectElement>,
