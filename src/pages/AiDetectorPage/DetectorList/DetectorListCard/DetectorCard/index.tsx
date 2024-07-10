@@ -1,12 +1,12 @@
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import stopFillIcon from '@iconify-icons/ph/stop-fill';
 import { IMyDetector } from '@src/services/client/ai/types';
+import { API_UPDATE_MY_DETECTOR } from '@src/services/client/ai';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { API_UPDATE_MY_DETECTOR } from '@src/services/client/ai';
 import { KeyedMutator } from 'swr';
 import moreIcon from '@iconify-icons/ph/dots-three-outline-vertical-fill';
 

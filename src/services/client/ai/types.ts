@@ -101,3 +101,13 @@ export interface IResponseAllObjectsInfo {
   has_learner: boolean;
   has_detectors: boolean;
 }
+
+export enum EAiEndpoints {
+  MY_LISTENER = 'my_listeners',
+  MY_LEANER = 'my_learner',
+  MY_DETECTION = 'my_detectioner',
+  ALL_OBJECTS_INFO = 'all_objects_info',
+  INTERFACE_LIST = 'interfaces_list',
+  LEARNING_DATA_PERIOD = 'learning_data_period',
+  MODEL_LEARNING_DIAGRAM = 'model_learning_diagram',
+}

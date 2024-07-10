@@ -1,4 +1,7 @@
-import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
+export enum EIpType {
+  EXTERNAL = 'External',
+  INTERNAL = 'Internal',
+}
 
 export interface IResponseRules {
   count: number;
@@ -91,6 +94,5 @@ export interface IRulesLogs {
   created_at: string;
   updated_at: string;
   log_server_host: string;
-
   log_server_port: number;
 }

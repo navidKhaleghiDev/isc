@@ -3,12 +3,12 @@ import { Typography } from '@ui/atoms';
 import { DatePicker, convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
 import useSWR from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
-import { E_AI_MY_LEARNER_PAGINATION } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
-import { IMyLearner } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyLearner } from '@src/services/client/ai/types';
 import { NoResult } from '@ui/molecules/NoResult';
 
 import { IStartListenerValues } from './types';
@@ -36,7 +36,7 @@ export function LearnerList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyLearner[]>
   >(
-    E_AI_MY_LEARNER_PAGINATION({
+    aiEndpoint(EAiEndpoints.MY_LEANER, undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       time_from: convertI2ToAD(watch('startDate'), 'YYYY-MM-DD'),

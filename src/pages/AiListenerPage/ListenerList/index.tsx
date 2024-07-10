@@ -4,12 +4,12 @@ import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { convertI2ToAD, DatePicker } from '@ui/atoms/Inputs/DatePicker';
 import useSWR from 'swr';
 import { PaginationResponseSwr } from '@src/types/services';
-import { E_AI_MY_LISTENERS_PAGINATION } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { useForm } from 'react-hook-form';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
-import { IMyListeners } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyListeners } from '@src/services/client/ai/types';
 import { NoResult } from '@ui/molecules/NoResult';
 
 import { IStartListenerValues } from './types';
@@ -41,7 +41,7 @@ export function ListenerList() {
   const { data, isLoading, mutate } = useSWR<
     PaginationResponseSwr<IMyListeners[]>
   >(
-    E_AI_MY_LISTENERS_PAGINATION({
+    aiEndpoint(EAiEndpoints.MY_LISTENER, undefined, {
       page: currentPage,
       pageSize: LIMIT_MU_LISTENER_LIST,
       search,

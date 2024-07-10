@@ -2,43 +2,41 @@ import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
 
 import {
-  E_AI_MY_LISTENERS,
-  E_AI_UPDATE_MY_LISTENERS,
-  E_AI_MY_LEARNER,
-  E_AI_MY_DETECTOR,
-  E_AI_UPDATE_MY_DETECTOR,
-} from './endpoint';
-import {
   IBodyCreateMyLearner,
   IBodyCreateMyListeners,
   IBodyUpdateMyListeners,
   IBodyCreateMyDetector,
   IBodyUpdateMyMyDetector,
+  EAiEndpoints,
 } from './types';
+import { aiEndpoint } from './endpoint';
 
 export const API_CREATE_MY_LISTENERS = (body: IBodyCreateMyListeners) =>
   http.post<IBodyCreateMyListeners, IServerResponse<any>>(
-    E_AI_MY_LISTENERS,
+    aiEndpoint(EAiEndpoints.MY_LISTENER),
     body
   );
 
 export const API_CREATE_MY_DETECTOR = (body: IBodyCreateMyDetector) =>
   http.post<IBodyCreateMyDetector, IServerResponse<any>>(
-    E_AI_MY_DETECTOR,
+    aiEndpoint(EAiEndpoints.MY_DETECTION),
     body
   );
 
 export const API_UPDATE_MY_DETECTOR = (body: IBodyUpdateMyMyDetector) =>
   http.patch<IBodyUpdateMyMyDetector, IServerResponse<any>>(
-    E_AI_UPDATE_MY_DETECTOR(body?.id),
+    aiEndpoint(EAiEndpoints.MY_DETECTION, body?.id),
     body
   );
 
 export const API_UPDATE_MY_LISTENERS = (body: IBodyUpdateMyListeners) =>
   http.patch<IBodyUpdateMyListeners, IServerResponse<any>>(
-    E_AI_UPDATE_MY_LISTENERS(body?.id),
+    aiEndpoint(EAiEndpoints.MY_LISTENER, body?.id),
     body
   );
 
 export const API_CREATE_MY_LEARNER = (body: IBodyCreateMyLearner) =>
-  http.post<IBodyCreateMyLearner, IServerResponse<any>>(E_AI_MY_LEARNER, body);
+  http.post<IBodyCreateMyLearner, IServerResponse<any>>(
+    aiEndpoint(EAiEndpoints.MY_LEANER),
+    body
+  );

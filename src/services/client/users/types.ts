@@ -5,15 +5,6 @@ export interface IBodyUsersLogin {
   password: string;
 }
 
-export interface IBodyAddUser {
-  first_name: string;
-  last_name: string;
-  // date_joined: string;
-  email: string;
-  is_admin: boolean;
-  password: string;
-  is_analyser: string;
-}
 export interface IUser {
   id?: string;
   device_serial: string;
@@ -31,6 +22,14 @@ export interface IUser {
   is_analyser: boolean;
   groups: string[];
   user_permissions: string[];
+}
+
+export interface IBodyAddUser
+  extends Pick<
+    IUser,
+    'first_name' | 'last_name' | 'email' | 'is_admin' | 'password'
+  > {
+  is_analyser: string;
 }
 
 export interface IProduct {
