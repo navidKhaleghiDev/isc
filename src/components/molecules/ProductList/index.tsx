@@ -5,17 +5,19 @@ import { ResponseSwr } from '@src/services/client/rules/types';
 
 import { IServerProducts } from '@src/services/server/products/types';
 import { ProductCard } from '../ProductCard';
+import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
 
 export function ProductList() {
-  const { data } = useSWR<ResponseSwr<IServerProducts[]>>(
+  const { data, isLoading } = useSWR<ResponseSwr<IServerProducts[]>>(
     E_SERVER_PRODUCT_DEVICE,
-    fetcherServer,
-    { suspense: true }
+    fetcherServer
   );
   const listProduct = data?.data ?? [];
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <div>
       {listProduct.length > 0 ? (
         listProduct.map((item) => <ProductCard key={item.id} item={item} />)
