@@ -1,8 +1,11 @@
+import { Suspense } from 'react';
 import { useUserContext } from '@context/user/userContext';
 import {
   persianDayLabel,
   persianDateAndNumber,
 } from '@src/helper/utils/dateUtils';
+import { LoadingSpinner } from '@ui/molecules/Loading';
+
 // import { Card, Typography, Notification } from '@ui/atoms';
 import { BoxDashboard } from './BoxDashboard';
 import { ProductBox } from './ProductBox';
@@ -37,7 +40,9 @@ export function DashboardPage() {
           description="1.0.1"
         />
       </div>
-      <ProductBox />
+      <Suspense fallback={<LoadingSpinner centerParent />}>
+        <ProductBox />
+      </Suspense>
       {/* <div className="mt-auto">
         <Typography className="mb-2" size="h5" color="teal">
           اعلان ها

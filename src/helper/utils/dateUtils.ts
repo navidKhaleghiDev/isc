@@ -77,6 +77,19 @@ export function gregorianDateNumber(date?: string) {
   return today.toLocaleDateString('en');
 }
 
+/**
+ * Formats a given date or the current date into Persian date format.
+ *
+ * @function
+ * @param {string} [date] - The date string to be formatted. If not provided, the current date will be used.
+ * @param {Intl.DateTimeFormatOptions} [option] - Optional date formatting options to customize the output.
+ * @returns {string} - The formatted date string in Persian locale.
+ *
+ * @example
+ * // Returns the current date in Persian format, e.g., "۲۴ خرداد ۱۴۰۲"
+ * const formattedDate = persianDateAndNumber();
+ */
+
 export function persianDateAndNumber(
   date?: string,
   option?: Intl.DateTimeFormatOptions
