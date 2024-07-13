@@ -40,6 +40,16 @@ import { IconButtonInput } from '../IconButtonInput';
 //   return gregorianDate.format(format ?? 'YYYY-MM-DD hh:mm:ss');
 // }
 
+/**
+ * Converts an Islamic calendar date or an array of such dates to Gregorian calendar format.
+ *
+ * @param {DateObject | DateObject[] | undefined} [i2Date] - The Islamic calendar date(s) to convert. If undefined, the function returns undefined.
+ * @param {string} [format='YYYY-MM-DD hh:mm:ss'] - The format string for the output date. Defaults to 'YYYY-MM-DD hh:mm:ss'.
+ *
+ * @returns {string | string[] | undefined} - The converted Gregorian date as a string, an array of such strings, or undefined if the input is undefined.
+ *
+ */
+
 export function convertI2ToAD(
   i2Date?: DateObject | DateObject[] | undefined,
   format = 'YYYY-MM-DD hh:mm:ss'
@@ -55,6 +65,29 @@ export function convertI2ToAD(
   return Array.isArray(i2Date) ? i2Date.map(convertDate) : convertDate(i2Date);
 }
 
+/**
+ * DatePicker component that integrates with react-hook-form.
+ * It provides a customizable date picker with optional time selection.
+ *
+ * @param {DatePickerProps} props - The properties for the DatePicker component.
+ * @param {object} props.control - The control object from react-hook-form.
+ * @param {string} props.name - The name of the field in the form.
+ * @param {string} props.id - The id for the date picker element.
+ * @param {string} [props.placeholder] - The placeholder text for the date picker.
+ * @param {object} [props.rules] - The validation rules for the date picker.
+ * @param {boolean} [props.fullWidth=false] - Whether the date picker should take the full width of its container.
+ * @param {any} [props.defaultValue] - The default value for the date picker.
+ * @param {'default' | 'error'} [props.intent] - The intent state of the date picker, determining its styling.
+ * @param {string} [props.label] - The label for the date picker.
+ * @param {boolean} [props.hiddenError] - Whether to hide the error message.
+ * @param {string} [props.className] - Additional class names for styling the date picker.
+ * @param {Date} [props.maxDate] - The maximum selectable date.
+ * @param {Date} [props.minDate] - The minimum selectable date.
+ * @param {boolean} [props.showTimePicker=false] - Whether to show the time picker.
+ * @param {string} [props.format='YYYY/MM/DD'] - The date format.
+ *
+ * @returns {JSX.Element} The rendered date picker component.
+ */
 export const DatePicker = memo(function DatePicker({
   control,
   name,

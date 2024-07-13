@@ -13,6 +13,27 @@ const initState = {
   openOptions: false,
 };
 
+/**
+ * Dropdown component that integrates with react-hook-form.
+ * It provides a customizable dropdown/select input with loading state and validation.
+ *
+ * @template T - The type of the form values.
+ * @param {DropdownProps<T>} props - The properties for the dropdown component.
+ * @param {Array<IOptionSelect>} props.options - The list of options to display in the dropdown.
+ * @param {boolean} props.fullWidth - Whether the dropdown should take the full width of its container.
+ * @param {string} props.placeHolder - The placeholder text to display when no option is selected.
+ * @param {object} [props.rules] - The validation rules for the dropdown.
+ * @param {object} props.control - The control object from react-hook-form.
+ * @param {string} props.name - The name of the field in the form.
+ * @param {any} [props.defaultValue] - The default value for the dropdown.
+ * @param {string} [props.className] - Additional class names for styling the dropdown.
+ * @param {string} [props.label] - The label to display above the dropdown.
+ * @param {boolean} [props.loading] - Whether to display a loading spinner instead of the options.
+ * @param {boolean} [props.leftLabel] - Whether to align the option labels to the left.
+ *
+ * @returns {JSX.Element} The rendered dropdown component.
+ */
+
 export function Dropdown<T extends FieldValues>({
   options,
   fullWidth,
