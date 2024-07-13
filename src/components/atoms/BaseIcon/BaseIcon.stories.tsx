@@ -70,6 +70,36 @@ const meta = {
 export default meta;
 
 /**
+ * This function uses the custom IconListStorybook component to display a consolidated list of icons.
+ * @param args {color, size, hoverColor, className}
+ * @returns
+ */
+export function ListIcon({
+  color,
+  size,
+  hoverColor,
+  className,
+}: Omit<IIconListStorybook, 'icons'>) {
+  const iconValue = Object.values(iconOptions);
+  return (
+    <IconListStorybook
+      icons={iconValue}
+      color={color}
+      size={size}
+      hoverColor={hoverColor}
+      className={className}
+    />
+  );
+}
+
+ListIcon.args = {
+  color: 'teal',
+  size: 'xxxl',
+  hoverColor: 'default',
+  className: '',
+};
+
+/**
  * This function is defined by default to pass these properties to the main component.
  * @param args {icon, color, size, hoverColor, className}
  * @returns
@@ -95,62 +125,6 @@ export function Default({
 
 Default.args = {
   icon: 'User',
-  color: 'teal',
-  size: 'xxxl',
-  hoverColor: 'default',
-  className: '',
-};
-
-/**
- * The "user" icon is chosen as a sample from the available icons in the project.
- * @param args {icon, color, size, hoverColor, className}
- * @returns
- */
-export function User({ icon, color, size, hoverColor, className }: IBaseIcon) {
-  const iconValue = iconOptions[icon as keyof typeof iconOptions];
-  return (
-    <BaseIcon
-      icon={iconValue}
-      color={color}
-      size={size}
-      hoverColor={hoverColor}
-      className={className}
-    />
-  );
-}
-
-User.args = {
-  icon: 'User',
-  color: 'teal',
-  size: 'xxxl',
-  hoverColor: 'default',
-  className: '',
-};
-
-/**
- * This function uses the custom IconListStorybook component to display a consolidated list of icons.
- * @param args {color, size, hoverColor, className}
- * @returns
- */
-export function ListIcon({
-  color,
-  size,
-  hoverColor,
-  className,
-}: Omit<IIconListStorybook, 'icons'>) {
-  const iconValue = Object.values(iconOptions);
-  return (
-    <IconListStorybook
-      icons={iconValue}
-      color={color}
-      size={size}
-      hoverColor={hoverColor}
-      className={className}
-    />
-  );
-}
-
-ListIcon.args = {
   color: 'teal',
   size: 'xxxl',
   hoverColor: 'default',
