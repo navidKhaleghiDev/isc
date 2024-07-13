@@ -22,7 +22,7 @@ export const typographyStyles = cva('', {
       body2: SIZE.TYPOGRAPHY.BODY2,
       body3: SIZE.TYPOGRAPHY.BODY3,
       body4: SIZE.TYPOGRAPHY.BODY4,
-      caption: SIZE.TYPOGRAPHY.CAPTION,
+      caption: SIZE.TYPOGRAPHY.BODY6,
     },
     weight: {
       light: 'font-light',
