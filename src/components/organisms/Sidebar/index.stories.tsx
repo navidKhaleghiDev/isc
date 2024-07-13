@@ -7,6 +7,11 @@ const meta: Meta<typeof SideBar> = {
   title: 'organisms/SideBar',
   parameters: {
     Layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'Sidebar',
+      },
+    },
   },
   component: SideBar,
   tags: ['autodocs'],
