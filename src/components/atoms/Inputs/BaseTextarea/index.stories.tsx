@@ -12,7 +12,13 @@ const meta: Meta<typeof BaseTextarea> = {
   component: BaseTextarea,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'BaseTextArea',
+      },
+    },
   },
+
   tags: ['autodocs'],
   args: {
     name: 'textArea',
@@ -20,6 +26,23 @@ const meta: Meta<typeof BaseTextarea> = {
     placeholder: 'متن خود را وارد کنید',
     className: 'border-2 border-cyan-600',
   },
+  render: (args) => (
+    <BaseTextarea
+      name={args.name}
+      id={args.id}
+      placeholder={args.placeholder}
+      label={args.label}
+      intent={args.intent}
+      size={args.size}
+      control={args.control}
+      className={args.className}
+      defaultValue={args.defaultValue}
+      fullWidth={args.fullWidth}
+      hiddenError={args.hiddenError}
+      rules={args.rules}
+      setError={args.setError}
+    />
+  ),
   // Adding font family
   decorators: [
     (Story) => (
@@ -34,7 +57,19 @@ const meta: Meta<typeof BaseTextarea> = {
 // control of useForm hook
 const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
   function RenderBaseTextarea(args) {
-    const { id, name, placeholder, intent } = args;
+    const {
+      id,
+      name,
+      placeholder,
+      intent,
+      defaultValue,
+      fullWidth,
+      size,
+      label,
+      rules,
+      hiddenError,
+      setError,
+    } = args;
     const { control } = useForm();
 
     return (
@@ -44,6 +79,14 @@ const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
         name={name}
         placeholder={placeholder}
         intent={intent}
+        label={label}
+        size={size}
+        className={args.className}
+        defaultValue={defaultValue}
+        fullWidth={fullWidth}
+        hiddenError={hiddenError}
+        rules={rules}
+        setError={setError}
       />
     );
   };
@@ -56,56 +99,6 @@ export const textInputDefault: StoryBaseTextarea = {
     name: 'userMessage',
     placeholder: 'متن خود را وارد  کنید',
     intent: 'default',
-  },
-};
-
-export const textInputError: StoryBaseTextarea = {
-  render: renderBaseTextarea,
-  args: {
-    id: 'userMassage',
-    name: 'userMessage',
-    placeholder: 'متن خود را وارد  کنید',
-    intent: 'error',
-  },
-};
-
-export const textInputSm: StoryBaseTextarea = {
-  render: renderBaseTextarea,
-  args: {
-    id: 'userMassage',
-    name: 'userMessage',
-    placeholder: 'متن خود را وارد  کنید',
-    size: 'sm',
-  },
-};
-
-export const textInputMe: StoryBaseTextarea = {
-  render: renderBaseTextarea,
-  args: {
-    id: 'userMassage',
-    name: 'userMessage',
-    placeholder: 'متن خود را وارد  کنید',
-    size: 'md',
-  },
-};
-
-export const textInputLg: StoryBaseTextarea = {
-  render: renderBaseTextarea,
-  args: {
-    id: 'userMassage',
-    name: 'userMessage',
-    placeholder: 'متن خود را وارد  کنید',
-    size: 'lg',
-  },
-};
-
-export const textInputXl: StoryBaseTextarea = {
-  render: renderBaseTextarea,
-  args: {
-    id: 'userMassage',
-    name: 'userMessage',
-    placeholder: 'متن خود را وارد  کنید',
-    size: 'xl',
   },
 };
 

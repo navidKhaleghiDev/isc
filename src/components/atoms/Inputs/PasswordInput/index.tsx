@@ -3,6 +3,17 @@ import { useState } from 'react';
 import { BaseInputProps } from '../types';
 import { regexPattern } from '../utils/regexPattern';
 
+/**
+ * PasswordInput component for handling password input fields with show/hide functionality.
+ *
+ * @param {object} props - The properties for the PasswordInput component.
+ * @param {string} props.name - The name attribute for the input field.
+ * @param {object} props.control - The control object from react-hook-form.
+ * @param {string} [props.label] - The label for the input field.
+ * @param {string} [props.placeholder] - The placeholder text for the input field.
+ *
+ */
+
 export function PasswordInput({
   name,
   control,

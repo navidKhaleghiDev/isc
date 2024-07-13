@@ -5,6 +5,28 @@ import { baseInputStyles } from '../styles';
 import { Typography } from '../../Typography';
 import { IOptionSelect, OptionSelect } from './OptionSelect';
 
+/**
+ * BaseSelect component that integrates with react-hook-form.
+ * It provides a customizable select (dropdown) field with validation and error handling.
+ *
+ * @template T - The type of the form values.
+ * @param {BaseInputProps<T>} props - The properties for the select component.
+ * @param {object} props.control - The control object from react-hook-form.
+ * @param {string} props.name - The name of the field in the form.
+ * @param {string} props.id - The id for the select element.
+ * @param {object} [props.rules] - The validation rules for the select.
+ * @param {string} [props.className] - Additional class names for styling the select.
+ * @param {boolean} [props.fullWidth] - Whether the select should take the full width of its container.
+ * @param {any} [props.defaultValue] - The default value for the select.
+ * @param {React.ReactNode} [props.startIcon] - Icon to display at the start of the select.
+ * @param {React.ReactNode} [props.endIcon] - Icon to display at the end of the select.
+ * @param {'default' | 'error'} [props.intent] - The intent state of the select, determining its styling.
+ * @param {'sm' | 'md' | 'lg'} [props.size] - The size of the select.
+ * @param {boolean} [props.hiddenError] - Whether to hide the error message.
+ *
+ * @returns {JSX.Element} The rendered select component.
+ */
+
 export function BaseSelect(props: BaseInputProps<any>) {
   const {
     control,
