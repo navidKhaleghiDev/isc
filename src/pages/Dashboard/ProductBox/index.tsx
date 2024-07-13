@@ -2,6 +2,7 @@ import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { useGet } from '@src/services/http/httpClient';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { Card, Typography, Notification } from '@ui/atoms';
+import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IProduct, ResponseSwr } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
@@ -10,9 +11,8 @@ import { CardImage } from '@ui/atoms/BaseImage';
 
 function ProductBoxCp() {
   const { user } = useUserContext();
-  const { data, error } = useGet<ResponseSwr<IProduct>>(
-    user?.device_serial ? E_USERS_PRODUCT : null,
-    { suspense: true }
+  const { data, isLoading, error } = useGet<ResponseSwr<IProduct>>(
+    user?.device_serial ? E_USERS_PRODUCT : null
   );
   const product = data?.data;
   if (!user?.is_authenticated || !user?.device_serial) {
@@ -34,7 +34,9 @@ function ProductBoxCp() {
     );
   }
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="grid grid-cols-3 gap-6 mb-16">
       <div className="flex flex-col justify-between col-span-2 h-full">
         <Card color="neutral" className="flex justify-end items-center">
