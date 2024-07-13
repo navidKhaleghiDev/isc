@@ -7,6 +7,22 @@ type PropsType = {
   id: string;
 };
 
+/**
+ * CodeLineSelect Component
+ *
+ * This component renders a select & options for code action in rule list
+ *
+ * @component
+ *
+ * @param {PropsType} props - The props for the CodeLineSelect component.
+ * @param {string} value - Includes value for display to selected option
+ * @param {(e: ChangeEvent<HTMLSelectElement>) => void} onChange - handler change function
+ * @param {string} [className] - Set custom className
+ * @param {string} id - id for changed management
+ *
+ * @returns {JSX.Element} The rendered a select & options.
+ */
+
 export function CodeLineSelect({ value, onChange, className, id }: PropsType) {
   return (
     <select

@@ -8,7 +8,26 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+/**
+ * Props for RulesCard component.
+ *
+ * @typedef {Object} PropsType
+ * @property {IRules} rule - The rule object to display.
+ */
+
 type PropsType = { rule: IRules };
+
+/**
+ * RulesCard Component
+ *
+ * This component displays a rule card with options to view details and add the rule.
+ *
+ * @component
+ *
+ * @param {PropsType} props - Props for RulesCard component.
+ *
+ * @returns {JSX.Element} The rendered RulesCard component.
+ */
 
 export function RulesCard({ rule }: PropsType) {
   const [openModal, setOpenModal] = useState(false);

@@ -3,6 +3,22 @@ import { BaseIcon } from '@ui/atoms';
 import { AccordionProps } from './types';
 import { titleStyles, contentStyles } from './styles';
 
+/**
+ * This Accordion component allows for expandable and collapsible content sections.
+ * It takes a title and content, and toggles the display of the content when the title is clicked.
+ *
+ * @component
+ *
+ * @param {Object} props - The properties for the accordion component.
+ * @param {string} props.title - The title of the accordion.
+ * @param {string} props.id - The unique identifier for the accordion.
+ * @param {React.ReactNode} props.content - The content to display inside the accordion.
+ * @param {string} props.classNameTittle - Additional class names for the title.
+ * @param {string} props.classNameContent - Additional class names for the content.
+ *
+ * @returns {JSX.Element} The accordion component.
+ */
+
 export function Accordion({
   title,
   id,

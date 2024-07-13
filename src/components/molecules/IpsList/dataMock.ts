@@ -1,5 +1,4 @@
-import { IIp } from '@src/services/client/rules/types';
-import { EIpType } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
+import { IIp, EIpType } from '@src/services/client/rules/types';
 
 export const IpsListData: IIp[] = [
   {

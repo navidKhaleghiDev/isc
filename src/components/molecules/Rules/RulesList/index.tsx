@@ -17,12 +17,32 @@ import { NoResult } from '@ui/molecules/NoResult';
 
 import { RulesCard } from './RulesCard';
 
+/**
+ * Props for RulesList component.
+ *
+ * @typedef {Object} PropsType
+ * @property {ButtonState} buttonState - The state of the button indicating which rules to fetch (all or suggest).
+ * @property {string} searchValue - The search value to filter the rules.
+ */
+
 type PropsType = {
   buttonState: ButtonState;
   searchValue: string;
 };
 
 const LIMIT_RULES_LIST = 8;
+
+/**
+ * RulesList Component
+ *
+ * This component displays a list of rules with pagination and search functionality.
+ *
+ * @component
+ *
+ * @param {PropsType} props - Props for RulesList component.
+ *
+ * @returns {JSX.Element} The rendered RulesList component.
+ */
 
 export function RulesList({ buttonState, searchValue }: PropsType) {
   const { user } = useUserContext();

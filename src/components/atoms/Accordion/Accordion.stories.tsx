@@ -7,6 +7,13 @@ const meta: Meta<typeof Accordion> = {
   component: Accordion,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `
+          This Accordion component allows for expandable and collapsible content sections.
+          `,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

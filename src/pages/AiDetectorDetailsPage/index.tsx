@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import useSWR from 'swr';
-import { E_AI_MY_DETECTOR_RETRIEVE } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { IServerResponse } from '@src/types/services';
-import { IMyDetector } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyDetector } from '@src/services/client/ai/types';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 
 import { DETECTOR_LABEL } from '../AiDetectorPage/constant';
@@ -37,7 +37,7 @@ export function AiDetectorDetailsPage() {
   const id = slugs[3];
 
   const { data, isLoading } = useSWR<IServerResponse<IMyDetector>>(
-    id ? E_AI_MY_DETECTOR_RETRIEVE(id) : null,
+    id ? aiEndpoint(EAiEndpoints.MY_DETECTION, id) : null,
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

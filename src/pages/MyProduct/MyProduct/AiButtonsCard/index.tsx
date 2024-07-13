@@ -4,17 +4,20 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import numberOne from '@iconify-icons/ph/number-one';
 import numberTwo from '@iconify-icons/ph/number-two';
 import numberThree from '@iconify-icons/ph/number-three';
-import { E_AI_ALL_OBJECTS_INFO } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import useSWR from 'swr';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IServerResponse } from '@src/types/services';
-import { IResponseAllObjectsInfo } from '@src/services/client/ai/types';
+import {
+  EAiEndpoints,
+  IResponseAllObjectsInfo,
+} from '@src/services/client/ai/types';
 import { LinkButton } from '@ui/atoms/LinkButton';
 
 export function AiButtonsCard() {
   const { data, isLoading } = useSWR<IServerResponse<IResponseAllObjectsInfo>>(
-    E_AI_ALL_OBJECTS_INFO,
+    aiEndpoint(EAiEndpoints.ALL_OBJECTS_INFO),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

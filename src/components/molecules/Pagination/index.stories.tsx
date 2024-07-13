@@ -7,6 +7,11 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `This IconButton component renders a button with an icon.`,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -39,27 +44,6 @@ export const FirstPage: Story = {
 export const LastPage: Story = {
   args: {
     currentPage: 5,
-    totalPages: 5,
-  },
-};
-
-export const MiddlePage: Story = {
-  args: {
-    currentPage: 3,
-    totalPages: 7,
-  },
-};
-
-export const MobileTablet: Story = {
-  args: {
-    currentPage: 3,
-    totalPages: 3,
-  },
-};
-
-export const Desktop: Story = {
-  args: {
-    currentPage: 1,
     totalPages: 5,
   },
 };

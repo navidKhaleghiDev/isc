@@ -1,9 +1,9 @@
 import { ContainerDashboard } from '@ui/Templates/ContainerDashboard';
 import { PaginationResponseSwr } from '@src/types/services';
-import { IMyListeners } from '@src/services/client/ai/types';
+import { EAiEndpoints, IMyListeners } from '@src/services/client/ai/types';
 import useSWR from 'swr';
 import { PageBackButton } from '@ui/atoms/BackButton';
-import { E_AI_MY_LISTENERS } from '@src/services/client/ai/endpoint';
+import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { Notification, Typography } from '@ui/atoms';
@@ -15,7 +15,7 @@ import { LearnerList } from './LearnerList';
 
 export function AiLearnerPage() {
   const { data, isLoading } = useSWR<PaginationResponseSwr<IMyListeners[]>>(
-    E_AI_MY_LISTENERS,
+    aiEndpoint(EAiEndpoints.MY_LISTENER),
     http.fetcherSWR,
     {
       revalidateOnFocus: false,

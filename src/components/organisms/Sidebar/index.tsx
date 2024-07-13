@@ -1,14 +1,25 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { Typography } from '@ui/atoms/Typography';
-import { BaseIcon } from '@ui/atoms/BaseIcon';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { INavigation, navigationSideBar } from './navigation';
+import { BaseIcon, Typography } from '@ui/atoms';
+import { navigationSideBar } from './navigation';
+import { INavigation } from './types';
 import { MenuItemAccordion } from './MenuItemAccordion';
 import { MenuItem } from './MenuItem';
 import { StatusServices } from './StatusServices';
+
+/**
+ * SideBar Component
+ *
+ * This component renders the sidebar navigation menu, including menu items, accordions for mean items that has children ,
+ * and a logout button. It also shows the status of services.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered sidebar component.
+ */
 
 export function SideBar() {
   const { pathname } = useLocation();

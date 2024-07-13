@@ -8,6 +8,17 @@ import { Modal } from '@ui/molecules/Modal';
 import { CodeLine } from '@ui/molecules/Rules/MyRuleDetail/CodeLine';
 import { CodeLineSelect } from '@ui/molecules/Rules/MyRuleDetail/CodeLine/CodeLineSelect';
 
+/**
+ * Props for RulePolicyList component.
+ *
+ * @typedef {Object} RulePolicyListProps
+ * @property {() => void} [onDeleteRule] - Function to handle rule deletion.
+ * @property {() => void} onRegisterRule - Function to handle rule registration.
+ * @property {SliceOrderCodeType[]} codeList - List of code slices.
+ * @property {(codeList: SliceOrderCodeType[]) => void} setCodeList - Function to update the code list.
+ * @property {number} countDifferenceOrder - Count of order differences.
+ */
+
 type RulePolicyListProps = {
   onDeleteRule?: () => void;
   onRegisterRule: () => void;
@@ -16,15 +27,45 @@ type RulePolicyListProps = {
   countDifferenceOrder: number;
 };
 
+/**
+ * Loading state for modals.
+ *
+ * @typedef {Object} ModalsLoadingType
+ * @property {boolean} deleteButton - Loading state for delete button.
+ * @property {boolean} editButton - Loading state for edit button.
+ */
 type ModalsLoadingType = {
   deleteButton: boolean;
   editButton: boolean;
 };
+
+/**
+ * Reference interface for RulePolicyList.
+ *
+ * @typedef {Object} IRulePolicyListRef
+ * @property {(values: ModalsLoadingType) => void} setModalsLoadingParent - Set loading state for modals.
+ * @property {() => void} toggleModalEdit - Toggle edit modal visibility.
+ * @property {() => void} toggleModalDelete - Toggle delete modal visibility.
+ */
+
 export interface IRulePolicyListRef {
   setModalsLoadingParent: (values: ModalsLoadingType) => void;
   toggleModalEdit: () => void;
   toggleModalDelete: () => void;
 }
+
+/**
+ * RulePolicyList Component
+ *
+ * This component displays a list of rule policies and allows editing and deleting them.
+ *
+ * @component
+ *
+ * @param {RulePolicyListProps} props - Props for RulePolicyList component.
+ * @param {React.Ref<IRulePolicyListRef>} ref - Reference for the component.
+ *
+ * @returns {JSX.Element} The rendered RulePolicyList component.
+ */
 
 function RulePolicyListCp(
   {

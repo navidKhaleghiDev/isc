@@ -1,6 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
-
-import { INavigation } from '../navigation';
+import { INavigation } from '../types';
 import { menuItemStyles } from '../MenuItem/styles';
 
 export interface IMenuItemAccordion

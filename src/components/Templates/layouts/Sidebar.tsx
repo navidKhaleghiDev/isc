@@ -5,10 +5,8 @@ import { BaseIcon, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { MenuItem } from '@ui/organisms/Sidebar/MenuItem';
 import { MenuItemAccordion } from '@ui/organisms/Sidebar/MenuItemAccordion';
-import {
-  INavigation,
-  navigationSideBar,
-} from '@ui/organisms/Sidebar/navigation';
+import { navigationSideBar } from '@ui/organisms/Sidebar/navigation';
+import { INavigation } from '@ui/organisms/Sidebar/types';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 

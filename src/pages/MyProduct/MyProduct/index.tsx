@@ -19,6 +19,17 @@ import { AiButtonsCard } from './AiButtonsCard';
 interface PropsType extends PropsWithChildren {
   className?: string;
 }
+
+/**
+ * GridMyProduct component creates a grid layout for displaying children elements.
+ *
+ * @component
+ * @param {Object} props - The properties for the GridMyProduct component.
+ * @param {React.ReactNode} props.children - The elements to be displayed within the grid.
+ * @param {string} [props.className] - Additional class names for custom styling.
+ * @returns {JSX.Element} The GridMyProduct component.
+ */
+
 function GridMyProduct({ children, className }: PropsType) {
   return (
     <div className={`grid grid-cols-3 gap-5 ${className}`}>{children}</div>

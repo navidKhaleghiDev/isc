@@ -18,6 +18,19 @@ type MyRulePoliciesProps = {
   myRule: IMyRule;
 };
 
+/**
+ * MyRulePolicies Component
+ *
+ * This component renders and manages a user's rule policies, providing functionalities to delete and update rules.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the MyRulePolicies component.
+ * @param {IMyRule} props.myRule - The rule object containing rule details.
+ *
+ * @returns {JSX.Element} The rendered MyRulePolicies component.
+ */
+
 export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
   const navigate = useNavigate();
   const slicedCodeList: SliceOrderCodeType[] = getCodeList(myRule?.rule_code);
@@ -39,6 +52,13 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
     !!slicedCodeList.length && !!codeList.length
       ? getCountDifferenceOrder(slicedCodeList, codeList)
       : 0;
+
+  /**
+   * Deletes the user's rule and updates the state.
+   * @async
+   * @function handleDeleteMyRule
+   * @returns {Promise<void>}
+   */
 
   const handleDeleteMyRule = async () => {
     rulePolicyListRef?.current?.setModalsLoadingParent({
@@ -64,6 +84,13 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         rulePolicyListRef?.current?.toggleModalDelete();
       });
   };
+
+  /**
+   * Updates the user's rule and updates the state.
+   * @async
+   * @function handleAddMyRule
+   * @returns {Promise<void>}
+   */
 
   const handleAddMyRule = async () => {
     rulePolicyListRef?.current?.setModalsLoadingParent({
@@ -95,6 +122,12 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         rulePolicyListRef?.current?.toggleModalEdit();
       });
   };
+
+  /**
+   * Handles adding a new rule to the code list.
+   * @function addHandler
+   * @param {SliceOrderCodeType[]} additional - The new codes to be added.
+   */
 
   const addHandler = (additional: SliceOrderCodeType[]) => {
     setCodeList(additional);
