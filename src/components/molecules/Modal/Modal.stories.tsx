@@ -20,7 +20,14 @@ const meta = {
   args: {
     classContainer: 'font-on',
   },
-  argTypes: {},
+  argTypes: {
+    type: {
+      control: {
+        type: 'select',
+      },
+      options: ['error', 'success', 'none'],
+    },
+  },
   decorators: [
     (Story): ReactElement => (
       <div
@@ -47,17 +54,12 @@ type Story = StoryObj<typeof meta>;
 /**
  * These functions are defined as samples because they are part of the main component's props.
  */
-const setModalSuccess = (): void => {};
+const setModal = (): void => {};
 
 /**
  * These functions are defined as samples because they are part of the main component's props.
  */
-const setModalDelete = (): void => {};
-
-/**
- * These functions are defined as samples because they are part of the main component's props.
- */
-const handleRequestSuccess = (): void => {
+const handleRequest = (): void => {
   // eslint-disable-next-line no-alert
   alert('با موفقیت ویرایش شد');
 };
@@ -65,75 +67,25 @@ const handleRequestSuccess = (): void => {
 /**
  * These functions are defined as samples because they are part of the main component's props.
  */
-const handleRequestDelete = (): void => {
-  // eslint-disable-next-line no-alert
-  alert('با موفقیت حذف شد');
-};
+const toggleModal = (): void => {};
 
 /**
- * These functions are defined as samples because they are part of the main component's props.
+ * This modal displays default messages.
  */
-const toggleModalDelete = (): void => {};
-
-/**
- * This modal displays success messages.
- */
-export const Success: Story = {
+export const Default: Story = {
   args: {
     open: true,
-    setOpen: setModalSuccess,
-    buttonOne: {
-      label: 'بله',
-      onClick: handleRequestSuccess,
-    },
-    buttonTow: {
-      label: 'خیر',
-      onClick: toggleModalDelete,
-      color: 'red',
-    },
-    title: 'ویرایش با موفقیت انجام شد',
     type: 'success',
-  },
-};
-
-/**
- * This modal displays error messages.
- */
-export const Error: Story = {
-  args: {
-    open: true,
-    setOpen: setModalDelete,
+    title: 'ویرایش با موفقیت انجام شد',
+    setOpen: setModal,
     buttonOne: {
       label: 'بله',
-      onClick: handleRequestDelete,
+      onClick: handleRequest,
     },
     buttonTow: {
       label: 'خیر',
-      onClick: toggleModalDelete,
+      onClick: toggleModal,
       color: 'red',
     },
-    title: 'از حذف این قانون مطمئن هستید؟',
-    type: 'error',
-  },
-};
-
-/**
- * This modal displays hint messages.
- */
-export const None: Story = {
-  args: {
-    open: true,
-    setOpen: setModalDelete,
-    buttonOne: {
-      label: 'بله',
-      onClick: handleRequestDelete,
-    },
-    buttonTow: {
-      label: 'خیر',
-      onClick: toggleModalDelete,
-      color: 'red',
-    },
-    title: 'از حذف این قانون مطمئن هستید؟',
-    type: 'none',
   },
 };

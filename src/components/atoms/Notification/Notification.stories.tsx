@@ -58,71 +58,11 @@ type Story = StoryObj<typeof meta>;
 /**
  * This notification displays success messages.
  */
-export const Success: Story = {
+export const Default: Story = {
   args: {
     title: 'ورود با موفقیت انجام شد.',
     outline: 'success',
     size: 'fullWidth',
-    type: 'success',
-  },
-};
-
-/**
- * This notification displays error messages.
- */
-export const Error: Story = {
-  args: {
-    title: 'در حال حاضر دسترسی به این بخش مقدور نمی باشد.',
-    outline: 'error',
-    size: 'fullWidth',
-    type: 'error',
-  },
-};
-
-/**
- * This notification displays full screen.
- */
-export const FullWidthSize: Story = {
-  args: {
-    title: 'ورود با موفقیت انجام شد.',
-    outline: 'success',
-    size: 'fullWidth',
-    type: 'success',
-  },
-};
-
-/**
- * This notification displays large size.
- */
-export const LargeSize: Story = {
-  args: {
-    title: 'ورود با موفقیت انجام شد.',
-    outline: 'success',
-    size: 'lg',
-    type: 'success',
-  },
-};
-
-/**
- * This notification displays medium size.
- */
-export const MediumSize: Story = {
-  args: {
-    title: 'ورود با موفقیت انجام شد.',
-    outline: 'success',
-    size: 'md',
-    type: 'success',
-  },
-};
-
-/**
- * This notification displays small size.
- */
-export const SmallSize: Story = {
-  args: {
-    title: 'ورود با موفقیت انجام شد.',
-    outline: 'success',
-    size: 'sm',
     type: 'success',
   },
 };

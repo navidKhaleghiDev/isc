@@ -52,31 +52,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Displays a notification in Success status.
- */
-export const Success: Story = {
-  args: {
-    status: 'success',
-    message: 'ورود با موفقیت انجام شد.',
-  },
-};
-
-/**
- * Displays a notification in Error status.
- */
-export const Error: Story = {
-  args: {
-    status: 'error',
-    message: 'خطا در برقراری ارتباط با سرور',
-  },
-};
-
-/**
  * Displays a notification in Default status.
  */
 export const Default: Story = {
   args: {
-    status: 'default',
+    status: 'success',
     message: 'این یک پیغام عمومی می باشد.',
   },
 };
