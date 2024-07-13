@@ -9,10 +9,15 @@ type StoryDropdown = StoryObj<typeof Dropdown>;
 
 // Main instruction for story
 const meta: Meta<typeof Dropdown> = {
-  title: 'atoms/Dropdown/Base DropDown',
+  title: 'atoms/Dropdown',
   component: Dropdown,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'DropDown',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {
@@ -31,6 +36,21 @@ const meta: Meta<typeof Dropdown> = {
     label: 'task',
     loading: false,
   },
+  render: (args) => (
+    <Dropdown
+      name={args.name}
+      id={args.id}
+      options={args.options}
+      placeHolder={args.placeHolder}
+      loading={args.loading}
+      rules={args.rules}
+      defaultValue={args.defaultValue}
+      fullWidth={args.fullWidth}
+      className={args.className}
+      label={args.label}
+      control={args.control}
+    />
+  ),
   // Adding (on) font-family
   decorators: [
     (Story) => (
@@ -44,7 +64,7 @@ const meta: Meta<typeof Dropdown> = {
 // to use this component we need to add function because of
 // {control} of useForm hook
 const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
-  const { loading, id, name, options, placeHolder } = args;
+  const { loading, leftLabel, id, name, options, placeHolder } = args;
   const { control } = useForm();
 
   return (
@@ -55,29 +75,15 @@ const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
       name={name}
       options={options}
       placeHolder={placeHolder}
+      leftLabel={leftLabel}
     />
   );
 };
 
-// Define different stories based loading state & label & size
 export const dropDown: StoryDropdown = {
   render: RenderDropdown,
   args: {
     loading: false,
-  },
-};
-
-export const dropDownLoading: StoryDropdown = {
-  render: RenderDropdown,
-  args: {
-    loading: true,
-  },
-};
-
-export const dropDownLeftLabel: StoryDropdown = {
-  render: RenderDropdown,
-  args: {
-    leftLabel: true,
   },
 };
 

@@ -12,6 +12,19 @@ const disableClass =
 const activeClass = 'bg-teal-500 text-white cursor-not-allowed';
 const arrowButtonClass = 'bg-teal-500 text-white';
 
+/**
+ * Pagination component for navigating through pages.
+ *
+ * @component
+ *
+ * @param {Object} props - The properties for the Pagination component.
+ * @param {number} props.currentPage - The current active page.
+ * @param {number} props.totalPages - The total number of pages.
+ * @param {Function} props.onPageChange - Callback function called when the page changes.
+ *
+ * @returns {JSX.Element | null} The Pagination component.
+ */
+
 export function Pagination({
   currentPage,
   totalPages,

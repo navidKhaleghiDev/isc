@@ -1,4 +1,5 @@
 import { BaseIcon } from './BaseIcon';
+import { IIconListStorybook, IconListStorybook } from './ListIconStorybook';
 import { IBaseIcon } from './types';
 
 /**
@@ -120,6 +121,36 @@ export function User({ icon, color, size, hoverColor, className }: IBaseIcon) {
 
 User.args = {
   icon: 'User',
+  color: 'teal',
+  size: 'xxxl',
+  hoverColor: 'default',
+  className: '',
+};
+
+/**
+ * This function uses the custom IconListStorybook component to display a consolidated list of icons.
+ * @param args {color, size, hoverColor, className}
+ * @returns
+ */
+export function ListIcon({
+  color,
+  size,
+  hoverColor,
+  className,
+}: Omit<IIconListStorybook, 'icons'>) {
+  const iconValue = Object.values(iconOptions);
+  return (
+    <IconListStorybook
+      icons={iconValue}
+      color={color}
+      size={size}
+      hoverColor={hoverColor}
+      className={className}
+    />
+  );
+}
+
+ListIcon.args = {
   color: 'teal',
   size: 'xxxl',
   hoverColor: 'default',

@@ -14,6 +14,19 @@ type PropsType = {
   mutateUserList: () => void;
 };
 
+/**
+ * UserCard component displays user information and provides functionality to delete the user.
+ *
+ * @component
+ *
+ * @param {Object} props - The properties for the UserCard component.
+ * @param {IUser} props.user - The user object containing user information.
+ * @param {boolean} [props.isHeader] - Flag to determine if the card is a header.
+ * @param {Function} props.mutateUserList - Function to refresh the user list.
+ *
+ * @returns {JSX.Element} The UserCard component.
+ */
+
 export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);

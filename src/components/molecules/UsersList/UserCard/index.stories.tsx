@@ -4,6 +4,13 @@ import { UserCard } from './index';
 
 const meta: Meta<typeof UserCard> = {
   title: 'molecules/UserCard',
+  parameters: {
+    docs: {
+      description: {
+        component: `UserCard component displays user information and provides functionality to delete the user.`,
+      },
+    },
+  },
   component: UserCard,
   argTypes: {
     mutateUserList: { action: 'mutateUserList' },

@@ -1,16 +1,24 @@
 {
-  "sm": ["0.8rem", "20px"],
-  "base": "1rem",
-  "xl": "1.25rem",
-  "2xl": [
-    "1.5rem",
+  "xs": [
     {
-      "lineHeight": "2rem",
-      "letterSpacing": "-0.01em",
-      "fontWeight": "500"
+      "lineHeight": "1.75rem"
     }
   ],
-  "3xl": "1.953rem",
-  "4xl": "2.441rem",
-  "5xl": "3.052rem"
+  "sm": [
+    {
+      "lineHeight": "1.75rem"
+    }
+  ],
+
+  "base": [
+    {
+      "lineHeight": "1.75rem"
+    }
+  ],
+
+  "xl": [
+    {
+      "lineHeight": "2rem"
+    }
+  ]
 }

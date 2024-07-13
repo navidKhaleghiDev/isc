@@ -10,6 +10,22 @@ type PropsType = {
   valueColor?: DesignColorType;
 };
 
+/**
+ * CardProductBox component displays a labeled value inside a styled card.
+ *
+ * @component
+ *
+ * @param {Object} props - The properties for the CardProductBox component.
+ * @param {string} props.label - The label to display.
+ * @param {string|number} props.value - The value to display next to the label.
+ * @param {boolean} [props.isValueLeft=false] - Determines if the value should be aligned to the left.
+ * @param {string} [props.className] - Additional class names for custom styling.
+ * @param {DesignColorType} [props.valueColor] - Color of the value text.
+ *
+ *
+ * @returns {JSX.Element} The CardProductBox component.
+ */
+
 export function CardProductBox({
   label,
   value,

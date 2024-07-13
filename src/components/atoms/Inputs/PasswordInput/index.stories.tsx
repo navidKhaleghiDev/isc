@@ -12,6 +12,11 @@ const meta: Meta<typeof PasswordInput> = {
   component: PasswordInput,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'PassWordInput',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {
@@ -19,6 +24,14 @@ const meta: Meta<typeof PasswordInput> = {
     label: 'Password',
     placeholder: 'Enter your password',
   },
+  render: (args) => (
+    <PasswordInput
+      name={args.name}
+      placeholder={args.placeholder}
+      label={args.label}
+      control={args.control}
+    />
+  ),
   // Adding font family
   decorators: [
     (Story) => (

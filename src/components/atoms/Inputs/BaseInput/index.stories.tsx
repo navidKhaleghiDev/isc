@@ -1,7 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 import { BaseInput } from '.';
-
-// Custom Types for Storybook
 
 // Type definition for a story based on BaseInput
 type StoryBaseInput = StoryObj<typeof BaseInput>;
@@ -12,9 +11,16 @@ const meta: Meta<typeof BaseInput> = {
   component: BaseInput,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'BaseInput',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {
+    onClickIcon: fn(),
+    pureOnChange: fn(),
     name: 'base input',
     intent: 'default',
     size: 'md',
@@ -23,8 +29,18 @@ const meta: Meta<typeof BaseInput> = {
     max: 15,
   },
   argTypes: {
-    onClickIcon: { action: 'changed' },
-    pureOnChange: { action: 'pure Change' },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['none', 'xs', 'sm', 'md', 'lg', 'xl', 'freeWidth'],
+    },
+    intent: {
+      control: {
+        type: 'select',
+      },
+      options: ['default', 'error'],
+    },
   },
   // Adding font family
   decorators: [
@@ -42,6 +58,26 @@ const meta: Meta<typeof BaseInput> = {
       type={args.type}
       placeholder={args.placeholder}
       label={args.label}
+      intent={args.intent}
+      max={args.max}
+      min={args.min}
+      size={args.size}
+      className={args.className}
+      defaultValue={args.defaultValue}
+      endIcon={args.endIcon}
+      ltrPlaceHolder={args.ltrPlaceHolder}
+      fullWidth={args.fullWidth}
+      startIcon={args.startIcon}
+      hiddenError={args.hiddenError}
+      iconButtonIcon={args.iconButtonIcon}
+      rules={args.rules}
+      ltrLabel={args.ltrLabel}
+      control={args.control}
+      pureError={args.pureError}
+      pureValue={args.pureValue}
+      pureOnChange={args.pureOnChange}
+      onClickIcon={args.onClickIcon}
+      setError={args.setError}
     />
   ),
 };
@@ -49,58 +85,11 @@ const meta: Meta<typeof BaseInput> = {
 export default meta;
 
 // Defining  stories based on size & intent
-export const textInput: StoryBaseInput = {
+export const defaultInput: StoryBaseInput = {
   args: {
     id: 'username',
     placeholder: 'نام کاربری',
     type: 'text',
     label: 'نام کاربری',
-  },
-};
-
-export const emailInput: StoryBaseInput = {
-  args: {
-    placeholder: 'آدرس ایمیل',
-    type: 'email',
-    label: 'ایمیل',
-  },
-};
-
-export const errorInput: StoryBaseInput = {
-  args: {
-    id: 'username',
-    placeholder: 'نام کاربری',
-    type: 'text',
-    intent: 'error',
-  },
-};
-
-export const textInputSm: StoryBaseInput = {
-  args: {
-    id: 'username',
-    placeholder: 'نام کاربری',
-    type: 'text',
-    label: 'نام کاربری',
-    size: 'sm',
-  },
-};
-
-export const textInputMd: StoryBaseInput = {
-  args: {
-    id: 'username',
-    placeholder: 'نام کاربری',
-    type: 'text',
-    label: 'نام کاربری',
-    size: 'md',
-  },
-};
-
-export const textInputLg: StoryBaseInput = {
-  args: {
-    id: 'username',
-    placeholder: 'نام کاربری',
-    type: 'text',
-    label: 'نام کاربری',
-    size: 'lg',
   },
 };
