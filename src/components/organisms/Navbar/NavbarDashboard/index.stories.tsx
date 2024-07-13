@@ -7,6 +7,13 @@ const meta: Meta<typeof NavbarDashboard> = {
   title: 'organisms/NavbarDashboard',
   component: NavbarDashboard,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Sidebar',
+      },
+    },
+  },
   argTypes: {
     id: { control: 'text' },
     first_name: { control: 'text' },
