@@ -1,67 +1,71 @@
 import { Meta, ColorItem, ColorPalette } from '@storybook/blocks';
 
+import colors from './../../config/tailwind/colors.json';
+
 <Meta title="constants/Colors" />
 
 <ColorPalette>
   <ColorItem
-    title="Natural"
-    subtitle="Used as supporting secondary color in background, text, colors, separator, etc."
+    title="neutral"
     colors={{
-      Natural50: '#fafafa',
-      Natural100: '#f5f5f5',
-      Natural200: '#e5e5e5',
-      Natural300: '#d4d4d4',
-      Natural400: '#a3a3a3',
-      Natural500: '#737373',
-      Natural600: '#525252',
-      Natural700: '#404040',
+      100: colors.neutral[100],
+      200: colors.neutral[200],
+      300: colors.neutral[300],
+      400: colors.neutral[400],
+      500: colors.neutral[500],
+      600: colors.neutral[600],
+      700: colors.neutral[700],
+      800: colors.neutral[800],
+      900: colors.neutral[900],
     }}
   />
   <ColorItem
-    title="Teal"
-    subtitle="UUsed across all the interactive elements such as CTA's, links, inputs, active states, ect."
+    title="teal"
     colors={{
-      Teal50: '#f0fdfa',
-      Teal200: '#99f6e4',
-      Teal300: '#5eead4',
-      Teal400: '#2dd4b4',
-      Teal500: '#14b8a6',
-      Teal600: '#0d9488',
-      Teal700: '#0f766e',
+      100: colors.teal[100],
+      200: colors.teal[200],
+      300: colors.teal[300],
+      400: colors.teal[400],
+      500: colors.teal[500],
+      600: colors.teal[600],
+      700: colors.teal[700],
+      800: colors.teal[800],
+      900: colors.teal[900],
     }}
   />
   <ColorItem
-    title="Yellow"
-    subtitle="Generally used across success"
+    title="yellow"
     colors={{
-      Yellow100: '#f2e9dc',
-      Yellow200: '#e6d5bd',
-      Yellow300: '#dbc19e',
-      Yellow400: '#cfae80',
-      Yellow500: '#cea25d',
-      Yellow600: '#cc9639',
-      Yellow700: '#ca8a04',
+      100: colors.yellow[100],
+      200: colors.yellow[200],
+      300: colors.yellow[300],
+      400: colors.yellow[400],
+      500: colors.yellow[500],
+      600: colors.yellow[600],
+      700: colors.yellow[700],
+      800: colors.yellow[800],
+      900: colors.yellow[900],
     }}
   />
   <ColorItem
-    title="Red"
-    subtitle=" used across error states"
+    title="red"
     colors={{
-      Red100: '#fee2e2',
-      Red200: '#facaca',
-      Red300: '#fca5a5',
-      Red400: '#f87171',
-      Red500: '#ef4444',
-      Red600: '#dc2626',
-      Red700: '#b91c1c',
+      100: colors.red[100],
+      200: colors.red[200],
+      300: colors.red[300],
+      400: colors.red[400],
+      500: colors.red[500],
+      600: colors.red[600],
+      700: colors.red[700],
+      800: colors.red[800],
+      900: colors.red[900],
     }}
   />
   <ColorItem
     title="Black&White"
-    subtitle=" Black&White"
     colors={{
-      Black: '#FFFFFF',
-      white: '#0c0a09',
+      Black: colors.black,
+      white: colors.white,
     }}
   />
 </ColorPalette>
