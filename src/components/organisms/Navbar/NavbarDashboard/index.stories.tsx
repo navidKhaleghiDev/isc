@@ -7,6 +7,14 @@ const meta: Meta<typeof NavbarDashboard> = {
   title: 'organisms/NavbarDashboard',
   component: NavbarDashboard,
   tags: ['autodocs'],
+  argTypes: {
+    id: { control: 'text' },
+    first_name: { control: 'text' },
+    last_name: { control: 'text' },
+    email: { control: 'text' },
+    is_superuser: { control: 'boolean' },
+    is_admin: { control: 'boolean' },
+  },
   decorators: [
     (Story) => (
       <div style={{ fontFamily: 'on' }} dir="rtl">
@@ -35,32 +43,6 @@ export const Default: StoryObj<ITemplateProps> = {
       is_superuser: false,
       is_admin: false,
       // last_login: new Date(),
-    },
-  },
-};
-
-export const SuperUser: StoryObj<ITemplateProps> = {
-  args: {
-    user: {
-      id: '2',
-      first_name: 'محمد',
-      last_name: 'بازرگان',
-      email: 'mohammad.bazargan.adminUSer@example.com',
-      is_superuser: true,
-      is_admin: false,
-    },
-  },
-};
-
-export const AdminUser: StoryObj<ITemplateProps> = {
-  args: {
-    user: {
-      id: '3',
-      first_name: 'محمد',
-      last_name: 'بازرگان',
-      email: 'admin.user@example.com',
-      is_superuser: false,
-      is_admin: true,
     },
   },
 };
