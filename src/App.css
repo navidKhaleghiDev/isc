@@ -72,3 +72,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
   border-radius: 10px;
   box-shadow: inset 7px 10px 12px #f0f0f0;
 }
+
+h2 {
+  background-color: initial;
+}
