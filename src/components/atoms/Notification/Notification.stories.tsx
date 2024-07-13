@@ -60,9 +60,9 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
+    type: 'success',
+    size: 'fullWidth',
     title: 'ورود با موفقیت انجام شد.',
     outline: 'success',
-    size: 'fullWidth',
-    type: 'success',
   },
 };
