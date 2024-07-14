@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import PhUser from '@iconify-icons/ph/user';
 import { IconButton } from './IconButton';
 
 const meta: Meta<typeof IconButton> = {
@@ -47,7 +48,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    icon: 'iconoir:user-plus', // مثال آیکون
+    icon: PhUser, // مثال آیکون
     color: 'teal',
     size: 'xl',
     loading: false,
