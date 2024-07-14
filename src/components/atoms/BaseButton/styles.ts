@@ -1,8 +1,7 @@
 import { PALLET, SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-const disabledClass =
-  'disabled:opacity-100 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:border-2 disabled:shadow-none';
+const disabledClass = `disabled:opacity-40 ${PALLET.BUTTON_COLOR.TEAL} disabled:text-white`;
 
 export const baseButtonStyles = cva(
   `flex items-center justify-center transition duration-150 ease-in-out rounded-lg focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY4_SEMIBOLD} ${disabledClass}`,
