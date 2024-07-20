@@ -42,7 +42,7 @@ function LayoutCp() {
     return <LoadingPage description="لطفا شکیبا باشید" />;
   }
   return (
-    <div className="font-on flex h-screen bg-white">
+    <div className="font-kalameh flex h-screen bg-white">
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="border-b-4 border-neutral-200">
           <NavbarDashboard />

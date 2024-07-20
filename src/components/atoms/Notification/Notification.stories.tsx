@@ -44,7 +44,7 @@ const meta = {
   },
   decorators: [
     (Story): ReactElement => (
-      <div dir="rtl" className="font-on">
+      <div dir="rtl" className="font-kalameh">
         <Story />
       </div>
     ),

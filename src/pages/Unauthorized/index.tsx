@@ -8,7 +8,7 @@ function UnauthorizedPage() {
   return (
     <div
       dir="ltr"
-      className="font-on p-16 h-screen flex flex-col justify-center items-center"
+      className="font-kalameh  p-16 h-screen flex flex-col justify-center items-center"
     >
       <div className="w-1/3">
         <img

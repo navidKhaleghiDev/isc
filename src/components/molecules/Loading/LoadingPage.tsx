@@ -3,7 +3,7 @@ import { Typography } from '@ui/atoms';
 type PropsType = { description?: string };
 export function LoadingPage({ description }: PropsType) {
   return (
-    <div className="h-screen w-screen flex flex-col justify-center items-center font-on">
+    <div className="h-screen w-screen flex flex-col justify-center items-center font-kalameh">
       <svg
         aria-hidden="true"
         className="w-8 h-8 mr-2 text-neutral-200 animate-spin dark:text-gray-600 fill-teal-600"

@@ -18,7 +18,7 @@ const meta = {
   },
   tags: ['autodocs'],
   args: {
-    classContainer: 'font-on',
+    classContainer: 'font-kalameh',
   },
   argTypes: {
     type: {

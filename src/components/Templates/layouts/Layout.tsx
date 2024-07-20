@@ -9,7 +9,7 @@ function Layout() {
 
   return (
     <div
-      className={`font-on grid min-h-screen ${
+      className={`font-kalameh grid min-h-screen ${
         collapsed ? 'grid-cols-sidebar-collapsed' : 'grid-cols-sidebar'
       } transition-[grid-template-columns] duration-300 ease-in-out`}
     >

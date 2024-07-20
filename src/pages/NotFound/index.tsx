@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function NotFoundPage() {
   return (
-    <div className="p-16 h-screen flex flex-col justify-center items-center font-on">
+    <div className="p-16 h-screen flex flex-col justify-center items-center font-kalameh">
       <NoResult description="صفحه مورد نظر یافت نشد!" />
       <Link to={ROUTES_PATH.home}>
         <BaseButton
