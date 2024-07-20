@@ -70,7 +70,7 @@ export const SIZE = {
   INPUT: {
     SMALL: 'h-6 w-52',
     MEDIUM: 'h-10 w-56',
-    LARGE: 'h-10 w-[27.5rem]',
+    LARGE: 'h-10 w-64',
     X_LARGE: 'h-10 w-[60rem]',
   },
 };
