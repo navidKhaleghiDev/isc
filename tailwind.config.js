@@ -14,6 +14,7 @@ export default {
     colors,
     fontSize,
     fontFamily: {
+      kalameh: ['kalameh', 'sans-serif'],
       on: ['on', 'sans-serif'],
       sans: ['ui-sans-serif', 'system-ui'],
       serif: ['ui-serif', 'Georgia'],
