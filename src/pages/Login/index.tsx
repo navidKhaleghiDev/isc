@@ -49,21 +49,24 @@ function LoginPageCp() {
     return <LoadingPage description="لطفا شکیبا باشید" />;
   }
   return (
-    <div className="font-on bg-teal-600  flex flex-col items-center justify-center min-h-screen ">
-      <Card className="relative p-10 w-[29.375rem] h-[33rem] flex flex-col items-center">
-        <Step onChangeStep={setStep} getProfile={getProfile} />
-      </Card>
-      {user && (
-        <Link to={ROUTES_PATH.dashboard}>
-          <BaseButton
-            label="داشبورد"
-            endIcon="ic:round-login"
-            className="mt-10"
-            size="md"
-            type="shadow"
-          />
-        </Link>
-      )}
+    <div className="flex flex-col md:flex-row w-full h-screen">
+      <div className="bg-cover bg-center h-1/2 md:h-full md:w-1/2 bg-[url('./public/Login.svg')] md:rounded-l-3xl" />
+      <div className="font-on w-full md:w-1/2 flex flex-col items-center justify-center p-4">
+        <Card className="relative flex flex-col items-center w-full max-w-md">
+          <Step onChangeStep={setStep} getProfile={getProfile} />
+        </Card>
+        {user && (
+          <Link to={ROUTES_PATH.dashboard}>
+            <BaseButton
+              label="داشبورد"
+              endIcon="ic:round-login"
+              className="mt-10"
+              size="md"
+              type="shadow"
+            />
+          </Link>
+        )}
+      </div>
     </div>
   );
 }
