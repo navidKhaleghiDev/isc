@@ -7,7 +7,7 @@ export const baseInputStyles = cva(
   {
     variants: {
       intent: {
-        default: `text-neutral-400 border  ${PALLET.BORDER_COLOR.NEUTRAL} focus:border-teal-500 dark:border-teal-500  focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
+        default: `text-neutral-400 border focus:${PALLET.BORDER_COLOR.TEAL} ${PALLET.BORDER_COLOR.NEUTRAL}   focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
         error: `text-neutral-900 border border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
       },
       fullWidth: {
@@ -22,7 +22,7 @@ export const baseInputStyles = cva(
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
         sm: `w-[18.75rem] h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
         md: `${SIZE.INPUT.MEDIUM} ${SIZE.TYPOGRAPHY.BODY3}`,
-        lg: `${SIZE.INPUT.LARGE} ${SIZE.TYPOGRAPHY.BODY2}`,
+        lg: `${SIZE.INPUT.LARGE} ${SIZE.TYPOGRAPHY.BODY4}`,
         xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },

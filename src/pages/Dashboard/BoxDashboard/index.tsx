@@ -25,10 +25,10 @@ export function BoxDashboard({ icon, title, description }: PropsType) {
       <>
         <BaseIcon icon={icon} className="m-4" color="teal" size="md" />
         <div>
-          <Typography color="teal" size="h5">
+          <Typography color="teal" size="h6">
             {title}
           </Typography>
-          <Typography className="text-neutral-400" size="h6">
+          <Typography className="text-neutral-400" size="body4">
             {description}
           </Typography>
         </div>
