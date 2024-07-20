@@ -6,12 +6,12 @@ export const avatarStyles = cva(
     variants: {
       intent: {
         primary: 'bg-teal-600 border-none',
-        grey: 'bg-neutral-100 border',
+        grey: 'bg-neutral-100 border-none',
         inactive: 'bg-neutral-200 border-none',
       },
       size: {
         sm: 'w-8 h-8 border-1',
-        md: 'w-20 h-20 border-2',
+        md: 'w-16 h-16 ',
         lg: 'w-48 h-48 border-4',
       },
     },
@@ -26,17 +26,17 @@ export const iconAvatarStyles = cva('absolute dark:text-white ', {
   variants: {
     intent: {
       primary: 'text-white ',
-      grey: 'text-teal-600 ',
+      grey: 'text-neutral-400 ',
       inactive: 'text-neutral-400 ',
     },
     size: {
       sm: 'w-6 h-6 ',
-      md: 'w-16 h-16 ',
+      md: 'w-6 h-6 ',
       lg: 'w-36 h-36',
     },
   },
   defaultVariants: {
-    intent: 'primary',
+    intent: 'grey',
     size: 'md',
   },
 });
