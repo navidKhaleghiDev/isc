@@ -9,9 +9,8 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_USERS_LOGIN } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
-
+import PhUserCircle from '@iconify-icons/ph/user-circle';
 import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
-import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 import { Modal } from '@ui/molecules/Modal';
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
@@ -74,12 +73,9 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         onSubmit={handleSubmit(handelSubmitForm)}
         className="flex flex-col items-center w-full mt-auto"
       >
-        <div className="absolute top-[-6rem]">
-          <Avatar icon="ph:user" intent="grey" size="lg" />
+        <div className="my-6">
+          <Avatar icon={PhUserCircle} intent="grey" size="md" />
         </div>
-        <Typography color="neutral" size="h5" className="mb-5">
-          لطفا ایمیل و گذرواژه خود را وارد کنید
-        </Typography>
         {error && (
           <Typography color="red" size="body3" className="mb-2">
             {error}
@@ -87,9 +83,10 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         )}
         <div className="w-full flex flex-col items-center justify-end">
           <BaseInput
-            fullWidth
+            className="my-3"
+            size="lg"
             control={control}
-            placeholder="email"
+            placeholder="نام کاربری"
             rules={{
               required: regexPattern.required,
             }}
@@ -100,23 +97,20 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
           <PasswordInput
             name="password"
             control={control}
-            placeholder="password"
-          />
-          <BaseCheckBox
-            control={control}
-            label="مرا به خاطر بسپار"
-            id="remember_me"
-            name="remember_me"
-            className="ml-auto"
+            placeholder="رمز عبور"
           />
 
           <BaseButton
             label="ورود به حساب کاربری"
-            endIcon="ic:round-login"
-            className="mt-8"
+            className="mt-12"
             loading={loadingButton}
-            size="md"
+            size="xl"
             submit
+          />
+          <BaseButton
+            label="رمز عبور خود را فراموش کرده اید؟"
+            size="xl"
+            type="neutral"
             fullWidth
           />
         </div>

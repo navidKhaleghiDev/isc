@@ -25,7 +25,7 @@ export function PasswordInput({
   return (
     <BaseInput
       name={name}
-      size="md"
+      size="lg"
       id={name}
       label={label}
       control={control}
@@ -37,7 +37,7 @@ export function PasswordInput({
         required: regexPattern.required,
         pattern: regexPattern.password,
       }}
-      fullWidth
+      className="flex flex-col items-center"
     />
   );
 }
