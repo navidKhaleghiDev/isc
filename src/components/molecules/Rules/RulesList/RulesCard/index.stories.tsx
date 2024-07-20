@@ -23,7 +23,7 @@ const meta = {
     (Story): ReactElement => (
       <div
         dir="rtl"
-        className="font-on"
+        className="font-kalameh"
         style={{ width: '60vw', height: '20vh' }}
       >
         <MemoryRouter>
