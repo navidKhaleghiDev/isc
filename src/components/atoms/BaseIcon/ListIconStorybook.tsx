@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react';
+import { Icon, IconifyIcon } from '@iconify/react';
 import { baseIconStyles } from './styles';
 
 export interface IIconListStorybook {
@@ -6,7 +6,8 @@ export interface IIconListStorybook {
   size: 'default' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
   hoverColor: 'default' | 'primary';
   className?: string;
-  icons: string[];
+  icons: (string | IconifyIcon)[];
+  title: string[];
 }
 
 /**
@@ -20,11 +21,16 @@ export function IconListStorybook({
   hoverColor,
   className,
   icons = ['fa:home'],
+  title,
 }: IIconListStorybook) {
   return (
     <div className="flex flex-wrap space-4 w-full justify-between">
-      {icons.map((icon: string) => (
-        <div key={icon} className="flex flex-col items-center p-3" title={icon}>
+      {icons.map((icon, indexKey) => (
+        <div
+          className="flex flex-col items-center p-2.5 bg-neutral-100 rounded m-2"
+          title={title[indexKey]}
+          key={title[indexKey]}
+        >
           <Icon
             className={baseIconStyles({ size, color, hoverColor, className })}
             icon={icon}
