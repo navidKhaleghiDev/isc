@@ -1,7 +1,9 @@
+import { IconifyIcon } from '@iconify/react';
 import { Card, Typography, BaseIcon } from '@ui/atoms';
 
 type PropsType = {
-  icon: string;
+  icon?: string | IconifyIcon;
+  component?: React.ReactNode;
   title: string;
   description: string;
 };
@@ -19,11 +21,26 @@ type PropsType = {
  * @returns {JSX.Element} The BoxDashboard component.
  */
 
-export function BoxDashboard({ icon, title, description }: PropsType) {
+export function BoxDashboard({
+  icon,
+  component,
+  title,
+  description,
+}: PropsType) {
+  const showIcon = () => {
+    if (icon) {
+      return <BaseIcon icon={icon} className="m-4" color="teal" size="md" />;
+    }
+    if (component) {
+      return component;
+    }
+    return null;
+  };
+
   return (
-    <Card color="white" shadow="xl" className="flex items-center">
+    <Card color="white" border={true} borderColor="neutral" rounded="xxxl" className="flex items-center p-8 mb-5">
       <>
-        <BaseIcon icon={icon} className="m-4" color="teal" size="md" />
+        {showIcon()}
         <div>
           <Typography color="teal" size="h6">
             {title}

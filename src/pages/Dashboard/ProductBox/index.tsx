@@ -37,9 +37,14 @@ function ProductBoxCp() {
   return isLoading ? (
     <LoadingSpinner />
   ) : (
-    <div className="grid grid-cols-3 gap-6 mb-16">
+    <div className="grid">
       <div className="flex flex-col justify-between col-span-2 h-full">
-        <Card color="neutral" className="flex justify-end items-center">
+        <CardImage
+          src={product?.device.image}
+          alt={product?.device?.model}
+          className="h-60"
+        />
+        <Card className="flex justify-end items-center py-8 px-2.5">
           <div className="flex flex-col justify-end items-end ml-4">
             <Typography color="neutral" size="h4">
               {product?.device?.model}
@@ -49,60 +54,81 @@ function ProductBoxCp() {
             </Typography>
           </div>
         </Card>
-        <Typography
-          color="neutral"
-          size="h6"
-          className="bg-teal-600 text-white py-1 rounded-md my-4 text-center"
-        >
-          {product?.id}
-        </Typography>
-        <div className="grid grid-cols-3 gap-6">
-          <Card
-            color="neutral"
-            className="flex justify-start items-center pr-4"
-          >
-            <div className="flex flex-col justify-end items-start ml-4">
-              <Typography color="teal" size="h6">
-                تاریخ ثبت محصول
+        <div className="grid">
+          <Card className="flex justify-start items-center mb-6">
+            <div className="flex flex-col justify-end items-start ml-4 w-full">
+              <Typography size="h6" weight="bold">
+                شماره سریال
               </Typography>
-              <Typography color="neutral" size="body3">
+              <Typography
+                color="neutral"
+                size="body3"
+                className="bg-neutral-100 w-full px-2.5 rounded-lg"
+              >
+                {product?.id}
+              </Typography>
+            </div>
+          </Card>
+          <Card className="flex justify-start items-center mb-6">
+            <div className="flex flex-col justify-end items-start ml-4 w-full">
+              <Typography size="h6" weight="bold">
+                ثبت محصول
+              </Typography>
+              <Typography
+                color="neutral"
+                size="body3"
+                className="bg-neutral-100 w-full px-2.5 rounded-lg"
+              >
                 {persianDateAndNumber(product?.created_at)}
               </Typography>
             </div>
           </Card>
-          <Card
-            color="neutral"
-            className="flex justify-start items-center pr-4"
-          >
-            <div className="flex flex-col justify-end items-start ml-4">
-              <Typography color="teal" size="h6">
-                آدرس
+          {product?.address && (
+            <Card className="flex justify-start items-center mb-6">
+              <div className="flex flex-col justify-end items-start ml-4 w-full">
+                <Typography size="h6" weight="bold">
+                  آدرس
+                </Typography>
+                <Typography
+                  color="neutral"
+                  size="body3"
+                  className="bg-neutral-100 w-full px-2.5 rounded-lg"
+                >
+                  {product?.address}
+                </Typography>
+              </div>
+            </Card>
+          )}
+          <Card className="flex justify-start items-center mb-6">
+            <div className="flex flex-col justify-end items-start ml-4 w-full">
+              <Typography size="h6" weight="bold">
+                تاریخ انقضاء لایسنس
               </Typography>
-              <Typography color="neutral" size="body3">
-                {product?.address}
+              <Typography
+                color="neutral"
+                size="body3"
+                className="bg-neutral-100 w-full px-2.5 rounded-lg"
+              >
+                {persianDateAndNumber(product?.license_exp)}
               </Typography>
             </div>
           </Card>
-          <Card
-            color="neutral"
-            className="flex justify-start items-center pr-4"
-          >
-            <div className="flex flex-col justify-end items-start ml-4">
-              <Typography color="teal" size="h6">
-                تاریخ انقضاء لایسنس
+          <Card className="flex justify-start items-center mb-6">
+            <div className="flex flex-col justify-end items-start ml-4 w-full">
+              <Typography size="h6" weight="bold">
+                تعداد قوانین
               </Typography>
-              <Typography color="neutral" size="body3">
-                {persianDateAndNumber(product?.license_exp)}
+              <Typography
+                color="neutral"
+                size="body3"
+                className="bg-neutral-100 w-full px-2.5 rounded-lg"
+              >
+                {product?.recommended_rules.length}
               </Typography>
             </div>
           </Card>
         </div>
       </div>
-      <CardImage
-        src={product?.device.image}
-        alt={product?.device?.model}
-        className="h-60 p-2"
-      />
     </div>
   );
 }

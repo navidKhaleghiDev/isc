@@ -21,6 +21,8 @@ export const cardStyles = cva('', {
       md: 'rounded-md',
       lg: 'rounded-lg',
       xl: 'rounded-xl',
+      xxl: 'rounded-2xl',
+      xxxl: 'rounded-3xl',
     },
     shadow: {
       sm: 'shadow-sm border border-neutral-100',
