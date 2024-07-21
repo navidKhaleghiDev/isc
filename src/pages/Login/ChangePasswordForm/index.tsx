@@ -107,7 +107,7 @@ export function ChangePasswordForm({
             fullWidth
           />
         </div>
-        <Typography color="red" size="caption" className="my-2">
+        <Typography color="red" size="body6" className="my-2">
           ⚠️ در صورت فراموشی اطلاعات قابلیت بازیابی ایمیل و گذرواژه وجود ندارد.
         </Typography>
       </form>
