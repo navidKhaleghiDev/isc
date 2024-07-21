@@ -13,6 +13,10 @@ export default {
     },
     colors,
     fontSize,
+    boxShadow: {
+      sm: ' 0px 0px 5px 0px rgba(33, 37, 41, 0.15)',
+      md: '0px 4px 6px 0px rgba(33, 37, 41, 0.2)',
+    },
     fontFamily: {
       kalameh: ['kalameh', 'sans-serif'],
       on: ['on', 'sans-serif'],
