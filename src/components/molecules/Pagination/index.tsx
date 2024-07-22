@@ -1,16 +1,17 @@
+import { IconButton } from '@ui/atoms/BaseButton';
+
 /* eslint-disable no-plusplus */
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
-const mClass =
-  'flex w-8 h-8 mx-0.5 p-0 justify-center items-center rounded-md leading-tight text-xl border border-teal-500 ';
+const mClass = 'flex size-6 justify-center items-center p-2 text-base';
 
-const disableClass =
-  'bg-gray-300 text-gray-500 cursor-not-allowed border-gray-400';
-const activeClass = 'bg-teal-500 text-white cursor-not-allowed';
-const arrowButtonClass = 'bg-teal-500 text-white';
+const disableClass = 'bg-gray-300 cursor-not-allowed ';
+const activeClass =
+  'bg-neutral-200 rounded-lg items-center justify-center cursor-not-allowed';
+const arrowButtonClass = 'bg-teal-500 ';
 
 /**
  * Pagination component for navigating through pages.
@@ -89,7 +90,7 @@ export function Pagination({
         <button
           type="button"
           className={`${mClass} ${
-            currentPage === number ? activeClass : 'bg-white text-teal-500'
+            currentPage === number ? activeClass : 'bg-white text-neutral-600'
           }`}
           disabled={isEllipsis}
           key={number}
@@ -106,22 +107,20 @@ export function Pagination({
   }
 
   return (
-    <div className="flex justify-center items-center mt-4">
-      <button
-        type="button"
+    <div className="flex  justify-center items-center mt-4">
+      <IconButton
+        icon="ph:caret-right"
         className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}
+        color="white"
         onClick={handlePreviousClick}
-      >
-        {`<<`}
-      </button>
+      />
       {renderPageNumbers()}
-      <button
-        type="button"
+      <IconButton
+        icon="ph:caret-left"
         className={`${mClass} ${isLastPage ? disableClass : arrowButtonClass}`}
+        color="white"
         onClick={handleNextClick}
-      >
-        {`>>`}
-      </button>
+      />
     </div>
   );
 }

@@ -22,7 +22,7 @@ export const baseIconStyles = cva('fill-current', {
       xl: 'h-12 w-12',
       xxl: 'h-16 w-16',
       xxxl: 'h-20 w-20',
-      default: '',
+      default: 'w-10 h-10',
     },
   },
 });

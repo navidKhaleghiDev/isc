@@ -65,12 +65,13 @@ export const iconButtonStyles = cva(
     variants: {
       color: {
         teal: 'bg-teal-600 text-neutral-100',
+        tealDark: 'bg-teal-500',
         tealNoBg: 'text-teal-600',
         redNoBg: 'text-red-600',
         neutral: 'bg-neutral-200 text-neutral-600',
         yellow: 'bg-yellow-600 text-neutral-100',
         red: 'bg-red-100 text-red-600',
-        white: 'bg-white text-teal-600',
+        white: 'bg-white text-neutral-900',
         default: 'bg-neutral-200 text-neutral-600 ',
       },
       size: {
