@@ -43,6 +43,7 @@ export function Dropdown<T extends FieldValues>({
   name,
   defaultValue,
   className,
+  size,
   label,
   loading,
   leftLabel,
@@ -85,6 +86,7 @@ export function Dropdown<T extends FieldValues>({
             onClick={toggleOpen}
             className={baseDropDownStyles({
               fullWidth,
+              size,
               selected: !!value,
               intent: error ? 'error' : 'default',
               className,
@@ -102,11 +104,7 @@ export function Dropdown<T extends FieldValues>({
                   placeHolder}
                 {/* <BaseIcon icon="ic:round-close" /> */}
                 <BaseIcon
-                  icon={
-                    state.openOptions
-                      ? `ph:caret-circle-down`
-                      : `ph:caret-circle-left`
-                  }
+                  icon={state.openOptions ? `ph:caret-down` : `ph:caret-left`}
                 />
               </>
             )}
@@ -134,7 +132,7 @@ export function Dropdown<T extends FieldValues>({
               <button
                 type="button"
                 key={option.id}
-                className={`w-full p-3 text-teal-600 hover:bg-gray-200 ${
+                className={`w-full p-3 hover:bg-gray-200 ${
                   leftLabel ? 'text-left' : 'text-right'
                 }`}
                 onClick={() => {
@@ -146,9 +144,11 @@ export function Dropdown<T extends FieldValues>({
               </button>
             ))}
           </div>
-          <Typography color="red" size="caption" className="h-6">
-            {error?.message ?? ''}
-          </Typography>
+          {error && (
+            <Typography color="red" size="caption" className="h-6">
+              {error?.message ?? ''}
+            </Typography>
+          )}
         </div>
       )}
     />

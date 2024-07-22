@@ -24,6 +24,7 @@ export interface DropdownProps<T extends FieldValues> {
   label?: string;
   loading?: boolean;
   leftLabel?: boolean;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export type StateType = {
