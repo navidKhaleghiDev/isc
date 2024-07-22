@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BaseButton, Card } from '@ui/atoms';
+import { BaseButton } from '@ui/atoms';
 import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
@@ -20,26 +20,29 @@ function RulesPageCP() {
 
   return (
     <div className="w-full flex flex-col h-full p-16">
-      <Card
-        color="neutral"
-        className="p-4 flex justify-center items-center gap-4"
-      >
+      <div className="p-4 flex justify-start items-center gap-4">
+        <SearchInput onChange={handleOnSearch} value={search} />
+        {/* <Dropdown
+          options={[
+            { value: '1', label: 'انجام شده' },
+            { value: '2', label: 'به تعویق افتاده' },
+            { value: '3', label: 'در حال انجام ' },
+          ]}
+          onSelect={() => console.log('drop')}
+        /> */}
         <BaseButton
-          label="قوانین پیشنهادی"
+          label="جستجوی قوانین"
+          size="xl"
           type={activeButton === 'suggest' ? 'default' : 'shadow'}
           onClick={() => handleClickTab('suggest')}
         />
-        <BaseButton
-          label="همه قوانین"
-          type={activeButton === 'all' ? 'default' : 'shadow'}
-          onClick={() => handleClickTab('all')}
-        />
-      </Card>
-      {activeButton === 'all' && (
+      </div>
+
+      {/* {activeButton === 'all' && (
         <div className="w-1/3 mt-4">
           <SearchInput onChange={handleOnSearch} value={search} />
         </div>
-      )}
+      )} */}
 
       <RulesList buttonState={activeButton} searchValue={search} />
     </div>
