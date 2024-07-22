@@ -107,7 +107,7 @@ export function Pagination({
   }
 
   return (
-    <div className="flex  justify-center items-center mt-4">
+    <div className="flex justify-center items-center">
       <IconButton
         icon="ph:caret-right"
         className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}

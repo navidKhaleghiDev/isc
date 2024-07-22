@@ -94,32 +94,28 @@ export function RulesList({ buttonState, searchValue }: PropsType) {
 
   return (
     <LoadingWrapper isLoading={loadingAllData || loadingSuggestData}>
-      <div className="flex flex-col h-full items-center justify-between">
-        <div className="w-full grid grid-cols-4 gap-y-5 gap-x-8 grid-flow-row auto-rows-max gap mt-11">
+      <div className="flex flex-col h-full items-center">
+        <div className="w-full grid grid-cols-4 gap-y-5  mt-11">
           {rules.length > 0 ? (
             <>
               {rules.map((item: IRules) => (
                 <RulesCard key={item.id} rule={item} />
               ))}
+
               {!!countPage && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
-                  onPageChange={handlePageChange}
-                />
+                <div className="">
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
+                    onPageChange={handlePageChange}
+                  />
+                </div>
               )}
             </>
           ) : (
             <NoResult />
           )}
         </div>
-        {/* Remember to remove this it is just for showing case the logic has been
-        done */}
-        <Pagination
-          currentPage={1}
-          totalPages={10}
-          onPageChange={handlePageChange}
-        />
       </div>
     </LoadingWrapper>
   );
