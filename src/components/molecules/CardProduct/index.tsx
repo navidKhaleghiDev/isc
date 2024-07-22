@@ -22,8 +22,7 @@ export function CardProduct({ label, value, className }: PropsType) {
           size="body5"
           weight="normal"
           className="
-            !isValueLeft && 'mr-auto'
-          } bg-neutral-100 w-full px-2.5 rounded-lg"
+           bg-neutral-100 w-full px-2.5 rounded-lg"
         >
           {value}
         </Typography>
