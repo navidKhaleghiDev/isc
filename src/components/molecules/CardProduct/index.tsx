@@ -2,7 +2,7 @@ import { Card, Typography } from '@ui/atoms';
 
 type PropsType = {
   label: string;
-  value: string | number;
+  value: React.ReactNode;
   className?: string;
 };
 
