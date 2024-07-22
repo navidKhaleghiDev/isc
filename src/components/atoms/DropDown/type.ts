@@ -24,6 +24,7 @@ export interface DropdownProps<T extends FieldValues> {
   label?: string;
   loading?: boolean;
   leftLabel?: boolean;
+  // valueOnChange?: (value: string) => void;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 

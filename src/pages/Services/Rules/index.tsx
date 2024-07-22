@@ -8,17 +8,18 @@ import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { ButtonState } from './types';
 
 function RulesPageCP() {
-  const [activeButton, setActiveButton] = useState<ButtonState>('suggest');
+  const [activeButton, setActiveButton] = useState<ButtonState>('all');
   const [search, setSearch] = useState('');
   const { control } = useForm();
 
   const handleOnSearch = (value: string) => {
     setSearch(value);
   };
+
+  // const dropValueChange = (value: ButtonState) => setActiveButton(value);
   const dropDownOptions = [
-    { value: '1', label: 'مرتب سازی قوانین' },
-    { value: '2', label: 'به تعویق افتاده' },
-    { value: '3', label: 'در حال انجام ' },
+    { id: '1', label: 'همه قوانین' },
+    { id: '2', label: 'قوانین پیشنهادی' },
   ];
 
   const handleClickTab = (tab: ButtonState) => {
@@ -28,29 +29,24 @@ function RulesPageCP() {
   return (
     <div className="w-full flex flex-col h-full p-16">
       <form className="p-4 flex justify-start items-center gap-4">
-        <SearchInput onChange={handleOnSearch} value={search} />
+        {activeButton === 'all' && (
+          <SearchInput onChange={handleOnSearch} value={search} />
+        )}
         <Dropdown
           options={dropDownOptions}
           placeHolder="مرتب سازی قوانین"
           control={control}
-          id="listener_id"
           name="rulesSortOptions"
           size="lg"
+          id="rules-sort"
         />
         <BaseButton
           label="جستجوی قوانین"
           size="xl"
-          type={activeButton === 'suggest' ? 'default' : 'shadow'}
+          type="default"
           onClick={() => handleClickTab('suggest')}
         />
       </form>
-
-      {/* {activeButton === 'all' && (
-        <div className="w-1/3 mt-4">
-          <SearchInput onChange={handleOnSearch} value={search} />
-        </div>
-      )} */}
-
       <RulesList buttonState={activeButton} searchValue={search} />
     </div>
   );
