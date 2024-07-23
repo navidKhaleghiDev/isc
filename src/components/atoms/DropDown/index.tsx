@@ -47,8 +47,8 @@ export function Dropdown<T extends FieldValues>({
   label,
   loading,
   leftLabel,
-}: // valueOnChange,
-DropdownProps<T>) {
+  valueOnChange,
+}: DropdownProps<T>) {
   const ref = useRef(null);
   const [state, setState] = useState<StateType>(initState);
 
@@ -139,6 +139,10 @@ DropdownProps<T>) {
                 onClick={() => {
                   handleOnChange(option);
                   onChange(option.id);
+
+                  if (valueOnChange) {
+                    valueOnChange(option);
+                  }
                 }}
               >
                 {option.label}

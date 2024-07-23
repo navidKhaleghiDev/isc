@@ -6,11 +6,12 @@ interface PaginationProps {
   totalPages: number;
   onPageChange: (page: number) => void;
 }
-const mClass = 'flex size-6 justify-center items-center p-2 text-base';
+const mClass =
+  'flex size-6 justify-center  rounded items-center hover:bg-neutral-100 p-1 text-base';
 
 const disableClass = 'bg-gray-300 cursor-not-allowed ';
 const activeClass =
-  'bg-neutral-200 rounded-lg items-center justify-center cursor-not-allowed';
+  'bg-neutral-200 hover:bg-neutral-200  rounded-lg items-center justify-center cursor-not-allowed';
 const arrowButtonClass = 'bg-teal-500 ';
 
 /**
@@ -107,7 +108,7 @@ export function Pagination({
   }
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center gap-4">
       <IconButton
         icon="ph:caret-right"
         className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}
