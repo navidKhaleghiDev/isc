@@ -150,7 +150,7 @@ export function Dropdown<T extends FieldValues>({
             ))}
           </div>
           {error && (
-            <Typography color="red" size="caption" className="h-6">
+            <Typography color="red" size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}
