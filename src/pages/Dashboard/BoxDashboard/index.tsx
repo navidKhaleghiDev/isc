@@ -6,6 +6,7 @@ type PropsType = {
   component?: React.ReactNode;
   title: string;
   description: string;
+  className?: string;
 };
 
 /**
@@ -26,6 +27,7 @@ export function BoxDashboard({
   component,
   title,
   description,
+  className,
 }: PropsType) {
   const showIcon = () => {
     if (icon) {
@@ -38,14 +40,18 @@ export function BoxDashboard({
   };
 
   return (
-    <Card color="white" border={true} borderColor="neutral" rounded="xxxl" className="flex items-center p-8 mb-5">
+    <Card
+      border
+      shadow="sm"
+      className={`flex items-center px-2 py-4 md:p-7 mb-5 col-span-2 ${className}`}
+    >
       <>
         {showIcon()}
         <div>
-          <Typography color="teal" size="h6">
+          <Typography color="black" size="body4" weight="bold">
             {title}
           </Typography>
-          <Typography className="text-neutral-400" size="body4">
+          <Typography color="neutral" size="body5">
             {description}
           </Typography>
         </div>

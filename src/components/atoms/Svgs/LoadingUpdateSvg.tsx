@@ -1,8 +1,8 @@
 interface LoadingUpdateSvgProps {
-    className?: string;
+  className?: string;
 }
 
-export function LoadingUpdateSvg ({className} : LoadingUpdateSvgProps) {
+export function LoadingUpdateSvg({ className }: LoadingUpdateSvgProps) {
   return (
     <svg
       width="48"
@@ -84,5 +84,4 @@ export function LoadingUpdateSvg ({className} : LoadingUpdateSvgProps) {
       />
     </svg>
   );
-};
-
+}
