@@ -29,7 +29,7 @@ export const iconAvatarStyles = cva('absolute dark:text-white ', {
       grey: 'text-neutral-400 ',
       inactive: 'text-neutral-400 ',
     },
-    iconSize: {
+    size: {
       sm: 'w-5 h-5 ',
       md: 'w-6 h-6 ',
       lg: 'w-36 h-36',
@@ -37,6 +37,6 @@ export const iconAvatarStyles = cva('absolute dark:text-white ', {
   },
   defaultVariants: {
     intent: 'grey',
-    iconSize: 'md',
+    size: 'md',
   },
 });
