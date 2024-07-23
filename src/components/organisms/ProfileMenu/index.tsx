@@ -12,7 +12,7 @@ import { getRoleUser } from '@ui/organisms/Navbar/NavbarDashboard/utils';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { http } from '@src/services/http';
 
-export function ProfileDropdown(): ReactNode {
+export function ProfileMenu(): ReactNode {
   const { user } = useUserContext();
   const navigate = useNavigate();
   const { setUser } = useUserContext();
