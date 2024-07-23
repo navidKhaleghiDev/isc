@@ -36,7 +36,7 @@ export function NavbarDashboard() {
               ? `${user?.first_name} ${user?.last_name}`
               : user?.email}
           </Typography>
-          <Typography color="teal" size="caption">
+          <Typography color="teal" size="body6">
             {getRoleUser(user?.is_superuser, user?.is_admin)}
           </Typography>
         </div>

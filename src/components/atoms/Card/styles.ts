@@ -11,22 +11,22 @@ export const cardStyles = cva('', {
       white: `bg-white dark:bg-neutral-300`,
     },
     borderColor: {
-      neutral: `${PALLET.BORDER_COLOR.NEUTRAL} `,
+      neutral_light: `${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} `,
       teal: `${PALLET.BORDER_COLOR.TEAL} `,
       yellow: `${PALLET.BORDER_COLOR.YELLOW} `,
       red: `${PALLET.BORDER_COLOR.RED} `,
     },
     rounded: {
       sm: 'rounded-sm',
-      md: 'rounded-md',
+      md: 'rounded-[20px]',
       lg: 'rounded-lg',
       xl: 'rounded-xl',
     },
     shadow: {
-      sm: 'shadow-sm border border-neutral-100',
-      md: 'shadow-md border border-neutral-100',
-      lg: 'shadow-lg border border-neutral-100',
-      xl: 'shadow-xl border border-neutral-100',
+      sm: 'shadow-sm',
+      md: 'shadow-md border border-neutral-200',
+      lg: 'shadow-lg border border-neutral-200',
+      xl: 'shadow-xl border border-neutral-200',
     },
     border: {
       true: 'border',
@@ -35,5 +35,6 @@ export const cardStyles = cva('', {
   defaultVariants: {
     color: 'white',
     rounded: 'md',
+    borderColor: 'neutral_light',
   },
 });

@@ -64,7 +64,7 @@ export function BaseTextarea(props: BaseTextareaProps<any>) {
             placeholder={placeholder}
           />
           {!hiddenError && (
-            <Typography color="red" size="caption" className="h-6">
+            <Typography color="red" size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}
