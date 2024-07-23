@@ -43,9 +43,11 @@ export function Dropdown<T extends FieldValues>({
   name,
   defaultValue,
   className,
+  size,
   label,
   loading,
   leftLabel,
+  valueOnChange,
 }: DropdownProps<T>) {
   const ref = useRef(null);
   const [state, setState] = useState<StateType>(initState);
@@ -85,6 +87,7 @@ export function Dropdown<T extends FieldValues>({
             onClick={toggleOpen}
             className={baseDropDownStyles({
               fullWidth,
+              size,
               selected: !!value,
               intent: error ? 'error' : 'default',
               className,
@@ -102,11 +105,7 @@ export function Dropdown<T extends FieldValues>({
                   placeHolder}
                 {/* <BaseIcon icon="ic:round-close" /> */}
                 <BaseIcon
-                  icon={
-                    state.openOptions
-                      ? `ph:caret-circle-down`
-                      : `ph:caret-circle-left`
-                  }
+                  icon={state.openOptions ? `ph:caret-down` : `ph:caret-left`}
                 />
               </>
             )}
@@ -134,12 +133,16 @@ export function Dropdown<T extends FieldValues>({
               <button
                 type="button"
                 key={option.id}
-                className={`w-full p-3 text-teal-600 hover:bg-gray-200 ${
+                className={`w-full p-3 hover:bg-gray-200 ${
                   leftLabel ? 'text-left' : 'text-right'
                 }`}
                 onClick={() => {
                   handleOnChange(option);
                   onChange(option.id);
+
+                  if (valueOnChange) {
+                    valueOnChange(option);
+                  }
                 }}
               >
                 {option.label}

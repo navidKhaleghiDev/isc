@@ -141,23 +141,26 @@ export function BaseInput(props: BaseInputProps<any>) {
           </Typography>
         </label>
       )}
-      <input
-        id={id}
-        type={type}
-        dir="auto"
-        name={name}
-        value={pureValue}
-        onChange={pureOnChange}
-        className={baseInputStyles({
-          intent: pureError ? 'error' : intent,
-          className: `${(endIcon || onClickIcon) && 'pl-8'} ${
-            startIcon && 'pr-8'
-          } `,
-          fullWidth,
-          size,
-        })}
-        placeholder={placeholder}
-      />
+      <div className="relative base-input">
+        {startIcon && <IconInput icon={startIcon} intent={intent} />}
+        <input
+          id={id}
+          type={type}
+          dir="auto"
+          name={name}
+          value={pureValue}
+          onChange={pureOnChange}
+          className={baseInputStyles({
+            intent: pureError ? 'error' : intent,
+            className: `${(endIcon || onClickIcon) && 'pr-8'} ${
+              startIcon && 'pl-8'
+            } `,
+            fullWidth,
+            size,
+          })}
+          placeholder={placeholder}
+        />
+      </div>
       {pureError && (
         <Typography color="red" size="body6" className="h-6">
           {pureError}

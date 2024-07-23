@@ -1,46 +1,45 @@
 import { useState } from 'react';
-import { BaseButton, Card } from '@ui/atoms';
+import { Dropdown } from '@ui/atoms';
+import { useForm } from 'react-hook-form';
 import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
+import { TValueOnChange } from '@ui/atoms/DropDown/type';
 
 import { ButtonState } from './types';
 
 function RulesPageCP() {
-  const [activeButton, setActiveButton] = useState<ButtonState>('suggest');
+  const [activeButton, setActiveButton] = useState<ButtonState>('all');
   const [search, setSearch] = useState('');
+  const { control } = useForm();
 
   const handleOnSearch = (value: string) => {
     setSearch(value);
   };
 
-  const handleClickTab = (tab: ButtonState) => {
-    setActiveButton(tab);
-  };
+  const dropValueChange: TValueOnChange = (value) =>
+    setActiveButton(value.title);
+  const dropDownOptions = [
+    { id: '1', label: 'همه قوانین', title: 'all' },
+    { id: '2', label: 'قوانین پیشنهادی', title: 'suggest' },
+  ];
 
   return (
-    <div className="w-full flex flex-col h-full p-16">
-      <Card
-        color="neutral"
-        className="p-4 flex justify-center items-center gap-4"
-      >
-        <BaseButton
-          label="قوانین پیشنهادی"
-          type={activeButton === 'suggest' ? 'default' : 'shadow'}
-          onClick={() => handleClickTab('suggest')}
-        />
-        <BaseButton
-          label="همه قوانین"
-          type={activeButton === 'all' ? 'default' : 'shadow'}
-          onClick={() => handleClickTab('all')}
-        />
-      </Card>
-      {activeButton === 'all' && (
-        <div className="w-1/3 mt-4">
+    <div className="w-full flex flex-col h-full mt-[51px] px-11">
+      <form className="p-4 flex justify-start items-center gap-4 ">
+        {activeButton === 'all' && (
           <SearchInput onChange={handleOnSearch} value={search} />
-        </div>
-      )}
-
+        )}
+        <Dropdown
+          options={dropDownOptions}
+          placeHolder="همه قوانین"
+          control={control}
+          name="rulesSortOptions"
+          size="lg"
+          id="rules-sort"
+          valueOnChange={dropValueChange}
+        />
+      </form>
       <RulesList buttonState={activeButton} searchValue={search} />
     </div>
   );
