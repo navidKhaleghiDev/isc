@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { BaseButton, Dropdown } from '@ui/atoms';
+import { Dropdown } from '@ui/atoms';
 import { useForm } from 'react-hook-form';
 import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
+import { TValueOnChange } from '@ui/atoms/DropDown/type';
 
 import { ButtonState } from './types';
 
@@ -16,35 +17,27 @@ function RulesPageCP() {
     setSearch(value);
   };
 
-  // const dropValueChange = (value: ButtonState) => setActiveButton(value);
+  const dropValueChange: TValueOnChange = (value) =>
+    setActiveButton(value.title);
   const dropDownOptions = [
-    { id: '1', label: 'همه قوانین' },
-    { id: '2', label: 'قوانین پیشنهادی' },
+    { id: '1', label: 'همه قوانین', title: 'all' },
+    { id: '2', label: 'قوانین پیشنهادی', title: 'suggest' },
   ];
 
-  const handleClickTab = (tab: ButtonState) => {
-    setActiveButton(tab);
-  };
-
   return (
-    <div className="w-full flex flex-col h-full p-16">
-      <form className="p-4 flex justify-start items-center gap-4">
+    <div className="w-full flex flex-col h-full mt-[51px] px-11">
+      <form className="p-4 flex justify-start items-center gap-4 ">
         {activeButton === 'all' && (
           <SearchInput onChange={handleOnSearch} value={search} />
         )}
         <Dropdown
           options={dropDownOptions}
-          placeHolder="مرتب سازی قوانین"
+          placeHolder="همه قوانین"
           control={control}
           name="rulesSortOptions"
           size="lg"
           id="rules-sort"
-        />
-        <BaseButton
-          label="جستجوی قوانین"
-          size="xl"
-          type="default"
-          onClick={() => handleClickTab('suggest')}
+          valueOnChange={dropValueChange}
         />
       </form>
       <RulesList buttonState={activeButton} searchValue={search} />

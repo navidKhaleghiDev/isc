@@ -30,7 +30,7 @@ type PropsType = {
   searchValue: string;
 };
 
-const LIMIT_RULES_LIST = 8;
+const LIMIT_RULES_LIST = 12;
 
 /**
  * RulesList Component
@@ -91,25 +91,23 @@ export function RulesList({ buttonState, searchValue }: PropsType) {
       />
     );
   }
-
   return (
     <LoadingWrapper isLoading={loadingAllData || loadingSuggestData}>
       <div className="flex flex-col h-full items-center">
-        <div className="w-full grid grid-cols-4 gap-y-5  mt-11">
+        <div className="w-full mt-11">
           {rules.length > 0 ? (
             <>
-              {rules.map((item: IRules) => (
-                <RulesCard key={item.id} rule={item} />
-              ))}
-
+              <div className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 mb-[82px]">
+                {rules.map((item: IRules) => (
+                  <RulesCard key={item.id} rule={item} />
+                ))}
+              </div>
               {!!countPage && (
-                <div className="">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
-                    onPageChange={handlePageChange}
-                  />
-                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
+                  onPageChange={handlePageChange}
+                />
               )}
             </>
           ) : (

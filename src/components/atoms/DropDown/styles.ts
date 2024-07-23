@@ -6,7 +6,7 @@ export const baseDropDownStyles = cva(
   {
     variants: {
       intent: {
-        default: `${PALLET.TEXT_COLOR.NEUTRAL_DARK} shadow-sm border ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} rounded-lg focus:border-2 focus:border-teal-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:shadow-none`,
+        default: `${PALLET.TEXT_COLOR.NEUTRAL_DARK} shadow-sm border ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} rounded-lg focus:border-2 focus:border-teal-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:shadow-none text-base`,
         error: 'text-red-600  border-2 border-red-600 ',
       },
       fullWidth: {

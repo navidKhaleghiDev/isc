@@ -55,21 +55,23 @@ export function RulesCard({ rule }: PropsType) {
     <>
       <Card
         color="white"
-        className="w-[225px] h-[215px] p-[30px] border-teal-600"
+        className="w-[225px] h-[154px] p-[30px] border-teal-600"
       >
         <div className="flex flex-col" dir="ltr">
-          <Typography color="black" size="body2" type="p" className="h-16">
+          <Typography
+            color="black"
+            type="p"
+            className="h-16  text-sm font-semibold"
+          >
             {rule.name}
           </Typography>
           <div className="flex self-end gap-1 items-center">
-            {/* <BaseButton
-              label=""
-              endIcon="ic:baseline-plus"
-              type="default"
-              size="sm"
+            <IconButton
+              icon="ph:plus"
+              color="tealDark"
+              className="text-white"
               onClick={onClickAddButton}
-            /> */}
-            <IconButton icon="ph:plus" color="tealDark" />
+            />
             <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
               <IconButton
                 icon="ph:dots-three-bold"
