@@ -11,7 +11,7 @@ export const cardStyles = cva('', {
       white: `bg-white dark:bg-neutral-300`,
     },
     borderColor: {
-      neutral: `${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} `,
+      neutral_light: `${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} `,
       teal: `${PALLET.BORDER_COLOR.TEAL} `,
       yellow: `${PALLET.BORDER_COLOR.YELLOW} `,
       red: `${PALLET.BORDER_COLOR.RED} `,
@@ -35,7 +35,6 @@ export const cardStyles = cva('', {
   defaultVariants: {
     color: 'white',
     rounded: 'md',
-    borderColor: 'neutral',
-    shadow: 'sm',
+    borderColor: 'neutral_light',
   },
 });

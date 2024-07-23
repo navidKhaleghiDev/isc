@@ -6,7 +6,11 @@ export const typographyStyles = cva('', {
     color: {
       teal: `${PALLET.TEXT_COLOR.TEAL} `,
       neutral: `${PALLET.TEXT_COLOR.NEUTRAL}  `,
+      neutral_light: `${PALLET.TEXT_COLOR.NEUTRAL_LIGHT}`,
+      neutral_middle: `${PALLET.TEXT_COLOR.NEUTRAL_MIDDLE}`,
+      neutral_dark: `${PALLET.TEXT_COLOR.NEUTRAL_DARK}`,
       yellow: `${PALLET.TEXT_COLOR.YELLOW} `,
+      red_light: `${PALLET.TEXT_COLOR.RED_LIGHT}`,
       red: `${PALLET.TEXT_COLOR.RED} `,
       white: `${PALLET.TEXT_COLOR.WHITE} `,
       black: `${PALLET.TEXT_COLOR.BLACK}`,
@@ -22,6 +26,7 @@ export const typographyStyles = cva('', {
       body2: SIZE.TYPOGRAPHY.BODY2,
       body3: SIZE.TYPOGRAPHY.BODY3,
       body4: SIZE.TYPOGRAPHY.BODY4,
+      body5: SIZE.TYPOGRAPHY.BODY5,
       body6: SIZE.TYPOGRAPHY.BODY6,
     },
     weight: {
