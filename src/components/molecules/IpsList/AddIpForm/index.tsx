@@ -3,6 +3,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { handelSubmitFormProp } from '@ui/Templates/FilterAndList/components/molecules/Filter/Ips';
 import { EIpType } from '@src/services/client/rules/types';
+import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 
 // import { IIp } from '@src/services/client/rules/types';
 
@@ -35,7 +36,7 @@ export function AddIpForm({ onSubmit, onCloseModal, loading }: PropsType) {
   // };
 
   const handelFormSubmit = () => {
-    onSubmit();
+    // onSubmit();
     onCloseModal();
   };
 
@@ -53,6 +54,7 @@ export function AddIpForm({ onSubmit, onCloseModal, loading }: PropsType) {
         rules={{ pattern: regexPattern.ip, required: 'آی پی لازم است' }}
         fullWidth
       />
+      {/* <BaseCheckBox label='ohv[d '/> */}
       <BaseButton
         className="mt-4"
         size="lg"
