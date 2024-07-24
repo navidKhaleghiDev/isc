@@ -125,7 +125,7 @@ export function BaseInput(props: BaseInputProps<any>) {
             {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (
-            <Typography color="red" size="caption" className="h-6">
+            <Typography color="red" size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}
@@ -159,7 +159,7 @@ export function BaseInput(props: BaseInputProps<any>) {
         placeholder={placeholder}
       />
       {pureError && (
-        <Typography color="red" size="caption" className="h-6">
+        <Typography color="red" size="body6" className="h-6">
           {pureError}
         </Typography>
       )}

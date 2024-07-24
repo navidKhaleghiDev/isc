@@ -15,7 +15,7 @@ export interface ITypography
     | 'h4'
     | 'h5'
     | 'h6'
-    | 'caption'
+    | 'body6'
     | 'span'
     | 'div';
   className?: string;
