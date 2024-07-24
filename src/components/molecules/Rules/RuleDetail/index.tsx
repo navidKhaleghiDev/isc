@@ -87,10 +87,10 @@ export function RuleDetail() {
   return rule ? (
     <>
       <RuleInformation
-        createdDate={rule.created_at}
         updateDate={rule.updated_at}
         name={rule.name}
-        description={rule.description}
+        codeList={codeList}
+        countDifferenceOrder={countDifferenceOrder}
       />
       <RulePolicyList
         ref={rulePolicyListRef}
