@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const headerStyles = cva(
-  'flex justify-between items-center pb-3 p-2 h-12',
+  'flex items-center justify-end h-12 box-content pt-2 px-3 pb-3',
   {
     variants: {
       type: {

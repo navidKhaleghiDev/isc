@@ -2,7 +2,6 @@ import { BaseButton, BaseInput } from '@ui/atoms';
 import { FieldValues, useForm } from 'react-hook-form';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { IIp } from '@src/services/client/rules/types';
-import { IconButton } from '@ui/atoms/BaseButton';
 
 type PropsType = {
   ip: IIp;
@@ -14,7 +13,7 @@ interface IUpdateIpValues extends FieldValues {
   ip: string;
 }
 
-export function UpdateIp({ ip, onSubmit, onCloseModal, loading }: PropsType) {
+export function UpdateIp({ ip, onSubmit, loading }: PropsType) {
   const { control, handleSubmit } = useForm<IUpdateIpValues>({
     mode: 'onChange',
     defaultValues: {
@@ -37,19 +36,12 @@ export function UpdateIp({ ip, onSubmit, onCloseModal, loading }: PropsType) {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="modal-close cursor-pointer z-50 w-full flex justify-end">
-        <IconButton
-          icon="iconamoon:close-bold"
-          onClick={onCloseModal}
-          classNameIcon="h-8 w-8 text-teal-600"
-        />
-      </div>
       <form
         onSubmit={handleSubmit(handelSubmitForm)}
-        className="flex flex-col items-center justify-center w-64 mt-3"
+        className="flex flex-col items-center justify-center w-full mt-3"
       >
         <BaseInput
-          size="sm"
+          size="lg"
           name="ip"
           placeholder="بنویسید"
           id="ip"
@@ -61,7 +53,13 @@ export function UpdateIp({ ip, onSubmit, onCloseModal, loading }: PropsType) {
           }}
           fullWidth
         />
-        <BaseButton label="ثبت تغییرات" loading={loading} submit />
+        <BaseButton
+          className="self-end"
+          size="lg"
+          label="ثبت تغییرات"
+          loading={loading}
+          submit
+        />
       </form>
     </div>
   );
