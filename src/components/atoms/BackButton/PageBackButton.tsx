@@ -7,7 +7,7 @@ export function PageBackButton({
   backToReferrer,
 }: BackButtonProps) {
   return !withLabel ? (
-    <ToolTip tooltip="صفحه قبل" position="right">
+    <ToolTip tooltip="صفحه قبل" position="left">
       <BackButton />
     </ToolTip>
   ) : (

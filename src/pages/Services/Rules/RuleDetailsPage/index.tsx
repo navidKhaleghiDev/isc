@@ -5,7 +5,9 @@ import { RuleDetail } from '@ui/molecules/Rules/RuleDetail';
 export function RuleDetailsPage() {
   return (
     <RulesCodeTemplate>
-      <PageBackButton />
+      <div className="text-end">
+        <PageBackButton />
+      </div>
       <RuleDetail />
     </RulesCodeTemplate>
   );
