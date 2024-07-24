@@ -1,3 +1,6 @@
+import Warning from '@iconify-icons/ph/warning';
+import Check from '@iconify-icons/ph/check';
+import Info from '@iconify-icons/ph/info';
 import { BaseIcon } from '../BaseIcon';
 import { Card } from '../Card';
 import { Typography } from '../Typography';
@@ -16,29 +19,42 @@ import { INotification } from './types';
  * @param {boolean} [outline] - Determines if the card should have an outline.
  * @param {string} [size] - Size of the notification card (e.g., xs, sm, md, lg).
  * @param {string} title - Title text to be displayed in the notification.
- * @param {'error' | 'info' | 'warning'} type - Type of notification (error, info, warning).
+ * @param {'error' | 'info' | 'warning' | 'success'} [type] - Type of notification (error, info, warning, success).
  *
  * @returns {JSX.Element} Returns the rendered notification component.
  */
 
-export function Notification({
-  className,
-  outline,
-  size,
-  title,
-  type,
-}: INotification) {
+export function Notification({ className, size, title, type }: INotification) {
+  const SelectIconType = ({
+    notificationType,
+  }: {
+    notificationType: INotification['type'];
+  }) => {
+    if (notificationType === 'success') {
+      return Check;
+    }
+    if (notificationType === 'error') {
+      return Warning;
+    }
+    return Info;
+  };
+
   return (
     <Card
-      className={notificationStyles({ size, type, outline, className })}
+      className={notificationStyles({ size, type, className })}
+      color={null}
+      rounded="lg"
       border
     >
       <div className="flex items-center">
-        <BaseIcon
-          icon={type === 'error' ? 'ph:shield-warning' : 'carbon:security'}
-          className="ml-4"
-        />
-        <Typography size="body3" weight="medium">
+        {type && (
+          <BaseIcon
+            icon={SelectIconType({ notificationType: type })}
+            className="ml-2.5"
+            size="md"
+          />
+        )}
+        <Typography size="body4" weight="normal">
           {title}
         </Typography>
       </div>
