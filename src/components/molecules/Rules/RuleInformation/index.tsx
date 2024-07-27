@@ -32,7 +32,7 @@ export function RuleInformation({
   name,
   countDifferenceOrder,
   codeList,
-}: RuleInformationProps) {
+}: RuleInformationProps): JSX.Element {
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-col items-center justify-between">
