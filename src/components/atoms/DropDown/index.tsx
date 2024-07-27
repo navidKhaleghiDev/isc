@@ -149,11 +149,9 @@ export function Dropdown<T extends FieldValues>({
               </button>
             ))}
           </div>
-          {error && (
-            <Typography color="red" size="body6" className="h-6">
-              {error?.message ?? ''}
-            </Typography>
-          )}
+          <Typography color="red" size="body6" className="h-6">
+            {error?.message ?? ''}
+          </Typography>
         </div>
       )}
     />
