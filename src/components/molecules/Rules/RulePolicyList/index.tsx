@@ -7,6 +7,7 @@ import { CardRuleDetail } from '@ui/molecules/Rules/CardRuleDetail';
 import { Modal } from '@ui/molecules/Modal';
 import { CodeLine } from '@ui/molecules/Rules/MyRuleDetail/CodeLine';
 import { CodeLineSelect } from '@ui/molecules/Rules/MyRuleDetail/CodeLine/CodeLineSelect';
+import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 
 /**
  * Props for RulePolicyList component.
@@ -79,6 +80,7 @@ function RulePolicyListCp(
 ) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [valueAllCodeLineSelect, setValueAllCodeLineSelect] = useState('');
+  const [allPolicySelect, setAllPolicySelect] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [modalsLoading, setModalsLoading] = useState({
     deleteButton: false,
@@ -128,18 +130,27 @@ function RulePolicyListCp(
   };
 
   return (
-    <>
-      <div className="flex w-100 justify-between bg-neutral-100 rounded mb-2 px-2">
-        <Typography size="body2" color="neutral">
-          اعمال تغییرات برای تمام پالیسی ها:
-        </Typography>
-        <CodeLineSelect
-          id="RulePolicyList"
-          value={valueAllCodeLineSelect}
-          onChange={onChangeAllOrder}
-          className="text-2xl"
+    <div className="mt-12">
+      <div className="flex items-center gap-2">
+        <BaseCheckBox
+          id="all_policy_active"
+          name="all_policy"
+          pureOnChange={() => setAllPolicySelect(!allPolicySelect)}
         />
+        <Typography size="body5" color="neutral_light">
+          اعمال تغییرات روی تمام سیاست ها
+        </Typography>
       </div>
+      {allPolicySelect && (
+        <Card shadow="sm" rounded="lg" className="mt-5">
+          <CodeLineSelect
+            id="RulePolicyList"
+            value={valueAllCodeLineSelect}
+            onChange={onChangeAllOrder}
+            className="text-2xl"
+          />
+        </Card>
+      )}
       <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
         {codeList.length > 0 ? (
           codeList.map((mCode: SliceOrderCodeType, index: number) => {
@@ -159,17 +170,6 @@ function RulePolicyListCp(
         )}
       </Card>
       <div className="flex w-full justify-between items-center mt-8">
-        <div className="flex">
-          <CardRuleDetail
-            label="سیاست ها"
-            value={`${Object.entries(codeList).length}`}
-            className="ml-5"
-          />
-          <CardRuleDetail
-            label="تغییرداده‌شده‌ها"
-            value={`${countDifferenceOrder}`}
-          />
-        </div>
         <div className="w-full flex justify-end">
           {onDeleteRule && (
             <BaseButton
@@ -217,7 +217,7 @@ function RulePolicyListCp(
           }}
         />
       )}
-    </>
+    </div>
   );
 }
 export const RulePolicyList = forwardRef(RulePolicyListCp);
