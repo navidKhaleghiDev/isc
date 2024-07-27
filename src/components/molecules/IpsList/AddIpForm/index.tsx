@@ -66,17 +66,17 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
     }
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      const target = event.currentTarget as HTMLInputElement;
-      setIpValue(target.value);
-    }
-  };
+  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'Enter') {
+  //     event.preventDefault();
+  //     const target = event.currentTarget as HTMLInputElement;
+  //     setIpValue(target.value);
+  //   }
+  // };
 
-  const typographyClass = `w-full flex justify-between items-center p-2 rounded-md bg-neutral-100 font-semibold ${
-    ipValue ? '' : 'hidden'
-  }`;
+  // const typographyClass = `w-full flex justify-between items-center p-2 rounded-md bg-neutral-100 font-semibold ${
+  //   ipValue ? '' : 'hidden'
+  // }`;
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="flex flex-col">
@@ -88,16 +88,15 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
         id="ip"
         rules={{ pattern: regexPattern.ip, required: 'آی پی لازم است' }}
         endIcon={FilmScript}
-        onKeyDown={handleKeyPress}
+        // onKeyDown={handleKeyPress}
       />
-      <div className="p-5 flex flex-col items-start">
-        <h3 className="text-lg font-semibold">نوع IP را انتخاب کنید</h3>
+      <div className="py-5 flex flex-col items-start">
+        <h3 className=" text-sm font-semibold text-neutral-300">
+          نوع IP را انتخاب کنید
+        </h3>
         <ul className="flex w-full gap-2">
-          <li>
-            <label
-              htmlFor="internal"
-              className="flex items-center cursor-pointer w-full"
-            >
+          <li className="w-1/3">
+            <label htmlFor="internal" className="cursor-pointer w-1/2">
               <input
                 type="radio"
                 id="internal"
@@ -109,19 +108,17 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
                 required
               />
               <div
-                className="flex justify-between items-center w-full px-3 my-3 rounded-full bg-neutral-100 text-neutral-300
+                className="flex items-center justify-between w-full px-3 max-h-5 rounded-full bg-neutral-100 text-neutral-300
                 peer-checked:bg-neutral-200 peer-checked:text-neutral-500
               "
               >
-                داخلی <BaseIcon icon={Plus} />
+                داخلی
+                <BaseIcon icon={Plus} />
               </div>
             </label>
           </li>
-          <li>
-            <label
-              htmlFor="external"
-              className="flex items-center cursor-pointer w-full"
-            >
+          <li className="w-1/3">
+            <label htmlFor="external" className="cursor-pointer ">
               <input
                 type="radio"
                 id="external"
@@ -132,21 +129,27 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
                 onChange={handleOptionChange}
               />
               <div
-                className="flex justify-between items-center w-full px-3 my-3 rounded-full bg-neutral-100 text-neutral-300
+                className="flex justify-between items-center w-full px-3 max-h-5 rounded-full bg-neutral-100 text-neutral-300
                 peer-checked:bg-neutral-200 peer-checked:text-neutral-500
               "
               >
-                خارجی <BaseIcon icon={Plus} />
+                خارجی
+                <BaseIcon icon={Plus} />
               </div>
             </label>
           </li>
         </ul>
       </div>
-      <Typography color="neutral_dark" size="body4" className={typographyClass}>
+      <Typography
+        color="neutral_dark"
+        size="body4"
+        className="w-full flex justify-between items-center p-2 rounded-md bg-neutral-100 font-semibold"
+      >
         <BaseIcon icon={x} color="neutral" />
-        {ipValue}
+        {/* {ipValue} */}
+        192.168.12.13
       </Typography>
-      <div>{renderSelectedOption()}</div>
+      <div className="self-end w-1/3">{renderSelectedOption()}</div>
       <BaseButton
         className="mt-4 self-end"
         size="sm"

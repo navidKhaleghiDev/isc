@@ -94,7 +94,7 @@ export function FilterIps() {
       </div>
       <IpsList filterProduct={openIps} searchQuery={search} />
       <Modal
-        className="!w-1/4"
+        className="!w-[315px]"
         open={modalOpen}
         setOpen={setModalOpen}
         type="none"
