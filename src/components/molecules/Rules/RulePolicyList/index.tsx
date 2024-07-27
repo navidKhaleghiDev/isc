@@ -3,11 +3,11 @@ import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 import { ChangeEvent, forwardRef, useImperativeHandle, useState } from 'react';
 import { NoResult } from '@ui/molecules/NoResult';
-import { CardRuleDetail } from '@ui/molecules/Rules/CardRuleDetail';
 import { Modal } from '@ui/molecules/Modal';
 import { CodeLine } from '@ui/molecules/Rules/MyRuleDetail/CodeLine';
 import { CodeLineSelect } from '@ui/molecules/Rules/MyRuleDetail/CodeLine/CodeLineSelect';
 import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
+import Icon from 'react-multi-date-picker/components/icon';
 
 /**
  * Props for RulePolicyList component.
@@ -25,7 +25,6 @@ type RulePolicyListProps = {
   onRegisterRule: () => void;
   codeList: SliceOrderCodeType[];
   setCodeList: (codeLIst: SliceOrderCodeType[]) => void;
-  countDifferenceOrder: number;
 };
 
 /**
@@ -69,13 +68,7 @@ export interface IRulePolicyListRef {
  */
 
 function RulePolicyListCp(
-  {
-    codeList,
-    setCodeList,
-    onDeleteRule,
-    onRegisterRule,
-    countDifferenceOrder,
-  }: RulePolicyListProps,
+  { codeList, setCodeList, onDeleteRule, onRegisterRule }: RulePolicyListProps,
   ref: React.Ref<IRulePolicyListRef>
 ) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
@@ -118,7 +111,6 @@ function RulePolicyListCp(
       setCodeList(newCodeList);
     }
   };
-
   const onChangeAllOrder = ({
     target: { value },
   }: ChangeEvent<HTMLSelectElement>) => {
@@ -142,35 +134,50 @@ function RulePolicyListCp(
         </Typography>
       </div>
       {allPolicySelect && (
-        <Card shadow="sm" rounded="lg" className="mt-5">
+        <Card
+          shadow="sm"
+          rounded="lg"
+          className="mt-5 px-2 flex flex-row-reverse gap-4 py-2 pr-6 transition "
+        >
           <CodeLineSelect
             id="RulePolicyList"
+            className="text-left"
             value={valueAllCodeLineSelect}
             onChange={onChangeAllOrder}
-            className="text-2xl"
           />
+          <Icon />
+          <Typography>{`${
+            valueAllCodeLineSelect || 'alert'
+          }  بروی تمام سیاست ها`}</Typography>
         </Card>
       )}
-      <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
+      <div className="max-h-[300px] overflow-y-auto mt-[10px] p-0.5">
         {codeList.length > 0 ? (
           codeList.map((mCode: SliceOrderCodeType, index: number) => {
             return (
-              <CodeLine
-                id={`myRulePolicy-${index}`}
+              <Card
+                shadow="sm"
                 key={`${index}_${mCode.order}`}
-                code={mCode}
-                onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
-                  handleOnChangeOrder(event, index)
-                }
-              />
+                rounded="lg"
+                className="text-left mt-[10px] py-2 px-2"
+              >
+                <CodeLine
+                  id={`myRulePolicy-${index}`}
+                  code={mCode}
+                  onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
+                    handleOnChangeOrder(event, index)
+                  }
+                  disable={allPolicySelect}
+                />
+              </Card>
             );
           })
         ) : (
           <NoResult />
         )}
-      </Card>
+      </div>
       <div className="flex w-full justify-between items-center mt-8">
-        <div className="w-full flex justify-end">
+        <div className="w-full flex justify-start">
           {onDeleteRule && (
             <BaseButton
               label="حذف"
@@ -180,7 +187,7 @@ function RulePolicyListCp(
               onClick={toggleModalDelete}
             />
           )}
-          <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
+          <BaseButton label="ثبت تغییرات" size="lg" onClick={toggleModalEdit} />
         </div>
       </div>
       <Modal

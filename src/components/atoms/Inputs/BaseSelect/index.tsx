@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 
-import { BaseInputProps } from '../types';
-import { baseInputStyles } from '../styles';
+import { IBaseSelectProp } from '../types';
+import { baseSelectStyles } from '../styles';
 import { Typography } from '../../Typography';
 import { IOptionSelect, OptionSelect } from './OptionSelect';
 
@@ -27,13 +27,14 @@ import { IOptionSelect, OptionSelect } from './OptionSelect';
  * @returns {JSX.Element} The rendered select component.
  */
 
-export function BaseSelect(props: BaseInputProps<any>) {
+export function BaseSelect(props: IBaseSelectProp) {
   const {
     control,
     name,
     id,
     rules,
     className,
+    selectOptions,
     fullWidth,
     defaultValue,
     startIcon,
@@ -65,23 +66,19 @@ export function BaseSelect(props: BaseInputProps<any>) {
             name={field.name}
             value={field.value}
             onChange={field.onChange}
-            className={baseInputStyles({
+            className={baseSelectStyles({
               intent: error?.message ? 'error' : intent,
               className: `${endIcon && 'pr-8'} ${startIcon && 'pl-8'}`,
               fullWidth,
               size,
             })}
           >
-            <OptionSelect option={{ label: 'انتخاب کنید', value: '' }} />
-            {[
-              { id: '1', label: 'گزینه', value: 'tow' },
-              { id: '2', label: 'گزینه', value: 'tow' },
-            ].map((option: IOptionSelect) => (
+            {selectOptions.map((option: IOptionSelect) => (
               <OptionSelect key={option.id} option={option} />
             ))}
           </select>
           {!hiddenError && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}

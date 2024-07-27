@@ -9,6 +9,7 @@ import {
   UseFormSetError,
 } from 'react-hook-form';
 import { baseInputStyles } from './styles';
+import { IOptionSelect } from './BaseSelect/OptionSelect';
 
 export interface BaseInputProps<T extends FieldValues>
   extends VariantProps<typeof baseInputStyles> {
@@ -46,6 +47,10 @@ export interface BaseInputProps<T extends FieldValues>
   // inputProps?: InputHTMLAttributes<HTMLInputElement>;
   min?: string | number;
   max?: string | number;
+}
+
+export interface IBaseSelectProp extends BaseInputProps<any> {
+  selectOptions: IOptionSelect[];
 }
 
 export interface DatePickerProps extends BaseInputProps<any> {

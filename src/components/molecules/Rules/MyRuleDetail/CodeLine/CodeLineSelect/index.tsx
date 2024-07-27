@@ -5,6 +5,7 @@ type PropsType = {
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
   id: string;
+  disableSelect?: boolean;
 };
 
 /**
@@ -23,20 +24,45 @@ type PropsType = {
  * @returns {JSX.Element} The rendered a select & options.
  */
 
-export function CodeLineSelect({ value, onChange, className, id }: PropsType) {
+export function CodeLineSelect({
+  value,
+  onChange,
+  className,
+  id,
+  disableSelect,
+}: PropsType) {
+  // const selectOptions = [
+  //   { id: 1, label: 'ALERT', value: 'alert' },
+  //   { id: 2, label: 'DROP', value: 'drop' },
+  //   { id: 3, label: 'BLOCK', value: 'block' },
+  //   { id: 4, label: 'PASS', value: 'pass' },
+  //   { id: 5, label: 'REJECT', value: 'reject' },
+  // ];
+  // const { control } = useForm();
   return (
-    <select
-      name="codeAction"
-      id={id}
-      className={`bg-transparent text-teal-600 cursor-pointer font-bold ${className}`}
-      value={value}
-      onChange={onChange}
-    >
-      <option value="alert">ALERT</option>
-      <option value="drop">DROP</option>
-      <option value="block">BLOCK</option>
-      <option value="pass">PASS</option>
-      <option value="reject">REJECT</option>
-    </select>
+    <>
+      <select
+        name="codeAction"
+        id={id}
+        className={`bg-white disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer ${className}`}
+        value={value}
+        onChange={onChange}
+        disabled={disableSelect}
+      >
+        <option value="alert">ALERT</option>
+        <option value="drop">DROP</option>
+        <option value="block">BLOCK</option>
+        <option value="pass">PASS</option>
+        <option value="reject">REJECT</option>
+      </select>
+      {/* <BaseSelect
+        id="selectAllPolicy"
+        intent="default"
+        selectOptions={selectOptions}
+        name="selectAllPolicy"
+        control={control}
+        defaultValue="alret"
+      /> */}
+    </>
   );
 }

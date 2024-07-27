@@ -97,7 +97,6 @@ export function RuleDetail() {
         codeList={codeList}
         setCodeList={setCodeList}
         onRegisterRule={handleAddRule}
-        countDifferenceOrder={countDifferenceOrder}
       />
     </>
   ) : (

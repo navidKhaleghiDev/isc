@@ -102,3 +102,36 @@ export const baseCheckBoxStyles = cva(
     },
   }
 );
+
+export const baseSelectStyles = cva(
+  `px-3 py-2.5 flex rounded-lg outline-none  border focus:border-2 
+  placeholder:text-right placeholder:text-rtl shadow-sm`,
+  {
+    variants: {
+      intent: {
+        default: `text-neutral-900  focus:border-teal-500 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-500s disabled:shadow-none`,
+        error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
+      ltrPlaceHolder: {
+        true: 'placeholder:text-left',
+        false: 'placeholder:text-right placeholder:text-rtl',
+      },
+      size: {
+        none: ``,
+        xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
+        sm: `w-40 h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
+        md: `w-[220px] h-10 ${SIZE.TYPOGRAPHY.BODY3}`,
+        lg: `w-64 h-10  ${SIZE.TYPOGRAPHY.BODY4}`,
+        xl: '',
+        freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
+      },
+    },
+    defaultVariants: {
+      intent: 'default',
+      size: 'md',
+    },
+  }
+);

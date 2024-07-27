@@ -1,5 +1,5 @@
 export interface IOptionSelect {
-  id?: string;
+  id?: string | number;
   value?: string;
   label: string;
 }
