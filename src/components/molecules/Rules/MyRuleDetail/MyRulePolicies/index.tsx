@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
-import { getCountDifferenceOrder } from '@src/helper/utils/getCountDifferenceOrder';
 
 import { AdditionalList } from '../AdditionalList';
 import { IRulePolicyListRef, RulePolicyList } from '../../RulePolicyList';
@@ -48,10 +47,10 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
   const toggleModalEdit = () => setOpenModalEdit(!openModalEdit);
 
-  const countDifferenceOrder =
-    !!slicedCodeList.length && !!codeList.length
-      ? getCountDifferenceOrder(slicedCodeList, codeList)
-      : 0;
+  // const countDifferenceOrder =
+  //   !!slicedCodeList.length && !!codeList.length
+  //     ? getCountDifferenceOrder(slicedCodeList, codeList)
+  //     : 0;
 
   /**
    * Deletes the user's rule and updates the state.
@@ -141,7 +140,6 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
         setCodeList={setCodeList}
         onDeleteRule={handleDeleteMyRule}
         onRegisterRule={handleAddMyRule}
-        countDifferenceOrder={countDifferenceOrder}
       />
 
       {state?.isUpdated && (
