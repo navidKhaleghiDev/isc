@@ -27,7 +27,6 @@ function ProductBoxCp() {
   if (error) {
     return (
       <Notification
-        outline="error"
         title="در حال حاضر دسترسی به این بخش مقدور نمی باشد."
         type="error"
       />

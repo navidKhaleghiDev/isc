@@ -46,11 +46,11 @@ export function Notification({ className, size, title, type }: INotification) {
       rounded="lg"
       border
     >
-      <div className="flex items-center">
+      <div className="flex items-center flex-row-reverse">
         {type && (
           <BaseIcon
             icon={SelectIconType({ notificationType: type })}
-            className="ml-2.5"
+            className="mr-2.5"
             size="md"
           />
         )}
