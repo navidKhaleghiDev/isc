@@ -1,6 +1,6 @@
+import { IconType } from '@src/types/global';
 import { VariantProps } from 'class-variance-authority';
 import { HTMLInputTypeAttribute } from 'react';
-import { DateObject } from 'react-multi-date-picker';
 import {
   Control,
   FieldPath,
@@ -8,6 +8,8 @@ import {
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
+import { DateObject } from 'react-multi-date-picker';
+
 import { baseInputStyles } from './styles';
 
 export interface BaseInputProps<T extends FieldValues>
@@ -34,11 +36,12 @@ export interface BaseInputProps<T extends FieldValues>
   placeholder?: string;
   className?: string;
   startIcon?: string;
-  endIcon?: string;
+  endIcon?: IconType;
   hiddenError?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string;
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   pureValue?: string;
   pureError?: string;
   ltrLabel?: boolean;

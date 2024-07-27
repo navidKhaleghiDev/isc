@@ -1,10 +1,10 @@
-import { useRef } from 'react';
+import X from '@iconify-icons/ph/x';
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 import { Typography } from '@ui/atoms';
 import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
+import { useRef } from 'react';
 import { contentStyles, headerStyles } from './styles';
 import { IModal } from './types';
-import X from '@iconify-icons/ph/x';
 
 /**
  * Modal Component
@@ -43,18 +43,17 @@ export function Modal({
   content,
   description,
   classContainer,
+  className,
 }: IModal) {
   const ref = useRef(null);
   useClickOutside({ ref, setValue: setOpen, value: open });
   const handleToggle = () => setOpen(!open);
 
   return open ? (
-    <div
-      className={`main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center items-center backdrop-blur-sm`}
-    >
+    <div className="main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center items-center backdrop-blur-sm">
       <div
         ref={ref}
-        className={`rounded-[20px] shadow-lg modal-container bg-white w-[28rem] mx-auto z-50 overflow-y-auto shadow-sm ${classContainer}`}
+        className={`rounded-[20px] shadow-lg modal-container bg-white w-[28rem] mx-auto z-50 overflow-y-auto shadow-sm ${classContainer} ${className}`}
       >
         <div className={contentStyles({ type })}>
           <div className={headerStyles()}>

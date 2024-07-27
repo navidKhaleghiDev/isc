@@ -1,12 +1,12 @@
-import { BaseButton, BaseInput } from '@ui/atoms';
-import { FieldValues, useForm } from 'react-hook-form';
-import { regexPattern } from '@ui/atoms/Inputs';
 import { IIp } from '@src/services/client/rules/types';
+import { BaseButton, BaseInput } from '@ui/atoms';
+import { regexPattern } from '@ui/atoms/Inputs';
+import { FieldValues, useForm } from 'react-hook-form';
 
 type PropsType = {
   ip: IIp;
   onSubmit: (newIp: string) => void;
-  onCloseModal: () => void;
+  // onCloseModal: () => void;
   loading?: boolean;
 };
 interface IUpdateIpValues extends FieldValues {

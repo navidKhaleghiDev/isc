@@ -1,10 +1,10 @@
 import { Controller } from 'react-hook-form';
 
-import { BaseInputProps } from '../types';
-import { baseInputStyles } from '../styles';
 import { Typography } from '../../Typography';
-import { IconInput } from '../IconInput';
 import { IconButtonInput } from '../IconButtonInput';
+import { IconInput } from '../IconInput';
+import { baseInputStyles } from '../styles';
+import { BaseInputProps } from '../types';
 
 /**
  * BaseInput component that integrates with react-hook-form.
@@ -57,6 +57,7 @@ export function BaseInput(props: BaseInputProps<any>) {
     label,
     hiddenError,
     pureOnChange,
+    onKeyDown,
     pureValue,
     onClickIcon,
     pureError,
@@ -150,6 +151,7 @@ export function BaseInput(props: BaseInputProps<any>) {
           name={name}
           value={pureValue}
           onChange={pureOnChange}
+          onKeyDown={onKeyDown}
           className={baseInputStyles({
             intent: pureError ? 'error' : intent,
             className: `${(endIcon || onClickIcon) && 'pr-8'} ${

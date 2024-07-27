@@ -1,17 +1,17 @@
-import { EIpType, IIp } from '@src/services/client/rules/types';
-import { Card, Typography } from '@ui/atoms';
-import { IconButton } from '@ui/atoms/BaseButton';
 import PhPencilSimple from '@iconify-icons/ph/pencil-simple';
-import { useState } from 'react';
 import {
   API_DELETE_VALID_IPS,
   API_UPDATE_VALID_IPS,
 } from '@src/services/client/rules';
+import { EIpType, IIp } from '@src/services/client/rules/types';
+import { Card, Typography } from '@ui/atoms';
+import { IconButton } from '@ui/atoms/BaseButton';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 // import { persianDateNumber } from '@src/helper/utils/dateUtils';
 
-import { Modal } from '../Modal';
 import { UpdateIp } from '../IpsList/UpdateIp';
+import { Modal } from '../Modal';
 
 const ipTypeClasses: { [key in EIpType]: string } = {
   [EIpType.INTERNAL]: 'bg-yellow-100',
