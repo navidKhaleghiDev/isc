@@ -102,6 +102,7 @@ export function BaseInput(props: BaseInputProps<any>) {
                   field.onChange(e.target.files);
                 }
               }}
+              onKeyDown={onKeyDown}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
                 className: `${(endIcon || onClickIcon) && 'pl-8'} ${
@@ -151,7 +152,6 @@ export function BaseInput(props: BaseInputProps<any>) {
           name={name}
           value={pureValue}
           onChange={pureOnChange}
-          onKeyDown={onKeyDown}
           className={baseInputStyles({
             intent: pureError ? 'error' : intent,
             className: `${(endIcon || onClickIcon) && 'pr-8'} ${

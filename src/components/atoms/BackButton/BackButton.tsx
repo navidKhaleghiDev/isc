@@ -52,7 +52,7 @@ export function BackButton({
       icon={PhCaretLeft}
       size="xl"
       type="button"
-      color="teal"
+      color="default"
     />
   ) : (
     <BaseButton

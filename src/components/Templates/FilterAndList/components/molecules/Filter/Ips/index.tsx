@@ -3,6 +3,7 @@ import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { EIpType, IIp } from '@src/services/client/rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import { BaseButton, Dropdown } from '@ui/atoms';
+import { PageBackButton } from '@ui/atoms/BackButton';
 import { TValueOnChange } from '@ui/atoms/DropDown/type';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { IpsList } from '@ui/molecules/IpsList';
@@ -84,14 +85,18 @@ export function FilterIps() {
               valueOnChange={dropValueChange}
             />
           </form>
-          <BaseButton
-            label="اضافه کردن IP"
-            type="default"
-            size="lg"
-            onClick={() => setModalOpen(true)}
-          />
+          <div className="flex gap-6 items-center ">
+            <BaseButton
+              label="اضافه کردن IP"
+              type="default"
+              size="lg"
+              onClick={() => setModalOpen(true)}
+            />
+            <PageBackButton />
+          </div>
         </div>
       </div>
+
       <IpsList filterProduct={openIps} searchQuery={search} />
       <Modal
         className="!w-[315px]"

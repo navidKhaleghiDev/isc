@@ -4,9 +4,9 @@ import { PageBackButton } from '@ui/atoms/BackButton';
 
 export function IpsListPage() {
   return (
-    <div className="w-full flex flex-col h-full p-16">
-      <PageBackButton />
+    <div className="p-16">
       <FilterIps />
+      {/* <PageBackButton /> */}
       {/* <IpsList /> */}
     </div>
   );

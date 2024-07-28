@@ -41,7 +41,7 @@ export interface BaseInputProps<T extends FieldValues>
   onClickIcon?: () => void;
   iconButtonIcon?: string;
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   pureValue?: string;
   pureError?: string;
   ltrLabel?: boolean;
