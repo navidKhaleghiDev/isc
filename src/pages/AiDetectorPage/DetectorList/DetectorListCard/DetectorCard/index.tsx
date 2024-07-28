@@ -78,6 +78,7 @@ function StopListenerIcon({ id, mutate }: StopListenerIconProps) {
       <Modal
         open={openModal}
         setOpen={setOpenModal}
+        size="md"
         type="error"
         title="از متوقف کردن این عملیات مطمئن هستید؟"
         buttonOne={{

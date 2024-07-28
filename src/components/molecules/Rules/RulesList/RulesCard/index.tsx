@@ -86,6 +86,7 @@ export function RulesCard({ rule }: PropsType) {
       <Modal
         open={openModal}
         setOpen={setOpenModal}
+        size="md"
         type="success"
         title="آیا مطمئن هستید؟"
         buttonOne={{
