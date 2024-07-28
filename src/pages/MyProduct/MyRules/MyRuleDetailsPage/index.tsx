@@ -21,10 +21,11 @@ export function MyRuleDetailsPage() {
   }
 
   const myRule: IMyRule | undefined = dataMyRule?.data;
-
   return (
     <RulesCodeTemplate>
-      <PageBackButton />
+      <div className="text-left">
+        <PageBackButton />
+      </div>
       <MyRuleDetail myRule={myRule} />
     </RulesCodeTemplate>
   );

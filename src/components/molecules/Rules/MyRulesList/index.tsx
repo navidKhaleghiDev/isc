@@ -39,12 +39,8 @@ export function MyRulesList() {
   };
 
   return (
-    <div className="w-full mt-8">
-      <MyRulesCard
-        mutateMyRulesList={handleMutate}
-        myRule={headerItem}
-        isHeader
-      />
+    <div className="w-full grid items-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-[30px] gap-y-5 mt-9">
+      <MyRulesCard mutateMyRulesList={handleMutate} myRule={headerItem} />
       {isLoading ? (
         <LoadingSpinner />
       ) : checkedRulesList.length > 0 ? (

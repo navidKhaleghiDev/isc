@@ -1,17 +1,15 @@
-import { persianDateNumber } from '@src/helper/utils/dateUtils';
 import { IMyRule } from '@src/services/client/rules/types';
 import { BaseIcon, Card, Typography } from '@ui/atoms';
-import { IconButton } from '@ui/atoms/BaseButton';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_DELETE_MY_RULE } from '@src/services/client/rules';
 import { toast } from 'react-toastify';
 import { Modal } from '@ui/molecules/Modal';
+import { Link } from 'react-router-dom';
+import { IconButton } from '@ui/atoms/BaseButton';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
 
 type PropsType = {
   myRule: IMyRule;
-  isHeader?: boolean;
   mutateMyRulesList: () => void;
 };
 
@@ -31,11 +29,7 @@ type PropsType = {
  * @returns {JSX.Element} The rendered MyRulesCard component.
  */
 
-export function MyRulesCard({
-  myRule,
-  mutateMyRulesList,
-  isHeader,
-}: PropsType) {
+export function MyRulesCard({ myRule, mutateMyRulesList }: PropsType) {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
@@ -60,12 +54,33 @@ export function MyRulesCard({
   return (
     <>
       <Card
-        color="neutral"
-        className={`${!isHeader && 'border-l-[0.2rem] border-teal-600'} flex ${
-          isHeader ? 'h-10' : 'h-14'
-        } items-between px-2 my-2`}
+        color="white"
+        shadow="sm"
+        className="w-[225px] h-[154px] p-[30px] text-left border-teal-600"
       >
-        <div className="w-full flex justify-between items-center">
+        <Typography
+          color="black"
+          type="p"
+          className="h-16  text-sm font-semibold"
+        >
+          {myRule.rule_name}
+        </Typography>
+        <div className="flex items-center gap-2">
+          <Link
+            to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}
+            state={{ isUpdated: myRule.isUpdated }}
+          >
+            <BaseIcon icon="ph:dots-three" size="md" />
+          </Link>
+          <IconButton
+            icon="ph:trash-simple"
+            size="xxl"
+            color="red"
+            onClick={toggleModalDelete}
+            className="bg-white"
+          />
+        </div>
+        {/* <div className="w-full flex justify-between items-center">
           <div className=" w-1/4">
             {!isHeader && (
               <div className="flex items-center gap-2">
@@ -114,14 +129,14 @@ export function MyRulesCard({
           >
             {myRule.rule_name}
           </Typography>
-        </div>
+        </div> */}
       </Card>
       <Modal
         open={openModalDelete}
         setOpen={setOpenModalDelete}
         size="md"
         type="error"
-        title="از حذف این قانون مطمئن هستید؟"
+        title={`از حذف  قانون ${myRule.rule_name} مطمئن هستید؟`}
         buttonOne={{
           label: 'بله',
           onClick: handleRequestDelete,
