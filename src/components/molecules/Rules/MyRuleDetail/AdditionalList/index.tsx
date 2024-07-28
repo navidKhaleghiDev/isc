@@ -150,6 +150,7 @@ export function AdditionalList({
               id={`additional-${index}`}
               // eslint-disable-next-line react/no-array-index-key
               key={`${index}_${code.order}`}
+              disable={false}
               code={code}
               onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
                 handleOnChangeOrder(event, index)
