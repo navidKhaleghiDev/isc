@@ -1,10 +1,11 @@
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import './toast.css';
+import { ToastCustomContainer } from '@ui/molecules/ToastCustomContainer';
 
 export type ToastPropsType = {
   className?: string;
-  status: 'success' | 'error' | 'default';
+  status: 'success' | 'error' | 'info';
   message: string;
 };
 
@@ -17,7 +18,7 @@ export type ToastPropsType = {
  *
  * @param {Object} props - The props for the Toast component.
  * @param {string} [className] - Custom className for the container of the Toast component.
- * @param {'success' | 'error' | 'default'} status - Status of the toast notification (success, error, default).
+ * @param {'success' | 'error' | 'info'} status - Status of the toast notification (success, error, default).
  * @param {string} message - Message to be displayed in the toast notification.
  *
  * @returns {JSX.Element} Returns the rendered toast component.
@@ -33,7 +34,7 @@ export function Toast({ className, status, message }: ToastPropsType) {
         toast.error(message);
         break;
       default:
-        toast(message);
+        toast.info(message);
     }
   };
 
@@ -50,12 +51,7 @@ export function Toast({ className, status, message }: ToastPropsType) {
       >
         نمایش نوتیفیکیشن
       </button>
-      <ToastContainer
-        rtl
-        position="top-right"
-        style={{ direction: 'rtl', fontSize: 20 }}
-        className="toast-storybook"
-      />
+      <ToastCustomContainer />
     </div>
   );
 }
