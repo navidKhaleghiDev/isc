@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
-import { BaseIcon, Typography } from '@ui/atoms';
+import { Typography } from '@ui/atoms';
 import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
-import { contentStyles, headerStyles } from './styles';
+import X from '@iconify-icons/ph/x';
+import { containerStyles, contentStyles, headerStyles } from './styles';
 import { IModal } from './types';
 
 /**
@@ -35,6 +36,7 @@ import { IModal } from './types';
 export function Modal({
   open,
   setOpen,
+  size,
   type,
   title,
   buttonOne,
@@ -48,69 +50,78 @@ export function Modal({
   const handleToggle = () => setOpen(!open);
 
   return open ? (
-    <div
-      className={`main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal  h-100  overflow-hidden flex justify-center items-center `}
-      style={{ background: 'rgba(0, 0, 0, 0.2)' }}
-    >
+    <div className="main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center items-center backdrop-blur-sm">
       <div
         ref={ref}
-        className={`rounded-lg shadow-lg modal-container bg-white w-[36rem] mx-auto z-50 overflow-y-auto ${classContainer}`}
+        className={`rounded-[20px] shadow-lg modal-container bg-white ${containerStyles(
+          { size }
+        )} mx-auto z-50 overflow-y-auto shadow-sm ${classContainer}`}
       >
         <div className={contentStyles({ type })}>
-          {type !== 'none' && (
-            <div className={headerStyles({ type })}>
-              <div className="modal-close cursor-pointer z-50">
-                <IconButton
-                  icon="iconamoon:close-bold"
-                  onClick={handleToggle}
-                  classNameIcon="h-8 w-8 text-neutral-100"
-                />
-              </div>
-              <BaseIcon
-                icon={
-                  type === 'error'
-                    ? 'ph:shield-warning'
-                    : 'material-symbols:check'
-                }
-                className="h-8 w-8 text-neutral-100"
+          <div className={headerStyles()}>
+            {/* <BaseIcon
+                // icon={
+                //   type === 'error'
+                //     ? 'ph:shield-warning'
+                //     : 'material-symbols:check'
+                // }
+                icon={List}
+                className="h-8 w-8 text-neutral-100 bg-red-200 rounded-md"
+                color={type === 'error' ? 'red' : 'teal'}
+              /> */}
+
+            <div className="modal-close cursor-pointer z-50">
+              <IconButton
+                icon={X}
+                onClick={handleToggle}
+                className=""
+                classNameIcon="h-6 w-6 text-neutral-400"
+                color="tealNoBg"
               />
             </div>
-          )}
-          {title && (
-            <Typography size="body2" color="neutral" className="mt-6">
-              {title}
-            </Typography>
-          )}
-          {description && (
-            <Typography size="body3" color="neutral">
-              {description}
-            </Typography>
-          )}
-          {content && (
-            <div className="flex justify-center items-center">{content}</div>
-          )}
-          {(buttonOne || buttonTow) && (
-            <div className="flex justify-center py-2">
-              {buttonOne && (
-                <BaseButton
-                  label={buttonOne.label}
-                  onClick={buttonOne.onClick}
-                  type={buttonOne.color}
-                  className="m-1"
-                  loading={buttonOne.loading}
-                />
-              )}
-              {buttonTow && (
-                <BaseButton
-                  label={buttonTow.label}
-                  onClick={buttonTow.onClick}
-                  loading={buttonTow.loading}
-                  type={buttonTow.color}
-                  className="m-1"
-                />
-              )}
-            </div>
-          )}
+          </div>
+          <div className="p-7 pt-0">
+            {title && (
+              <Typography
+                size="body3"
+                color="neutral"
+                weight="medium"
+                className="text-right"
+              >
+                {title}
+              </Typography>
+            )}
+            {description && (
+              <Typography size="body3" color="neutral">
+                {description}
+              </Typography>
+            )}
+            {content && (
+              <div className="flex justify-center items-center">{content}</div>
+            )}
+            {(buttonOne || buttonTow) && (
+              <div className="flex justify-end pt-7">
+                {buttonOne && (
+                  <BaseButton
+                    label={buttonOne.label}
+                    onClick={buttonOne.onClick}
+                    type={buttonOne.color}
+                    loading={buttonOne.loading}
+                    size={buttonOne.size}
+                  />
+                )}
+                {/* {buttonTow && (
+                  <BaseButton
+                    label={buttonTow.label}
+                    onClick={buttonTow.onClick}
+                    loading={buttonTow.loading}
+                    type={buttonTow.color}
+                    className="m-1"
+                  />
+                )} */}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

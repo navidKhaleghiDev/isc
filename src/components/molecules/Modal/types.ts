@@ -14,6 +14,7 @@ type ModalButtonType = {
   onClick: () => void;
   color?: BaseButtonStyleProps['type'];
   loading?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 };
 export interface IModal
   extends VariantProps<typeof headerStyles>,
@@ -23,6 +24,7 @@ export interface IModal
   description?: string;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  size: 'sm' | 'md';
   className?: string;
   buttonOne?: ModalButtonType;
   buttonTow?: ModalButtonType;

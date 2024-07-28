@@ -27,6 +27,12 @@ const meta = {
       },
       options: ['error', 'success', 'none'],
     },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md'],
+    },
   },
   decorators: [
     (Story): ReactElement => (
@@ -76,6 +82,7 @@ export const Default: Story = {
   args: {
     open: true,
     type: 'success',
+    size: 'md',
     title: 'ویرایش با موفقیت انجام شد',
     setOpen: setModal,
     buttonOne: {
