@@ -53,7 +53,9 @@ export function Modal({
     <div className="main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center items-center backdrop-blur-sm">
       <div
         ref={ref}
-        className={`rounded-[20px] shadow-lg modal-container bg-white ${containerStyles({ size })} mx-auto z-50 overflow-y-auto shadow-sm ${classContainer}`}
+        className={`rounded-[20px] shadow-lg modal-container bg-white ${containerStyles(
+          { size }
+        )} mx-auto z-50 overflow-y-auto shadow-sm ${classContainer}`}
       >
         <div className={contentStyles({ type })}>
           <div className={headerStyles()}>
