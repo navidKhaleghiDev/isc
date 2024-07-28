@@ -8,5 +8,12 @@ interface OptionSelectProps {
 }
 export function OptionSelect(props: OptionSelectProps) {
   const { option } = props;
-  return <option value={option.value}>{option.label}</option>;
+  return (
+    <option
+      value={option.value}
+      className="appearance-none text-neutral-400  !hover:bg-neutral-300"
+    >
+      {option.label}
+    </option>
+  );
 }

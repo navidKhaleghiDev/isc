@@ -39,6 +39,16 @@ function RulesPageCP() {
           id="rules-sort"
           valueOnChange={dropValueChange}
         />
+        {/* <form onSubmit={handleSubmit(data)}>
+          <BaseSelect
+            id="rulesSort"
+            name="rulesSort"
+            selectOptions={dropDownOptions}
+            control={control}
+            size="lg"
+            pureOnChange={dropValueChange}
+          />
+        </form> */}
       </form>
       <RulesList buttonState={activeButton} searchValue={search} />
     </div>

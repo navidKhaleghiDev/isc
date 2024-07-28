@@ -27,7 +27,7 @@ import { IOptionSelect, OptionSelect } from './OptionSelect';
  * @returns {JSX.Element} The rendered select component.
  */
 
-export function BaseSelect(props: IBaseSelectProp) {
+export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
   const {
     control,
     name,
@@ -40,6 +40,7 @@ export function BaseSelect(props: IBaseSelectProp) {
     startIcon,
     endIcon,
     intent,
+    // pureOnChange,
     size,
     hiddenError,
   } = props;

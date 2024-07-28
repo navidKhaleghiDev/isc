@@ -104,8 +104,8 @@ export const baseCheckBoxStyles = cva(
 );
 
 export const baseSelectStyles = cva(
-  `px-3 py-2.5 flex rounded-lg outline-none  border focus:border-2 
-  placeholder:text-right placeholder:text-rtl shadow-sm`,
+  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white  border focus:border-2 
+  placeholder:text-right border-neutral-300  placeholder:text-rtl shadow-sm`,
   {
     variants: {
       intent: {
@@ -123,7 +123,7 @@ export const baseSelectStyles = cva(
         none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
         sm: `w-40 h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
-        md: `w-[220px] h-10 ${SIZE.TYPOGRAPHY.BODY3}`,
+        md: `w-[220px] h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
         lg: `w-64 h-10  ${SIZE.TYPOGRAPHY.BODY4}`,
         xl: '',
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
