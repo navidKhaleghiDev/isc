@@ -1,5 +1,7 @@
 import { Controller } from 'react-hook-form';
 
+import { BaseIcon } from '@ui/atoms/BaseIcon';
+import checkBold from '@iconify-icons/ph/check-bold';
 import { baseCheckBoxStyles } from '../styles';
 import { Typography } from '../../Typography';
 import { BaseCheckBoxProps } from './types';
@@ -53,7 +55,13 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <>
-          <div className={`flex items-center ${className}`}>
+          <div className={`inline-flex relative items-center ${className}`}>
+            <label
+              className="relative flex items-center p-3 rounded-full cursor-pointer"
+              htmlFor="check"
+            >
+              {label}
+            </label>
             <input
               id={id}
               type="checkbox"
@@ -62,16 +70,12 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
               onChange={field.onChange}
               className={baseCheckBoxStyles({
                 intent: error?.message ? 'error' : intent,
-                className: 'pl-8',
                 size,
               })}
             />
-            <label
-              htmlFor={id}
-              className="mr-2 text-neutral-900 dark:text-neutral-300"
-            >
-              {label}
-            </label>
+            <span className="absolute transition-opacity top-1/2 left-2.5 opacity-0 text-white  pointer-events-none peer:top-2/4 peer:left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+              <BaseIcon icon={checkBold} />
+            </span>
           </div>
           {!hiddenError && (
             <Typography color="red" size="body6" className="h-6">
@@ -82,18 +86,22 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
       )}
     />
   ) : (
-    <input
-      id={id}
-      type="checkbox"
-      checked={checked}
-      name={name}
-      value={pureValue}
-      onChange={pureOnChange}
-      className={baseCheckBoxStyles({
-        intent: pureError ? 'error' : intent,
-        className: 'pl-8',
-        size,
-      })}
-    />
+    <div className="inline-flex items-center">
+      <input
+        id={id}
+        type="checkbox"
+        checked={checked}
+        name={name}
+        value={pureValue}
+        onChange={pureOnChange}
+        className={baseCheckBoxStyles({
+          intent: pureError ? 'error' : intent,
+          size,
+        })}
+      />
+      <span className="absolute text-white transition-opacity  pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+        <BaseIcon icon={checkBold} />
+      </span>
+    </div>
   );
 }

@@ -11,6 +11,7 @@ export interface IOptionSelect {
   label: string;
 }
 
+export type TValueOnChange = (value: { [key: string]: any }) => void;
 export interface DropdownProps<T extends FieldValues> {
   id: string;
   control?: Control<T>;
@@ -24,6 +25,8 @@ export interface DropdownProps<T extends FieldValues> {
   label?: string;
   loading?: boolean;
   leftLabel?: boolean;
+  valueOnChange?: TValueOnChange;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export type StateType = {

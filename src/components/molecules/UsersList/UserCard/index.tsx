@@ -104,6 +104,7 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
       <Modal
         open={openModalDelete}
         setOpen={setOpenModalDelete}
+        size="md"
         type="error"
         title="از حذف این کاربر مطمئن هستید؟"
         buttonOne={{

@@ -25,7 +25,7 @@ const meta = {
       control: {
         type: 'select',
       },
-      options: ['success', 'error', 'default'],
+      options: ['success', 'error', 'info'],
     },
     message: { control: 'text' },
   },
@@ -39,6 +39,7 @@ const meta = {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          direction: 'rtl',
         }}
       >
         <Story />

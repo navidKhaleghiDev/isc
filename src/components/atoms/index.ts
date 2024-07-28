@@ -8,3 +8,4 @@ export { Typography } from './Typography';
 export { Notification } from './Notification';
 export { AccordionButton } from './AccordionButton';
 export { Accordion } from './Accordion';
+export { Dropdown } from './DropDown';
