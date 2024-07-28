@@ -33,7 +33,7 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
     reset,
     setValue,
     register,
-    formState: { errors },
+    formState,
     watch,
   } = useForm<IAddIpValues>({});
 
@@ -60,6 +60,7 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
   };
   const ipType = watch('ip_type');
   const isInputSelected = getValues('ip');
+
   const onHandleIpStatus = (isExternal?: boolean) => {
     setValue('ip_type', isExternal ? 'External' : 'Internal', {
       shouldValidate: true,
@@ -85,21 +86,23 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
 
         <div className="flex gap-1.5">
           <ChipButton
-            disabled={isInputSelected === undefined}
+            selected
             onClick={() => {
               setIsSelected(true);
               onHandleIpStatus(true);
             }}
+            disabled={isInputSelected === undefined}
             label="خارجی"
             status="default"
             iconLabel={Plus}
           />
           <ChipButton
-            disabled={isInputSelected === undefined}
+            selected
             onClick={() => {
               setIsSelected(true);
               onHandleIpStatus();
             }}
+            disabled={isInputSelected === undefined}
             label="داخلی"
             status="default"
             iconLabel={Plus}
@@ -110,7 +113,7 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
       {ipValue && (
         <Card
           color={'neutral_light'}
-          className="w-full flex justify-between items-center px-2 rounded-md bg-neutral-100 font-semibold"
+          className="w-full flex justify-between items-center px-2 mt-[52px] rounded-md bg-neutral-100 font-semibold"
         >
           <IconButton
             icon={x}
@@ -130,7 +133,7 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
           iconLabel={x}
           className="self-end"
           onClick={() => {
-            reset({ ip_type: undefined });
+            setValue('ip_type', undefined);
           }}
         />
       )}

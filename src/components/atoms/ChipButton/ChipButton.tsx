@@ -7,8 +7,9 @@ type BaseButtonAttributes = React.ComponentPropsWithoutRef<'button'>;
 interface ChipButtonType extends BaseButtonAttributes {
   label: string;
   iconLabel: IconType;
-  status: 'default' | 'external' | 'internal';
+  status: 'default' | 'external' | 'internal' | 'disabled';
   disabled?: boolean;
+  selected?: boolean;
 }
 export function ChipButton({
   label,
@@ -17,13 +18,20 @@ export function ChipButton({
   iconLabel,
   className,
   disabled,
+  selected = false,
 }: ChipButtonType) {
   const [isHidden, setIsHidden] = useState(false);
   const typeColor = {
     default: 'bg-neutral-200 text-neutral-500',
     external: 'bg-teal-100 text-neutral-500',
     internal: 'bg-yellow-100 text-neutral-500',
+    disabled: 'bg-neutral-200 text-neutral-500 opacity-40',
   };
+  const handleIconClick = (icon: IconType) => {
+    if (selected) return;
+    setIsHidden(true);
+  };
+
   if (isHidden) {
     return null;
   }
@@ -39,8 +47,7 @@ export function ChipButton({
       {label}
       <IconButton
         icon={iconLabel}
-        onClick={() => setIsHidden(true)}
-        // size="sm"
+        onClick={() => handleIconClick(iconLabel)}
         color="neutral"
       />
     </button>
