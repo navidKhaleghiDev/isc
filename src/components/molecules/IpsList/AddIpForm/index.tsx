@@ -1,12 +1,12 @@
 import FilmScript from '@iconify-icons/ph/film-script';
 import Plus from '@iconify-icons/ph/plus';
 import x from '@iconify-icons/ph/x';
-import { BaseButton, BaseIcon, BaseInput, Card, Typography } from '@ui/atoms';
-import { ChangeEvent, useState } from 'react';
-import { regexPattern } from '@ui/atoms/Inputs';
-import { FieldValues, useForm } from 'react-hook-form';
-import { ChipButton } from '@ui/atoms/ChipButton/ChipButton';
+import { BaseButton, BaseInput, Card } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
+import { ChipButton } from '@ui/atoms/ChipButton/ChipButton';
+import { regexPattern } from '@ui/atoms/Inputs';
+import { useState } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
 
 type PropsType = {
   onSubmit: (data: { ip: string; ipType: string | undefined }) => void;
@@ -24,18 +24,10 @@ const defaultValues = {
 };
 
 export function AddIpForm({ onSubmit, loading }: PropsType) {
-  const [isSelected, setIsSelected] = useState(false);
+  // const [isSelected] = useState(false);
 
-  const {
-    control,
-    handleSubmit,
-    getValues,
-    reset,
-    setValue,
-    register,
-    formState,
-    watch,
-  } = useForm<IAddIpValues>({});
+  const { control, handleSubmit, getValues, reset, setValue, register, watch } =
+    useForm<IAddIpValues>({});
 
   const [ipValue, setIpValue] = useState('');
 
@@ -80,39 +72,43 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
         onKeyDown={handleKeyDown}
       />
       <div className="py-5 flex flex-col items-start">
-        <h3 className=" text-sm font-semibold text-neutral-800 disabled:text-neutral-300">
+        <h3
+          className={`text-sm font-semibold ${
+            isInputSelected === undefined
+              ? 'text-neutral-300'
+              : 'text-neutral-800'
+          }`}
+        >
           نوع IP را انتخاب کنید
         </h3>
 
         <div className="flex gap-1.5">
           <ChipButton
-            selected
             onClick={() => {
-              setIsSelected(true);
               onHandleIpStatus(true);
             }}
             disabled={isInputSelected === undefined}
             label="خارجی"
             status="default"
             iconLabel={Plus}
+            isSelected={ipType === 'Internal'}
           />
           <ChipButton
-            selected
             onClick={() => {
-              setIsSelected(true);
               onHandleIpStatus();
             }}
             disabled={isInputSelected === undefined}
             label="داخلی"
             status="default"
             iconLabel={Plus}
+            isSelected={ipType === 'External'}
           />
         </div>
       </div>
 
       {ipValue && (
         <Card
-          color={'neutral_light'}
+          color="neutral_light"
           className="w-full flex justify-between items-center px-2 mt-[52px] rounded-md bg-neutral-100 font-semibold"
         >
           <IconButton
@@ -144,7 +140,7 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
         label="ثبت"
         loading={loading}
         type="default"
-        disabled={!isSelected}
+        disabled={ipType === undefined}
       />
     </form>
   );
