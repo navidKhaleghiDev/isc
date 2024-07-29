@@ -88,7 +88,6 @@ export function RulesCard({ rule }: PropsType) {
         size="md"
         open={openModal}
         setOpen={setOpenModal}
-        size="md"
         type="success"
         title="آیا مطمئن هستید؟"
         buttonOne={{

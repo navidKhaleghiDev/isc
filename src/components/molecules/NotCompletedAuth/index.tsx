@@ -62,7 +62,6 @@ export function NotCompletedAuth({ title, isUserAuth }: PropsType) {
         size="md"
         open={openModalAssignSerial}
         setOpen={setOpenModalAssignSerial}
-        size="md"
         type="none"
         classContainer="border border-teal-600"
         content={
@@ -79,7 +78,6 @@ export function NotCompletedAuth({ title, isUserAuth }: PropsType) {
         size="md"
         open={openModalUserAuth}
         setOpen={setOpenModalUserAuth}
-        size="md"
         type="none"
         classContainer="border border-teal-600"
         content={

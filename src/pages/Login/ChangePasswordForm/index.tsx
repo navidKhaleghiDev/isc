@@ -116,7 +116,6 @@ export function ChangePasswordForm({
         size="md"
         open={openModalAuth}
         setOpen={setOpenModalAuth}
-        size="md"
         title="اکانت شما احراز هویت نشده است!!"
         description="بدون احراز هویت برخی خدمات برای شما نمایش داده نخواهد شد."
         type="error"
