@@ -117,6 +117,7 @@ export function MyRulesCard({
         </div>
       </Card>
       <Modal
+        size="md"
         open={openModalDelete}
         setOpen={setOpenModalDelete}
         type="error"

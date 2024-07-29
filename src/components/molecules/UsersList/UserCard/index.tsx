@@ -102,6 +102,7 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
         </div>
       </Card>
       <Modal
+        size="md"
         open={openModalDelete}
         setOpen={setOpenModalDelete}
         type="error"

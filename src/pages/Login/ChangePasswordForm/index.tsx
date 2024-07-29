@@ -113,6 +113,7 @@ export function ChangePasswordForm({
       </form>
 
       <Modal
+        size="md"
         open={openModalAuth}
         setOpen={setOpenModalAuth}
         title="اکانت شما احراز هویت نشده است!!"

@@ -76,6 +76,7 @@ function StopListenerIcon({ id, mutate }: StopListenerIconProps) {
         />
       </ToolTip>
       <Modal
+        size="md"
         open={openModal}
         setOpen={setOpenModal}
         type="error"

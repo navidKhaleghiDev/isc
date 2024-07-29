@@ -61,6 +61,7 @@ function StopListenerIcon({ id, mutate }: any) {
         className="mx-2"
       />
       <Modal
+        size="md"
         open={openModal}
         setOpen={setOpenModal}
         type="error"

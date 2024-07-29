@@ -184,6 +184,7 @@ function RulePolicyListCp(
         </div>
       </div>
       <Modal
+        size="md"
         open={openModalEdit}
         setOpen={setOpenModalEdit}
         title="از ثبت تغییرات این قانون مطمئن هستید؟"
@@ -201,6 +202,7 @@ function RulePolicyListCp(
       />
       {onDeleteRule && (
         <Modal
+          size="md"
           open={openModalDelete}
           setOpen={setOpenModalDelete}
           type="error"

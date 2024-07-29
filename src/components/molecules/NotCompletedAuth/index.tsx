@@ -59,6 +59,7 @@ export function NotCompletedAuth({ title, isUserAuth }: PropsType) {
         />
       </Card>
       <Modal
+        size="md"
         open={openModalAssignSerial}
         setOpen={setOpenModalAssignSerial}
         type="none"
@@ -74,6 +75,7 @@ export function NotCompletedAuth({ title, isUserAuth }: PropsType) {
         }
       />
       <Modal
+        size="md"
         open={openModalUserAuth}
         setOpen={setOpenModalUserAuth}
         type="none"

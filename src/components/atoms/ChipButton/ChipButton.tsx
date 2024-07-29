@@ -1,7 +1,7 @@
 import x from '@iconify-icons/ph/x';
+import { useState } from 'react';
 import { IconType } from '@src/types/global';
 import { IconButton } from '../BaseButton';
-import { useState } from 'react';
 
 const disabledClass = 'opacity-40';
 

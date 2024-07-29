@@ -159,6 +159,7 @@ export function AdditionalList({
         })}
       </Card>
       <Modal
+        size="md"
         open={openModalSetChanged}
         setOpen={setOpenModalSetChanged}
         type="error"
