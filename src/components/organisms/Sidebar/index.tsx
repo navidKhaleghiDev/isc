@@ -60,7 +60,11 @@ export function SideBar(): JSX.Element {
         )}
       </div>
 
-      <div className="hidden sm:flex flex-col items-end	w-full mb-4 px-4 ">
+      <div
+        className={`hidden sm:flex flex-col ${
+          toggleSidebar ? 'items-end' : 'items-center'
+        }  	w-full mb-4 px-4`}
+      >
         <button
           type="submit"
           className="flex flex-col justify-center items-center w-10 h-10  bg-teal-500 rounded-lg text-center"
