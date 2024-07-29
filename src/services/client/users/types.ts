@@ -5,18 +5,18 @@ export interface IBodyUsersLogin {
   password: string;
 }
 export interface IBodySetting {
-  firstName: string | undefined;
-  lastName: string | undefined;
-  phoneNumber?: number;
+  first_name: string | undefined;
+  last_name: string | undefined;
+  phone_number?: number;
 }
 
 export interface IUser {
   id?: string;
   device_serial: string;
   last_login: string | null;
-  phoneNumber: number;
-  firstName: string;
-  lastName: string;
+  phone_number: number;
+  first_name: string;
+  last_name: string;
   is_staff: boolean;
   is_active: boolean;
   date_joined: string;

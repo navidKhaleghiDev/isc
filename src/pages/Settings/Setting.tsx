@@ -14,8 +14,8 @@ import { IAddUserFormValues } from '../Users/types';
 export function Setting() {
   const { user } = useUserContext();
   const userId = user?.id;
-  const firstName = user?.firstName;
-  const lastName = user?.lastName;
+  const firstName = user?.first_name;
+  const lastName = user?.last_name;
 
   const { control, handleSubmit } = useForm<IAddUserFormValues>({
     mode: 'onChange',
@@ -28,10 +28,10 @@ export function Setting() {
     }
 
     const body: IBodySetting = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      phoneNumber: formData.phoneNumber
-        ? Number(formData.phoneNumber)
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      phone_number: formData.phone_number
+        ? Number(formData.phone_number)
         : undefined,
     };
 
