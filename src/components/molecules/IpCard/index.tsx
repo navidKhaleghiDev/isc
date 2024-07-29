@@ -106,24 +106,26 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         </div>
       </Card>
       <Modal
+        size="sm"
         open={openModalEdit}
         setOpen={setOpenModalEdit}
         content={
           <UpdateIp
             ip={item}
             onSubmit={handleRequestUpdate}
-            onCloseModal={toggleModalEdit}
             loading={modalsLoading.editButton}
           />
         }
         type="none"
       />
       <Modal
+        size="md"
         open={openModalDelete}
         setOpen={setOpenModalDelete}
         type="error"
         title="از حذف این IP مطمئن هستید؟"
         buttonOne={{
+          color: 'redBg',
           size: 'lg',
           label: 'بله',
           onClick: handleRequestDelete,

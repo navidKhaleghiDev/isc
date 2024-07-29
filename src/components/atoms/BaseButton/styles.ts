@@ -14,6 +14,7 @@ export const baseButtonStyles = cva(
         shadow: `${PALLET.BUTTON_COLOR.SHADOW}`,
         secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
         red: `${PALLET.BUTTON_COLOR.RED}`,
+        redBg: `${PALLET.BUTTON_COLOR.RED_BG}`,
         tealLink: `text-teal-600 hover:bg-neutral-200 rounded-none`,
         neutral: `${PALLET.BUTTON_COLOR.NEUTRAL}`,
       },

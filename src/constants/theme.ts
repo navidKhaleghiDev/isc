@@ -33,6 +33,7 @@ export const PALLET = {
   BUTTON_COLOR: {
     TEAL: 'bg-teal-500 dark:bg-teal-300 text-white hover:bg-teal-600 ', // #0f766e
     RED: 'bg-inherit dark:bg-red-600 text-red-600',
+    RED_BG: 'bg-red-100 text-red-600 hover:bg-red-200 ',
     YELLOW: 'bg-yellow-600 dark:bg-yellow-400 text-white hover:bg-yellow-600 ',
     NEUTRAL:
       'bg-inherit dark:bg-neutral-500 dark:text-white  text-neutral-600 ',

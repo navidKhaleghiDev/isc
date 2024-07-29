@@ -24,6 +24,7 @@ export interface IModal
   description?: string;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  size: 'sm' | 'md';
   className?: string;
   buttonOne?: ModalButtonType;
   buttonTow?: ModalButtonType;

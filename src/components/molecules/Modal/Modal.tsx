@@ -1,9 +1,9 @@
-import X from '@iconify-icons/ph/x';
+import { useRef } from 'react';
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 import { Typography } from '@ui/atoms';
 import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
-import { useRef } from 'react';
-import { contentStyles, headerStyles } from './styles';
+import X from '@iconify-icons/ph/x';
+import { containerStyles, contentStyles, headerStyles } from './styles';
 import { IModal } from './types';
 
 /**
@@ -36,6 +36,7 @@ import { IModal } from './types';
 export function Modal({
   open,
   setOpen,
+  size,
   type,
   title,
   buttonOne,
@@ -43,7 +44,6 @@ export function Modal({
   content,
   description,
   classContainer,
-  className,
 }: IModal) {
   const ref = useRef(null);
   useClickOutside({ ref, setValue: setOpen, value: open });
@@ -53,20 +53,22 @@ export function Modal({
     <div className="main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center items-center backdrop-blur-sm">
       <div
         ref={ref}
-        className={`rounded-[20px] shadow-lg modal-container bg-white w-[28rem] mx-auto z-50 overflow-y-auto shadow-sm ${classContainer} ${className}`}
+        className={`rounded-[20px] shadow-lg modal-container bg-white ${containerStyles(
+          { size }
+        )} mx-auto z-50 overflow-y-auto shadow-sm ${classContainer}`}
       >
         <div className={contentStyles({ type })}>
           <div className={headerStyles()}>
             {/* <BaseIcon
-              // icon={
-              //   type === 'error'
-              //     ? 'ph:shield-warning'
-              //     : 'material-symbols:check'
-              // }
-              icon={List}
-              className="h-8 w-8 text-neutral-100 bg-red-200 rounded-md"
-              color={type === 'error' ? 'red' : 'teal'}
-            /> */}
+                // icon={
+                //   type === 'error'
+                //     ? 'ph:shield-warning'
+                //     : 'material-symbols:check'
+                // }
+                icon={List}
+                className="h-8 w-8 text-neutral-100 bg-red-200 rounded-md"
+                color={type === 'error' ? 'red' : 'teal'}
+              /> */}
 
             <div className="modal-close cursor-pointer z-50">
               <IconButton

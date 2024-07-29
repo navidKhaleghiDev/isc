@@ -1,3 +1,4 @@
+import PhPencilSimple from '@iconify-icons/ph/pencil-simple';
 import { IIp } from '@src/services/client/rules/types';
 import { BaseButton, BaseInput } from '@ui/atoms';
 import { regexPattern } from '@ui/atoms/Inputs';
@@ -52,6 +53,7 @@ export function UpdateIp({ ip, onSubmit, loading }: PropsType) {
             required: regexPattern.required,
           }}
           fullWidth
+          endIcon={PhPencilSimple}
         />
         <BaseButton
           className="self-end"
