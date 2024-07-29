@@ -3,17 +3,14 @@ import { TitleSection } from '@ui/atoms/TitleSection';
 import { useForm } from 'react-hook-form';
 import PhUser from '@iconify-icons/ph/user';
 import PhPhone from '@iconify-icons/ph/phone';
-import { toast } from 'react-toastify';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { regexPattern } from '@ui/atoms/Inputs';
-import { API_USERS_UPDATE } from '@src/services/client/users';
-import { IBodySetting } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
 import { IAddUserFormValues } from '../Users/types';
 
 export function Setting() {
   const { user } = useUserContext();
-  const userId = user?.id;
+  //   const userId = user?.id;
   const firstName = user?.first_name;
   const lastName = user?.last_name;
 
@@ -21,27 +18,27 @@ export function Setting() {
     mode: 'onChange',
   });
 
-  const handleSubmitForm = async (formData: IAddUserFormValues) => {
-    if (!userId) {
-      toast.error('کاربر یافت نشد');
-      return;
-    }
+  //   We don't have an API for this component.
 
-    const body: IBodySetting = {
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      phone_number: formData.phone_number
-        ? Number(formData.phone_number)
-        : undefined,
-    };
-
-    await API_USERS_UPDATE(userId, body)
-      .then(() => {
-        toast.success('کاربر با موفقیت ثبت شد');
-      })
-      .catch((error) => {
-        toast.error(error);
-      });
+  const handleSubmitForm = async () => {
+    // if (!userId) {
+    //   toast.error('کاربر یافت نشد');
+    //   return;
+    // }
+    // const body: IBodySetting = {
+    //   first_name: formData.first_name,
+    //   last_name: formData.last_name,
+    //   phone_number: formData.phone_number
+    //     ? Number(formData.phone_number)
+    //     : undefined,
+    // };
+    // await API_USERS_UPDATE(userId, body)
+    //   .then(() => {
+    //     toast.success('کاربر با موفقیت ثبت شد');
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error);
+    //   });
   };
 
   return (
@@ -61,7 +58,7 @@ export function Setting() {
             id="first_name"
             name="first_name"
             label="نام"
-            placeholder=""
+            placeholder={firstName}
             control={control}
             endIcon={PhUser}
             size="lg"
@@ -75,7 +72,7 @@ export function Setting() {
             id="last_name"
             name="last_name"
             label="نام خانوادگی"
-            placeholder=""
+            placeholder={lastName}
             control={control}
             endIcon={PhUser}
             size="lg"
@@ -89,13 +86,13 @@ export function Setting() {
             id="phone_number"
             name="phone_number"
             label="شماره تماس"
-            placeholder=""
+            placeholder="09121111111"
             control={control}
             endIcon={PhPhone}
             size="lg"
             rules={{
               required: regexPattern.required,
-              pattern: regexPattern.cardNumber,
+              pattern: regexPattern.phoneNumber,
             }}
             className="mx-2"
           />

@@ -14,7 +14,7 @@ export interface IUser {
   id?: string;
   device_serial: string;
   last_login: string | null;
-  phone_number: number;
+  phone_number?: number;
   first_name: string;
   last_name: string;
   is_staff: boolean;

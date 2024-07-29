@@ -8,7 +8,7 @@ import {
   E_USERS,
   E_USERS_PROFILE,
 } from './endpoint';
-import { IBodyAddUser, IBodySetting, IBodyUsersLogin, IUser } from './types';
+import { IBodyAddUser, IBodyUsersLogin, IUser } from './types';
 
 export const API_USERS_LOGIN = (body: IBodyUsersLogin) =>
   http.post<IBodyUsersLogin, IServerResponse<IUserWithAuth>>(
@@ -21,9 +21,6 @@ export const API_USERS_ADD = (body: IBodyAddUser) =>
 
 export const API_USERS_PATCH = (userId: string, body: IBodyUsersLogin) =>
   http.patch<IBodyUsersLogin, IServerResponse<IUser>>(E_USERS_ID(userId), body);
-
-export const API_USERS_UPDATE = (userId: string, body: IBodySetting) =>
-  http.patch<IBodySetting, IServerResponse<IUser>>(E_USERS_ID(userId), body);
 
 export const API_USERS_SERVER_AUTH = (body: IBodyUsersLogin) =>
   http.post<IBodyUsersLogin, IServerResponse<string>>(
