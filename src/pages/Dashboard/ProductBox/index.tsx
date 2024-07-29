@@ -8,6 +8,7 @@ import { useUserContext } from '@context/user/userContext';
 import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 import { CardImage } from '@ui/atoms/BaseImage';
+import { CardProduct } from '@ui/molecules/CardProduct';
 
 function ProductBoxCp() {
   const { user } = useUserContext();
@@ -27,7 +28,6 @@ function ProductBoxCp() {
   if (error) {
     return (
       <Notification
-        outline="error"
         title="در حال حاضر دسترسی به این بخش مقدور نمی باشد."
         type="error"
       />
@@ -37,72 +37,51 @@ function ProductBoxCp() {
   return isLoading ? (
     <LoadingSpinner />
   ) : (
-    <div className="grid grid-cols-3 gap-6 mb-16">
+    <div className="grid">
       <div className="flex flex-col justify-between col-span-2 h-full">
-        <Card color="neutral" className="flex justify-end items-center">
-          <div className="flex flex-col justify-end items-end ml-4">
-            <Typography color="neutral" size="h4">
+        <CardImage
+          src={product?.device.image}
+          alt={product?.device?.model}
+          className="h-60"
+        />
+        <Card className="flex justify-end items-center py-8 px-2.5">
+          <div className="flex flex-col justify-end items-end">
+            <Typography
+              color="neutral"
+              size="body1"
+              weight="medium"
+              className="w-full mb-[10px]"
+            >
               {product?.device?.model}
             </Typography>
-            <Typography color="neutral" size="body3">
+            <Typography color="neutral" size="body4" weight="normal">
               {product?.device?.description}
             </Typography>
           </div>
         </Card>
-        <Typography
-          color="neutral"
-          size="h6"
-          className="bg-teal-600 text-white py-1 rounded-md my-4 text-center"
-        >
-          {product?.id}
-        </Typography>
-        <div className="grid grid-cols-3 gap-6">
-          <Card
-            color="neutral"
-            className="flex justify-start items-center pr-4"
-          >
-            <div className="flex flex-col justify-end items-start ml-4">
-              <Typography color="teal" size="h6">
-                تاریخ ثبت محصول
-              </Typography>
-              <Typography color="neutral" size="body3">
-                {persianDateAndNumber(product?.created_at)}
-              </Typography>
-            </div>
-          </Card>
-          <Card
-            color="neutral"
-            className="flex justify-start items-center pr-4"
-          >
-            <div className="flex flex-col justify-end items-start ml-4">
-              <Typography color="teal" size="h6">
-                آدرس
-              </Typography>
-              <Typography color="neutral" size="body3">
-                {product?.address}
-              </Typography>
-            </div>
-          </Card>
-          <Card
-            color="neutral"
-            className="flex justify-start items-center pr-4"
-          >
-            <div className="flex flex-col justify-end items-start ml-4">
-              <Typography color="teal" size="h6">
-                تاریخ انقضاء لایسنس
-              </Typography>
-              <Typography color="neutral" size="body3">
-                {persianDateAndNumber(product?.license_exp)}
-              </Typography>
-            </div>
-          </Card>
+        <div className="grid">
+          <CardProduct label="شماره سریال" value={product?.id} />
+
+          <CardProduct
+            label="ثبت محصول"
+            value={persianDateAndNumber(product?.created_at)}
+          />
+
+          {product?.address && (
+            <CardProduct label="آدرس" value={product?.address} />
+          )}
+
+          <CardProduct
+            label="تاریخ انقضاء لایسنس"
+            value={persianDateAndNumber(product?.license_exp)}
+          />
+
+          <CardProduct
+            label="تعداد قوانین"
+            value={product?.recommended_rules.length}
+          />
         </div>
       </div>
-      <CardImage
-        src={product?.device.image}
-        alt={product?.device?.model}
-        className="h-60 p-2"
-      />
     </div>
   );
 }

@@ -2,7 +2,9 @@ import { PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const menuItemStyles = cva(
-  `flex fill-current items-center w-full h-10 px-3 hover:bg-teal-600  hover:text-white  transition-all	duration-150	ease-linear	rounded-lg`,
+  `flex fill-current items-center w-full h-10 px-2 hover:bg-teal-600  hover:text-white  transition-all	duration-150	ease-linear rounded-full
+
+ `,
   {
     variants: {
       active: {
@@ -10,7 +12,7 @@ export const menuItemStyles = cva(
       },
       isChildren: {
         true: `${PALLET.BG_COLOR.TEAL_DARK} ${PALLET.TEXT_COLOR.WHITE} `,
-        undefined: 'my-2 rounded',
+        undefined: 'my-2 ',
       },
       isActiveChildren: {
         true: `border-r-4 border-teal-500 `,

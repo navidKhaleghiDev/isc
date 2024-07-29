@@ -186,6 +186,7 @@ function RulePolicyListCp(
       <Modal
         open={openModalEdit}
         setOpen={setOpenModalEdit}
+        size="md"
         title="از ثبت تغییرات این قانون مطمئن هستید؟"
         buttonOne={{
           label: 'بله',
@@ -203,6 +204,7 @@ function RulePolicyListCp(
         <Modal
           open={openModalDelete}
           setOpen={setOpenModalDelete}
+          size="md"
           type="error"
           title="از حذف این قانون مطمئن هستید؟"
           buttonOne={{

@@ -1,10 +1,7 @@
-import { useUserContext } from '@context/user/userContext';
 import { Avatar } from '@ui/atoms/Avatar';
 import { Typography } from '@ui/atoms/Typography/Typography';
 import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { getRoleUser } from './utils';
-
 /**
  * NavbarDashboard Component
  *
@@ -15,35 +12,38 @@ import { getRoleUser } from './utils';
  * <NavbarDashboard />
  *
  * @returns {JSX.Element} The rendered NavbarDashboard component.
- */
-
-export function NavbarDashboard(): JSX.Element {
-  const { user } = useUserContext();
+ */ export function NavbarDashboard(): JSX.Element {
   return (
-    <div className="flex h-20 items-center justify-between p-3 2xl:container 2xl:mx-auto">
-      <div className="flex items-center">
-        {user?.is_superuser && (
-          <Link to={ROUTES_PATH.addUser} className="ml-4">
-            <Avatar icon="iconoir:add-user" intent="grey" size="sm" />
-          </Link>
-        )}
-
-        <Avatar icon="ph:user" intent="primary" size="sm" className="ml-4" />
-
-        <div>
-          <Typography type="h3" weight="bold" color="teal">
-            {user?.first_name || user?.last_name
-              ? `${user?.first_name} ${user?.last_name}`
-              : user?.email}
-          </Typography>
-          <Typography color="teal" size="body6">
-            {getRoleUser(user?.is_superuser, user?.is_admin)}
-          </Typography>
-        </div>
-      </div>
-      <Link to={ROUTES_PATH.home}>
-        <img src="/logo.jpg" alt="logo" className="h-8" />
+    <div className="flex h-20 items-center justify-between px-5 2xl:container 2xl:mx-auto">
+      <Link to={ROUTES_PATH.home} className="ml-4">
+        {/* <img src="/logo.jpg" alt="logo" className="h-8" /> */}
+        <Typography
+          color="teal"
+          size="h5"
+          className="text-xl sm:text-2xl "
+          weight="bold"
+        >
+          NETFENCE
+        </Typography>
       </Link>
+      <div className="flex">
+        <Link to={ROUTES_PATH.addUser} className="ml-4">
+          <Avatar
+            icon="ph:hard-drives"
+            intent="grey"
+            size="sm"
+            className="rounded-lg"
+          />
+        </Link>
+        <Link to={ROUTES_PATH.addUser} className="hidden sm:block ml-4">
+          <Avatar
+            icon="ph:user"
+            intent="grey"
+            size="sm"
+            className="rounded-lg"
+          />
+        </Link>
+      </div>
     </div>
   );
 }
