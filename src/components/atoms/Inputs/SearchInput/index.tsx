@@ -31,7 +31,7 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
         pureValue={searchValue}
         label={label}
         fullWidth
-        startIcon="ph:user"
+        startIcon="uiw:search"
       />
     </div>
   );

@@ -55,6 +55,7 @@ export function RulesCard({ rule }: PropsType) {
     <>
       <Card
         color="white"
+        shadow="sm"
         className="w-[225px] h-[154px] p-[30px] border-teal-600"
       >
         <div className="flex flex-col" dir="ltr">
@@ -87,6 +88,7 @@ export function RulesCard({ rule }: PropsType) {
         size="md"
         open={openModal}
         setOpen={setOpenModal}
+        size="md"
         type="success"
         title="آیا مطمئن هستید؟"
         buttonOne={{
