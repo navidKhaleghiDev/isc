@@ -2,7 +2,7 @@ import { SIZE, PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  `px-3 py-2.5 flex rounded-lg outline-none  border focus:border-2 
+  `px-3 py-2.5  flex rounded-lg outline-none  border focus:border-2 
   placeholder:text-right placeholder:text-rtl shadow-sm`,
   {
     variants: {

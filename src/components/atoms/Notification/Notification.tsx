@@ -27,7 +27,7 @@ export function Notification({
   size,
   title,
   type,
-}: INotification) {
+}: INotification): JSX.Element {
   return (
     <Card
       className={notificationStyles({ size, type, outline, className })}

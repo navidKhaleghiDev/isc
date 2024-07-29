@@ -4,13 +4,19 @@ export interface IBodyUsersLogin {
   email?: string;
   password: string;
 }
+export interface IBodySetting {
+  firstName: string | undefined;
+  lastName: string | undefined;
+  phoneNumber?: number;
+}
 
 export interface IUser {
   id?: string;
   device_serial: string;
   last_login: string | null;
-  first_name: string;
-  last_name: string;
+  phoneNumber: number;
+  firstName: string;
+  lastName: string;
   is_staff: boolean;
   is_active: boolean;
   date_joined: string;
@@ -27,7 +33,12 @@ export interface IUser {
 export interface IBodyAddUser
   extends Pick<
     IUser,
-    'first_name' | 'last_name' | 'email' | 'is_admin' | 'password'
+    | 'first_name'
+    | 'last_name'
+    | 'email'
+    | 'is_admin'
+    | 'password'
+    | 'phone_number'
   > {
   is_analyser: string;
 }

@@ -8,6 +8,7 @@ import {
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
+import { IconifyIcon } from '@iconify/react';
 import { baseInputStyles } from './styles';
 
 export interface BaseInputProps<T extends FieldValues>
@@ -34,7 +35,7 @@ export interface BaseInputProps<T extends FieldValues>
   placeholder?: string;
   className?: string;
   startIcon?: string;
-  endIcon?: string;
+  endIcon?: string | IconifyIcon;
   hiddenError?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string;

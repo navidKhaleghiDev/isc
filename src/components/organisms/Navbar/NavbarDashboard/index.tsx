@@ -17,7 +17,7 @@ import { getRoleUser } from './utils';
  * @returns {JSX.Element} The rendered NavbarDashboard component.
  */
 
-export function NavbarDashboard() {
+export function NavbarDashboard(): JSX.Element {
   const { user } = useUserContext();
   return (
     <div className="flex h-20 items-center justify-between p-3 2xl:container 2xl:mx-auto">
