@@ -103,8 +103,6 @@ function RulePolicyListCp(
     { target: { value } }: ChangeEvent<HTMLSelectElement>,
     index: number
   ) => {
-    // console.log({ codeList });
-
     if (codeList) {
       const newCodeList = codeList.slice();
       newCodeList[index].order = value;
@@ -177,17 +175,18 @@ function RulePolicyListCp(
         )}
       </div>
       <div className="flex w-full justify-between items-center mt-8">
-        <div className="w-full flex justify-start">
+        <div className="w-full flex items-center justify-between">
+          <BaseButton label="ثبت تغییرات" size="lg" onClick={toggleModalEdit} />
+
           {onDeleteRule && (
             <BaseButton
-              label="حذف"
-              size="sm"
-              type="red"
+              label="حذف قانون"
+              size="lg"
+              type="default"
               className="ml-5"
               onClick={toggleModalDelete}
             />
           )}
-          <BaseButton label="ثبت تغییرات" size="lg" onClick={toggleModalEdit} />
         </div>
       </div>
       <Modal
