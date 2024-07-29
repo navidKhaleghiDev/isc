@@ -23,7 +23,7 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
   return (
     <div>
       <BaseInput
-        size="sm"
+        size="lg"
         name="ip"
         placeholder="جستجو کنید"
         id="ip"
@@ -31,6 +31,7 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
         pureValue={searchValue}
         label={label}
         fullWidth
+        startIcon="uiw:search"
       />
     </div>
   );

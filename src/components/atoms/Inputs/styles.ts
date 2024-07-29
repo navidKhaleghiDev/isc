@@ -2,13 +2,13 @@ import { SIZE, PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  `px-3 py-2.5 flex block rounded-lg outline-none  border focus:border-2 
-  placeholder:text-right placeholder:text-rtl shadow-md`,
+  `px-3 py-2.5 flex rounded-lg outline-none  border focus:border-2 
+  placeholder:text-right placeholder:text-rtl shadow-sm`,
   {
     variants: {
       intent: {
-        default: `text-neutral-400 border focus:${PALLET.BORDER_COLOR.TEAL} ${PALLET.BORDER_COLOR.NEUTRAL}   focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
-        error: `text-neutral-900 border border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
+        default: `text-neutral-400 border focus:${PALLET.BORDER_COLOR.TEAL} border-neutral-300 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
+        error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
       },
       fullWidth: {
         true: 'w-full',
@@ -81,7 +81,7 @@ export const baseTextareaStyles = cva(
 );
 
 export const baseCheckBoxStyles = cva(
-  'w-5 h-5 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-teal-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600',
+  `before:content[''] peer relative size-5 cursor-pointer appearance-none rounded-md border border-teal-500 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
   {
     variants: {
       intent: {
@@ -90,8 +90,8 @@ export const baseCheckBoxStyles = cva(
       },
       size: {
         xs: ``,
-        sm: ``,
-        md: ``,
+        sm: `rounded size-4`,
+        md: `rounded-md size-5`,
         lg: ``,
         xl: ``,
       },

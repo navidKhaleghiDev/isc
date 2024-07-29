@@ -1,14 +1,12 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { useUserContext } from '@context/user/userContext';
-import { http } from '@src/services/http';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { BaseIcon, Typography } from '@ui/atoms';
+import PhCaretRight from '@iconify-icons/ph/caret-right';
+import PhCaretLeft from '@iconify-icons/ph/caret-left';
+import { BaseIcon } from '@ui/atoms';
 import { navigationSideBar } from './navigation';
 import { INavigation } from './types';
-import { MenuItemAccordion } from './MenuItemAccordion';
+// import { MenuItemAccordion } from './MenuItemAccordion';
 import { MenuItem } from './MenuItem';
-import { StatusServices } from './StatusServices';
 
 /**
  * SideBar Component
@@ -17,62 +15,63 @@ import { StatusServices } from './StatusServices';
  * and a logout button. It also shows the status of services.
  *
  * @component
- *
  * @returns {JSX.Element} The rendered sidebar component.
  */
 
-export function SideBar() {
+export function SideBar(): JSX.Element {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const [open, setOpen] = useState<number | null>(null);
+  // const [open, setOpen] = useState<number | null>(null);
+  const [toggleSidebar, setToggleSidebar] = useState(false);
 
-  const handleOpen = (value: number | null) => {
-    setOpen(value);
+  // const handleOpen = (value: number | null) => {
+  //   setOpen(value);
+  // };
+
+  const toggleSideBar = () => {
+    setToggleSidebar(!toggleSidebar);
   };
 
-  const { setUser } = useUserContext();
-
-  const handleLogout = () => {
-    http.removeAuthHeader();
-    setUser(null);
-    navigate(ROUTES_PATH.login);
-  };
+  // const isMobile = window.innerWidth <= 390;
 
   return (
-    <div className="flex flex-col items-center w-full h-full overflow-hidden text-gray-700 dark:bg-gray-500 rounded">
+    <div className=" hidden sm:flex flex-col justify-between items-end  w-full h-full overflow-hidden">
       <div className="flex flex-col items-center w-full mt-10 px-4">
-        {navigationSideBar.map((item: INavigation, i: number) =>
+        {navigationSideBar.map((item: INavigation) =>
           !item.items ? (
             <MenuItem
               key={item.id}
               item={item}
               pathname={pathname}
-              collapsed={false}
+              collapsed={!toggleSidebar}
             />
           ) : (
-            <MenuItemAccordion
-              key={item.id}
-              item={item}
-              open={open}
-              setOpen={handleOpen}
-              index={i}
-              icon={item.icon}
-              pathname={pathname}
-              collapsed={false}
-            />
+            // <MenuItemAccordion
+            //   key={item.id}
+            //   item={item}
+            //   open={open}
+            //   setOpen={handleOpen}
+            //   index={i}
+            //   icon={item.icon}
+            //   pathname={pathname}
+            //   collapsed={!toggleSidebar}
+            // />
+            ''
           )
         )}
+      </div>
+
+      <div className="hidden sm:flex flex-col items-end	w-full mb-4 px-4 ">
         <button
-          type="button"
-          className="flex items-center w-full h-10 pr-3 my-2 rounded hover:bg-neutral-100 hover:text-teal-600"
-          onClick={handleLogout}
+          type="submit"
+          className="flex flex-col justify-center items-center w-10 h-10  bg-teal-500 rounded-lg text-center"
+          onClick={toggleSideBar}
         >
-          <BaseIcon icon="material-symbols:logout-sharp" color="red" />
-          <Typography color="red" className="mr-3" size="body2">
-            خروج
-          </Typography>
+          {!toggleSidebar ? (
+            <BaseIcon icon={PhCaretLeft} className=" text-white  w-6 h-6" />
+          ) : (
+            <BaseIcon icon={PhCaretRight} className=" text-white  w-6 h-6" />
+          )}
         </button>
-        <StatusServices />
       </div>
     </div>
   );

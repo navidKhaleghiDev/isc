@@ -25,7 +25,7 @@ export function BaseIcon({
   hoverColor,
   className,
   icon = 'fa:home',
-}: IBaseIcon) {
+}: IBaseIcon): JSX.Element {
   return (
     <Icon
       className={baseIconStyles({ size, color, hoverColor, className })}

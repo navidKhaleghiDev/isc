@@ -1,8 +1,8 @@
 import { useMemo, useState, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import routesConfig from '@src/routes/routesConfig';
 import { IUserWithAuth, UserContext } from '@context/user/userContext';
+import { ToastCustomContainer } from '@ui/molecules/ToastCustomContainer';
 
 const router = createBrowserRouter(routesConfig);
 
@@ -17,7 +17,7 @@ function App() {
         <Suspense>
           <RouterProvider router={router} />
         </Suspense>
-        <ToastContainer rtl style={{ direction: 'rtl', fontSize: 20 }} />
+        <ToastCustomContainer />
       </div>
     </UserContext.Provider>
   );

@@ -2,7 +2,7 @@ import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_ADD_RULE } from '@src/services/client/rules';
 import { IRules } from '@src/services/client/rules/types';
 import { Card, Typography } from '@ui/atoms';
-import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
+import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -54,30 +54,40 @@ export function RulesCard({ rule }: PropsType) {
   return (
     <>
       <Card
-        color="neutral"
-        className="border-l-[0.2rem] border-teal-600 flex h-14 items-center px-2 my-2"
+        color="white"
+        shadow="sm"
+        className="w-[225px] h-[154px] p-[30px] border-teal-600"
       >
-        <div className="w-full flex justify-between items-center">
-          <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
-            <IconButton icon="jam:more-vertical" color="white" />
-          </Link>
-          <BaseButton
-            label="افزودن"
-            endIcon="ic:baseline-plus"
-            className="ml-auto mr-2"
-            type="shadow"
-            size="sm"
-            onClick={onClickAddButton}
-          />
-          <Typography color="teal" size="body2" type="div">
+        <div className="flex flex-col" dir="ltr">
+          <Typography
+            color="black"
+            type="p"
+            className="h-16  text-sm font-semibold"
+          >
             {rule.name}
           </Typography>
+          <div className="flex self-end gap-1 items-center">
+            <IconButton
+              icon="ph:plus"
+              color="tealDark"
+              className="text-white"
+              onClick={onClickAddButton}
+            />
+            <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
+              <IconButton
+                icon="ph:dots-three-bold"
+                color="white"
+                onClick={onClickAddButton}
+              />
+            </Link>
+          </div>
         </div>
       </Card>
 
       <Modal
         open={openModal}
         setOpen={setOpenModal}
+        size="md"
         type="success"
         title="آیا مطمئن هستید؟"
         buttonOne={{
