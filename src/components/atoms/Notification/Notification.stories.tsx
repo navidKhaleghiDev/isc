@@ -23,12 +23,6 @@ const meta = {
         type: 'text',
       },
     },
-    outline: {
-      control: {
-        type: 'select',
-      },
-      options: ['success', 'error'],
-    },
     size: {
       control: {
         type: 'select',
@@ -39,7 +33,7 @@ const meta = {
       control: {
         type: 'select',
       },
-      options: ['success', 'error'],
+      options: ['success', 'error', 'default'],
     },
   },
   decorators: [
@@ -63,6 +57,5 @@ export const Default: Story = {
     type: 'success',
     size: 'fullWidth',
     title: 'ورود با موفقیت انجام شد.',
-    outline: 'success',
   },
 };

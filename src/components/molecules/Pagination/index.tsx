@@ -7,7 +7,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 const mClass =
-  'flex size-6 justify-center  rounded items-center hover:bg-neutral-100 p-1 text-base';
+  'flex size-6 justify-center px-2 rounded items-center hover:bg-neutral-100 text-base';
 
 const disableClass = 'bg-gray-300 cursor-not-allowed ';
 const activeClass =

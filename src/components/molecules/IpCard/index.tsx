@@ -109,6 +109,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         size="sm"
         open={openModalEdit}
         setOpen={setOpenModalEdit}
+        size="sm"
         content={
           <UpdateIp
             ip={item}
@@ -122,6 +123,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         size="md"
         open={openModalDelete}
         setOpen={setOpenModalDelete}
+        size="md"
         type="error"
         title="از حذف این IP مطمئن هستید؟"
         buttonOne={{

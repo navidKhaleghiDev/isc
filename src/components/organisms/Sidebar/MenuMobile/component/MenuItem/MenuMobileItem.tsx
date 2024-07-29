@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BaseIcon, Typography } from '@ui/atoms';
+import { BaseIcon } from '@ui/atoms';
 import { menuItemStyles } from './styles';
 import { IMenuItem } from './types';
 
@@ -20,30 +20,25 @@ import { IMenuItem } from './types';
  * @returns {JSX.Element} The rendered menu item component.
  */
 
-export function MenuItem({
+export function MenuMobileItem({
   item,
   pathname,
   isChildren,
-  collapsed,
 }: IMenuItem): JSX.Element {
   const isActive = item.path === pathname;
-
   return (
-    <Link
-      className={menuItemStyles({
-        active: isActive,
-        isChildren,
-        isActiveChildren: isActive && isChildren,
-      })}
-      to={item.path}
-      target={item.isNewTab ? '_blank' : '_self'}
-    >
-      {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
-      {!collapsed && (
-        <Typography className="mr-3 hidden sm:block " size="body4">
-          {item.label}
-        </Typography>
-      )}
-    </Link>
+    <div>
+      <Link
+        className={menuItemStyles({
+          active: isActive,
+          isChildren,
+          isActiveChildren: isActive && isChildren,
+        })}
+        to={item.path}
+        target={item.isNewTab ? '_blank' : '_self'}
+      >
+        {item?.icon && <BaseIcon icon={item.icon} className=" w-6 h-6" />}
+      </Link>
+    </div>
   );
 }
