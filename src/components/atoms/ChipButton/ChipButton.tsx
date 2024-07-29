@@ -1,56 +1,39 @@
-import x from '@iconify-icons/ph/x';
-import { useState } from 'react';
-import { IconType } from '@src/types/global';
-import { IconButton } from '../BaseButton';
-
-const disabledClass = 'opacity-40';
+import { IconButton, IIconButton } from '../BaseButton';
 
 type BaseButtonAttributes = React.ComponentPropsWithoutRef<'button'>;
 interface ChipButtonType extends BaseButtonAttributes {
   label: string;
-  iconLabel: IconType;
-  status: 'default' | 'green' | 'yellow' | 'disabled';
+  icon?: IIconButton['icon'];
+  onClickIcon?: () => void;
+
+  color: 'default' | 'green' | 'yellow' | 'lightGray';
 }
 
 export function ChipButton({
   label,
-  status,
+  color,
   onClick,
-  iconLabel,
+  icon,
   className,
   disabled,
+  onClickIcon,
 }: ChipButtonType) {
   const typeColor = {
     default: 'bg-neutral-200 text-neutral-500',
-    disabled: 'bg-neutral-200 text-neutral-500 opacity-40',
+    lightGray: 'bg-neutral-200 text-neutral-500 opacity-40',
     green: 'bg-teal-100 text-neutral-500',
     yellow: 'bg-yellow-100 text-neutral-500',
-  };
-  const [isHidden, setIsHidden] = useState(false);
-  if (isHidden) {
-    return null;
-  }
-  const handleIconClick = (icon: IconType) => {
-    if (icon === x) {
-      setIsHidden(true);
-    }
   };
 
   return (
     <button
       disabled={disabled}
-      className={`flex max-w-max justify-between items-center w-full px-3 max-h-5 rounded-full ${
-        typeColor[status]
-      } ${className} ${disabled ? disabledClass : ''} `}
+      className={`flex max-w-max justify-between items-center w-full px-3 max-h-5 rounded-full ${typeColor[color]} ${className} disabled:opacity-40 disabled:bg-teal-500 disabled:text-white`}
       type="button"
       onClick={onClick}
     >
       {label}
-      <IconButton
-        icon={iconLabel}
-        color="neutral"
-        onClick={() => handleIconClick(iconLabel)}
-      />
+      {icon && <IconButton icon={icon} color="neutral" onClick={onClickIcon} />}
     </button>
   );
 }
