@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 
 type PropsType = {
+  onCloseModal: () => void;
   onSubmit: (data: { ip: string; ipType: string | undefined }) => void;
   loading?: boolean;
 };
@@ -23,11 +24,9 @@ const defaultValues = {
   ip_type: '',
 };
 
-export function AddIpForm({ onSubmit, loading }: PropsType) {
-  // const [isSelected] = useState(false);
-
+export function AddIpForm({ onSubmit, loading, onCloseModal }: PropsType) {
   const { control, handleSubmit, getValues, reset, setValue, register, watch } =
-    useForm<IAddIpValues>({});
+    useForm<IAddIpValues>({ mode: 'onChange' });
 
   const [ipValue, setIpValue] = useState('');
 
@@ -37,7 +36,8 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
         ip: formValues.ip,
         ipType: formValues.ip_type,
       });
-      // reset(defaultValues);
+      reset(defaultValues.ip && defaultValues.ip_type);
+      onCloseModal();
     }
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -67,7 +67,10 @@ export function AddIpForm({ onSubmit, loading }: PropsType) {
         placeholder="جدید IP"
         control={control}
         id="ip"
-        rules={{ required: regexPattern.required }}
+        rules={{
+          required: regexPattern.required,
+          pattern: regexPattern.ip,
+        }}
         endIcon={FilmScript}
         onKeyDown={handleKeyDown}
       />

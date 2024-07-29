@@ -48,17 +48,15 @@ export function FilterIps() {
 
   const handleAddIp = async (formValues: {
     ip: string;
-    selectedOption: string;
-    ipValue: string;
+    ipType: string | undefined;
   }) => {
-    const { ip, selectedOption, ipValue } = formValues;
+    const { ip, ipType } = formValues;
     if (!ip) {
       toast.error('لطفا یک آی پی وارد کنید');
       return;
     }
 
-    const body: IIp[] = [{ ip: ipValue, ip_type: selectedOption as EIpType }];
-
+    const body: IIp[] = [{ ip, ip_type: ipType as EIpType }];
     try {
       await API_ADD_VALID_IPS(body);
       toast.success('با موفقیت اضافه شد');
@@ -99,12 +97,17 @@ export function FilterIps() {
 
       <IpsList filterProduct={openIps} searchQuery={search} />
       <Modal
-        className="!w-[315px]"
+        size="sm"
         open={modalOpen}
         setOpen={setModalOpen}
         type="none"
         title="Ip مورد نظر را وارد کنید "
-        content={<AddIpForm onSubmit={handleAddIp} />}
+        content={
+          <AddIpForm
+            onCloseModal={() => setModalOpen(false)}
+            onSubmit={handleAddIp}
+          />
+        }
       />
     </>
   );
