@@ -92,9 +92,12 @@ export function AddIpForm({ onSubmit, loading, onCloseModal }: PropsType) {
             }}
             disabled={isInputSelected === undefined}
             label="خارجی"
-            status="default"
+            status={
+              ipType === 'External' || ipType === undefined
+                ? 'default'
+                : 'disabled'
+            }
             iconLabel={Plus}
-            isSelected={ipType === 'Internal'}
           />
           <ChipButton
             onClick={() => {
@@ -102,9 +105,12 @@ export function AddIpForm({ onSubmit, loading, onCloseModal }: PropsType) {
             }}
             disabled={isInputSelected === undefined}
             label="داخلی"
-            status="default"
+            status={
+              ipType === 'Internal' || ipType === undefined
+                ? 'default'
+                : 'disabled'
+            }
             iconLabel={Plus}
-            isSelected={ipType === 'External'}
           />
         </div>
       </div>
@@ -128,7 +134,7 @@ export function AddIpForm({ onSubmit, loading, onCloseModal }: PropsType) {
       {ipType && (
         <ChipButton
           label={ipType === 'External' ? 'خارجی' : 'داخلی'}
-          status={ipType === 'External' ? 'external' : 'internal'}
+          status={ipType === 'External' ? 'green' : 'yellow'}
           iconLabel={x}
           className="self-end"
           onClick={() => {
