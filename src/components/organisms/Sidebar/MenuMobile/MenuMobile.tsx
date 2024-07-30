@@ -17,7 +17,7 @@ export function MenuMobile(): JSX.Element {
   const { pathname } = useLocation();
 
   return (
-    <div className="  sm:hidden   w-full h-full overflow-hidden">
+    <div className="sm:hidden w-full h-full overflow-hidden">
       <div className="fixed bottom-4  flex justify-around  sm:flex-col w-full  px-8 bg-neutral-100 rounded-full ">
         {navigationSideBarMobile.map((item: INavigation) =>
           !item.items ? (
