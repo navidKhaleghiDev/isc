@@ -5,6 +5,7 @@ import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { TValueOnChange } from '@ui/atoms/DropDown/type';
 import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
+import { Typography } from '@ui/atoms';
 
 import { ButtonState } from './types';
 
@@ -24,21 +25,25 @@ function RulesPageCP() {
     { id: '2', label: 'قوانین پیشنهادی', value: 'suggest' },
   ];
 
+  // Change the responsive approach for the baseSelect component
+
   return (
     <div className="w-full flex flex-col h-full mt-[51px] px-11">
-      <form className="p-4 flex justify-start items-center gap-4">
-        {activeButton === 'all' && (
-          <SearchInput onChange={handleOnSearch} value={search} />
-        )}
-
-        <BaseSelect
-          id="rulesSort"
-          name="rulesSort"
-          selectOptions={dropDownOptions}
-          size="lg"
-          pureOnChange={dropValueChange}
-        />
-      </form>
+      <Typography weight="bold" size="body1" className="block md:hidden">
+        لیست قوانین
+      </Typography>
+      <div className="p-4 grid grid-cols-2 md:flex md:justify-start md:items-center gap-4">
+        <SearchInput onChange={handleOnSearch} value={search} />
+        <div className=" md:w-64">
+          <BaseSelect
+            id="rulesSort"
+            name="rulesSort"
+            selectOptions={dropDownOptions}
+            pureOnChange={dropValueChange}
+            fullWidth
+          />
+        </div>
+      </div>
       <RulesList buttonState={activeButton} searchValue={search} />
     </div>
   );

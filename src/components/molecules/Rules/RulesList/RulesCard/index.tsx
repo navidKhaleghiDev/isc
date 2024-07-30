@@ -56,7 +56,7 @@ export function RulesCard({ rule }: PropsType) {
       <Card
         color="white"
         shadow="sm"
-        className="w-[225px] h-[154px] p-[30px] border-teal-600"
+        className="md:w-[225px] h-[154px] p-[30px] border-teal-600"
       >
         <div className="flex flex-col" dir="ltr">
           <Typography
