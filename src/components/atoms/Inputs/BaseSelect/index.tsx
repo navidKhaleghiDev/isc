@@ -27,6 +27,7 @@ import { IOptionSelect, OptionSelect } from './OptionSelect';
  * @returns {JSX.Element} The rendered select component.
  */
 
+// check error handling conditions in this component
 export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
   const {
     control,
@@ -38,13 +39,16 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
     fullWidth,
     defaultValue,
     startIcon,
+    pureError,
     endIcon,
+    pureValue,
     intent,
-    // pureOnChange,
+    pureOnChange,
     size,
     hiddenError,
   } = props;
-  return (
+
+  return control ? (
     <Controller
       name={name}
       control={control}
@@ -66,7 +70,7 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
             dir="auto"
             name={field.name}
             value={field.value}
-            onChange={field.onChange}
+            onChange={pureOnChange}
             className={baseSelectStyles({
               intent: error?.message ? 'error' : intent,
               className: `${endIcon && 'pr-8'} ${startIcon && 'pl-8'}`,
@@ -78,7 +82,12 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
               <OptionSelect key={option.id} option={option} />
             ))}
           </select>
-          {!hiddenError && (
+          {/* {!hiddenError && (
+            <Typography size="body6" className="h-6">
+              {error?.message ?? ''}
+            </Typography>
+          )} */}
+          {hiddenError && (
             <Typography size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
@@ -86,5 +95,43 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
         </div>
       )}
     />
+  ) : (
+    <div className={`${className} ${fullWidth && 'w-full'}`}>
+      {/* {label && (
+            <label
+              htmlFor={id}
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              {label}
+            </label>
+          )} */}
+      <select
+        id={id}
+        dir="auto"
+        name={name}
+        value={pureValue}
+        onChange={pureOnChange}
+        className={baseSelectStyles({
+          intent: pureError ? 'error' : intent,
+          className: `${endIcon && 'pr-8'} ${startIcon && 'pl-8'}`,
+          fullWidth,
+          size,
+        })}
+      >
+        {selectOptions.map((option: IOptionSelect) => (
+          <OptionSelect key={option.id} option={option} />
+        ))}
+      </select>
+      {/* {!hiddenError && (
+        <Typography size="body6" className="h-6">
+          {pureError ?? ''}
+        </Typography>
+      )} */}
+      {hiddenError && (
+        <Typography size="body6" className="h-6">
+          {pureError ?? ''}
+        </Typography>
+      )}
+    </div>
   );
 }
