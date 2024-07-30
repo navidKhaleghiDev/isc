@@ -11,7 +11,7 @@ function MyRulePageCp() {
   const handleOnSearch = (value: string) => {
     setSearch(value);
   };
-  const selectValueOnChange = () => console.log('value on change');
+  const selectValueOnChange = () => {};
   const dropDownOptions = [
     { id: 1, label: 'همه ی قوانین', value: 'همه ی قوانین' },
     { id: 1, label: '‍‍‍بیشنهادی قوانین', value: 'قوانین ‍‍‍بیشنهادی' },
