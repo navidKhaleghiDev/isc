@@ -23,13 +23,18 @@ type PropsType = {
 
 export function CardRuleDetail({ label, value, className }: PropsType) {
   return (
-    <div className="text-right mt-[10px]">
-      <Typography color="neutral_dark" weight="bold" size="body4">
+    <div className="text-center mt-[10px]">
+      <Typography
+        color="neutral_dark"
+        weight="light"
+        size="body4"
+        className="text-xs"
+      >
         {label}
       </Typography>
       <Card
         color="neutral_light"
-        className={`flex justify-center items-center mt-2 rounded-lg w-[255px] h-[30px] ${className}`}
+        className={`flex justify-center w-[103px] items-center mt-2 rounded-lg md:w-[255px] h-[30px] ${className}`}
       >
         <Typography size="body5" color="neutral">
           {value}

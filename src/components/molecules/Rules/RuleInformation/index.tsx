@@ -34,20 +34,8 @@ export function RuleInformation({
   codeList,
 }: RuleInformationProps): JSX.Element {
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex flex-col items-center justify-between">
-        <CardRuleDetail
-          label="تغییرات داده شده"
-          value={countDifferenceOrder}
-          className=""
-        />
-        {codeList && (
-          <CardRuleDetail
-            label="تعداد سیاست ها"
-            value={codeList.length}
-            className=""
-          />
-        )}
+    <div className="flex flex-col-reverse md:flex-row items-center justify-between">
+      <div className="flex  md:flex-col-reverse gap-5 md:gap-0 items-center justify-between">
         {updateDate && (
           <CardRuleDetail
             label="آخرین ویرایش"
@@ -55,12 +43,25 @@ export function RuleInformation({
             className=""
           />
         )}
+        {codeList && (
+          <CardRuleDetail
+            label="تعداد سیاست ها"
+            value={codeList.length}
+            className=""
+          />
+        )}
+
+        <CardRuleDetail
+          label="تغییرات داده شده"
+          value={countDifferenceOrder}
+          className=""
+        />
       </div>
       <Typography
         color="neutral_dark"
         size="body1"
         weight="bold"
-        className="self-start mt-11"
+        className=" self-end md:self-start mt-11"
       >
         {name}
       </Typography>

@@ -47,8 +47,8 @@ function LayoutCp() {
         <header className="border-b-4 border-neutral-200">
           <NavbarDashboard />
         </header>
-        <div className="flex flex-col-reverse sm:flex-row h-full 2xl:container 2xl:mx-auto ">
-          <nav className="flex w-full  h-20 sm:w-80 sm:h-full ">
+        <div className="flex sm:flex-row h-full 2xl:container 2xl:mx-auto ">
+          <nav className="flex sm:h-full ">
             <div className="w-full flex mx-auto">
               <div className=" flex items-center justify-center w-full sm:w-fit h-full  border-l-4  shadow-md border-neutral-200  transition-all	duration-1000	ease-linear">
                 <SideBar />

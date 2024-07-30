@@ -149,7 +149,7 @@ function RulePolicyListCp(
           }  بروی تمام سیاست ها`}</Typography>
         </Card>
       )}
-      <div className="max-h-[300px] overflow-y-auto mt-[10px] p-0.5">
+      <div className=" max-h-[424px] md:max-h-[300px] overflow-y-auto mt-[10px] p-0.5">
         {codeList.length > 0 ? (
           codeList.map((mCode: SliceOrderCodeType, index: number) => {
             return (
