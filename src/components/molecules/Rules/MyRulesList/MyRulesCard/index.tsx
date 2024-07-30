@@ -29,7 +29,10 @@ type PropsType = {
  * @returns {JSX.Element} The rendered MyRulesCard component.
  */
 
-export function MyRulesCard({ myRule, mutateMyRulesList }: PropsType) {
+export function MyRulesCard({
+  myRule,
+  mutateMyRulesList,
+}: PropsType): JSX.Element {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
@@ -56,12 +59,12 @@ export function MyRulesCard({ myRule, mutateMyRulesList }: PropsType) {
       <Card
         color="white"
         shadow="sm"
-        className="w-[225px] h-[154px] p-[30px] text-left border-teal-600"
+        className=" w-full md:w-[255px] h-[154px] p-[30px] text-left border-teal-600"
       >
         <Typography
           color="black"
           type="p"
-          className="h-16  text-sm font-semibold"
+          className="h-16 text-sm font-semibold"
         >
           {myRule.rule_name}
         </Typography>
@@ -80,56 +83,6 @@ export function MyRulesCard({ myRule, mutateMyRulesList }: PropsType) {
             className="bg-white"
           />
         </div>
-        {/* <div className="w-full flex justify-between items-center">
-          <div className=" w-1/4">
-            {!isHeader && (
-              <div className="flex items-center gap-2">
-                <Link
-                  to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}
-                  state={{ isUpdated: myRule.isUpdated }}
-                >
-                  <IconButton icon="jam:more-vertical" color="white" />
-                </Link>
-                <IconButton
-                  icon="ph:trash-simple"
-                  color="red"
-                  onClick={toggleModalDelete}
-                />
-                {myRule.isUpdated && (
-                  <BaseIcon icon="radix-icons:update" color="red" />
-                )}
-              </div>
-            )}
-          </div>
-          <div className="flex w-2/4">
-            <Typography
-              color="neutral"
-              size="body3"
-              type="div"
-              className="px-3 w-1/2 text-center break-words"
-            >
-              {myRule.creator.email}
-            </Typography>
-            <Typography
-              color="neutral"
-              size="body3"
-              type="div"
-              className="px-3 w-1/2 text-center break-words"
-            >
-              {!isHeader
-                ? persianDateNumber(myRule.created_at)
-                : myRule.created_at}
-            </Typography>
-          </div>
-          <Typography
-            color="neutral"
-            size="h5"
-            weight="medium"
-            className="w-1/4 text-left break-words"
-          >
-            {myRule.rule_name}
-          </Typography>
-        </div> */}
       </Card>
       <Modal
         open={openModalDelete}
