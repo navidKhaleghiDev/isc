@@ -47,7 +47,7 @@ function LayoutCp() {
         <header className="border-b-4 border-neutral-200">
           <NavbarDashboard />
         </header>
-        <div className="flex sm:flex-row h-full 2xl:container 2xl:mx-auto ">
+        <div className="flex sm:flex-row h-full overflow-y-auto px-0.5 2xl:container 2xl:mx-auto ">
           <nav className="flex sm:h-full ">
             <div className="w-full flex mx-auto">
               <div className=" flex items-center justify-center w-full sm:w-fit h-full  border-l-4  shadow-md border-neutral-200  transition-all	duration-1000	ease-linear">
@@ -55,7 +55,7 @@ function LayoutCp() {
               </div>
             </div>
           </nav>
-          <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
+          <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-2">
             <div className="flex w-full mx-auto mb-2 h-full">
               <div className=" relative flex flex-col w-full h-full mb-2">
                 <Outlet />
