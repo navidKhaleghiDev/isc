@@ -1,8 +1,6 @@
-interface CalendarSvgProps {
-  className?: string;
-}
+import { ISvgProp } from './types';
 
-export function CalendarSvg({ className }: CalendarSvgProps) {
+export function CalendarSvg({ className }: ISvgProp) {
   return (
     <svg
       width="45"

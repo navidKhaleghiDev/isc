@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { BaseButton, Card, Typography } from '@ui/atoms';
+import { BaseButton, BaseIcon, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 import { ChangeEvent, forwardRef, useImperativeHandle, useState } from 'react';
 import { NoResult } from '@ui/molecules/NoResult';
@@ -7,7 +7,13 @@ import { Modal } from '@ui/molecules/Modal';
 import { CodeLine } from '@ui/molecules/Rules/MyRuleDetail/CodeLine';
 import { CodeLineSelect } from '@ui/molecules/Rules/MyRuleDetail/CodeLine/CodeLineSelect';
 import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
-import Icon from 'react-multi-date-picker/components/icon';
+import {
+  AlertSvg,
+  BlockSvg,
+  DropSvg,
+  PassSvg,
+  RejectSvg,
+} from '@ui/atoms/Svgs';
 
 /**
  * Props for RulePolicyList component.
@@ -119,6 +125,23 @@ function RulePolicyListCp(
     setCodeList(updatedList);
   };
 
+  const policyAllIcon = () => {
+    switch (valueAllCodeLineSelect) {
+      case 'alert':
+        return <AlertSvg />;
+      case 'drop':
+        return <DropSvg />;
+      case 'block':
+        return <BlockSvg />;
+      case 'pass':
+        return <PassSvg />;
+      case 'reject':
+        return <RejectSvg />;
+      default:
+        return <AlertSvg />;
+    }
+  };
+
   return (
     <div className="mt-12">
       <div className="flex items-center gap-2">
@@ -143,10 +166,12 @@ function RulePolicyListCp(
             value={valueAllCodeLineSelect}
             onChange={onChangeAllOrder}
           />
-          <Icon />
-          <Typography>{`${
-            valueAllCodeLineSelect || 'alert'
-          }  بروی تمام سیاست ها`}</Typography>
+          <div className="flex items-center justify-center gap-[10px]">
+            <Typography>{`${
+              valueAllCodeLineSelect || 'alert'
+            }  بروی تمام سیاست ها`}</Typography>
+            {policyAllIcon()}
+          </div>
         </Card>
       )}
       <div className=" max-h-[424px] md:max-h-[300px] overflow-y-auto mt-[10px] p-0.5">

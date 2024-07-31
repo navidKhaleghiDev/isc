@@ -1,8 +1,6 @@
-interface LoadingUpdateSvgProps {
-  className?: string;
-}
+import { ISvgProp } from './types';
 
-export function LoadingUpdateSvg({ className }: LoadingUpdateSvgProps) {
+export function LoadingUpdateSvg({ className }: ISvgProp) {
   return (
     <svg
       width="48"
