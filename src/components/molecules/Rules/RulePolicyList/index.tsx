@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { BaseButton, BaseIcon, Card, Typography } from '@ui/atoms';
+import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 import { ChangeEvent, forwardRef, useImperativeHandle, useState } from 'react';
 import { NoResult } from '@ui/molecules/NoResult';
