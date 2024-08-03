@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
+
 import { useUserContext } from '@context/user/userContext';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { BaseButton, Card, Typography } from '@ui/atoms';
 
-type PropsType = {
+type ProductBoxPropType = {
   labelHead: string;
   buttonLabel: string;
   linkAddress: string;
 };
-export function ProductBox({ labelHead, buttonLabel, linkAddress }: PropsType) {
+export function ProductBox({
+  labelHead,
+  buttonLabel,
+  linkAddress,
+}: ProductBoxPropType) {
   const { user } = useUserContext();
 
   return (
@@ -17,7 +22,6 @@ export function ProductBox({ labelHead, buttonLabel, linkAddress }: PropsType) {
         {labelHead}
       </Typography>
       <div className="flex">
-        {' '}
         <Typography
           color="neutral_light"
           size="body5"
@@ -30,7 +34,6 @@ export function ProductBox({ labelHead, buttonLabel, linkAddress }: PropsType) {
         </Typography>
         <Link to={linkAddress}>
           <div className="h-10 w-28 sm:w-40 sm:translate-y-1/2 sm:my-7">
-            {' '}
             <BaseButton label={buttonLabel} fullWidth />
           </div>
         </Link>
