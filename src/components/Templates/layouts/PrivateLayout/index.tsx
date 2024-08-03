@@ -58,8 +58,10 @@ function LayoutCp() {
           <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-2">
             <div className="flex w-full mx-auto mb-2 h-full">
               <div className=" relative flex flex-col w-full h-full mb-2">
-                <Outlet />
-                <MenuMobile />
+                <div className=" flex flex-col items-center justify-center gap-10">
+                  <Outlet />
+                  <MenuMobile />
+                </div>
               </div>
             </div>
           </main>

@@ -105,13 +105,15 @@ export function RulesList({
                   <RulesCard key={item.id} rule={item} />
                 ))}
               </div>
-              {!!countPage && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
-                  onPageChange={handlePageChange}
-                />
-              )}
+              <div className="hidden sm:block">
+                {!!countPage && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
+                    onPageChange={handlePageChange}
+                  />
+                )}
+              </div>
             </>
           ) : (
             <NoResult />

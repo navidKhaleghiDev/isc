@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PhCaretRight from '@iconify-icons/ph/caret-right';
 import PhCaretLeft from '@iconify-icons/ph/caret-left';
 import { BaseIcon } from '@ui/atoms';
+
 import { navigationSideBar } from './navigation';
 import { INavigation } from './types';
 // import { MenuItemAccordion } from './MenuItemAccordion';
@@ -34,7 +35,11 @@ export function SideBar(): JSX.Element {
   // const isMobile = window.innerWidth <= 390;
 
   return (
-    <div className=" hidden sm:flex flex-col justify-between items-end  w-full h-full overflow-hidden">
+    <div
+      className={`hidden  sm:flex ${
+        toggleSidebar && 'w-64'
+      } flex-col justify-between items-end   h-full overflow-hidden`}
+    >
       <div className="flex flex-col items-center w-full mt-10 px-4">
         {navigationSideBar.map((item: INavigation) =>
           !item.items ? (
