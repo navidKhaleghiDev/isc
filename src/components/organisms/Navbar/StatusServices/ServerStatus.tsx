@@ -10,7 +10,7 @@ export function ServerStatus({ open }: StatusType) {
       rounded="md"
       borderColor="neutral_light"
       shadow="sm"
-      className="flex flex-col justify-center items-center h-[13.75rem] w-[14.06rem] absolute top-[70px] left-[270px] z-50"
+      className="flex flex-col justify-center items-center h-[13.75rem] w-[14.06rem] absolute top-[70px] left-[300px] z-50"
     >
       <div className="flex flex-row justify-start items-center w-48 h-10 rounded-lg bg-red-100 ">
         <BaseIcon icon={PhHardDrives} color="red" className="m-2 w-6 h-6" />

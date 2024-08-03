@@ -2,7 +2,7 @@ import { BaseButton, BaseInput } from '@ui/atoms';
 import { TitleSection } from '@ui/atoms/TitleSection';
 import { useForm } from 'react-hook-form';
 import PhUser from '@iconify-icons/ph/user';
-import PhPhone from '@iconify-icons/ph/phone';
+import PhEnvelopeSimple from '@iconify-icons/ph/envelope-simple';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { useUserContext } from '@context/user/userContext';
@@ -13,14 +13,14 @@ export function Setting() {
   //   const userId = user?.id;
   const firstName = user?.first_name;
   const lastName = user?.last_name;
-
+  const email = user?.email;
   const { control, handleSubmit } = useForm<IAddUserFormValues>({
     mode: 'onChange',
   });
 
   //   We don't have an API for this component.
 
-  const handleSubmitForm = async () => {
+  const handleSubmitForm = async (formData: IAddUserFormValues) => {
     // if (!userId) {
     //   toast.error('کاربر یافت نشد');
     //   return;
@@ -42,18 +42,24 @@ export function Setting() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col mx-4">
-      <div className="flex mt-14 ml-28 px-2">
+    <div className="w-full h-full flex flex-col items-center py-14 px-10">
+      <div className="w-full flex justify-center items-center mb-6">
         <TitleSection
-          label={firstName && lastName ? `${firstName} ${lastName}` : ''}
+          label={
+            firstName && lastName
+              ? `${firstName} ${lastName}`
+              : 'Mehdi Bazargan'
+          }
         />
-        <PageBackButton />
+        <div className="hidden sm:flex">
+          <PageBackButton />
+        </div>
       </div>
       <form
-        className="w-full h-full flex flex-col justify-between mb-8"
+        className="w-full h-full flex flex-col justify-between"
         onSubmit={handleSubmit(handleSubmitForm)}
       >
-        <div className="flex">
+        <div className="w-full grid gap-x-7 gap-y-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <BaseInput
             id="first_name"
             name="first_name"
@@ -61,12 +67,11 @@ export function Setting() {
             placeholder={firstName}
             control={control}
             endIcon={PhUser}
-            size="lg"
             rules={{
               required: regexPattern.required,
               pattern: regexPattern.farsiLettersAndSpace,
             }}
-            className="mx-2"
+            fullWidth
           />
           <BaseInput
             id="last_name"
@@ -80,24 +85,33 @@ export function Setting() {
               required: regexPattern.required,
               pattern: regexPattern.farsiLettersAndSpace,
             }}
-            className="mx-2"
+            fullWidth
           />
           <BaseInput
             id="phone_number"
             name="phone_number"
-            label="شماره تماس"
-            placeholder="09121111111"
+            label="ایمیل"
+            placeholder={email}
             control={control}
-            endIcon={PhPhone}
+            endIcon={PhEnvelopeSimple}
             size="lg"
             rules={{
               required: regexPattern.required,
               pattern: regexPattern.phoneNumber,
             }}
-            className="mx-2"
+            fullWidth
           />
         </div>
-        <div className="flex justify-end ml-28">
+        {/* <BaseButton
+          submit
+          label="ثبت تغییرات"
+          size="xl"
+          className="mt-16 self-end"
+        /> */}
+        {/* <div className="flex justify-end ml-28">
+          <BaseButton submit label="ثبت تغییرات" size="xl" />
+        </div> */}
+        <div className="flex justify-center sm:justify-end mt-[160px]">
           <BaseButton submit label="ثبت تغییرات" size="xl" />
         </div>
       </form>

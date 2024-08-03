@@ -8,6 +8,7 @@ import PhHardDrives from '@iconify-icons/ph/hard-drives';
 import { IconButton } from '@ui/atoms/BaseButton';
 
 import { ServerStatus } from '../StatusServices';
+import { PageBackButton } from '@ui/atoms/BackButton';
 
 /**
  * NavbarDashboard Component
@@ -27,24 +28,27 @@ import { ServerStatus } from '../StatusServices';
   };
   return (
     <div className="flex h-20 items-center justify-between px-5 2xl:container 2xl:mx-auto">
-      <Link to={ROUTES_PATH.home} className="ml-4">
+      <Link to={ROUTES_PATH.home}>
         <Typography
           color="teal"
           size="h5"
-          className="text-xl sm:text-2xl "
+          className="text-xl sm:text-2xl hidden sm:block "
           weight="bold"
         >
           NETFENCE
         </Typography>
+        <div className="flex justify-center items-center  sm:hidden ">
+          <PageBackButton />
+        </div>
       </Link>
-      <div className="flex">
+      <div className="flex justify-center items-center">
         <IconButton
           size="xxl"
           type="button"
           color="neutralLight"
           icon={PhHardDrives}
           onClick={statusHandle}
-          className={`flex justify-center items-center w-10 h-10   rounded-lg ml-2  hover:bg-neutral-300 transition-all duration-700 ease-out  ${
+          className={`w-10 h-10 rounded-lg ml-2  hover:bg-neutral-300 transition-all duration-700 ease-linear  ${
             statusOpen ? 'bg-neutral-300 hover:bg-neutral-300' : ''
           }`}
         />
@@ -53,7 +57,7 @@ import { ServerStatus } from '../StatusServices';
           type="button"
           color="neutralLight"
           icon={PhUser}
-          className={`flex justify-center items-center w-10 h-10   rounded-lg ml-2  hover:bg-neutral-300 transition-all duration-700 ease-out  
+          className={`w-10 h-10 rounded-lg   hover:bg-neutral-300 transition-all duration-700 ease-linear  
           }`}
         />
       </div>

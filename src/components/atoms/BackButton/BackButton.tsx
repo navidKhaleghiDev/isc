@@ -50,9 +50,9 @@ export function BackButton({
     <IconButton
       onClick={handleClick}
       icon={PhCaretLeft}
-      size="xl"
+      size="xxl"
       type="button"
-      color="default"
+      color="neutralLight"
     />
   ) : (
     <BaseButton
