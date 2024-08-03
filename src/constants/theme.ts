@@ -58,7 +58,7 @@ export const SIZE = {
     BODY6: 'text-xs',
   },
   BUTTON: {
-    SMALL: 'h-10 w-16 py-1.5 px-3 text-xl',
+    SMALL: 'h-10 w-16 py-1.5 px-3 text-xs',
     MEDIUM: 'h-10 w-24 py-2 px-5',
     LARGE: 'h-10 w-40 py-3 px-6 ',
     X_LARGE: 'h-10 w-48 py-3 px-6 ',
