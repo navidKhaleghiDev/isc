@@ -3,7 +3,7 @@ import { UsersList } from '@ui/molecules/UsersList';
 
 function UsersPageCp() {
   return (
-    <div className="w-full h-full flex flex-col items-center p-16">
+    <div className="w-full h-full flex flex-col items-center">
       <UsersList />
     </div>
   );

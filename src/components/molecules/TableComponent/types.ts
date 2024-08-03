@@ -6,7 +6,7 @@ interface DeleteAction {
   accessor: NonEmptyString<string>;
   actionType: 'delete';
   onDelete: (rowId: string | number) => void;
-  openModal: () => void;
+  openModal: (row?:IData) => void;
 }
 
 interface AddAction {

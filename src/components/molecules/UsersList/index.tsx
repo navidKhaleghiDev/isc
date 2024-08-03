@@ -3,7 +3,7 @@ import { ResponseSwr } from '@src/services/client/rules/types';
 import { E_USERS } from '@src/services/client/users/endpoint';
 import { IUser } from '@src/services/client/users/types';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { useForm } from 'react-hook-form';
 import { Dropdown } from '@ui/atoms';
@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import { ButtonState, TValueOnChange } from './types';
 import { Modal } from '../Modal';
 import { TableContainer } from '../TableComponent/TableContainer';
-import { Column } from '../TableComponent/types';
+import { Column, IData } from '../TableComponent/types';
 import { NoResult } from '../NoResult';
 
 export function UsersList() {
@@ -29,8 +29,12 @@ export function UsersList() {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [userId, setUserId] = useState<number | string>('');
+  const [selectedRow, setSelectedRow] = useState<IData>();
 
-  const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
+  const toggleModalDelete = (row?:IData) => {
+    setSelectedRow(row)
+    setOpenModalDelete(!openModalDelete);
+  };
 
   const handleRequestDelete = async () => {
     setDeleteLoading(true);
@@ -48,8 +52,9 @@ export function UsersList() {
       });
   };
 
-  const dropValueChange: TValueOnChange = (value) =>
+  const dropValueChange: TValueOnChange = (value) => {
     setActiveButton(value.title);
+  };
 
   const dropDownOptions = [
     { id: '1', label: 'همه کاربران', title: 'all' },
@@ -101,7 +106,7 @@ export function UsersList() {
   ];
 
   return (
-    <div className="w-full mt-8">
+    <div className="w-full">
       {list.length > 0 ? (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-baseline pb-6">
@@ -119,11 +124,13 @@ export function UsersList() {
               />
             </div>
             <div className="flex justify-start lg:justify-end gap-6">
-              <LinkButton
-                label="اضافه کردن کاربر"
-                link={ROUTES_PATH.addUser}
-                size="xl"
-              />
+              <div className="w-40 sm:w-48">
+                <LinkButton
+                  label="اضافه کردن کاربر"
+                  link={ROUTES_PATH.addUser}
+                  fullWidth
+                />
+              </div>
               <div className="hidden sm:block">
                 <BackButton backToReferrer />
               </div>
@@ -136,7 +143,7 @@ export function UsersList() {
             setOpen={setOpenModalDelete}
             size="md"
             type="error"
-            title="از حذف این کاربر مطمئن هستید؟"
+            title={`کاربر ${selectedRow?.email} حذف شود؟`}
             buttonOne={{
               label: 'بله',
               onClick: handleRequestDelete,

@@ -4,6 +4,7 @@ import { cva } from 'class-variance-authority';
 export const cardStyles = cva('', {
   variants: {
     color: {
+      neutral_light: `${PALLET.BG_COLOR.NEUTRAL_LIGHT} `,
       neutral: `${PALLET.BG_COLOR.NEUTRAL} `,
       teal: `${PALLET.BG_COLOR.TEAL} `,
       yellow: `${PALLET.BG_COLOR.YELLOW} `,

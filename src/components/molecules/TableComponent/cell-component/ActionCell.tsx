@@ -22,7 +22,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
           color="redNoBg"
           onClick={() => {
             column.onDelete(row.id);
-            column.openModal();
+            column.openModal(row);
           }}
           size="xxl"
         />

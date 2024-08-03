@@ -1,8 +1,14 @@
 import { PALLET, SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-const disabledClass =
-  'disabled:opacity-40 disabled:bg-teal-500 disabled:text-white';
+const disabledClass = cva({
+  variants: {
+    type: {
+      default: 'disabled:opacity-40 disabled:bg-teal-500 disabled:text-white',
+      redBg: 'disabled:opacity-40 disabled:bg-red-500 disabled:text-red-900',
+    },
+  },
+});
 
 export const baseButtonStyles = cva(
   `flex items-center justify-center transition duration-150 ease-in-out rounded-lg focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY4} ${disabledClass}`,
@@ -14,6 +20,7 @@ export const baseButtonStyles = cva(
         shadow: `${PALLET.BUTTON_COLOR.SHADOW}`,
         secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
         red: `${PALLET.BUTTON_COLOR.RED}`,
+        redBg: `${PALLET.BUTTON_COLOR.RED_BG}`,
         tealLink: `text-teal-600 hover:bg-neutral-200 rounded-none`,
         neutral: `${PALLET.BUTTON_COLOR.NEUTRAL}`,
       },

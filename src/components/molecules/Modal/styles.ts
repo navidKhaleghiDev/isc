@@ -26,8 +26,8 @@ export const contentStyles = cva('modal-content text-center min-h-[12rem]', {
 export const containerStyles = cva('', {
   variants: {
     size: {
-      sm: 'w-[20rem]',
-      md: 'w-[28rem]',
+      sm: 'sm:w-[20rem] w-full',
+      md: 'sm:w-[28rem] w-full',
     },
   },
 });

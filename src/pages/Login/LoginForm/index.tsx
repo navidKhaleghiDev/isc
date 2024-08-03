@@ -117,9 +117,9 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
         </div>
       </form>
       <Modal
+        size="md"
         open={openModalSerialDevice}
         setOpen={setOpenModalSerialDevice}
-        size="md"
         title=" شماره سریال دستگاه وارد نشده است!!"
         description="بدون ثبت شماره سریال برخی خدمات برای شما نمایش داده نخواهد شد."
         type="error"
