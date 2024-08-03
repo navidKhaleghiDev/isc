@@ -76,9 +76,9 @@ function StopListenerIcon({ id, mutate }: StopListenerIconProps) {
         />
       </ToolTip>
       <Modal
+        size="md"
         open={openModal}
         setOpen={setOpenModal}
-        size="md"
         type="error"
         title="از متوقف کردن این عملیات مطمئن هستید؟"
         buttonOne={{
