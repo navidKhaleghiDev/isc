@@ -1,6 +1,6 @@
 import { Card, Typography } from '@ui/atoms';
 
-type PropsType = {
+type TCardRuleDetailPropType = {
   label: string;
   value: string | number;
   className?: string;
@@ -21,14 +21,18 @@ type PropsType = {
  * @returns {JSX.Element} The returned a card detail.
  */
 
-export function CardRuleDetail({ label, value, className }: PropsType) {
+export function CardRuleDetail({
+  label,
+  value,
+  className,
+}: TCardRuleDetailPropType) {
   return (
-    <div className="text-center mt-[10px]">
+    <div className="text-center sm:text-start mt-[10px]">
       <Typography
         color="neutral_dark"
         weight="light"
         size="body4"
-        className="text-xs"
+        className="text-xs sm:text-base sm:font-bold"
       >
         {label}
       </Typography>

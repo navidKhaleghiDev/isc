@@ -174,7 +174,7 @@ function RulePolicyListCp(
           </div>
         </Card>
       )}
-      <div className=" max-h-[424px] md:max-h-[300px] overflow-y-auto mt-[10px] p-0.5">
+      <div className="max-h-[26.5rem] md:max-h-[18.75rem] overflow-y-auto mt-3 p-0.5">
         {codeList.length > 0 ? (
           codeList.map((mCode: SliceOrderCodeType, index: number) => {
             return (
@@ -200,7 +200,7 @@ function RulePolicyListCp(
         )}
       </div>
       <div className="flex w-full justify-between items-center mt-8">
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex items-center justify-between mb-5">
           <BaseButton label="ثبت تغییرات" size="lg" onClick={toggleModalEdit} />
 
           {onDeleteRule && (

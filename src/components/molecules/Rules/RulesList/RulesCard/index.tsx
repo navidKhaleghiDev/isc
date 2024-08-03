@@ -70,13 +70,15 @@ export function RulesCard({ rule }: PropsType) {
             <IconButton
               icon="ph:plus"
               color="tealDark"
+              size="xxl"
               className="text-white"
               onClick={onClickAddButton}
             />
             <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
               <IconButton
-                icon="ph:dots-three-bold"
+                icon="ph:dots-three"
                 color="white"
+                size="xxl"
                 onClick={onClickAddButton}
               />
             </Link>
@@ -89,7 +91,7 @@ export function RulesCard({ rule }: PropsType) {
         setOpen={setOpenModal}
         size="md"
         type="success"
-        title="آیا مطمئن هستید؟"
+        title={`قانون ${rule.name} اضافه شود ؟‌`}
         buttonOne={{
           label: 'بله',
           onClick: handleRequestAdd,

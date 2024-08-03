@@ -61,7 +61,7 @@ export function RuleInformation({
         color="neutral_dark"
         size="body1"
         weight="bold"
-        className=" self-end md:self-start mt-11"
+        className="self-end md:self-start"
       >
         {name}
       </Typography>
