@@ -1,19 +1,28 @@
-import { API_ADD_VALID_IPS } from '@src/services/client/rules';
-import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
-import { EIpType, IIp } from '@src/services/client/rules/types';
-import { useGet } from '@src/services/http/httpClient';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+
 import { BaseButton, Dropdown } from '@ui/atoms';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { TValueOnChange } from '@ui/atoms/DropDown/type';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { IpsList } from '@ui/molecules/IpsList';
-import { AddIpForm } from '@ui/molecules/IpsList/AddIpForm';
+import { AddIpForm } from '@ui/molecules/IpsList/components/AddIpForm';
 import { Modal } from '@ui/molecules/Modal';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 
-export function FilterIps() {
+import { API_ADD_VALID_IPS } from '@src/services/client/rules';
+import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
+import { EIpType, IIp } from '@src/services/client/rules/types';
+import { useGet } from '@src/services/http/httpClient';
+
+/**
+ * FilterIps component for managing and displaying IP addresses.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
+
+export function FilterIps(): JSX.Element {
   const [openIps, setOpenIps] = useState<EIpType | null>(null);
   const [ips, setIps] = useState<IIp[]>([]);
   const { control } = useForm();
@@ -70,27 +79,29 @@ export function FilterIps() {
   return (
     <>
       <div>
-        <div className="w-full flex justify-between items-center h-full">
-          <form className="p-4 flex justify-start items-center gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-baseline">
+          <div className="py-4 grid grid-cols-2 gap-7">
             <SearchInput onChange={handleOnSearch} value={search} />
             <Dropdown
               options={dropDownOptions}
               placeHolder="همه IPها"
               control={control}
-              name="ip_1"
+              name="ip-type"
               size="lg"
               id="rules-sort"
               valueOnChange={dropValueChange}
             />
-          </form>
-          <div className="flex gap-6 items-center ">
+          </div>
+          <div className="flex gap-6 sm:justify-end">
             <BaseButton
-              label="اضافه کردن IP"
+              label="اضافه کردنIP"
               type="default"
-              size="lg"
               onClick={() => setModalOpen(true)}
+              size="lg"
             />
-            <PageBackButton />
+            <div className="hidden sm:block">
+              <PageBackButton />
+            </div>
           </div>
         </div>
       </div>

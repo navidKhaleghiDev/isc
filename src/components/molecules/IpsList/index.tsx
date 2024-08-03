@@ -2,7 +2,7 @@ import { EIpType, IIp, ResponseSwr } from '@src/services/client/rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 
-import { IpCard } from '../IpCard';
+import { IpCard } from './components/IpCard';
 import { NoResult } from '../NoResult';
 
 interface IpListProp {
@@ -29,7 +29,7 @@ export function IpsList({ filterProduct, searchQuery }: IpListProp) {
   });
 
   return (
-    <div className="w-full mt-8 grid grid-cols-4 gap-7">
+    <div className="w-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-[1.875rem] gap-y-5 mt-7 ">
       {filterList.length > 0 ? (
         filterList.map((item) => (
           <IpCard key={item.id} mutateIpList={handleMutate} item={item} />
