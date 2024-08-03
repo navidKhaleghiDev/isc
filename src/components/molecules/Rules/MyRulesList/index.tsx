@@ -17,6 +17,10 @@ const headerItem: any = {
   },
 };
 
+type TMyRulesListProp = {
+  searchValue?: string;
+};
+
 /**
  * MyRulesList Component
  *
@@ -24,11 +28,11 @@ const headerItem: any = {
  * It handles loading state, no result state, and displays each rule using MyRulesCard component.
  *
  * @component
- *
+ * @param {searchValue}  prop.searchValue search value
  * @returns {JSX.Element} The rendered MyRulesList component.
  */
 
-export function MyRulesList(): JSX.Element {
+export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
   const { data, mutate, isLoading } =
     useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
@@ -37,14 +41,17 @@ export function MyRulesList(): JSX.Element {
   const handleMutate = () => {
     mutate();
   };
+  const filterData = checkedRulesList.filter((item) =>
+    item.rule_name.includes(searchValue as string)
+  );
 
   return (
     <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
       <MyRulesCard mutateMyRulesList={handleMutate} myRule={headerItem} />
       {isLoading ? (
         <LoadingSpinner />
-      ) : checkedRulesList.length > 0 ? (
-        checkedRulesList.map((item) => (
+      ) : filterData.length > 0 ? (
+        filterData.map((item) => (
           <MyRulesCard
             key={item.id}
             mutateMyRulesList={handleMutate}
