@@ -72,9 +72,9 @@ export function SideBar(): JSX.Element {
           onClick={toggleSideBar}
         >
           {!toggleSidebar ? (
-            <BaseIcon icon={PhCaretLeft} className=" text-white  w-6 h-6" />
+            <BaseIcon icon={PhCaretLeft} className=" text-white w-6 h-6" />
           ) : (
-            <BaseIcon icon={PhCaretRight} className=" text-white  w-6 h-6" />
+            <BaseIcon icon={PhCaretRight} className=" text-white w-6 h-6" />
           )}
         </button>
       </div>

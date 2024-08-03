@@ -28,7 +28,7 @@ function RulesPageCP() {
   // Change the responsive approach for the baseSelect component
 
   return (
-    <div className="w-full flex flex-col h-full mt-[51px] px-11">
+    <div className="w-full flex flex-col h-full">
       <Typography weight="bold" size="body1" className="block md:hidden">
         لیست قوانین
       </Typography>
