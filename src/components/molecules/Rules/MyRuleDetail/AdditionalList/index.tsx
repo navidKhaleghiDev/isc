@@ -160,9 +160,9 @@ export function AdditionalList({
         })}
       </Card>
       <Modal
+        size="md"
         open={openModalSetChanged}
         setOpen={setOpenModalSetChanged}
-        size="md"
         type="error"
         title="از اعمال این تغییرات مطمئن هستید؟"
         buttonOne={{

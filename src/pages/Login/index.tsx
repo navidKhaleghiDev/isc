@@ -49,8 +49,8 @@ function LoginPageCp() {
     return <LoadingPage description="لطفا شکیبا باشید" />;
   }
   return (
-    <div className="flex flex-col md:flex-row w-full h-screen">
-      <div className="bg-cover bg-center h-1/2 md:h-full md:w-1/2 bg-[url('Login.svg')] md:rounded-l-3xl" />
+    <div className="flex w-full h-screen">
+      <div className="bg-cover bg-center h-1/2 md:h-full md:w-1/2 md:bg-[url('Login.svg')] md:rounded-l-3xl" />
       <div className="font-kalameh font-normal w-full md:w-1/2 flex flex-col items-center justify-center p-4">
         <Card className="relative flex flex-col items-center w-full max-w-md">
           <Step onChangeStep={setStep} getProfile={getProfile} />

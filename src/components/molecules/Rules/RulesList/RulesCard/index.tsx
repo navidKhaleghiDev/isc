@@ -87,9 +87,9 @@ export function RulesCard({ rule }: PropsType) {
       </Card>
 
       <Modal
+        size="md"
         open={openModal}
         setOpen={setOpenModal}
-        size="md"
         type="success"
         title={`قانون ${rule.name} اضافه شود ؟‌`}
         buttonOne={{
