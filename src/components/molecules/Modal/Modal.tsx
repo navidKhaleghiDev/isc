@@ -50,7 +50,7 @@ export function Modal({
   const handleToggle = () => setOpen(!open);
 
   return open ? (
-    <div className="main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center items-center backdrop-blur-sm">
+    <div className="main-modal fixed w-full h-100 inset-0 z-50 animated fadeIn faster main-modal h-100 overflow-hidden flex justify-center sm:items-center items-end backdrop-blur-sm">
       <div
         ref={ref}
         className={`rounded-[20px] shadow-lg modal-container bg-white ${containerStyles(
@@ -59,17 +59,6 @@ export function Modal({
       >
         <div className={contentStyles({ type })}>
           <div className={headerStyles()}>
-            {/* <BaseIcon
-                // icon={
-                //   type === 'error'
-                //     ? 'ph:shield-warning'
-                //     : 'material-symbols:check'
-                // }
-                icon={List}
-                className="h-8 w-8 text-neutral-100 bg-red-200 rounded-md"
-                color={type === 'error' ? 'red' : 'teal'}
-              /> */}
-
             <div className="modal-close cursor-pointer z-50">
               <IconButton
                 icon={X}
@@ -110,15 +99,6 @@ export function Modal({
                     size={buttonOne.size}
                   />
                 )}
-                {/* {buttonTow && (
-                  <BaseButton
-                    label={buttonTow.label}
-                    onClick={buttonTow.onClick}
-                    loading={buttonTow.loading}
-                    type={buttonTow.color}
-                    className="m-1"
-                  />
-                )} */}
               </div>
             )}
           </div>
