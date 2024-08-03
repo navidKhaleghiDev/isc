@@ -3,7 +3,7 @@ import { ResponseSwr } from '@src/services/client/rules/types';
 import { E_USERS } from '@src/services/client/users/endpoint';
 import { IUser } from '@src/services/client/users/types';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { useForm } from 'react-hook-form';
 import { Dropdown } from '@ui/atoms';
@@ -31,8 +31,8 @@ export function UsersList() {
   const [userId, setUserId] = useState<number | string>('');
   const [selectedRow, setSelectedRow] = useState<IData>();
 
-  const toggleModalDelete = (row?:IData) => {
-    setSelectedRow(row)
+  const toggleModalDelete = (row?: IData) => {
+    setSelectedRow(row);
     setOpenModalDelete(!openModalDelete);
   };
 
