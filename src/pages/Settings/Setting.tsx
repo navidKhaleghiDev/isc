@@ -20,7 +20,7 @@ export function Setting() {
 
   //   We don't have an API for this component.
 
-  const handleSubmitForm = async (formData: IAddUserFormValues) => {
+  const handleSubmitForm = async () => {
     // if (!userId) {
     //   toast.error('کاربر یافت نشد');
     //   return;

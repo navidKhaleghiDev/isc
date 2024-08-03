@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Typography } from '@ui/atoms/Typography/Typography';
 import PhUser from '@iconify-icons/ph/user';
 import PhHardDrives from '@iconify-icons/ph/hard-drives';
 import { IconButton } from '@ui/atoms/BaseButton';
+import { PageBackButton } from '@ui/atoms/BackButton';
 
 import { ServerStatus } from '../StatusServices';
-import { PageBackButton } from '@ui/atoms/BackButton';
 
 /**
  * NavbarDashboard Component
@@ -22,25 +22,47 @@ import { PageBackButton } from '@ui/atoms/BackButton';
  * @returns {JSX.Element} The rendered NavbarDashboard component.
  */ export function NavbarDashboard(): JSX.Element {
   const [statusOpen, setStatusOpen] = useState(false);
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const statusHandle = () => {
     setStatusOpen(!statusOpen);
   };
+  const backButtonRoutes = [
+    ROUTES_PATH.addUser,
+    ROUTES_PATH.settings,
+    ROUTES_PATH.myProductMyRules,
+    ROUTES_PATH.myProductIpsList,
+    ROUTES_PATH.myProductMyRulesRetrieve,
+  ];
+  const showBackButton = backButtonRoutes.includes(location.pathname);
   return (
     <div className="flex h-20 items-center justify-between px-5 2xl:container 2xl:mx-auto">
       <Link to={ROUTES_PATH.home}>
         <Typography
           color="teal"
           size="h5"
-          className="text-xl sm:text-2xl hidden sm:block "
+          className="hidden sm:flex text-xl sm:text-2xl"
           weight="bold"
         >
           NETFENCE
         </Typography>
-        <div className="flex justify-center items-center  sm:hidden ">
-          <PageBackButton />
-        </div>
+
+        {!showBackButton ? (
+          <Typography
+            color="teal"
+            size="h5"
+            className="flex sm:hidden text-xl sm:text-2xl"
+            weight="bold"
+          >
+            NETFENCE
+          </Typography>
+        ) : (
+          <div className="flex justify-center items-center  sm:hidden ">
+            <PageBackButton onClick={() => navigate(-1)} />
+          </div>
+        )}
       </Link>
+
       <div className="flex justify-center items-center">
         <IconButton
           size="xxl"

@@ -1,5 +1,4 @@
 import { IconifyIcon } from '@iconify/react';
-import { Setting } from '@src/pages/Settings/Setting';
 import { Card, Typography, BaseIcon } from '@ui/atoms';
 
 type PropsType = {
