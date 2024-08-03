@@ -16,7 +16,7 @@ export function IconInput({ icon, intent }: PropsType) {
         className: 'pointer-events-none',
       })}
     >
-      <BaseIcon icon={icon} className="mx-1" size="xs" />
+      <BaseIcon icon={icon} className="mx-1 text-neutral-400" size="md" />
     </div>
   );
 }

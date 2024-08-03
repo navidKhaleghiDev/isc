@@ -98,6 +98,7 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             name="password"
             control={control}
             placeholder="رمز عبور"
+            className="flex flex-col items-center"
           />
 
           <BaseButton

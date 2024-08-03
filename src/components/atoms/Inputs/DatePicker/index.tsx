@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import MultiDatePicker, { DateObject } from 'react-multi-date-picker';
 import xIcon from '@iconify-icons/ph/x';
-import calendarIcon from '@iconify-icons/ph/calendar';
+import calendarIcon from '@iconify-icons/ph/calendar-blank';
 import persian from 'react-date-object/calendars/persian';
 import gregorian from 'react-date-object/calendars/gregorian';
 import persian_fa from 'react-date-object/locales/persian_fa';
@@ -123,8 +123,8 @@ export const DatePicker = memo(function DatePicker({
         return (
           <div className={containerClass}>
             {label && (
-              <label htmlFor={id} className="block mb-1">
-                <Typography color="teal" size="h5">
+              <label htmlFor={id} className="block mb-1 h-8 text-right">
+                <Typography color="neutral_dark" size="body4">
                   {label}
                 </Typography>
               </label>
