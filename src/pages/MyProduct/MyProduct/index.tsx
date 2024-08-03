@@ -93,7 +93,7 @@ function MyProductPageCp(): JSX.Element {
   const product = data?.data;
 
   return (
-    <div className="sm:mt-7 sm:px-6">
+    <div className="sm:px-1">
       {user?.device_serial ? (
         <ProductDetail product={product} />
       ) : (
