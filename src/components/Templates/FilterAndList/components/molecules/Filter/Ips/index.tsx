@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { BaseButton, Dropdown } from '@ui/atoms';
+import { BaseButton } from '@ui/atoms';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { TValueOnChange } from '@ui/atoms/DropDown/type';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
@@ -14,6 +13,7 @@ import { API_ADD_VALID_IPS } from '@src/services/client/rules';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { EIpType, IIp } from '@src/services/client/rules/types';
 import { useGet } from '@src/services/http/httpClient';
+import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 
 /**
  * FilterIps component for managing and displaying IP addresses.
@@ -25,7 +25,6 @@ import { useGet } from '@src/services/http/httpClient';
 export function FilterIps(): JSX.Element {
   const [openIps, setOpenIps] = useState<EIpType | null>(null);
   const [ips, setIps] = useState<IIp[]>([]);
-  const { control } = useForm();
   const { mutate } = useGet(E_RULES_VALID_IPS);
   const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
@@ -46,13 +45,14 @@ export function FilterIps(): JSX.Element {
     setSearch(value);
   };
 
-  const dropValueChange: TValueOnChange = (value) =>
-    setOpenIps(value.title as EIpType);
+  const dropValueChange: TValueOnChange = (value) => {
+    setOpenIps(value.target.value as EIpType);
+  };
 
   const dropDownOptions = [
-    { id: '1', label: 'همه IPها', title: EIpType.ALL },
-    { id: '2', label: 'داخلی', title: EIpType.INTERNAL },
-    { id: '3', label: 'خارجی', title: EIpType.EXTERNAL },
+    { id: '1', label: 'همه IPها', value: EIpType.ALL },
+    { id: '2', label: 'داخلی', value: EIpType.INTERNAL },
+    { id: '3', label: 'خارجی', value: EIpType.EXTERNAL },
   ];
 
   const handleAddIp = async (formValues: {
@@ -82,14 +82,13 @@ export function FilterIps(): JSX.Element {
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-baseline">
           <div className="py-4 grid grid-cols-2 gap-7">
             <SearchInput onChange={handleOnSearch} value={search} />
-            <Dropdown
-              options={dropDownOptions}
-              placeHolder="همه IPها"
-              control={control}
+            <BaseSelect
+              selectOptions={dropDownOptions}
               name="ip-type"
-              size="lg"
               id="rules-sort"
-              valueOnChange={dropValueChange}
+              size="freeWidth"
+              pureValue={openIps as string}
+              pureOnChange={dropValueChange}
             />
           </div>
           <div className="flex gap-6 sm:justify-end">
