@@ -81,6 +81,7 @@ export interface IBaseSelectProp<T extends FieldValues>
   pureValue?: string;
   pureError?: string;
   ltrLabel?: boolean;
+  disabled?: boolean;
   min?: string | number;
   max?: string | number;
   pureOnChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;

@@ -2,7 +2,7 @@ import { Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 import { CodeLineSelect } from './CodeLineSelect';
 
-type PropsType = {
+type TCodeLIneProp = {
   code: SliceOrderCodeType;
   onChangeOrder: any;
   id: string;
@@ -20,11 +20,13 @@ type PropsType = {
  * @param {string} code - Includes rule code
  * @param {*} onChangeOrder - handler change function for code action
  * @param {string} id - id for changed management
+ * @param {boolean} disable - disables code line
+ *
  *
  * @returns {JSX.Element} The rendered a section include rule code and action
  */
 
-export function CodeLine({ code, onChangeOrder, id, disable }: PropsType) {
+export function CodeLine({ code, onChangeOrder, id, disable }: TCodeLIneProp) {
   if (!code?.order || !code?.code) {
     return null;
   }
@@ -36,7 +38,7 @@ export function CodeLine({ code, onChangeOrder, id, disable }: PropsType) {
         id={id}
         disableSelect={disable}
       />
-      <Typography type="span" size="body5" className="text-neutral-900 ml-6">
+      <Typography type="span" size="body5" className="text-neutral-900 ml-9">
         {code?.code}
       </Typography>
     </div>

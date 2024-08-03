@@ -104,12 +104,14 @@ export const baseCheckBoxStyles = cva(
 );
 
 export const baseSelectStyles = cva(
-  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white  border focus:border-2 
-  placeholder:text-right border-neutral-300  placeholder:text-rtl shadow-sm`,
+  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white    
+  placeholder:text-right border-neutral-300  placeholder:text-rtl relative`,
   {
     variants: {
       intent: {
-        default: `text-neutral-900  focus:border-teal-500 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-500s disabled:shadow-none`,
+        default: `text-neutral-900  focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-500s disabled:shadow-none`,
+        primary:
+          'bg-white w-fit disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer ',
         error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
       },
       fullWidth: {

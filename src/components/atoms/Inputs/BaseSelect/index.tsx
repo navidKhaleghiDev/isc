@@ -1,4 +1,5 @@
 import { Controller } from 'react-hook-form';
+import { BaseIcon } from '@ui/atoms/BaseIcon';
 
 import { IBaseSelectProp } from '../types';
 import { baseSelectStyles } from '../styles';
@@ -23,6 +24,8 @@ import { IOptionSelect, OptionSelect } from './OptionSelect';
  * @param {'default' | 'error'} [props.intent] - The intent state of the select, determining its styling.
  * @param {'sm' | 'md' | 'lg'} [props.size] - The size of the select.
  * @param {boolean} [props.hiddenError] - Whether to hide the error message.
+ * @param {boolean} [props.disable] - disables the base select .
+ *
  *
  * @returns {JSX.Element} The rendered select component.
  */
@@ -42,6 +45,7 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
     pureError,
     endIcon,
     pureValue,
+    disabled,
     intent,
     pureOnChange,
     size,
@@ -70,6 +74,7 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
             dir="auto"
             name={field.name}
             value={field.value}
+            disabled={disabled}
             onChange={pureOnChange}
             className={baseSelectStyles({
               intent: error?.message ? 'error' : intent,
@@ -82,21 +87,44 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
               <OptionSelect key={option.id} option={option} />
             ))}
           </select>
-          {/* {!hiddenError && (
-            <Typography size="body6" className="h-6">
-              {error?.message ?? ''}
-            </Typography>
-          )} */}
           {hiddenError && (
             <Typography size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}
+          <BaseIcon
+            icon="ph:caret-down-bold"
+            className="absolute top-1/3 left-3 z-30"
+          />
+          {hiddenError && (
+            <Typography size="body6" className="h-6">
+              {error?.message ?? ''}
+            </Typography>
+          )}
+          {intent !== 'primary' ? (
+            <BaseIcon
+              icon="ph:caret-down-bold"
+              className={`absolute ${
+                disabled && 'bg-neutral-200'
+              } top-1/3 left-3 `}
+            />
+          ) : (
+            <BaseIcon
+              icon="ph:caret-up-down-bold"
+              className={`absolute ${
+                disabled && 'text-neutral-200'
+              } top-1/4 -right-3`}
+            />
+          )}
         </div>
       )}
     />
   ) : (
-    <div className={`${className} ${fullWidth && 'w-full'}`}>
+    <div
+      className={`${className} ${
+        fullWidth && 'w-full'
+      } relative flex items-center justify-center h-fit`}
+    >
       {/* {label && (
             <label
               htmlFor={id}
@@ -110,6 +138,7 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
         dir="auto"
         name={name}
         value={pureValue}
+        disabled={disabled}
         onChange={pureOnChange}
         className={baseSelectStyles({
           intent: pureError ? 'error' : intent,
@@ -122,11 +151,27 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
           <OptionSelect key={option.id} option={option} />
         ))}
       </select>
-      {/* {!hiddenError && (
+      {hiddenError && (
         <Typography size="body6" className="h-6">
           {pureError ?? ''}
         </Typography>
-      )} */}
+      )}
+      {intent !== 'primary' ? (
+        <BaseIcon
+          icon="ph:caret-down-bold"
+          className={`absolute ${
+            disabled && 'bg-neutral-200'
+          } top-1/3 left-3 z-30`}
+        />
+      ) : (
+        <BaseIcon
+          icon="ph:caret-up-down-bold"
+          className={`absolute ${
+            disabled && 'text-neutral-200'
+          } top-1/4 -right-3 z-30`}
+        />
+      )}
+
       {hiddenError && (
         <Typography size="body6" className="h-6">
           {pureError ?? ''}

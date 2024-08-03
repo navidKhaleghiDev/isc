@@ -25,12 +25,12 @@ import { RulesCard } from './RulesCard';
  * @property {string} searchValue - The search value to filter the rules.
  */
 
-type PropsType = {
+type TRulesListProp = {
   buttonState: ButtonState;
   searchValue: string;
 };
 
-const LIMIT_RULES_LIST = 12;
+const LIMIT_RULES_LIST = 16;
 
 /**
  * RulesList Component
@@ -44,7 +44,10 @@ const LIMIT_RULES_LIST = 12;
  * @returns {JSX.Element} The rendered RulesList component.
  */
 
-export function RulesList({ buttonState, searchValue }: PropsType) {
+export function RulesList({
+  buttonState,
+  searchValue,
+}: TRulesListProp): JSX.Element {
   const { user } = useUserContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');

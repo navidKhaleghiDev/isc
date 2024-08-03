@@ -166,7 +166,7 @@ function RulePolicyListCp(
             value={valueAllCodeLineSelect}
             onChange={onChangeAllOrder}
           />
-          <div className="flex items-center justify-center gap-[10px]">
+          <div className="flex items-center justify-center gap-3 ml-6">
             <Typography>{`${
               valueAllCodeLineSelect || 'alert'
             }  بروی تمام سیاست ها`}</Typography>

@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
+import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 
-type PropsType = {
+type TCodeLineSelectProp = {
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
@@ -20,6 +21,8 @@ type PropsType = {
  * @param {(e: ChangeEvent<HTMLSelectElement>) => void} onChange - handler change function
  * @param {string} [className] - Set custom className
  * @param {string} id - id for changed management
+ * @param {boolean} disableSelect - for making the select disable
+ *
  *
  * @returns {JSX.Element} The rendered a select & options.
  */
@@ -30,39 +33,24 @@ export function CodeLineSelect({
   className,
   id,
   disableSelect,
-}: PropsType) {
-  // const selectOptions = [
-  //   { id: 1, label: 'ALERT', value: 'alert' },
-  //   { id: 2, label: 'DROP', value: 'drop' },
-  //   { id: 3, label: 'BLOCK', value: 'block' },
-  //   { id: 4, label: 'PASS', value: 'pass' },
-  //   { id: 5, label: 'REJECT', value: 'reject' },
-  // ];
-  // const { control } = useForm();
+}: TCodeLineSelectProp) {
+  const selectOptions = [
+    { id: 1, label: 'ALERT', value: 'alert' },
+    { id: 2, label: 'DROP', value: 'drop' },
+    { id: 3, label: 'BLOCK', value: 'block' },
+    { id: 4, label: 'PASS', value: 'pass' },
+    { id: 5, label: 'REJECT', value: 'reject' },
+  ];
   return (
-    <>
-      <select
-        name="codeAction"
-        id={id}
-        className={`bg-white disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer ${className}`}
-        value={value}
-        onChange={onChange}
-        disabled={disableSelect}
-      >
-        <option value="alert">ALERT</option>
-        <option value="drop">DROP</option>
-        <option value="block">BLOCK</option>
-        <option value="pass">PASS</option>
-        <option value="reject">REJECT</option>
-      </select>
-      {/* <BaseSelect
-        id="selectAllPolicy"
-        intent="default"
-        selectOptions={selectOptions}
-        name="selectAllPolicy"
-        control={control}
-        defaultValue="alret"
-      /> */}
-    </>
+    <BaseSelect
+      id={id}
+      intent="primary"
+      pureOnChange={onChange}
+      pureValue={value}
+      disabled={disableSelect}
+      selectOptions={selectOptions}
+      name="selectAllPolicy"
+      className={className}
+    />
   );
 }
