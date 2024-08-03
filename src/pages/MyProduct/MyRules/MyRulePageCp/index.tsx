@@ -18,22 +18,24 @@ function MyRulePageCp() {
   ];
 
   return (
-    <div className="w-full flex flex-col h-full sm:mt-[51px] md:px-11">
+    <div className="w-full flex flex-col h-full">
       <Typography size="body1" weight="bold" className="block sm:hidden">
         قوانین محصول
       </Typography>
-      <div className="grid grid-cols-2 md:flex gap-[30px]  mt-5">
-        <SearchInput onChange={handleOnSearch} value={search} />
-        <div>
-          <BaseSelect
-            id="rulesSort"
-            name="rulesSort"
-            selectOptions={dropDownOptions}
-            pureOnChange={selectValueOnChange}
-            fullWidth
-          />
+      <div className="flex items-center justify-between">
+        <div className="grid grid-cols-2 md:flex gap-[1.87rem] mt-5">
+          <SearchInput onChange={handleOnSearch} value={search} />
+          <div className="md:w-64">
+            <BaseSelect
+              id="rulesSort"
+              name="rulesSort"
+              selectOptions={dropDownOptions}
+              pureOnChange={selectValueOnChange}
+              fullWidth
+            />
+          </div>
         </div>
-        <div className="text-left hidden lg:block">
+        <div className="text-left lg:flex lg:items-center lg:justify-center hidden">
           <PageBackButton />
         </div>
       </div>

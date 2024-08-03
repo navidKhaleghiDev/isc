@@ -55,10 +55,10 @@ function LayoutCp() {
               </div>
             </div>
           </nav>
-          <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-2 pt-[3.12rem] px-8">
+          <main className="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-2 pt-5 sm:pt-[3.12rem] px-3 sm:px-8">
             <div className="flex w-full mx-auto h-full ">
               <div className="relative flex flex-col w-full h-full">
-                <div className="flex flex-col items-center justify-center gap-10 ">
+                <div className="flex flex-col items-center justify-center gap-16 ">
                   <Outlet />
                   <MenuMobile />
                 </div>

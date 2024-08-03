@@ -59,7 +59,7 @@ export function MyRulesCard({
       <Card
         color="white"
         shadow="sm"
-        className=" w-full md:w-[255px] h-[154px] p-[30px] text-left border-teal-600"
+        className="w-full h-[9.62rem] p-[1.87rem] mb-5 sm:mb-0 text-left border-teal-600"
       >
         <Typography
           color="black"

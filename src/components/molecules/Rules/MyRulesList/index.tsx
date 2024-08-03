@@ -28,7 +28,7 @@ const headerItem: any = {
  * @returns {JSX.Element} The rendered MyRulesList component.
  */
 
-export function MyRulesList() {
+export function MyRulesList(): JSX.Element {
   const { data, mutate, isLoading } =
     useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
@@ -39,7 +39,7 @@ export function MyRulesList() {
   };
 
   return (
-    <div className="w-full grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-[30px] gap-y-5 mt-[18px] md:mt-9">
+    <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
       <MyRulesCard mutateMyRulesList={handleMutate} myRule={headerItem} />
       {isLoading ? (
         <LoadingSpinner />
