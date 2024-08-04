@@ -2,8 +2,8 @@ import PrivateLayout from '@src/components/Templates/layouts/PrivateLayout';
 import { LoginPage } from '@src/pages/Login';
 import { DashboardPage } from '@src/pages/Dashboard';
 import { ProductsPage } from '@src/pages/Services/Products';
-import { MonitoringSystemsOnePage } from '@src/pages/MonitoringSystemsOne';
-import { MonitoringSystemsTowPage } from '@src/pages/MonitoringSystemsTow';
+import { MonitoringSystemsOnePage } from '@src/pages/MonitoringSystems/MonitoringSystemsOne';
+import { MonitoringSystemsTowPage } from '@src/pages/MonitoringSystems/MonitoringSystemsTow';
 import { RulesPage } from '@src/pages/Services/Rules';
 import { RuleDetailsPage } from '@src/pages/Services/Rules/RuleDetailsPage';
 import { MyProductPage } from '@src/pages/MyProduct/MyProduct';
@@ -22,6 +22,7 @@ import DefaultLayout from '@ui/Templates/layouts/DefaultLayout';
 import { AiLearnerDetailsPage } from '@src/pages/AiLearnerDetailsPage';
 import { AiDetectorPage } from '@src/pages/AiDetectorPage';
 import { AiDetectorDetailsPage } from '@src/pages/AiDetectorDetailsPage';
+import { MonitoringSystemsGuidePage } from '@src/pages/MonitoringSystems';
 
 import { ROUTES_PATH } from './routesConstants';
 
@@ -85,6 +86,10 @@ const routesConfig = [
       {
         path: ROUTES_PATH.servicesRulesRetrieve,
         element: <RuleDetailsPage />,
+      },
+      {
+        path: ROUTES_PATH.monitoringSystems,
+        element: <MonitoringSystemsGuidePage />,
       },
       {
         path: ROUTES_PATH.monitoringSystemsOne,
