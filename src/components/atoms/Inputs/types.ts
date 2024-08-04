@@ -9,6 +9,7 @@ import {
   UseFormSetError,
 } from 'react-hook-form';
 import { IconifyIcon } from '@iconify/react';
+
 import { baseInputStyles } from './styles';
 
 export interface BaseInputProps<T extends FieldValues>

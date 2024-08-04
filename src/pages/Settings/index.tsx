@@ -5,6 +5,8 @@
 import { Setting } from './Setting';
 
 export function SettingsPage() {
+  /* It is possible that this content will be needed later. */
+
   return (
     <>
       {/* <ContainerDashboard>

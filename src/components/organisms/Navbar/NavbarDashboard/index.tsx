@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, matchPath, useLocation } from 'react-router-dom';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Typography } from '@ui/atoms/Typography/Typography';
@@ -19,20 +18,20 @@ import { PageBackButton } from '@ui/atoms/BackButton';
  *
  * @returns {JSX.Element} The rendered NavbarDashboard component.
  */ export function NavbarDashboard(): JSX.Element {
-  const [statusOpen, setStatusOpen] = useState(false);
   const location = useLocation();
-  const statusHandle = () => {
-    setStatusOpen(!statusOpen);
-  };
+
   const backButtonRoutes = [
     ROUTES_PATH.addUser,
     ROUTES_PATH.settings,
     ROUTES_PATH.myProductMyRules,
     ROUTES_PATH.myProductIpsList,
-    ROUTES_PATH.servicesRules,
+    ROUTES_PATH.servicesRulesRetrieve,
     ROUTES_PATH.myProductMyRulesRetrieve,
   ];
-  const showBackButton = backButtonRoutes.includes(location.pathname);
+  const shouldShowBackButton = (pathname: string) => {
+    return backButtonRoutes.some((route) => matchPath(route, pathname));
+  };
+  const showBackButton = shouldShowBackButton(location.pathname);
   return (
     <div className="flex h-20 items-center justify-between px-5 2xl:container 2xl:mx-auto">
       <Link to={ROUTES_PATH.home} className="hidden sm:flex">
@@ -58,7 +57,7 @@ import { PageBackButton } from '@ui/atoms/BackButton';
             </Typography>
           </Link>
         ) : (
-          <div className="flex justify-center items-center  sm:hidden ">
+          <div className="flex justify-center items-center sm:hidden">
             <PageBackButton backToReferrer />
           </div>
         )}
@@ -70,18 +69,16 @@ import { PageBackButton } from '@ui/atoms/BackButton';
           type="button"
           color="neutralLight"
           icon={PhHardDrives}
-          onClick={statusHandle}
-          className={`w-10 h-10 rounded-lg ml-2  hover:bg-neutral-300 transition-all duration-700 ease-linear  ${
-            statusOpen ? 'bg-neutral-300 hover:bg-neutral-300' : ''
-          }`}
+          className="w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-500 ease-linear
+          "
         />
         <IconButton
           size="xxl"
           type="button"
           color="neutralLight"
           icon={PhUser}
-          className={`w-10 h-10 rounded-lg   hover:bg-neutral-300 transition-all duration-700 ease-linear  
-          }`}
+          className="w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-500 ease-linear
+          "
         />
       </div>
     </div>

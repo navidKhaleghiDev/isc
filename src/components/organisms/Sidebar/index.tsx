@@ -9,6 +9,7 @@ import ToolTip from '@ui/atoms/Tooltip';
 import { navigationSideBar } from './navigation';
 import { INavigation } from './types';
 import { MenuItem } from './MenuItem';
+// import { MenuItemAccordion } from './MenuItemAccordion';
 
 /**
  * SideBar Component
@@ -32,8 +33,6 @@ export function SideBar(): JSX.Element {
   const toggleSideBar = () => {
     setToggleSidebar(!toggleSidebar);
   };
-
-  // const isMobile = window.innerWidth <= 390;
 
   return (
     <div
@@ -77,7 +76,7 @@ export function SideBar(): JSX.Element {
       </div>
 
       <div
-        className={`hidden sm:flex flex-col${
+        className={`hidden sm:flex flex-col ${
           toggleSidebar ? 'items-end' : 'items-center'
         }  	w-full mb-4 px-4`}
       >

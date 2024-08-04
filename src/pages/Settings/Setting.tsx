@@ -102,16 +102,7 @@ export function Setting() {
             fullWidth
           />
         </div>
-        {/* <BaseButton
-          submit
-          label="ثبت تغییرات"
-          size="xl"
-          className="mt-16 self-end"
-        /> */}
-        {/* <div className="flex justify-end ml-28">
-          <BaseButton submit label="ثبت تغییرات" size="xl" />
-        </div> */}
-        <div className="flex justify-center sm:justify-end mt-[160px]">
+        <div className="flex justify-center sm:justify-end mt-[10rem]">
           <BaseButton submit label="ثبت تغییرات" size="xl" />
         </div>
       </form>
