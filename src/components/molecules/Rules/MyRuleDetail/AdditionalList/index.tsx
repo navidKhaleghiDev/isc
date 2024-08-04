@@ -5,10 +5,10 @@ import { useGet } from '@src/services/http/httpClient';
 import { IRules, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_RETRIEVE } from '@src/services/client/rules/endpoint';
 import { Modal } from '@ui/molecules/Modal';
+
 import { getCodeListDifference } from './utils';
 import { PropsAdditionalList } from './types';
 import { CodeLine } from '../CodeLine';
-// import { ruleDataList } from '../dataMock';
 
 type AdditionalStateType = {
   codeList: SliceOrderCodeType[];
@@ -41,7 +41,7 @@ export function AdditionalList({
   onAddHandler,
   myRuleId,
   myRuleCodeList,
-}: PropsAdditionalList) {
+}: PropsAdditionalList): JSX.Element | null {
   const [isSetAdditional, setIsSetAdditional] = useState(false);
   const [openModalSetChanged, setOpenModalSetChanged] = useState(false);
 

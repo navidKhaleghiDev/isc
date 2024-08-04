@@ -76,7 +76,7 @@ export interface IRulePolicyListRef {
 function RulePolicyListCp(
   { codeList, setCodeList, onDeleteRule, onRegisterRule }: RulePolicyListProps,
   ref: React.Ref<IRulePolicyListRef>
-) {
+): JSX.Element {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [valueAllCodeLineSelect, setValueAllCodeLineSelect] = useState('');
   const [allPolicySelect, setAllPolicySelect] = useState(false);

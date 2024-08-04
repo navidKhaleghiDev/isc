@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ButtonState } from '@src/pages/Services/Rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import {
@@ -9,7 +10,6 @@ import { E_RULES_LIST } from '@src/services/client/rules/endpoint';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { IProduct } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
-import { useEffect, useState } from 'react';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
@@ -35,7 +35,7 @@ const LIMIT_RULES_LIST = 16;
 /**
  * RulesList Component
  *
- * This component displays a list of rules with pagination and search functionality.
+ * This component displays a list of rules with pagination and search functionality that we can filter our rules base of (all, suggest) rules.
  *
  * @component
  *
@@ -96,11 +96,11 @@ export function RulesList({
   }
   return (
     <LoadingWrapper isLoading={loadingAllData || loadingSuggestData}>
-      <div className="flex flex-col h-full items-center ">
+      <div className="flex flex-col h-full items-center">
         <div className="w-full mt-11">
           {rules.length > 0 ? (
             <>
-              <div className="w-full grid grid-cols-1 gap-x-[1.87rem]  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-5 mb-[5.1rem]">
+              <div className="w-full grid grid-cols-1 gap-x-[1.87rem] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 mb-[5.1rem]">
                 {rules.map((item: IRules) => (
                   <RulesCard key={item.id} rule={item} />
                 ))}

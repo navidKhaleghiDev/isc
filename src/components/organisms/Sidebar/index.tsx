@@ -36,9 +36,9 @@ export function SideBar(): JSX.Element {
 
   return (
     <div
-      className={`hidden  sm:flex ${
+      className={`hidden sm:flex ${
         toggleSidebar && 'w-64'
-      } flex-col justify-between items-end   h-full overflow-hidden`}
+      } flex-col justify-between items-end h-full overflow-hidden`}
     >
       <div className="flex flex-col items-center w-full mt-10 px-4">
         {navigationSideBar.map((item: INavigation) =>
@@ -65,16 +65,16 @@ export function SideBar(): JSX.Element {
         )}
       </div>
 
-      <div className="hidden sm:flex flex-col items-end	w-full mb-4 px-4 ">
+      <div className="hidden sm:flex flex-col items-end	w-full mb-4 px-4">
         <button
           type="submit"
-          className="flex flex-col justify-center items-center w-10 h-10  bg-teal-500 rounded-lg text-center"
+          className="flex flex-col justify-center items-center w-10 h-10 bg-teal-500 rounded-lg text-center"
           onClick={toggleSideBar}
         >
           {!toggleSidebar ? (
             <BaseIcon icon={PhCaretLeft} className=" text-white w-6 h-6" />
           ) : (
-            <BaseIcon icon={PhCaretRight} className=" text-white w-6 h-6" />
+            <BaseIcon icon={PhCaretRight} className="text-white w-6 h-6" />
           )}
         </button>
       </div>

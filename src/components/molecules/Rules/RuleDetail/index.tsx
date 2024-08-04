@@ -24,7 +24,7 @@ import { IRulePolicyListRef, RulePolicyList } from '../RulePolicyList';
  * @returns {JSX.Element} The rendered RuleDetail component.
  */
 
-export function RuleDetail() {
+export function RuleDetail(): JSX.Element {
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
   const id = slugs[3];

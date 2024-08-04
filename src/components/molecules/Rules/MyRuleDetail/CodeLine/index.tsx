@@ -1,5 +1,6 @@
 import { Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
+
 import { CodeLineSelect } from './CodeLineSelect';
 
 type TCodeLIneProp = {
@@ -12,7 +13,7 @@ type TCodeLIneProp = {
 /**
  * CodeLine Component
  *
- * This component renders a section include rule code and action
+ * This component renders a section include rule code and action that we can filter our rules based on select
  *
  * @component
  *

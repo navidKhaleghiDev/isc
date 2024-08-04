@@ -33,7 +33,7 @@ export function CodeLineSelect({
   className,
   id,
   disableSelect,
-}: TCodeLineSelectProp) {
+}: TCodeLineSelectProp): JSX.Element {
   const selectOptions = [
     { id: 1, label: 'ALERT', value: 'alert' },
     { id: 2, label: 'DROP', value: 'drop' },

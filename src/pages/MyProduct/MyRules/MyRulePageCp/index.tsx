@@ -5,7 +5,17 @@ import { PageBackButton } from '@ui/atoms/BackButton';
 import { Typography } from '@ui/atoms';
 // import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 
-function MyRulePageCp() {
+/**
+ * MyRulePageCp component
+ *
+ * This component as a page for displaying and searching through a list of rules
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered MyRulePageCp component
+ */
+
+function MyRulePageCp(): JSX.Element {
   const [search, setSearch] = useState('');
 
   const handleOnSearch = (value: string) => {

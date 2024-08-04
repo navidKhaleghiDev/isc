@@ -9,11 +9,10 @@ type TCardRuleDetailPropType = {
 /**
  * CardRuleDetail Component
  *
- * This component renders a card from rules detail.
+ * This component renders a card from rules detail that the value from the card comes from the prop of it.
  *
  * @component
  *
- * @param {PropsType} props - The props for the CardRuleDetail component.
  * @param {string} label - Defines and displays the label title for the card.
  * @param {string} value - Defines and displays the value for the card.
  * @param {string} [className] - Set custom className
@@ -38,7 +37,7 @@ export function CardRuleDetail({
       </Typography>
       <Card
         color="neutral_light"
-        className={`flex justify-center w-[103px] items-center mt-2 rounded-lg md:w-[255px] h-[30px] ${className}`}
+        className={`flex justify-center w-[6.438rem] items-center mt-2 rounded-lg md:w-[15.9rem] h-[1.87rem] ${className}`}
       >
         <Typography size="body5" color="neutral">
           {value}

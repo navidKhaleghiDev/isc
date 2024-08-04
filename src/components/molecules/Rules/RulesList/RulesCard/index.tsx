@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_ADD_RULE } from '@src/services/client/rules';
 import { IRules } from '@src/services/client/rules/types';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 /**
  * Props for RulesCard component.
@@ -62,7 +62,7 @@ export function RulesCard({ rule }: PropsType) {
           <Typography
             color="black"
             type="p"
-            className="h-16  text-sm font-semibold"
+            className="h-16 text-sm font-semibold"
           >
             {rule.name}
           </Typography>

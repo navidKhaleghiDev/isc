@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 
-type PropsType = {
+type TMyRuleCardProp = {
   myRule: IMyRule;
   mutateMyRulesList: () => void;
 };
@@ -21,9 +21,7 @@ type PropsType = {
  *
  * @component
  *
- * @param {Object} props - The props for the MyRulesCard component.
  * @param {IMyRule} props.myRule - The rule information to be displayed in the card.
- * @param {boolean} [props.isHeader] - Flag to indicate if the card is a header.
  * @param {function(): void} props.mutateMyRulesList - Function to refresh the rules list after deletion.
  *
  * @returns {JSX.Element} The rendered MyRulesCard component.
@@ -32,7 +30,7 @@ type PropsType = {
 export function MyRulesCard({
   myRule,
   mutateMyRulesList,
-}: PropsType): JSX.Element {
+}: TMyRuleCardProp): JSX.Element {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
