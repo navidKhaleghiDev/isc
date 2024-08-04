@@ -39,7 +39,6 @@ export function RuleInformation({
           <CardRuleDetail
             label="آخرین ویرایش"
             value={persianDateAndNumber(updateDate)}
-            className=""
           />
         )}
         {codeList && (

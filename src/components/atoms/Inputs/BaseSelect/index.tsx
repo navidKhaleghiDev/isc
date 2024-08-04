@@ -60,6 +60,7 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <div className={`${className} ${fullWidth && 'w-full'}`}>
+          {/* select label has been disabled that does not work now */}
           {/* {label && (
             <label
               htmlFor={id}
@@ -68,7 +69,6 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
               {label}
             </label>
           )} */}
-
           <select
             id={id}
             dir="auto"
@@ -105,14 +105,14 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
             <BaseIcon
               icon="ph:caret-down-bold"
               className={`absolute ${
-                disabled && 'bg-neutral-200'
+                disabled ? 'bg-neutral-200' : ''
               } top-1/3 left-3 `}
             />
           ) : (
             <BaseIcon
               icon="ph:caret-up-down-bold"
               className={`absolute ${
-                disabled && 'text-neutral-200'
+                disabled ? 'text-neutral-200' : ''
               } top-1/4 -right-3`}
             />
           )}
@@ -121,8 +121,8 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
     />
   ) : (
     <div
-      className={`${className} ${
-        fullWidth && 'w-full'
+      className={`${className || ''} ${
+        fullWidth ? 'w-full' : ''
       } relative flex items-center justify-center h-fit`}
     >
       {/* {label && (
@@ -160,14 +160,14 @@ export function BaseSelect(props: IBaseSelectProp<any>): JSX.Element {
         <BaseIcon
           icon="ph:caret-down-bold"
           className={`absolute ${
-            disabled && 'bg-neutral-200'
+            disabled ? 'bg-neutral-200' : ''
           } top-1/3 left-3 z-30`}
         />
       ) : (
         <BaseIcon
           icon="ph:caret-up-down-bold"
           className={`absolute ${
-            disabled && 'text-neutral-200'
+            disabled ? 'text-neutral-200' : ''
           } top-1/4 -right-3 z-30`}
         />
       )}

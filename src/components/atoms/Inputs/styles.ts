@@ -35,7 +35,7 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center fill-current ',
+  'absolute inset-y-0 flex px-2 items-center fill-current',
   {
     variants: {
       intent: {
@@ -55,7 +55,7 @@ export const iconBaseInputStyles = cva(
 );
 
 export const baseTextareaStyles = cva(
-  'px-2.5 py-2.5 flex block rounded-lg outline-none placeholder:text-right placeholder:text-rtl',
+  'px-2.5 py-2.5 block rounded-lg outline-none placeholder:text-right placeholder:text-rtl',
   {
     variants: {
       intent: {
@@ -104,14 +104,13 @@ export const baseCheckBoxStyles = cva(
 );
 
 export const baseSelectStyles = cva(
-  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white    
-  placeholder:text-right border-neutral-300 placeholder:text-rtl relative`,
+  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-neutral-300 placeholder:text-rtl relative`,
   {
     variants: {
       intent: {
         default: `text-neutral-900 focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-neutral-900 focus:text-neutral-900 disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-500 disabled:shadow-none`,
         primary:
-          'bg-white w-fit disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer ',
+          'bg-white w-fit disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer',
         error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
       },
       fullWidth: {

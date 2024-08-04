@@ -207,7 +207,7 @@ function RulePolicyListCp(
             <BaseButton
               label="حذف قانون"
               size="lg"
-              type="default"
+              type="redBg"
               className="ml-5"
               onClick={toggleModalDelete}
             />
@@ -224,11 +224,6 @@ function RulePolicyListCp(
           onClick: onRegisterRule,
           loading: modalsLoading.editButton,
         }}
-        buttonTow={{
-          label: 'خیر',
-          onClick: toggleModalEdit,
-          color: 'red',
-        }}
         type="success"
       />
       {onDeleteRule && (
@@ -242,11 +237,7 @@ function RulePolicyListCp(
             label: 'بله',
             onClick: onDeleteRule,
             loading: modalsLoading.deleteButton,
-          }}
-          buttonTow={{
-            label: 'خیر',
-            onClick: toggleModalDelete,
-            color: 'red',
+            color: 'redBg',
           }}
         />
       )}

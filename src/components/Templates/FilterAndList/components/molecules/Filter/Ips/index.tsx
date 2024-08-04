@@ -21,7 +21,7 @@ import { useGet } from '@src/services/http/httpClient';
  */
 
 export function FilterIps(): JSX.Element {
-  const [openIps, setOpenIps] = useState<EIpType | null>(null);
+  const [openIps, setOpenIps] = useState<EIpType | null>(EIpType.ALL);
   const [ips, setIps] = useState<IIp[]>([]);
   const { mutate } = useGet(E_RULES_VALID_IPS);
   const [search, setSearch] = useState('');

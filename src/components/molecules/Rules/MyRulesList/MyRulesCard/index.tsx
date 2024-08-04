@@ -92,11 +92,7 @@ export function MyRulesCard({
           label: 'بله',
           onClick: handleRequestDelete,
           loading: deleteLoading,
-        }}
-        buttonTow={{
-          label: 'خیر',
-          onClick: toggleModalDelete,
-          color: 'red',
+          color: 'redBg',
         }}
       />
     </>

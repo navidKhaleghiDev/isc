@@ -26,7 +26,7 @@ export function CardRuleDetail({
   className,
 }: TCardRuleDetailPropType) {
   return (
-    <div className="text-center sm:text-start mt-[10px]">
+    <div className="text-center sm:text-start mt-[0.625rem]">
       <Typography
         color="neutral_dark"
         weight="light"
