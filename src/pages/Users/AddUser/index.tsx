@@ -1,5 +1,7 @@
 import { BaseButton, BaseInput, Typography } from '@ui/atoms';
+
 import { toast } from 'react-toastify';
+
 import { regexPattern } from '@ui/atoms/Inputs';
 import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 import { useForm } from 'react-hook-form';
@@ -9,9 +11,7 @@ import { EUserRole, WithPermission } from '@src/helper/hoc/withPermission';
 import { BackButton } from '@ui/atoms/BackButton';
 import UserCirclePlus from '@iconify-icons/ph/user-circle-plus';
 import EnvelopeSimple from '@iconify-icons/ph/envelope-simple';
-import CalendarBlack from '@iconify-icons/ph/calendar-blank';
 import { PasswordStrength } from '@ui/atoms/Inputs/PasswordInput/passwordStrength';
-import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
 
 import { IAddUserFormValues } from './types';
 
@@ -97,21 +97,6 @@ function AddUserPageCp() {
             size="lg"
             placeholder="ایمیل"
             endIcon={EnvelopeSimple}
-            rules={{
-              required: regexPattern.required,
-              pattern: regexPattern.email,
-            }}
-            fullWidth
-          />
-          <DatePicker
-            name="joined_date"
-            id="joined_date"
-            control={control}
-            label="تاریخ ثبت نام"
-            size="lg"
-            placeholder="تاریخ ثبت نام"
-            endIcon={CalendarBlack}
-            minDate={Date.now()}
             rules={{
               required: regexPattern.required,
               pattern: regexPattern.email,
