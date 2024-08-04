@@ -1,5 +1,6 @@
 import { VariantProps } from 'class-variance-authority';
 import { HTMLInputTypeAttribute } from 'react';
+import DateObject from 'react-date-object';
 import {
   Control,
   FieldPath,
@@ -10,7 +11,6 @@ import {
 import { IconifyIcon } from '@iconify/react';
 
 import { baseInputStyles } from './styles';
-import DateObject from 'react-date-object';
 
 export interface BaseInputProps<T extends FieldValues>
   extends VariantProps<typeof baseInputStyles> {
