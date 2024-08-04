@@ -49,7 +49,7 @@ function AddUserPageCp() {
 
   return (
     <div className="w-full h-full flex flex-col items-center py-14 px-10">
-      <div className="w-full flex justify-end mb-6">
+      <div className="w-full sm:flex justify-end mb-6 hidden">
         <BackButton backToReferrer />
       </div>
       <div className="mb-10 ml-auto">
