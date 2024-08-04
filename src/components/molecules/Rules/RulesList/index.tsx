@@ -105,7 +105,7 @@ export function RulesList({
                   <RulesCard key={item.id} rule={item} />
                 ))}
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden sm:block mt-[5.1rem]">
                 {!!countPage && (
                   <Pagination
                     currentPage={currentPage}
