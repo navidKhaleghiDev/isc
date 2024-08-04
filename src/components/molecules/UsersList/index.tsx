@@ -11,7 +11,6 @@ import { BackButton } from '@ui/atoms/BackButton';
 import { LinkButton } from '@ui/atoms/LinkButton';
 import { ButtonState, TValueOnChange } from './types';
 import { ContentUsersList } from './ContentUsersList';
-import Pagination from '../Pagination';
 
 /**
  * UsersList component to display and manage a list of users.
