@@ -1,16 +1,15 @@
 import { Controller } from 'react-hook-form';
 import { BaseIcon } from '@ui/atoms/BaseIcon';
 import checkBold from '@iconify-icons/ph/check-bold';
+
 import { baseCheckBoxStyles } from '../styles';
 import { Typography } from '../../Typography';
 import { BaseCheckBoxProps } from './types';
 /**
- * BaseCheckBox component that integrates with react-hook-form.
- * It provides a customizable checkbox input with validation and error handling.
+ * BaseCheckBox component.
+ * It provides a customizable checkbox input with validation and error handling note that for using this component you can  8 8 use two approaches (with react-hook-form & the basic method).
  *
- * @template T - The type of the form values.
- * @param {BaseCheckBoxProps<T>} props - The properties for the checkbox component.
- * @param {object} props.control - The control object from react-hook-form.
+ * @param {object} props.control - The control object .
  * @param {string} props.name - The name of the field in the form.
  * @param {string} props.id - The id for the checkbox input.
  * @param {object} [props.rules] - The validation rules for the checkbox.
@@ -27,7 +26,7 @@ import { BaseCheckBoxProps } from './types';
  *
  * @returns {JSX.Element} The rendered checkbox component.
  */
-export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
+export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
   const {
     control,
     name,
@@ -59,7 +58,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
             >
               {label}
             </label>
-            <div className="inline-flex items-center relative">
+            <div className="relative inline-flex items-center">
               <input
                 id={id}
                 type="checkbox"
@@ -71,12 +70,12 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
                   size,
                 })}
               />
-              <span className="absolute text-white transition-opacity  pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+              <span className="absolute text-white transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                 <BaseIcon icon={checkBold} />
               </span>
             </div>
           </div>
-          {!hiddenError && (
+          {hiddenError && (
             <Typography color="red" size="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
@@ -98,9 +97,14 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>) {
           size,
         })}
       />
-      <span className="absolute text-white transition-opacity  pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <span className="absolute text-white transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
         <BaseIcon icon={checkBold} />
       </span>
+      {hiddenError && (
+        <Typography color="red" size="body6" className="h-6">
+          {pureError ?? ''}
+        </Typography>
+      )}
     </div>
   );
 }

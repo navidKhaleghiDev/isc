@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-
 import { BaseButton } from '@ui/atoms';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import { TValueOnChange } from '@ui/atoms/DropDown/type';
@@ -8,12 +7,11 @@ import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { IpsList } from '@ui/molecules/IpsList';
 import { AddIpForm } from '@ui/molecules/IpsList/components/AddIpForm';
 import { Modal } from '@ui/molecules/Modal';
-
+import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 import { API_ADD_VALID_IPS } from '@src/services/client/rules';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { EIpType, IIp } from '@src/services/client/rules/types';
 import { useGet } from '@src/services/http/httpClient';
-import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 
 /**
  * FilterIps component for managing and displaying IP addresses.
@@ -49,7 +47,7 @@ export function FilterIps(): JSX.Element {
     setOpenIps(value.target.value as EIpType);
   };
 
-  const dropDownOptions = [
+  const selectOptions = [
     { id: '1', label: 'همه IPها', value: EIpType.ALL },
     { id: '2', label: 'داخلی', value: EIpType.INTERNAL },
     { id: '3', label: 'خارجی', value: EIpType.EXTERNAL },
@@ -79,11 +77,11 @@ export function FilterIps(): JSX.Element {
   return (
     <>
       <div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-baseline">
-          <div className="py-4 grid grid-cols-2 gap-7">
+        <div className="grid items-baseline justify-between grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-2 py-4 gap-7">
             <SearchInput onChange={handleOnSearch} value={search} />
             <BaseSelect
-              selectOptions={dropDownOptions}
+              selectOptions={selectOptions}
               name="ip-type"
               id="rules-sort"
               size="freeWidth"

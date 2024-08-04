@@ -5,7 +5,7 @@ import { IToolTip } from './types';
 function ToolTip({ children, tooltip, position }: IToolTip): JSX.Element {
   const [show, setShow] = useState(false);
   return (
-    <div className="group relative inline-block">
+    <div className="relative inline-block group">
       <div className={containerTooltipStyles({ position, show })}>
         <span className={tooltipStyles({ position })} />
         {tooltip}

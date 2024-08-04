@@ -96,16 +96,16 @@ export function RulesList({
   }
   return (
     <LoadingWrapper isLoading={loadingAllData || loadingSuggestData}>
-      <div className="flex flex-col h-full items-center ">
+      <div className="flex flex-col items-center h-full ">
         <div className="w-full mt-11">
           {rules.length > 0 ? (
             <>
-              <div className="w-full grid grid-cols-1 gap-x-[1.87rem]  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-5 mb-[5.1rem]">
+              <div className="w-full grid grid-cols-1 gap-x-[1.87rem] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-5 ">
                 {rules.map((item: IRules) => (
                   <RulesCard key={item.id} rule={item} />
                 ))}
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden sm:block mt-[5.1rem]">
                 {!!countPage && (
                   <Pagination
                     currentPage={currentPage}
