@@ -1,10 +1,9 @@
 import { BaseIcon, Card, Typography } from '@ui/atoms';
 import PhHardDrives from '@iconify-icons/ph/hard-drives';
-import { IModal } from '@ui/molecules/Modal';
 
-type StatusType = Pick<IModal, 'open' | 'className'>;
-export function ServerStatus({ open }: StatusType) {
-  return open ? (
+// type StatusType = Pick<IModal, 'open' | 'className'>;
+export function ServerStatus() {
+  return (
     <Card
       color="white"
       rounded="md"
@@ -14,7 +13,7 @@ export function ServerStatus({ open }: StatusType) {
     >
       <div className="flex flex-row justify-start items-center w-48 h-10 rounded-lg bg-red-100 ">
         <BaseIcon icon={PhHardDrives} color="red" className="m-2 w-6 h-6" />
-        <Typography color="red" className="text-3 font-normal	">
+        <Typography color="red" className="text-3 font-normal">
           Server 1
         </Typography>
       </div>
@@ -35,5 +34,5 @@ export function ServerStatus({ open }: StatusType) {
         </Typography>
       </div>
     </Card>
-  ) : null;
+  );
 }
