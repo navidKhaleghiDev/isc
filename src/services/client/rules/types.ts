@@ -1,6 +1,7 @@
 export enum EIpType {
   EXTERNAL = 'External',
   INTERNAL = 'Internal',
+  ALL = 'all',
 }
 
 export interface IResponseRules {

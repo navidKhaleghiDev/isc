@@ -1,17 +1,22 @@
-import { IIp } from '@src/services/client/rules/types';
+import { useState } from 'react';
+import PhPencilSimple from '@iconify-icons/ph/pencil-simple';
+import { toast } from 'react-toastify';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
-import { useState } from 'react';
 import {
   API_DELETE_VALID_IPS,
   API_UPDATE_VALID_IPS,
 } from '@src/services/client/rules';
-import { toast } from 'react-toastify';
-import { persianDateNumber } from '@src/helper/utils/dateUtils';
+import { EIpType, IIp } from '@src/services/client/rules/types';
 
-import { Modal } from '../Modal';
-import { UpdateIp } from '../IpsList/UpdateIp';
+import { UpdateIp } from '../UpdateIp';
+import { Modal } from '../../../Modal';
 
+const ipTypeClasses: { [key in EIpType]: string } = {
+  [EIpType.INTERNAL]: 'bg-yellow-100',
+  [EIpType.EXTERNAL]: 'bg-teal-200',
+  [EIpType.ALL]: '',
+};
 type PropsType = {
   mutateIpList: () => void;
   item: IIp;
@@ -24,6 +29,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
     deleteButton: false,
     editButton: false,
   });
+
   const toggleModalDelete = () => setOpenModalDelete(!openModalDelete);
   const toggleModalEdit = () => setOpenModalEdit(!openModalEdit);
 
@@ -58,80 +64,71 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         setModalsLoading((prev) => ({ ...prev, editButton: false }));
       });
   };
+  const ipTypeClass = ipTypeClasses[item.ip_type] || '';
 
   return (
     <>
       <Card
-        color="neutral"
-        className="border-l-[0.2rem] border-teal-600 flex h-14 items-between px-2 my-2"
+        shadow="sm"
+        border
+        borderColor="neutral_light"
+        className="flex sm:h-[9.75rem] h-[9.25rem] items-center"
       >
-        <div className="w-full grid grid-cols-3 justify-between items-center">
+        <div className="flex flex-col w-full mx-7">
+          <div className="flex flex-col items-end">
+            <Typography color="neutral_dark" size="body3" weight="medium">
+              {item.ip}
+            </Typography>
+            <Typography
+              color="neutral_light"
+              size="body4"
+              className={`px-3 my-3 rounded-full ${ipTypeClass}`}
+            >
+              ({item.ip_type})
+            </Typography>
+          </div>
           <div className="flex">
+            {' '}
             <IconButton
-              icon="ph:note-pencil"
-              color="white"
-              className="ml-2"
+              icon={PhPencilSimple}
+              color="neutral"
+              size="xxl"
               onClick={toggleModalEdit}
             />
             <IconButton
               icon="ph:trash-simple"
-              color="red"
+              color="redNoBg"
+              size="xxl"
               onClick={toggleModalDelete}
             />
-          </div>
-          <Typography
-            color="neutral"
-            size="body3"
-            type="div"
-            className="px-3 text-center"
-          >
-            {persianDateNumber(item.created_at)}
-          </Typography>
-          <div className="flex items-center justify-end">
-            <Typography
-              color="neutral"
-              size="body3"
-              weight="medium"
-              className="ml-2"
-            >
-              ({item.ip_type})
-            </Typography>
-            <Typography color="neutral" size="h5" weight="medium">
-              {item.ip}
-            </Typography>
           </div>
         </div>
       </Card>
       <Modal
+        size="sm"
         open={openModalEdit}
         setOpen={setOpenModalEdit}
-        size="sm"
         content={
           <UpdateIp
             ip={item}
             onSubmit={handleRequestUpdate}
-            onCloseModal={toggleModalEdit}
             loading={modalsLoading.editButton}
           />
         }
-        classContainer="border border-teal-600"
         type="none"
       />
       <Modal
+        size="md"
         open={openModalDelete}
         setOpen={setOpenModalDelete}
-        size="md"
         type="error"
         title="از حذف این IP مطمئن هستید؟"
         buttonOne={{
+          color: 'redBg',
+          size: 'lg',
           label: 'بله',
           onClick: handleRequestDelete,
           loading: modalsLoading.deleteButton,
-        }}
-        buttonTow={{
-          label: 'خیر',
-          onClick: toggleModalDelete,
-          color: 'red',
         }}
       />
     </>

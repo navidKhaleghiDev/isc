@@ -117,9 +117,9 @@ export function MyRulesCard({
         </div>
       </Card>
       <Modal
+        size="md"
         open={openModalDelete}
         setOpen={setOpenModalDelete}
-        size="md"
         type="error"
         title="از حذف این قانون مطمئن هستید؟"
         buttonOne={{
