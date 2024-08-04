@@ -8,7 +8,9 @@ type PropsType = {
 
 export function CardProduct({ label, value, className }: PropsType) {
   return (
-    <Card className={`flex justify-start items-center mb-6 ${className}`}>
+    <Card
+      className={`flex justify-start items-center mb-[6px] sm:mb-6  ${className}`}
+    >
       <div className="flex flex-col justify-end items-start w-full">
         <Typography
           color="neutral_dark"
