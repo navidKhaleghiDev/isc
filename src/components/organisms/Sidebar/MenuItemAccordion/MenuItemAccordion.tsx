@@ -36,7 +36,7 @@ export function MenuItemAccordion({
   const isParentPath = pathname.split('/')[1] || 'false';
 
   return (
-    <>
+    <div className="">
       <button
         type="button"
         className={menuItemStyles({
@@ -62,6 +62,6 @@ export function MenuItemAccordion({
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
