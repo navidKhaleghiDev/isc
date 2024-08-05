@@ -1,5 +1,4 @@
 import { VariantProps } from 'class-variance-authority';
-import { DateObject } from 'react-multi-date-picker';
 import { HTMLInputTypeAttribute } from 'react';
 import DateObject from 'react-date-object';
 import {

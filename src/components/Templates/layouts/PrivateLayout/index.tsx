@@ -10,7 +10,6 @@ import { API_USERS_PROFILE } from '@src/services/client/users';
 import { STORAGE_KEY_TOKEN, http } from '@src/services/http';
 import cookie from 'js-cookie';
 import { withAuth } from '@src/helper/hoc/withAuth';
-import { MenuMobile } from '@ui/organisms/Sidebar/MenuMobile/MenuMobile';
 
 import { SideBar } from '../../../organisms/Sidebar';
 
