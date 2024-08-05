@@ -38,10 +38,7 @@ function RulesPageCP(): JSX.Element {
         لیست قوانین
       </Typography>
       <div className="p-4 grid grid-cols-2 md:flex md:justify-start md:items-center gap-4">
-        {/* note: the search box is disable cause we do not have search service for suggested rules and also we have pagination */}
-        {activeButton === 'all' && (
-          <SearchInput onChange={handleOnSearch} value={search} />
-        )}
+        <SearchInput onChange={handleOnSearch} value={search} />
         <div className="md:w-64">
           <BaseSelect
             id="rulesSort"

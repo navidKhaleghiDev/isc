@@ -9,13 +9,13 @@ import { NoResult } from '@ui/molecules/NoResult';
 import { MyRulesCard } from './MyRulesCard';
 import { useCheckRuleVersion } from './hook/useCheckedRuleVersion';
 
-const headerItem: any = {
-  rule_name: 'نام قانون',
-  created_at: 'تاریخ ثبت ',
-  creator: {
-    email: 'سازنده',
-  },
-};
+// const headerItem: any = {
+//   rule_name: 'نام قانون',
+//   created_at: 'تاریخ ثبت ',
+//   creator: {
+//     email: 'سازنده',
+//   },
+// };
 
 type TMyRulesListProp = {
   searchValue?: string;
@@ -47,7 +47,6 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
 
   return (
     <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
-      <MyRulesCard mutateMyRulesList={handleMutate} myRule={headerItem} />
       {isLoading ? (
         <LoadingSpinner />
       ) : filterData.length > 0 ? (
