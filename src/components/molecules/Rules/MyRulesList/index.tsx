@@ -47,6 +47,7 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
       .includes(searchValue?.toLocaleLowerCase() as string)
   );
 
+  console.log(isLoading);
   return (
     <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
       {isLoading ? (

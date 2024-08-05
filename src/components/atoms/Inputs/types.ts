@@ -1,5 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
-import { HTMLInputTypeAttribute } from 'react';
+import { HTMLInputTypeAttribute, MouseEventHandler } from 'react';
 import DateObject from 'react-date-object';
 import {
   Control,
@@ -84,9 +84,11 @@ export interface IBaseSelectProp<T extends FieldValues>
   pureValue?: string;
   pureError?: string;
   ltrLabel?: boolean;
+  ref: React.LegacyRef<HTMLSelectElement>;
   disabled?: boolean;
   min?: string | number;
   max?: string | number;
+  onClickSelect?: (event: MouseEventHandler<HTMLSelectElement>) => void;
   pureOnChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 

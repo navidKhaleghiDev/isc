@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
@@ -32,6 +32,11 @@ function RulesPageCP(): JSX.Element {
     { id: '2', label: 'قوانین پیشنهادی', value: 'suggest' },
   ];
 
+  const selectRef = useRef<HTMLSelectElement | null>(null);
+  // const hadelClick = () => {
+  //   selectRef.current?.showPicker();
+  // };
+
   return (
     <div className="w-full flex flex-col h-full">
       <Typography weight="bold" size="body1" className="block md:hidden">
@@ -42,6 +47,7 @@ function RulesPageCP(): JSX.Element {
         <div className="md:w-64">
           <BaseSelect
             id="rulesSort"
+            ref={selectRef}
             name="rulesSort"
             selectOptions={selectOptions}
             pureOnChange={selectValueChange}
