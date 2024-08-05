@@ -37,7 +37,7 @@ export function BaseButton({
   size,
   type,
   loading,
-}: IBaseButton) {
+}: IBaseButton): JSX.Element {
   return (
     <button
       type={submit ? 'submit' : 'button'}
