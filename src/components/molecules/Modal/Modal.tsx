@@ -69,7 +69,7 @@ export function Modal({
               />
             </div>
           </div>
-          <div className="p-7 pt-0">
+          <div className="sm:p-7 pt-0 max-w-64 m-auto sm:max-w-none">
             {title && (
               <Typography
                 size="body3"

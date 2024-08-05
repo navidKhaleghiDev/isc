@@ -152,15 +152,16 @@ export function AddIpForm({
           }}
         />
       )}
-      <BaseButton
-        onClick={handleSubmit(handleFormSubmit)}
-        className="mt-4 self-end"
-        size="sm"
-        label="ثبت"
-        loading={loading}
-        type="default"
-        disabled={ipType === undefined}
-      />
+      <div className="mt-4 sm:self-end sm:w-16 w-40 self-center">
+        <BaseButton
+          onClick={handleSubmit(handleFormSubmit)}
+          label="ثبت"
+          loading={loading}
+          type="default"
+          disabled={ipType === undefined}
+          fullWidth
+        />
+      </div>
     </form>
   );
 }
