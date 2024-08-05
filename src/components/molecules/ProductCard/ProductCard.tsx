@@ -1,6 +1,5 @@
 import { Card, Typography } from '@ui/atoms';
 import { CardImage } from '@ui/atoms/BaseImage';
-
 import { PropsType } from './types';
 
 export function ProductCard({ item }: PropsType) {
