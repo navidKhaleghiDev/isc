@@ -55,27 +55,32 @@ export function ContentUsersList({
       type: 'fullName',
       accessor: ['first_name', 'last_name'],
       header: 'نام',
+      className: 'w-1/6',
     },
     {
       type: 'default',
       accessor: 'email',
       header: 'ایمیل',
+      className: 'w-1/6',
     },
     {
       type: 'default',
       accessor: 'userType',
       header: 'نوع کاربری',
+      className: 'w-1/6',
     },
     {
       type: 'date',
       accessor: 'date_joined',
       header: 'تاریخ ثبت نام',
+      className: 'w-1/6',
     },
     {
       type: 'component',
       actionType: 'edit',
       accessor: 'edit',
       editRoute: ROUTES_PATH.addUser,
+      className: 'lg:w-96 w-auto flex justify-end',
     },
     {
       type: 'component',
@@ -83,6 +88,7 @@ export function ContentUsersList({
       accessor: 'delete',
       onDelete: setUserId,
       openModal: toggleModalDelete,
+      className: 'w-24',
     },
   ];
 

@@ -13,7 +13,7 @@ export function TableTHead({ columns }: ITableTHeadProps) {
           columns.map((column) => (
             <th
               key={column.type + column.accessor}
-              className="first-of-type:rounded-br-lg last-of-type:rounded-bl-lg"
+              className={`${column?.className}`}
             >
               <Typography size="body4" weight="medium">
                 {column.header}

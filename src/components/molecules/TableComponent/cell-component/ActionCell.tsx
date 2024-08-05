@@ -3,7 +3,9 @@ import PencilSimple from '@iconify-icons/ph/pencil-simple';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useUserContext } from '@context/user/userContext';
+
 import { ICellProps } from '../types';
+import { cellStyles } from '../styles';
 
 export function ActionCell({ cellKey, column, row }: ICellProps) {
   const { user: currentUser } = useUserContext();
@@ -55,10 +57,12 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
       break;
     case 'edit':
       cellContent = (
-        <Link to={`${column.editRoute} ${row.id}`} className="block w-8 m-auto">
+        <Link
+          to={`${column.editRoute} ${row.id}`}
+        >
           <IconButton
             icon={PencilSimple}
-            color="neutral"
+            color="default"
             type="button"
             size="xxl"
           />
@@ -70,10 +74,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
   }
 
   return (
-    <td
-      key={cellKey}
-      className="first-of-type:rounded-tr-lg first-of-type:rounded-br-lg last-of-type:rounded-tl-lg last-of-type:rounded-bl-lg overflow-hidden"
-    >
+    <td key={cellKey} className={`${cellStyles()} ${column?.className}`}>
       {row.email !== currentUser?.email && cellContent}
     </td>
   );

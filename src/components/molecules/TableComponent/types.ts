@@ -7,6 +7,7 @@ interface DeleteAction {
   actionType: 'delete';
   onDelete: (rowId: string | number) => void;
   openModal: (row?: IData) => void;
+  className?: string;
 }
 
 interface AddAction {
@@ -16,6 +17,7 @@ interface AddAction {
   actionType: 'add';
   onAdd: (rowId: string | number) => void;
   openModal: () => void;
+  className?: string;
 }
 
 interface MoreAction {
@@ -25,6 +27,7 @@ interface MoreAction {
   actionType: 'more';
   onMore?: (rowId: string | number) => void;
   moreRoute: string;
+  className?: string;
 }
 
 interface EditAction {
@@ -34,6 +37,7 @@ interface EditAction {
   actionType: 'edit';
   onEdit?: (rowId: string | number) => void;
   editRoute: string;
+  className?: string;
 }
 
 type ComponentAction = DeleteAction | AddAction | MoreAction | EditAction;
@@ -42,18 +46,21 @@ interface FullNameColumn {
   type: 'fullName';
   header: string;
   accessor: string[];
+  className?: string;
 }
 
 interface DefaultColumn {
   type: 'default';
   header: string;
   accessor: NonEmptyString<string>;
+  className?: string;
 }
 
 interface DateColumn {
   type: 'date';
   header: string;
   accessor: NonEmptyString<string>;
+  className?: string;
 }
 
 export type Column =

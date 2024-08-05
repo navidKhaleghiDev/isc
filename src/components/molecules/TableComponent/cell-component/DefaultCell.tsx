@@ -1,5 +1,7 @@
 import { Typography } from '@ui/atoms';
+
 import { ICellProps } from '../types';
+import { cellStyles } from '../styles';
 
 export function DefaultCell({ row, column, cellKey }: ICellProps) {
   let userType;
@@ -14,10 +16,7 @@ export function DefaultCell({ row, column, cellKey }: ICellProps) {
 
   const accessor = column.accessor as string;
   return (
-    <td
-      key={cellKey}
-      className="first-of-type:rounded-tr-lg first-of-type:rounded-br-lg last-of-type:rounded-tl-lg last-of-type:rounded-bl-lg overflow-hidden"
-    >
+    <td key={cellKey} className={`${cellStyles()} ${column?.className}`}>
       <Typography size="body5" weight="normal">
         {accessor === 'userType' ? userType : row[accessor]}
       </Typography>
