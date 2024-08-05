@@ -27,7 +27,7 @@ export function BackButton({
   withLabel,
   onClick,
   backToReferrer,
-}: BackButtonProps) {
+}: BackButtonProps): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -52,7 +52,7 @@ export function BackButton({
       icon={PhCaretLeft}
       size="xxl"
       type="button"
-      color="default"
+      color="neutralLight"
     />
   ) : (
     <BaseButton

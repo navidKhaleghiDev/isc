@@ -25,7 +25,7 @@ const initState: IHealthCheck = {
  * @returns {JSX.Element} The rendered LabelsStatus component.
  */
 
-export function LabelsStatus() {
+export function LabelsStatus(): JSX.Element {
   const { data, loading } = useFetch<IHealthCheck>(E_HEALTH_CHECK, initState);
   return (
     <div className="w-full">

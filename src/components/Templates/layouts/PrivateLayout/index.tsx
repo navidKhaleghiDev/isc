@@ -3,6 +3,7 @@ import { NavbarDashboard } from '@ui/organisms/Navbar/NavbarDashboard';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useUserContext } from '@context/user/userContext';
 import { LoadingPage } from '@ui/molecules/Loading';
+import { MenuMobile } from '@ui/organisms/Sidebar/MenuMobile/MenuMobile';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_USERS_PROFILE } from '@src/services/client/users';

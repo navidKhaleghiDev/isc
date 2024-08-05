@@ -48,7 +48,7 @@ export function Dropdown<T extends FieldValues>({
   loading,
   leftLabel,
   valueOnChange,
-}: DropdownProps<T>) {
+}: DropdownProps<T>): JSX.Element {
   const ref = useRef(null);
   const [state, setState] = useState<StateType>(initState);
 

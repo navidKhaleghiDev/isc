@@ -1,7 +1,7 @@
-import { IconType } from '@src/types/global';
 import { VariantProps } from 'class-variance-authority';
 import { DateObject } from 'react-multi-date-picker';
 import { HTMLInputTypeAttribute } from 'react';
+import DateObject from 'react-date-object';
 import {
   Control,
   FieldPath,
@@ -9,6 +9,7 @@ import {
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
+import { IconifyIcon } from '@iconify/react';
 
 import { baseInputStyles, baseSelectStyles } from './styles';
 import { IOptionSelect } from './BaseSelect/OptionSelect';
@@ -37,7 +38,7 @@ export interface BaseInputProps<T extends FieldValues>
   placeholder?: string;
   className?: string;
   startIcon?: string;
-  endIcon?: IconType;
+  endIcon?: string | IconifyIcon;
   hiddenError?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string;
