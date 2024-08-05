@@ -1,6 +1,6 @@
 export function MonitoringSystemsOnePage() {
   return (
-    <div className="w-full flex flex-col h-full  p-16">
+    <div className="w-full flex flex-col h-screen">
       <iframe
         width="100%"
         height="100%"
