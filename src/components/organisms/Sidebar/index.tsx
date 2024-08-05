@@ -31,8 +31,6 @@ export function SideBar(): JSX.Element {
     setToggleSidebar(!toggleSidebar);
   };
 
-  // const isMobile = window.innerWidth <= 390;
-
   return (
     <div className=" hidden sm:flex flex-col justify-between items-end  w-full h-full overflow-hidden">
       <div className="flex flex-col items-center w-full mt-10 px-4">

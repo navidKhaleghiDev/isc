@@ -1,49 +1,39 @@
 import { useState, useRef } from 'react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Typography } from '@ui/atoms/Typography/Typography';
-import PhUser from '@iconify-icons/ph/user';
-import PhHardDrives from '@iconify-icons/ph/hard-drives';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { PageBackButton } from '@ui/atoms/BackButton';
-import { useClickOutside } from '@src/helper/hooks/useClickOutside';
-// import StatusDropdown from '../Status/StatusDropdown';
+import PhUser from '@iconify-icons/ph/user';
+import PhHardDrives from '@iconify-icons/ph/hard-drives';
 
-// const serverOptions = [
-//   { id: 'server1', label: 'Server 1' },
-//   { id: 'server2', label: 'Server 2' },
-//   { id: 'server3', label: 'Server 3' },
-//   { id: 'server4', label: 'Server 4' },
-// ];
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { useClickOutside } from '@src/helper/hooks/useClickOutside';
+import { StatusDropdown } from '../Status/StatusDropdown';
+
+const serverOptions = [
+  { id: 'server1', label: 'Server 1', icon: PhHardDrives, status: 'expired' },
+  { id: 'server2', label: 'Server 2', icon: PhHardDrives, status: 'disable' },
+  { id: 'server3', label: 'Server 3', icon: PhHardDrives, status: 'active' },
+  { id: 'server4', label: 'Server 4', icon: PhHardDrives, status: 'active' },
+];
 
 export function NavbarDashboard(): JSX.Element {
   const [statusOpen, setStatusOpen] = useState(false);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [statusMenuOpen, setStatusMenuOpen] = useState(false);
   const location = useLocation();
   const statusRef = useRef(null);
   const userMenuRef = useRef(null);
 
   const statusHandle = () => {
     setStatusOpen(!statusOpen);
-    if (userMenuOpen) setUserMenuOpen(false);
+    if (statusMenuOpen) setStatusMenuOpen(false);
   };
-
-  // const userMenuHandle = () => {
-  //   setUserMenuOpen(!userMenuOpen);
-  //   if (statusOpen) setStatusOpen(false);
-  // };
 
   useClickOutside({
     ref: statusRef,
     setValue: () => setStatusOpen(false),
     value: statusOpen,
-  });
-
-  useClickOutside({
-    ref: userMenuRef,
-    setValue: () => setUserMenuOpen(false),
-    value: userMenuOpen,
   });
 
   const backButtonRoutes = [
@@ -104,11 +94,11 @@ export function NavbarDashboard(): JSX.Element {
               statusOpen ? 'bg-neutral-300 hover:bg-neutral-300' : ''
             }`}
           />
-          {/* <StatusDropdown
+          <StatusDropdown
             options={serverOptions}
             isOpen={statusOpen}
             toggleDropdown={setStatusOpen}
-          /> */}
+          />
         </div>
 
         <div ref={userMenuRef} className="relative">
