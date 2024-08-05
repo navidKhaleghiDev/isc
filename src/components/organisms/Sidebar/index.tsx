@@ -36,7 +36,7 @@ export function SideBar(): JSX.Element {
 
   return (
     <div
-      className={`hidden sm:flex flex-col justify-between items-end ${
+      className={`hidden sm:flex flex-col justify-between items-end w-16 ${
         toggleSidebar && 'w-64'
       } h-full`}
     >
