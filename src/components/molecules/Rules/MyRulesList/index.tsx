@@ -9,13 +9,13 @@ import { NoResult } from '@ui/molecules/NoResult';
 import { MyRulesCard } from './MyRulesCard';
 import { useCheckRuleVersion } from './hook/useCheckedRuleVersion';
 
-const headerItem: any = {
-  rule_name: 'نام قانون',
-  created_at: 'تاریخ ثبت ',
-  creator: {
-    email: 'سازنده',
-  },
-};
+// const headerItem: any = {
+//   rule_name: 'نام قانون',
+//   created_at: 'تاریخ ثبت ',
+//   creator: {
+//     email: 'سازنده',
+//   },
+// };
 
 type TMyRulesListProp = {
   searchValue?: string;
