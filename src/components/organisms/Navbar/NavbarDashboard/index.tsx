@@ -2,10 +2,10 @@ import { Link, matchPath, useLocation } from 'react-router-dom';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Typography } from '@ui/atoms/Typography/Typography';
-import PhUser from '@iconify-icons/ph/user';
 import PhHardDrives from '@iconify-icons/ph/hard-drives';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { PageBackButton } from '@ui/atoms/BackButton';
+import { ProfileMenu } from '../ProfileMenu';
 
 /**
  * NavbarDashboard Component
@@ -72,14 +72,15 @@ import { PageBackButton } from '@ui/atoms/BackButton';
           className="w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-500 ease-linear
           "
         />
-        <IconButton
+        {/* <IconButton
           size="xxl"
           type="button"
           color="neutralLight"
           icon={PhUser}
           className="w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-500 ease-linear
           "
-        />
+        /> */}
+        <ProfileMenu />
       </div>
     </div>
   );
