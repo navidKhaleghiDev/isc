@@ -18,7 +18,7 @@ export function StatusDropdown({
       case 'active':
         return 'bg-teal-200	 text-teal-500 text-xs sm:text-base';
       default:
-        return 'bg-teal-200	 text-teal-500 text-xs sm:text-base';
+        return 'bg-neutral-100 text-neutral-500 text-xs sm:text-base';
     }
   };
   return (
