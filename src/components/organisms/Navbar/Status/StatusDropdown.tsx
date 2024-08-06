@@ -23,7 +23,7 @@ export function StatusDropdown({
   };
   return (
     <div className="absolute top-full left-2  z-50">
-      <div className="flex flex-col justify-center items-center mt-2.5 border-neutral-100 shadow-sm rounded-lg sm:rounded-[1.25rem] w-40 h-[7.25rem] sm:w-64 sm:h-[13.75rem] bg-white">
+      <div className="flex flex-col justify-center items-center mt-2.5 shadow-md rounded-lg sm:rounded-[1.25rem] w-40 h-[7.25rem] sm:w-64 sm:h-[13.75rem] bg-white">
         {options.map((option) => (
           <button
             key={option.id}
