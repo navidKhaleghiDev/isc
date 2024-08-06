@@ -1,6 +1,7 @@
 import React from 'react';
 import x from '@iconify-icons/ph/x';
 import { IconButton } from '@ui/atoms/BaseButton';
+
 import { ProfileMenuContent } from '../ProfileMenuContent';
 
 type DrawerProfileProps = {
@@ -11,7 +12,7 @@ type DrawerProfileProps = {
 export function DrawerProfile({ isOpen, setIsOpen }: DrawerProfileProps) {
   return (
     <div
-      className={`fixed top-0 left-0 z-20 w-full h-screen bg-white sm:hidden block transition-transform duration-500 delay-500 ${
+      className={`fixed top-0 left-0 z-20 w-full h-full bg-white sm:hidden block transition-transform duration-500 delay-500 ${
         isOpen ? '-translate-x-0 ' : '-translate-x-full'
       }`}
     >
