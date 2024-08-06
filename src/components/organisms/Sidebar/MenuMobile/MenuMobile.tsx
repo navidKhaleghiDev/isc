@@ -28,7 +28,12 @@ export function MenuMobile(): JSX.Element {
               collapsed={false}
             />
           ) : (
-            ''
+            <MenuMobileItem
+              key={item.id}
+              item={item}
+              pathname={pathname}
+              collapsed={false}
+            />
           )
         )}
       </div>

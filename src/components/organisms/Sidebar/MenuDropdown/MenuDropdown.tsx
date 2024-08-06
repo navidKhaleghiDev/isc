@@ -1,11 +1,23 @@
-export function MenuDropdown() {
+import { Link } from 'react-router-dom';
+import { BaseIcon, Typography } from '@ui/atoms';
+import { menuItemStyles } from '../MenuItem/styles';
+import { INavigation } from '../types';
+
+interface MenuDropdownProps {
+  items: INavigation[];
+}
+
+export function MenuDropdown({ items }: MenuDropdownProps): JSX.Element {
   return (
-    <div className="bg-teal-400 ">
-      <ul>
-        <li>menu 1</li>
-        <li>menu 1</li>
-        <li>menu 1</li>
-      </ul>
+    <div className="absolute right-full z-50 w-40 h-[7.25rem] bg-white shadow-md rounded-2xl">
+      {items.map((item) => (
+        <Link key={item.id} className={menuItemStyles({})} to={item.path}>
+          {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
+          <Typography className="mr-3" size="body5">
+            {item.label}
+          </Typography>
+        </Link>
+      ))}
     </div>
   );
 }
