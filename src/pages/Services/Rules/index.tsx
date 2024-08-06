@@ -3,6 +3,7 @@ import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { TValueOnChange } from '@ui/atoms/DropDown/type';
+import { IconButton } from '@ui/atoms/BaseButton';
 import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 import { Typography } from '@ui/atoms';
 
@@ -33,9 +34,9 @@ function RulesPageCP(): JSX.Element {
   ];
 
   const selectRef = useRef<HTMLSelectElement | null>(null);
-  // const hadelClick = () => {
-  //   selectRef.current?.showPicker();
-  // };
+  const handelClick = () => {
+    selectRef.current?.showPicker();
+  };
 
   return (
     <div className="w-full flex flex-col h-full">
@@ -45,14 +46,21 @@ function RulesPageCP(): JSX.Element {
       <div className="p-4 grid grid-cols-2 md:flex md:justify-start md:items-center gap-4">
         <SearchInput onChange={handleOnSearch} value={search} />
         <div className="md:w-64">
-          <BaseSelect
-            id="rulesSort"
-            ref={selectRef}
-            name="rulesSort"
-            selectOptions={selectOptions}
-            pureOnChange={selectValueChange}
-            fullWidth
-          />
+          <div className="relative">
+            <BaseSelect
+              id="rulesSort"
+              ref={selectRef}
+              name="rulesSort"
+              selectOptions={selectOptions}
+              pureOnChange={selectValueChange}
+              fullWidth
+            />
+            <IconButton
+              onClick={handelClick}
+              className="bg-white size-3 absolute top-1 left-1"
+              icon="ph:caret-down-bold"
+            />
+          </div>
         </div>
       </div>
       <RulesList buttonState={activeButton} searchValue={search} />

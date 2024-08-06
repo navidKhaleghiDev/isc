@@ -1,5 +1,6 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
+import { IconButton } from '@ui/atoms/BaseButton';
 
 type TCodeLineSelectProp = {
   value: string;
@@ -41,16 +42,31 @@ export function CodeLineSelect({
     { id: 4, label: 'PASS', value: 'pass' },
     { id: 5, label: 'REJECT', value: 'reject' },
   ];
+
+  const selectRef = useRef<HTMLSelectElement>(null);
+  const handelSelectClick = () => {
+    selectRef.current?.showPicker();
+  };
+
   return (
-    <BaseSelect
-      id={id}
-      intent="primary"
-      pureOnChange={onChange}
-      pureValue={value}
-      disabled={disableSelect}
-      selectOptions={selectOptions}
-      name="selectAllPolicy"
-      className={className}
-    />
+    <div className="relative">
+      <BaseSelect
+        id={id}
+        intent="primary"
+        ref={selectRef}
+        pureOnChange={onChange}
+        pureValue={value}
+        disabled={disableSelect}
+        selectOptions={selectOptions}
+        name="selectAllPolicy"
+        className={className}
+      />
+      <IconButton
+        icon="ph:caret-up-down-bold"
+        color="white"
+        className="size-1 absolute top-1 -right-6"
+        onClick={handelSelectClick}
+      />
+    </div>
   );
 }
