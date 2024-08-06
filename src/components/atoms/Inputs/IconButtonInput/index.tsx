@@ -1,15 +1,20 @@
 import { BaseIcon } from '@ui/atoms/BaseIcon';
 import { IconType } from '@src/types/global';
+
 import { ColorIndent } from '../types';
 import { iconBaseInputStyles } from '../styles';
 
-type PropsType = {
+type IconButtonInputProps = {
   intent: ColorIndent;
   icon: IconType;
   onClick: () => void;
 };
 
-export function IconButtonInput({ icon, intent, onClick }: PropsType) {
+export function IconButtonInput({
+  icon,
+  intent,
+  onClick,
+}: IconButtonInputProps) {
   return (
     <button
       type="button"

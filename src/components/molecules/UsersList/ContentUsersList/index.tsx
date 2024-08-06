@@ -105,6 +105,7 @@ export function ContentUsersList({
           label: 'بله',
           onClick: handleRequestDelete,
           loading: deleteLoading,
+          color: 'redBg',
         }}
       />
     </>

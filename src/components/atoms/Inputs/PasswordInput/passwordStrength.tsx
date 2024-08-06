@@ -16,7 +16,6 @@ export function PasswordStrength({ password }: { password?: string }) {
   useEffect(() => {
     setColorStrength(getPasswordStrength(password));
   }, [password]);
-  // const colorStrength = getPasswordStrength(password) as EPasswordStrengthColor;
 
   const getColorClass = (strength: EPasswordStrengthColor | null) => {
     if (strength === null) return 'w-1/5 bg-red-400';

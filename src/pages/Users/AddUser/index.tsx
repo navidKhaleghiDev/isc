@@ -124,6 +124,7 @@ function AddUserPageCp() {
               id="is_admin"
               control={control}
               label="ادمین"
+              className="flex-row-reverse justify-end"
               hiddenError
             />
             <BaseCheckBox
@@ -131,6 +132,7 @@ function AddUserPageCp() {
               id="is_analyser"
               control={control}
               label="ادمین سیستم نظارتی"
+              className="flex-row-reverse justify-end"
               hiddenError
             />
           </div>

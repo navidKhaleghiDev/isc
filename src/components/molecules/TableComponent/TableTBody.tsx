@@ -9,7 +9,20 @@ interface ITableBodyProps {
   columns: Column[];
 }
 
-export function TableTBody({ data, columns }: ITableBodyProps) {
+/**
+ * TableTBody Component
+ *
+ * A component to render the body of the table.
+ *
+ * @component
+ *
+ * @param {Object} props - The props for the TableTBody component.
+ * @param {Array} props.data - An array of data to be displayed in the table.
+ * @param {Array} props.columns - An array of column definitions.
+ *
+ * @returns {JSX.Element} The rendered table body component.
+ */
+export function TableTBody({ data, columns }: ITableBodyProps): JSX.Element {
   return (
     <tbody className="text-center">
       {data.length > 0 &&

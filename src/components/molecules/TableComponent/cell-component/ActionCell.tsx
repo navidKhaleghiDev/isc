@@ -57,9 +57,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
       break;
     case 'edit':
       cellContent = (
-        <Link
-          to={`${column.editRoute} ${row.id}`}
-        >
+        <Link to={`${column.editRoute} ${row.id}`}>
           <IconButton
             icon={PencilSimple}
             color="default"

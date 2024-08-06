@@ -1,8 +1,10 @@
 import { useRef } from 'react';
+
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 import { Typography } from '@ui/atoms';
 import { BaseButton, IconButton } from '@ui/atoms/BaseButton';
 import X from '@iconify-icons/ph/x';
+
 import { containerStyles, contentStyles, headerStyles } from './styles';
 import { IModal } from './types';
 

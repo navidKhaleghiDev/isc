@@ -1,14 +1,15 @@
 import { IconType } from '@src/types/global';
 import { BaseIcon } from '@ui/atoms/BaseIcon';
+
 import { ColorIndent } from '../types';
 import { iconBaseInputStyles } from '../styles';
 
-type PropsType = {
+type IconInputProps = {
   intent: ColorIndent;
   icon: IconType;
 };
 
-export function IconInput({ icon, intent }: PropsType) {
+export function IconInput({ icon, intent }: IconInputProps) {
   return (
     <div
       className={iconBaseInputStyles({

@@ -15,6 +15,8 @@ import { baseInputStyles } from '../styles';
 import { IconInput } from '../IconInput';
 import { IconButtonInput } from '../IconButtonInput';
 
+/* note: convertI2ToAD may be used in some situations and is currently not used in this project and was commented out */
+
 // export function convertI2ToAD(
 //   i2Date?: DateObject | DateObject[] | undefined,
 //   format?: string
