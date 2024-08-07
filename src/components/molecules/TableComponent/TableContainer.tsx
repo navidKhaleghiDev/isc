@@ -12,13 +12,20 @@ import { ITableProps } from './types';
  * @param {Object} props - The props for the TableContainer component.
  * @param {Array} props.columns - An array of column definitions.
  * @param {Array} props.data - An array of data to be displayed in the table.
+ * @param {string} [props.containerClassName] - Additional class names for the parent table.
+ * @param {string} [props.tableClassName] - Additional class names for the table tag.
  *
  * @returns {JSX.Element} The rendered table container component.
  */
-export function TableContainer({ columns, data }: ITableProps): JSX.Element {
+export function TableContainer({
+  columns,
+  data,
+  containerClassName,
+  tableClassName,
+}: ITableProps): JSX.Element {
   return (
-    <div className="w-full relative overflow-x-scroll">
-      <table className="min-w-[40rem] table-auto rounded-lg">
+    <div className={containerClassName}>
+      <table className={tableClassName}>
         <TableTHead columns={columns} />
         <TableTBody data={data} columns={columns} />
       </table>

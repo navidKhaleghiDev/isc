@@ -76,6 +76,8 @@ export interface IData {
 export interface ITableProps {
   columns: Column[];
   data: IData[];
+  containerClassName?: string;
+  tableClassName?: string;
 }
 
 export interface ICellProps {

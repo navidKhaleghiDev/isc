@@ -55,32 +55,32 @@ export function ContentUsersList({
       type: 'fullName',
       accessor: ['first_name', 'last_name'],
       header: 'نام',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2',
+      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
     },
     {
       type: 'default',
       accessor: 'email',
       header: 'ایمیل',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2',
+      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
     },
     {
       type: 'default',
       accessor: 'userType',
       header: 'نوع کاربری',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2',
+      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
     },
     {
       type: 'date',
       accessor: 'date_joined',
       header: 'تاریخ ثبت نام',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2',
+      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 sm:min-w-fit w-1/2 min-w-[200px]',
     },
     {
       type: 'component',
       actionType: 'edit',
       accessor: 'edit',
       editRoute: ROUTES_PATH.addUser,
-      className: 'lg:w-96 w-auto flex justify-end ',
+      className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
     },
     {
       type: 'component',
@@ -94,7 +94,12 @@ export function ContentUsersList({
 
   return data.length > 0 ? (
     <>
-      <TableContainer columns={columns} data={data} />
+      <TableContainer
+        columns={columns}
+        data={data}
+        containerClassName="w-full relative overflow-x-scroll lg:overflow-hidden"
+        tableClassName="min-w-[40rem] md:table-auto table-fixed rounded-lg"
+      />
       <Modal
         open={openModalDelete}
         setOpen={setOpenModalDelete}
