@@ -18,16 +18,18 @@ const serverOptions = [
   { id: 'server4', label: 'Server 4', icon: PhHardDrives, status: 'active' },
 ];
 
+/**
+ * @component
+ * @returns{JSX.Element}
+ */
+
 export function NavbarDashboard(): JSX.Element {
   const [statusOpen, setStatusOpen] = useState(false);
-  const [statusMenuOpen, setStatusMenuOpen] = useState(false);
   const location = useLocation();
   const statusRef = useRef(null);
-  const userMenuRef = useRef(null);
 
   const statusHandle = () => {
     setStatusOpen(!statusOpen);
-    if (statusMenuOpen) setStatusMenuOpen(false);
   };
 
   useClickOutside({
@@ -101,7 +103,7 @@ export function NavbarDashboard(): JSX.Element {
           />
         </div>
 
-        <div ref={userMenuRef} className="relative">
+        <div className="relative">
           <IconButton
             size="xxl"
             type="button"
