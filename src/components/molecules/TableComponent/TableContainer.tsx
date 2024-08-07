@@ -17,8 +17,8 @@ import { ITableProps } from './types';
  */
 export function TableContainer({ columns, data }: ITableProps): JSX.Element {
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full table-auto rounded-lg overflow-hidden">
+    <div className="w-full relative overflow-x-scroll">
+      <table className="min-w-[40rem] table-auto rounded-lg">
         <TableTHead columns={columns} />
         <TableTBody data={data} columns={columns} />
       </table>

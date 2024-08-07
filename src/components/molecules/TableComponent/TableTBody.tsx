@@ -29,7 +29,7 @@ export function TableTBody({ data, columns }: ITableBodyProps): JSX.Element {
         data.map((row) => (
           <tr
             key={row.id}
-            className="rounded-lg overflow-hidden even:bg-neutral-100 h-12"
+            className="rounded-lg overflow-hidden even:bg-neutral-100 h-12 align-middle"
           >
             {columns.map((column) => {
               switch (column.type) {
