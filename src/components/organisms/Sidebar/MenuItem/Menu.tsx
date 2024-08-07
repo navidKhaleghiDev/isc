@@ -1,7 +1,7 @@
-// import { Link } from 'react-router-dom';
-// import { BaseIcon, Typography } from '@ui/atoms';
-// import { menuItemStyles } from './styles';
-// import { IMenuItem } from './types';
+import { Link } from 'react-router-dom';
+import { BaseIcon, Typography } from '@ui/atoms';
+import { menuItemStyles } from './styles';
+import { IMenuItem } from './types';
 
 // /**
 //  * MenuItem Component
@@ -19,39 +19,6 @@
 //  *
 //  * @returns {JSX.Element} The rendered menu item component.
 //  */
-
-// export function MenuItem({
-//   item,
-//   pathname,
-//   isChildren,
-//   collapsed,
-// }: IMenuItem): JSX.Element {
-//   const isActive = item.path === pathname;
-
-//   return (
-//     <Link
-//       className={menuItemStyles({
-//         active: isActive,
-//         isChildren,
-//         isActiveChildren: isActive && isChildren,
-//       })}
-//       to={item.path}
-//       target={item.isNewTab ? '_blank' : '_self'}
-//     >
-//       {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
-//       {!collapsed && (
-//         <Typography className="mr-3 hidden sm:block " size="body4">
-//           {item.label}
-//         </Typography>
-//       )}
-//     </Link>
-//   );
-// }
-
-import { Link } from 'react-router-dom';
-import { BaseIcon, Typography } from '@ui/atoms';
-import { menuItemStyles } from './styles';
-import { IMenuItem } from './types';
 
 export function MenuItem({
   item,

@@ -17,7 +17,8 @@ import { PageBackButton } from '@ui/atoms/BackButton';
  * <NavbarDashboard />
  *
  * @returns {JSX.Element} The rendered NavbarDashboard component.
- */ export function NavbarDashboard(): JSX.Element {
+ */
+export function NavbarDashboard(): JSX.Element {
   const location = useLocation();
 
   const backButtonRoutes = [

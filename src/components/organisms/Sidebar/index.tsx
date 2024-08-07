@@ -24,7 +24,7 @@ export function SideBar(): JSX.Element {
 
   return (
     <div
-      className={`hidden sm:flex flex-col justify-between items-end w-16 ${
+      className={`hidden sm:flex flex-col justify-between items-end w-16  ${
         toggleSidebar && 'w-64'
       } h-full`}
     >
@@ -55,6 +55,9 @@ export function SideBar(): JSX.Element {
               key={item.id}
               onMouseEnter={() => setDropdownVisible(item)}
               onMouseLeave={() => setDropdownVisible(null)}
+              className={`flex justify-center items-center ${
+                toggleSidebar ? 'w-full' : null
+              }`}
             >
               <MenuItem
                 key={item.id}

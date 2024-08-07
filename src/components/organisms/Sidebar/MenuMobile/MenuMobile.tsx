@@ -19,23 +19,16 @@ export function MenuMobile(): JSX.Element {
   return (
     <div className="sm:hidden w-full h-full">
       <div className="fixed bottom-4 flex justify-around sm:flex-col w-full px-20 bg-neutral-100 rounded-full">
-        {navigationSideBar.map((item: INavigation) =>
-          !item.items ? (
+        {navigationSideBar.map((item: INavigation) => {
+          return (
             <MenuMobileItem
               key={item.id}
               item={item}
               pathname={pathname}
               collapsed={false}
             />
-          ) : (
-            <MenuMobileItem
-              key={item.id}
-              item={item}
-              pathname={pathname}
-              collapsed={false}
-            />
-          )
-        )}
+          );
+        })}
       </div>
     </div>
   );

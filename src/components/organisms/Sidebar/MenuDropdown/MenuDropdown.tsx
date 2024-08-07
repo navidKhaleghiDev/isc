@@ -7,9 +7,17 @@ interface MenuDropdownProps {
   items: INavigation[];
 }
 
+/**
+ * @component
+ * 
+ * @param {MenuDropdownProps}  props the props for MenuDropdown component
+ * @param {INavigation}  props.item The navigation item data, including path, label, and icon.
+
+ * @returns {JSX.Element} the render MenuDropdown component
+ */
 export function MenuDropdown({ items }: MenuDropdownProps): JSX.Element {
   return (
-    <div className="absolute right-full z-50 w-40 h-[7.25rem] bg-white shadow-md rounded-2xl">
+    <div className="absolute right-full z-50 w-40 h-[7.25rem] bg-white shadow-md rounded-2xl mx-1">
       {items.map((item) => (
         <Link key={item.id} className={menuItemStyles({})} to={item.path}>
           {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
