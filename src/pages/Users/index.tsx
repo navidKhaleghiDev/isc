@@ -4,12 +4,13 @@ import { UsersList } from '@ui/molecules/UsersList';
 
 function UsersPageCp() {
   return (
-    <div className="w-full h-full flex flex-col items-center p-16">
-      <div className="mb-8 ml-auto">
-        <Typography size="h4" color="teal">
+    <div className="w-full h-full flex flex-col items-center">
+      <div className="mb-7 ml-auto sm:hidden block">
+        <Typography size="body1" color="neutral_dark" weight="bold">
           لیست کاربران
         </Typography>
       </div>
+
       <UsersList />
     </div>
   );

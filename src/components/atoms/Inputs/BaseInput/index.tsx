@@ -127,7 +127,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
             {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography color="red" size="body6" className="min-h-5">
               {error?.message ?? ''}
             </Typography>
           )}
@@ -164,7 +164,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
         />
       </div>
       {pureError && (
-        <Typography color="red" size="body6" className="h-6">
+        <Typography color="red" size="body6" className="min-h-5">
           {pureError}
         </Typography>
       )}
