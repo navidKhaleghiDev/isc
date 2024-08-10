@@ -105,7 +105,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
               onKeyDown={onKeyDown}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${(endIcon || onClickIcon) && 'pl-8'} ${
+                className: `${(endIcon || onClickIcon) && 'pl-10'} ${
                   startIcon && 'pr-8'
                 } `,
                 ltrPlaceHolder: ltrLabel,

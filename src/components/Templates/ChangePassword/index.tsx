@@ -111,7 +111,7 @@ export function ChangePassword() {
             fullWidth
           />
         </div>
-        <div className="md :self-end self-center">
+        <div className="md:self-end self-center">
           <BaseButton submit label="تغییر کلمه عبور" size="md" fullWidth />
         </div>
       </form>
