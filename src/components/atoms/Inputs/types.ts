@@ -1,6 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
 import { HTMLInputTypeAttribute, MouseEventHandler } from 'react';
-import DateObject from 'react-date-object';
 import {
   Control,
   FieldPath,
@@ -9,6 +8,7 @@ import {
   UseFormSetError,
 } from 'react-hook-form';
 import { IconifyIcon } from '@iconify/react';
+import { DateObject } from 'react-multi-date-picker';
 
 import { baseInputStyles, baseSelectStyles } from './styles';
 import { IOptionSelect } from './BaseSelect/OptionSelect';
@@ -36,11 +36,11 @@ export interface BaseInputProps<T extends FieldValues>
   label?: string;
   placeholder?: string;
   className?: string;
-  startIcon?: string;
+  startIcon?: string | IconifyIcon;
   endIcon?: string | IconifyIcon;
   hiddenError?: boolean;
   onClickIcon?: () => void;
-  iconButtonIcon?: string;
+  iconButtonIcon?: string | IconifyIcon;
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   pureValue?: string;
