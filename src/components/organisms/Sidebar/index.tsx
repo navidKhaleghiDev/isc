@@ -1,12 +1,15 @@
-import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import PhCaretRight from '@iconify-icons/ph/caret-right';
 import PhCaretLeft from '@iconify-icons/ph/caret-left';
-import { BaseIcon } from '@ui/atoms';
+import { IconButton } from '@ui/atoms/BaseButton';
+import ToolTip from '@ui/atoms/Tooltip';
+
 import { navigationSideBar } from './navigation';
 import { INavigation } from './types';
-// import { MenuItemAccordion } from './MenuItemAccordion';
 import { MenuItem } from './MenuItem';
+// import { MenuItemAccordion } from './MenuItemAccordion';
 
 /**
  * SideBar Component
@@ -31,47 +34,61 @@ export function SideBar(): JSX.Element {
     setToggleSidebar(!toggleSidebar);
   };
 
-  // const isMobile = window.innerWidth <= 390;
-
   return (
-    <div className=" hidden sm:flex flex-col justify-between items-end  w-full h-full overflow-hidden">
+    <div
+      className={`hidden sm:flex flex-col justify-between items-end w-16 ${
+        toggleSidebar && 'w-64'
+      } h-full`}
+    >
       <div className="flex flex-col items-center w-full mt-10 px-4">
-        {navigationSideBar.map((item: INavigation) =>
-          !item.items ? (
-            <MenuItem
-              key={item.id}
-              item={item}
-              pathname={pathname}
-              collapsed={!toggleSidebar}
-            />
-          ) : (
-            // <MenuItemAccordion
-            //   key={item.id}
-            //   item={item}
-            //   open={open}
-            //   setOpen={handleOpen}
-            //   index={i}
-            //   icon={item.icon}
-            //   pathname={pathname}
-            //   collapsed={!toggleSidebar}
-            // />
-            ''
-          )
-        )}
+        {navigationSideBar.map((item: INavigation) => {
+          if (!item.items) {
+            return !toggleSidebar ? (
+              <ToolTip position="left" key={item.id} tooltip={`${item.label}`}>
+                <MenuItem
+                  key={item.id}
+                  item={item}
+                  pathname={pathname}
+                  collapsed={!toggleSidebar}
+                />
+              </ToolTip>
+            ) : (
+              <MenuItem
+                key={item.id}
+                item={item}
+                pathname={pathname}
+                collapsed={!toggleSidebar}
+              />
+            );
+          }
+          // <MenuItemAccordion
+          //   key={item.id}
+          //   item={item}
+          //   open={open}
+          //   setOpen={handleOpen}
+          //   index={i}
+          //   icon={item.icon}
+          //   pathname={pathname}
+          //   collapsed={!toggleSidebar}
+          // />
+          return null;
+        })}
       </div>
 
-      <div className="hidden sm:flex flex-col items-end	w-full mb-4 px-4 ">
-        <button
-          type="submit"
-          className="flex flex-col justify-center items-center w-10 h-10  bg-teal-500 rounded-lg text-center"
-          onClick={toggleSideBar}
-        >
-          {!toggleSidebar ? (
-            <BaseIcon icon={PhCaretLeft} className=" text-white  w-6 h-6" />
-          ) : (
-            <BaseIcon icon={PhCaretRight} className=" text-white  w-6 h-6" />
-          )}
-        </button>
+      <div
+        className={`hidden sm:flex flex-col ${
+          toggleSidebar ? 'items-end' : 'items-center'
+        }  	w-full mb-4 px-4`}
+      >
+        <div className="flex flex-col justify-center items-center w-10 h-10 rounded-lg">
+          <IconButton
+            size="xxl"
+            color="tealDark"
+            icon={toggleSidebar ? PhCaretRight : PhCaretLeft}
+            onClick={toggleSideBar}
+            className="text-white"
+          />
+        </div>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ import { NoResult } from '../NoResult';
  * @returns {JSX.Element} Returns a component that displays a list of products.
  */
 
-export function ProductList() {
+export function ProductList(): JSX.Element {
   const { data, isLoading } = useSWR<ResponseSwr<IServerProducts[]>>(
     E_SERVER_PRODUCT_DEVICE,
     fetcherServer

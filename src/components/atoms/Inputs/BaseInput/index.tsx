@@ -39,7 +39,7 @@ import { BaseInputProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInput(props: BaseInputProps<any>) {
+export function BaseInput(props: BaseInputProps<any>): JSX.Element {
   const {
     control,
     name,
@@ -81,7 +81,7 @@ export function BaseInput(props: BaseInputProps<any>) {
                 ltrLabel ? 'text-left uppercase' : 'text-right'
               }`}
             >
-              <Typography color="teal" size="h5">
+              <Typography color="neutral_dark" size="body4">
                 {label}
               </Typography>
             </label>
@@ -127,7 +127,7 @@ export function BaseInput(props: BaseInputProps<any>) {
             {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography color="red" size="body6" className="min-h-5">
               {error?.message ?? ''}
             </Typography>
           )}
@@ -138,7 +138,7 @@ export function BaseInput(props: BaseInputProps<any>) {
     <div className="w-full flex flex-col">
       {label && (
         <label htmlFor={id} className="block mb-1 h-8">
-          <Typography color="teal" size="h5">
+          <Typography color="neutral_dark" size="body4">
             {label}
           </Typography>
         </label>
@@ -164,7 +164,7 @@ export function BaseInput(props: BaseInputProps<any>) {
         />
       </div>
       {pureError && (
-        <Typography color="red" size="body6" className="h-6">
+        <Typography color="red" size="body6" className="min-h-5">
           {pureError}
         </Typography>
       )}

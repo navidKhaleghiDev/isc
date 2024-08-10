@@ -1,14 +1,15 @@
 import { IconType } from '@src/types/global';
 import { BaseIcon } from '@ui/atoms/BaseIcon';
+
 import { ColorIndent } from '../types';
 import { iconBaseInputStyles } from '../styles';
 
-type PropsType = {
+type IconInputProps = {
   intent: ColorIndent;
   icon: IconType;
 };
 
-export function IconInput({ icon, intent }: PropsType) {
+export function IconInput({ icon, intent }: IconInputProps) {
   return (
     <div
       className={iconBaseInputStyles({
@@ -16,7 +17,7 @@ export function IconInput({ icon, intent }: PropsType) {
         className: 'pointer-events-none',
       })}
     >
-      <BaseIcon icon={icon} className="mx-1" size="xs" />
+      <BaseIcon icon={icon} className="mx-1 text-neutral-400" size="md" />
     </div>
   );
 }

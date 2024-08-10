@@ -1,5 +1,7 @@
 import { BaseInput } from '@ui/atoms';
+
 import { useState } from 'react';
+
 import { BaseInputProps } from '../types';
 import { regexPattern } from '../utils/regexPattern';
 

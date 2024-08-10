@@ -4,6 +4,7 @@ import { cva } from 'class-variance-authority';
 export const baseIconStyles = cva('fill-current', {
   variants: {
     color: {
+      neutralLight: `${PALLET.TEXT_COLOR.NEUTRAL_LIGHT}`,
       neutral: `${PALLET.TEXT_COLOR.NEUTRAL}`,
       teal: `${PALLET.TEXT_COLOR.TEAL}`,
       yellow: `${PALLET.TEXT_COLOR.YELLOW}`,

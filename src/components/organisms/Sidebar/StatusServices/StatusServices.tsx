@@ -13,7 +13,7 @@ import { LabelsStatus } from './LabelsStatus';
  * @returns {JSX.Element} The rendered StatusServices component.
  */
 
-export function StatusServices() {
+export function StatusServices(): JSX.Element {
   return (
     <Accordion
       id="status"
