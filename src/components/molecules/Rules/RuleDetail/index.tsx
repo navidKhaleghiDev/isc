@@ -24,7 +24,7 @@ import { IRulePolicyListRef, RulePolicyList } from '../RulePolicyList';
  * @returns {JSX.Element} The rendered RuleDetail component.
  */
 
-export function RuleDetail() {
+export function RuleDetail(): JSX.Element {
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
   const id = slugs[3];
@@ -87,17 +87,16 @@ export function RuleDetail() {
   return rule ? (
     <>
       <RuleInformation
-        createdDate={rule.created_at}
         updateDate={rule.updated_at}
         name={rule.name}
-        description={rule.description}
+        codeList={codeList}
+        countDifferenceOrder={countDifferenceOrder}
       />
       <RulePolicyList
         ref={rulePolicyListRef}
         codeList={codeList}
         setCodeList={setCodeList}
         onRegisterRule={handleAddRule}
-        countDifferenceOrder={countDifferenceOrder}
       />
     </>
   ) : (

@@ -3,10 +3,17 @@ import { BaseButton, Card, Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
 import { ChangeEvent, forwardRef, useImperativeHandle, useState } from 'react';
 import { NoResult } from '@ui/molecules/NoResult';
-import { CardRuleDetail } from '@ui/molecules/Rules/CardRuleDetail';
 import { Modal } from '@ui/molecules/Modal';
 import { CodeLine } from '@ui/molecules/Rules/MyRuleDetail/CodeLine';
 import { CodeLineSelect } from '@ui/molecules/Rules/MyRuleDetail/CodeLine/CodeLineSelect';
+import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
+import {
+  AlertSvg,
+  BlockSvg,
+  DropSvg,
+  PassSvg,
+  RejectSvg,
+} from '@ui/atoms/Svgs';
 
 /**
  * Props for RulePolicyList component.
@@ -24,7 +31,6 @@ type RulePolicyListProps = {
   onRegisterRule: () => void;
   codeList: SliceOrderCodeType[];
   setCodeList: (codeLIst: SliceOrderCodeType[]) => void;
-  countDifferenceOrder: number;
 };
 
 /**
@@ -68,17 +74,12 @@ export interface IRulePolicyListRef {
  */
 
 function RulePolicyListCp(
-  {
-    codeList,
-    setCodeList,
-    onDeleteRule,
-    onRegisterRule,
-    countDifferenceOrder,
-  }: RulePolicyListProps,
+  { codeList, setCodeList, onDeleteRule, onRegisterRule }: RulePolicyListProps,
   ref: React.Ref<IRulePolicyListRef>
-) {
+): JSX.Element {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [valueAllCodeLineSelect, setValueAllCodeLineSelect] = useState('');
+  const [allPolicySelect, setAllPolicySelect] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [modalsLoading, setModalsLoading] = useState({
     deleteButton: false,
@@ -108,15 +109,12 @@ function RulePolicyListCp(
     { target: { value } }: ChangeEvent<HTMLSelectElement>,
     index: number
   ) => {
-    // console.log({ codeList });
-
     if (codeList) {
       const newCodeList = codeList.slice();
       newCodeList[index].order = value;
       setCodeList(newCodeList);
     }
   };
-
   const onChangeAllOrder = ({
     target: { value },
   }: ChangeEvent<HTMLSelectElement>) => {
@@ -127,60 +125,93 @@ function RulePolicyListCp(
     setCodeList(updatedList);
   };
 
+  const policyAllIcon = () => {
+    switch (valueAllCodeLineSelect) {
+      case 'alert':
+        return <AlertSvg />;
+      case 'drop':
+        return <DropSvg />;
+      case 'block':
+        return <BlockSvg />;
+      case 'pass':
+        return <PassSvg />;
+      case 'reject':
+        return <RejectSvg />;
+      default:
+        return <AlertSvg />;
+    }
+  };
+
   return (
-    <>
-      <div className="flex w-100 justify-between bg-neutral-100 rounded mb-2 px-2">
-        <Typography size="body2" color="neutral">
-          اعمال تغییرات برای تمام پالیسی ها:
-        </Typography>
-        <CodeLineSelect
-          id="RulePolicyList"
-          value={valueAllCodeLineSelect}
-          onChange={onChangeAllOrder}
-          className="text-2xl"
+    <div className="mt-12">
+      <div className="flex items-center gap-2">
+        <BaseCheckBox
+          id="all_policy_active"
+          name="all_policy"
+          pureOnChange={() => setAllPolicySelect(!allPolicySelect)}
         />
+        <Typography size="body5" color="neutral_light">
+          اعمال تغییرات روی تمام سیاست ها
+        </Typography>
       </div>
-      <Card color="neutral" className="p-4 max-h-[24rem] overflow-y-auto">
+      {allPolicySelect && (
+        <Card
+          shadow="sm"
+          rounded="lg"
+          className="mt-5 px-2 flex flex-row-reverse gap-4 py-2 pr-6 transition "
+        >
+          <CodeLineSelect
+            id="RulePolicyList"
+            className="text-left"
+            value={valueAllCodeLineSelect}
+            onChange={onChangeAllOrder}
+          />
+          <div className="flex items-center justify-center gap-3 ml-6">
+            <Typography>{`${
+              valueAllCodeLineSelect || 'alert'
+            }  بروی تمام سیاست ها`}</Typography>
+            {policyAllIcon()}
+          </div>
+        </Card>
+      )}
+      <div className="max-h-[26.5rem] md:max-h-[18.75rem] overflow-y-auto mt-3 p-0.5">
         {codeList.length > 0 ? (
           codeList.map((mCode: SliceOrderCodeType, index: number) => {
             return (
-              <CodeLine
-                id={`myRulePolicy-${index}`}
+              <Card
+                shadow="sm"
                 key={`${index}_${mCode.order}`}
-                code={mCode}
-                onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
-                  handleOnChangeOrder(event, index)
-                }
-              />
+                rounded="lg"
+                className="text-left mt-[10px] py-2 px-2"
+              >
+                <CodeLine
+                  id={`myRulePolicy-${index}`}
+                  code={mCode}
+                  onChangeOrder={(event: ChangeEvent<HTMLSelectElement>) =>
+                    handleOnChangeOrder(event, index)
+                  }
+                  disable={allPolicySelect}
+                />
+              </Card>
             );
           })
         ) : (
           <NoResult />
         )}
-      </Card>
+      </div>
       <div className="flex w-full justify-between items-center mt-8">
-        <div className="flex">
-          <CardRuleDetail
-            label="سیاست ها"
-            value={`${Object.entries(codeList).length}`}
-            className="ml-5"
-          />
-          <CardRuleDetail
-            label="تغییرداده‌شده‌ها"
-            value={`${countDifferenceOrder}`}
-          />
-        </div>
-        <div className="w-full flex justify-end">
+        <div className="w-full flex items-center justify-between mb-5">
+          <BaseButton label="ثبت تغییرات" size="lg" onClick={toggleModalEdit} />
+
           {onDeleteRule && (
             <BaseButton
-              label="حذف"
-              size="sm"
-              type="red"
+              label="حذف قانون"
+              size="lg"
+              type="redBg"
               className="ml-5"
               onClick={toggleModalDelete}
             />
           )}
-          <BaseButton label="ثبت" size="sm" onClick={toggleModalEdit} />
         </div>
       </div>
       <Modal
@@ -192,11 +223,6 @@ function RulePolicyListCp(
           label: 'بله',
           onClick: onRegisterRule,
           loading: modalsLoading.editButton,
-        }}
-        buttonTow={{
-          label: 'خیر',
-          onClick: toggleModalEdit,
-          color: 'red',
         }}
         type="success"
       />
@@ -211,15 +237,11 @@ function RulePolicyListCp(
             label: 'بله',
             onClick: onDeleteRule,
             loading: modalsLoading.deleteButton,
-          }}
-          buttonTow={{
-            label: 'خیر',
-            onClick: toggleModalDelete,
-            color: 'red',
+            color: 'redBg',
           }}
         />
       )}
-    </>
+    </div>
   );
 }
 export const RulePolicyList = forwardRef(RulePolicyListCp);

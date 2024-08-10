@@ -7,6 +7,17 @@ import { LoadingSpinner } from '@ui/molecules/Loading';
 import { MyRuleDetail } from '@ui/molecules/Rules/MyRuleDetail';
 import { PageBackButton } from '@ui/atoms/BackButton';
 
+/**
+ * MyRuleDetailsPage component
+ *
+ * This component displays the details of a specific rule. that use fetch to get every rule detail.
+ *
+ * @component
+ *
+ *
+ * @returns {JSX.Element} The rendered MyRuleDetailsPage component
+ */
+
 export function MyRuleDetailsPage() {
   const { pathname } = useLocation();
   const slugs = pathname.split('/');
@@ -21,10 +32,11 @@ export function MyRuleDetailsPage() {
   }
 
   const myRule: IMyRule | undefined = dataMyRule?.data;
-
   return (
     <RulesCodeTemplate>
-      <PageBackButton />
+      <div className="text-left">
+        <PageBackButton />
+      </div>
       <MyRuleDetail myRule={myRule} />
     </RulesCodeTemplate>
   );

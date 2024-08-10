@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_ADD_RULE } from '@src/services/client/rules';
 import { IRules } from '@src/services/client/rules/types';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 /**
  * Props for RulesCard component.
@@ -56,13 +56,13 @@ export function RulesCard({ rule }: PropsType) {
       <Card
         color="white"
         shadow="sm"
-        className="w-[225px] h-[154px] p-[30px] border-teal-600"
+        className="h-[9.62rem] p-8 border-teal-600"
       >
         <div className="flex flex-col" dir="ltr">
           <Typography
             color="black"
             type="p"
-            className="h-16  text-sm font-semibold"
+            className="h-16 text-sm font-semibold"
           >
             {rule.name}
           </Typography>
@@ -70,13 +70,15 @@ export function RulesCard({ rule }: PropsType) {
             <IconButton
               icon="ph:plus"
               color="tealDark"
+              size="xxl"
               className="text-white"
               onClick={onClickAddButton}
             />
             <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
               <IconButton
-                icon="ph:dots-three-bold"
+                icon="ph:dots-three"
                 color="white"
+                size="xxl"
                 onClick={onClickAddButton}
               />
             </Link>
@@ -89,7 +91,7 @@ export function RulesCard({ rule }: PropsType) {
         open={openModal}
         setOpen={setOpenModal}
         type="success"
-        title="آیا مطمئن هستید؟"
+        title={`قانون ${rule.name} اضافه شود ؟‌`}
         buttonOne={{
           label: 'بله',
           onClick: handleRequestAdd,

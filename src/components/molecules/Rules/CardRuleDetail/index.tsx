@@ -1,20 +1,18 @@
 import { Card, Typography } from '@ui/atoms';
-import { TitleMyProduct } from '@ui/molecules/TitleMyProduct';
 
-type PropsType = {
+type TCardRuleDetailPropType = {
   label: string;
-  value: string;
+  value: string | number;
   className?: string;
 };
 
 /**
  * CardRuleDetail Component
  *
- * This component renders a card from rules detail.
+ * This component renders a card from rules detail that the value from the card comes from the prop of it.
  *
  * @component
  *
- * @param {PropsType} props - The props for the CardRuleDetail component.
  * @param {string} label - Defines and displays the label title for the card.
  * @param {string} value - Defines and displays the value for the card.
  * @param {string} [className] - Set custom className
@@ -22,14 +20,29 @@ type PropsType = {
  * @returns {JSX.Element} The returned a card detail.
  */
 
-export function CardRuleDetail({ label, value, className }: PropsType) {
+export function CardRuleDetail({
+  label,
+  value,
+  className,
+}: TCardRuleDetailPropType) {
   return (
-    <Card color="neutral" className={`flex items-center px-4 h-8 ${className}`}>
-      <TitleMyProduct title={label} />
-      <div className="h-4 w-3 border-r border-neutral-400" />
-      <Typography size="h6" className="mr-auto text-neutral-400">
-        {value}
+    <div className="text-center sm:text-start mt-[0.625rem]">
+      <Typography
+        color="neutral_dark"
+        weight="light"
+        size="body4"
+        className="text-xs sm:text-base sm:font-bold"
+      >
+        {label}
       </Typography>
-    </Card>
+      <Card
+        color="neutral_light"
+        className={`flex justify-center w-[6.438rem] items-center mt-2 rounded-lg md:w-[15.9rem] h-[1.87rem] ${className}`}
+      >
+        <Typography size="body5" color="neutral">
+          {value}
+        </Typography>
+      </Card>
+    </div>
   );
 }

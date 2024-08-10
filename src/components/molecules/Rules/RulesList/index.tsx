@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ButtonState } from '@src/pages/Services/Rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import {
@@ -9,7 +10,6 @@ import { E_RULES_LIST } from '@src/services/client/rules/endpoint';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { IProduct } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
-import { useEffect, useState } from 'react';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
@@ -25,17 +25,17 @@ import { RulesCard } from './RulesCard';
  * @property {string} searchValue - The search value to filter the rules.
  */
 
-type PropsType = {
+type TRulesListProp = {
   buttonState: ButtonState;
   searchValue: string;
 };
 
-const LIMIT_RULES_LIST = 12;
+const LIMIT_RULES_LIST = 16;
 
 /**
  * RulesList Component
  *
- * This component displays a list of rules with pagination and search functionality.
+ * This component displays a list of rules with pagination and search functionality that we can filter our rules base of (all, suggest) rules.
  *
  * @component
  *
@@ -44,7 +44,10 @@ const LIMIT_RULES_LIST = 12;
  * @returns {JSX.Element} The rendered RulesList component.
  */
 
-export function RulesList({ buttonState, searchValue }: PropsType) {
+export function RulesList({
+  buttonState,
+  searchValue,
+}: TRulesListProp): JSX.Element {
   const { user } = useUserContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
@@ -91,24 +94,31 @@ export function RulesList({ buttonState, searchValue }: PropsType) {
       />
     );
   }
+
+  const rulesSuggest = rules.filter((item) =>
+    item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  );
+
   return (
     <LoadingWrapper isLoading={loadingAllData || loadingSuggestData}>
       <div className="flex flex-col h-full items-center">
         <div className="w-full mt-11">
-          {rules.length > 0 ? (
+          {rulesSuggest.length > 0 ? (
             <>
-              <div className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 mb-[82px]">
-                {rules.map((item: IRules) => (
+              <div className="w-full grid grid-cols-1 gap-x-[1.87rem] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 mb-[5.1rem]">
+                {rulesSuggest.map((item: IRules) => (
                   <RulesCard key={item.id} rule={item} />
                 ))}
               </div>
-              {!!countPage && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
-                  onPageChange={handlePageChange}
-                />
-              )}
+              <div className="hidden sm:block mt-[5.1rem]">
+                {!!countPage && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
+                    onPageChange={handlePageChange}
+                  />
+                )}
+              </div>
             </>
           ) : (
             <NoResult />

@@ -1,12 +1,30 @@
 export interface IOptionSelect {
-  id?: string;
+  id?: string | number;
   value?: string;
   label: string;
 }
-interface OptionSelectProps {
+interface IOptionSelectProps {
   option: IOptionSelect;
 }
-export function OptionSelect(props: OptionSelectProps) {
+
+/**
+ * OptionSelect component
+ *
+ * This component renders a single <option> element for use within a <select>.
+ *
+ * @component
+ *
+ * @param {OptionSelectProps} props - The props for the OptionSelect component.
+ * @param {IOptionSelect} props.option - The option object containing the value and label for the option element.
+ *
+ * @returns {JSX.Element} The rendered OptionSelect component.
+ */
+
+export function OptionSelect(props: IOptionSelectProps): JSX.Element {
   const { option } = props;
-  return <option value={option.value}>{option.label}</option>;
+  return (
+    <option value={option.value} className="appearance-none text-neutral-400">
+      {option.label}
+    </option>
+  );
 }

@@ -9,12 +9,16 @@ import { NoResult } from '@ui/molecules/NoResult';
 import { MyRulesCard } from './MyRulesCard';
 import { useCheckRuleVersion } from './hook/useCheckedRuleVersion';
 
-const headerItem: any = {
-  rule_name: 'نام قانون',
-  created_at: 'تاریخ ثبت ',
-  creator: {
-    email: 'سازنده',
-  },
+// const headerItem: any = {
+//   rule_name: 'نام قانون',
+//   created_at: 'تاریخ ثبت ',
+//   creator: {
+//     email: 'سازنده',
+//   },
+// };
+
+type TMyRulesListProp = {
+  searchValue?: string;
 };
 
 /**
@@ -24,11 +28,11 @@ const headerItem: any = {
  * It handles loading state, no result state, and displays each rule using MyRulesCard component.
  *
  * @component
- *
+ * @param {searchValue}  prop.searchValue search value
  * @returns {JSX.Element} The rendered MyRulesList component.
  */
 
-export function MyRulesList() {
+export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
   const { data, mutate, isLoading } =
     useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
@@ -37,18 +41,18 @@ export function MyRulesList() {
   const handleMutate = () => {
     mutate();
   };
+  const filterData = checkedRulesList.filter((item) =>
+    item.rule_name
+      .toLocaleLowerCase()
+      .includes(searchValue?.toLocaleLowerCase() as string)
+  );
 
   return (
-    <div className="w-full mt-8">
-      <MyRulesCard
-        mutateMyRulesList={handleMutate}
-        myRule={headerItem}
-        isHeader
-      />
+    <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
       {isLoading ? (
         <LoadingSpinner />
-      ) : checkedRulesList.length > 0 ? (
-        checkedRulesList.map((item) => (
+      ) : filterData.length > 0 ? (
+        filterData.map((item) => (
           <MyRulesCard
             key={item.id}
             mutateMyRulesList={handleMutate}

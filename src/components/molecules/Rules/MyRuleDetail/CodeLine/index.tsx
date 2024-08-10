@@ -1,13 +1,19 @@
-import { Card, Typography } from '@ui/atoms';
+import { Typography } from '@ui/atoms';
 import { SliceOrderCodeType } from '@src/helper/utils/ruleCodes';
+
 import { CodeLineSelect } from './CodeLineSelect';
 
-type PropsType = { code: SliceOrderCodeType; onChangeOrder: any; id: string };
+type TCodeLIneProp = {
+  code: SliceOrderCodeType;
+  onChangeOrder: any;
+  id: string;
+  disable: boolean;
+};
 
 /**
  * CodeLine Component
  *
- * This component renders a section include rule code and action
+ * This component renders a section include rule code and action that we can filter our rules based on select
  *
  * @component
  *
@@ -15,22 +21,27 @@ type PropsType = { code: SliceOrderCodeType; onChangeOrder: any; id: string };
  * @param {string} code - Includes rule code
  * @param {*} onChangeOrder - handler change function for code action
  * @param {string} id - id for changed management
+ * @param {boolean} disable - disables code line
+ *
  *
  * @returns {JSX.Element} The rendered a section include rule code and action
  */
 
-export function CodeLine({ code, onChangeOrder, id }: PropsType) {
+export function CodeLine({ code, onChangeOrder, id, disable }: TCodeLIneProp) {
   if (!code?.order || !code?.code) {
     return null;
   }
   return (
-    <div dir="ltr">
-      <Card className="my-2 font-sans text-left p-2">
-        <CodeLineSelect value={code.order} onChange={onChangeOrder} id={id} />
-        <Typography type="span" size="body3" className="text-neutral-400">
-          {code?.code}
-        </Typography>
-      </Card>
+    <div dir="ltr" className="flex">
+      <CodeLineSelect
+        value={code.order}
+        onChange={onChangeOrder}
+        id={id}
+        disableSelect={disable}
+      />
+      <Typography type="span" size="body5" className="text-neutral-900 ml-9">
+        {code?.code}
+      </Typography>
     </div>
   );
 }
