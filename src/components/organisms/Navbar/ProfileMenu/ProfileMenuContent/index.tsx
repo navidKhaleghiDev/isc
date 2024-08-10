@@ -44,7 +44,7 @@ export function ProfileMenuContent({ setIsOpen }: ProfileMenuContentProps) {
       <div className="sm:py-[1.938rem] pt-4 border-t-2 h-4/5 border-t-neutral-300 sm:border-none flex flex-col items-start justify-between sm:justify-normal">
         <div className="flex flex-col items-start">
           <LinkButton
-            link={ROUTES_PATH.addUser}
+            link={ROUTES_PATH.changePassword}
             startIcon={PhKey}
             label="تغییر رمز عبور"
             type="neutral"
