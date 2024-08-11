@@ -31,11 +31,11 @@ function MyRulePageCp(): JSX.Element {
 
   return (
     <div className="w-full flex flex-col h-full">
-      <Typography size="body1" weight="bold" className="block sm:hidden">
+      <Typography size="body1" weight="bold" className="block sm:hidden mb-5">
         قوانین محصول
       </Typography>
       <div className="flex items-center justify-between">
-        <div className="grid grid-cols-2 md:flex gap-[1.87rem] mt-5">
+        <div className="grid sm:grid-cols-2 md:flex gap-[1.87rem]">
           <SearchInput onChange={handleOnSearch} value={search} />
           {/* note: BaseSelect has been disable cause do not have service for this */}
           {/* <div className="md:w-64">

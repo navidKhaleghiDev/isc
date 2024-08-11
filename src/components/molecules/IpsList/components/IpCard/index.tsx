@@ -76,7 +76,12 @@ export function IpCard({ item, mutateIpList }: PropsType) {
       >
         <div className="flex flex-col w-full mx-7">
           <div className="flex flex-col items-end">
-            <Typography color="neutral_dark" size="body3" weight="medium">
+            <Typography
+              color="neutral_dark"
+              size="body4"
+              weight="medium"
+              className="sm:text-lg"
+            >
               {item.ip}
             </Typography>
             <Typography
@@ -84,11 +89,10 @@ export function IpCard({ item, mutateIpList }: PropsType) {
               size="body4"
               className={`px-3 my-3 rounded-full ${ipTypeClass}`}
             >
-              ({item.ip_type})
+              {item.ip_type === 'External' ? 'خارجی' : 'داخلی'}
             </Typography>
           </div>
           <div className="flex">
-            {' '}
             <IconButton
               icon={PhPencilSimple}
               color="neutral"
