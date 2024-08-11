@@ -55,14 +55,11 @@ export function RuleInformation({
           className=""
         />
       </div>
-      <Typography
-        color="neutral_dark"
-        size="body1"
-        weight="bold"
-        className="self-end md:self-start"
-      >
-        {name}
-      </Typography>
+      <div className="self-end mt-11 md:self-start">
+        <Typography color="neutral_dark" size="body1" weight="bold">
+          {name}
+        </Typography>
+      </div>
     </div>
   );
 }

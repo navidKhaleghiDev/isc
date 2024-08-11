@@ -52,7 +52,7 @@ function LayoutCp(): JSX.Element {
   return (
     <div className="flex h-screen bg-white font-kalameh">
       <div className="flex flex-col flex-1 overflow-hidden">
-        <header className="shadow-sm z-10 border-neutral-200">
+        <header className="sm:shadow-sm z-10 border-neutral-200">
           <NavbarDashboard />
         </header>
         <div className="flex sm:flex-row h-full overflow-y-auto px-0.5 2xl:container 2xl:mx-auto 2xl:justify-center">
