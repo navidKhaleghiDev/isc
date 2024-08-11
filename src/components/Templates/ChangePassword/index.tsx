@@ -60,8 +60,8 @@ export function ChangePassword() {
   const password = watch('password', '');
 
   return (
-    <div className="w-full h-full flex flex-col">
-      <div className="w-full flex justify-end">
+    <div className="w-full h-full flex flex-col px-10 sm:px-0">
+      <div className="w-full sm:flex sm:justify-end hidden">
         <BackButton backToReferrer />
       </div>
       <div className="mb-10 ml-auto">
@@ -73,7 +73,7 @@ export function ChangePassword() {
         className="w-full h-full flex flex-col justify-between"
         onSubmit={handleSubmit(handleFormSubmit)}
       >
-        <div className="md:w-full w-2/3 grid gap-x-7 gap-y-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 h-full">
+        <div className="w-full grid gap-x-7 gap-y-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 h-full">
           <BaseInput
             fullWidth
             control={control}
@@ -111,8 +111,8 @@ export function ChangePassword() {
             fullWidth
           />
         </div>
-        <div className="md:self-end self-center">
-          <BaseButton submit label="تغییر کلمه عبور" size="md" fullWidth />
+        <div className="md:self-end self-center w-40 sm:w-[11.875rem] mt-20">
+          <BaseButton submit label="تغییر کلمه عبور" fullWidth />
         </div>
       </form>
     </div>

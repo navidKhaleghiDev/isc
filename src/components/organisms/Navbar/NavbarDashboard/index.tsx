@@ -27,6 +27,7 @@ import { ProfileMenu } from '../ProfileMenu';
     ROUTES_PATH.myProductIpsList,
     ROUTES_PATH.servicesRulesRetrieve,
     ROUTES_PATH.myProductMyRulesRetrieve,
+    ROUTES_PATH.changePassword,
   ];
   const shouldShowBackButton = (pathname: string) => {
     return backButtonRoutes.some((route) => matchPath(route, pathname));
