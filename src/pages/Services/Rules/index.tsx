@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import PhCaretDownBold from '@iconify-icons/ph/caret-down-bold';
 import { RulesList } from '@ui/molecules/Rules/RulesList';
 import { WithPermission, EUserRole } from '@src/helper/hoc/withPermission';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
@@ -58,7 +59,7 @@ function RulesPageCP(): JSX.Element {
             <IconButton
               onClick={handelClick}
               className="bg-white size-3 absolute top-1 left-1"
-              icon="ph:caret-down-bold"
+              icon={PhCaretDownBold}
             />
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Controller } from 'react-hook-form';
 import { BaseIcon } from '@ui/atoms/BaseIcon';
 import { forwardRef } from 'react';
+import PhCaretDownBold from '@iconify-icons/ph/caret-down-bold';
 
 import { IBaseSelectProp } from '../types';
 import { baseSelectStyles } from '../styles';
@@ -96,7 +97,7 @@ export const BaseSelect = forwardRef<HTMLSelectElement, IBaseSelectProp<any>>(
               </Typography>
             )}
             <BaseIcon
-              icon="ph:caret-down-bold"
+              icon={PhCaretDownBold}
               className="absolute top-1/3 left-3 z-30"
             />
             {hiddenError && (

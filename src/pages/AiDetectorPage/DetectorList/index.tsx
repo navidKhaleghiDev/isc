@@ -1,16 +1,17 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import useSWR from 'swr';
+import X from '@iconify-icons/ph/x';
 import { Typography } from '@ui/atoms';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { DatePicker, convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
-import useSWR from 'swr';
+import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
+import Pagination from '@ui/molecules/Pagination';
+import { NoResult } from '@ui/molecules/NoResult';
+import { EAiEndpoints, IMyDetector } from '@src/services/client/ai/types';
 import { PaginationResponseSwr } from '@src/types/services';
 import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
-import { useForm } from 'react-hook-form';
-import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
-import Pagination from '@ui/molecules/Pagination';
-import { EAiEndpoints, IMyDetector } from '@src/services/client/ai/types';
-import { NoResult } from '@ui/molecules/NoResult';
 
 import { IFilterDetectorValues } from './types';
 import { DetectorCard } from './DetectorListCard/DetectorCard';
@@ -82,7 +83,7 @@ export function DetectorList() {
             placeholder="تاریخ پایان"
             id="endData"
             name="endDate"
-            startIcon="ph:x"
+            startIcon={X}
             fullWidth
           />
         </div>

@@ -1,11 +1,13 @@
-import { persianDateNumber } from '@src/helper/utils/dateUtils';
-import { IUser } from '@src/services/client/users/types';
+import { useState } from 'react';
+import PhTrashSimple from '@iconify-icons/ph/trash-simple';
+import { toast } from 'react-toastify';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
-import { useState } from 'react';
+import { persianDateNumber } from '@src/helper/utils/dateUtils';
+import { IUser } from '@src/services/client/users/types';
 import { API_USERS_DELETE } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
-import { toast } from 'react-toastify';
+
 import { Modal } from '../../Modal';
 
 type PropsType = {
@@ -92,7 +94,7 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
             {!isHeader && user.email !== currentUser?.email && (
               <div className="flex justify-end">
                 <IconButton
-                  icon="ph:trash-simple"
+                  icon={PhTrashSimple}
                   color="red"
                   onClick={toggleModalDelete}
                 />

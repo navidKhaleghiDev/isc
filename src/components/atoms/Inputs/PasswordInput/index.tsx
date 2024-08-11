@@ -1,6 +1,7 @@
-import { BaseInput } from '@ui/atoms';
-
 import { useState } from 'react';
+import PhEye from '@iconify-icons/ph/eye';
+import PhEyeSlash from '@iconify-icons/ph/eye-slash';
+import { BaseInput } from '@ui/atoms';
 
 import { BaseInputProps } from '../types';
 import { regexPattern } from '../utils/regexPattern';
@@ -39,7 +40,7 @@ export function PasswordInput({
       placeholder={placeholder}
       type={showPassword ? 'text' : 'password'}
       onClickIcon={() => setShowPassword(!showPassword)}
-      iconButtonIcon={showPassword ? 'ph:eye' : 'ph:eye-slash'}
+      iconButtonIcon={showPassword ? PhEye : PhEyeSlash}
       rules={{
         required: regexPattern.required,
         pattern: regexPattern.password,
