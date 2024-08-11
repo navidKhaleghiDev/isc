@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PhPencilSimple from '@iconify-icons/ph/pencil-simple';
+import PhTrashSimple from '@iconify-icons/ph/trash-simple';
 import { toast } from 'react-toastify';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
@@ -100,7 +101,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
               onClick={toggleModalEdit}
             />
             <IconButton
-              icon="ph:trash-simple"
+              icon={PhTrashSimple}
               color="redNoBg"
               size="xxl"
               onClick={toggleModalDelete}

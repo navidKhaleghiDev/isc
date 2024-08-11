@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { API_ADD_RULE } from '@src/services/client/rules';
-import { IRules } from '@src/services/client/rules/types';
+import PhDotsThree from '@iconify-icons/ph/dots-three';
+import PhPlus from '@iconify-icons/ph/plus';
 import { Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { Modal } from '@ui/molecules/Modal';
+
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { API_ADD_RULE } from '@src/services/client/rules';
+import { IRules } from '@src/services/client/rules/types';
 
 /**
  * Props for RulesCard component.
@@ -68,7 +71,7 @@ export function RulesCard({ rule }: PropsType) {
           </Typography>
           <div className="flex self-end gap-2 items-center">
             <IconButton
-              icon="ph:plus"
+              icon={PhPlus}
               color="tealDark"
               size="xxl"
               className="text-white"
@@ -76,7 +79,7 @@ export function RulesCard({ rule }: PropsType) {
             />
             <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
               <IconButton
-                icon="ph:dots-three"
+                icon={PhDotsThree}
                 color="white"
                 size="xxl"
                 onClick={onClickAddButton}

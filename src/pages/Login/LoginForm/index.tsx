@@ -1,17 +1,18 @@
-import { Avatar } from '@ui/atoms/Avatar';
-import { BaseButton } from '@ui/atoms/BaseButton';
-import { useNavigate } from 'react-router-dom';
-import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
-import { Typography } from '@ui/atoms/Typography';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import PhUserCircle from '@iconify-icons/ph/user-circle';
+import PhUser from '@iconify-icons/ph/user';
+import { Avatar } from '@ui/atoms/Avatar';
+import { BaseButton } from '@ui/atoms/BaseButton';
+import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
+import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
+import { Modal } from '@ui/molecules/Modal';
+import { Typography } from '@ui/atoms/Typography';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { API_USERS_LOGIN } from '@src/services/client/users';
 import { useUserContext } from '@context/user/userContext';
 import { http } from '@src/services/http';
-import PhUserCircle from '@iconify-icons/ph/user-circle';
-import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
-import { Modal } from '@ui/molecules/Modal';
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
 export const STORAGE_KEY_REFRESH_TOKEN = 'refresh';
@@ -92,7 +93,7 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             }}
             id="email"
             name="email"
-            endIcon="ph:user"
+            endIcon={PhUser}
           />
           <PasswordInput
             name="password"

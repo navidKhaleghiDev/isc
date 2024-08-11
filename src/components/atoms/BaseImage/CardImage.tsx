@@ -1,3 +1,4 @@
+import PhImage from '@iconify-icons/ph/image';
 import { BaseIcon, Card } from '@ui/atoms';
 
 import { IBaseImage } from './types';
@@ -12,7 +13,7 @@ export function CardImage({ src, alt, className }: Partial<IBaseImage>) {
       {src ? (
         <ResponsiveImage src={src} alt={alt ?? ''} />
       ) : (
-        <BaseIcon icon="ph:image" color="neutral" size="xxl" />
+        <BaseIcon icon={PhImage} color="neutral" size="xxl" />
       )}
     </Card>
   );

@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { Controller, FieldValues } from 'react-hook-form';
+import PhCaretDown from '@iconify-icons/ph/caret-down';
+import PhCaretLeft from '@iconify-icons/ph/caret-left';
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 
 import { DropdownProps, IOptionSelect, StateType } from './type';
@@ -105,7 +107,7 @@ export function Dropdown<T extends FieldValues>({
                   placeHolder}
                 {/* <BaseIcon icon="ic:round-close" /> */}
                 <BaseIcon
-                  icon={state.openOptions ? `ph:caret-down` : `ph:caret-left`}
+                  icon={state.openOptions ? PhCaretDown : PhCaretLeft}
                 />
               </>
             )}

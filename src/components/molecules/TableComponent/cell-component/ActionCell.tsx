@@ -1,5 +1,7 @@
 import DotsThreeVertical from '@iconify-icons/ph/dots-three-vertical';
 import PencilSimple from '@iconify-icons/ph/pencil-simple';
+import PhPlus from '@iconify-icons/ph/plus';
+import PhTrashSimple from '@iconify-icons/ph/trash-simple';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useUserContext } from '@context/user/userContext';
@@ -20,7 +22,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
     case 'delete':
       cellContent = (
         <IconButton
-          icon="ph:trash-simple"
+          icon={PhTrashSimple}
           color="redNoBg"
           onClick={() => {
             column.onDelete(row.id);
@@ -33,7 +35,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
     case 'add':
       cellContent = (
         <IconButton
-          icon="ph:plus"
+          icon={PhPlus}
           color="teal"
           onClick={() => {
             column.onAdd(row.id);

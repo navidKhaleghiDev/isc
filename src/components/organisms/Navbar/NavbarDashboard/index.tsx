@@ -1,23 +1,17 @@
 import { Link, matchPath, useLocation } from 'react-router-dom';
-
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Typography } from '@ui/atoms/Typography/Typography';
-import PhHardDrives from '@iconify-icons/ph/hard-drives';
-import { IconButton } from '@ui/atoms/BaseButton';
 import { PageBackButton } from '@ui/atoms/BackButton';
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+
+import { StatusDropdown } from '../Status';
 import { ProfileMenu } from '../ProfileMenu';
 
 /**
- * NavbarDashboard Component
- *
- * This component renders the navigation bar for the dashboard. It includes the user's avatar, name,
- * role, and links to various routes based on the user's permissions.
- *
- * @example
- * <NavbarDashboard />
- *
- * @returns {JSX.Element} The rendered NavbarDashboard component.
- */ export function NavbarDashboard(): JSX.Element {
+ * @component
+ * @returns{JSX.Element}
+ */
+
+export function NavbarDashboard(): JSX.Element {
   const location = useLocation();
 
   const backButtonRoutes = [
@@ -27,13 +21,17 @@ import { ProfileMenu } from '../ProfileMenu';
     ROUTES_PATH.myProductIpsList,
     ROUTES_PATH.servicesRulesRetrieve,
     ROUTES_PATH.myProductMyRulesRetrieve,
+    ROUTES_PATH.changePassword,
   ];
+
   const shouldShowBackButton = (pathname: string) => {
     return backButtonRoutes.some((route) => matchPath(route, pathname));
   };
+
   const showBackButton = shouldShowBackButton(location.pathname);
+
   return (
-    <div className="flex h-20 items-center justify-between px-5 2xl:container 2xl:mx-auto">
+    <div className="flex h-20 items-center justify-between px-5 2xl:container 2xl:mx-auto relative">
       <Link to={ROUTES_PATH.home} className="hidden sm:flex">
         <Typography
           color="teal"
@@ -64,22 +62,9 @@ import { ProfileMenu } from '../ProfileMenu';
       </div>
 
       <div className="flex justify-center items-center">
-        <IconButton
-          size="xxl"
-          type="button"
-          color="neutralLight"
-          icon={PhHardDrives}
-          className="w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-500 ease-linear
-          "
-        />
-        {/* <IconButton
-          size="xxl"
-          type="button"
-          color="neutralLight"
-          icon={PhUser}
-          className="w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-500 ease-linear
-          "
-        /> */}
+        <div>
+          <StatusDropdown />
+        </div>
         <ProfileMenu />
       </div>
     </div>

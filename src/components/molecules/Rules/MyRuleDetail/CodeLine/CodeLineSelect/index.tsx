@@ -1,4 +1,5 @@
 import { ChangeEvent, useRef } from 'react';
+import PhCaretUpDownBold from '@iconify-icons/ph/caret-up-down-bold';
 import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 import { IconButton } from '@ui/atoms/BaseButton';
 
@@ -62,7 +63,7 @@ export function CodeLineSelect({
         className={`${className}`}
       />
       <IconButton
-        icon="ph:caret-up-down-bold"
+        icon={PhCaretUpDownBold}
         color="white"
         className="size-1 absolute top-1 -right-6"
         onClick={handelSelectClick}

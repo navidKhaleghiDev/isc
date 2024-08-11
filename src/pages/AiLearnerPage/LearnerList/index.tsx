@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import useSWR from 'swr';
+import X from '@iconify-icons/ph/x';
+import { NoResult } from '@ui/molecules/NoResult';
 import { Typography } from '@ui/atoms';
 import { DatePicker, convertI2ToAD } from '@ui/atoms/Inputs/DatePicker';
-import useSWR from 'swr';
+import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
+import Pagination from '@ui/molecules/Pagination';
 import { PaginationResponseSwr } from '@src/types/services';
 import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
-import { useForm } from 'react-hook-form';
-import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
-import Pagination from '@ui/molecules/Pagination';
 import { EAiEndpoints, IMyLearner } from '@src/services/client/ai/types';
-import { NoResult } from '@ui/molecules/NoResult';
 
 import { IStartListenerValues } from './types';
 import { LearnerCard } from './LearnerListCard/LearnerCard';
@@ -79,7 +80,7 @@ export function LearnerList() {
             placeholder="تاریخ پایان"
             id="endData"
             name="endDate"
-            startIcon="ph:x"
+            startIcon={X}
             format="YYYY-MM-DD"
             fullWidth
           />

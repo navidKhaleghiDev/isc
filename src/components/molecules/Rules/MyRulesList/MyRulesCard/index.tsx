@@ -1,11 +1,13 @@
-import { IMyRule } from '@src/services/client/rules/types';
-import { BaseIcon, Card, Typography } from '@ui/atoms';
 import { useState } from 'react';
-import { API_DELETE_MY_RULE } from '@src/services/client/rules';
-import { toast } from 'react-toastify';
-import { Modal } from '@ui/molecules/Modal';
 import { Link } from 'react-router-dom';
+import PhDotsThree from '@iconify-icons/ph/dots-three';
+import PhTrashSimple from '@iconify-icons/ph/trash-simple';
+import { toast } from 'react-toastify';
+import { BaseIcon, Card, Typography } from '@ui/atoms';
 import { IconButton } from '@ui/atoms/BaseButton';
+import { Modal } from '@ui/molecules/Modal';
+import { IMyRule } from '@src/services/client/rules/types';
+import { API_DELETE_MY_RULE } from '@src/services/client/rules';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 
 type TMyRuleCardProp = {
@@ -71,10 +73,10 @@ export function MyRulesCard({
             to={`${ROUTES_PATH.myProductMyRules}/${myRule.id}`}
             state={{ isUpdated: myRule.isUpdated }}
           >
-            <BaseIcon icon="ph:dots-three" size="md" />
+            <BaseIcon icon={PhDotsThree} size="md" />
           </Link>
           <IconButton
-            icon="ph:trash-simple"
+            icon={PhTrashSimple}
             size="xxl"
             color="red"
             onClick={toggleModalDelete}

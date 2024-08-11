@@ -1,3 +1,6 @@
+import PhMapPin from '@iconify-icons/ph/map-pin';
+import PhPhone from '@iconify-icons/ph/phone';
+
 import { ProductNameTemplate } from '@ui/Templates/ProductName';
 import { Card, Typography } from '@ui/atoms';
 import { TypographyIcon } from '@ui/atoms/Typography/TypographyIcon';
@@ -30,7 +33,7 @@ export function ProductNamePage() {
               <TypographyIcon
                 text="آدرس ارسال شده"
                 size="h5"
-                startIcon="ph:map-pin"
+                startIcon={PhMapPin}
                 iconColor="teal"
                 color="teal"
                 iconSize="md"
@@ -51,7 +54,7 @@ export function ProductNamePage() {
               <TypographyIcon
                 text="تلفن"
                 size="h5"
-                startIcon="ph:phone"
+                startIcon={PhPhone}
                 iconColor="teal"
                 color="teal"
                 iconSize="md"

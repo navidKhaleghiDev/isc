@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
+import PhCaretDoubleLeft from '@iconify-icons/ph/caret-double-left';
 import { BaseIcon } from '@ui/atoms';
 
 const dataMock = [
@@ -19,7 +19,7 @@ export function Pagination() {
           <li>
             <a href="#" className={mClass}>
               <span className="sr-only">Previous</span>
-              <BaseIcon icon="ph:caret-double-left" />
+              <BaseIcon icon={PhCaretDoubleLeft} />
             </a>
           </li>
           {dataMock.map((item) => (
@@ -33,7 +33,7 @@ export function Pagination() {
           <li>
             <a href="#" className={mClass}>
               <span className="sr-only">Next</span>
-              <BaseIcon icon="ph:caret-double-right" />
+              <BaseIcon icon={PhCaretDoubleLeft} />
             </a>
           </li>
         </ul>

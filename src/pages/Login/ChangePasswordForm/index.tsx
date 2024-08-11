@@ -1,13 +1,15 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import PhUser from '@iconify-icons/ph/user';
+import PhLock from '@iconify-icons/ph/lock';
 import { Avatar } from '@ui/atoms/Avatar';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
+import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 import { Modal } from '@ui/molecules/Modal';
 import { Typography } from '@ui/atoms/Typography';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useUserContext } from '@context/user/userContext';
 import { API_USERS_PATCH } from '@src/services/client/users';
-import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 
 import { ELoginStep, ILoginFieldValues, PropsFormType } from '../types';
 
@@ -63,7 +65,7 @@ export function ChangePasswordForm({
         className="w-full h-full flex flex-col items-center justify-end mt-auto"
       >
         <div className="absolute top-[-6rem]">
-          <Avatar icon="ph:lock" intent="grey" size="lg" />
+          <Avatar icon={PhLock} intent="grey" size="lg" />
         </div>
         <Typography color="neutral" size="h5" className="mb-5">
           لطفا ایمیل و گذرواژه جدید خود را وارد کنید
@@ -82,7 +84,7 @@ export function ChangePasswordForm({
             id="email"
             name="email"
             type="text"
-            endIcon="ph:user"
+            endIcon={PhUser}
             rules={{
               required: regexPattern.required,
             }}
