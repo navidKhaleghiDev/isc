@@ -14,17 +14,17 @@ export function CardProduct({ label, value, className }: PropsType) {
       <div className="flex flex-col justify-end items-start w-full">
         <Typography
           color="neutral_dark"
-          size="body4"
-          className="mb-[6px] font-semibold"
+          size="body6"
+          className="mb-[6px] font-semibold sm:text-base"
         >
           {label}
         </Typography>
         <Typography
           color="neutral"
-          size="body5"
+          size="body6"
           weight="normal"
           className="
-           bg-neutral-100 w-full px-2.5 rounded-lg"
+           bg-neutral-100 w-full sm:text-sm px-2.5 rounded-lg"
         >
           {value}
         </Typography>

@@ -48,10 +48,15 @@ export function BoxDashboard({
       <>
         {showIcon()}
         <div>
-          <Typography color="black" size="body4" weight="bold">
+          <Typography
+            color="black"
+            size="body6"
+            weight="bold"
+            className="sm:text-base"
+          >
             {title}
           </Typography>
-          <Typography color="neutral" size="body5">
+          <Typography color="neutral" size="body6" className="sm:text-sm">
             {description}
           </Typography>
         </div>
