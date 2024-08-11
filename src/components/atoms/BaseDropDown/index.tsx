@@ -20,7 +20,7 @@ export function BaseDropDown({
 
   return (
     <div ref={ref} className={`relative ${className}`}>
-      <div className="mx-2">
+      <div className="mx-[0.313rem]">
         <button
           type="button"
           className={`flex justify-center w-full rounded-md ${

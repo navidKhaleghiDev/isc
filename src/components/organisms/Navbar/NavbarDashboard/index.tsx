@@ -1,12 +1,10 @@
 import { Link, matchPath, useLocation } from 'react-router-dom';
-
 import { Typography } from '@ui/atoms/Typography/Typography';
-import { IconButton } from '@ui/atoms/BaseButton';
 import { PageBackButton } from '@ui/atoms/BackButton';
-import PhUser from '@iconify-icons/ph/user';
-
 import { ROUTES_PATH } from '@src/routes/routesConstants';
+
 import { StatusDropdown } from '../Status';
+import { ProfileMenu } from '../ProfileMenu';
 
 /**
  * @component
@@ -67,16 +65,7 @@ export function NavbarDashboard(): JSX.Element {
         <div>
           <StatusDropdown />
         </div>
-
-        <div className="relative">
-          <IconButton
-            size="xxl"
-            type="button"
-            color="neutralLight"
-            icon={PhUser}
-            className="w-10 h-10 rounded-lg hover:bg-neutral-300 transition-all duration-700 ease-linear"
-          />
-        </div>
+        <ProfileMenu />
       </div>
     </div>
   );
