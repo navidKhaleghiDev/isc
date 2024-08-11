@@ -31,17 +31,17 @@ export const navigationSideBar: INavigation[] = [
     label: 'سیستم نظارتی امنیتی',
     path: ROUTES_PATH.monitoringSystems,
     icon: PhMonitor,
-    // items: [
-    //   {
-    //     id: '1',
-    //     label: 'سیستم نظارتی اول',
-    //     path: ROUTES_PATH.monitoringSystemsOne,
-    //   },
-    //   {
-    //     id: '2',
-    //     label: 'سیستم نظارتی دوم',
-    //     path: ROUTES_PATH.monitoringSystemsTow,
-    //   },
-    // ],
+    items: [
+      {
+        id: '1',
+        label: 'سیستم نظارتی اول',
+        path: ROUTES_PATH.monitoringSystemsOne,
+      },
+      {
+        id: '2',
+        label: 'سیستم نظارتی دوم',
+        path: ROUTES_PATH.monitoringSystemsTow,
+      },
+    ],
   },
 ];

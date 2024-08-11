@@ -17,20 +17,18 @@ export function MenuMobile(): JSX.Element {
   const { pathname } = useLocation();
 
   return (
-    <div className="sm:hidden w-full h-full">
-      <div className="fixed bottom-4 flex justify-around sm:flex-col w-full px-20 bg-neutral-100 rounded-full">
-        {navigationSideBar.map((item: INavigation) =>
-          !item.items ? (
+    <div className="sm:hidden">
+      <div className="fixed bottom-4 flex justify-around items-center sm:flex-col  w-full h-12 px-20 bg-neutral-100 rounded-full">
+        {navigationSideBar.map((item: INavigation) => {
+          return (
             <MenuMobileItem
               key={item.id}
               item={item}
               pathname={pathname}
               collapsed={false}
             />
-          ) : (
-            ''
-          )
-        )}
+          );
+        })}
       </div>
     </div>
   );

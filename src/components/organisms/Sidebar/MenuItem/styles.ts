@@ -25,17 +25,17 @@ export const menuItemStyles = cva(
 );
 // border-r-4 border-teal-600
 
-// export const menuChildItemStyles = cva(
-//   `${PALLET.TEXT_COLOR.NEUTRAL} ${PALLET.BG_COLOR.TEAL}`,
-//   {
-//     variants: {
-//       active: {
-//         true: `border-r-4 border-teal-600 hover:bg-neutral-200`,
-//       },
-//     },
-//     defaultVariants: {
-//       active: false,
-//       // isChildren: undefined,
-//     },
-//   }
-// );
+export const menuChildItemStyles = cva(
+  `${PALLET.TEXT_COLOR.NEUTRAL} ${PALLET.BG_COLOR.TEAL}`,
+  {
+    variants: {
+      active: {
+        true: `border-r-4 border-teal-600 hover:bg-neutral-200`,
+      },
+    },
+    defaultVariants: {
+      active: false,
+      // isChildren: undefined,
+    },
+  }
+);

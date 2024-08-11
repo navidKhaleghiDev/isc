@@ -42,13 +42,11 @@ export function Setting() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center py-14 px-10">
-      <div className="w-full flex justify-center items-center mb-6">
+    <div className="w-full h-full flex flex-col items-center px-10 sm:px-0">
+      <div className="w-full flex justify-center items-center mb-0 sm:mb-6 ">
         <TitleSection
           label={
-            firstName && lastName
-              ? `${firstName} ${lastName}`
-              : 'Mehdi Bazargan'
+            firstName && lastName ? `${firstName} ${lastName}` : 'نام کاربری'
           }
         />
         <div className="hidden sm:flex">
@@ -102,8 +100,8 @@ export function Setting() {
             fullWidth
           />
         </div>
-        <div className="flex justify-center sm:justify-end mt-[10rem]">
-          <BaseButton submit label="ثبت تغییرات" size="xl" />
+        <div className="flex self-center sm:self-end mt-[10rem] w-40 sm:w-[11.875rem]">
+          <BaseButton submit label="ثبت تغییرات" fullWidth />
         </div>
       </form>
     </div>
