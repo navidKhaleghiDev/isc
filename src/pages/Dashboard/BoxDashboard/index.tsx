@@ -42,8 +42,9 @@ export function BoxDashboard({
   return (
     <Card
       border
+      rounded="lg"
       shadow="sm"
-      className={`flex items-center px-2 py-4 md:p-7 mb-5 col-span-2 ${className}`}
+      className={`flex items-center sm:rounded-[1.25rem] px-2 py-1 sm:py-4 md:p-7 mb-5 col-span-2 ${className}`}
     >
       <>
         {showIcon()}
