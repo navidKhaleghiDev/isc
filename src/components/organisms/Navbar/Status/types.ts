@@ -7,7 +7,6 @@ export interface DropdownProps {
     label: string;
     status: string;
   }[];
-  isOpen: boolean;
+  // isOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   icon?: string | IconifyIcon;
-  toggleDropdown: (isOpen: boolean) => void;
 }

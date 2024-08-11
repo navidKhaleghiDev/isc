@@ -1,22 +1,12 @@
-import { useState, useRef } from 'react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 
 import { Typography } from '@ui/atoms/Typography/Typography';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { PageBackButton } from '@ui/atoms/BackButton';
 import PhUser from '@iconify-icons/ph/user';
-import PhHardDrives from '@iconify-icons/ph/hard-drives';
 
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { useClickOutside } from '@src/helper/hooks/useClickOutside';
-import { StatusDropdown } from '../Status/StatusDropdown';
-
-const serverOptions = [
-  { id: 'server1', label: 'Server 1', icon: PhHardDrives, status: 'expired' },
-  { id: 'server2', label: 'Server 2', icon: PhHardDrives, status: 'disable' },
-  { id: 'server3', label: 'Server 3', icon: PhHardDrives, status: 'active' },
-  { id: 'server4', label: 'Server 4', icon: PhHardDrives, status: 'active' },
-];
+import { StatusDropdown } from '../Status';
 
 /**
  * @component
@@ -24,19 +14,7 @@ const serverOptions = [
  */
 
 export function NavbarDashboard(): JSX.Element {
-  const [statusOpen, setStatusOpen] = useState(false);
   const location = useLocation();
-  const statusRef = useRef(null);
-
-  const statusHandle = () => {
-    setStatusOpen(!statusOpen);
-  };
-
-  useClickOutside({
-    ref: statusRef,
-    setValue: () => setStatusOpen(false),
-    value: statusOpen,
-  });
 
   const backButtonRoutes = [
     ROUTES_PATH.addUser,
@@ -85,22 +63,8 @@ export function NavbarDashboard(): JSX.Element {
       </div>
 
       <div className="flex justify-center items-center relative">
-        <div ref={statusRef} className="relative">
-          <IconButton
-            size="xxl"
-            type="button"
-            color="neutralLight"
-            icon={PhHardDrives}
-            onClick={statusHandle}
-            className={`w-10 h-10 rounded-lg ml-2 hover:bg-neutral-300 transition-all duration-700 ease-linear ${
-              statusOpen ? 'bg-neutral-300 hover:bg-neutral-300' : ''
-            }`}
-          />
-          <StatusDropdown
-            options={serverOptions}
-            isOpen={statusOpen}
-            toggleDropdown={setStatusOpen}
-          />
+        <div>
+          <StatusDropdown />
         </div>
 
         <div className="relative">
