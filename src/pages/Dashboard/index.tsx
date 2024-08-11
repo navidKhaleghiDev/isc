@@ -15,7 +15,7 @@ import { ProductBox } from './ProductBox';
 export function DashboardPage() {
   const { user } = useUserContext();
   return (
-    <div className="w-full flex flex-col h-full p-8">
+    <div className="w-full flex flex-col h-full">
       <div className="grid grid-cols-4 gap-7">
         <Card
           shadow="sm"
