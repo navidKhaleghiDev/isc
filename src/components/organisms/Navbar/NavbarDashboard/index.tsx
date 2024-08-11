@@ -62,7 +62,7 @@ export function NavbarDashboard(): JSX.Element {
         )}
       </div>
 
-      <div className="flex justify-center items-center relative">
+      <div className="flex justify-center items-center">
         <div>
           <StatusDropdown />
         </div>
