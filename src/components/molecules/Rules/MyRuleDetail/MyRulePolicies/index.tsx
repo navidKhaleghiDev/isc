@@ -13,6 +13,7 @@ import { getCountDifferenceOrder } from '@src/helper/utils/getCountDifferenceOrd
 
 import { AdditionalList } from '../AdditionalList';
 import { IRulePolicyListRef, RulePolicyList } from '../../RulePolicyList';
+import { RuleInformation } from '../../RuleInformation';
 
 type MyRulePoliciesProps = {
   myRule: IMyRule;
@@ -135,13 +136,18 @@ export function MyRulePolicies({ myRule }: MyRulePoliciesProps) {
 
   return (
     <>
+      <RuleInformation
+        updateDate={myRule.update_at}
+        name={myRule.rule_name}
+        codeList={codeList}
+        countDifferenceOrder={countDifferenceOrder}
+      />
       <RulePolicyList
         ref={rulePolicyListRef}
         codeList={codeList}
         setCodeList={setCodeList}
         onDeleteRule={handleDeleteMyRule}
         onRegisterRule={handleAddMyRule}
-        countDifferenceOrder={countDifferenceOrder}
       />
 
       {state?.isUpdated && (

@@ -1,5 +1,7 @@
 import { BaseInput } from '@ui/atoms';
+
 import { useState } from 'react';
+
 import { BaseInputProps } from '../types';
 import { regexPattern } from '../utils/regexPattern';
 
@@ -19,7 +21,12 @@ export function PasswordInput({
   control,
   label,
   placeholder,
-}: Pick<BaseInputProps<any>, 'name' | 'control' | 'placeholder' | 'label'>) {
+  fullWidth = false,
+  className,
+}: Pick<
+  BaseInputProps<any>,
+  'name' | 'control' | 'placeholder' | 'label' | 'fullWidth' | 'className'
+>) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -37,7 +44,8 @@ export function PasswordInput({
         required: regexPattern.required,
         pattern: regexPattern.password,
       }}
-      className="flex flex-col items-center"
+      fullWidth={fullWidth}
+      className={className}
     />
   );
 }

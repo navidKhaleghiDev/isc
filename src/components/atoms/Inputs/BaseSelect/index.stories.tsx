@@ -74,6 +74,11 @@ const meta: Meta<typeof BaseSelect> = {
       onClickIcon={args.onClickIcon}
       pureOnChange={args.pureOnChange}
       setError={args.setError}
+      selectOptions={[
+        { id: 1, label: 'item one', value: 'item one' },
+        { id: 2, label: 'item two', value: 'item two' },
+        { id: 3, label: 'item tree', value: 'item tree' },
+      ]}
     />
   ),
 };
@@ -116,6 +121,11 @@ const RenderBaseSelect: StoryFn<typeof BaseSelect> = function RenderBaseSelect(
       size={size}
       pureOnChange={pureOnChange}
       intent={intent}
+      selectOptions={[
+        { id: 1, label: 'item one', value: 'item one' },
+        { id: 2, label: 'item two', value: 'item two' },
+        { id: 3, label: 'item tree', value: 'item tree' },
+      ]}
       label={label}
       defaultValue={defaultValue}
       endIcon={endIcon}

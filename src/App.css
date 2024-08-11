@@ -6,7 +6,8 @@
 
 @font-face {
   font-family: 'kalameh';
-  src: url('/fonts/kalameh/woff2/KalamehWeb-Regular.woff2') format('woff2'),
+  src:
+    url('/fonts/kalameh/woff2/KalamehWeb-Regular.woff2') format('woff2'),
     url('/fonts/kalameh/woff/KalamehWeb-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
@@ -14,7 +15,8 @@
 
 @font-face {
   font-family: 'kalameh';
-  src: url('/fonts/kalameh/woff2/KalamehWeb-SemiBold.woff2') format('woff2'),
+  src:
+    url('/fonts/kalameh/woff2/KalamehWeb-SemiBold.woff2') format('woff2'),
     url('/fonts/kalameh/woff/KalamehWeb-SemiBold.woff') format('woff');
   font-weight: 500;
   font-style: bold;

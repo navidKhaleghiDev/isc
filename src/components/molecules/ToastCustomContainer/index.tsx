@@ -86,7 +86,7 @@ export function ToastCustomContainer(): JSX.Element {
    */
   const getToastClassName = (props?: { type?: TypeOptions }) => {
     const type = props?.type || 'default';
-    return `flex items-center flex-row-reverse px-5 sm:py-1 py-0.5 rounded-lg shadow-lg w-[260px] sm:w-[600px] font-kalameh text-base toast-custom ${toastStyle(
+    return `flex items-center flex-row-reverse px-5 sm:py-1 py-0.5 rounded-lg shadow-lg w-[16.25rem] sm:w-[37.5rem] font-kalameh text-base toast-custom ${toastStyle(
       { typeToast: type }
     )}`;
   };

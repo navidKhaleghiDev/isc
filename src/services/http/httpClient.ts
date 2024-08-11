@@ -32,8 +32,8 @@ const useGet = <ResponseData = unknown, Error = unknown>(
 
 function usePost<T = object, R = AxiosResponse<T>>(
   mutationURL: string,
-  body: T,
-  options?: MutationPostOptions<T>
+  body: T
+  // options?: MutationPostOptions<T>
 ) {
   const post = (_url: string) =>
     http.post<T, R>(_url, body) as FetcherResponse<T>;
@@ -42,7 +42,7 @@ function usePost<T = object, R = AxiosResponse<T>>(
     error,
     trigger,
     isMutating,
-  } = useSWRMutation(mutationURL, post, options);
+  } = useSWRMutation(mutationURL, post);
 
   return { data: responseData, error, trigger, isMutating };
 }
