@@ -38,12 +38,14 @@ export function MenuItem({
       to={item.path}
       target={item.isNewTab ? '_blank' : '_self'}
     >
-      {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
-      {!collapsed && (
-        <Typography className="mr-3 hidden sm:block " size="body4">
-          {item.label}
-        </Typography>
-      )}
+      <div className={`flex ${!collapsed && ' fixed'}`}>
+        {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
+        {!collapsed && (
+          <Typography className="mr-3 hidden sm:block " size="body4">
+            {item.label}
+          </Typography>
+        )}
+      </div>
     </Link>
   );
 }

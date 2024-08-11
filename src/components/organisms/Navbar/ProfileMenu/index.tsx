@@ -18,10 +18,9 @@ export function ProfileMenu() {
         buttonContent={
           <IconButton
             icon={User}
-            color="neutralLight"
             size="xxl"
             type="button"
-            className="hover:bg-neutral-300 transition-all duration-700 ease-linear"
+            className="bg-[#ffffff1a]"
           />
         }
         className="hidden sm:block"

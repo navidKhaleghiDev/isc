@@ -20,10 +20,14 @@ export function BaseDropDown({
 
   return (
     <div ref={ref} className={`relative ${className}`}>
-      <div>
+      <div className="mx-[0.313rem]">
         <button
           type="button"
-          className="flex justify-center w-full rounded-md"
+          className={`flex justify-center w-full rounded-md ${
+            isOpen
+              ? 'bg-neutral-300'
+              : 'bg-neutral-100 hover:bg-neutral-300 transition-all duration-500 ease-linear'
+          }`}
           onClick={handleToggle}
         >
           {buttonContent}
