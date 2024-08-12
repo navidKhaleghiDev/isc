@@ -95,7 +95,7 @@ export function AddIpForm({
           نوع IP را انتخاب کنید
         </h3>
 
-        <div className="flex gap-1.5">
+        <div className="flex gap-1.5 mb-10 sm:mb-0">
           <ChipButton
             onClick={() => {
               onHandleIpStatus(true);
@@ -128,7 +128,7 @@ export function AddIpForm({
       {ipValue && (
         <Card
           color="neutral_light"
-          className="w-full flex justify-between items-center px-2 mt-[52px] rounded-md bg-neutral-100 font-semibold"
+          className="w-full flex justify-between items-center px-2 sm:mt-[52px] rounded-md bg-neutral-100 font-semibold"
         >
           <IconButton
             icon={x}
@@ -152,7 +152,7 @@ export function AddIpForm({
           }}
         />
       )}
-      <div className="mt-4 sm:self-end sm:w-16 w-40 self-center">
+      <div className="sm:mt-4 mt-16 sm:self-end self-center sm:w-16 w-40">
         <BaseButton
           onClick={handleSubmit(handleFormSubmit)}
           label="ثبت"

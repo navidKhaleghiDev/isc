@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { ButtonState } from '@src/pages/Services/Rules/types';
 import { useGet } from '@src/services/http/httpClient';
 import {
@@ -9,45 +10,36 @@ import { E_RULES_LIST } from '@src/services/client/rules/endpoint';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 import { IProduct } from '@src/services/client/users/types';
 import { useUserContext } from '@context/user/userContext';
-import { useEffect, useState } from 'react';
 import { NotCompletedAuth } from '@ui/molecules/NotCompletedAuth';
 import { LoadingWrapper } from '@ui/molecules/Loading/LoadingWrapper';
 import Pagination from '@ui/molecules/Pagination';
 import { NoResult } from '@ui/molecules/NoResult';
-
 import { RulesCard } from './RulesCard';
 
-/**
- * Props for RulesList component.
- *
- * @typedef {Object} PropsType
- * @property {ButtonState} buttonState - The state of the button indicating which rules to fetch (all or suggest).
- * @property {string} searchValue - The search value to filter the rules.
- */
-
-type PropsType = {
+type TRulesListProp = {
   buttonState: ButtonState;
   searchValue: string;
 };
 
-const LIMIT_RULES_LIST = 12;
+const LIMIT_RULES_LIST = 16;
 
-/**
- * RulesList Component
- *
- * This component displays a list of rules with pagination and search functionality.
- *
- * @component
- *
- * @param {PropsType} props - Props for RulesList component.
- *
- * @returns {JSX.Element} The rendered RulesList component.
- */
-
-export function RulesList({ buttonState, searchValue }: PropsType) {
+export function RulesList({
+  buttonState,
+  searchValue,
+}: TRulesListProp): JSX.Element {
   const { user } = useUserContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const [rules, setRules] = useState<IRules[]>([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const loadMoreRef = useRef(null);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
 
   useEffect(() => {
     if (searchValue !== search) {
@@ -72,13 +64,50 @@ export function RulesList({ buttonState, searchValue }: PropsType) {
       : null
   );
 
-  const { data: suggestData, isLoading: loadingSuggestData } = useGet<
-    ResponseSwr<IProduct>
-  >(buttonState === 'suggest' && user?.device_serial ? E_USERS_PRODUCT : null);
+  const { isLoading: loadingSuggestData } = useGet<ResponseSwr<IProduct>>(
+    buttonState === 'suggest' && user?.device_serial ? E_USERS_PRODUCT : null
+  );
 
-  const rules =
-    suggestData?.data.recommended_rules || allData?.data.results || [];
+  useEffect(() => {
+    if (allData?.data?.results) {
+      if (currentPage === 1) {
+        setRules(allData.data.results);
+      } else {
+        setRules((prevRules) => [...prevRules, ...allData.data.results]);
+      }
+    }
+  }, [allData, currentPage]);
+
+  const rulesSuggest = rules.filter((item) =>
+    item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  );
+
   const countPage = allData?.data?.count || 0;
+
+  const fetchMoreData = useCallback(() => {
+    if (loadingAllData || loadingSuggestData || isFetching) return;
+    setIsFetching(true);
+    setCurrentPage((prevPage) => prevPage + 1);
+    setIsFetching(false);
+  }, [loadingAllData, loadingSuggestData, isFetching]);
+
+  useEffect(() => {
+    if (isMobile) {
+      if (observer.current) observer.current.disconnect();
+
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          fetchMoreData();
+        }
+      });
+
+      if (loadMoreRef.current) observer.current.observe(loadMoreRef.current);
+    }
+
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, [fetchMoreData, isMobile]);
 
   if (
     !user?.is_authenticated ||
@@ -91,23 +120,30 @@ export function RulesList({ buttonState, searchValue }: PropsType) {
       />
     );
   }
+
   return (
     <LoadingWrapper isLoading={loadingAllData || loadingSuggestData}>
       <div className="flex flex-col h-full items-center">
         <div className="w-full mt-11">
-          {rules.length > 0 ? (
+          {rulesSuggest.length > 0 ? (
             <>
-              <div className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 mb-[82px]">
-                {rules.map((item: IRules) => (
+              <div className="w-full grid grid-cols-1 gap-x-[1.87rem] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 mb-[5.1rem]">
+                {rulesSuggest.map((item: IRules) => (
                   <RulesCard key={item.id} rule={item} />
                 ))}
               </div>
-              {!!countPage && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
-                  onPageChange={handlePageChange}
-                />
+              {isMobile ? (
+                <div ref={loadMoreRef} className="mt-[5.1rem]" />
+              ) : (
+                <div className="hidden sm:block mt-[5.1rem]">
+                  {!!countPage && (
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={Math.round(countPage / LIMIT_RULES_LIST)}
+                      onPageChange={handlePageChange}
+                    />
+                  )}
+                </div>
               )}
             </>
           ) : (

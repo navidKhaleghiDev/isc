@@ -26,7 +26,7 @@ function ProductDetail({
   product: IProduct | undefined;
 }): JSX.Element {
   return product ? (
-    <Card className="sm:shadow-sm lg:px-16 lg:pt-16 p-5 ">
+    <Card className="sm:shadow-sm lg:px-16 lg:pt-16 pb-5">
       <div className="flex flex-col">
         <div className="flex flex-col w-1/2">
           <Typography color="neutral_dark" size="h4">
@@ -102,7 +102,7 @@ function MyProductPageCp(): JSX.Element {
           isUserAuth={!!user?.is_authenticated}
         />
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-[0.688rem] sm:gap-[1.875rem] sm:mt-5 mt-0 sm:p-0 p-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-[0.688rem] sm:gap-[1.875rem] sm:mt-5 mt-0">
         <ProductBox
           labelHead="آی پی های مجاز داخلی و خارجی"
           linkAddress={ROUTES_PATH.myProductIpsList}

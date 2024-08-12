@@ -1,26 +1,20 @@
 import { PALLET, SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-const disabledClass = cva({
-  variants: {
-    type: {
-      default: 'disabled:opacity-40 disabled:bg-teal-500 disabled:text-white',
-      redBg: 'disabled:opacity-40 disabled:bg-red-500 disabled:text-red-900',
-    },
-  },
-});
+// const disabledClass =
+//   'disabled:opacity-40 disabled:bg-teal-500 disabled:text-white';
 
 export const baseButtonStyles = cva(
-  `flex items-center justify-center transition duration-150 ease-in-out rounded-lg focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY4} ${disabledClass}`,
+  `flex items-center justify-center transition duration-150 ease-in-out rounded-lg focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY4}`,
   {
     variants: {
       type: {
-        default: `${PALLET.BUTTON_COLOR.TEAL}`,
+        default: `${PALLET.BUTTON_COLOR.TEAL} disabled:opacity-40 disabled:text-white`,
         inactive: `${PALLET.BUTTON_COLOR.TEAL} opacity-40`,
         shadow: `${PALLET.BUTTON_COLOR.SHADOW}`,
         secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
         red: `${PALLET.BUTTON_COLOR.RED}`,
-        redBg: `${PALLET.BUTTON_COLOR.RED_BG}`,
+        redBg: `${PALLET.BUTTON_COLOR.RED_BG} disabled:opacity-40 disabled:text-red-900`,
         tealLink: `text-teal-600 hover:bg-neutral-200 rounded-none`,
         neutral: `${PALLET.BUTTON_COLOR.NEUTRAL}`,
       },
@@ -75,12 +69,12 @@ export const iconButtonStyles = cva(
         tealDark: 'bg-teal-500',
         tealNoBg: 'text-teal-600',
         redNoBg: 'text-red-600',
-        neutral: 'bg-neutral-200 text-neutral-600',
+        neutral: 'text-neutral-600',
         neutralLight: 'bg-neutral-100 text-neutral-600',
         yellow: 'bg-yellow-600 text-neutral-100',
         red: 'bg-red-100 text-red-600',
         white: 'bg-white text-neutral-900',
-        default: 'bg-neutral-200 text-neutral-600 ',
+        default: 'text-neutral-600',
       },
       size: {
         sm: 'h-4 w-4',

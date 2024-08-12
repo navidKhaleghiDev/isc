@@ -1,8 +1,8 @@
-interface CalendarSvgProps {
+interface CalenderProp {
   className?: string;
 }
 
-export function CalendarSvg({ className }: CalendarSvgProps) {
+export function CalendarSvg({ className }: CalenderProp) {
   return (
     <svg
       width="45"

@@ -1,3 +1,5 @@
+import PhCaretLeft from '@iconify-icons/ph/caret-left';
+import PhCaretRight from '@iconify-icons/ph/caret-right';
 import { IconButton } from '@ui/atoms/BaseButton';
 
 /* eslint-disable no-plusplus */
@@ -110,14 +112,14 @@ export function Pagination({
   return (
     <div className="flex justify-center items-center gap-4">
       <IconButton
-        icon="ph:caret-right"
+        icon={PhCaretRight}
         className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}
         color="white"
         onClick={handlePreviousClick}
       />
       {renderPageNumbers()}
       <IconButton
-        icon="ph:caret-left"
+        icon={PhCaretLeft}
         className={`${mClass} ${isLastPage ? disableClass : arrowButtonClass}`}
         color="white"
         onClick={handleNextClick}

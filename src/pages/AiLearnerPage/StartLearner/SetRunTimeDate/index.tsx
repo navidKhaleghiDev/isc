@@ -1,10 +1,11 @@
+import X from '@iconify-icons/ph/x';
+import { LoadingSvg } from '@ui/atoms/Svgs/LoadingSvg';
+import { Typography } from '@ui/atoms';
 import { DatePicker } from '@ui/atoms/Inputs/DatePicker';
 import { IServerResponse } from '@src/types/services';
 import useSWR from 'swr';
 import { aiEndpoint } from '@src/services/client/ai/endpoint';
 import { http } from '@src/services/http';
-import { LoadingSvg } from '@ui/atoms/Svgs/LoadingSvg';
-import { Typography } from '@ui/atoms';
 import {
   gregorianDateOptions,
   persianDateAndNumber,
@@ -59,7 +60,7 @@ export function SetRunTimeDate({ control, idListener }: any) {
             id="endData"
             name="endDate"
             fullWidth
-            startIcon="ph:x"
+            startIcon={X}
             minDate={persianDateAndNumber(
               firstRecordTime,
               gregorianDateOptions

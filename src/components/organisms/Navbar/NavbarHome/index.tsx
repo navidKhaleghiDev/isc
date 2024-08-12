@@ -1,7 +1,10 @@
 import { useForm } from 'react-hook-form';
+import PhPhone from '@iconify-icons/ph/phone';
+import PhMagnifyingGlass from '@iconify-icons/ph/magnifying-glass';
 import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput } from '@ui/atoms/Inputs';
 import { Typography } from '@ui/atoms';
+
 import { IHomeRoutes, homeRoutes } from './routes';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -135,14 +138,14 @@ export function NavbarHome() {
             size="sm"
             placeholder="...جستجو"
             className="self-baseline ml-10"
-            startIcon="material-symbols:search"
+            startIcon={PhMagnifyingGlass}
             hiddenError
           />
           <BaseButton
             type="shadow"
             label="پشتیبانی"
             size="md"
-            endIcon="ph:phone"
+            endIcon={PhPhone}
           />
         </div>
       </div>

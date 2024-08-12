@@ -13,6 +13,7 @@ export function FilterServices() {
         <div className="flex w-full justify-between items-center ">
           <BaseSelect
             control={control}
+            selectOptions={[{ id: 1, label: 'item one', value: 'item one' }]}
             id="sort-as"
             name="sortAs"
             placeholder="بنویسید"

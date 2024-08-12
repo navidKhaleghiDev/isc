@@ -1,5 +1,7 @@
 import { useDebounce } from '@src/helper/hooks/useDebounce';
 import { useEffect, useState } from 'react';
+import PhMagnifyingGlass from '@iconify-icons/ph/magnifying-glass';
+
 import { BaseInput } from '../BaseInput';
 
 interface SearchInputProps {
@@ -31,7 +33,7 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
         pureValue={searchValue}
         label={label}
         fullWidth
-        startIcon="uiw:search"
+        startIcon={PhMagnifyingGlass}
       />
     </div>
   );

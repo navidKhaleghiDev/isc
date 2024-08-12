@@ -1,13 +1,14 @@
-import { useUserContext } from '@context/user/userContext';
-import { API_USERS_PATCH } from '@src/services/client/users';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import PhUser from '@iconify-icons/ph/user';
 import { BaseButton, BaseInput, Typography } from '@ui/atoms';
 import { Divider } from '@ui/atoms/Divider';
 import { regexPattern } from '@ui/atoms/Inputs';
 import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 import { TitleSection } from '@ui/atoms/TitleSection';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { useUserContext } from '@context/user/userContext';
+import { API_USERS_PATCH } from '@src/services/client/users';
 
 type SettingValues = {
   email: string;
@@ -75,7 +76,7 @@ export function ProfileSettings() {
             id="email"
             name="email"
             type="text"
-            endIcon="ph:user"
+            endIcon={PhUser}
             rules={{
               required: regexPattern.required,
             }}

@@ -1,12 +1,15 @@
-import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { API_ADD_RULE } from '@src/services/client/rules';
-import { IRules } from '@src/services/client/rules/types';
-import { Card, Typography } from '@ui/atoms';
-import { IconButton } from '@ui/atoms/BaseButton';
-import { Modal } from '@ui/molecules/Modal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import PhDotsThree from '@iconify-icons/ph/dots-three';
+import PhPlus from '@iconify-icons/ph/plus';
+import { Card, Typography } from '@ui/atoms';
+import { IconButton } from '@ui/atoms/BaseButton';
+import { Modal } from '@ui/molecules/Modal';
+
+import { ROUTES_PATH } from '@src/routes/routesConstants';
+import { API_ADD_RULE } from '@src/services/client/rules';
+import { IRules } from '@src/services/client/rules/types';
 
 /**
  * Props for RulesCard component.
@@ -56,27 +59,29 @@ export function RulesCard({ rule }: PropsType) {
       <Card
         color="white"
         shadow="sm"
-        className="w-[225px] h-[154px] p-[30px] border-teal-600"
+        className="h-[9.62rem] p-[1.875rem] border-teal-600"
       >
         <div className="flex flex-col" dir="ltr">
           <Typography
             color="black"
             type="p"
-            className="h-16  text-sm font-semibold"
+            className="h-16 sm:text-sm font-semibold"
           >
             {rule.name}
           </Typography>
-          <div className="flex self-end gap-1 items-center">
+          <div className="flex self-end gap-2 items-center">
             <IconButton
-              icon="ph:plus"
+              icon={PhPlus}
               color="tealDark"
+              size="xxl"
               className="text-white"
               onClick={onClickAddButton}
             />
             <Link to={`${ROUTES_PATH.servicesRules}/${rule.id}`}>
               <IconButton
-                icon="ph:dots-three-bold"
+                icon={PhDotsThree}
                 color="white"
+                size="xxl"
                 onClick={onClickAddButton}
               />
             </Link>
@@ -89,7 +94,7 @@ export function RulesCard({ rule }: PropsType) {
         open={openModal}
         setOpen={setOpenModal}
         type="success"
-        title="آیا مطمئن هستید؟"
+        title={`قانون ${rule.name} اضافه شود ؟‌`}
         buttonOne={{
           label: 'بله',
           onClick: handleRequestAdd,

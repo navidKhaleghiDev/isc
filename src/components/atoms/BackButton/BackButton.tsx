@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import PhCaretLeft from '@iconify-icons/ph/caret-left';
+import PhArrowLineLeft from '@iconify-icons/ph/arrow-line-left';
 import { BaseButton, IconButton } from '../BaseButton';
 
 export type BackButtonProps = {
@@ -59,7 +60,7 @@ export function BackButton({
       label="صفحه قبل"
       size="lg"
       onClick={handleClick}
-      endIcon="ph:arrow-line-left"
+      endIcon={PhArrowLineLeft}
     />
   );
 }

@@ -1,5 +1,6 @@
 import { ComponentProps, PropsWithChildren } from 'react';
 import { VariantProps } from 'class-variance-authority';
+import { IconType } from '@src/types/global';
 
 import { typographyStyles } from './styles';
 import { BaseIcon } from '../BaseIcon';
@@ -26,6 +27,6 @@ export interface ITypographyIcon extends Omit<ITypography, 'children'> {
   text: string;
   iconColor?: BaseIconProps['color'];
   iconSize?: BaseIconProps['size'];
-  startIcon?: string;
+  startIcon?: string | IconType;
   endIcon?: string;
 }
