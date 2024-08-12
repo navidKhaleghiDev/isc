@@ -4,7 +4,6 @@ import { useGet } from '@src/services/http/httpClient';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
 import { LoadingSpinner } from '@ui/molecules/Loading';
-import { NoResult } from '@ui/molecules/NoResult';
 
 import { MyRulesCard } from './MyRulesCard';
 import { useCheckRuleVersion } from './hook/useCheckedRuleVersion';
@@ -33,8 +32,7 @@ type TMyRulesListProp = {
  */
 
 export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
-  const { data, mutate, isLoading } =
-    useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
+  const { data, mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
   const { checkedList: checkedRulesList, isLoadingVersion } =
     useCheckRuleVersion(data?.data);
