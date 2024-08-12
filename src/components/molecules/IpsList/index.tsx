@@ -4,6 +4,7 @@ import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 
 import { IpCard } from './components/IpCard';
 import { NoResult } from '../NoResult';
+import { LoadingSpinner } from '../Loading/LoadingSpinner';
 
 interface IpListProp {
   filterProduct: EIpType | null;
@@ -11,7 +12,8 @@ interface IpListProp {
 }
 
 export function IpsList({ filterProduct, searchQuery }: IpListProp) {
-  const { data, mutate } = useGet<ResponseSwr<IIp[]>>(E_RULES_VALID_IPS);
+  const { data, mutate, isLoading } =
+    useGet<ResponseSwr<IIp[]>>(E_RULES_VALID_IPS);
 
   const list: IIp[] = data && Array.isArray(data?.data) ? data?.data : [];
 
@@ -28,7 +30,9 @@ export function IpsList({ filterProduct, searchQuery }: IpListProp) {
     return matchesType && matchesSearch;
   });
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="w-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-[1.875rem] gap-y-5 mt-7">
       {filterList.length > 0 ? (
         filterList.map((item) => (
