@@ -17,7 +17,7 @@ import { ContentUsersList } from './ContentUsersList';
  * @returns {JSX.Element} The UsersList component.
  */
 export function UsersList(): JSX.Element {
-  const { data, mutate } = useGet<ResponseSwr<IUser[]>>(E_USERS);
+  const { data, mutate, isLoading } = useGet<ResponseSwr<IUser[]>>(E_USERS);
   const [activeButton, setActiveButton] = useState<ButtonState>('all');
   const [search, setSearch] = useState('');
   const { control } = useForm();
@@ -93,7 +93,11 @@ export function UsersList(): JSX.Element {
           </div>
         </div>
       </div>
-      <ContentUsersList data={filterListDrop} handleMutate={handleMutate} />
+      <ContentUsersList
+        data={filterListDrop}
+        handleMutate={handleMutate}
+        isLoading={isLoading}
+      />
 
       {/* note: Pagination has been disable cause do not have service for this */}
       {/* <Pagination currentPage={1} onPageChange={() => {}} totalPages={100} /> */}

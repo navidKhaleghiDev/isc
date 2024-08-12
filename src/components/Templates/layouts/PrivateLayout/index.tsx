@@ -63,8 +63,8 @@ function LayoutCp(): JSX.Element {
           </nav>
           <main className="flex flex-col w-full overflow-x-hidden overflow-y-auto bg-white">
             <div className="relative flex flex-col w-full h-full gap-16 mx-auto">
-              <div className="flex flex-col gap-16">
-                <div className="pt-5 sm:pt-[3.12rem] mb-9 px-3 sm:px-8">
+              <div className="flex flex-col gap-16 sm:h-full">
+                <div className="pt-5 sm:pt-[3.12rem] mb-9 px-3 sm:px-8 sm:h-full">
                   <Outlet />
                 </div>
                 <MenuMobile />

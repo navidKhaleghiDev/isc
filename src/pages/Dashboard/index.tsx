@@ -15,12 +15,12 @@ import { ProductBox } from './ProductBox';
 export function DashboardPage() {
   const { user } = useUserContext();
   return (
-    <div className="w-full flex flex-col h-full p-8">
+    <div className="w-full flex flex-col p-8">
       <div className="grid grid-cols-4 gap-7">
         <Card
           shadow="sm"
           border
-          className="col-span-4 order-1 lg:col-span-3 lg:order-none p-16"
+          className="col-span-4 order-1 lg:col-span-3 lg:order-none p-16 pb-5"
         >
           <Suspense fallback={<LoadingSpinner centerParent />}>
             <ProductBox />
