@@ -38,7 +38,7 @@ export function MenuItem({
       to={item.path}
       target={item.isNewTab ? '_blank' : '_self'}
     >
-      <div className={`flex ${!collapsed && ' fixed'}`}>
+      <div className={`flex ${!collapsed && 'fixed'}`}>
         {item?.icon && <BaseIcon icon={item.icon} className="w-6 h-6" />}
         {!collapsed && (
           <Typography className="mr-3 hidden sm:block " size="body4">
