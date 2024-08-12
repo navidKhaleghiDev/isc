@@ -25,7 +25,7 @@ export function MenuMobileItem({
   pathname,
   isChildren,
 }: IMenuItem): JSX.Element {
-  const isActive = item.path === pathname;
+  const isActive = pathname.includes(item.path);
   return (
     <div>
       <Link
