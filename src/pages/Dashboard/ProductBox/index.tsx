@@ -48,13 +48,18 @@ function ProductBoxCp() {
           <div className="flex flex-col justify-end items-end">
             <Typography
               color="neutral"
-              size="body1"
+              size="body4"
               weight="medium"
-              className="w-full mb-[10px]"
+              className="w-full sm:text-2xl mb-[0.625rem]"
             >
               {product?.device?.model}
             </Typography>
-            <Typography color="neutral" size="body4" weight="normal">
+            <Typography
+              color="neutral"
+              size="body5"
+              weight="normal"
+              className="sm:text-base"
+            >
               {product?.device?.description}
             </Typography>
           </div>

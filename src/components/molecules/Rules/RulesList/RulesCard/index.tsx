@@ -59,17 +59,17 @@ export function RulesCard({ rule }: PropsType) {
       <Card
         color="white"
         shadow="sm"
-        className="h-[9.62rem] p-8 border-teal-600"
+        className="h-[9.62rem] p-[1.875rem] border-teal-600"
       >
         <div className="flex flex-col" dir="ltr">
           <Typography
             color="black"
             type="p"
-            className="h-16 text-sm font-semibold"
+            className="h-16 sm:text-sm font-semibold"
           >
             {rule.name}
           </Typography>
-          <div className="flex self-end gap-1 items-center">
+          <div className="flex self-end gap-2 items-center">
             <IconButton
               icon={PhPlus}
               color="tealDark"

@@ -37,11 +37,11 @@ export function CodeLineSelect({
   disableSelect,
 }: TCodeLineSelectProp): JSX.Element {
   const selectOptions = [
-    { id: 1, label: 'ALERT', value: 'alert' },
-    { id: 2, label: 'DROP', value: 'drop' },
-    { id: 3, label: 'BLOCK', value: 'block' },
-    { id: 4, label: 'PASS', value: 'pass' },
-    { id: 5, label: 'REJECT', value: 'reject' },
+    { id: 1, label: 'Alert', value: 'Alert' },
+    { id: 2, label: 'Drop', value: 'Drop' },
+    { id: 3, label: 'Block', value: 'Block' },
+    { id: 4, label: 'Pass', value: 'Pass' },
+    { id: 5, label: 'Reject', value: 'Reject' },
   ];
 
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -60,7 +60,7 @@ export function CodeLineSelect({
         disabled={disableSelect}
         selectOptions={selectOptions}
         name="selectAllPolicy"
-        className={className}
+        className={`${className}`}
       />
       <IconButton
         icon={PhCaretUpDownBold}

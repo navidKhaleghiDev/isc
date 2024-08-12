@@ -24,9 +24,9 @@ export function SideBar(): JSX.Element {
 
   return (
     <div
-      className={`hidden sm:flex flex-col justify-between items-end h-full ${
-        toggleSidebar ? 'w-64 transition-all duration-300 ease-in-out' : 'w-16'
-      }`}
+      className={`hidden sm:flex flex-col justify-between items-end h-full
+        ${toggleSidebar ? 'w-64' : 'w-16'}
+        transition-all duration-500 ease-in-out`}
     >
       <div className="flex flex-col items-center w-full mt-10 px-4 relative">
         {navigationSideBar.map((item: INavigation) => {

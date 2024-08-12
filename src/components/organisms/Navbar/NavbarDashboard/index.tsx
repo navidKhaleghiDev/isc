@@ -1,6 +1,6 @@
 import { Link, matchPath, useLocation } from 'react-router-dom';
 import { Typography } from '@ui/atoms/Typography/Typography';
-import { PageBackButton } from '@ui/atoms/BackButton';
+import { BackButton } from '@ui/atoms/BackButton';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 
 import { StatusDropdown } from '../Status';
@@ -43,28 +43,15 @@ export function NavbarDashboard(): JSX.Element {
         </Typography>
       </Link>
       <div>
-        {!showBackButton ? (
-          <Link to={ROUTES_PATH.home}>
-            <Typography
-              color="teal"
-              size="h5"
-              className="flex sm:hidden text-xl sm:text-2xl"
-              weight="bold"
-            >
-              NETFENCE
-            </Typography>
-          </Link>
-        ) : (
+        {!showBackButton ? null : (
           <div className="flex justify-center items-center sm:hidden">
-            <PageBackButton backToReferrer />
+            <BackButton backToReferrer />
           </div>
         )}
       </div>
 
       <div className="flex justify-center items-center">
-        <div>
-          <StatusDropdown />
-        </div>
+        <StatusDropdown />
         <ProfileMenu />
       </div>
     </div>

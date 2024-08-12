@@ -15,12 +15,11 @@ import { ProductBox } from './ProductBox';
 export function DashboardPage() {
   const { user } = useUserContext();
   return (
-    <div className="w-full flex flex-col p-8">
+    <div className="w-full flex flex-col h-full">
       <div className="grid grid-cols-4 gap-7">
         <Card
-          shadow="sm"
           border
-          className="col-span-4 order-1 lg:col-span-3 lg:order-none p-16 pb-5"
+          className="col-span-4 border-none drop-shadow-none sm:shadow-sm sm:border order-1 lg:col-span-3 lg:order-none sm:p-16"
         >
           <Suspense fallback={<LoadingSpinner centerParent />}>
             <ProductBox />
@@ -31,11 +30,10 @@ export function DashboardPage() {
             component={<CalendarSvg className="ml-4 shrink-0 w-8 md:w-12" />}
             title={persianDayLabel()}
             description={persianDateAndNumber()}
-            className=""
           />
           <BoxDashboard
             component={
-              <LoadingUpdateSvg className="ml-4 animate-[spin_1.5s_ease-in-out_infinite] shrink-0 w-8 md:w-12" />
+              <LoadingUpdateSvg className="ml-4 shrink-0 w-8 md:w-12" />
             }
             title="به روزرسانی قوانین"
             description={
@@ -45,7 +43,7 @@ export function DashboardPage() {
           />
           <div className="hidden lg:block">
             <Typography
-              className="mb-2"
+              className="mb-2 "
               size="body3"
               color="black"
               weight="bold"
@@ -53,7 +51,7 @@ export function DashboardPage() {
               اعلان ها
             </Typography>
             <Card
-              className=" h-96 mb-5"
+              className="h-96 mb-5"
               border
               borderColor="neutral_light"
               rounded="md"

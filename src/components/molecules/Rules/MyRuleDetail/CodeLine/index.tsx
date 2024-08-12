@@ -39,7 +39,7 @@ export function CodeLine({ code, onChangeOrder, id, disable }: TCodeLIneProp) {
         id={id}
         disableSelect={disable}
       />
-      <Typography type="span" size="body5" className="text-neutral-900 ml-9">
+      <Typography type="span" size="body5" className="text-neutral-900 ml-10">
         {code?.code}
       </Typography>
     </div>
