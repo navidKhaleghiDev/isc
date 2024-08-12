@@ -34,7 +34,7 @@ export function MyRuleDetailsPage() {
   const myRule: IMyRule | undefined = dataMyRule?.data;
   return (
     <RulesCodeTemplate>
-      <div className="text-left hidden sm:block">
+      <div className="self-end hidden md:block">
         <PageBackButton />
       </div>
       <MyRuleDetail myRule={myRule} />

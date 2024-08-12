@@ -48,7 +48,7 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
   );
 
   return (
-    <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
+    <div className="w-full sm:grid grow justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
       {isLoadingVersion ? (
         <LoadingSpinner />
       ) : filterData.length > 0 ? (

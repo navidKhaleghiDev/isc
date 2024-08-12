@@ -19,7 +19,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-4 gap-7">
         <Card
           border
-          className="col-span-4 border-none drop-shadow-none sm:shadow-sm sm:border order-1 lg:col-span-3 lg:order-none sm:p-16"
+          className="col-span-4 border-none drop-shadow-none sm:shadow-sm sm:border order-1 lg:col-span-3 lg:order-none sm:p-16 sm:pb-3 sm:mb-2"
         >
           <Suspense fallback={<LoadingSpinner centerParent />}>
             <ProductBox />
