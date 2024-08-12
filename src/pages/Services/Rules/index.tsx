@@ -41,10 +41,10 @@ function RulesPageCP(): JSX.Element {
 
   return (
     <div className="w-full flex flex-col h-full">
-      <Typography weight="bold" size="body1" className="block md:hidden">
+      <Typography weight="bold" size="body1" className="block mb-5 md:hidden">
         لیست قوانین
       </Typography>
-      <div className="p-4 grid grid-cols-2 md:flex md:justify-start md:items-center gap-4">
+      <div className="grid grid-cols-2 md:flex md:justify-start md:items-center gap-4">
         <SearchInput onChange={handleOnSearch} value={search} />
         <div className="md:w-64">
           <div className="relative">

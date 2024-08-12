@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { BaseButton } from '@ui/atoms';
 import { PageBackButton } from '@ui/atoms/BackButton';
@@ -12,6 +12,7 @@ import { API_ADD_VALID_IPS } from '@src/services/client/rules';
 import { E_RULES_VALID_IPS } from '@src/services/client/rules/endpoint';
 import { EIpType, IIp } from '@src/services/client/rules/types';
 import { useGet } from '@src/services/http/httpClient';
+import { IconButton } from '@ui/atoms/BaseButton';
 
 /**
  * FilterIps component for managing and displaying IP addresses.
@@ -42,8 +43,12 @@ export function FilterIps(): JSX.Element {
   const handleOnSearch = (value: string) => {
     setSearch(value);
   };
+  const selectRef = useRef<HTMLSelectElement>(null);
+  const handelClick = () => {
+    selectRef.current?.showPicker();
+  };
 
-  const dropValueChange: TValueOnChange = (value) => {
+  const selectValueChange: TValueOnChange = (value) => {
     setOpenIps(value.target.value as EIpType);
   };
 
@@ -78,16 +83,25 @@ export function FilterIps(): JSX.Element {
     <>
       <div>
         <div className="grid items-baseline justify-between grid-cols-1 lg:grid-cols-2">
-          <div className="grid grid-cols-2 py-4 gap-7">
+          <div className="grid grid-cols-2 max-w-[40rem] py-4 gap-7">
             <SearchInput onChange={handleOnSearch} value={search} />
-            <BaseSelect
-              selectOptions={selectOptions}
-              name="ip-type"
-              id="rules-sort"
-              size="freeWidth"
-              pureValue={openIps as string}
-              pureOnChange={dropValueChange}
-            />
+            <div className="">
+              <div className="relative basis-1/2">
+                <BaseSelect
+                  id="rulesSort"
+                  ref={selectRef}
+                  name="rulesSort"
+                  selectOptions={selectOptions}
+                  pureOnChange={selectValueChange}
+                  fullWidth
+                />
+                <IconButton
+                  onClick={handelClick}
+                  className="bg-white size-3 absolute top-1 left-1"
+                  icon="ph:caret-down-bold"
+                />
+              </div>
+            </div>
           </div>
           <div className="flex gap-6 sm:justify-end">
             <BaseButton

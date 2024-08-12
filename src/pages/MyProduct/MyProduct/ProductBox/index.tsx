@@ -18,14 +18,19 @@ export function ProductBox({
 
   return (
     <Card shadow="sm" className="sm:p-7 p-5 flex flex-col">
-      <Typography color="neutral_dark" size="body3" className="w-full">
+      <Typography
+        color="neutral_dark"
+        size="body5"
+        weight="medium"
+        className="w-full sm:text-lg"
+      >
         {labelHead}
       </Typography>
       <div className="flex">
         <Typography
           color="neutral_light"
-          size="body5"
-          className="w-full flex flex-col"
+          size="body6"
+          className="w-full flex flex-col sm:text-sm"
         >
           <span> آخرین به روزرسانی </span>
           <span>

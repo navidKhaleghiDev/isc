@@ -16,7 +16,7 @@ import { RuleDetail } from '@ui/molecules/Rules/RuleDetail';
 export function RuleDetailsPage(): JSX.Element {
   return (
     <RulesCodeTemplate>
-      <div className="text-end hidden md:block">
+      <div className="self-end hidden md:block">
         <PageBackButton />
       </div>
       <RuleDetail />

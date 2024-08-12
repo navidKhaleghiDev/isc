@@ -52,19 +52,19 @@ function LayoutCp(): JSX.Element {
   return (
     <div className="flex h-screen bg-white font-kalameh">
       <div className="flex flex-col flex-1 overflow-hidden">
-        <header className="border-b-4 border-neutral-200">
+        <header className="sm:shadow-sm z-10 border-neutral-200">
           <NavbarDashboard />
         </header>
         <div className="flex sm:flex-row h-full overflow-y-auto px-0.5 2xl:container 2xl:mx-auto 2xl:justify-center">
           <nav className="flex mx-auto sm:h-full">
-            <div className="flex items-center justify-center w-full h-full shadow-md sm:w-fit sm:border-l-4 border-neutral-200">
+            <div className="flex items-center justify-center w-full h-full shadow-md z-10 sm:w-fit">
               <SideBar />
             </div>
           </nav>
           <main className="flex flex-col w-full overflow-x-hidden overflow-y-auto bg-white">
             <div className="relative flex flex-col w-full h-full gap-16 mx-auto">
               <div className="flex flex-col gap-16">
-                <div className="pt-5 sm:pt-[3.12rem] mb-9 px-3 sm:px-8">
+                <div className="pt-5 sm:pt-[3.12rem] mb-9 px-5 sm:px-8">
                   <Outlet />
                 </div>
                 <MenuMobile />

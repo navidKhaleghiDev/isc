@@ -127,15 +127,15 @@ function RulePolicyListCp(
 
   const policyAllIcon = () => {
     switch (valueAllCodeLineSelect) {
-      case 'alert':
+      case 'Alert':
         return <AlertSvg />;
-      case 'drop':
+      case 'Drop':
         return <DropSvg />;
-      case 'block':
+      case 'Block':
         return <BlockSvg />;
-      case 'pass':
+      case 'Pass':
         return <PassSvg />;
-      case 'reject':
+      case 'Reject':
         return <RejectSvg />;
       default:
         return <AlertSvg />;
@@ -158,7 +158,7 @@ function RulePolicyListCp(
         <Card
           shadow="sm"
           rounded="lg"
-          className="mt-5 px-2 flex flex-row-reverse gap-4 py-2 pr-6 transition "
+          className="mt-3 px-2 flex flex-row-reverse gap-4 py-2 pr-6"
         >
           <CodeLineSelect
             id="RulePolicyList"
@@ -166,15 +166,15 @@ function RulePolicyListCp(
             value={valueAllCodeLineSelect}
             onChange={onChangeAllOrder}
           />
-          <div className="flex items-center justify-center gap-3 ml-6">
-            <Typography>{`${
-              valueAllCodeLineSelect || 'alert'
+          <div className="flex items-center justify-center gap-[0.625rem] ml-6">
+            <Typography size="body5">{`${
+              valueAllCodeLineSelect || 'Alert'
             }  بروی تمام سیاست ها`}</Typography>
             {policyAllIcon()}
           </div>
         </Card>
       )}
-      <div className="max-h-[26.5rem] md:max-h-[18.75rem] overflow-y-auto mt-3 p-0.5">
+      <div className="max-h-[26.5rem] md:max-h-[18.75rem] overflow-y-auto mt-2 p-0.5">
         {codeList.length > 0 ? (
           codeList.map((mCode: SliceOrderCodeType, index: number) => {
             return (
@@ -182,7 +182,7 @@ function RulePolicyListCp(
                 shadow="sm"
                 key={`${index}_${mCode.order}`}
                 rounded="lg"
-                className="text-left mt-[10px] py-2 px-2"
+                className="text-left mt-[0.625rem] px-2"
               >
                 <CodeLine
                   id={`myRulePolicy-${index}`}
@@ -202,7 +202,6 @@ function RulePolicyListCp(
       <div className="flex w-full justify-between items-center mt-8">
         <div className="w-full flex items-center justify-between mb-5">
           <BaseButton label="ثبت تغییرات" size="lg" onClick={toggleModalEdit} />
-
           {onDeleteRule && (
             <BaseButton
               label="حذف قانون"

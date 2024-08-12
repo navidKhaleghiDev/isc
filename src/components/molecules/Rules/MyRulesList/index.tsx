@@ -36,7 +36,11 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
   const { data, mutate, isLoading } =
     useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
-  const checkedRulesList = useCheckRuleVersion(data?.data);
+  const { checkedList: checkedRulesList, isLoadingVersion } =
+    useCheckRuleVersion(data?.data);
+
+  console.log(isLoadingVersion);
+  console.log(data);
 
   const handleMutate = () => {
     mutate();
@@ -49,7 +53,7 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
 
   return (
     <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
-      {isLoading ? (
+      {isLoadingVersion ? (
         <LoadingSpinner />
       ) : filterData.length > 0 ? (
         filterData.map((item) => (

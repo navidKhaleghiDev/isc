@@ -10,7 +10,14 @@ import { E_RULES_LIST } from '@src/services/client/rules/endpoint';
 import { IProduct } from '@src/services/client/users/types';
 import { E_USERS_PRODUCT } from '@src/services/client/users/endpoint';
 
-export function useCheckRuleVersion(myRules?: IMyRule[]): IMyRule[] {
+interface ICheckVersionReturn {
+  checkedList: IMyRule[];
+  isLoadingVersion: boolean;
+}
+
+export function useCheckRuleVersion(myRules?: IMyRule[]): ICheckVersionReturn {
+  const [isLoadingVersion, setIsLoadingVersion] = useState(true);
+
   const { data } = useGet<ResponseSwr<IResponseRules>>(
     E_RULES_LIST({
       pageSize: 10000,
@@ -56,7 +63,8 @@ export function useCheckRuleVersion(myRules?: IMyRule[]): IMyRule[] {
       });
       setCheckedList(newList);
     }
+    return () => setIsLoadingVersion(false);
   }, [mergedRules, myRules]);
 
-  return checkedList;
+  return { checkedList, isLoadingVersion };
 }
