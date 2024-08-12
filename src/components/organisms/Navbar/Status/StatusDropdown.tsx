@@ -8,41 +8,42 @@ import { StatusDropdownContent } from './StatusDropdownContent/StatusDropdownCon
 
 export function StatusDropdown() {
   const [statusOpen, setStatusOpen] = useState(false);
+
   const statusHandle = () => {
     setStatusOpen(!statusOpen);
   };
 
-  const serverOptions = [
-    {
-      id: 'server1',
-      label: 'Server 1',
-      icon: PhHardDrives,
-      status: 'expired',
-    },
-    {
-      id: 'server2',
-      label: 'Server 2',
-      icon: PhHardDrives,
-      status: 'disable',
-    },
-    {
-      id: 'server3',
-      label: 'Server 3',
-      icon: PhHardDrives,
-      status: 'active',
-    },
-    {
-      id: 'server4',
-      label: 'Server 4',
-      icon: PhHardDrives,
-      status: 'active',
-    },
-  ];
+  // const serverOptions = [
+  //   {
+  //     id: 'server1',
+  //     label: 'Server 1',
+  //     icon: PhHardDrives,
+  //     status: 'expired',
+  //   },
+  //   {
+  //     id: 'server2',
+  //     label: 'Server 2',
+  //     icon: PhHardDrives,
+  //     status: 'disable',
+  //   },
+  //   {
+  //     id: 'server3',
+  //     label: 'Server 3',
+  //     icon: PhHardDrives,
+  //     status: 'active',
+  //   },
+  //   {
+  //     id: 'server4',
+  //     label: 'Server 4',
+  //     icon: PhHardDrives,
+  //     status: 'active',
+  //   },
+  // ];
 
   return (
     <div>
       <BaseDropDown
-        content={<StatusDropdownContent options={serverOptions} />}
+        content={<StatusDropdownContent />}
         buttonContent={
           <IconButton
             size="xxl"
