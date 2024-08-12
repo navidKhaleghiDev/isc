@@ -1,11 +1,13 @@
+import { useForm } from 'react-hook-form';
+import { useUserContext } from '@context/user/userContext';
+
 import { BaseButton, BaseInput } from '@ui/atoms';
 import { TitleSection } from '@ui/atoms/TitleSection';
-import { useForm } from 'react-hook-form';
 import PhUser from '@iconify-icons/ph/user';
 import PhEnvelopeSimple from '@iconify-icons/ph/envelope-simple';
-import { PageBackButton } from '@ui/atoms/BackButton';
+import { BackButton } from '@ui/atoms/BackButton';
 import { regexPattern } from '@ui/atoms/Inputs';
-import { useUserContext } from '@context/user/userContext';
+
 import { IAddUserFormValues } from '../Users/types';
 
 export function Setting() {
@@ -13,7 +15,6 @@ export function Setting() {
   //   const userId = user?.id;
   const firstName = user?.first_name;
   const lastName = user?.last_name;
-  const email = user?.email;
   const { control, handleSubmit } = useForm<IAddUserFormValues>({
     mode: 'onChange',
   });
@@ -42,15 +43,15 @@ export function Setting() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center px-10 sm:px-0">
-      <div className="w-full flex justify-center items-center mb-0 sm:mb-6 ">
+    <div className="w-full h-full flex flex-col px-10 sm:px-0">
+      <div className="w-full flex justify-center items-center mb-0 sm:mb-6">
         <TitleSection
           label={
             firstName && lastName ? `${firstName} ${lastName}` : 'نام کاربری'
           }
         />
         <div className="hidden sm:flex">
-          <PageBackButton />
+          <BackButton backToReferrer />
         </div>
       </div>
       <form
@@ -89,7 +90,7 @@ export function Setting() {
             id="phone_number"
             name="phone_number"
             label="ایمیل"
-            placeholder={email}
+            placeholder="ایمیل"
             control={control}
             endIcon={PhEnvelopeSimple}
             size="lg"
