@@ -79,7 +79,7 @@ export function ContentUsersList({
       type: 'component',
       actionType: 'edit',
       accessor: 'edit',
-      editRoute: ROUTES_PATH.addUser,
+      editRoute: ROUTES_PATH.settings,
       className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
     },
     {
