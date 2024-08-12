@@ -21,7 +21,6 @@ export function NavbarDashboard(): JSX.Element {
     ROUTES_PATH.myProductIpsList,
     ROUTES_PATH.servicesRulesRetrieve,
     ROUTES_PATH.myProductMyRulesRetrieve,
-    ROUTES_PATH.changePassword,
   ];
 
   const shouldShowBackButton = (pathname: string) => {

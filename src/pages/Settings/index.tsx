@@ -2,7 +2,9 @@
 // import { ContainerDashboard } from '@ui/Templates/ContainerDashboard';
 // import { LogsSetting } from './LogsSetting';
 // import { ProfileSettings } from './ProfileSettings';
-import { Setting } from './Setting';
+// import { Setting } from './Setting';
+
+import { Settings } from '@ui/Templates/Settings';
 
 export function SettingsPage() {
   /* It is possible that this content will be needed later. */
@@ -19,7 +21,8 @@ export function SettingsPage() {
           </BaseTab>
         </BaseTabs>
       </ContainerDashboard> */}
-      <Setting />
+      {/* <Setting /> */}
+      <Settings />
     </>
   );
 }

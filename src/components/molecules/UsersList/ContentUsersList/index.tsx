@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 import { API_USERS_DELETE } from '@src/services/client/users';
 import { useState } from 'react';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Column, IData } from '@ui/molecules/TableComponent/types';
 import { TableContainer } from '@ui/molecules/TableComponent/TableContainer';
 import { Modal } from '@ui/molecules/Modal';
@@ -77,13 +76,13 @@ export function ContentUsersList({
       header: 'تاریخ ثبت نام',
       className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 sm:min-w-fit w-1/2 min-w-[200px]',
     },
-    {
-      type: 'component',
-      actionType: 'edit',
-      accessor: 'edit',
-      editRoute: ROUTES_PATH.changePassword,
-      className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
-    },
+    // {
+    //   type: 'component',
+    //   actionType: 'edit',
+    //   accessor: 'edit',
+    //   editRoute: ROUTES_PATH.changePassword,
+    //   className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
+    // },
     {
       type: 'component',
       actionType: 'delete',
