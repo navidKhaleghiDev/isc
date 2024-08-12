@@ -36,7 +36,7 @@ export function MenuItemAccordion({
   const isParentPath = pathname.split('/')[1] || 'false';
 
   return (
-    <>
+    <div className="">
       <button
         type="button"
         className={menuItemStyles({
@@ -44,7 +44,7 @@ export function MenuItemAccordion({
         })}
         onClick={() => setOpen(open === index ? null : index)}
       >
-        <BaseIcon icon={icon} className="w-6 h-6   " />
+        <BaseIcon icon={icon} className="w-6 h-6" />
         {!collapsed && (
           <Typography className="mr-3" size="body4">
             {item.label}
@@ -62,6 +62,6 @@ export function MenuItemAccordion({
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
