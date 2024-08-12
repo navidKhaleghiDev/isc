@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { useUserContext } from '@context/user/userContext';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { BaseButton, Card, Typography } from '@ui/atoms';
+import ToolTip from '@ui/atoms/Tooltip';
 
 type ProductBoxPropType = {
   labelHead: string;
   buttonLabel: string;
-  linkAddress: string;
+  linkAddress?: string;
 };
 export function ProductBox({
   labelHead,
@@ -37,11 +38,19 @@ export function ProductBox({
             {user?.last_login ? persianDateAndNumber(user?.last_login) : '-'}
           </span>
         </Typography>
-        <Link to={linkAddress}>
-          <div className="h-10 w-28 sm:w-40 sm:translate-y-1/2 sm:my-7">
-            <BaseButton label={buttonLabel} fullWidth />
-          </div>
-        </Link>
+        {linkAddress ? (
+          <Link to={linkAddress}>
+            <div className="h-10 w-28 sm:w-40 sm:translate-y-1/2 sm:my-7">
+              <BaseButton label={buttonLabel} fullWidth />
+            </div>
+          </Link>
+        ) : (
+          <ToolTip tooltip="در حال توسعه" position="bottom">
+            <div className="h-10 w-28 sm:w-40 sm:translate-y-1/2 sm:my-7">
+              <BaseButton label={buttonLabel} fullWidth disabled />
+            </div>{' '}
+          </ToolTip>
+        )}
       </div>
     </Card>
   );

@@ -115,8 +115,6 @@ function MyProductPageCp(): JSX.Element {
         />
         <ProductBox
           labelHead="همگام سازی داده با تنظیمات"
-          // this link its not correct
-          linkAddress={ROUTES_PATH.myProductIpsList}
           buttonLabel="تنظیمات"
         />
       </div>
