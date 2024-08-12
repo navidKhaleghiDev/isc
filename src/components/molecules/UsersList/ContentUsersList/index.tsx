@@ -6,6 +6,7 @@ import { Column, IData } from '@ui/molecules/TableComponent/types';
 import { TableContainer } from '@ui/molecules/TableComponent/TableContainer';
 import { Modal } from '@ui/molecules/Modal';
 import { NoResult } from '@ui/molecules/NoResult';
+import { LoadingSpinner } from '@ui/molecules/Loading';
 
 import { ContentUsersListProps } from './types';
 
@@ -19,6 +20,7 @@ import { ContentUsersListProps } from './types';
 export function ContentUsersList({
   data,
   handleMutate,
+  isLoading,
 }: ContentUsersListProps): JSX.Element {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -79,7 +81,7 @@ export function ContentUsersList({
       type: 'component',
       actionType: 'edit',
       accessor: 'edit',
-      editRoute: ROUTES_PATH.addUser,
+      editRoute: ROUTES_PATH.changePassword,
       className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
     },
     {
@@ -91,6 +93,10 @@ export function ContentUsersList({
       className: 'w-24',
     },
   ];
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return data.length > 0 ? (
     <>

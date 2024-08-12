@@ -139,7 +139,7 @@ function AddUserPageCp() {
         </div>
         <BaseButton
           label="ثبت کاربر جدید"
-          className="mt-16 self-end"
+          className="mt-16 sm:self-end"
           size="xl"
           submit
         />

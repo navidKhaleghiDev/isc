@@ -33,14 +33,10 @@ type TMyRulesListProp = {
  */
 
 export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
-  const { data, mutate, isLoading } =
-    useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
+  const { data, mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
   const { checkedList: checkedRulesList, isLoadingVersion } =
     useCheckRuleVersion(data?.data);
-
-  console.log(isLoadingVersion);
-  console.log(data);
 
   const handleMutate = () => {
     mutate();
