@@ -89,7 +89,7 @@ export function ContentUsersList({
       accessor: 'delete',
       onDelete: setUserId,
       openModal: toggleModalDelete,
-      className: 'lg:w-96 w-auto flex justify-end pl-6',
+      className: 'lg:w-96 w-auto pl-6',
     },
   ];
 
