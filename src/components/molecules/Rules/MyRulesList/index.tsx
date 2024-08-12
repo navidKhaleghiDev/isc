@@ -33,7 +33,8 @@ type TMyRulesListProp = {
  */
 
 export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
-  const { data, mutate } = useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
+  const { data, mutate, isLoading } =
+    useGet<ResponseSwr<IMyRule[]>>(E_RULES_MY_RULES);
 
   const { checkedList: checkedRulesList, isLoadingVersion } =
     useCheckRuleVersion(data?.data);
@@ -46,6 +47,7 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
       .toLocaleLowerCase()
       .includes(searchValue?.toLocaleLowerCase() as string)
   );
+  // const serviceLoading = isLoading && isLoadingVersion;
 
   return (
     <div className="w-full sm:grid grow justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
@@ -60,7 +62,7 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
           />
         ))
       ) : (
-        <NoResult />
+        <LoadingSpinner />
       )}
     </div>
   );
