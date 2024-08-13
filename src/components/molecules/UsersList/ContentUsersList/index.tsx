@@ -90,6 +90,7 @@ export function ContentUsersList({
       onDelete: setUserId,
       openModal: toggleModalDelete,
       className: 'lg:w-96 w-auto pl-6',
+      align: 'left',
     },
   ];
 

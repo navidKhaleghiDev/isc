@@ -77,7 +77,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
     <td
       key={cellKey}
       className={`${cellStyles()} ${column?.className}`}
-      align="left"
+      align={column.align}
     >
       {row.email !== currentUser?.email && cellContent}
     </td>
