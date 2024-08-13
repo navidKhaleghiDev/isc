@@ -27,6 +27,5 @@ export interface IModal
   size: 'sm' | 'md';
   className?: string;
   buttonOne?: ModalButtonType;
-  buttonTow?: ModalButtonType;
   content?: ReactElement;
 }
