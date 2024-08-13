@@ -1,5 +1,5 @@
 import PhHardDrives from '@iconify-icons/ph/hard-drives';
-import { BaseIcon } from '@ui/atoms';
+import { BaseIcon, Typography } from '@ui/atoms';
 
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IHealthCheck } from '@src/services/client/healthCheck/types';
@@ -36,21 +36,29 @@ export function StatusDropdownContent(): JSX.Element {
   //   }
   // };
   return (
-    <div className="absolute top-full left-2  z-50">
-      <div className="flex flex-col justify-center items-center mt-2.5 shadow-md rounded-lg sm:rounded-[1.25rem] w-40 h-[7.25rem] sm:w-64 sm:h-[13.75rem] bg-white">
+    <div className="absolute top-full left-2 z-50">
+      <div className="flex flex-col justify-center items-center shadow-sm rounded-lg sm:rounded-[1.25rem] w-40 h-[7.25rem] sm:w-64 sm:h-[18.5rem] bg-white">
         {!loading ? (
           data &&
           Object.entries(data).map(([key, value]) => {
             return (
-              <div key={key}>
-                <div
-                  className={`p-3 rounded-lg w-[8.75rem] h-6 sm:w-[12.1rem] sm:h-10 flex items-center cursor-default ${
-                    value ? 'bg-teal-200' : 'bg-red-100'
-                  } }`}
+              <div
+                key={key}
+                className={`p-3 rounded-lg w-[8.75rem] h-6 sm:w-[12.1rem] sm:h-8 flex items-center cursor-default my-[0.188rem] ${
+                  value ? 'bg-teal-200 ' : 'bg-red-100'
+                } }`}
+              >
+                <BaseIcon
+                  icon={PhHardDrives}
+                  className={`ml-[1.1rem] ${
+                    value ? 'text-teal-500' : 'text-red-500'
+                  }`}
+                />
+                <Typography
+                  className={`${value ? 'text-teal-500' : 'text-red-500'}`}
                 >
-                  <BaseIcon icon={PhHardDrives} className="ml-[1.1rem]" />
-                  {/* {key} */}
-                </div>
+                  {key}
+                </Typography>
               </div>
             );
           })
