@@ -42,6 +42,7 @@ export function Modal({
   type,
   title,
   buttonOne,
+  buttonTow,
   content,
   description,
   classContainer,
@@ -89,7 +90,7 @@ export function Modal({
             {content && (
               <div className="flex justify-center items-center">{content}</div>
             )}
-            {buttonOne && (
+            {(buttonOne || buttonTow) && (
               <div className="flex sm:justify-end justify-center pt-7">
                 {buttonOne && (
                   <BaseButton
