@@ -8,4 +8,5 @@ export interface INavigation {
   isNewTab?: boolean;
   icon?: string | IconifyIcon | undefined;
   items?: INavigation[];
+  mouseHover?: () => void;
 }

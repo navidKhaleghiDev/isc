@@ -4,7 +4,6 @@ import { useGet } from '@src/services/http/httpClient';
 import { IMyRule, ResponseSwr } from '@src/services/client/rules/types';
 import { E_RULES_MY_RULES } from '@src/services/client/rules/endpoint';
 import { LoadingSpinner } from '@ui/molecules/Loading';
-import { NoResult } from '@ui/molecules/NoResult';
 
 import { MyRulesCard } from './MyRulesCard';
 import { useCheckRuleVersion } from './hook/useCheckedRuleVersion';
@@ -46,9 +45,10 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
       .toLocaleLowerCase()
       .includes(searchValue?.toLocaleLowerCase() as string)
   );
+  // const serviceLoading = isLoading && isLoadingVersion;
 
   return (
-    <div className="w-full sm:grid grow items-center justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
+    <div className="w-full sm:grid grow justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5 mt-9">
       {isLoadingVersion ? (
         <LoadingSpinner />
       ) : filterData.length > 0 ? (
@@ -60,7 +60,7 @@ export function MyRulesList({ searchValue }: TMyRulesListProp): JSX.Element {
           />
         ))
       ) : (
-        <NoResult />
+        <LoadingSpinner />
       )}
     </div>
   );

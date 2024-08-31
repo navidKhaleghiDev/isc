@@ -10,7 +10,6 @@ import { MyProductPage } from '@src/pages/MyProduct/MyProduct';
 import { MyProductMyRulesPage } from '@src/pages/MyProduct/MyRules';
 import NotFoundPage from '@src/pages/NotFound';
 import { SettingsPage } from '@src/pages/Settings';
-import { ChangePasswordPage } from '@src/pages/ChangePassword';
 import { SupportPage } from '@src/pages/Support';
 import { AddUserPage } from '@src/pages/Users/AddUser';
 import UnauthorizedPage from '@src/pages/Unauthorized';
@@ -71,10 +70,6 @@ const routesConfig = [
       {
         path: ROUTES_PATH.settings,
         element: <SettingsPage />,
-      },
-      {
-        path: ROUTES_PATH.changePassword,
-        element: <ChangePasswordPage />,
       },
       {
         path: ROUTES_PATH.servicesProducts,

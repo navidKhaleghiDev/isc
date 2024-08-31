@@ -1,6 +1,5 @@
 import React from 'react';
 import User from '@iconify-icons/ph/user';
-import PhKey from '@iconify-icons/ph/key';
 import PhUserCirclePlus from '@iconify-icons/ph/user-circle-plus';
 import PhGearSix from '@iconify-icons/ph/gear-six';
 import PhSignOut from '@iconify-icons/ph/sign-out';
@@ -43,16 +42,6 @@ export function ProfileMenuContent({ setIsOpen }: ProfileMenuContentProps) {
       </div>
       <div className="sm:py-[1.938rem] pt-4 border-t-2 h-4/5 border-t-neutral-300 sm:border-none flex flex-col items-start justify-between sm:justify-normal">
         <div className="flex flex-col items-start">
-          <LinkButton
-            link={ROUTES_PATH.changePassword}
-            startIcon={PhKey}
-            label="تغییر رمز عبور"
-            type="neutral"
-            size="sm"
-            fullWidth
-            onClick={handleClick}
-          />
-
           <LinkButton
             link={ROUTES_PATH.users}
             startIcon={PhUserCirclePlus}

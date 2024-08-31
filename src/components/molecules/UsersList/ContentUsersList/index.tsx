@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 import { API_USERS_DELETE } from '@src/services/client/users';
 import { useState } from 'react';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { Column, IData } from '@ui/molecules/TableComponent/types';
 import { TableContainer } from '@ui/molecules/TableComponent/TableContainer';
 import { Modal } from '@ui/molecules/Modal';
@@ -57,40 +56,41 @@ export function ContentUsersList({
       type: 'fullName',
       accessor: ['first_name', 'last_name'],
       header: 'نام',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
+      className: 'xl:w-1/5 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
     },
     {
       type: 'default',
       accessor: 'email',
       header: 'ایمیل',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
+      className: 'xl:w-1/5 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
     },
     {
       type: 'default',
       accessor: 'userType',
       header: 'نوع کاربری',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
+      className: 'xl:w-1/5 lg:w-1/6 sm:w-1/3 w-1/2 min-w-[200px]',
     },
     {
       type: 'date',
       accessor: 'date_joined',
       header: 'تاریخ ثبت نام',
-      className: 'xl:w-1/6 lg:w-1/6 sm:w-1/3 sm:min-w-fit w-1/2 min-w-[200px]',
+      className: 'xl:w-1/5 lg:w-1/6 sm:w-1/3 sm:min-w-fit w-1/2 min-w-[200px]',
     },
-    {
-      type: 'component',
-      actionType: 'edit',
-      accessor: 'edit',
-      editRoute: ROUTES_PATH.changePassword,
-      className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
-    },
+    // {
+    //   type: 'component',
+    //   actionType: 'edit',
+    //   accessor: 'edit',
+    //   editRoute: ROUTES_PATH.changePassword,
+    //   className: 'lg:w-96 w-auto [&>a]:flex [&>a]:justify-end',
+    // },
     {
       type: 'component',
       actionType: 'delete',
       accessor: 'delete',
       onDelete: setUserId,
       openModal: toggleModalDelete,
-      className: 'w-24',
+      className: 'lg:w-96 w-auto pl-6',
+      align: 'left',
     },
   ];
 
@@ -104,7 +104,7 @@ export function ContentUsersList({
         columns={columns}
         data={data}
         containerClassName="w-full relative overflow-x-scroll lg:overflow-hidden"
-        tableClassName="min-w-[40rem] md:table-auto table-fixed rounded-lg"
+        tableClassName="min-w-[40rem] md:w-full md:table-auto table-fixed rounded-lg"
       />
       <Modal
         open={openModalDelete}

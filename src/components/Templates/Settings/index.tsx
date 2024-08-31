@@ -15,7 +15,7 @@ type SettingValues = {
   password_r: string;
 };
 
-export function ChangePassword() {
+export function Settings() {
   const {
     control,
     handleSubmit,

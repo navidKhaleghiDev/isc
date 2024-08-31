@@ -54,7 +54,6 @@ export function NotCompletedAuth({ title, isUserAuth }: PropsType) {
         <BaseButton
           label={!isUserAuth ? 'ثبت احراز هویت' : 'ثبت سریال دستگاه'}
           size="lg"
-          type="secondary"
           onClick={handleClickButton}
         />
       </Card>

@@ -1,43 +1,36 @@
 type NonEmptyString<T extends string> = T extends '' ? never : T;
+type AlignType = 'left' | 'right' | 'center' | 'justify' | 'char';
 
-interface DeleteAction {
+interface BaseAction {
   type: 'component';
   header?: string;
   accessor: NonEmptyString<string>;
+  className?: string;
+  align?: AlignType;
+}
+
+interface DeleteAction extends BaseAction {
   actionType: 'delete';
   onDelete: (rowId: string | number) => void;
   openModal: (row?: IData) => void;
-  className?: string;
 }
 
-interface AddAction {
-  type: 'component';
-  header?: string;
-  accessor: NonEmptyString<string>;
+interface AddAction extends BaseAction {
   actionType: 'add';
   onAdd: (rowId: string | number) => void;
   openModal: () => void;
-  className?: string;
 }
 
-interface MoreAction {
-  type: 'component';
-  header?: string;
-  accessor: NonEmptyString<string>;
+interface MoreAction extends BaseAction {
   actionType: 'more';
   onMore?: (rowId: string | number) => void;
   moreRoute: string;
-  className?: string;
 }
 
-interface EditAction {
-  type: 'component';
-  header?: string;
-  accessor: NonEmptyString<string>;
+interface EditAction extends BaseAction {
   actionType: 'edit';
   onEdit?: (rowId: string | number) => void;
   editRoute: string;
-  className?: string;
 }
 
 type ComponentAction = DeleteAction | AddAction | MoreAction | EditAction;
@@ -47,6 +40,7 @@ interface FullNameColumn {
   header: string;
   accessor: string[];
   className?: string;
+  align?: AlignType;
 }
 
 interface DefaultColumn {
@@ -54,6 +48,7 @@ interface DefaultColumn {
   header: string;
   accessor: NonEmptyString<string>;
   className?: string;
+  align?: AlignType;
 }
 
 interface DateColumn {
@@ -61,6 +56,7 @@ interface DateColumn {
   header: string;
   accessor: NonEmptyString<string>;
   className?: string;
+  align?: AlignType;
 }
 
 export type Column =
