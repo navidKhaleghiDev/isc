@@ -1,5 +1,5 @@
 import PhHardDrives from '@iconify-icons/ph/hard-drives';
-import { BaseIcon } from '@ui/atoms';
+import { BaseIcon, Typography } from '@ui/atoms';
 
 import { LoadingSpinner } from '@ui/molecules/Loading';
 import { IHealthCheck } from '@src/services/client/healthCheck/types';
@@ -20,37 +20,51 @@ const initState: IHealthCheck = {
   monitoringUi: false,
   shippingLogs: false,
 };
+
+function statusStyle(value: boolean | string) {
+  if (value === true) {
+    return {
+      background: 'bg-teal-200',
+      text: 'text-teal-500',
+    };
+  }
+  if (value === 'expired') {
+    return {
+      background: 'bg-red-100',
+      text: 'text-red-500',
+    };
+  }
+
+  return {
+    background: 'bg-neutral-100',
+    text: 'text-neutral-500',
+  };
+}
 export function StatusDropdownContent(): JSX.Element {
   const { data, loading } = useFetch<IHealthCheck>(E_HEALTH_CHECK, initState);
 
-  // const statusStyle = (status: string) => {
-  //   switch (status) {
-  //     case 'expired':
-  //       return 'bg-red-100 text-red-500 text-xs sm:text-base';
-  //     case 'disable':
-  //       return 'bg-neutral-100 text-neutral-500 text-xs sm:text-base';
-  //     case 'active':
-  //       return 'bg-teal-200	 text-teal-500 text-xs sm:text-base';
-  //     default:
-  //       return 'bg-neutral-100 text-neutral-500 text-xs sm:text-base';
-  //   }
-  // };
   return (
-    <div className="absolute top-full left-2  z-50">
-      <div className="flex flex-col justify-center items-center mt-2.5 shadow-md rounded-lg sm:rounded-[1.25rem] w-40 h-[7.25rem] sm:w-64 sm:h-[13.75rem] bg-white">
+    <div className="absolute top-full left-2 z-50">
+      <div className="flex flex-col justify-center items-center shadow-sm rounded-lg sm:rounded-[1.25rem] w-40 h-[12rem] sm:w-64 sm:h-[18.5rem] bg-white">
         {!loading ? (
           data &&
           Object.entries(data).map(([key, value]) => {
+            const statusClass = statusStyle(value);
+
             return (
-              <div key={key}>
-                <div
-                  className={`p-3 rounded-lg w-[8.75rem] h-6 sm:w-[12.1rem] sm:h-10 flex items-center cursor-default ${
-                    value ? 'bg-teal-200' : 'bg-red-100'
-                  } }`}
+              <div
+                key={key}
+                className={`p-3 rounded-lg w-[8.75rem] h-6 sm:w-[12.1rem] sm:h-8 flex items-center cursor-default my-[0.188rem] ${statusClass.background} }`}
+              >
+                <BaseIcon
+                  icon={PhHardDrives}
+                  className={`ml-[1.1rem] ${statusClass.text} text-xs sm:text-base`}
+                />
+                <Typography
+                  className={`${statusClass.text} text-xs sm:text-base`}
                 >
-                  <BaseIcon icon={PhHardDrives} className="ml-[1.1rem]" />
-                  {/* {key} */}
-                </div>
+                  {key}
+                </Typography>
               </div>
             );
           })

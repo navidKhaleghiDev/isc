@@ -54,8 +54,7 @@ export function SideBar(): JSX.Element {
             <div
               key={item.id}
               onMouseEnter={() => setDropdownVisible(item)}
-              onMouseLeave={() => setDropdownVisible(null)}
-              className={`flex justify-center items-center ${
+              className={`flex justify-center items-center bg-white ${
                 toggleSidebar ? 'w-full' : null
               }`}
             >
@@ -66,7 +65,10 @@ export function SideBar(): JSX.Element {
                 collapsed={!toggleSidebar}
               />
               {isDropdownVisible?.id === item.id && (
-                <MenuDropdown items={item.items} />
+                <MenuDropdown
+                  items={item.items}
+                  mouseHover={() => setDropdownVisible(null)}
+                />
               )}
             </div>
           );
