@@ -32,7 +32,7 @@ export function IconButton({
   color,
   type,
   loading,
-}: IIconButton) {
+}: IIconButton): JSX.Element {
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}

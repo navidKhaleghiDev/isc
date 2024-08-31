@@ -15,6 +15,7 @@ export function NavbarDashboard(): JSX.Element {
   const location = useLocation();
 
   const backButtonRoutes = [
+    ROUTES_PATH.users,
     ROUTES_PATH.addUser,
     ROUTES_PATH.settings,
     ROUTES_PATH.myProductMyRules,

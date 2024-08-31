@@ -20,6 +20,26 @@ const initState: IHealthCheck = {
   monitoringUi: false,
   shippingLogs: false,
 };
+
+function statusStyle(value: boolean | string) {
+  if (value === true) {
+    return {
+      background: 'bg-teal-200',
+      text: 'text-teal-500',
+    };
+  }
+  if (value === 'expired') {
+    return {
+      background: 'bg-red-100',
+      text: 'text-red-500',
+    };
+  }
+
+  return {
+    background: 'bg-neutral-100',
+    text: 'text-neutral-500',
+  };
+}
 export function StatusDropdownContent(): JSX.Element {
   const { data, loading } = useFetch<IHealthCheck>(E_HEALTH_CHECK, initState);
 
@@ -41,24 +61,18 @@ export function StatusDropdownContent(): JSX.Element {
         {!loading ? (
           data &&
           Object.entries(data).map(([key, value]) => {
+            const statusClass = statusStyle(value);
+
             return (
               <div
                 key={key}
-                className={`p-3 rounded-lg w-[8.75rem] h-6 sm:w-[12.1rem] sm:h-8 flex items-center cursor-default my-[0.188rem] ${
-                  value ? 'bg-teal-200 ' : 'bg-red-100'
-                } }`}
+                className={`p-3 rounded-lg w-[8.75rem] h-6 sm:w-[12.1rem] sm:h-8 flex items-center cursor-default my-[0.188rem] ${statusClass.background} }`}
               >
                 <BaseIcon
                   icon={PhHardDrives}
-                  className={`ml-[1.1rem] ${
-                    value ? 'text-teal-500' : 'text-red-500'
-                  }`}
+                  className={`ml-[1.1rem] ${statusClass.text}`}
                 />
-                <Typography
-                  className={`${value ? 'text-teal-500' : 'text-red-500'}`}
-                >
-                  {key}
-                </Typography>
+                <Typography className={`${statusClass.text}`}>{key}</Typography>
               </div>
             );
           })

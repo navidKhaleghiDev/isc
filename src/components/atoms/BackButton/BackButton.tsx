@@ -1,7 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import PhCaretLeft from '@iconify-icons/ph/caret-left';
+import PhCaretRight from '@iconify-icons/ph/caret-right';
 import PhArrowLineLeft from '@iconify-icons/ph/arrow-line-left';
+import useWindowDimensions from '@src/helper/hoc/useWindowDimensions';
+
 import { BaseButton, IconButton } from '../BaseButton';
 
 export type BackButtonProps = {
@@ -33,6 +36,8 @@ export function BackButton({
   const navigate = useNavigate();
   const location = useLocation();
 
+  const windowDimensions = useWindowDimensions();
+
   const handleClick = () => {
     if (!onClick) {
       // Navigate to the new path
@@ -51,7 +56,7 @@ export function BackButton({
   return !withLabel ? (
     <IconButton
       onClick={handleClick}
-      icon={PhCaretLeft}
+      icon={windowDimensions.width >= 600 ? PhCaretLeft : PhCaretRight}
       size="xxl"
       type="button"
       color="neutralLight"
