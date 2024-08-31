@@ -43,8 +43,8 @@ export function AuthenticationForm({
       onSubmit={handleSubmit(handelSubmitForm)}
       className="flex flex-col h-full w-full items-center justify-center"
     >
-      <Typography color="neutral" size="h5" className="mb-10">
-        برای احراز هویت ایمیل و کلمه عبور مشتری را وراد کنید.
+      <Typography color="neutral" size="body4" className="mb-10">
+        برای احراز هویت ایمیل و کلمه عبور مشتری را وارد کنید.
       </Typography>
       {error && (
         <Typography color="red" size="body3" className="mb-2">
@@ -54,7 +54,7 @@ export function AuthenticationForm({
 
       <div className="w-full flex flex-col items-center justify-end pb-16">
         <BaseInput
-          fullWidth
+          size="lg"
           control={control}
           placeholder="email"
           id="email"
@@ -77,7 +77,6 @@ export function AuthenticationForm({
           className="mt-8"
           size="md"
           submit
-          fullWidth
         />
       </div>
     </form>

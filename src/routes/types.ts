@@ -7,7 +7,6 @@ export type RoutePathType =
   | 'servicesMonitoringSystems'
   | 'support'
   | 'settings'
-  | 'changePassword'
   | 'unauthorized'
   | 'login'
   | 'dashboard'

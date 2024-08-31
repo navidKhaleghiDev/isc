@@ -26,7 +26,7 @@ export function MenuItem({
   isChildren,
   collapsed,
 }: IMenuItem): JSX.Element {
-  const isActive = item.path === pathname;
+  const isActive = pathname.includes(item.path);
 
   return (
     <Link

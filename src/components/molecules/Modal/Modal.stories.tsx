@@ -71,11 +71,6 @@ const handleRequest = (): void => {
 };
 
 /**
- * These functions are defined as samples because they are part of the main component's props.
- */
-const toggleModal = (): void => {};
-
-/**
  * This modal displays default messages.
  */
 export const Default: Story = {
@@ -88,11 +83,7 @@ export const Default: Story = {
     buttonOne: {
       label: 'بله',
       onClick: handleRequest,
-    },
-    buttonTow: {
-      label: 'خیر',
-      onClick: toggleModal,
-      color: 'red',
+      color: 'default',
     },
   },
 };

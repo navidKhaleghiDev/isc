@@ -2,6 +2,9 @@ import { ReactElement } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { ProductList } from '.';
 
+/**
+ * This molecule has been removed in the new design
+ */
 const meta = {
   title: 'molecules/ProductList',
   component: ProductList,

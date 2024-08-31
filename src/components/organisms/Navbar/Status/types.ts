@@ -7,6 +7,5 @@ export interface DropdownProps {
     label: string;
     status: string;
   }[];
-  // isOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   icon?: string | IconifyIcon;
 }
