@@ -15,13 +15,13 @@ export interface BaseCheckBoxProps<T extends FieldValues>
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;
-  defaultValue: string;
+  defaultValue?: string;
   label?: string;
   hiddenError?: boolean;
   className?: string;
   pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   pureValue?: string | number | readonly string[];
   pureError?: string;
-  checked: boolean;
+  checked?: boolean;
   ltrLabel?: boolean;
 }
