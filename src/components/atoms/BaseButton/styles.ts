@@ -1,28 +1,22 @@
 import { PALLET, SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-// const disabledClass =
-//   'disabled:opacity-40 disabled:bg-teal-500 disabled:text-white';
-
 export const baseButtonStyles = cva(
-  `flex items-center justify-center transition duration-150 ease-in-out rounded-lg focus:outline-none p-px ${SIZE.TYPOGRAPHY.BODY4}`,
+  `flex items-center justify-center transition duration-150 ease-in-out rounded-lg focus:outline-none p-2 ${SIZE.TYPOGRAPHY.BODY4}`,
   {
     variants: {
       type: {
-        default: `${PALLET.BUTTON_COLOR.TEAL} disabled:opacity-40 disabled:text-white`,
+        default: `${PALLET.BUTTON_COLOR.TEAL}`,
         inactive: `${PALLET.BUTTON_COLOR.TEAL} opacity-40`,
-        shadow: `${PALLET.BUTTON_COLOR.SHADOW}`,
-        secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
         red: `${PALLET.BUTTON_COLOR.RED}`,
-        redBg: `${PALLET.BUTTON_COLOR.RED_BG} disabled:opacity-40 disabled:text-red-900`,
         tealLink: `text-teal-600 hover:bg-neutral-200 rounded-none`,
         neutral: `${PALLET.BUTTON_COLOR.NEUTRAL}`,
+        tertiary: `${PALLET.BUTTON_COLOR.TERTIARY}`,
       },
       size: {
         sm: SIZE.BUTTON.SMALL,
         md: SIZE.BUTTON.MEDIUM,
         lg: SIZE.BUTTON.LARGE,
-        xl: SIZE.BUTTON.X_LARGE,
       },
       fullWidth: {
         true: 'w-full',
@@ -39,9 +33,6 @@ export const iconInButtonStyles = cva('fill-current ', {
   variants: {
     type: {
       default: `${PALLET.BUTTON_COLOR.TEAL} hover:bg-red-100`,
-      inactive: `${PALLET.BUTTON_COLOR.NEUTRAL} border border-neutral-600`,
-      shadow: `bg-white text-teal-600 shadow-lg`,
-      secondary: `${PALLET.BUTTON_COLOR.YELLOW}`,
       red: `${PALLET.BUTTON_COLOR.RED} `,
       tealLink: ``,
       noBg: ``,

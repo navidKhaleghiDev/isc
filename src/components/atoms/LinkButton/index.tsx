@@ -1,9 +1,8 @@
 import { BaseButton } from '@ui/atoms';
 import { Link } from 'react-router-dom';
+import { BaseButtonProps } from '../BaseButton/types';
 
-import { IBaseButton } from '../BaseButton/types';
-
-interface ILinkButtonProps extends IBaseButton {
+interface ILinkButtonProps extends BaseButtonProps {
   link: string;
   skip?: boolean;
 }

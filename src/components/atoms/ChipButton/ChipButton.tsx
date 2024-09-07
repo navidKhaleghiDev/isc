@@ -1,11 +1,12 @@
 import React from 'react';
-import { IconButton, IIconButton } from '../BaseButton';
 import { chipButtonStyles } from './styles';
+import { IconButtonProps } from '../BaseButton/types';
+import { IconButton } from '../BaseButton';
 
 type BaseButtonAttributes = React.ComponentPropsWithoutRef<'button'>;
 interface ChipButtonType extends BaseButtonAttributes {
   label: string;
-  icon?: IIconButton['icon'];
+  icon?: IconButtonProps['icon'];
   onClickIcon?: () => void;
 
   color: 'default' | 'green' | 'yellow' | 'lightGray';

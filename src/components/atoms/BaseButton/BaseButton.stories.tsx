@@ -18,7 +18,7 @@ const meta: Meta<typeof BaseButton> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'on' }}>
+      <div dir="rtl" style={{ fontFamily: 'kalameh' }}>
         <Story />
       </div>
     ),
@@ -28,22 +28,14 @@ const meta: Meta<typeof BaseButton> = {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg', 'xl'],
+      options: ['sm', 'md', 'lg'],
     },
 
     type: {
       control: {
         type: 'select',
       },
-      options: [
-        'default',
-        'inactive',
-        'shadow',
-        'secondary',
-        'red',
-        'tealLink',
-        'neutral',
-      ],
+      options: ['default', 'red', 'neutral', 'tertiary'],
     },
 
     loading: { control: 'boolean' },

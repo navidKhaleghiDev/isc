@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PhUserCircle from '@iconify-icons/ph/user-circle';
 import PhUser from '@iconify-icons/ph/user';
 import { Avatar } from '@ui/atoms/Avatar';
-import { BaseButton } from '@ui/atoms/BaseButton';
+import { BaseButton } from '@ui/atoms/Buttons';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 import { Modal } from '@ui/molecules/Modal';
@@ -106,12 +106,11 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             label="ورود به حساب کاربری"
             className="mt-12"
             loading={loadingButton}
-            size="xl"
+            size="lg"
             submit
           />
           <BaseButton
             label="رمز عبور خود را فراموش کرده اید؟"
-            size="xl"
             type="neutral"
             fullWidth
           />
