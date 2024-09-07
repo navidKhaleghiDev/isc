@@ -64,6 +64,7 @@ const meta: Meta<typeof BaseCheckBox> = {
       label={args.label}
       rules={args.rules}
       pureValue={args.pureValue}
+      ltrLabel={args.ltrLabel}
     />
   ),
 };
@@ -72,7 +73,7 @@ const meta: Meta<typeof BaseCheckBox> = {
 export const defaultCheckBox: StoryBaseCheckBox = {
   args: {
     intent: 'default',
-    size: 'xl',
+    size: 'md',
   },
 };
 
