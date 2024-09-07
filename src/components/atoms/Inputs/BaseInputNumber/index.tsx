@@ -67,7 +67,6 @@ export function BaseInputNumber(props: BaseInputNumberProps<any>): JSX.Element {
               rtl ? 'rounded-l-none border-l-0' : 'rounded-r-none'
             } min-h-10 `,
           })}
-          // disabled={value >= max}
         />
         <IconButton
           icon={PhMinus}
@@ -77,7 +76,6 @@ export function BaseInputNumber(props: BaseInputNumberProps<any>): JSX.Element {
               rtl ? 'rounded-none border-l-0' : 'rounded-none border-l-0'
             } min-h-10 `,
           })}
-          // disabled={value <= min}
         />
 
         {/* Input Field */}
