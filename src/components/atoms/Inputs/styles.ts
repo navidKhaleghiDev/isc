@@ -81,11 +81,12 @@ export const baseTextareaStyles = cva(
 );
 
 export const baseCheckBoxStyles = cva(
-  `before:content[''] peer relative cursor-pointer bg-neutral-100 appearance-none border border-neutral-200 rounded transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
+  `before:content[''] peer relative cursor-pointer appearance-none border rounded transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
   {
     variants: {
       intent: {
-        default: '',
+        default: 'border-neutral-200 bg-neutral-100',
+        darkMode: 'border-neutral-400 bg-neutral-500',
         error: '',
       },
       size: {
