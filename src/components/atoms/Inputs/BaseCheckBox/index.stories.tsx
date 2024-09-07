@@ -64,7 +64,6 @@ const meta: Meta<typeof BaseCheckBox> = {
       label={args.label}
       rules={args.rules}
       pureValue={args.pureValue}
-      ltrLabel={args.ltrLabel}
     />
   ),
 };
