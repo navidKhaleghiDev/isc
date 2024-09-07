@@ -1,6 +1,8 @@
+import { Controller } from 'react-hook-form';
+
 import { baseTextareaStyles } from '../styles';
 import { Typography } from '../../Typography';
-import { BaseTextareaProps } from './types';
+import { BaseTextareaPropsControl } from './types';
 
 /**
  * BaseTextarea component that integrates with react-hook-form.
@@ -23,55 +25,51 @@ import { BaseTextareaProps } from './types';
  * @returns {JSX.Element} The rendered textarea component.
  */
 
-export function BaseTextarea(props: BaseTextareaProps<any>): JSX.Element {
+export function BaseTextarea(props: BaseTextareaPropsControl<any>) {
   const {
+    control,
     name,
-    pureOnChange,
-    pureValue,
-    label,
-    pureError,
-    disabled,
     id,
     placeholder,
+    rules,
     className,
     fullWidth,
+    defaultValue,
     intent,
     size,
     hiddenError,
-    ltrLabel = false,
   } = props;
   return (
-    <div className={`flex-col  items-center border-none ${className}`}>
-      {label && (
-        <label
-          htmlFor={id}
-          className={`mb-2 ${ltrLabel ? 'text-left' : 'text-right'}`}
-        >
-          <Typography color="neutral_light" size="body4">
-            {label}
-          </Typography>
-        </label>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue}
+      render={({ field, fieldState: { error } }) => (
+        <div className={`${className} ${fullWidth && 'w-full'}`}>
+          <textarea
+            id={id}
+            rows={5}
+            cols={50}
+            dir="auto"
+            name={field.name}
+            value={field.value ?? ''}
+            onChange={field.onChange}
+            className={baseTextareaStyles({
+              intent: error?.message ? 'error' : intent,
+              className,
+              fullWidth,
+              size,
+            })}
+            placeholder={placeholder}
+          />
+          {hiddenError && (
+            <Typography color="red" size="body6" className="h-6">
+              {error?.message ?? 'fdflfsd;'}
+            </Typography>
+          )}
+        </div>
       )}
-      <textarea
-        id={id}
-        disabled={disabled}
-        dir="auto"
-        name={name}
-        value={pureValue}
-        onChange={pureOnChange}
-        className={baseTextareaStyles({
-          intent: pureError ? 'error' : intent,
-          className,
-          fullWidth,
-          size,
-        })}
-        placeholder={placeholder}
-      />
-      {hiddenError && (
-        <Typography color="red" size="body6" className="h-6">
-          {pureError ?? ''}
-        </Typography>
-      )}
-    </div>
+    />
   );
 }

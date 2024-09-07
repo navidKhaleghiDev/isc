@@ -61,6 +61,7 @@ const meta: Meta<typeof BaseCheckBox> = {
       defaultValue={args.defaultValue}
       hiddenError={args.hiddenError}
       intent={args.intent}
+      ltrLabel={args.ltrLabel}
       label={args.label}
       rules={args.rules}
       pureValue={args.pureValue}
@@ -71,7 +72,7 @@ const meta: Meta<typeof BaseCheckBox> = {
 // Define different stories base on size and error
 export const defaultCheckBox: StoryBaseCheckBox = {
   args: {
-    intent: 'darkMode',
+    intent: 'default',
     size: 'md',
   },
 };

@@ -55,27 +55,25 @@ export const iconBaseInputStyles = cva(
 );
 
 export const baseTextareaStyles = cva(
-  'px-2.5 py-2.5 block rounded-lg outline-none placeholder:text-right placeholder:text-rtl',
+  'p-2 block rounded-lg border-2 outline-none border-neutral-300 placeholder:text-right placeholder:text-rtl disabled:border-neutral-300 disabled:text-neutral-300 focus:border-neutral-900 focus:placeholder:text-neutral-900',
   {
     variants: {
       intent: {
         default: '',
-        error: '',
+        error: 'border-red-600',
       },
       fullWidth: {
         true: 'w-full',
       },
       size: {
-        xs: ``,
-        sm: ``,
-        md: ``,
-        lg: ``,
-        xl: ``,
+        sm: `w-40`,
+        md: `w-64`,
+        lg: `w-[21.875rem]`,
       },
     },
     defaultVariants: {
       intent: 'default',
-      size: 'sm',
+      size: 'md',
     },
   }
 );
@@ -85,8 +83,8 @@ export const baseCheckBoxStyles = cva(
   {
     variants: {
       intent: {
-        default: 'border-neutral-200 bg-neutral-100',
-        darkMode: 'border-neutral-400 bg-neutral-500',
+        default:
+          'border-neutral-200 bg-neutral-100 dark:border-neutral-400 dark:bg-neutral-500',
         error: '',
       },
       size: {

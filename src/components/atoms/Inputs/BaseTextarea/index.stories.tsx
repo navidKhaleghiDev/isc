@@ -1,6 +1,5 @@
-import { useForm } from 'react-hook-form';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { BaseTextarea } from '.';
+import { BaseTextarea } from './index';
 
 // Custom Types for storyBook
 
@@ -23,23 +22,25 @@ const meta: Meta<typeof BaseTextarea> = {
   args: {
     name: 'textArea',
     id: 'textArea',
-    placeholder: 'متن خود را وارد کنید',
     className: 'border-2 border-cyan-600',
   },
   render: (args) => (
     <BaseTextarea
       name={args.name}
+      pureOnChange={args.pureOnChange}
       id={args.id}
       placeholder={args.placeholder}
       label={args.label}
       intent={args.intent}
+      disabled={args.disabled}
+      ltrLabel={args.ltrLabel}
+      pureError={args.pureError}
+      pureValue={args.pureValue}
       size={args.size}
-      control={args.control}
       className={args.className}
       defaultValue={args.defaultValue}
       fullWidth={args.fullWidth}
       hiddenError={args.hiddenError}
-      rules={args.rules}
       setError={args.setError}
     />
   ),
@@ -63,18 +64,21 @@ const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
       placeholder,
       intent,
       defaultValue,
+      pureOnChange,
       fullWidth,
       size,
       label,
-      rules,
       hiddenError,
       setError,
     } = args;
-    const { control } = useForm();
 
     return (
       <BaseTextarea
-        control={control}
+        pureOnChange={pureOnChange}
+        disabled={args.disabled}
+        ltrLabel={args.ltrLabel}
+        pureValue={args.pureValue}
+        pureError={args.pureError}
         id={id}
         name={name}
         placeholder={placeholder}
@@ -85,7 +89,6 @@ const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
         defaultValue={defaultValue}
         fullWidth={fullWidth}
         hiddenError={hiddenError}
-        rules={rules}
         setError={setError}
       />
     );
@@ -97,8 +100,8 @@ export const textInputDefault: StoryBaseTextarea = {
   args: {
     id: 'userMassage',
     name: 'userMessage',
-    placeholder: 'متن خود را وارد  کنید',
-    intent: 'default',
+    placeholder: 'Label',
+    label: 'my App Label',
   },
 };
 
