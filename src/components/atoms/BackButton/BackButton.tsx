@@ -56,9 +56,9 @@ export function BackButton({
     <IconButton
       onClick={handleClick}
       icon={windowDimensions.width >= 600 ? PhCaretLeft : PhCaretRight}
-      size="xxl"
+      size="md"
       type="button"
-      color="neutralLight"
+      color="neutral"
     />
   ) : (
     <BaseButton
