@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const tooltipStyles = cva(
-  'absolute -z-10 h-2.5 w-2.5 rotate-45 rounded-sm bg-black dark:bg-neutral-400',
+  'absolute -z-10 h-2.5 w-2.5 rotate-45 rounded-sm bg-neutral-800 dark:bg-neutral-400',
   {
     variants: {
       position: {
@@ -22,7 +22,7 @@ export const tooltipStyles = cva(
 );
 
 export const containerTooltipStyles = cva(
-  'absolute z-20 whitespace-nowrap rounded-lg bg-black dark:bg-neutral-400 py-1 px-1 text-xs text-white',
+  'absolute z-20 whitespace-nowrap rounded-lg bg-neutral-800 dark:bg-neutral-400 py-1 px-1 text-xs text-white',
   // 'absolute z-20 whitespace-nowrap rounded bg-black py-[6px] px-4 text-sm font-semibold text-white opacity-0 group-hover:opacity-100',
   {
     variants: {

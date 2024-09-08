@@ -50,7 +50,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: 'this is tooltip',
-    tooltip: 'this is tooltip',
+    tooltip: 'tooltip',
     position: 'left',
   },
 };
