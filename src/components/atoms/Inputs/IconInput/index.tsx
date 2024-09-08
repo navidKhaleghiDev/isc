@@ -15,10 +15,10 @@ export function IconInput({ icon, intent, dir = 'rtl' }: IconInputProps) {
     <div
       className={iconBaseInputStyles({
         intent,
-        className: ` ${dir === 'ltr' && 'left-auto'} pointer-events-none`,
+        className: `${dir === 'ltr' && 'left-auto'}  pointer-events-none`,
       })}
     >
-      <BaseIcon icon={icon} className="text-neutral-400" size="md" />
+      <BaseIcon icon={icon} size="xs" />
     </div>
   );
 }

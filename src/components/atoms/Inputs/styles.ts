@@ -2,12 +2,12 @@ import { SIZE, PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  `p-2 flex rounded-lg outline-none border focus:border-2 
+  `peer p-2 flex text-sm rounded-lg outline-none border 
    shadow-sm h-10`,
   {
     variants: {
       intent: {
-        default: `text-neutral-500 border focus:${PALLET.BORDER_COLOR.TEAL} border-neutral-300 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
+        default: `text-neutral-500 border border-neutral-300 focus:border-neutral-500 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
         error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
       },
       fullWidth: {
@@ -18,7 +18,7 @@ export const baseInputStyles = cva(
         false: 'placeholder:text-right placeholder:text-rtl',
       },
       size: {
-        xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
+        xs: `w-52 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
         sm: `w-40`,
         md: `w-[15.94rem]`,
         lg: `w-[21.88rem]`,
@@ -34,11 +34,11 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center fill-current',
+  'absolute inset-y-0 flex px-2 items-center peer-focus:text-neutral-500 active:text-neutral-500 fill-current',
   {
     variants: {
       intent: {
-        default: 'text-neutral-500',
+        default: 'text-neutral-300',
         error: 'text-red-500',
       },
       right: {

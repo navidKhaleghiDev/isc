@@ -19,7 +19,7 @@ export interface BaseTextareaProps<T extends FieldValues>
   disabled: boolean;
   placeholder?: string;
   pureValue?: string;
-  ltrLabel?: boolean;
+  dir?: 'rtl' | 'ltr';
   pureOnChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   className?: string;
   hiddenError?: boolean;

@@ -86,8 +86,10 @@ export default meta;
 export const defaultInput: StoryBaseInput = {
   args: {
     id: 'username',
-    placeholder: 'نام کاربری',
+    placeholder: 'Label',
     type: 'text',
-    label: 'نام کاربری',
+    intent: 'error',
+    ltrLabel: 'ltr',
+    size: 'md',
   },
 };

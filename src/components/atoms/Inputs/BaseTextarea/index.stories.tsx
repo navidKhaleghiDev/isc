@@ -33,7 +33,7 @@ const meta: Meta<typeof BaseTextarea> = {
       label={args.label}
       intent={args.intent}
       disabled={args.disabled}
-      ltrLabel={args.ltrLabel}
+      dir={args.dir}
       pureError={args.pureError}
       pureValue={args.pureValue}
       size={args.size}
@@ -76,7 +76,7 @@ const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
       <BaseTextarea
         pureOnChange={pureOnChange}
         disabled={args.disabled}
-        ltrLabel={args.ltrLabel}
+        dir={args.dir}
         pureValue={args.pureValue}
         pureError={args.pureError}
         id={id}

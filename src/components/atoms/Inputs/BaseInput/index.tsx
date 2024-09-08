@@ -45,7 +45,8 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     id,
     placeholder,
     fullWidth,
-    startIcon,
+    startIcon = true,
+    className,
     endIcon,
     defaultValue,
     intent,
@@ -60,7 +61,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     pureError,
     min,
     max,
-    ltrLabel = 'ltr',
+    ltrLabel = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
 
@@ -87,9 +88,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
           onClick={onClickIcon}
         />
       )}
-      <div className="relative base-input">
-        {startIcon && <IconInput icon={PhEye} intent={intent} dir="ltr" />}
-        {endIcon && <IconInput icon={PhEye} intent={intent} />}
+      <div className={`relative ${className}`}>
         <input
           id={id}
           type={type}
@@ -103,15 +102,23 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
           onChange={pureOnChange}
           className={baseInputStyles({
             intent: pureError ? 'error' : intent,
-            className: `${endIcon && ' pl-9'} ${startIcon && 'pr-9'} `,
+            className: `${endIcon && ' pl-7'} ${startIcon && 'pr-7'}`,
             fullWidth,
             size,
           })}
           placeholder={placeholder}
         />
+        {startIcon && <IconInput icon={PhEye} intent={intent} dir="ltr" />}
+        {endIcon && <IconInput icon={PhEye} intent={intent} />}
       </div>
-      {!hiddenError && (
-        <Typography color="red" size="body6" className="min-h-5">
+      {hiddenError && (
+        <Typography
+          color="red"
+          size="body6"
+          className={`${
+            ltrLabel === 'ltr' ? 'text-left' : 'text-right'
+          } min-h-5`}
+        >
           {pureError}
         </Typography>
       )}
