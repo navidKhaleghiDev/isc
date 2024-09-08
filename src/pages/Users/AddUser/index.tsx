@@ -53,7 +53,7 @@ function AddUserPageCp() {
         <BackButton backToReferrer />
       </div>
       <div className="mb-10 ml-auto">
-        <Typography size="h5" weight="bold" color="black">
+        <Typography size="h4" weight="bold" color="black">
           اضافه کردن کاربر جدید
         </Typography>
       </div>
@@ -115,7 +115,7 @@ function AddUserPageCp() {
           </div>
         </div>
         <div className="ml-auto mt-14">
-          <Typography size="h5" weight="bold" color="black">
+          <Typography size="h4" weight="bold" color="black">
             نوع کاربری
           </Typography>
           <div className="flex flex-col">

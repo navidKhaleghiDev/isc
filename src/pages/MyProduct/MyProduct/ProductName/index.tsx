@@ -32,7 +32,7 @@ export function ProductNamePage() {
             <div className="w-2/3 flex flex-col items-start mx-5 ">
               <TypographyIcon
                 text="آدرس ارسال شده"
-                size="h5"
+                size="h4"
                 startIcon={PhMapPin}
                 iconColor="teal"
                 color="teal"
@@ -53,7 +53,7 @@ export function ProductNamePage() {
             <div className="w-1/3 flex flex-col items-start mx-5 ">
               <TypographyIcon
                 text="تلفن"
-                size="h5"
+                size="h4"
                 startIcon={PhPhone}
                 iconColor="teal"
                 color="teal"

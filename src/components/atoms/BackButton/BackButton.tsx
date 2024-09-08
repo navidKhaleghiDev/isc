@@ -4,7 +4,6 @@ import PhCaretLeft from '@iconify-icons/ph/caret-left';
 import PhCaretRight from '@iconify-icons/ph/caret-right';
 import PhArrowLineLeft from '@iconify-icons/ph/arrow-line-left';
 import useWindowDimensions from '@src/helper/hoc/useWindowDimensions';
-
 import { BaseButton, IconButton } from '../BaseButton';
 
 export type BackButtonProps = {
@@ -57,9 +56,9 @@ export function BackButton({
     <IconButton
       onClick={handleClick}
       icon={windowDimensions.width >= 600 ? PhCaretLeft : PhCaretRight}
-      size="xxl"
+      size="md"
       type="button"
-      color="neutralLight"
+      color="neutral"
     />
   ) : (
     <BaseButton

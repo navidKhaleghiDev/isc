@@ -63,7 +63,7 @@ export function UserCard({ user, mutateUserList, isHeader }: PropsType) {
         <div className="w-full flex justify-between items-center">
           <Typography
             color="neutral"
-            size="h5"
+            size="h4"
             weight="medium"
             className="w-4/12 text-center break-words"
           >

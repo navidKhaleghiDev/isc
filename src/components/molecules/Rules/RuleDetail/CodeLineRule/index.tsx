@@ -21,7 +21,7 @@ export function CodeLineRule({ code }: { code: SliceOrderCodeType }) {
   return (
     <Card className="my-2 font-sans flex text-left p-2">
       <Typography type="span" size="body3" className="text-neutral-400">
-        <Typography type="span" color="teal" size="h6" className="mr-2">
+        <Typography type="span" color="teal" size="h4" className="mr-2">
           {code.order && code.order.toLocaleUpperCase()}
         </Typography>
         {code?.code}

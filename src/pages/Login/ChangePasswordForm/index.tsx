@@ -67,7 +67,7 @@ export function ChangePasswordForm({
         <div className="absolute top-[-6rem]">
           <Avatar icon={PhLock} intent="grey" size="lg" />
         </div>
-        <Typography color="neutral" size="h5" className="mb-5">
+        <Typography color="neutral" size="h4" className="mb-5">
           لطفا ایمیل و گذرواژه جدید خود را وارد کنید
         </Typography>
         {error && (

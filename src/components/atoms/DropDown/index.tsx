@@ -79,7 +79,7 @@ export function Dropdown<T extends FieldValues>({
         <div className="relative" ref={ref}>
           {label && (
             <label htmlFor={name} className="block mb-1">
-              <Typography color="teal" size="h5">
+              <Typography color="teal" size="h4">
                 {label}
               </Typography>
             </label>
