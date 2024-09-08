@@ -2,12 +2,12 @@ import { SIZE, PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  `px-3 py-2.5 flex rounded-lg outline-none border focus:border-2 
-  placeholder:text-right placeholder:text-rtl shadow-sm`,
+  `p-2 flex rounded-lg outline-none border focus:border-2 
+   shadow-sm h-10`,
   {
     variants: {
       intent: {
-        default: `text-neutral-400 border focus:${PALLET.BORDER_COLOR.TEAL} border-neutral-300 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
+        default: `text-neutral-500 border focus:${PALLET.BORDER_COLOR.TEAL} border-neutral-300 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
         error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
       },
       fullWidth: {
@@ -18,11 +18,10 @@ export const baseInputStyles = cva(
         false: 'placeholder:text-right placeholder:text-rtl',
       },
       size: {
-        none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-[18.75rem] h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
-        md: `${SIZE.INPUT.MEDIUM} ${SIZE.TYPOGRAPHY.BODY3}`,
-        lg: `${SIZE.INPUT.LARGE} ${SIZE.TYPOGRAPHY.BODY4}`,
+        sm: `w-40`,
+        md: `w-[15.94rem]`,
+        lg: `w-[21.88rem]`,
         xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },

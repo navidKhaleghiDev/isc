@@ -45,7 +45,7 @@ export interface BaseInputProps<T extends FieldValues>
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   pureValue?: string;
   pureError?: string;
-  ltrLabel?: boolean;
+  ltrLabel?: 'rtl' | 'ltr';
 
   // inputProps?: InputHTMLAttributes<HTMLInputElement>;
   min?: string | number;
