@@ -1,7 +1,6 @@
-// import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import X from '@iconify-icons/ph/x';
 import { fn } from '@storybook/test';
+import X from '@iconify-icons/ph/x';
 import { ChipButton } from './ChipButton';
 
 const meta: Meta<typeof ChipButton> = {

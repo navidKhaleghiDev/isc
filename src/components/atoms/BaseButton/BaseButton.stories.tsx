@@ -1,6 +1,7 @@
 // import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import X from '@iconify-icons/ph/x';
 import { BaseButton } from './BaseButton';
 
 const meta: Meta<typeof BaseButton> = {
@@ -50,6 +51,31 @@ export const Default: Story = {
   args: {
     label: 'Button',
 
+    submit: false,
+    fullWidth: false,
+    disabled: false,
+    size: 'md',
+    type: 'default',
+    loading: false,
+  },
+};
+
+export const est: Story = {
+  args: {
+    label: 'Button',
+    startIcon: X,
+    submit: false,
+    fullWidth: false,
+    disabled: false,
+    size: 'md',
+    type: 'default',
+    loading: false,
+  },
+};
+export const end: Story = {
+  args: {
+    label: 'دکمه',
+    endIcon: X,
     submit: false,
     fullWidth: false,
     disabled: false,

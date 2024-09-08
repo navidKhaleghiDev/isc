@@ -9,7 +9,6 @@ export const baseButtonStyles = cva(
         default: `${PALLET.BUTTON_COLOR.TEAL}`,
         inactive: `${PALLET.BUTTON_COLOR.TEAL} opacity-40`,
         red: `${PALLET.BUTTON_COLOR.RED}`,
-        tealLink: `text-teal-600 hover:bg-neutral-200 rounded-none`,
         neutral: `${PALLET.BUTTON_COLOR.NEUTRAL}`,
         tertiary: `${PALLET.BUTTON_COLOR.TERTIARY}`,
       },
@@ -40,9 +39,8 @@ export const iconInButtonStyles = cva('fill-current ', {
     },
     size: {
       sm: 'h-4 w-4',
-      md: 'h-5 w-5',
+      md: 'h-6 w-6',
       lg: 'h-6 w-6',
-      xl: 'h-7 w-7',
     },
   },
   defaultVariants: {
@@ -52,28 +50,21 @@ export const iconInButtonStyles = cva('fill-current ', {
 });
 
 export const iconButtonStyles = cva(
-  'fill-current p-2 flex items-center justify-center rounded-lg',
+  'flex items-center justify-center rounded-lg',
   {
     variants: {
       color: {
-        teal: 'bg-teal-600 text-neutral-100',
-        tealDark: 'bg-teal-500',
-        tealNoBg: 'text-teal-600',
-        redNoBg: 'text-red-600',
-        neutral: 'text-neutral-600',
-        neutralLight: 'bg-neutral-100 text-neutral-600',
-        yellow: 'bg-yellow-600 text-neutral-100',
-        red: 'bg-red-100 text-red-600',
-        white: 'bg-white text-neutral-900',
+        teal: `${PALLET.BUTTON_COLOR.TEAL}`,
+        redNoBg: `text-red-500 hover:text-red-600 active:text-red-700 disabled:opacity-40 
+                  dark:text-red-300 dark:hover:text-red-400 dark:active:text-red-500 dark:disabled:text-red-100`,
+        neutral: `${PALLET.BUTTON_COLOR.NEUTRAL}`,
+        neutralNoBg: `text-neutral-500 hover:text-neutral-600 active:text-neutral-900 disabled:opacity-40 
+                      dark:text-neutral-300 dark:hover:text-neutral-200 dark:active:text-neutral-100 dark:disabled:text-[#4B5563]`,
         default: 'text-neutral-600',
       },
       size: {
-        sm: 'h-4 w-4',
-        md: 'h-5 w-5',
-        lg: 'h-6 w-6',
-        xl: 'h-8 w-8',
-        xxl: 'h-10 w-10',
-        xxxl: 'h-16 w-16',
+        sm: 'h-7 w-7',
+        md: 'h-10 w-10',
         default: 'h-fit w-fit',
       },
     },

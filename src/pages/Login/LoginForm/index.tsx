@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PhUserCircle from '@iconify-icons/ph/user-circle';
 import PhUser from '@iconify-icons/ph/user';
 import { Avatar } from '@ui/atoms/Avatar';
-import { BaseButton } from '@ui/atoms/Buttons';
+import { BaseButton } from '@ui/atoms/BaseButton';
 import { BaseInput, regexPattern } from '@ui/atoms/Inputs';
 import { PasswordInput } from '@ui/atoms/Inputs/PasswordInput';
 import { Modal } from '@ui/molecules/Modal';

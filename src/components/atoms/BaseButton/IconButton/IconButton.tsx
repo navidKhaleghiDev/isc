@@ -1,3 +1,8 @@
+import { BaseIcon } from '@ui/atoms/BaseIcon';
+import { LoadingSvg } from '@ui/atoms/Svgs';
+import { iconButtonStyles } from '../styles';
+import { IconButtonProps } from '../types';
+
 /**
  * This IconButton component renders a button with an icon.
  * It supports different sizes, colors, and loading states.
@@ -16,11 +21,6 @@
  *
  * @returns {JSX.Element} The IconButton component.
  */
-
-import { BaseIcon } from '@ui/atoms/BaseIcon';
-import { LoadingSvg } from '@ui/atoms/Svgs';
-import { iconButtonStyles } from '../styles';
-import { IconButtonProps } from '../types';
 
 export function IconButton({
   onClick,

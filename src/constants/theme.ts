@@ -26,11 +26,12 @@ export const PALLET = {
   },
   BORDER_COLOR: {
     TEAL: 'border-teal-500 dark:border-teal-500',
-    RED: 'border-red-600 dark:border-red-600',
+    RED: 'border-red-600 dark:border-red-500',
     YELLOW: 'border-yellow-600 dark:border-yellow-600',
     NEUTRAL_LIGHT: 'border-neutral-200',
     NEUTRAL_MIDDLE: 'border-neutral-300  dark:border-neutral-600',
-    NEUTRAL: 'border-neutral-400  dark:border-neutral-600',
+    NEUTRAL: `border-neutral-300 hover:border-neutral-400 active:border-neutral-900 disabled:border-neutral-300 
+             dark:border-neutral-400 dark:hover:border-white dark:disabled:border-neutral-500`,
   },
   BUTTON_COLOR: {
     TEAL: `
@@ -72,8 +73,6 @@ export const SIZE = {
     H2: 'text-5xl',
     H3: 'text-4xl',
     H4: 'text-3xl',
-    H5: 'text-2xl',
-    H6: 'text-xl',
     BODY1: 'text-2xl',
     BODY2: 'text-xl',
     BODY3: 'text-lg',
