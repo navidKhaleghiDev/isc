@@ -13,6 +13,10 @@ import {
 } from 'react-toastify';
 import { toastStyle } from './styles';
 
+interface ToastCustomContainerProps {
+  dir: 'rtl' | 'ltr';
+}
+
 /**
  * Custom close button component for the toast notification.
  *
@@ -26,12 +30,12 @@ import { toastStyle } from './styles';
 function CloseButton({ closeToast }: CloseButtonProps): JSX.Element {
   return (
     <button
-      className="text-white ml-4 self-center justify-start"
+      className="text-white self-center justify-start"
       onClick={closeToast}
       aria-label="Close"
       type="button"
     >
-      <BaseIcon icon={X} />
+      <BaseIcon icon={X} color="neutral" size="md" />
     </button>
   );
 }
@@ -45,7 +49,9 @@ function CloseButton({ closeToast }: CloseButtonProps): JSX.Element {
  *
  * @returns {JSX.Element} The rendered ToastContainer component.
  */
-export function ToastCustomContainer(): JSX.Element {
+export function ToastCustomContainer({
+  dir = 'rtl',
+}: ToastCustomContainerProps): JSX.Element {
   const toastOptions: ToastOptions = {
     closeButton: CloseButton,
     closeOnClick: false,
@@ -64,13 +70,41 @@ export function ToastCustomContainer(): JSX.Element {
   const getToastIcon = ({ type }: IconProps) => {
     switch (type) {
       case 'success':
-        return <BaseIcon icon={Check} className="mr-2 shrink-0 w-5 h-5" />;
+        return (
+          <BaseIcon
+            icon={Check}
+            size="md"
+            color="neutral"
+            className="shrink-0 w-5 h-5"
+          />
+        );
       case 'error':
-        return <BaseIcon icon={Warning} size="md" className="mr-2 shrink-0" />;
+        return (
+          <BaseIcon
+            icon={Warning}
+            size="md"
+            color="neutral"
+            className="shrink-0"
+          />
+        );
       case 'info':
-        return <BaseIcon icon={Info} size="md" className="mr-2 shrink-0" />;
+        return (
+          <BaseIcon
+            icon={Info}
+            size="md"
+            color="neutral"
+            className="shrink-0"
+          />
+        );
       case 'warning':
-        return <BaseIcon icon={Warning} className="mr-2 shrink-0 w-5 h-5" />;
+        return (
+          <BaseIcon
+            icon={Warning}
+            size="md"
+            color="neutral"
+            className="shrink-0 w-5 h-5"
+          />
+        );
       default:
         return null;
     }
@@ -86,7 +120,7 @@ export function ToastCustomContainer(): JSX.Element {
    */
   const getToastClassName = (props?: { type?: TypeOptions }) => {
     const type = props?.type || 'default';
-    return `flex items-center flex-row-reverse px-5 sm:py-1 py-0.5 rounded-lg shadow-lg w-[16.25rem] sm:w-[37.5rem] font-kalameh text-base toast-custom ${toastStyle(
+    return `flex items-center flex-row-reverse px-5 rounded-2xl shadow-lg w-[21.875rem] h-20 font-kalameh text-base gap-7 toast-custom ${toastStyle(
       { typeToast: type }
     )}`;
   };
@@ -99,9 +133,9 @@ export function ToastCustomContainer(): JSX.Element {
       hideProgressBar={toastOptions.hideProgressBar}
       className="toast-container-custom"
       toastClassName={(props) => getToastClassName(props)}
-      bodyClassName="flex-row-reverse text-left p-0 sm:p-1.5 toast-body-custom"
+      bodyClassName="flex-row-reverse text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom"
       icon={(props) => getToastIcon(props)}
-      rtl
+      rtl={dir === 'rtl'}
     />
   );
 }

@@ -28,6 +28,19 @@ const meta = {
       options: ['success', 'error', 'info'],
     },
     message: { control: 'text' },
+    dir: {
+      control: {
+        type: 'radio',
+      },
+      options: ['rtl', 'ltr'],
+      defaultValue: 'rtl',
+    },
+    darkMode: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
   },
   decorators: [
     (Story): ReactElement => (
@@ -59,5 +72,6 @@ export const Default: Story = {
   args: {
     status: 'success',
     message: 'این یک پیغام عمومی می باشد.',
+    dir: 'rtl',
   },
 };

@@ -7,6 +7,8 @@ export type ToastPropsType = {
   className?: string;
   status: 'success' | 'error' | 'info';
   message: string;
+  dir: 'rtl' | 'ltr';
+  darkMode?: boolean;
 };
 
 /**
@@ -24,7 +26,13 @@ export type ToastPropsType = {
  * @returns {JSX.Element} Returns the rendered toast component.
  */
 
-export function Toast({ className, status, message }: ToastPropsType) {
+export function Toast({
+  className,
+  status,
+  message,
+  dir,
+  darkMode,
+}: ToastPropsType) {
   const notify = () => {
     switch (status) {
       case 'success':
@@ -39,7 +47,7 @@ export function Toast({ className, status, message }: ToastPropsType) {
   };
 
   return (
-    <div className={className}>
+    <div className={`${className}${darkMode && ' dark'}`}>
       <button
         onClick={notify}
         style={{
@@ -51,7 +59,7 @@ export function Toast({ className, status, message }: ToastPropsType) {
       >
         نمایش نوتیفیکیشن
       </button>
-      <ToastCustomContainer />
+      <ToastCustomContainer dir={dir} />
     </div>
   );
 }

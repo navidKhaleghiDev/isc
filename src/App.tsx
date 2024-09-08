@@ -17,7 +17,7 @@ function App() {
         <Suspense>
           <RouterProvider router={router} />
         </Suspense>
-        <ToastCustomContainer />
+        <ToastCustomContainer dir="rtl" />
       </div>
     </UserContext.Provider>
   );

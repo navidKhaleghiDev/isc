@@ -46,8 +46,33 @@
   --toastify-toast-max-height: 48px;
 }
 
+.Toastify__toast-container .toast-custom {
+ flex-direction: row;
+}
+
+.Toastify__toast-container .toast-body-custom {
+ flex-direction: row;
+}
+
+.Toastify__toast-body > div:last-child {
+  text-align: right;
+}
+
+.Toastify__toast-container--rtl .toast-custom {
+ flex-direction: row-reverse;
+}
+
+.Toastify__toast-container--rtl .toast-body-custom {
+ flex-direction: row-reverse;
+}
+
+.Toastify__toast-container--rtl .Toastify__toast-body > div:last-child {
+  text-align: left;
+}
+
 .Toastify__toast-icon {
   margin: 0;
+  margin-inline-end: 0 !important;
 }
 
 .base-input .icon {
