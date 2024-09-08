@@ -65,7 +65,7 @@ export function Settings() {
         <BackButton backToReferrer />
       </div>
       <div className="mb-10 ml-auto">
-        <Typography size="h5" weight="bold" color="black">
+        <Typography size="h4" weight="bold" color="black">
           تغییر رمز عبور
         </Typography>
       </div>

@@ -13,7 +13,7 @@ type PropsType = {
 export function CollectButtons({ value, setValue }: PropsType) {
   return (
     <div className="w-full flex flex-col">
-      <Typography color="teal" size="h5" className="mb-1">
+      <Typography color="teal" size="h4" className="mb-1">
         انتخاب زمان آموزش داده
       </Typography>
       <div
