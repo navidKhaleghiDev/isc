@@ -20,11 +20,11 @@ function CardSimpleBox({ label, value, className }: any) {
       className={`flex items-center px-4 h-8 ${className} `}
     >
       <div className="flex items-center w-1/3 border-l h-4 border-neutral-400">
-        <Typography color="teal" size="h6" className="truncate">
+        <Typography color="teal" size="h4" className="truncate">
           {label}
         </Typography>
       </div>
-      <Typography size="h6" className=" w-2/3 text-center text-neutral-400">
+      <Typography size="h4" className=" w-2/3 text-center text-neutral-400">
         {value}
       </Typography>
     </Card>
@@ -88,7 +88,7 @@ export function AiLearnerDetailsPage() {
       <div className="grid grid-cols-12 gap-4 mt-6">
         <div className="col-span-12 lg:col-span-6 lg:ml-6 gap-4">
           <Card className="flex items-center px-4 h-10 bg-yellow-600 mb-2">
-            <Typography size="h5" color="white" className="text-center w-full">
+            <Typography size="h4" color="white" className="text-center w-full">
               نمودار خطای مدل شما
             </Typography>
           </Card>

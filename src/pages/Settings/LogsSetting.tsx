@@ -20,7 +20,7 @@ function TitleSection({ label }: { label: string }) {
   return (
     <Typography
       color="neutral"
-      size="h5"
+      size="h4"
       className="w-full my-4 col-span-12 text-left uppercase"
     >
       {label}

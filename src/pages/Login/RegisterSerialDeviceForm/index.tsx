@@ -42,7 +42,7 @@ export function RegisterSerialDeviceForm({
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <Typography color="neutral" size="h5" className="my-10">
+      <Typography color="neutral" size="h4" className="my-10">
         شماره سریال مورد نظر را وارد کنید
       </Typography>
       {error && (

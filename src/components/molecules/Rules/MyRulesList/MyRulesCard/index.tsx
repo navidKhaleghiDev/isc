@@ -94,7 +94,7 @@ export function MyRulesCard({
           label: 'بله',
           onClick: handleRequestDelete,
           loading: deleteLoading,
-          color: 'redBg',
+          color: 'red',
         }}
       />
     </>

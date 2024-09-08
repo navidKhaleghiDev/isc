@@ -31,7 +31,7 @@ export function AiButtonsCard() {
 
   return (
     <Card color="neutral" className="w-full text-center">
-      <Typography color="teal" size="h5" className="my-1">
+      <Typography color="teal" size="h4" className="my-1">
         سرویس هوش مصنوعی
       </Typography>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">

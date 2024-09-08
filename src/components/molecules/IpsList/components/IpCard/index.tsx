@@ -129,7 +129,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         type="error"
         title="از حذف این IP مطمئن هستید؟"
         buttonOne={{
-          color: 'redBg',
+          color: 'red',
           size: 'lg',
           label: 'بله',
           onClick: handleRequestDelete,

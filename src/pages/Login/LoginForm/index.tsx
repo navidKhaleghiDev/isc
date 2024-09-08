@@ -106,12 +106,11 @@ export function LoginForm({ onChangeStep, getProfile }: PropsFormType) {
             label="ورود به حساب کاربری"
             className="mt-12"
             loading={loadingButton}
-            size="xl"
+            size="lg"
             submit
           />
           <BaseButton
             label="رمز عبور خود را فراموش کرده اید؟"
-            size="xl"
             type="neutral"
             fullWidth
           />
