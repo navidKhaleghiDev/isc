@@ -77,3 +77,8 @@ input[type='time']::-webkit-calendar-picker-indicator {
 h2 {
   background-color: initial;
 }
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
