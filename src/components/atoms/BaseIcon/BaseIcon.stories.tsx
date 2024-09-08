@@ -111,9 +111,37 @@ import calendarBlank from '@iconify-icons/ph/calendar-blank';
 import eyeSlash from '@iconify-icons/ph/eye-slash';
 import sun from '@iconify-icons/ph/sun';
 import moon from '@iconify-icons/ph/moon';
+import plus from '@iconify-icons/ph/plus';
+import caretUpDown from '@iconify-icons/ph/caret-up-down';
+import dotsNine from '@iconify-icons/ph/dots-nine';
+import dotsThreeVertical from '@iconify-icons/ph/dots-three-vertical';
+import link from '@iconify-icons/ph/link';
+import handPointing from '@iconify-icons/ph/hand-pointing';
+import linkSimple from '@iconify-icons/ph/link-simple';
+import caretDoubleLeft from '@iconify-icons/ph/caret-double-left';
+import caretDoubleRight from '@iconify-icons/ph/caret-double-right';
+import playCircle from '@iconify-icons/ph/play-circle';
+import sliders from '@iconify-icons/ph/sliders';
+import lockLaminated from '@iconify-icons/ph/lock-laminated';
+
+import lockSimpleDuotone from '@iconify-icons/ph/lock-simple-duotone';
+import circleDashedDuotone from '@iconify-icons/ph/circle-dashed-duotone';
+import circleNotchDuotone from '@iconify-icons/ph/circle-notch-duotone';
+import warningDuotone from '@iconify-icons/ph/warning-duotone';
+import xDuotone from '@iconify-icons/ph/x-duotone';
+import signOutDuotone from '@iconify-icons/ph/sign-out-duotone';
+import monitorDuotone from '@iconify-icons/ph/monitor-duotone';
+import browsersDuotone from '@iconify-icons/ph/browsers-duotone';
+import chartBarDuotone from '@iconify-icons/ph/chart-bar-duotone';
+import rowsPlusBottomDuotone from '@iconify-icons/ph/rows-duotone';
+import gearSixDuotone from '@iconify-icons/ph/gear-six-duotone';
+import houseSimpleDuotone from '@iconify-icons/ph/house-simple-duotone';
+// import userCheckDuotone from '@iconify-icons/ph/user-check-duotone';
+import usersThreeDuotone from '@iconify-icons/ph/users-three-duotone';
 
 import { BaseIcon } from './BaseIcon';
 import { IIconListStorybook, IconListStorybook } from './ListIconStorybook';
+import { Typography } from '../Typography';
 
 /**
  *
@@ -234,8 +262,36 @@ const iconOptions = {
   SignOut: signOut,
   CalendarBlank: calendarBlank,
   EyeSlash: eyeSlash,
+  Plus: plus,
+  CaretUpDown: caretUpDown,
+  DotsNine: dotsNine,
+  DotsThreeVertical: dotsThreeVertical,
+  Link: link,
+  LinkSample: linkSimple,
+  HandPointing: handPointing,
+  CaretDoubleLeft: caretDoubleLeft,
+  CaretDoubleRight: caretDoubleRight,
+  PlayCircle: playCircle,
+  Sliders: sliders,
+  LockLaminated: lockLaminated,
   Sun: sun,
   Moon: moon,
+};
+
+const iconDuotoneOptions = {
+  LockSimpleDuotone: lockSimpleDuotone,
+  CircleDashedDuotone: circleDashedDuotone,
+  CircleNotchDuotone: circleNotchDuotone,
+  WarningDuotone: warningDuotone,
+  XDuotone: xDuotone,
+  SignOutDuotone: signOutDuotone,
+  MonitorDuotone: monitorDuotone,
+  BrowsersDuotone: browsersDuotone,
+  ChartBarDuotone: chartBarDuotone,
+  RowsPlusBottomDuotone: rowsPlusBottomDuotone,
+  GearSixDuotone: gearSixDuotone,
+  HouseSimpleDuotone: houseSimpleDuotone,
+  UsersThreeDuotone: usersThreeDuotone,
 };
 
 const meta = {
@@ -291,16 +347,43 @@ export function ListIcon({
   className,
 }: Omit<IIconListStorybook, 'icons'>) {
   const iconValue = Object.values(iconOptions);
+  const iconValueDuotone = Object.values(iconDuotoneOptions);
   const iconKey = Object.keys(iconOptions);
+  const iconKeyDuotone = Object.keys(iconDuotoneOptions);
   return (
-    <IconListStorybook
-      icons={iconValue}
-      color={color}
-      size={size}
-      hoverColor={hoverColor}
-      className={className}
-      title={iconKey}
-    />
+    <>
+      <Typography
+        size="body3"
+        weight="bold"
+        className="pb-6 mb-2 border-b border-b-neutral-300"
+      >
+        Phosphore - regular
+      </Typography>
+      <IconListStorybook
+        icons={iconValue}
+        color={color}
+        size={size}
+        hoverColor={hoverColor}
+        className={className}
+        title={iconKey}
+      />
+
+      <Typography
+        size="body3"
+        weight="bold"
+        className="pb-6 mb-2 border-b border-b-neutral-300"
+      >
+        Phosphore - duotone
+      </Typography>
+      <IconListStorybook
+        icons={iconValueDuotone}
+        color={color}
+        size={size}
+        hoverColor={hoverColor}
+        className={className}
+        title={iconKeyDuotone}
+      />
+    </>
   );
 }
 
