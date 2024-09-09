@@ -18,8 +18,8 @@ const meta = {
     docs: {
       description: {
         component: `
-          از بخش کنترل امکان تغییر نام آیکون، رنگ و سایز وجود دارد. 
-          The control panel allows changing the icon name, color, and size.
+          از بخش کنترل امکان تغییر نام آیکون، رنگ و سایز، تعیین مقدار content و ... وجود دارد. 
+          The control section, it is possible to change the icon name, color and size, determine the content value, etc.
                 `,
       },
     },
