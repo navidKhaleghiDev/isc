@@ -131,3 +131,35 @@ export const baseSelectStyles = cva(
     },
   }
 );
+
+export const baseOtpStyles = cva(
+  'block rounded-lg text-neutral-400 outline-none text-center text-base',
+  {
+    variants: {
+      intent: {
+        default:
+          'border text-neutral-300 border-neutral-500 focus:border-neutral-500 focus:text-neutral-500 focus:placeholder-neutral-500 disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-300 disabled:shadow-none',
+        error: 'text-neutral-900 border border-red-600 placeholder-red-400',
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
+      ltrPlaceHolder: {
+        true: 'placeholder:text-left',
+        false: 'placeholder:text-right placeholder:text-rtl',
+      },
+      size: {
+        none: ``,
+        xs: ``,
+        sm: ``,
+        md: `size-10 ${SIZE.TYPOGRAPHY.BODY3}`,
+        lg: `size-14 ${SIZE.TYPOGRAPHY.BODY2}`,
+        xl: ``,
+      },
+    },
+    defaultVariants: {
+      intent: 'error',
+      size: 'md',
+    },
+  }
+);
