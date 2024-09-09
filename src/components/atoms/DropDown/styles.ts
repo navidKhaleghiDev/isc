@@ -31,7 +31,7 @@ export const baseDropDownStyles = cva(
 );
 
 export const optionSelectStyles = cva(
-  `absolute block bg-white rounded-lg ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} text-neutral-400  shadow-sm text-left mt-[7px] border max-h-20 overflow-y-auto z-10`,
+  ` absolute block bg-white rounded-lg ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} text-neutral-400  shadow-sm text-left mt-[7px] border max-h-20 overflow-y-auto z-10`,
   {
     variants: {
       isShow: {
@@ -42,9 +42,9 @@ export const optionSelectStyles = cva(
       },
       size: {
         xs: `w-52 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-[18.75rem] text-md ${SIZE.TYPOGRAPHY.BODY3}`,
-        md: `w-64 text-lg ${SIZE.TYPOGRAPHY.BODY3} `,
-        lg: `w-[60rem] text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
+        sm: `w-40 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
+        md: `w-[220px] text-lg ${SIZE.TYPOGRAPHY.BODY3} `,
+        lg: `w-64 h-10 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
         xl: `w-[60rem] text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
       },
     },

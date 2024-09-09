@@ -46,7 +46,7 @@ export function StatusDropdown() {
         content={<StatusDropdownContent />}
         buttonContent={
           <IconButton
-            size="xxl"
+            size="md"
             type="button"
             icon={PhHardDrives}
             onClick={statusHandle}

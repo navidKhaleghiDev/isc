@@ -139,7 +139,7 @@ export function AdditionalList({
           <BaseButton
             label="اعمال تغییرات"
             size="sm"
-            type="secondary"
+            type="default"
             className="w-48"
             onClick={() => setOpenModalSetChanged(true)}
           />

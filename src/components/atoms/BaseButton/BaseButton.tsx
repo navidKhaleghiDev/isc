@@ -1,5 +1,5 @@
 import { baseButtonStyles, iconInButtonStyles } from './styles';
-import { IBaseButton } from './types';
+import { BaseButtonProps } from './types';
 import { BaseIcon } from '../BaseIcon';
 import { LoadingSvg } from '../Svgs/LoadingSvg';
 
@@ -37,7 +37,7 @@ export function BaseButton({
   size,
   type,
   loading,
-}: IBaseButton): JSX.Element {
+}: BaseButtonProps): JSX.Element {
   return (
     <button
       type={submit ? 'submit' : 'button'}
@@ -68,7 +68,8 @@ export function BaseButton({
           icon={endIcon}
           className={iconInButtonStyles({
             type: 'noBg',
-            className: `${size !== 'sm' && 'mr-4'}`,
+            size,
+            className: `${size !== 'sm' && 'mr-2'}`,
           })}
         />
       )}
