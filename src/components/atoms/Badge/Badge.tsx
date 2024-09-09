@@ -1,4 +1,5 @@
 import { IconButton } from '../BaseButton';
+import { badgeStyles } from './styles';
 import { BadgeProps } from './types';
 
 export function Badge({
@@ -16,11 +17,7 @@ export function Badge({
     <div className="relative">
       {content && (
         <span
-          className={`absolute flex justify-center items-center bg-red-500 rounded-full text-xs leading-3 text-white normal px-1 ${
-            size === 'xl'
-              ? 'size-2 -top-0.5 -right-0.5'
-              : 'size-5 -top-2 -right-2'
-          }`}
+          className={`${badgeStyles({size})}`}
         >
           {size === 'md' && content}
         </span>

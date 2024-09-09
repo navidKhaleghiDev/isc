@@ -27,7 +27,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     icon: icons.bell,
-    color: 'red',
+    color: 'neutral',
   },
   argTypes: {
     content: {

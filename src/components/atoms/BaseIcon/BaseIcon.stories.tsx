@@ -136,7 +136,6 @@ import chartBarDuotone from '@iconify-icons/ph/chart-bar-duotone';
 import rowsPlusBottomDuotone from '@iconify-icons/ph/rows-duotone';
 import gearSixDuotone from '@iconify-icons/ph/gear-six-duotone';
 import houseSimpleDuotone from '@iconify-icons/ph/house-simple-duotone';
-// import userCheckDuotone from '@iconify-icons/ph/user-check-duotone';
 import usersThreeDuotone from '@iconify-icons/ph/users-three-duotone';
 
 import { BaseIcon } from './BaseIcon';
