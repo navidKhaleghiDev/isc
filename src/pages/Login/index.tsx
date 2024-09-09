@@ -10,6 +10,7 @@ import { http } from '@src/services/http';
 import { withNoAuth } from '@src/helper/hoc/withNoAuth';
 import { LoadingPage } from '@ui/molecules/Loading';
 
+import { Slider } from '@ui/atoms/Slider/Slider';
 import { LoginForm } from './LoginForm';
 import { AuthenticationForm } from './AuthenticationForm';
 import { ChangePasswordForm } from './ChangePasswordForm';
@@ -73,6 +74,7 @@ function LoginPageCp() {
           </Link>
         )}
       </div>
+      <Slider />
     </div>
   );
 }
