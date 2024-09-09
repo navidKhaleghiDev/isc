@@ -1,5 +1,5 @@
-import { IIconButton } from '../BaseButton';
+import { IconButtonProps } from '../BaseButton';
 
-export interface BadgeProps extends IIconButton {
+export interface BadgeProps extends IconButtonProps {
   content?: number;
 }
