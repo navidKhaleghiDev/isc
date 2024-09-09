@@ -97,13 +97,13 @@ export function IpCard({ item, mutateIpList }: PropsType) {
             <IconButton
               icon={PhPencilSimple}
               color="neutral"
-              size="xxl"
+              size="md"
               onClick={toggleModalEdit}
             />
             <IconButton
               icon={PhTrashSimple}
               color="redNoBg"
-              size="xxl"
+              size="md"
               onClick={toggleModalDelete}
             />
           </div>
@@ -130,7 +130,7 @@ export function IpCard({ item, mutateIpList }: PropsType) {
         title="از حذف این IP مطمئن هستید؟"
         buttonOne={{
           color: 'red',
-          size: 'lg',
+          size: 'md',
           label: 'بله',
           onClick: handleRequestDelete,
           loading: modalsLoading.deleteButton,

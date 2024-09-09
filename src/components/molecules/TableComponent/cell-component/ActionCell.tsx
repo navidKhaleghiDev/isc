@@ -28,7 +28,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
             column.onDelete(row.id);
             column.openModal(row);
           }}
-          size="xxl"
+          size="md"
         />
       );
       break;
@@ -41,7 +41,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
             column.onAdd(row.id);
             column.openModal();
           }}
-          size="xxl"
+          size="md"
         />
       );
       break;
@@ -52,7 +52,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
             icon={DotsThreeVertical}
             color="neutral"
             type="button"
-            size="xxl"
+            size="md"
           />
         </Link>
       );
@@ -64,7 +64,7 @@ export function ActionCell({ cellKey, column, row }: ICellProps) {
             icon={PencilSimple}
             color="default"
             type="button"
-            size="xxl"
+            size="md"
           />
         </Link>
       );

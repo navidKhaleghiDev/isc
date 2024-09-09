@@ -20,7 +20,7 @@ export function DrawerProfile({ isOpen, setIsOpen }: DrawerProfileProps) {
         <div className="pt-[2.625rem] pb-5 px-5 ">
           <IconButton
             icon={x}
-            size="xxl"
+            size="md"
             color="neutral"
             onClick={() => setIsOpen(false)}
           />

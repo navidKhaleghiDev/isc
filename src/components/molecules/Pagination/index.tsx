@@ -114,14 +114,14 @@ export function Pagination({
       <IconButton
         icon={PhCaretRight}
         className={`${mClass} ${isFirstPage ? disableClass : arrowButtonClass}`}
-        color="white"
+        color="neutralNoBg"
         onClick={handlePreviousClick}
       />
       {renderPageNumbers()}
       <IconButton
         icon={PhCaretLeft}
         className={`${mClass} ${isLastPage ? disableClass : arrowButtonClass}`}
-        color="white"
+        color="neutralNoBg"
         onClick={handleNextClick}
       />
     </div>

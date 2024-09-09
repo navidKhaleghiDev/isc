@@ -67,7 +67,7 @@ export function Modal({
                 onClick={handleToggle}
                 className=""
                 classNameIcon="h-6 w-6 text-neutral-400"
-                color="tealNoBg"
+                color="neutralNoBg"
               />
             </div>
           </div>
