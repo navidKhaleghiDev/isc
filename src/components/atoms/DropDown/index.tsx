@@ -18,6 +18,13 @@ const initState: StateType = {
   openOptions: false,
 };
 
+/**
+ * Dropdown component that allows single or multiple option selection.
+ *
+ * @template T FieldValues for react-hook-form
+ * @param {DropdownProps<T>} props - The props for the Dropdown component
+ * @returns {JSX.Element} The Dropdown component
+ */
 export function Dropdown<T extends FieldValues>({
   options,
   fullWidth,
@@ -51,14 +58,14 @@ export function Dropdown<T extends FieldValues>({
     if (multiple) {
       const isSelected = value?.some((v: IOptionSelect) => v.id === option.id);
       const newValue = isSelected
-        ? value.filter((v: IOptionSelect) => v.id !== option.id) // Remove option if already selected
-        : [...(value || []), option]; // Add option object if not selected
+        ? value.filter((v: IOptionSelect) => v.id !== option.id)
+        : [...(value || []), option];
 
-      onChange(newValue); // Pass array of selected option objects
+      onChange(newValue);
       setState({ activeOption: newValue, openOptions: false });
     } else {
       setState({ activeOption: option, openOptions: false });
-      onChange(option); // Pass the selected option object
+      onChange(option);
     }
   };
 
@@ -133,7 +140,6 @@ export function Dropdown<T extends FieldValues>({
               fullWidth,
             })}
           >
-            {/* Remove All Button */}
             {value && (
               <button
                 type="button"
@@ -151,7 +157,6 @@ export function Dropdown<T extends FieldValues>({
               </button>
             )}
 
-            {/* Options */}
             {options.map((option: IOptionSelect) => (
               <div
                 className="w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md cursor-pointer"
@@ -167,7 +172,7 @@ export function Dropdown<T extends FieldValues>({
                       )}
                       pureOnChange={() =>
                         handleOnChange(option, value, onChange)
-                      } // Handle onChange for checkbox
+                      }
                     />
                     <Typography type="p" size="body5">
                       {option.label}

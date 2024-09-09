@@ -1,25 +1,27 @@
-import { useMemo, useState, Suspense } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import routesConfig from '@src/routes/routesConfig';
-import { IUserWithAuth, UserContext } from '@context/user/userContext';
-import { ToastCustomContainer } from '@ui/molecules/ToastCustomContainer';
+interface CardProps {
+  title: string;
+  description: string;
+}
 
-const router = createBrowserRouter(routesConfig);
+// eslint-disable-next-line react/function-component-definition
+const Card: React.FC<CardProps> = ({ title, description }) => {
+  return (
+    <div className="border border-gray-300 rounded-lg p-4 shadow-lg">
+      <h2 className="text-xl font-semibold mb-2">{title}</h2>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
 
 function App() {
-  const [user, setUser] = useState<IUserWithAuth | null>(null);
-
-  const userValue = useMemo(() => ({ user, setUser }), [user]);
-
   return (
-    <UserContext.Provider value={userValue}>
-      <div dir="rtl">
-        <Suspense>
-          <RouterProvider router={router} />
-        </Suspense>
-        <ToastCustomContainer />
-      </div>
-    </UserContext.Provider>
+    <div className="min-h-screen bg-gray-100">
+      <main className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card title="Card 1" description="This is the first card." />
+        <Card title="Card 2" description="This is the second card." />
+        <Card title="Card 3" description="This is the third card." />
+      </main>
+    </div>
   );
 }
 
