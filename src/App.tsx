@@ -1,5 +1,5 @@
 function App() {
-  return <div className="min-h-screen bg-gray-100"></div>;
+  return <div>test</div>;
 }
 
 export default App;
