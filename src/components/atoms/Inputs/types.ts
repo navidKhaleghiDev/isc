@@ -16,6 +16,41 @@ import { IOptionSelect } from './BaseSelect/OptionSelect';
 export interface BaseInputProps<T extends FieldValues>
   extends VariantProps<typeof baseInputStyles> {
   id: string;
+  name: FieldPath<T>;
+  setError?: UseFormSetError<T>;
+  defaultValue?: any;
+  type?:
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'url'
+    | 'file'
+    | 'date'
+    | 'datetime-local'
+    | 'time';
+  label?: string;
+  placeholder?: string;
+  className?: string;
+  startIcon?: string | IconifyIcon;
+  endIcon?: string | IconifyIcon;
+  hiddenError?: boolean;
+  onClickIcon?: () => void;
+  iconButtonIcon?: string | IconifyIcon;
+  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  pureValue?: string;
+  pureError?: string;
+  dir?: 'rtl' | 'ltr';
+  min?: string | number;
+  max?: string | number;
+}
+
+export interface BaseInputControlProps<T extends FieldValues>
+  extends VariantProps<typeof baseInputStyles> {
+  id: string;
   control?: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
@@ -45,9 +80,7 @@ export interface BaseInputProps<T extends FieldValues>
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   pureValue?: string;
   pureError?: string;
-  ltrLabel?: 'rtl' | 'ltr';
-
-  // inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  dir?: 'rtl' | 'ltr';
   min?: string | number;
   max?: string | number;
 }

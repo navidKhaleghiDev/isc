@@ -4,7 +4,7 @@ import { Typography } from '../../Typography';
 import { IconButtonInput } from '../IconButtonInput';
 import { IconInput } from '../IconInput';
 import { baseInputStyles } from '../styles';
-import { BaseInputProps } from '../types';
+import { BaseInputControlProps } from '../types';
 
 /**
  * BaseInput component that integrates with react-hook-form.
@@ -39,7 +39,7 @@ import { BaseInputProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInput(props: BaseInputProps<any>): JSX.Element {
+export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
   const {
     control,
     name,
@@ -47,6 +47,8 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     placeholder,
     rules,
     className,
+    startIcon,
+    endIcon,
     fullWidth,
     defaultValue,
     intent,
@@ -54,17 +56,14 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     type,
     label,
     hiddenError,
-    pureOnChange,
     onKeyDown,
-    pureValue,
     onClickIcon,
-    pureError,
     min,
     max,
-    ltrLabel = false,
+    dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
-  return control ? (
+  return (
     <Controller
       name={name}
       control={control}
@@ -75,8 +74,8 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
           {label && (
             <label
               htmlFor={id}
-              className={`block mb-1 h-8 ${
-                ltrLabel ? 'text-left uppercase' : 'text-right'
+              className={`mb-[0.13rem] ${
+                dir === 'ltr' ? 'text-left' : 'text-right'
               }`}
             >
               <Typography color="neutral_dark" size="body4">
@@ -84,13 +83,14 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
               </Typography>
             </label>
           )}
-
           <div className="relative base-input">
-            {startIcon && <IconInput icon={startIcon} intent={intent} />}
+            {startIcon && (
+              <IconInput icon={startIcon} intent={intent} dir="rtl" />
+            )}
             <input
               id={id}
               type={type}
-              dir=""
+              dir={dir}
               name={field.name}
               value={type !== 'file' ? field.value ?? '' : undefined}
               onChange={(e) => {
@@ -103,10 +103,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
               onKeyDown={onKeyDown}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${(endIcon || onClickIcon) && 'pl-10'} ${
-                  startIcon && 'pr-8'
-                } `,
-                ltrPlaceHolder: ltrLabel,
+                className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'} `,
                 fullWidth,
                 size,
               })}
@@ -132,40 +129,5 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
         </div>
       )}
     />
-  ) : (
-    <div className="w-full flex flex-col">
-      {label && (
-        <label htmlFor={id} className="block mb-1 h-8">
-          <Typography color="neutral_dark" size="body4">
-            {label}
-          </Typography>
-        </label>
-      )}
-      <div className="relative base-input">
-        {startIcon && <IconInput icon={startIcon} intent={intent} />}
-        <input
-          id={id}
-          type={type}
-          dir="auto"
-          name={name}
-          value={pureValue}
-          onChange={pureOnChange}
-          className={baseInputStyles({
-            intent: pureError ? 'error' : intent,
-            className: `${(endIcon || onClickIcon) && 'pr-8'} ${
-              startIcon && 'pl-8'
-            } `,
-            fullWidth,
-            size,
-          })}
-          placeholder={placeholder}
-        />
-      </div>
-      {pureError && (
-        <Typography color="red" size="body6" className="min-h-5">
-          {pureError}
-        </Typography>
-      )}
-    </div>
   );
 }

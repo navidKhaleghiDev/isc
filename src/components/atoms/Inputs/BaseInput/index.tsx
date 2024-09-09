@@ -1,5 +1,3 @@
-import PhEye from '@iconify-icons/ph/eye';
-
 import { Typography } from '../../Typography';
 import { IconButtonInput } from '../IconButtonInput';
 import { IconInput } from '../IconInput';
@@ -45,7 +43,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     id,
     placeholder,
     fullWidth,
-    startIcon = true,
+    startIcon,
     className,
     endIcon,
     defaultValue,
@@ -61,7 +59,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     pureError,
     min,
     max,
-    ltrLabel = 'rtl',
+    dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
 
@@ -73,7 +71,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
         <label
           htmlFor={id}
           className={`mb-[0.13rem] ${
-            ltrLabel === 'ltr' ? 'text-left' : 'text-right'
+            dir === 'ltr' ? 'text-left' : 'text-right'
           }`}
         >
           <Typography color="neutral_dark" size="body4">
@@ -92,7 +90,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
         <input
           id={id}
           type={type}
-          dir={ltrLabel}
+          dir={dir}
           min={min}
           max={max}
           onKeyDownCapture={onKeyDown}
@@ -100,24 +98,22 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
           value={pureValue}
           defaultValue={defaultValue}
           onChange={pureOnChange}
+          placeholder={placeholder}
           className={baseInputStyles({
             intent: pureError ? 'error' : intent,
-            className: `${endIcon && ' pl-7'} ${startIcon && 'pr-7'}`,
+            className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'}`,
             fullWidth,
             size,
           })}
-          placeholder={placeholder}
         />
-        {startIcon && <IconInput icon={PhEye} intent={intent} dir="ltr" />}
-        {endIcon && <IconInput icon={PhEye} intent={intent} />}
+        {startIcon && <IconInput icon={startIcon} intent={intent} dir="rtl" />}
+        {endIcon && <IconInput icon={endIcon} intent={intent} />}
       </div>
       {hiddenError && (
         <Typography
           color="red"
           size="body6"
-          className={`${
-            ltrLabel === 'ltr' ? 'text-left' : 'text-right'
-          } min-h-5`}
+          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-5`}
         >
           {pureError}
         </Typography>
