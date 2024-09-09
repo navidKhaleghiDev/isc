@@ -8,17 +8,7 @@ import { BaseIcon } from '../BaseIcon';
 export interface ITypography
   extends VariantProps<typeof typographyStyles>,
     PropsWithChildren {
-  type?:
-    | 'p'
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'body6'
-    | 'span'
-    | 'div';
+  type?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div';
   className?: string;
 }
 
