@@ -13,6 +13,7 @@ const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
   parameters: {
     layout: 'centered',
+
     docs: {
       description: {
         component: 'DropDown',
@@ -49,12 +50,13 @@ const meta: Meta<typeof Dropdown> = {
       className={args.className}
       label={args.label}
       control={args.control}
+      multiple={args.multiple}
     />
   ),
   // Adding (on) font-family
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'on' }}>
+      <div dir="rtl" style={{ fontFamily: 'on', height: '20rem' }}>
         <Story />
       </div>
     ),
@@ -64,7 +66,7 @@ const meta: Meta<typeof Dropdown> = {
 // to use this component we need to add function because of
 // {control} of useForm hook
 const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
-  const { loading, leftLabel, id, name, options, placeHolder } = args;
+  const { loading, leftLabel, id, name, options, placeHolder, multiple } = args;
   const { control } = useForm();
 
   return (
@@ -76,6 +78,7 @@ const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
       options={options}
       placeHolder={placeHolder}
       leftLabel={leftLabel}
+      multiple={multiple}
     />
   );
 };
