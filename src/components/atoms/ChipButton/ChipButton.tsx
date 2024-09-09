@@ -1,6 +1,6 @@
 import React from 'react';
 import { VariantProps } from 'class-variance-authority';
-import { IconButton, IIconButton } from '../BaseButton';
+import { IconButton, IconButtonProps } from '../BaseButton';
 import { chipButtonStyles } from './styles';
 import { Typography } from '../Typography';
 import { typographyStyles } from '../Typography/styles';
@@ -9,7 +9,7 @@ type BaseButtonAttributes = React.ComponentPropsWithoutRef<'button'>;
 type TypographySize = VariantProps<typeof typographyStyles>;
 interface ChipButtonType extends BaseButtonAttributes {
   label: string;
-  icon?: IIconButton['icon'];
+  icon?: IconButtonProps['icon'];
   onClickIcon?: () => void;
   size?: TypographySize['size'];
   color: 'default' | 'green' | 'yellow' | 'lightGray';

@@ -64,7 +64,7 @@ export function CodeLineSelect({
       />
       <IconButton
         icon={PhCaretUpDownBold}
-        color="white"
+        color="neutralNoBg"
         className="size-1 absolute top-1 -right-6"
         onClick={handelSelectClick}
       />

@@ -206,7 +206,7 @@ function RulePolicyListCp(
             <BaseButton
               label="حذف قانون"
               size="lg"
-              type="redBg"
+              type="red"
               className="ml-5"
               onClick={toggleModalDelete}
             />
@@ -236,7 +236,7 @@ function RulePolicyListCp(
             label: 'بله',
             onClick: onDeleteRule,
             loading: modalsLoading.deleteButton,
-            color: 'redBg',
+            color: 'red',
           }}
         />
       )}

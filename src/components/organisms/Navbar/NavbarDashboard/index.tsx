@@ -16,7 +16,7 @@ export function NavbarDashboard(): JSX.Element {
       <Link to="/" className="hidden sm:flex">
         <Typography
           color="teal"
-          size="h5"
+          size="h4"
           className="text-xl sm:text-2xl"
           weight="bold"
         >
