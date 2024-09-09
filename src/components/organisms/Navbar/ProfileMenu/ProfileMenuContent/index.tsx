@@ -8,7 +8,6 @@ import { Avatar } from '@ui/atoms/Avatar';
 import { LinkButton } from '@ui/atoms/LinkButton';
 import { useUserContext } from '@context/user/userContext';
 import { getRoleUser } from '@ui/organisms/Navbar/NavbarDashboard/utils';
-import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { http } from '@src/services/http';
 
 type ProfileMenuContentProps = {
@@ -43,7 +42,7 @@ export function ProfileMenuContent({ setIsOpen }: ProfileMenuContentProps) {
       <div className="sm:py-[1.938rem] pt-4 border-t-2 h-4/5 border-t-neutral-300 sm:border-none flex flex-col items-start justify-between sm:justify-normal">
         <div className="flex flex-col items-start">
           <LinkButton
-            link={ROUTES_PATH.users}
+            link="/"
             startIcon={PhUserCirclePlus}
             label="تنظیمات کاربران"
             type="neutral"
@@ -53,7 +52,7 @@ export function ProfileMenuContent({ setIsOpen }: ProfileMenuContentProps) {
           />
 
           <LinkButton
-            link={ROUTES_PATH.settings}
+            link="/"
             startIcon={PhGearSix}
             label="تنظیمات"
             type="neutral"
@@ -64,7 +63,7 @@ export function ProfileMenuContent({ setIsOpen }: ProfileMenuContentProps) {
         </div>
         <div className="mb-5">
           <LinkButton
-            link={ROUTES_PATH.login}
+            link="/"
             startIcon={PhSignOut}
             label="خروج از حساب کاربری"
             type="red"
