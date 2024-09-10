@@ -64,7 +64,7 @@ export function BaseTextarea(props: BaseTextareaPropsControl<any>) {
             placeholder={placeholder}
           />
           {hiddenError && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography color="red" variant="body6" className="h-6">
               {error?.message ?? 'fdflfsd;'}
             </Typography>
           )}

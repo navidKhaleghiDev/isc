@@ -88,7 +88,7 @@ export function BaseOtp({
       />
       <Typography
         color="red"
-        size="body6"
+        variant="body6"
         className=" mt-[0.375rem ] text-center"
       >
         {(pureError || errorMessage) ?? ''}
