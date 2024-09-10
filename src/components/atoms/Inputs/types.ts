@@ -10,7 +10,7 @@ import {
 import { IconifyIcon } from '@iconify/react';
 import { DateObject } from 'react-multi-date-picker';
 
-import { baseInputStyles, baseSelectStyles } from './styles';
+import { baseInputStyles, baseRadioButton, baseSelectStyles } from './styles';
 import { IOptionSelect } from './BaseSelect/OptionSelect';
 
 export interface BaseInputProps<T extends FieldValues>
@@ -132,3 +132,25 @@ export interface SearchInputProps extends VariantProps<typeof baseInputStyles> {
 }
 
 export type ColorIndent = 'default' | 'error' | undefined | null;
+
+export interface BaseRadioButtonProps<T extends FieldValues>
+  extends VariantProps<typeof baseRadioButton> {
+  id: string;
+  name: FieldPath<T>;
+  setError?: UseFormSetError<T>;
+  defaultValue?: string;
+  label?: string;
+  hiddenError?: boolean;
+  className?: string;
+  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  pureValue?: string | number | readonly string[];
+  pureError?: string;
+  checked?: boolean;
+  dir?: 'rtl' | 'ltr';
+}
+
+export interface BaseRadioButtonControlProps<T extends FieldValues>
+  extends BaseRadioButtonProps<any> {
+  control: Control<T>;
+  rules: RegisterOptions<T>;
+}
