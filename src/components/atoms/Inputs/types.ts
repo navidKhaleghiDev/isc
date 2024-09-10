@@ -17,6 +17,8 @@ export interface BaseInputProps<T extends FieldValues>
   extends VariantProps<typeof baseInputStyles> {
   id: string;
   name: FieldPath<T>;
+  control?: Control<T>;
+  rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;
   defaultValue?: any;
   type?:

@@ -68,9 +68,7 @@ const meta: Meta<typeof BaseInput> = {
       fullWidth={args.fullWidth}
       hiddenError={args.hiddenError}
       iconButtonIcon={args.iconButtonIcon}
-      rules={args.rules}
-      ltrLabel={args.ltrLabel}
-      control={args.control}
+      dir={args.dir}
       pureError={args.pureError}
       pureValue={args.pureValue}
       pureOnChange={args.pureOnChange}
@@ -88,8 +86,8 @@ export const defaultInput: StoryBaseInput = {
     id: 'username',
     placeholder: 'Label',
     type: 'text',
-    intent: 'error',
-    ltrLabel: 'ltr',
+    intent: 'default',
+    dir: 'ltr',
     size: 'md',
   },
 };
