@@ -123,6 +123,10 @@ import caretDoubleRight from '@iconify-icons/ph/caret-double-right';
 import playCircle from '@iconify-icons/ph/play-circle';
 import sliders from '@iconify-icons/ph/sliders';
 import lockLaminated from '@iconify-icons/ph/lock-laminated';
+import scan from '@iconify-icons/ph/scan';
+import folderSimpleDashed from '@iconify-icons/ph/folder-simple-dashed';
+import folderOpen from '@iconify-icons/ph/folder-open';
+import wifiHigh from '@iconify-icons/ph/wifi-high';
 
 import lockSimpleDuotone from '@iconify-icons/ph/lock-simple-duotone';
 import circleDashedDuotone from '@iconify-icons/ph/circle-dashed-duotone';
@@ -274,6 +278,10 @@ const iconOptions = {
   PlayCircle: playCircle,
   Sliders: sliders,
   LockLaminated: lockLaminated,
+  Scan: scan,
+  FolderSimpleDashed: folderSimpleDashed,
+  FolderOpen: folderOpen,
+  WifiHigh: wifiHigh,
   Sun: sun,
   Moon: moon,
 };
@@ -353,7 +361,7 @@ export function ListIcon({
   return (
     <>
       <Typography
-        size="body3"
+        variant="body3"
         weight="bold"
         className="pb-6 mb-2 border-b border-b-neutral-300"
       >
@@ -369,7 +377,7 @@ export function ListIcon({
       />
 
       <Typography
-        size="body3"
+        variant="body3"
         weight="bold"
         className="pb-6 mb-2 border-b border-b-neutral-300"
       >
