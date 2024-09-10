@@ -126,7 +126,7 @@ export const DatePicker = memo(function DatePicker({
           <div className={containerClass}>
             {label && (
               <label htmlFor={id} className="block mb-1 h-8 text-right">
-                <Typography color="neutral_dark" size="body4">
+                <Typography color="neutral_dark" variant="body4">
                   {label}
                 </Typography>
               </label>
@@ -164,7 +164,7 @@ export const DatePicker = memo(function DatePicker({
               />
             </div>
             {!hiddenError && (
-              <Typography color="red" size="body6" className="h-6">
+              <Typography color="red" variant="body6" className="h-6">
                 {error?.message ?? ''}
               </Typography>
             )}

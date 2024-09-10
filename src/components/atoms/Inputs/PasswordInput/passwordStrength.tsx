@@ -32,7 +32,7 @@ export function PasswordStrength({ password }: { password?: string }) {
         </div>
 
         {colorStrength && (
-          <Typography className="mx-2" color="neutral_light" size="body6">
+          <Typography className="mx-2" color="neutral_light" variant="body6">
             {getLabelPasswordStrength(colorStrength)}
           </Typography>
         )}
@@ -44,7 +44,7 @@ export function PasswordStrength({ password }: { password?: string }) {
             icon={CircleFill}
             className="w-1.5 h-1.5 text-neutral-400 ml-1.5"
           />
-          <Typography size="body6" color="neutral_light">
+          <Typography variant="body6" color="neutral_light">
             باید شامل 8 کارکتر و یا بیشتر باشد.
           </Typography>
         </div>
@@ -53,7 +53,7 @@ export function PasswordStrength({ password }: { password?: string }) {
             icon={CircleFill}
             className="w-1.5 h-1.5 text-neutral-400 ml-1.5"
           />
-          <Typography size="body6" color="neutral_light">
+          <Typography variant="body6" color="neutral_light">
             حروف کوچک و حروف بزرگ داشته باشد.
           </Typography>
         </div>
@@ -62,7 +62,7 @@ export function PasswordStrength({ password }: { password?: string }) {
             icon={CircleFill}
             className="w-1.5 h-1.5 text-neutral-400 ml-1.5"
           />
-          <Typography size="body6" color="neutral_light">
+          <Typography variant="body6" color="neutral_light">
             شامل یک یا چند نماد خاص باشد.
           </Typography>
         </div>
