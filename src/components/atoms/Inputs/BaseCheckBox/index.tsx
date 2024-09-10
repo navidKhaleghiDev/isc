@@ -76,7 +76,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
             </div>
           </div>
           {hiddenError && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography color="red" variant="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}
@@ -101,7 +101,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
         <BaseIcon icon={checkBold} />
       </span>
       {hiddenError && (
-        <Typography color="red" size="body6" className="h-6">
+        <Typography color="red" variant="body6" className="h-6">
           {pureError ?? ''}
         </Typography>
       )}

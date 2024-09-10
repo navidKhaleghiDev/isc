@@ -7,7 +7,7 @@ export function FilterServices() {
   return (
     <Card color="neutral" className="self-start py-1 px-3 flex flex-col w-full">
       <>
-        <Typography size="body3" color="teal">
+        <Typography variant="body3" color="teal">
           مرتب سازی بر اساس
         </Typography>
         <div className="flex w-full justify-between items-center ">

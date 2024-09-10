@@ -81,7 +81,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
                 ltrLabel ? 'text-left uppercase' : 'text-right'
               }`}
             >
-              <Typography color="neutral_dark" size="body4">
+              <Typography color="neutral_dark" variant="body4">
                 {label}
               </Typography>
             </label>
@@ -127,7 +127,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
             {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (
-            <Typography color="red" size="body6" className="min-h-5">
+            <Typography color="red" variant="body6" className="min-h-5">
               {error?.message ?? ''}
             </Typography>
           )}
@@ -138,7 +138,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     <div className="w-full flex flex-col">
       {label && (
         <label htmlFor={id} className="block mb-1 h-8">
-          <Typography color="neutral_dark" size="body4">
+          <Typography color="neutral_dark" variant="body4">
             {label}
           </Typography>
         </label>
@@ -164,7 +164,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
         />
       </div>
       {pureError && (
-        <Typography color="red" size="body6" className="min-h-5">
+        <Typography color="red" variant="body6" className="min-h-5">
           {pureError}
         </Typography>
       )}

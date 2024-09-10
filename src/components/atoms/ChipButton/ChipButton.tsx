@@ -1,19 +1,17 @@
-import React from 'react';
-import { VariantProps } from 'class-variance-authority';
-import { IconButton, IconButtonProps } from '../BaseButton';
-import { chipButtonStyles } from './styles';
-import { Typography } from '../Typography';
-import { typographyStyles } from '../Typography/styles';
+import X from '@iconify-icons/ph/x';
 
-type BaseButtonAttributes = React.ComponentPropsWithoutRef<'button'>;
-type TypographySize = VariantProps<typeof typographyStyles>;
-interface ChipButtonType extends BaseButtonAttributes {
+import { chipButtonStyles } from './styles';
+import { BaseIcon, IBaseIcon } from '../BaseIcon';
+
+type ChipButtonProps = {
   label: string;
-  icon?: IconButtonProps['icon'];
-  onClickIcon?: () => void;
-  size?: TypographySize['size'];
-  color: 'default' | 'green' | 'yellow' | 'lightGray';
-}
+  icon?: IBaseIcon['icon'];
+  onClick?: () => void;
+  color: IBaseIcon['color'];
+  dir?: 'rtl' | 'ltr';
+  className?: string;
+  disabled?: boolean;
+};
 
 export function ChipButton({
   label,
@@ -22,18 +20,19 @@ export function ChipButton({
   icon,
   className,
   disabled,
-  onClickIcon,
-  size,
-}: ChipButtonType) {
+  dir = 'rtl',
+}: ChipButtonProps) {
   return (
     <button
-      disabled={disabled}
-      className={chipButtonStyles({ color, className })}
+      dir={dir}
       type="button"
+      disabled={disabled}
       onClick={onClick}
+      className={chipButtonStyles({ className, color })}
     >
-      <Typography size={size}>{label}</Typography>
-      {icon && <IconButton icon={icon} color="neutral" onClick={onClickIcon} />}
+      {icon && <BaseIcon color={color} icon={icon} />}
+      {label}
+      {onClick && <BaseIcon icon={X} color={color} />}
     </button>
   );
 }
