@@ -1,14 +1,12 @@
 import { cva } from 'class-variance-authority';
+import { BaseIconColors } from '../BaseIcon/styles';
 
 export const chipButtonStyles = cva(
-  'flex max-w-max justify-between items-center w-full px-3 max-h-5 rounded-full disabled:opacity-40 disabled:bg-neutral-200 disabled:text-neutral-500',
+  'flex max-w-max items-center py-4 px-2 w-full max-h-5 rounded-md disabled:opacity-40 ',
   {
     variants: {
       color: {
-        default: 'bg-neutral-200 text-neutral-500',
-        lightGray: 'bg-neutral-200 text-neutral-500 opacity-40',
-        green: 'bg-teal-100 text-neutral-500',
-        yellow: 'bg-yellow-100 text-neutral-500',
+        ...BaseIconColors,
       },
     },
     defaultVariants: {

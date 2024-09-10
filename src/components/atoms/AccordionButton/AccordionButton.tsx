@@ -16,7 +16,7 @@ export function AccordionButton({ open, setOpen, item }: AccordionButtonProps) {
           icon="iconamoon:arrow-left-2-light"
           className={open === item.id ? '-rotate-90' : ''}
         />
-        <Typography className="mr-3" size="body3">
+        <Typography className="mr-3" variant="body3">
           {item.title}
         </Typography>
       </button>

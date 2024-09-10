@@ -47,7 +47,7 @@ export function BaseTextarea(props: BaseTextareaProps<any>): JSX.Element {
           htmlFor={id}
           className={`mb-2 ${ltrLabel ? 'text-left' : 'text-right'}`}
         >
-          <Typography color="neutral_light" size="body4">
+          <Typography color="neutral_light" variant="body4">
             {label}
           </Typography>
         </label>
@@ -68,7 +68,7 @@ export function BaseTextarea(props: BaseTextareaProps<any>): JSX.Element {
         placeholder={placeholder}
       />
       {hiddenError && (
-        <Typography color="red" size="body6" className="h-6">
+        <Typography color="red" variant="body6" className="h-6">
           {pureError ?? ''}
         </Typography>
       )}

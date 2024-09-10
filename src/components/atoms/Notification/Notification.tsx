@@ -54,7 +54,7 @@ export function Notification({ className, size, title, type }: INotification) {
             size="md"
           />
         )}
-        <Typography size="body4" weight="normal">
+        <Typography variant="body4" weight="normal">
           {title}
         </Typography>
       </div>

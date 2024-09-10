@@ -49,7 +49,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
         <label htmlFor={id}>
           <Typography
             color={checked ? `neutral_dark` : 'neutral_light'}
-            size="body6"
+            variant="body6"
             weight="light"
           >
             {label}
@@ -75,7 +75,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
           </span>
         )}
         {hiddenError && (
-          <Typography color="red" size="body6" className="h-6">
+          <Typography color="red" variant="body6" className="h-6">
             {pureError ?? ''}
           </Typography>
         )}

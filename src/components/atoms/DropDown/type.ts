@@ -6,7 +6,7 @@ import {
 } from 'react-hook-form';
 
 export interface IOptionSelect {
-  id?: string | number;
+  id: string | number;
   value?: string | number;
   label: string;
 }
@@ -26,6 +26,7 @@ export interface DropdownProps<T extends FieldValues> {
   loading?: boolean;
   leftLabel?: boolean;
   valueOnChange?: TValueOnChange;
+  multiple?: boolean;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 

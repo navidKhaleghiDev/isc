@@ -1,41 +1,29 @@
 import { useRef, useState } from 'react';
 import { Controller, FieldValues } from 'react-hook-form';
+import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 import PhCaretDown from '@iconify-icons/ph/caret-down';
 import PhCaretLeft from '@iconify-icons/ph/caret-left';
-import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 
 import { DropdownProps, IOptionSelect, StateType } from './type';
 import { optionSelectStyles, baseDropDownStyles } from './styles';
 import { BaseIcon } from '../BaseIcon';
 import { Typography } from '../Typography';
 import { LoadingSvg } from '../Svgs/LoadingSvg';
+import { BaseCheckBox } from '../Inputs/BaseCheckBox';
+import { ChipButton } from '../ChipButton/ChipButton';
 
-const initState = {
+const initState: StateType = {
   activeOption: null,
   openOptions: false,
 };
 
 /**
- * Dropdown component that integrates with react-hook-form.
- * It provides a customizable dropdown/select input with loading state and validation.
+ * Dropdown component that allows single or multiple option selection.
  *
- * @template T - The type of the form values.
- * @param {DropdownProps<T>} props - The properties for the dropdown component.
- * @param {Array<IOptionSelect>} props.options - The list of options to display in the dropdown.
- * @param {boolean} props.fullWidth - Whether the dropdown should take the full width of its container.
- * @param {string} props.placeHolder - The placeholder text to display when no option is selected.
- * @param {object} [props.rules] - The validation rules for the dropdown.
- * @param {object} props.control - The control object from react-hook-form.
- * @param {string} props.name - The name of the field in the form.
- * @param {any} [props.defaultValue] - The default value for the dropdown.
- * @param {string} [props.className] - Additional class names for styling the dropdown.
- * @param {string} [props.label] - The label to display above the dropdown.
- * @param {boolean} [props.loading] - Whether to display a loading spinner instead of the options.
- * @param {boolean} [props.leftLabel] - Whether to align the option labels to the left.
- *
- * @returns {JSX.Element} The rendered dropdown component.
+ * @template T FieldValues for react-hook-form
+ * @param {DropdownProps<T>} props - The props for the Dropdown component
+ * @returns {JSX.Element} The Dropdown component
  */
-
 export function Dropdown<T extends FieldValues>({
   options,
   fullWidth,
@@ -49,7 +37,7 @@ export function Dropdown<T extends FieldValues>({
   label,
   loading,
   leftLabel,
-  valueOnChange,
+  multiple,
 }: DropdownProps<T>): JSX.Element {
   const ref = useRef(null);
   const [state, setState] = useState<StateType>(initState);
@@ -65,8 +53,19 @@ export function Dropdown<T extends FieldValues>({
     value: state.openOptions,
   });
 
-  const handleOnChange = (option: IOptionSelect) => {
-    setState({ activeOption: option, openOptions: false });
+  const handleOnChange = (option: IOptionSelect, value: any, onChange: any) => {
+    if (multiple) {
+      const isSelected = value?.some((v: IOptionSelect) => v.id === option.id);
+      const newValue = isSelected
+        ? value.filter((v: IOptionSelect) => v.id !== option.id)
+        : [...(value || []), option];
+
+      onChange(newValue);
+      setState({ activeOption: newValue, openOptions: false });
+    } else {
+      setState({ activeOption: option, openOptions: false });
+      onChange(option);
+    }
   };
 
   return (
@@ -79,7 +78,7 @@ export function Dropdown<T extends FieldValues>({
         <div className="relative" ref={ref}>
           {label && (
             <label htmlFor={name} className="block mb-1">
-              <Typography color="teal" size="h5">
+              <Typography color="teal" variant="h5">
                 {label}
               </Typography>
             </label>
@@ -97,15 +96,48 @@ export function Dropdown<T extends FieldValues>({
             disabled={loading}
           >
             {loading ? (
-              // <LoadingSpinner />
               <div className="w-full flex justify-center">
                 <LoadingSvg />
               </div>
             ) : (
               <>
-                {options.find((option) => option.id === value)?.label ??
-                  placeHolder}
-                {/* <BaseIcon icon="ic:round-close" /> */}
+                {multiple && value?.length >= 1 ? (
+                  <>
+                    {options
+                      .filter((option) =>
+                        value?.some((v: IOptionSelect) => v.id === option.id)
+                      )
+                      .slice(0, 2) // Display only the first two selected options
+                      .map((option) => (
+                        <Typography
+                          className="overflow-hidden"
+                          key={option.label}
+                          variant="body6"
+                          type="p"
+                        >
+                          <ChipButton
+                            onClick={() => {
+                              const filteredData = value.filter(
+                                (v: IOptionSelect) => v.id !== option.id
+                              );
+                              setState({
+                                activeOption: filteredData,
+                                openOptions: false,
+                              });
+                              onChange(filteredData);
+                            }}
+                            label={option.label}
+                            color="default"
+                          />
+                        </Typography>
+                      ))}
+                  </>
+                ) : (
+                  value?.label || placeHolder
+                )}
+                {value?.length >= 1 && (
+                  <Typography variant="body6">{value?.length}</Typography>
+                )}
                 <BaseIcon
                   icon={state.openOptions ? PhCaretDown : PhCaretLeft}
                 />
@@ -122,37 +154,60 @@ export function Dropdown<T extends FieldValues>({
             {value && (
               <button
                 type="button"
-                className="w-full p-3 text-right text-gray-600 hover:bg-gray-200"
-                onClick={() => {
-                  setState(initState);
-                  onChange(undefined);
-                }}
-              >
-                حذف انتخاب
-              </button>
-            )}
-            {options.map((option: IOptionSelect) => (
-              <button
-                type="button"
-                key={option.id}
-                className={`w-full p-3 hover:bg-gray-200 ${
+                className={`w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md ml-auto ${
                   leftLabel ? 'text-left' : 'text-right'
                 }`}
                 onClick={() => {
-                  handleOnChange(option);
-                  onChange(option.id);
-
-                  if (valueOnChange) {
-                    valueOnChange(option);
-                  }
+                  setState(initState);
+                  onChange(multiple ? [] : undefined);
                 }}
               >
-                {option.label}
+                <Typography type="p" variant="body5">
+                  حذف انتخاب
+                </Typography>
               </button>
+            )}
+
+            {options.map((option: IOptionSelect) => (
+              <div
+                className="w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md cursor-pointer"
+                key={option.id}
+              >
+                {multiple ? (
+                  <div className="flex items-center gap-3">
+                    <BaseCheckBox
+                      id={option.id.toString()}
+                      name={option.label}
+                      checked={value?.some(
+                        (v: IOptionSelect) => v.id === option.id
+                      )}
+                      pureOnChange={() =>
+                        handleOnChange(option, value, onChange)
+                      }
+                    />
+                    <Typography type="p" variant="body5">
+                      {option.label}
+                    </Typography>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    className={` w-full ${
+                      leftLabel ? 'text-left' : 'text-right'
+                    }`}
+                    onClick={() => handleOnChange(option, value, onChange)}
+                  >
+                    <Typography type="p" variant="body5">
+                      {option.label}
+                    </Typography>
+                  </button>
+                )}
+              </div>
             ))}
           </div>
+
           {error && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography color="red" variant="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}
