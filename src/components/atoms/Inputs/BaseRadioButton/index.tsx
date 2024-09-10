@@ -68,7 +68,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
         {label}
       </label>
       {hiddenError && (
-        <Typography color="red" size="body6" className="h-6">
+        <Typography color="red" variant="body6" className="h-6">
           {pureError ?? ''}
         </Typography>
       )}
