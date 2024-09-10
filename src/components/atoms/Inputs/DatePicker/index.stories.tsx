@@ -97,7 +97,7 @@ const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
     hiddenError,
     endIcon,
     label,
-    ltrLabel,
+    dir,
     pureError,
     iconButtonIcon,
     format,
@@ -132,7 +132,7 @@ const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
       maxDate={maxDate}
       minDate={minDate}
       pureError={pureError}
-      ltrLabel={ltrLabel}
+      dir={ltrLabel}
       iconButtonIcon={iconButtonIcon}
       hiddenError={hiddenError}
       pureOnChange={pureOnChange}

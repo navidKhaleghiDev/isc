@@ -53,7 +53,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
             <label htmlFor={id}>
               <Typography
                 color={field.value ? `neutral_dark` : 'neutral_light'}
-                size="body6"
+                variant="body6"
                 weight="light"
               >
                 {label}
@@ -77,7 +77,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps<any>): JSX.Element {
               <BaseIcon icon={checkBold} size={size === 'md' ? 'xs' : 'sm'} />
             </span>
             {hiddenError && (
-              <Typography color="red" size="body6" className="h-6">
+              <Typography color="red" variant="body6" className="h-6">
                 {error?.message ?? ''}
               </Typography>
             )}
