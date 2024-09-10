@@ -352,7 +352,7 @@ export function ListIcon({
   return (
     <>
       <Typography
-        size="body3"
+        variant="body3"
         weight="bold"
         className="pb-6 mb-2 border-b border-b-neutral-300"
       >
@@ -368,7 +368,7 @@ export function ListIcon({
       />
 
       <Typography
-        size="body3"
+        variant="body3"
         weight="bold"
         className="pb-6 mb-2 border-b border-b-neutral-300"
       >

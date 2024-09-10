@@ -35,9 +35,7 @@ export function BaseSwitch({
                   ltrLabel ? 'text-left uppercase' : 'text-right'
                 }`}
               >
-                <Typography color="teal" size="h4">
-                  {label}
-                </Typography>
+                <Typography color="teal">{label}</Typography>
               </label>
             )}
             <label
@@ -81,9 +79,7 @@ export function BaseSwitch({
           htmlFor={name}
           className={`block mb-1 ${ltrLabel && 'text-left uppercase'}`}
         >
-          <Typography color="teal" size="h4">
-            {label}
-          </Typography>
+          <Typography color="teal">{label}</Typography>
         </label>
       )}
       <label
@@ -117,7 +113,7 @@ export function BaseSwitch({
         </span>
       </label>
       {pureError && (
-        <Typography color="red" size="h4" className="h-6">
+        <Typography color="red" className="h-6">
           {pureError}
         </Typography>
       )}
