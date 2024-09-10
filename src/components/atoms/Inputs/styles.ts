@@ -18,6 +18,7 @@ export const baseInputStyles = cva(
         false: 'placeholder:text-right placeholder:text-rtl',
       },
       size: {
+        none: '',
         xs: `w-52 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
         sm: `w-40`,
         md: `w-[15.94rem]`,

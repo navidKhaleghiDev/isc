@@ -78,7 +78,7 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
                 dir === 'ltr' ? 'text-left' : 'text-right'
               }`}
             >
-              <Typography color="neutral_dark" size="body4">
+              <Typography color="neutral_dark" variant="body4">
                 {label}
               </Typography>
             </label>
@@ -122,7 +122,7 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
             {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (
-            <Typography color="red" size="body6" className="min-h-5">
+            <Typography color="red" variant="body6" className="min-h-5">
               {error?.message ?? ''}
             </Typography>
           )}
