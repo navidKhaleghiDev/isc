@@ -47,7 +47,7 @@ export function BaseInputNumber(props: BaseInputNumberProps<any>): JSX.Element {
             rtl ? 'text-left uppercase' : 'text-right'
           }`}
         >
-          <Typography color="neutral_dark" size="body4">
+          <Typography color="neutral_dark" variant="body4">
             {label}
           </Typography>
         </label>
@@ -103,7 +103,7 @@ export function BaseInputNumber(props: BaseInputNumberProps<any>): JSX.Element {
 
       {/* Error Message */}
       {!hiddenError && pureError && (
-        <Typography color="red" size="body6" className="min-h-5">
+        <Typography color="red" variant="body6" className="min-h-5">
           {pureError}
         </Typography>
       )}
