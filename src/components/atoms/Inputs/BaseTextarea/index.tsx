@@ -38,14 +38,14 @@ export function BaseTextarea(props: BaseTextareaProps<any>): JSX.Element {
     intent,
     size,
     hiddenError,
-    ltrLabel = false,
+    dir = 'rtl',
   } = props;
   return (
     <div className={`flex-col  items-center border-none ${className}`}>
       {label && (
         <label
           htmlFor={id}
-          className={`mb-2 ${ltrLabel ? 'text-left' : 'text-right'}`}
+          className={`mb-2 ${dir === 'ltr' ? 'text-left' : 'text-right'}`}
         >
           <Typography color="neutral_light" variant="body4">
             {label}
