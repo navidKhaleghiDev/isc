@@ -1,7 +1,8 @@
 import { Typography } from '@ui/atoms/Typography';
 
-import { BaseRadioButtonProps } from './types';
+import { Controller } from 'react-hook-form';
 import { baseRadioButton } from './styles';
+import { BaseRadioButtonControlProps } from './types';
 
 /**
  * BaseRadioButton Component (Atomic Design - Atom)
@@ -18,16 +19,15 @@ import { baseRadioButton } from './styles';
  * @param {boolean} [props.hiddenError] - If true, hides the error message.
  * @param {string} [props.label] - The text label to display next to the radio button.
  * @param {string} [props.className] - Additional custom className for styling the component.
- * @param {Function} props.pureOnChange - Callback function to handle changes to the radio button's checked state.
- * @param {string | number} props.pureValue - The value of the radio button.
- * @param {string} [props.pureError] - Error message to display if an error occurs.
  * @param {boolean} [props.checked] - Whether the radio button is checked or not.
  * @param {'ltr' | 'rtl'} [props.dir='rtl'] - The direction of the layout (left-to-right or right-to-left).
  *
  * @returns {JSX.Element} Returns the rendered BaseRadioButton component.
  */
 
-export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
+export function BaseRadioButton(
+  props: BaseRadioButtonControlProps<any>
+): JSX.Element {
   const {
     name,
     id,
@@ -36,42 +36,50 @@ export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
     hiddenError,
     label,
     className,
-    pureOnChange,
-    pureValue,
-    pureError,
     checked,
+    control,
+    rules,
+    defaultValue,
     dir = 'rtl',
   } = props;
 
   return (
-    <div
-      className={`inline-flex items-center relative gap-2 ${
-        dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
-      } ${className}`}
-    >
-      <input
-        id={id}
-        type="radio"
-        checked={checked}
-        name={name}
-        value={pureValue}
-        onChange={pureOnChange}
-        className={baseRadioButton({
-          intent: pureError ? 'error' : intent,
-          size,
-        })}
-      />
-      <label
-        className="relative flex items-center rounded-full cursor-pointer text-neutral-400 peer-checked:text-neutral-900 dark:text-neutral-300 dark:peer-checked:text-white"
-        htmlFor="check"
-      >
-        {label}
-      </label>
-      {hiddenError && (
-        <Typography color="red" variant="body6" className="h-6">
-          {pureError ?? ''}
-        </Typography>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue}
+      render={({ field, fieldState: { error } }) => (
+        <div
+          className={`inline-flex items-center relative gap-2 ${
+            dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
+          } ${className}`}
+        >
+          <input
+            id={id}
+            type="radio"
+            checked={checked}
+            name={field.name}
+            value={field.value ?? ''}
+            onChange={field.onChange}
+            className={baseRadioButton({
+              intent: error?.message ? 'error' : intent,
+              size,
+            })}
+          />
+          <label
+            className="relative flex items-center rounded-full cursor-pointer text-neutral-400 peer-checked:text-neutral-900 dark:text-neutral-300 dark:peer-checked:text-white"
+            htmlFor="check"
+          >
+            {label}
+          </label>
+          {hiddenError && (
+            <Typography color="red" variant="body6" className="h-6">
+              {error?.message ?? ''}
+            </Typography>
+          )}
+        </div>
       )}
-    </div>
+    />
   );
 }
