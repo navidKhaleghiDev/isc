@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 
 import { baseIconStyles } from './styles';
-import { IBaseIcon } from './types';
+import { BaseIconProps } from './types';
 
 /**
  * BaseIcon Component
@@ -10,7 +10,7 @@ import { IBaseIcon } from './types';
  *
  * @component
  *
- * @param {IBaseIcon} props - The props for the BaseIcon component.
+ * @param {BaseIconProps} props - The props for the BaseIcon component.
  * @param {neutral | teal | yellow | red | tealLink} color - Determine the color of the icon between [neutral, teal, ...]
  * @param {default | xs | sm | md | lg | xl | xxl | xxxl} size - Determine the size of the icon between [default, xs, sm, md, ...]
  * @param {primary | default} hoverColor - Determine the hover color of the icon between [primary, default]
@@ -25,7 +25,7 @@ export function BaseIcon({
   hoverColor,
   className,
   icon = 'fa:home',
-}: IBaseIcon): JSX.Element {
+}: BaseIconProps): JSX.Element {
   return (
     <Icon
       className={baseIconStyles({ size, color, hoverColor, className })}

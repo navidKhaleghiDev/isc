@@ -1,9 +1,9 @@
 import { Icon, IconifyIcon } from '@iconify/react';
 import { baseIconStyles } from './styles';
-import { IBaseIcon } from './types';
+import { BaseIconProps } from './types';
 
 export interface IIconListStorybook {
-  color: IBaseIcon['color'];
+  color: BaseIconProps['color'];
   size: 'default' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
   hoverColor: 'default' | 'primary';
   className?: string;
