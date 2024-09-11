@@ -79,7 +79,7 @@ export const end: Story = {
     submit: false,
     fullWidth: false,
     disabled: false,
-    size: 'md',
+    size: 'sm',
     type: 'default',
     loading: false,
   },
