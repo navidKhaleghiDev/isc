@@ -13,10 +13,10 @@ export const baseInputStyles = cva(
       fullWidth: {
         true: 'w-full',
       },
-      ltrPlaceHolder: {
-        true: 'placeholder:text-left',
-        false: 'placeholder:text-right placeholder:text-rtl',
-      },
+      // ltrPlaceHolder: {
+      //   true: 'placeholder:text-left',
+      //   false: 'placeholder:text-right placeholder:text-rtl',
+      // },
       size: {
         none: '',
         xs: `w-52 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
@@ -35,7 +35,7 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center  active:text-neutral-500 fill-current',
+  'absolute inset-y-0 flex px-2 items-center active:text-neutral-500 fill-current',
   {
     variants: {
       intent: {

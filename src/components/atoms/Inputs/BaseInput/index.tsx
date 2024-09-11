@@ -113,7 +113,7 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
         <Typography
           color="red"
           variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-5`}
+          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
         >
           {pureError}
         </Typography>

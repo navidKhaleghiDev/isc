@@ -84,9 +84,6 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
             </label>
           )}
           <div className="relative base-input">
-            {startIcon && (
-              <IconInput icon={startIcon} intent={intent} dir="rtl" />
-            )}
             <input
               id={id}
               type={type}
@@ -111,7 +108,10 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
               min={min}
               max={max}
             />
-
+            {startIcon && (
+              <IconInput icon={startIcon} intent={intent} dir="rtl" />
+            )}
+            {endIcon && <IconInput icon={endIcon} intent={intent} />}
             {onClickIcon && (
               <IconButtonInput
                 icon={iconButtonIcon}
@@ -119,10 +119,13 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
                 onClick={onClickIcon}
               />
             )}
-            {endIcon && <IconInput icon={endIcon} intent={intent} />}
           </div>
           {!hiddenError && (
-            <Typography color="red" variant="body6" className="min-h-5">
+            <Typography
+              color="red"
+              variant="body1"
+              className={`min-h-10 ${dir === 'rtl' && 'text-right'}`}
+            >
               {error?.message ?? ''}
             </Typography>
           )}
