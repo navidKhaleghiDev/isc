@@ -27,7 +27,7 @@ interface ToastCustomContainerProps {
  *
  * @returns {JSX.Element} The rendered close button component.
  */
-function CloseButton({ closeToast }: CloseButtonProps): JSX.Element {
+function CloseButton({ closeToast, type }: CloseButtonProps): JSX.Element {
   return (
     <button
       className="text-white self-center justify-start"
@@ -35,7 +35,12 @@ function CloseButton({ closeToast }: CloseButtonProps): JSX.Element {
       aria-label="Close"
       type="button"
     >
-      <BaseIcon icon={X} color="neutral" size="md" />
+      <BaseIcon
+        icon={X}
+        color="neutralNoBg"
+        size="md"
+        className={`${toastStyle({ closeIconDark: type })}`}
+      />
     </button>
   );
 }
@@ -74,8 +79,10 @@ export function ToastCustomContainer({
           <BaseIcon
             icon={Check}
             size="md"
-            color="neutral"
-            className="shrink-0 w-5 h-5"
+            color="neutralNoBg"
+            className={`shrink-0 w-5 h-5 ${toastStyle({
+              closeIconDark: type,
+            })}`}
           />
         );
       case 'error':
@@ -83,8 +90,10 @@ export function ToastCustomContainer({
           <BaseIcon
             icon={Warning}
             size="md"
-            color="neutral"
-            className="shrink-0"
+            color="neutralNoBg"
+            className={`shrink-0 ${toastStyle({
+              closeIconDark: type,
+            })}`}
           />
         );
       case 'info':
@@ -92,8 +101,10 @@ export function ToastCustomContainer({
           <BaseIcon
             icon={Info}
             size="md"
-            color="neutral"
-            className="shrink-0"
+            color="neutralNoBg"
+            className={`shrink-0 ${toastStyle({
+              closeIconDark: type,
+            })}`}
           />
         );
       case 'warning':
@@ -101,8 +112,10 @@ export function ToastCustomContainer({
           <BaseIcon
             icon={Warning}
             size="md"
-            color="neutral"
-            className="shrink-0 w-5 h-5"
+            color="neutralNoBg"
+            className={`shrink-0 w-5 h-5 ${toastStyle({
+              closeIconDark: type,
+            })}`}
           />
         );
       default:
