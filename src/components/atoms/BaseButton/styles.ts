@@ -41,7 +41,7 @@ export const baseButtonStyles = cva(
         dark:disabled:bg-neutral-600 dark:disabled:text-neutral-100 dark:disabled:opacity-40`,
         tertiary: ` 
         font-semibold
-        bg-[#ffffff1a] text-neutral-500 
+        text-neutral-500 
         hover:text-teal-500                            
         disabled:text-neutral-300
         dark:text-neutral-200
