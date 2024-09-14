@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    icon: PhUser, // مثال آیکون
+    icon: PhUser,
     color: 'teal',
     size: 'sm',
     loading: false,
