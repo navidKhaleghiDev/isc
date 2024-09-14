@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Controller } from 'react-hook-form';
+
+import { useState } from 'react';
 import { Typography } from '@ui/atoms/Typography';
 import { BaseSwitchProps } from './types';
 import { baseSwitchStyles } from './styles';
@@ -29,76 +30,21 @@ import { baseSwitchStyles } from './styles';
 
 export function BaseSwitch({
   size,
+  id,
   label,
   name,
-  control,
-  rules,
   ltrLabel,
   defaultValue,
-  pureOnChange,
-  pureValue,
+  onClick,
+  value,
   defaultChecked,
-  pureError,
+  error,
   disabled = false,
 }: BaseSwitchProps<any>): JSX.Element {
+  const [isChecked, setIsChecked] = useState(false);
   const translateClass = size === 'small' ? 'translate-x-4' : 'translate-x-6';
 
-  return control ? (
-    <Controller
-      name={name}
-      control={control}
-      rules={rules}
-      defaultValue={defaultValue || false}
-      render={({ field }) => {
-        return (
-          <div dir="ltr">
-            {label && (
-              <label
-                htmlFor={name}
-                className={`block mb-1 ${
-                  ltrLabel ? 'text-left uppercase' : 'text-right'
-                }`}
-              >
-                <Typography color="teal" size="h4">
-                  {label}
-                </Typography>
-              </label>
-            )}
-            <label
-              htmlFor={`${name}_input`}
-              className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center"
-            >
-              <input
-                id={`${name}_input`}
-                type="checkbox"
-                className="sr-only"
-                checked={field.value}
-                onChange={(e) => {
-                  field.onChange(e.target.checked);
-                  if (pureOnChange) pureOnChange(e.target.checked);
-                }}
-              />
-              <span
-                className={`${baseSwitchStyles({
-                  size,
-                })} ${
-                  field.value
-                    ? 'bg-teal-500 dark:bg-teal-400'
-                    : 'bg-neutral-200 dark:bg-neutral-800'
-                }`}
-              >
-                <span
-                  className={`dot size-4 rounded-full bg-white duration-200 ${
-                    field.value ? translateClass : ''
-                  }`}
-                />
-              </span>
-            </label>
-          </div>
-        );
-      }}
-    />
-  ) : (
+  return (
     <div dir="ltr">
       {label && (
         <label
@@ -117,32 +63,38 @@ export function BaseSwitch({
         }`}
       >
         <input
+          id={id}
           disabled={disabled}
           type="checkbox"
           className="sr-only"
-          checked={pureValue}
+          checked={isChecked}
+          value={value}
           defaultValue={defaultValue}
           defaultChecked={defaultChecked}
+          onChange={(e) => {
+            setIsChecked(e.target.checked);
+            if (onClick) onClick(e.target.checked);
+          }}
         />
         <span
           className={`${baseSwitchStyles({
             size,
           })} ${
-            pureValue
+            isChecked
               ? 'bg-teal-500 dark:bg-teal-400'
               : 'bg-neutral-200 dark:bg-neutral-800'
           }`}
         >
           <span
             className={`dot size-4 rounded-full bg-white duration-200 ${
-              pureValue ? translateClass : ''
+              isChecked ? translateClass : ''
             }`}
           />
         </span>
       </label>
-      {pureError && (
+      {error && (
         <Typography color="red" size="h4" className="h-6">
-          {pureError}
+          {error}
         </Typography>
       )}
     </div>
