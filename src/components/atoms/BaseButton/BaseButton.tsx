@@ -1,4 +1,4 @@
-import { baseButtonStyles, iconInButtonStyles, loadingStyle } from './styles';
+import { baseButtonStyles, loadingStyle } from './styles';
 import { BaseButtonProps } from './types';
 import { BaseIcon } from '../BaseIcon';
 import { LoadingSvg } from '../Svgs/LoadingSvg';
@@ -54,21 +54,12 @@ export function BaseButton({
       {startIcon && !loading && (
         <BaseIcon
           icon={startIcon}
-          className={iconInButtonStyles({
-            type: 'default',
-            className: 'ml-1',
-          })}
+          className="fill-current size[0.813rem] ml-1"
         />
       )}
       {loading ? <LoadingSvg type={type} /> : label}
       {endIcon && !loading && (
-        <BaseIcon
-          icon={endIcon}
-          className={iconInButtonStyles({
-            type: 'default',
-            className: 'mr-1',
-          })}
-        />
+        <BaseIcon icon={endIcon} className="fill-current size[0.813rem] mr-1" />
       )}
     </button>
   );

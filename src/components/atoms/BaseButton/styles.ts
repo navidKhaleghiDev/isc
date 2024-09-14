@@ -90,47 +90,46 @@ export const loadingStyle = cva(
   }
 );
 
-export const iconInButtonStyles = cva('fill-current mr-1 size[0.813rem]', {
-  variants: {
-    type: {
-      default: `
-        bg-teal-500 text-white 
-        hover:bg-teal-600 active:bg-teal-700
-        disabled:bg-teal-500 disabled:text-white disabled:opacity-40 
-        dark:bg-teal-400 dark:text-neutral-700
-        dark:hover:bg-teal-500 dark:active:bg-teal-600
-        dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
-      inactive: ` 
-        bg-teal-500 text-white opacity-40
-        hover:bg-teal-600 active:bg-teal-700
-        disabled:bg-teal-500 disabled:text-white disabled:opacity-40 
-        dark:bg-teal-400 dark:text-neutral-700
-        dark:hover:bg-teal-500 dark:active:bg-teal-600
-        dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
-      red: `
-        bg-red-100 text-red-600 
-        hover:bg-red-200 active:bg-red-300
-        disabled:bg-red-100 disabled:text-red-600 disabled:opacity-40 
-        dark:bg-red-300 dark:text-white
-        dark:hover:bg-red-400 dark:active:bg-red-500  
-        dark:disabled:bg-red-300 dark:disabled:text-white dark:disabled:opacity-40`,
-      tealLink: ``,
-      noBg: ``,
-      neutral: `
-        bg-white text-neutral-500 border-[0.063rem] border-neutral-100
-        hover:bg-neutral-100 hover:text-neutral-600 hover:border-0
-        active:bg-neutral-200 active:text-neutral-600 active:border-0
-        disabled:bg-neutral-200 disabled:text-neutral-900 disabled:opacity-40 disabled:border-0
-        dark:bg-neutral-600 dark:text-neutral-300 dark:border-neutral-500
-        dark:hover:bg-neutral-600 dark:hover:text-neutral-100 
-        dark:active:bg-neutral-800 dark:active:text-neutral-100
-        dark:disabled:bg-neutral-600 dark:disabled:text-neutral-100 dark:disabled:opacity-40`,
-    },
-  },
-  defaultVariants: {
-    type: 'default',
-  },
-});
+//   variants: {
+//     type: {
+//       default: `
+//         bg-teal-500 text-white
+//         hover:bg-teal-600 active:bg-teal-700
+//         disabled:bg-teal-500 disabled:text-white disabled:opacity-40
+//         dark:bg-teal-400 dark:text-neutral-700
+//         dark:hover:bg-teal-500 dark:active:bg-teal-600
+//         dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
+//       inactive: `
+//         bg-teal-500 text-white opacity-40
+//         hover:bg-teal-600 active:bg-teal-700
+//         disabled:bg-teal-500 disabled:text-white disabled:opacity-40
+//         dark:bg-teal-400 dark:text-neutral-700
+//         dark:hover:bg-teal-500 dark:active:bg-teal-600
+//         dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
+//       red: `
+//         bg-red-100 text-red-600
+//         hover:bg-red-200 active:bg-red-300
+//         disabled:bg-red-100 disabled:text-red-600 disabled:opacity-40
+//         dark:bg-red-300 dark:text-white
+//         dark:hover:bg-red-400 dark:active:bg-red-500
+//         dark:disabled:bg-red-300 dark:disabled:text-white dark:disabled:opacity-40`,
+//       tealLink: ``,
+//       noBg: ``,
+//       neutral: `
+//         bg-white text-neutral-500 border-[0.063rem] border-neutral-100
+//         hover:bg-neutral-100 hover:text-neutral-600 hover:border-0
+//         active:bg-neutral-200 active:text-neutral-600 active:border-0
+//         disabled:bg-neutral-200 disabled:text-neutral-900 disabled:opacity-40 disabled:border-0
+//         dark:bg-neutral-600 dark:text-neutral-300 dark:border-neutral-500
+//         dark:hover:bg-neutral-600 dark:hover:text-neutral-100
+//         dark:active:bg-neutral-800 dark:active:text-neutral-100
+//         dark:disabled:bg-neutral-600 dark:disabled:text-neutral-100 dark:disabled:opacity-40`,
+//     },
+//   },
+//   defaultVariants: {
+//     type: 'default',
+//   },
+// });
 
 export const iconButtonStyles = cva(
   'flex items-center justify-center rounded-lg',
