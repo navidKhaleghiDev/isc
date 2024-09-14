@@ -1,7 +1,7 @@
 // import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import X from '@iconify-icons/ph/x';
+import CaretCircleUpDown from '@iconify-icons/ph/caret-circle-up-down';
 import { BaseButton } from './BaseButton';
 
 const meta: Meta<typeof BaseButton> = {
@@ -60,10 +60,10 @@ export const Default: Story = {
   },
 };
 
-export const est: Story = {
+export const startIcon: Story = {
   args: {
     label: 'Button',
-    startIcon: X,
+    startIcon: CaretCircleUpDown,
     submit: false,
     fullWidth: false,
     disabled: false,
@@ -72,10 +72,10 @@ export const est: Story = {
     loading: false,
   },
 };
-export const end: Story = {
+export const endIcon: Story = {
   args: {
     label: 'دکمه',
-    endIcon: X,
+    endIcon: CaretCircleUpDown,
     submit: false,
     fullWidth: false,
     disabled: false,
