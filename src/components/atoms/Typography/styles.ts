@@ -15,7 +15,7 @@ export const typographyStyles = cva('', {
       white: `${PALLET.TEXT_COLOR.WHITE} `,
       black: `${PALLET.TEXT_COLOR.BLACK}`,
     },
-    size: {
+    variant: {
       h1: SIZE.TYPOGRAPHY.H1,
       h2: SIZE.TYPOGRAPHY.H2,
       h3: SIZE.TYPOGRAPHY.H3,
