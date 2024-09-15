@@ -3,7 +3,7 @@ import { DoubleRangeSlider } from '@ui/atoms/Slider/DoubleSlider/DoubleRangeSlid
 
 function App() {
   const handel = () => {
-    console.log('test');
+    // console.log('test');
   };
   return (
     <div>
