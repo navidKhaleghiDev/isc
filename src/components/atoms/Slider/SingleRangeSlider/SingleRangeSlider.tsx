@@ -1,14 +1,24 @@
 import { useRef, useState } from 'react';
-import { sliderStyles, thumbStyles } from './styles';
-import { SingleRangeSliderProps } from './types';
+import { SingleRangeSliderProps } from '../types';
+import { sliderStyles, thumbStyles } from '../styles';
 
+/**
+ * @component
+ * @param {SingleRangeSlider} props The props for SingleRangeSlider component.
+ * @param {number} props.min - The minimum value of the slider
+ * @param {number} props.max - The maximum value of the slider
+ * @param {number} props.initialValue - The initial value
+ * @param {number} props.step - The step size
+ * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
+ * @returns {JSX.Element} The rendered component
+ */
 export function SingleRangeSlider({
   min,
   max,
   initialValue,
   step,
   onChange,
-}: SingleRangeSliderProps) {
+}: SingleRangeSliderProps): JSX.Element {
   const [value, setValue] = useState(initialValue);
   const sliderRef = useRef<HTMLDivElement>(null);
 

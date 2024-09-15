@@ -1,5 +1,5 @@
-import { SingleRangeSlider } from '@ui/atoms/Slider';
 import { DoubleRangeSlider } from '@ui/atoms/Slider/DoubleSlider/DoubleRangeSlider';
+import { SingleRangeSlider } from '@ui/atoms/Slider/SingleRangeSlider/SingleRangeSlider';
 
 function App() {
   const handel = () => {

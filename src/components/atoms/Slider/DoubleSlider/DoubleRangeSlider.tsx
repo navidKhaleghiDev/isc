@@ -2,6 +2,17 @@ import { useRef, useState } from 'react';
 import { DoubleRangeSliderProps } from '../types';
 import { sliderStyles, thumbStyles } from '../styles';
 
+/**
+ * @component
+ * @param {DoubleRangeSlider} props The props for DoubleRangeSlider component.
+ * @param {number} props.min - The minimum value of the slider
+ * @param {number} props.max - The maximum value of the slider
+ * @param {number} props.initialMin - The initial minimum value
+ * @param {number} props.initialMax - The initial maximum value
+ * @param {number} props.step - The step size
+ * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
+ * @returns {JSX.Element} The rendered component
+ */
 export function DoubleRangeSlider({
   min,
   max,
@@ -9,7 +20,7 @@ export function DoubleRangeSlider({
   initialMax,
   step,
   onChange,
-}: DoubleRangeSliderProps) {
+}: DoubleRangeSliderProps): JSX.Element {
   const [minValue, setMinValue] = useState<number>(initialMin);
   const [maxValue, setMaxValue] = useState<number>(initialMax);
   const sliderRef = useRef<HTMLDivElement>(null);
