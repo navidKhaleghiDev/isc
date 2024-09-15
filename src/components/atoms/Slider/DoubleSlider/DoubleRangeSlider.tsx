@@ -1,6 +1,6 @@
-import { MouseEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { DoubleRangeSliderProps } from '../types';
-import { filledRangeStyles, rangeStyles, thumbStyles } from '../styles';
+import { sliderStyles, thumbStyles } from '../styles';
 
 export function DoubleRangeSlider({
   min,
@@ -8,16 +8,15 @@ export function DoubleRangeSlider({
   initialMin,
   initialMax,
   step,
-  onChange,
 }: DoubleRangeSliderProps) {
-  const [minValue, setMinValue] = useState(initialMin);
-  const [maxValue, setMaxValue] = useState(initialMax);
-  const sliderRef = useRef(null);
+  const [minValue, setMinValue] = useState<number>(initialMin);
+  const [maxValue, setMaxValue] = useState<number>(initialMax);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (value: number) => ((value - min) / (max - min)) * 100;
 
   const handleMouseDown = (
-    e: MouseEvent<HTMLDivElement, MouseEvent>,
+    e: React.MouseEvent<HTMLDivElement>,
     thumb: string
   ) => {
     const start = e.clientX;
@@ -32,14 +31,13 @@ export function DoubleRangeSlider({
       if (sliderWidth === 0) return;
 
       const percentMoved = (dx / sliderWidth) * (max - min);
+
       const newValue = Math.round(startValue + percentMoved / step) * step;
 
       if (thumb === 'min' && newValue <= maxValue && newValue >= min) {
         setMinValue(newValue);
-        onChange?.({ min: newValue, max: maxValue });
       } else if (thumb === 'max' && newValue >= minValue && newValue <= max) {
         setMaxValue(newValue);
-        onChange?.({ min: minValue, max: newValue });
       }
     };
 
@@ -54,10 +52,10 @@ export function DoubleRangeSlider({
 
   return (
     <div className="relative w-64 h-1 m-10" ref={sliderRef}>
-      <div className={rangeStyles()} />
+      <div className={sliderStyles({ background: 'range' })} />
 
       <div
-        className={filledRangeStyles()}
+        className={sliderStyles({ background: 'fill' })}
         style={{
           left: `${percent(minValue)}%`,
           width: `${percent(maxValue) - percent(minValue)}%`,
@@ -66,20 +64,24 @@ export function DoubleRangeSlider({
       <div
         className={thumbStyles()}
         style={{ left: `${percent(minValue)}%` }}
-        onMouseDown={(e) => handleMouseDown(e, 'min')}
+        onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
+          handleMouseDown(e, 'min')
+        }
         tabIndex={0}
         role="button"
       >
-        {}
+        <span className="flex items-center mt-3 text-xs">{minValue}</span>
       </div>
       <div
         className={thumbStyles()}
         style={{ left: `${percent(maxValue)}% ` }}
-        onMouseDown={(e) => handleMouseDown(e, 'max')}
+        onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
+          handleMouseDown(e, 'max')
+        }
         tabIndex={0}
         role="button"
       >
-        {}
+        <span className="flex items-center mt-3 text-xs">{maxValue}</span>
       </div>
     </div>
   );

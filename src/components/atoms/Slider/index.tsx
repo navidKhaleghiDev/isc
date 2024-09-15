@@ -1,2 +1,3 @@
-export { Slider } from './Slider';
+export { SingleRangeSlider } from './SingleRangeSlider';
+
 export * from './types';

@@ -1,29 +1,17 @@
-import { Slider } from '@ui/atoms/Slider';
+import { SingleRangeSlider } from '@ui/atoms/Slider';
 import { DoubleRangeSlider } from '@ui/atoms/Slider/DoubleSlider/DoubleRangeSlider';
 
 function App() {
   return (
     <div>
       <DoubleRangeSlider
-        onChange={() => {
-          // console.log('test');
-        }}
         min={10}
         max={100}
         step={1}
-        initialMax={80}
-        initialMin={30}
+        initialMax={90}
+        initialMin={20}
       />
-      <Slider
-        onChange={() => {
-          // console.log('test');
-        }}
-        min={10}
-        max={100}
-        step={1}
-        initialMax={80}
-        initialMin={30}
-      />
+      <SingleRangeSlider min={10} max={20} initialValue={15} step={1} />
     </div>
   );
 }

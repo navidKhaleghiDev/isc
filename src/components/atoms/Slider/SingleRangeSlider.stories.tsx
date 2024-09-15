@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react/*';
 import { ReactElement } from 'react';
-import { Slider } from '.';
+import { SingleRangeSlider } from './SingleRangeSlider';
 
-const meta: Meta<typeof Slider> = {
+const meta: Meta<typeof SingleRangeSlider> = {
   title: 'atoms/Slider',
-  component: Slider,
+  component: SingleRangeSlider,
   tags: ['autodocs'],
   parameters: {
     Layout: 'center',
