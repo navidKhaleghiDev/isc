@@ -45,11 +45,11 @@
 }
 
 .Toastify__toast-container .toast-custom {
- flex-direction: row;
+  flex-direction: row;
 }
 
 .Toastify__toast-container .toast-body-custom {
- flex-direction: row;
+  flex-direction: row;
 }
 
 .Toastify__toast-body > div:last-child {
@@ -58,11 +58,11 @@
 }
 
 .Toastify__toast-container--rtl .toast-custom {
- flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .Toastify__toast-container--rtl .toast-body-custom {
- flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .Toastify__toast-container--rtl .Toastify__toast-body > div:last-child {

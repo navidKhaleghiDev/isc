@@ -18,7 +18,7 @@ export const toastStyle = cva(
   }
 );
 
-export const toastIconStyle = cva('',{
+export const toastIconStyle = cva('', {
   variants: {
     type: {
       success: 'dark:text-teal-400',
