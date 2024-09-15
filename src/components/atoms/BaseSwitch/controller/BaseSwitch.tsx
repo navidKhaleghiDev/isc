@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-
-import { useState } from 'react';
+import { Controller } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 import { BaseSwitchProps } from './types';
-import { baseSwitchStyles } from './styles';
+import { baseSwitchStyles } from '../styles';
 
 /**
  * BaseSwitch component renders a customizable toggle switch with optional labels and controlled/uncontrolled states.
@@ -30,73 +29,70 @@ import { baseSwitchStyles } from './styles';
 
 export function BaseSwitch({
   size,
-  id,
   label,
   name,
+  control,
+  rules,
   ltrLabel,
   defaultValue,
-  onClick,
-  value,
-  defaultChecked,
-  error,
-  disabled = false,
+  onChange,
 }: BaseSwitchProps<any>): JSX.Element {
-  const [isChecked, setIsChecked] = useState(false);
   const translateClass = size === 'small' ? 'translate-x-4' : 'translate-x-6';
 
   return (
-    <div dir="ltr">
-      {label && (
-        <label
-          htmlFor={name}
-          className={`block mb-1 ${ltrLabel && 'text-left uppercase'}`}
-        >
-          <Typography color="teal" size="h4">
-            {label}
-          </Typography>
-        </label>
-      )}
-      <label
-        htmlFor={name}
-        className={`select-none items-center autoSaverSwitch relative inline-flex ${
-          disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-        }`}
-      >
-        <input
-          id={id}
-          disabled={disabled}
-          type="checkbox"
-          className="sr-only"
-          checked={isChecked}
-          value={value}
-          defaultValue={defaultValue}
-          defaultChecked={defaultChecked}
-          onChange={(e) => {
-            setIsChecked(e.target.checked);
-            if (onClick) onClick(e.target.checked);
-          }}
-        />
-        <span
-          className={`${baseSwitchStyles({
-            size,
-          })} ${
-            isChecked
-              ? 'bg-teal-500 dark:bg-teal-400'
-              : 'bg-neutral-200 dark:bg-neutral-800'
-          }`}
-        >
-          <span
-            className={`dot size-4 rounded-full bg-white duration-200 ${
-              isChecked ? translateClass : ''
-            }`}
-          />
-        </span>
-      </label>
-      {error && (
-        <Typography color="red" size="h4" className="h-6">
-          {error}
-        </Typography>
-      )}
-    </div>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue || false}
+      render={({ field }) => {
+        return (
+          <div dir="ltr">
+            {label && (
+              <label
+                htmlFor={name}
+                className={`block mb-1 ${
+                  ltrLabel ? 'text-left uppercase' : 'text-right'
+                }`}
+              >
+                <Typography color="teal" size="h4">
+                  {label}
+                </Typography>
+              </label>
+            )}
+            <label
+              htmlFor={`${name}_input`}
+              className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center"
+            >
+              <input
+                id={`${name}_input`}
+                type="checkbox"
+                className="sr-only"
+                checked={field.value}
+                onChange={(e) => {
+                  field.onChange(e.target.checked);
+                  if (onChange) onChange(e.target.checked);
+                }}
+              />
+              <span
+                className={`${baseSwitchStyles({
+                  size,
+                })} ${
+                  field.value
+                    ? 'bg-teal-500 dark:bg-teal-400'
+                    : 'bg-neutral-200 dark:bg-neutral-800'
+                }`}
+              >
+                <span
+                  className={`dot size-4 rounded-full bg-white duration-200 ${
+                    field.value ? translateClass : ''
+                  }`}
+                />
+              </span>
+            </label>
+          </div>
+        );
+      }}
+    />
   );
 }
