@@ -1,8 +1,8 @@
 import { MouseEvent, useRef, useState } from 'react';
-import { DoubleRangeSliderProps } from './types';
-import { filledRangeStyles, rangeStyles, thumbStyles } from './styles';
+import { DoubleRangeSliderProps } from '../types';
+import { filledRangeStyles, rangeStyles, thumbStyles } from '../styles';
 
-export function Slider({
+export function DoubleRangeSlider({
   min,
   max,
   initialMin,
@@ -67,6 +67,15 @@ export function Slider({
         className={thumbStyles()}
         style={{ left: `${percent(minValue)}%` }}
         onMouseDown={(e) => handleMouseDown(e, 'min')}
+        tabIndex={0}
+        role="button"
+      >
+        {}
+      </div>
+      <div
+        className={thumbStyles()}
+        style={{ left: `${percent(maxValue)}% ` }}
+        onMouseDown={(e) => handleMouseDown(e, 'max')}
         tabIndex={0}
         role="button"
       >

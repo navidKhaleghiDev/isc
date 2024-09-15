@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react/*';
 import { ReactElement } from 'react';
-import { Slider } from './Slider';
+import { Slider } from '.';
 
 const meta: Meta<typeof Slider> = {
   title: 'atoms/Slider',
@@ -18,7 +18,7 @@ const meta: Meta<typeof Slider> = {
   },
   decorators: [
     (Story): ReactElement => (
-      <div className="flex justify-center">
+      <div>
         <Story />
       </div>
     ),

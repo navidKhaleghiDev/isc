@@ -1,25 +1,30 @@
-import { useMemo, useState, Suspense } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import routesConfig from '@src/routes/routesConfig';
-import { IUserWithAuth, UserContext } from '@context/user/userContext';
-import { ToastCustomContainer } from '@ui/molecules/ToastCustomContainer';
-
-const router = createBrowserRouter(routesConfig);
+import { Slider } from '@ui/atoms/Slider';
+import { DoubleRangeSlider } from '@ui/atoms/Slider/DoubleSlider/DoubleRangeSlider';
 
 function App() {
-  const [user, setUser] = useState<IUserWithAuth | null>(null);
-
-  const userValue = useMemo(() => ({ user, setUser }), [user]);
-
   return (
-    <UserContext.Provider value={userValue}>
-      <div dir="rtl">
-        <Suspense>
-          <RouterProvider router={router} />
-        </Suspense>
-        <ToastCustomContainer />
-      </div>
-    </UserContext.Provider>
+    <div>
+      <DoubleRangeSlider
+        onChange={() => {
+          // console.log('test');
+        }}
+        min={10}
+        max={100}
+        step={1}
+        initialMax={80}
+        initialMin={30}
+      />
+      <Slider
+        onChange={() => {
+          // console.log('test');
+        }}
+        min={10}
+        max={100}
+        step={1}
+        initialMax={80}
+        initialMin={30}
+      />
+    </div>
   );
 }
 

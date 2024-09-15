@@ -3,7 +3,6 @@ import { Controller, FieldValues } from 'react-hook-form';
 import { useClickOutside } from '@src/helper/hooks/useClickOutside';
 import PhCaretDown from '@iconify-icons/ph/caret-down';
 import PhCaretLeft from '@iconify-icons/ph/caret-left';
-import X from '@iconify-icons/ph/x';
 
 import { DropdownProps, IOptionSelect, StateType } from './type';
 import { optionSelectStyles, baseDropDownStyles } from './styles';
@@ -18,6 +17,13 @@ const initState: StateType = {
   openOptions: false,
 };
 
+/**
+ * Dropdown component that allows single or multiple option selection.
+ *
+ * @template T FieldValues for react-hook-form
+ * @param {DropdownProps<T>} props - The props for the Dropdown component
+ * @returns {JSX.Element} The Dropdown component
+ */
 export function Dropdown<T extends FieldValues>({
   options,
   fullWidth,
@@ -51,14 +57,14 @@ export function Dropdown<T extends FieldValues>({
     if (multiple) {
       const isSelected = value?.some((v: IOptionSelect) => v.id === option.id);
       const newValue = isSelected
-        ? value.filter((v: IOptionSelect) => v.id !== option.id) // Remove option if already selected
-        : [...(value || []), option]; // Add option object if not selected
+        ? value.filter((v: IOptionSelect) => v.id !== option.id)
+        : [...(value || []), option];
 
-      onChange(newValue); // Pass array of selected option objects
+      onChange(newValue);
       setState({ activeOption: newValue, openOptions: false });
     } else {
       setState({ activeOption: option, openOptions: false });
-      onChange(option); // Pass the selected option object
+      onChange(option);
     }
   };
 
@@ -72,7 +78,7 @@ export function Dropdown<T extends FieldValues>({
         <div className="relative" ref={ref}>
           {label && (
             <label htmlFor={name} className="block mb-1">
-              <Typography color="teal" size="h5">
+              <Typography color="teal" variant="h5">
                 {label}
               </Typography>
             </label>
@@ -95,31 +101,43 @@ export function Dropdown<T extends FieldValues>({
               </div>
             ) : (
               <>
-                {multiple && value?.length >= 1
-                  ? options
+                {multiple && value?.length >= 1 ? (
+                  <>
+                    {options
                       .filter((option) =>
                         value?.some((v: IOptionSelect) => v.id === option.id)
                       )
+                      .slice(0, 2) // Display only the first two selected options
                       .map((option) => (
-                        <ChipButton
-                          size="body6"
+                        <Typography
+                          className="overflow-hidden"
                           key={option.label}
-                          onClick={() => {
-                            const filteredData = value.filter(
-                              (v: IOptionSelect) => v.id !== option.id
-                            );
-                            setState({
-                              activeOption: filteredData,
-                              openOptions: false,
-                            });
-                            onChange(filteredData);
-                          }}
-                          label={option.label}
-                          color="lightGray"
-                          icon={X}
-                        />
-                      )) || placeHolder
-                  : value?.label || placeHolder}
+                          variant="body6"
+                          type="p"
+                        >
+                          <ChipButton
+                            onClick={() => {
+                              const filteredData = value.filter(
+                                (v: IOptionSelect) => v.id !== option.id
+                              );
+                              setState({
+                                activeOption: filteredData,
+                                openOptions: false,
+                              });
+                              onChange(filteredData);
+                            }}
+                            label={option.label}
+                            color="default"
+                          />
+                        </Typography>
+                      ))}
+                  </>
+                ) : (
+                  value?.label || placeHolder
+                )}
+                {value?.length >= 1 && (
+                  <Typography variant="body6">{value?.length}</Typography>
+                )}
                 <BaseIcon
                   icon={state.openOptions ? PhCaretDown : PhCaretLeft}
                 />
@@ -133,11 +151,10 @@ export function Dropdown<T extends FieldValues>({
               fullWidth,
             })}
           >
-            {/* Remove All Button */}
             {value && (
               <button
                 type="button"
-                className={`w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md ${
+                className={`w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md ml-auto ${
                   leftLabel ? 'text-left' : 'text-right'
                 }`}
                 onClick={() => {
@@ -145,13 +162,12 @@ export function Dropdown<T extends FieldValues>({
                   onChange(multiple ? [] : undefined);
                 }}
               >
-                <Typography type="p" size="body5">
+                <Typography type="p" variant="body5">
                   حذف انتخاب
                 </Typography>
               </button>
             )}
 
-            {/* Options */}
             {options.map((option: IOptionSelect) => (
               <div
                 className="w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md cursor-pointer"
@@ -167,9 +183,9 @@ export function Dropdown<T extends FieldValues>({
                       )}
                       pureOnChange={() =>
                         handleOnChange(option, value, onChange)
-                      } // Handle onChange for checkbox
+                      }
                     />
-                    <Typography type="p" size="body5">
+                    <Typography type="p" variant="body5">
                       {option.label}
                     </Typography>
                   </div>
@@ -181,7 +197,7 @@ export function Dropdown<T extends FieldValues>({
                     }`}
                     onClick={() => handleOnChange(option, value, onChange)}
                   >
-                    <Typography type="p" size="body5">
+                    <Typography type="p" variant="body5">
                       {option.label}
                     </Typography>
                   </button>
@@ -191,7 +207,7 @@ export function Dropdown<T extends FieldValues>({
           </div>
 
           {error && (
-            <Typography color="red" size="body6" className="h-6">
+            <Typography color="red" variant="body6" className="h-6">
               {error?.message ?? ''}
             </Typography>
           )}

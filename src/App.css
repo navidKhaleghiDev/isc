@@ -67,7 +67,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0f766e;
+  nd: #0f766e;
 }
 ::-webkit-scrollbar-track {
   background: #ffffff;
