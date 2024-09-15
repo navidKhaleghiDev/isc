@@ -11,7 +11,7 @@ import {
   ToastOptions,
   TypeOptions,
 } from 'react-toastify';
-import { toastStyle } from './styles';
+import { toastIconStyle, toastStyle } from './styles';
 
 interface ToastCustomContainerProps {
   dir: 'rtl' | 'ltr';
@@ -39,7 +39,7 @@ function CloseButton({ closeToast, type }: CloseButtonProps): JSX.Element {
         icon={X}
         color="neutralNoBg"
         size="md"
-        className={`${toastStyle({ closeIconDark: type })}`}
+        className={`${toastIconStyle({ type })}`}
       />
     </button>
   );
@@ -80,9 +80,7 @@ export function ToastCustomContainer({
             icon={Check}
             size="md"
             color="neutralNoBg"
-            className={`shrink-0 w-5 h-5 ${toastStyle({
-              closeIconDark: type,
-            })}`}
+            className={`shrink-0 w-5 h-5 ${toastIconStyle({ type })}`}
           />
         );
       case 'error':
@@ -91,9 +89,7 @@ export function ToastCustomContainer({
             icon={Warning}
             size="md"
             color="neutralNoBg"
-            className={`shrink-0 ${toastStyle({
-              closeIconDark: type,
-            })}`}
+            className={`shrink-0 ${toastIconStyle({ type })}`}
           />
         );
       case 'info':
@@ -102,9 +98,7 @@ export function ToastCustomContainer({
             icon={Info}
             size="md"
             color="neutralNoBg"
-            className={`shrink-0 ${toastStyle({
-              closeIconDark: type,
-            })}`}
+            className={`shrink-0 ${toastIconStyle({ type })}`}
           />
         );
       case 'warning':
@@ -113,9 +107,7 @@ export function ToastCustomContainer({
             icon={Warning}
             size="md"
             color="neutralNoBg"
-            className={`shrink-0 w-5 h-5 ${toastStyle({
-              closeIconDark: type,
-            })}`}
+            className={`shrink-0 w-5 h-5 ${toastIconStyle({ type })}`}
           />
         );
       default:
@@ -146,7 +138,7 @@ export function ToastCustomContainer({
       hideProgressBar={toastOptions.hideProgressBar}
       className="toast-container-custom"
       toastClassName={(props) => getToastClassName(props)}
-      bodyClassName="flex-row-reverse text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom"
+      bodyClassName="flex-row-reverse text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom max-h-20 overflow-hidden"
       icon={(props) => getToastIcon(props)}
       rtl={dir === 'rtl'}
     />

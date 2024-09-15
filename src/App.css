@@ -54,6 +54,7 @@
 
 .Toastify__toast-body > div:last-child {
   text-align: right;
+  align-self: flex-start;
 }
 
 .Toastify__toast-container--rtl .toast-custom {

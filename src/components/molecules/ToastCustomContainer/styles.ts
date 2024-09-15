@@ -14,13 +14,18 @@ export const toastStyle = cva(
           'bg-yellow-100 border-yellow-400 dark:text-yellow-300 dark:border-yellow-300',
         default: '',
       },
-      closeIconDark: {
-        success: 'dark:text-teal-400 border-none',
-        error: 'dark:text-red-300 border-none',
-        info: 'dark:text-neutral-300 border-none',
-        warning: 'dark:text-yellow-300 border-none',
-        default: '',
-      },
     },
   }
 );
+
+export const toastIconStyle = cva('',{
+  variants: {
+    type: {
+      success: 'dark:text-teal-400',
+      error: 'dark:text-red-300',
+      info: 'dark:text-neutral-300',
+      warning: 'dark:text-yellow-300',
+      default: '',
+    },
+  },
+});
