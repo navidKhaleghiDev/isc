@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { ReactElement } from 'react';
 import { Toast } from './Toast';
 
@@ -43,21 +44,24 @@ const meta = {
     },
   },
   decorators: [
-    (Story): ReactElement => (
-      <div
-        style={{
-          width: '50vw',
-          height: '100vh',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          direction: 'rtl',
-        }}
-      >
-        <Story />
-      </div>
-    ),
+    (Story, context): ReactElement => {
+      const { dir } = context;
+      return (
+        <div
+          style={{
+            width: '50vw',
+            height: '100vh',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            direction: dir,
+          }}
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
 } satisfies Meta<typeof Toast>;
 

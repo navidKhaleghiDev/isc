@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import './toast.css';
+
 import { ToastCustomContainer } from '@ui/molecules/ToastCustomContainer';
 
 export type ToastPropsType = {

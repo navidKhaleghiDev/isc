@@ -3,6 +3,7 @@ import Warning from '@iconify-icons/ph/warning';
 import Info from '@iconify-icons/ph/info';
 import X from '@iconify-icons/ph/x';
 import { BaseIcon } from '@ui/atoms';
+
 import {
   CloseButtonProps,
   Flip,
@@ -14,7 +15,7 @@ import {
 import { toastIconStyle, toastStyle } from './styles';
 
 interface ToastCustomContainerProps {
-  dir: 'rtl' | 'ltr';
+  dir?: 'rtl' | 'ltr';
 }
 
 /**
@@ -125,7 +126,9 @@ export function ToastCustomContainer({
    */
   const getToastClassName = (props?: { type?: TypeOptions }) => {
     const type = props?.type || 'default';
-    return `flex items-center flex-row-reverse px-5 rounded-2xl shadow-lg w-[21.875rem] h-20 font-kalameh text-base gap-7 toast-custom ${toastStyle(
+    return `flex items-center ${
+      dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
+    } px-5 rounded-2xl shadow-lg w-[21.875rem] h-20 font-kalameh text-base gap-7 toast-custom ${toastStyle(
       { typeToast: type }
     )}`;
   };
@@ -138,7 +141,9 @@ export function ToastCustomContainer({
       hideProgressBar={toastOptions.hideProgressBar}
       className="toast-container-custom"
       toastClassName={(props) => getToastClassName(props)}
-      bodyClassName="flex-row-reverse text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom max-h-20 overflow-hidden"
+      bodyClassName={`${
+        dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
+      } text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom max-h-20 overflow-hidden`}
       icon={(props) => getToastIcon(props)}
       rtl={dir === 'rtl'}
     />
