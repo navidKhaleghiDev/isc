@@ -7,6 +7,7 @@ export function SingleRangeSlider({
   max,
   initialValue,
   step,
+  onChange,
 }: SingleRangeSliderProps) {
   const [value, setValue] = useState(initialValue);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ export function SingleRangeSlider({
 
       if (newValue >= min && newValue <= max) {
         setValue(newValue);
+        onChange?.(newValue);
       }
     };
 

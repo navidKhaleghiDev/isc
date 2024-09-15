@@ -3,6 +3,7 @@ export interface SingleRangeSliderProps {
   max: number;
   initialValue: number;
   step: number;
+  onChange: (value: number) => void;
 }
 export interface DoubleRangeSliderProps {
   min: number;
@@ -10,4 +11,5 @@ export interface DoubleRangeSliderProps {
   initialMin: number;
   initialMax: number;
   step: number;
+  onChange: any;
 }

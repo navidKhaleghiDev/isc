@@ -8,6 +8,7 @@ export function DoubleRangeSlider({
   initialMin,
   initialMax,
   step,
+  onChange,
 }: DoubleRangeSliderProps) {
   const [minValue, setMinValue] = useState<number>(initialMin);
   const [maxValue, setMaxValue] = useState<number>(initialMax);
@@ -36,8 +37,10 @@ export function DoubleRangeSlider({
 
       if (thumb === 'min' && newValue <= maxValue && newValue >= min) {
         setMinValue(newValue);
+        onChange?.({ min: newValue, max: maxValue });
       } else if (thumb === 'max' && newValue >= minValue && newValue <= max) {
         setMaxValue(newValue);
+        onChange?.({ min: minValue, max: newValue });
       }
     };
 
