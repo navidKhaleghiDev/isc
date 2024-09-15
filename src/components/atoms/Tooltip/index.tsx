@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { containerTooltipStyles, tooltipStyles } from './styles';
-import { ToolTipPrps } from './types';
+import { ToolTipProps } from './types';
 
 /**
  * ToolTip component
@@ -18,7 +18,7 @@ import { ToolTipPrps } from './types';
  * @returns {JSX.Element} The rendered ToolTip component.
  */
 
-function ToolTip({ children, tooltip, position }: ToolTipPrps): JSX.Element {
+function ToolTip({ children, tooltip, position }: ToolTipProps): JSX.Element {
   const [show, setShow] = useState(false);
   return (
     <div className="relative inline-block group">
