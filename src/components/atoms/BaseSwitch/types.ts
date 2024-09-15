@@ -4,7 +4,6 @@ import { baseSwitchStyles } from './styles';
 
 export interface BaseSwitchProps<T extends FieldValues>
   extends VariantProps<typeof baseSwitchStyles> {
-  id: string;
   name: FieldPath<T>;
   defaultValue?: string;
   defaultChecked?: boolean;

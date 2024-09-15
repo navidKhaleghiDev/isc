@@ -6,23 +6,19 @@ import { BaseSwitchProps } from './types';
 import { baseSwitchStyles } from './styles';
 
 /**
- * BaseSwitch component renders a customizable toggle switch with optional labels and controlled/uncontrolled states.
- * It supports integration with `react-hook-form` when the `control` prop is provided, and allows for custom onChange handling.
+ * BaseSwitch component renders a customizable toggle switch with optional labels and uncontrolled states.
  *
  * @component
  *
  * @param {Object} props - The properties for the BaseSwitch component.
- * @param {'small' | 'medium' | 'large'} props.size - Defines the size of the switch.
+ * @param {'small' | 'medium'} props.size - Defines the size of the switch.
  * @param {string} [props.label] - Optional label displayed next to the switch.
  * @param {string} props.name - The name of the switch input, used as its identifier.
- * @param {Object} [props.control] - `react-hook-form` control object for controlled forms.
- * @param {Object} [props.rules] - Validation rules used with `react-hook-form`.
  * @param {boolean} [props.ltrLabel] - If true, label is aligned to the left (LTR); otherwise, it's aligned to the right.
  * @param {boolean} [props.defaultValue] - Default value for the controlled state (used with `react-hook-form`).
- * @param {(checked: boolean) => void} [props.pureOnChange] - Callback function to handle onChange events.
- * @param {boolean} [props.pureValue] - External value for uncontrolled switch state.
+ * @param {(checked: boolean) => void} [props.onClick] - Callback function to handle onChange events.
+ * @param {string} [props.value] - External value
  * @param {boolean} [props.defaultChecked] - Default checked state for the uncontrolled switch.
- * @param {string} [props.pureError] - Error message displayed when validation fails.
  * @param {boolean} [props.disabled=false] - If true, disables the switch and prevents user interaction.
  *
  * @returns {JSX.Element} The BaseSwitch component.
@@ -30,7 +26,6 @@ import { baseSwitchStyles } from './styles';
 
 export function BaseSwitch({
   size,
-  id,
   label,
   name,
   ltrLabel,
@@ -51,22 +46,22 @@ export function BaseSwitch({
           htmlFor={name}
           className={`block mb-1 ${ltrLabel && 'text-left uppercase'}`}
         >
-          <Typography color="teal" size="h4">
+          <Typography color="black" variant="body1">
             {label}
           </Typography>
         </label>
       )}
       <label
-        htmlFor={name}
+        htmlFor={`${name}_input`}
         className={`select-none items-center autoSaverSwitch relative inline-flex ${
           disabled ? 'cursor-not-allowed' : 'cursor-pointer'
         }`}
       >
         <input
-          id={id}
+          id={`${name}_input`}
           disabled={disabled}
           type="checkbox"
-          className="sr-only"
+          className="sr-only pear"
           checked={isChecked}
           value={value}
           defaultValue={defaultValue}
@@ -93,7 +88,7 @@ export function BaseSwitch({
         </span>
       </label>
       {error && (
-        <Typography color="red" size="h4" className="h-6">
+        <Typography color="red" variant="body1" className="h-6">
           {error}
         </Typography>
       )}
