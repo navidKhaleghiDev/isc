@@ -33,10 +33,6 @@ const meta: Meta<typeof DoubleRangeSlider> = {
       control: { type: 'number' },
       description: 'Initial maximum value selected',
     },
-    step: {
-      control: { type: 'number' },
-      description: 'Step size for slider',
-    },
     onChange: {
       action: 'changed',
       description: 'Callback on value change',
@@ -44,7 +40,7 @@ const meta: Meta<typeof DoubleRangeSlider> = {
   },
   decorators: [
     (Story): ReactElement => (
-      <div className="w-full h-full p-4 bg-gray-100 flex justify-center items-center">
+      <div>
         <Story />
       </div>
     ),
@@ -60,6 +56,5 @@ export const Default: Story = {
     max: 100,
     initialMin: 20,
     initialMax: 80,
-    step: 1,
   },
 };

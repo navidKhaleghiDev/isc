@@ -29,10 +29,6 @@ const meta: Meta<typeof SingleRangeSlider> = {
       control: { type: 'number' },
       description: 'Initial Value',
     },
-    step: {
-      control: { type: 'number' },
-      description: 'Step size for slider',
-    },
     onChange: {
       action: 'changed',
       description: 'Callback on value change',
@@ -55,6 +51,5 @@ export const Default: Story = {
     min: 0,
     max: 100,
     initialValue: 20,
-    step: 1,
   },
 };

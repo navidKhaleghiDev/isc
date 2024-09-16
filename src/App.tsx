@@ -20,7 +20,6 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
-      {/* Your components here */}
     </div>
   );
 }
