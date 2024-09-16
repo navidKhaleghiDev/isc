@@ -45,9 +45,7 @@ const meta: Meta<typeof DatePicker> = {
     <DatePicker
       name={args.name}
       id={args.id}
-      ltrPlaceHolder={args.ltrPlaceHolder}
       type={args.type}
-      placeholder={args.placeholder}
       label={args.label}
       intent={args.intent}
       max={args.max}

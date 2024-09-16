@@ -64,7 +64,6 @@ const meta: Meta<typeof BaseInput> = {
       size={args.size}
       className={args.className}
       defaultValue={args.defaultValue}
-      ltrPlaceHolder={args.ltrPlaceHolder}
       fullWidth={args.fullWidth}
       hiddenError={args.hiddenError}
       iconButtonIcon={args.iconButtonIcon}

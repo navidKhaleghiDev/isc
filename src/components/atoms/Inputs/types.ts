@@ -34,7 +34,6 @@ export interface BaseInputProps<T extends FieldValues>
     | 'datetime-local'
     | 'time';
   label?: string;
-  placeholder?: string;
   className?: string;
   startIcon?: string | IconifyIcon;
   endIcon?: string | IconifyIcon;
