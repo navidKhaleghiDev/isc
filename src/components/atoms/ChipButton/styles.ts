@@ -5,7 +5,7 @@ export const chipButtonStyles = cva(
   {
     variants: {
       color: {
-        default: 'bg-neutral-200 text-neutral-800 disabled:opacity-40 ',
+        default: 'bg-neutral-200 text-neutral-800 disabled:opacity-40',
         neutralLight: 'bg-neutral-100 text-neutral-800 disabled:opacity-40',
         neutral: 'bg-neutral-200 text-neutral-800 disabled:opacity-40',
         tealLight: 'bg-teal-100 text-teal-500 disabled:opacity-40',
@@ -18,6 +18,11 @@ export const chipButtonStyles = cva(
         blue: 'bg-blue-200 text-blue-500 ',
         purpleLight: 'bg-purple-100 text-purple-500 disabled:opacity-40',
         purple: 'bg-purple-300 text-purple-500 disabled:opacity-40',
+        neutralLightNoBg: 'text-neutral-800 disabled:opacity-40',
+        neutralNoBg: 'text-neutral-800 disabled:opacity-40',
+        tealNoBg: 'text-teal-500 disabled:opacity-40',
+        redLightNoBg: 'text-red-600 disabled:opacity-40',
+        redNoBg: 'text-red-600 disabled:opacity-40',
       },
     },
     defaultVariants: {
