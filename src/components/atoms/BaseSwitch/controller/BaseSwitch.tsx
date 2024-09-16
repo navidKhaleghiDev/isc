@@ -79,7 +79,7 @@ export function BaseSwitch({
                 })} ${
                   field.value
                     ? 'bg-teal-500 dark:bg-teal-400'
-                    : 'bg-neutral-200 dark:bg-neutral-800'
+                    : 'bg-gray-200 dark:bg-gray-800'
                 }`}
               >
                 <span

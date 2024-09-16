@@ -5,7 +5,7 @@ export const toastStyle = cva('flex text-white justify-end', {
     typeToast: {
       success: 'bg-teal-500',
       error: 'bg-red-400',
-      info: 'bg-neutral-500',
+      info: 'bg-gray-500',
       warning: 'bg-yellow-500',
       default: '',
     },

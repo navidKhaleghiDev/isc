@@ -9,11 +9,11 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 const mClass =
-  'flex size-6 justify-center px-2 rounded items-center hover:bg-neutral-100 text-base';
+  'flex size-6 justify-center px-2 rounded items-center hover:bg-gray-100 text-base';
 
 const disableClass = 'bg-gray-300 cursor-not-allowed ';
 const activeClass =
-  'bg-neutral-200 hover:bg-neutral-200  rounded-lg items-center justify-center cursor-not-allowed';
+  'bg-gray-200 hover:bg-gray-200  rounded-lg items-center justify-center cursor-not-allowed';
 const arrowButtonClass = 'bg-teal-500 ';
 
 /**
@@ -93,7 +93,7 @@ export function Pagination({
         <button
           type="button"
           className={`${mClass} ${
-            currentPage === number ? activeClass : 'bg-white text-neutral-600'
+            currentPage === number ? activeClass : 'bg-white text-gray-600'
           }`}
           disabled={isEllipsis}
           key={number}

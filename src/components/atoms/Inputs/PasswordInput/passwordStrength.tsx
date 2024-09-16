@@ -27,12 +27,12 @@ export function PasswordStrength({ password }: { password?: string }) {
   return (
     <>
       <div className="flex items-center mb-5">
-        <div className="w-16 h-1 rounded bg-neutral-200">
+        <div className="w-16 h-1 rounded bg-gray-200">
           <div className={`rounded h-1 ${getColorClass(colorStrength)}`} />
         </div>
 
         {colorStrength && (
-          <Typography className="mx-2" color="neutral_light" variant="body6">
+          <Typography className="mx-2" color="neutralLight" variant="body6">
             {getLabelPasswordStrength(colorStrength)}
           </Typography>
         )}
@@ -42,27 +42,27 @@ export function PasswordStrength({ password }: { password?: string }) {
         <div className="flex flex-nowrap items-center">
           <BaseIcon
             icon={CircleFill}
-            className="w-1.5 h-1.5 text-neutral-400 ml-1.5"
+            className="w-1.5 h-1.5 text-gray-400 ml-1.5"
           />
-          <Typography variant="body6" color="neutral_light">
+          <Typography variant="body6" color="neutralLight">
             باید شامل 8 کارکتر و یا بیشتر باشد.
           </Typography>
         </div>
         <div className="flex flex-nowrap items-center">
           <BaseIcon
             icon={CircleFill}
-            className="w-1.5 h-1.5 text-neutral-400 ml-1.5"
+            className="w-1.5 h-1.5 text-gray-400 ml-1.5"
           />
-          <Typography variant="body6" color="neutral_light">
+          <Typography variant="body6" color="neutralLight">
             حروف کوچک و حروف بزرگ داشته باشد.
           </Typography>
         </div>
         <div className="flex flex-nowrap items-center">
           <BaseIcon
             icon={CircleFill}
-            className="w-1.5 h-1.5 text-neutral-400 ml-1.5"
+            className="w-1.5 h-1.5 text-gray-400 ml-1.5"
           />
-          <Typography variant="body6" color="neutral_light">
+          <Typography variant="body6" color="neutralLight">
             شامل یک یا چند نماد خاص باشد.
           </Typography>
         </div>

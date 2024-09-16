@@ -24,7 +24,7 @@ export function IconButtonInput({
       })}
       aria-label="button"
     >
-      <BaseIcon icon={icon} className="mx-1 text-neutral-400" size="md" />
+      <BaseIcon icon={icon} className="mx-1 text-gray-400" size="md" />
     </button>
   );
 }

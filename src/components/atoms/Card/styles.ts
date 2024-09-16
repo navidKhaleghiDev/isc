@@ -4,15 +4,15 @@ import { cva } from 'class-variance-authority';
 export const cardStyles = cva('', {
   variants: {
     color: {
-      neutral_light: `${PALLET.BG_COLOR.NEUTRAL_LIGHT} `,
+      neutralLight: `${PALLET.BG_COLOR.NEUTRAL_LIGHT} `,
       neutral: `${PALLET.BG_COLOR.NEUTRAL} `,
       teal: `${PALLET.BG_COLOR.TEAL} `,
       yellow: `${PALLET.BG_COLOR.YELLOW} `,
       red: `${PALLET.BG_COLOR.RED} `,
-      white: `bg-white dark:bg-neutral-300`,
+      white: `bg-white dark:bg-gray-300`,
     },
     borderColor: {
-      neutral_light: `${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} `,
+      neutralLight: `${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} `,
       neutral: `${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} `,
       teal: `${PALLET.BORDER_COLOR.TEAL} `,
       yellow: `${PALLET.BORDER_COLOR.YELLOW} `,
@@ -26,9 +26,9 @@ export const cardStyles = cva('', {
     },
     shadow: {
       sm: 'shadow-sm',
-      md: 'shadow-md border border-neutral-200',
-      lg: 'shadow-lg border border-neutral-200',
-      xl: 'shadow-xl border border-neutral-200',
+      md: 'shadow-md border border-gray-200',
+      lg: 'shadow-lg border border-gray-200',
+      xl: 'shadow-xl border border-gray-200',
     },
     border: {
       true: 'border',
@@ -37,6 +37,6 @@ export const cardStyles = cva('', {
   defaultVariants: {
     color: 'white',
     rounded: 'md',
-    borderColor: 'neutral_light',
+    borderColor: 'neutralLight',
   },
 });

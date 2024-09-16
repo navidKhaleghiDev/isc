@@ -7,8 +7,8 @@ export const baseInputStyles = cva(
   {
     variants: {
       intent: {
-        default: `text-neutral-500 border border-neutral-300 focus:border-neutral-500 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT}`,
-        error: `text-neutral-900  border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
+        default: `text-gray-500 border border-gray-300 focus:border-gray-500 focus:placeholder-gray-900 focus:text-gray-900  disabled:bg-gray-100 disabled:text-gray-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT}`,
+        error: `text-gray-900  border-2 ${PALLET.BORDER_COLOR.RED} placeholder-gray-900`,
       },
       fullWidth: {
         true: 'w-full',
@@ -35,11 +35,11 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center active:text-neutral-500 fill-current',
+  'absolute inset-y-0 flex px-2 items-center active:text-gray-500 fill-current',
   {
     variants: {
       intent: {
-        default: 'text-neutral-300 peer-focus:text-neutral-500',
+        default: 'text-gray-300 peer-focus:text-gray-500',
         error: 'text-red-500 peer-focus:border-red-500',
       },
       right: {
@@ -54,7 +54,7 @@ export const iconBaseInputStyles = cva(
 );
 
 export const baseTextareaStyles = cva(
-  'p-2 block rounded-lg border-2 outline-none border-neutral-300 placeholder:text-right placeholder:text-rtl disabled:border-neutral-300 disabled:text-neutral-300 focus:border-neutral-900 focus:placeholder:text-neutral-900',
+  'p-2 block rounded-lg border-2 outline-none border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 focus:border-gray-900 focus:placeholder:text-gray-900',
   {
     variants: {
       intent: {
@@ -83,7 +83,7 @@ export const baseCheckBoxStyles = cva(
     variants: {
       intent: {
         default:
-          'border-neutral-200 bg-neutral-100 dark:border-neutral-400 dark:bg-neutral-500',
+          'border-gray-200 bg-gray-100 dark:border-gray-400 dark:bg-gray-500',
         error: '',
       },
       size: {
@@ -99,14 +99,14 @@ export const baseCheckBoxStyles = cva(
 );
 
 export const baseSelectStyles = cva(
-  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-neutral-300 placeholder:text-rtl relative`,
+  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-gray-300 placeholder:text-rtl relative`,
   {
     variants: {
       intent: {
-        default: `text-neutral-900 focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-neutral-900 focus:text-neutral-900 disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-500 disabled:shadow-none`,
+        default: `text-gray-900 focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-gray-900 focus:text-gray-900 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-500 disabled:shadow-none`,
         primary:
-          'bg-white w-fit disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer',
-        error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
+          'bg-white w-fit disabled:text-gray-300 rounded-md text-xs text-gray-600 cursor-pointer',
+        error: `text-gray-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-gray-900`,
       },
       fullWidth: {
         true: 'w-full',
@@ -133,13 +133,13 @@ export const baseSelectStyles = cva(
 );
 
 export const baseOtpStyles = cva(
-  'block rounded-lg text-neutral-400 outline-none text-center text-base',
+  'block rounded-lg text-gray-400 outline-none text-center text-base',
   {
     variants: {
       intent: {
         default:
-          'border text-neutral-300 border-neutral-500 focus:border-neutral-500 focus:text-neutral-500 focus:placeholder-neutral-500 disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-300 disabled:shadow-none',
-        error: 'text-neutral-900 border border-red-600 placeholder-red-400',
+          'border text-gray-300 border-gray-500 focus:border-gray-500 focus:text-gray-500 focus:placeholder-gray-500 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-300 disabled:shadow-none',
+        error: 'text-gray-900 border border-red-600 placeholder-red-400',
       },
       fullWidth: {
         true: 'w-full',
