@@ -39,7 +39,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: 'Switch',
     name: 'switch',
     defaultChecked: false,
     size: 'medium',
