@@ -30,7 +30,7 @@ export function BaseSwitch({
   name,
   ltrLabel,
   defaultValue,
-  onClick,
+  onChange,
   value,
   defaultChecked,
   error,
@@ -68,7 +68,7 @@ export function BaseSwitch({
           defaultChecked={defaultChecked}
           onChange={(e) => {
             setIsChecked(e.target.checked);
-            if (onClick) onClick(e.target.checked);
+            if (onChange) onChange(e.target.checked);
           }}
         />
         <span

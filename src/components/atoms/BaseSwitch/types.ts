@@ -14,5 +14,5 @@ export interface BaseSwitchProps<T extends FieldValues>
   checked?: boolean;
   error?: string;
   value?: string | number | readonly string[];
-  onClick?: (event: any) => void;
+  onChange?: (event: boolean) => void;
 }

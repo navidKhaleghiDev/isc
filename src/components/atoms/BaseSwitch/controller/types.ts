@@ -17,5 +17,5 @@ export interface BaseSwitchProps<T extends FieldValues>
   ltrLabel?: boolean;
   label?: string;
   disabled?: boolean;
-  onChange?: (event: any) => void;
+  onChange?: (event: boolean) => void;
 }
