@@ -1,15 +1,17 @@
-import React from 'react';
-import { IconButton, IIconButton } from '../BaseButton';
+import X from '@iconify-icons/ph/x';
+
 import { chipButtonStyles } from './styles';
+import { BaseIcon, IBaseIcon } from '../BaseIcon';
 
-type BaseButtonAttributes = React.ComponentPropsWithoutRef<'button'>;
-interface ChipButtonType extends BaseButtonAttributes {
+type ChipButtonProps = {
   label: string;
-  icon?: IIconButton['icon'];
-  onClickIcon?: () => void;
-
-  color: 'default' | 'green' | 'yellow' | 'lightGray';
-}
+  icon?: IBaseIcon['icon'];
+  onClick?: () => void;
+  color: IBaseIcon['color'];
+  dir?: 'rtl' | 'ltr';
+  className?: string;
+  disabled?: boolean;
+};
 
 export function ChipButton({
   label,
@@ -18,17 +20,19 @@ export function ChipButton({
   icon,
   className,
   disabled,
-  onClickIcon,
-}: ChipButtonType) {
+  dir = 'rtl',
+}: ChipButtonProps) {
   return (
     <button
-      disabled={disabled}
-      className={chipButtonStyles({ color, className })}
+      dir={dir}
       type="button"
+      disabled={disabled}
       onClick={onClick}
+      className={chipButtonStyles({ className, color })}
     >
+      {icon && <BaseIcon color={color} icon={icon} />}
       {label}
-      {icon && <IconButton icon={icon} color="neutral" onClick={onClickIcon} />}
+      {onClick && <BaseIcon icon={X} color={color} />}
     </button>
   );
 }

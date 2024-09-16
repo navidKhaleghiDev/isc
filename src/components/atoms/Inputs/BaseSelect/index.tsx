@@ -92,7 +92,7 @@ export const BaseSelect = forwardRef<HTMLSelectElement, IBaseSelectProp<any>>(
               ))}
             </select>
             {hiddenError && (
-              <Typography size="body6" className="h-6">
+              <Typography variant="body6" className="h-6">
                 {error?.message ?? ''}
               </Typography>
             )}
@@ -101,7 +101,7 @@ export const BaseSelect = forwardRef<HTMLSelectElement, IBaseSelectProp<any>>(
               className="absolute top-1/3 left-3 z-30"
             />
             {hiddenError && (
-              <Typography size="body6" className="h-6">
+              <Typography variant="body6" className="h-6">
                 {error?.message ?? ''}
               </Typography>
             )}
@@ -142,12 +142,12 @@ export const BaseSelect = forwardRef<HTMLSelectElement, IBaseSelectProp<any>>(
           ))}
         </select>
         {hiddenError && (
-          <Typography size="body6" className="h-6">
+          <Typography variant="body6" className="h-6">
             {pureError ?? ''}
           </Typography>
         )}
         {hiddenError && (
-          <Typography size="body6" className="h-6">
+          <Typography variant="body6" className="h-6">
             {pureError ?? ''}
           </Typography>
         )}

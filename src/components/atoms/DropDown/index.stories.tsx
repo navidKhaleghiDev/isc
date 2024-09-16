@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { type Meta, type StoryFn, type StoryObj } from '@storybook/react';
 import { Dropdown } from '.';
-import { regexPattern } from '../Inputs';
 
 // Custom Types for storyBook
 
@@ -13,6 +12,7 @@ const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
   parameters: {
     layout: 'centered',
+
     docs: {
       description: {
         component: 'DropDown',
@@ -21,20 +21,17 @@ const meta: Meta<typeof Dropdown> = {
   },
   tags: ['autodocs'],
   args: {
-    // Fake options for dopDown
     options: [
-      { id: '1', label: 'انجام شده' },
-      { id: '2', label: 'به تعویق افتاده' },
-      { id: '3', label: 'در حال انجام ' },
+      { id: '1', label: 'selected' },
+      { id: '2', label: 'postponed' },
+      { id: '3', label: 'removed' },
+      { id: '4', label: 'added' },
+      { id: '5', label: 'replace' },
     ],
-    placeHolder: 'Task',
-    rules: {
-      required: regexPattern.required,
-    },
+    placeHolder: 'select',
     name: 'DropDown',
-    defaultValue: 'Task',
-    label: 'task',
-    loading: false,
+    defaultValue: 'selected',
+    label: 'select',
   },
   render: (args) => (
     <Dropdown
@@ -49,22 +46,20 @@ const meta: Meta<typeof Dropdown> = {
       className={args.className}
       label={args.label}
       control={args.control}
+      multiple={args.multiple}
     />
   ),
-  // Adding (on) font-family
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'on' }}>
+      <div dir="rtl" style={{ fontFamily: 'on', height: '20rem' }}>
         <Story />
       </div>
     ),
   ],
 };
 
-// to use this component we need to add function because of
-// {control} of useForm hook
 const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
-  const { loading, leftLabel, id, name, options, placeHolder } = args;
+  const { loading, leftLabel, id, name, options, placeHolder, multiple } = args;
   const { control } = useForm();
 
   return (
@@ -76,6 +71,7 @@ const RenderDropdown: StoryFn<typeof Dropdown> = function RenderDropdown(args) {
       options={options}
       placeHolder={placeHolder}
       leftLabel={leftLabel}
+      multiple={multiple}
     />
   );
 };

@@ -74,7 +74,7 @@ export function Modal({
           <div className="sm:p-7 pt-0 max-w-64 m-auto sm:max-w-none">
             {title && (
               <Typography
-                size="body3"
+                variant="body3"
                 color="neutral"
                 weight="medium"
                 className="text-right"
@@ -83,7 +83,7 @@ export function Modal({
               </Typography>
             )}
             {description && (
-              <Typography size="body3" color="neutral">
+              <Typography variant="body3" color="neutral">
                 {description}
               </Typography>
             )}
