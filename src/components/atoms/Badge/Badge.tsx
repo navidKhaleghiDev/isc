@@ -28,16 +28,20 @@ export function Badge({
   icon,
   className,
   classNameIcon,
-  color,
-  loading,
+  color = 'neutral',
   onClick,
   size,
   type,
+  disabled = false,
 }: BadgeProps): JSX.Element {
   return (
     <div className="relative w-fit">
-      {content && (
-        <span className={`${badgeStyles({ size })}`}>
+      {content !== undefined && (
+        <span
+          className={`${badgeStyles({ size })} ${
+            disabled ? 'bg-red-300' : 'bg-red-500'
+          }`}
+        >
           {size === 'md' && content}
         </span>
       )}
@@ -46,10 +50,10 @@ export function Badge({
         className={className}
         classNameIcon={classNameIcon}
         color={color}
-        loading={loading}
         onClick={onClick}
         size={size}
         type={type}
+        disabled={disabled}
       />
     </div>
   );

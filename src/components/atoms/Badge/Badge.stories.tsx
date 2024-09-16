@@ -26,8 +26,9 @@ const meta = {
   },
   tags: ['autodocs'],
   args: {
-    icon: icons.bell,
+    icon: 'pencil',
     color: 'neutral',
+    size: 'md',
   },
   argTypes: {
     content: {
@@ -40,13 +41,21 @@ const meta = {
         type: 'select',
       },
       options: Object.keys(icons),
-      defaultValue: BellSimple,
+      table: {
+        type: { summary: 'select' },
+        defaultValue: { summary: 'pencil' },
+      },
     },
     size: {
       control: {
         type: 'radio',
       },
       options: ['sm', 'md'],
+    },
+    color: {
+      control: {
+        disable: true,
+      },
     },
   },
 } satisfies Meta<typeof Badge>;

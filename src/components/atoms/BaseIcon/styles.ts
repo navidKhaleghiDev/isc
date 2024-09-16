@@ -16,6 +16,11 @@ export const baseIconStyles = cva('fill-current', {
       blue: 'bg-blue-200 text-blue-500 ',
       purpleLight: 'bg-purple-100 text-purple-500 disabled:opacity-40',
       purple: 'bg-purple-300 text-purple-500 disabled:opacity-40',
+      neutralLightNoBg: 'text-neutral-800 disabled:opacity-40',
+      neutralNoBg: 'text-neutral-800 disabled:opacity-40',
+      tealNoBg: 'text-teal-500 disabled:opacity-40',
+      redLightNoBg: 'text-red-600 disabled:opacity-40',
+      redNoBg: 'text-red-600 disabled:opacity-40',
     },
     hoverColor: {
       primary: 'hover:text-teal-600',

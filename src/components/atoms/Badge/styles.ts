@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const badgeStyles = cva(
-  `absolute flex justify-center items-center bg-red-500 rounded-full text-xs leading-3 text-white normal px-1`,
+  `absolute z-10 flex justify-center items-center rounded-full text-xs leading-3 text-white px-1`,
   {
     variants: {
       size: {
