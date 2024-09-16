@@ -12,6 +12,7 @@ import {
   ToastOptions,
   TypeOptions,
 } from 'react-toastify';
+
 import { toastIconStyle, toastStyle } from './styles';
 
 interface ToastCustomContainerProps {
