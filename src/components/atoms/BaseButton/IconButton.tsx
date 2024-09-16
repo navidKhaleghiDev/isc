@@ -1,7 +1,7 @@
 import { iconButtonStyles } from './styles';
 import { LoadingSvg } from '../Svgs/LoadingSvg';
 
-import { IIconButton } from './types';
+import { IconButtonProps } from './types';
 import { BaseIcon } from '../BaseIcon';
 
 /**
@@ -32,7 +32,7 @@ export function IconButton({
   color,
   type,
   loading,
-}: IIconButton): JSX.Element {
+}: IconButtonProps): JSX.Element {
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}

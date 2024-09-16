@@ -1,6 +1,7 @@
 // import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import CaretCircleUpDown from '@iconify-icons/ph/caret-circle-up-down';
 import { BaseButton } from './BaseButton';
 
 const meta: Meta<typeof BaseButton> = {
@@ -18,7 +19,7 @@ const meta: Meta<typeof BaseButton> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'on' }}>
+      <div dir="rtl" style={{ fontFamily: 'kalameh' }}>
         <Story />
       </div>
     ),
@@ -28,22 +29,14 @@ const meta: Meta<typeof BaseButton> = {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg', 'xl'],
+      options: ['sm', 'md', 'lg'],
     },
 
     type: {
       control: {
         type: 'select',
       },
-      options: [
-        'default',
-        'inactive',
-        'shadow',
-        'secondary',
-        'red',
-        'tealLink',
-        'neutral',
-      ],
+      options: ['default', 'red', 'neutral', 'tertiary'],
     },
 
     loading: { control: 'boolean' },
@@ -62,7 +55,32 @@ export const Default: Story = {
     fullWidth: false,
     disabled: false,
     size: 'md',
-    type: 'default',
+    type: 'teal',
+    loading: false,
+  },
+};
+
+export const startIcon: Story = {
+  args: {
+    label: 'Button',
+    startIcon: CaretCircleUpDown,
+    submit: false,
+    fullWidth: false,
+    disabled: false,
+    size: 'md',
+    type: 'teal',
+    loading: false,
+  },
+};
+export const endIcon: Story = {
+  args: {
+    label: 'دکمه',
+    endIcon: CaretCircleUpDown,
+    submit: false,
+    fullWidth: false,
+    disabled: false,
+    size: 'sm',
+    type: 'teal',
     loading: false,
   },
 };

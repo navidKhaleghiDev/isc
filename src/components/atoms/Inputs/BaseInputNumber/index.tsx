@@ -47,7 +47,7 @@ export function BaseInputNumber(props: BaseInputNumberProps<any>): JSX.Element {
             rtl ? 'text-left uppercase' : 'text-right'
           }`}
         >
-          <Typography color="neutral_dark" variant="body4">
+          <Typography color="neutralDark" variant="body4">
             {label}
           </Typography>
         </label>

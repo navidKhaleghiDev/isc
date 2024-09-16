@@ -6,8 +6,10 @@ export const baseDropDownStyles = cva(
   {
     variants: {
       intent: {
-        default: `${PALLET.TEXT_COLOR.NEUTRAL_DARK} shadow-sm border ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} rounded-lg focus:border-2 focus:border-teal-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-400 disabled:shadow-none text-base`,
-        error: 'text-red-600  border-2 border-red-600 ',
+        default: `bg-white rounded-lg border border-gray-300 text-gray-300 hover:border-gray-400 hover:text-gray-400 focus:border-gray-900 focus:text-gray-900 disabled:bg-white disabled:text-gray-300 disabled:border-gray-300 disabled:opacity-70 text-base
+        dark:bg-gray-700 dark:text-gray-500 dark:border-gray-400 dark:hover:text-white  dark:hover:bg-gray-700 dark:active:bg-gray-700 dark:active:text-white
+        `,
+        error: 'text-red-600 border-2 border-red-600',
       },
       fullWidth: {
         true: 'w-full',
@@ -31,7 +33,7 @@ export const baseDropDownStyles = cva(
 );
 
 export const optionSelectStyles = cva(
-  ` absolute block bg-white rounded-lg ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} text-neutral-400  shadow-sm text-left mt-[7px] border max-h-20 overflow-y-auto z-10`,
+  ` absolute block bg-white rounded-lg ${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} text-gray-400  shadow-sm text-left mt-[7px] border max-h-20 overflow-y-auto z-10   dark:bg-gray-700 dark:text-gray-500 dark:border-gray-400 dark:hover:text-white  dark:hover:bg-gray-700 dark:active:text-white dark:active:bg-gray-700 dark:active:text-white `,
   {
     variants: {
       isShow: {

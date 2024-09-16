@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { containerTooltipStyles, tooltipStyles } from './styles';
-import { ToolTipPrps } from './types';
+import { ToolTipProps } from './types';
 
 /**
  * ToolTip component
@@ -13,12 +13,12 @@ import { ToolTipPrps } from './types';
  * @param {ToolTipPrps} props - The props for ToolTip component.
  * @param {React.ReactNode} props.children - The child elements that trigger the tooltip on hover.
  * @param {string} props.tooltip - The content to be displayed inside the tooltip.
- * @param {'top'|'right'|'bottom'|'left'} props.position - The position of the tooltip relative to the child elements.
+ * @param {'top'|'right'|'bottom'|'left'|'topStart'|'topEnd'|'bottomStart'|'bottomEnd'} props.position - The position of the tooltip relative to the child elements.
  *
  * @returns {JSX.Element} The rendered ToolTip component.
  */
 
-function ToolTip({ children, tooltip, position }: ToolTipPrps): JSX.Element {
+function ToolTip({ children, tooltip, position }: ToolTipProps): JSX.Element {
   const [show, setShow] = useState(false);
   return (
     <div className="relative inline-block group">

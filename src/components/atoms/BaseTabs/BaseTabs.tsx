@@ -39,7 +39,7 @@ export const BaseTabs: React.FC<IBaseTabsProps> = ({ children, label }) => {
                 } ${
                   index === activeTab
                     ? 'bg-teal-500 text-white'
-                    : 'bg-neutral-100 text-neutral-600'
+                    : 'bg-gray-100 text-gray-600'
                 }`}
                 onClick={() => changeTab(index)}
               >

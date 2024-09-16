@@ -1,27 +1,26 @@
-import { DoubleRangeSlider } from '@ui/atoms/Slider/DoubleSlider/DoubleRangeSlider';
-import { SingleRangeSlider } from '@ui/atoms/Slider/SingleRangeSlider/SingleRangeSlider';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const handel = () => {
-    // console.log(item);
-  };
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
-    <div>
-      <DoubleRangeSlider
-        min={10}
-        max={100}
-        initialMax={90}
-        initialMin={20}
-        onChange={handel}
-        distance={10}
-      />
-      <SingleRangeSlider
-        min={10}
-        max={20}
-        initialValue={15}
-        onChange={handel}
-        distance={40}
-      />
+    <div
+      className={`min-h-screen ${
+        darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+      }`}
+    >
+      <button type="button" onClick={() => setDarkMode(!darkMode)}>
+        Toggle Dark Mode
+      </button>
+      {/* Your components here */}
     </div>
   );
 }

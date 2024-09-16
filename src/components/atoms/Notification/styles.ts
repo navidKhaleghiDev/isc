@@ -5,7 +5,7 @@ export const notificationStyles = cva('my-2 h-[3.75rem] px-5 py-3.5', {
     type: {
       success: 'bg-teal-500 text-white ',
       error: 'bg-red-400 text-white',
-      default: 'bg-neutral-500 text-white',
+      default: 'bg-gray-500 text-white',
     },
     size: {
       sm: 'w-[25rem]',
