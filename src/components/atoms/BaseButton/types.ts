@@ -21,4 +21,5 @@ export interface IconButtonProps extends VariantProps<typeof iconButtonStyles> {
   classNameIcon?: string;
   type?: 'submit' | 'button';
   loading?: boolean;
+  disabled?: boolean;
 }

@@ -45,13 +45,13 @@ const meta: Meta<typeof DatePicker> = {
     <DatePicker
       name={args.name}
       id={args.id}
-      ltrPlaceHolder={args.ltrPlaceHolder}
       type={args.type}
-      placeholder={args.placeholder}
       label={args.label}
       intent={args.intent}
       max={args.max}
       min={args.min}
+      ltrPlaceHolder={args.ltrPlaceHolder}
+      placeholder={args.placeholder}
       size={args.size}
       control={args.control}
       className={args.className}
@@ -65,7 +65,7 @@ const meta: Meta<typeof DatePicker> = {
       minDate={args.minDate}
       pureError={args.pureError}
       showTimePicker={args.showTimePicker}
-      ltrLabel={args.ltrLabel}
+      dir={args.dir}
       iconButtonIcon={args.iconButtonIcon}
       hiddenError={args.hiddenError}
       pureValue={args.pureError}
@@ -97,7 +97,7 @@ const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
     hiddenError,
     endIcon,
     label,
-    ltrLabel,
+    dir,
     pureError,
     iconButtonIcon,
     format,
@@ -132,7 +132,7 @@ const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
       maxDate={maxDate}
       minDate={minDate}
       pureError={pureError}
-      ltrLabel={ltrLabel}
+      dir={dir}
       iconButtonIcon={iconButtonIcon}
       hiddenError={hiddenError}
       pureOnChange={pureOnChange}
