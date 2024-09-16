@@ -30,7 +30,7 @@ const meta: Meta<typeof BaseSwitch> = {
     },
     disabled: { control: 'boolean' },
     error: { control: 'text' },
-    onClick: { action: 'clicked' },
+    onChange: { action: 'clicked' },
   },
 };
 
