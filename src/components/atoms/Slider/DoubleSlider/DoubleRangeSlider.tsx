@@ -1,27 +1,38 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { DoubleRangeSliderProps } from '../types';
-import { sliderStyles, thumbStyles } from '../styles';
+import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
+
+/**
+ * @component
+ * @param {DoubleRangeSliderProps} props The props for SingleRangeSlider component.
+ * @param {number} props.min - The minimum value of the slider
+ * @param {number} props.max - The maximum value of the slider
+ * @param {number} props.initialMin - The initial value
+ * @param {number} props.initialMax - The initial value
+ * @param {number} props.step - The step size
+ * @param {number} props.distance - The distance thumbs
+ * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
+ * @returns {JSX.Element} The rendered component
+ */
 
 export function DoubleRangeSlider({
   min,
   max,
   initialMin,
   initialMax,
-  step,
-  onChange,
 }: DoubleRangeSliderProps): JSX.Element {
   const [minValue, setMinValue] = useState<number>(initialMin);
   const [maxValue, setMaxValue] = useState<number>(initialMax);
-  const [rangeDistance, setRangeDistance] = useState<number>(
-    maxValue - minValue
-  );
+  // const [rangeDistance, setRangeDistance] = useState<number>(
+  //   maxValue - minValue
+  // );
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (value: number) => ((value - min) / (max - min)) * 100;
 
-  useEffect(() => {
-    setRangeDistance(maxValue - minValue);
-  }, [minValue, maxValue]);
+  // useEffect(() => {
+  //   setRangeDistance(maxValue - minValue);
+  // }, [minValue, maxValue]);
 
   const handleMouseDown = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -39,14 +50,16 @@ export function DoubleRangeSlider({
       if (sliderWidth === 0) return;
 
       const percentMoved = (dx / sliderWidth) * (max - min);
-      const newValue = Math.round(startValue + percentMoved / step) * step;
+      const newValue = Math.round(startValue + percentMoved);
 
       if (thumb === 'min' && newValue <= maxValue && newValue >= min) {
         setMinValue(newValue);
-        onChange?.({ min: newValue, max: maxValue });
+        // onChange &&
+        //   onChange({ min: newValue, max: maxValue, distance: rangeDistance });
       } else if (thumb === 'max' && newValue >= minValue && newValue <= max) {
         setMaxValue(newValue);
-        onChange?.({ min: minValue, max: newValue });
+        // onChange &&
+        //   onChange({ min: minValue, max: newValue, distance: rangeDistance });
       }
     };
 
@@ -80,7 +93,7 @@ export function DoubleRangeSlider({
           tabIndex={0}
           role="button"
         >
-          <span className="flex items-center mt-3 text-xs">{minValue}</span>
+          <span className={getValueStyles()}>{minValue}</span>
         </div>
         <div
           className={thumbStyles()}
@@ -91,12 +104,10 @@ export function DoubleRangeSlider({
           tabIndex={0}
           role="button"
         >
-          <span className="flex items-center mt-3 text-xs">{maxValue}</span>
+          <span className={getValueStyles()}>{maxValue}</span>
         </div>
       </div>
-      <span className="flex justify-center items-center mt-3 text-xs">
-        {rangeDistance}
-      </span>
+      {/* <span className={getValueStyles()}>{rangeDistance}</span> */}
     </div>
   );
 }

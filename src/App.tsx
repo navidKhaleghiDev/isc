@@ -3,24 +3,24 @@ import { SingleRangeSlider } from '@ui/atoms/Slider/SingleRangeSlider/SingleRang
 
 function App() {
   const handel = () => {
-    // console.log('test');
+    // console.log(item);
   };
   return (
     <div>
       <DoubleRangeSlider
         min={10}
         max={100}
-        step={1}
         initialMax={90}
         initialMin={20}
         onChange={handel}
+        distance={10}
       />
       <SingleRangeSlider
         min={10}
         max={20}
         initialValue={15}
-        step={1}
         onChange={handel}
+        distance={40}
       />
     </div>
   );

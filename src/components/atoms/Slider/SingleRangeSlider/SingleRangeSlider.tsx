@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
+import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 import { SingleRangeSliderProps } from '../types';
-import { sliderStyles, thumbStyles } from '../styles';
 
 /**
  * @component
@@ -16,14 +16,16 @@ export function SingleRangeSlider({
   min,
   max,
   initialValue,
-  step,
-  onChange,
 }: SingleRangeSliderProps): JSX.Element {
   const [value, setValue] = useState(initialValue);
+  // const [rangeDistance, setRangeDistance] = useState<number>(value - min);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (item: number) => ((item - min) / (max - min)) * 100;
 
+  // useEffect(() => {
+  //   setRangeDistance(value - min);
+  // }, [value, min]);
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     const start = e.clientX;
     const startValue = value;
@@ -37,11 +39,11 @@ export function SingleRangeSlider({
       if (sliderWidth === 0) return;
 
       const percentMoved = (dx / sliderWidth) * (max - min);
-      const newValue = Math.round(startValue + percentMoved / step) * step;
+      const newValue = startValue + percentMoved;
 
       if (newValue >= min && newValue <= max) {
         setValue(newValue);
-        onChange?.(newValue);
+        // onChange && onChange({ max: newValue, distance: rangeDistance });
       }
     };
 
@@ -72,7 +74,7 @@ export function SingleRangeSlider({
           tabIndex={0}
           role="button"
         >
-          <span className="flex items-center mt-3 text-xs">{value}</span>
+          <span className={getValueStyles()}>{Math.round(value)}</span>
         </div>
       </div>
     </div>
