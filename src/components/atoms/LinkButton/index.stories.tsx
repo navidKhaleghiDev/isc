@@ -41,7 +41,7 @@ const meta: Meta<typeof LinkButton> = {
     link: '/',
     label: 'Link ',
     size: 'md',
-    type: 'default',
+    type: 'teal',
     submit: false,
     disabled: false,
     loading: false,

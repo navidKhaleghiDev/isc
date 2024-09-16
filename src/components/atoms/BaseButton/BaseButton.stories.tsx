@@ -55,7 +55,7 @@ export const Default: Story = {
     fullWidth: false,
     disabled: false,
     size: 'md',
-    type: 'default',
+    type: 'teal',
     loading: false,
   },
 };
@@ -68,7 +68,7 @@ export const startIcon: Story = {
     fullWidth: false,
     disabled: false,
     size: 'md',
-    type: 'default',
+    type: 'teal',
     loading: false,
   },
 };
@@ -80,7 +80,7 @@ export const endIcon: Story = {
     fullWidth: false,
     disabled: false,
     size: 'sm',
-    type: 'default',
+    type: 'teal',
     loading: false,
   },
 };

@@ -117,7 +117,6 @@ export const iconButtonStyles = cva(
         neutralNoBg: `
         text-neutral-500 hover:text-neutral-600 active:text-neutral-900 disabled:opacity-40 
         dark:text-neutral-300 dark:hover:text-neutral-200 dark:active:text-neutral-100 dark:disabled:text-[#4B5563]`,
-        default: 'text-neutral-600',
       },
       size: {
         sm: 'h-7 w-7',
