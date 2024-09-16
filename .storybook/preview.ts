@@ -1,15 +1,28 @@
 import type { Preview } from '@storybook/react';
+import { themes } from '@storybook/theming';
 import '../src/App.css';
+import { ModeDecorator } from './modeDecorator';
+export const decorators = [ModeDecorator];
 
-const preview: Preview = {
+export const preview = {
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
+    darkMode: {
+      default: 'light',
+      dark: { ...themes.dark },
+      light: { ...themes.light },
     },
   },
 };
 
-export default preview;
+export const globalTypes = {
+  scheme: {
+    name: 'Scheme',
+    description: 'Updating the theme',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'mirror',
+      items: ['light', 'dark'],
+      dynamicTitle: true,
+    },
+  },
+};
