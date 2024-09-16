@@ -9,6 +9,6 @@ export interface ButtonOption {
 
 export interface ToggleButtonProps extends VariantProps<typeof toggleStyles> {
   buttonLabels: ButtonOption[];
-  onChange: (selected: ButtonOption[]) => void;
+  onChange: (selected: ButtonOption) => void;
   className?: string;
 }

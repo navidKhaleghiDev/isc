@@ -25,15 +25,7 @@ const meta: Meta<typeof LinkButton> = {
       control: {
         type: 'select',
       },
-      options: [
-        'default',
-        'inactive',
-        'shadow',
-        'secondary',
-        'red',
-        'tealLink',
-        'neutral',
-      ],
+      options: ['teal', 'inactive', 'red', 'tertiary', 'neutral'],
     },
     fullWidth: { control: 'boolean' },
   },
