@@ -31,6 +31,7 @@ export function IconButton({
   color,
   type,
   loading,
+  disabled,
 }: IconButtonProps): JSX.Element {
   return (
     <button
@@ -41,7 +42,7 @@ export function IconButton({
         size,
         className,
       })}
-      disabled={loading}
+      disabled={disabled}
     >
       {loading ? (
         <LoadingSvg />

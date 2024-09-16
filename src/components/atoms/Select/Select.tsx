@@ -21,7 +21,7 @@ export function Select({ label, options = optionMock }: ICard) {
     <div className="relative" ref={ref}>
       <BaseButton
         label={label}
-        type={open ? 'default' : 'neutral'}
+        type={open ? 'teal' : 'neutral'}
         endIcon="mingcute:left-fill"
         onClick={() => setOpen(!open)}
       />

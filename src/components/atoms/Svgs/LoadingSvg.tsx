@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 export const outPath = cva('fill', {
   variants: {
     type: {
-      default: 'fill-[#FFFFFF4D] dark:fill-[#3741514D]',
+      teal: 'fill-[#FFFFFF4D] dark:fill-[#3741514D]',
       red: 'fill-[#DC26264D] dark:fill-[#FFFFFF4D]',
       neutral: 'fill-[#0000004D] dark:fill-[#FFFFFF4D]',
       inactive: '',
@@ -11,14 +11,14 @@ export const outPath = cva('fill', {
     },
   },
   defaultVariants: {
-    type: 'default',
+    type: 'teal',
   },
 });
 
 export const inPath = cva('fill', {
   variants: {
     type: {
-      default: 'fill-white dark:fill-neutral-700',
+      teal: 'fill-white dark:fill-neutral-700',
       red: 'fill-[#DC2626] dark:fill-white',
       neutral: 'fill-neutral-900 dark:fill-white',
       inactive: '',
@@ -26,14 +26,14 @@ export const inPath = cva('fill', {
     },
   },
   defaultVariants: {
-    type: 'default',
+    type: 'teal',
   },
 });
 
 type LoadingSvgProps = VariantProps<typeof outPath> &
   VariantProps<typeof inPath>;
 
-export function LoadingSvg({ type = 'default' }: LoadingSvgProps) {
+export function LoadingSvg({ type = 'teal' }: LoadingSvgProps) {
   return (
     <svg className="h-4 w-4 animate-spin" viewBox="3 3 18 18">
       <path

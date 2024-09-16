@@ -43,7 +43,7 @@ export function BaseButton({
     <button
       type={submit ? 'submit' : 'button'}
       onClick={loading ? undefined : onClick}
-      disabled={disabled && true}
+      disabled={disabled}
       className={baseButtonStyle({
         type,
         fullWidth,
@@ -52,14 +52,11 @@ export function BaseButton({
       })}
     >
       {startIcon && !loading && (
-        <BaseIcon
-          icon={startIcon}
-          className="fill-current size[0.813rem] ml-1"
-        />
+        <BaseIcon icon={startIcon} className="fill-current size[0.813rem]" />
       )}
       {loading ? <LoadingSvg type={type} /> : label}
       {endIcon && !loading && (
-        <BaseIcon icon={endIcon} className="fill-current size[0.813rem] mr-1" />
+        <BaseIcon icon={endIcon} className="fill-current size[0.813rem]" />
       )}
     </button>
   );
