@@ -1,5 +1,3 @@
-import { Controller } from 'react-hook-form';
-
 import { Typography } from '../../Typography';
 import { IconButtonInput } from '../IconButtonInput';
 import { IconInput } from '../IconInput';
@@ -41,16 +39,14 @@ import { BaseInputProps } from '../types';
 
 export function BaseInput(props: BaseInputProps<any>): JSX.Element {
   const {
-    control,
     name,
     id,
     placeholder,
-    rules,
-    className,
     fullWidth,
-    defaultValue,
     startIcon,
+    className,
     endIcon,
+    defaultValue,
     intent,
     size,
     type,
@@ -63,108 +59,62 @@ export function BaseInput(props: BaseInputProps<any>): JSX.Element {
     pureError,
     min,
     max,
-    ltrLabel = false,
+    dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
-  return control ? (
-    <Controller
-      name={name}
-      control={control}
-      rules={rules}
-      defaultValue={defaultValue}
-      render={({ field, fieldState: { error } }) => (
-        <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
-          {label && (
-            <label
-              htmlFor={id}
-              className={`block mb-1 h-8 ${
-                ltrLabel ? 'text-left uppercase' : 'text-right'
-              }`}
-            >
-              <Typography color="neutral_dark" variant="body4">
-                {label}
-              </Typography>
-            </label>
-          )}
 
-          <div className="relative base-input">
-            {startIcon && <IconInput icon={startIcon} intent={intent} />}
-            <input
-              id={id}
-              type={type}
-              dir="auto"
-              name={field.name}
-              value={type !== 'file' ? field.value ?? '' : undefined}
-              onChange={(e) => {
-                if (type !== 'file') {
-                  field.onChange(e);
-                } else {
-                  field.onChange(e.target.files);
-                }
-              }}
-              onKeyDown={onKeyDown}
-              className={baseInputStyles({
-                intent: error?.message ? 'error' : intent,
-                className: `${(endIcon || onClickIcon) && 'pl-10'} ${
-                  startIcon && 'pr-8'
-                } `,
-                ltrPlaceHolder: ltrLabel,
-                fullWidth,
-                size,
-              })}
-              placeholder={placeholder}
-              min={min}
-              max={max}
-            />
+  // Remember to check the input and the icon for iconButtonClick
 
-            {onClickIcon && (
-              <IconButtonInput
-                icon={iconButtonIcon}
-                intent={intent}
-                onClick={onClickIcon}
-              />
-            )}
-            {endIcon && <IconInput icon={endIcon} intent={intent} />}
-          </div>
-          {!hiddenError && (
-            <Typography color="red" variant="body6" className="min-h-5">
-              {error?.message ?? ''}
-            </Typography>
-          )}
-        </div>
-      )}
-    />
-  ) : (
+  return (
     <div className="w-full flex flex-col">
       {label && (
-        <label htmlFor={id} className="block mb-1 h-8">
+        <label
+          htmlFor={id}
+          className={`mb-[0.13rem] ${
+            dir === 'ltr' ? 'text-left' : 'text-right'
+          }`}
+        >
           <Typography color="neutral_dark" variant="body4">
             {label}
           </Typography>
         </label>
       )}
-      <div className="relative base-input">
-        {startIcon && <IconInput icon={startIcon} intent={intent} />}
+      {onClickIcon && (
+        <IconButtonInput
+          icon={iconButtonIcon}
+          intent={intent}
+          onClick={onClickIcon}
+        />
+      )}
+      <div className={`relative ${className}`}>
         <input
           id={id}
           type={type}
-          dir="auto"
+          dir={dir}
+          min={min}
+          max={max}
+          onKeyDownCapture={onKeyDown}
           name={name}
           value={pureValue}
+          defaultValue={defaultValue}
           onChange={pureOnChange}
+          placeholder={placeholder}
           className={baseInputStyles({
             intent: pureError ? 'error' : intent,
-            className: `${(endIcon || onClickIcon) && 'pr-8'} ${
-              startIcon && 'pl-8'
-            } `,
+            className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'}`,
             fullWidth,
             size,
           })}
-          placeholder={placeholder}
         />
+        {startIcon && <IconInput icon={startIcon} intent={intent} dir="rtl" />}
+        {endIcon && <IconInput icon={endIcon} intent={intent} />}
       </div>
-      {pureError && (
-        <Typography color="red" variant="body6" className="min-h-5">
+      {hiddenError && (
+        <Typography
+          color="red"
+          variant="body6"
+          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+        >
           {pureError}
         </Typography>
       )}

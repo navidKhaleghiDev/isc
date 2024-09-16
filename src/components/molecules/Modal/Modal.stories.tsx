@@ -83,7 +83,7 @@ export const Default: Story = {
     buttonOne: {
       label: 'بله',
       onClick: handleRequest,
-      color: 'default',
+      color: 'teal',
     },
   },
 };

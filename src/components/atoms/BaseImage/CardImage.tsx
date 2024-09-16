@@ -13,7 +13,7 @@ export function CardImage({ src, alt, className }: Partial<IBaseImage>) {
       {src ? (
         <ResponsiveImage src={src} alt={alt ?? ''} />
       ) : (
-        <BaseIcon icon={PhImage} color="neutral" size="xxl" />
+        <BaseIcon icon={PhImage} color="neutral" size="md" />
       )}
     </Card>
   );

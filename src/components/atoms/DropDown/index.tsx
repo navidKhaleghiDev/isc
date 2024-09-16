@@ -38,6 +38,7 @@ export function Dropdown<T extends FieldValues>({
   loading,
   leftLabel,
   multiple,
+  disabled,
 }: DropdownProps<T>): JSX.Element {
   const ref = useRef(null);
   const [state, setState] = useState<StateType>(initState);
@@ -78,7 +79,7 @@ export function Dropdown<T extends FieldValues>({
         <div className="relative" ref={ref}>
           {label && (
             <label htmlFor={name} className="block mb-1">
-              <Typography color="teal" variant="body5">
+              <Typography color="teal" variant="h4">
                 {label}
               </Typography>
             </label>
@@ -93,7 +94,7 @@ export function Dropdown<T extends FieldValues>({
               intent: error ? 'error' : 'default',
               className,
             })}
-            disabled={loading}
+            disabled={loading || disabled}
           >
             {loading ? (
               <div className="w-full flex justify-center">

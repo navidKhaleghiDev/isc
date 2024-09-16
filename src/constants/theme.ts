@@ -64,9 +64,6 @@ export const PALLET = {
      dark:text-neutral-200
      dark:hover:text-teal-400
      dark:disabled:text-neutral-500`,
-    YELLOW: 'bg-yellow-600 dark:bg-yellow-400 text-white hover:bg-yellow-600 ',
-    SHADOW:
-      'bg-white text-teal-600 shadow border-neutral-100 border hover:bg-teal-600 hover:text-white hover:shadow-md enabled:hover:border-none',
   },
 };
 
@@ -87,7 +84,6 @@ export const SIZE = {
     SMALL: 'h-10 w-[5.94rem]',
     MEDIUM: 'h-10 w-40',
     LARGE: 'h-10 w-[11.88rem]',
-    X_LARGE: 'h-10 w-48 py-3 px-6 ',
   },
   INPUT: {
     SMALL: 'h-6 w-52',

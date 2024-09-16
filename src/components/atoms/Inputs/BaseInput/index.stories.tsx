@@ -64,15 +64,10 @@ const meta: Meta<typeof BaseInput> = {
       size={args.size}
       className={args.className}
       defaultValue={args.defaultValue}
-      endIcon={args.endIcon}
-      ltrPlaceHolder={args.ltrPlaceHolder}
       fullWidth={args.fullWidth}
-      startIcon={args.startIcon}
       hiddenError={args.hiddenError}
       iconButtonIcon={args.iconButtonIcon}
-      rules={args.rules}
-      ltrLabel={args.ltrLabel}
-      control={args.control}
+      dir={args.dir}
       pureError={args.pureError}
       pureValue={args.pureValue}
       pureOnChange={args.pureOnChange}
@@ -88,8 +83,10 @@ export default meta;
 export const defaultInput: StoryBaseInput = {
   args: {
     id: 'username',
-    placeholder: 'نام کاربری',
+    placeholder: 'Label',
     type: 'text',
-    label: 'نام کاربری',
+    intent: 'default',
+    dir: 'ltr',
+    size: 'md',
   },
 };

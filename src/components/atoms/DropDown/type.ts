@@ -28,6 +28,7 @@ export interface DropdownProps<T extends FieldValues> {
   valueOnChange?: TValueOnChange;
   multiple?: boolean;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  disabled?: boolean;
 }
 
 export type StateType = {
