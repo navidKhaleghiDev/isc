@@ -1,5 +1,5 @@
-import { baseButtonStyles, iconInButtonStyles } from './styles';
-import { IBaseButton } from './types';
+import { baseButtonStyles, loadingStyle } from './styles';
+import { BaseButtonProps } from './types';
 import { BaseIcon } from '../BaseIcon';
 import { LoadingSvg } from '../Svgs/LoadingSvg';
 
@@ -37,13 +37,14 @@ export function BaseButton({
   size,
   type,
   loading,
-}: IBaseButton): JSX.Element {
+}: BaseButtonProps): JSX.Element {
+  const baseButtonStyle = loading ? loadingStyle : baseButtonStyles;
   return (
     <button
       type={submit ? 'submit' : 'button'}
-      onClick={onClick}
-      disabled={loading ? true : disabled}
-      className={baseButtonStyles({
+      onClick={loading ? undefined : onClick}
+      disabled={disabled}
+      className={baseButtonStyle({
         type,
         fullWidth,
         size,
@@ -51,26 +52,11 @@ export function BaseButton({
       })}
     >
       {startIcon && !loading && (
-        <BaseIcon
-          icon={startIcon}
-          className={iconInButtonStyles({
-            type: 'noBg',
-            size,
-            className: `${size === 'sm' && 'ml-3 w-6 h-6'} ${
-              size !== 'sm' && 'ml-2'
-            }`,
-          })}
-        />
+        <BaseIcon icon={startIcon} className="fill-current size[0.813rem]" />
       )}
-      {loading ? <LoadingSvg /> : label}
+      {loading ? <LoadingSvg type={type} /> : label}
       {endIcon && !loading && (
-        <BaseIcon
-          icon={endIcon}
-          className={iconInButtonStyles({
-            type: 'noBg',
-            className: `${size !== 'sm' && 'mr-4'}`,
-          })}
-        />
+        <BaseIcon icon={endIcon} className="fill-current size[0.813rem]" />
       )}
     </button>
   );
