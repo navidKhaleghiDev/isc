@@ -38,6 +38,7 @@ export interface BaseInputProps<T extends FieldValues>
   startIcon?: string | IconifyIcon;
   endIcon?: string | IconifyIcon;
   placeholder: string;
+  ltrPlaceHolder: boolean;
   hiddenError?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string | IconifyIcon;
@@ -155,6 +156,7 @@ export interface DatePickerProps extends BaseInputProps<any> {
   minDate?: string | number | DateObject | Date;
   maxDate?: string | number | DateObject | Date;
   showTimePicker?: boolean;
+  ltrPlaceHolder: boolean;
   format?: string;
 }
 
