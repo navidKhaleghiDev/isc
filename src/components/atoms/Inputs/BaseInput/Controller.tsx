@@ -1,8 +1,10 @@
+import { Controller } from 'react-hook-form';
+
 import { Typography } from '../../Typography';
 import { IconButtonInput } from '../IconButtonInput';
 import { IconInput } from '../IconInput';
 import { baseInputStyles } from '../styles';
-import { BaseInputProps } from '../types';
+import { BaseInputControlProps } from '../types';
 
 /**
  * BaseInput component that integrates with react-hook-form.
@@ -37,87 +39,98 @@ import { BaseInputProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInput(props: BaseInputProps<any>): JSX.Element {
+export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
   const {
+    control,
     name,
     id,
     placeholder,
-    fullWidth,
-    startIcon,
+    rules,
     className,
+    startIcon,
     endIcon,
+    fullWidth,
     defaultValue,
     intent,
     size,
     type,
     label,
     hiddenError,
-    pureOnChange,
     onKeyDown,
-    pureValue,
     onClickIcon,
-    pureError,
     min,
     max,
     dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
-
-  // Remember to check the input and the icon for iconButtonClick
-
   return (
-    <div className="w-full flex flex-col">
-      {label && (
-        <label
-          htmlFor={id}
-          className={`mb-[0.13rem] ${
-            dir === 'ltr' ? 'text-left' : 'text-right'
-          }`}
-        >
-          <Typography color="neutral_dark" variant="body4">
-            {label}
-          </Typography>
-        </label>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue}
+      render={({ field, fieldState: { error } }) => (
+        <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
+          {label && (
+            <label
+              htmlFor={id}
+              className={`mb-[0.13rem] ${
+                dir === 'ltr' ? 'text-left' : 'text-right'
+              }`}
+            >
+              <Typography color="neutral_dark" variant="body4">
+                {label}
+              </Typography>
+            </label>
+          )}
+          <div className="relative base-input">
+            <input
+              id={id}
+              type={type}
+              dir={dir}
+              name={field.name}
+              value={type !== 'file' ? field.value ?? '' : undefined}
+              onChange={(e) => {
+                if (type !== 'file') {
+                  field.onChange(e);
+                } else {
+                  field.onChange(e.target.files);
+                }
+              }}
+              onKeyDown={onKeyDown}
+              className={baseInputStyles({
+                intent: error?.message ? 'error' : intent,
+                className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'} `,
+                fullWidth,
+                size,
+              })}
+              placeholder={placeholder}
+              min={min}
+              max={max}
+            />
+            {startIcon && (
+              <IconInput icon={startIcon} intent={intent} dir="rtl" />
+            )}
+            {endIcon && <IconInput icon={endIcon} intent={intent} />}
+            {onClickIcon && (
+              <IconButtonInput
+                icon={iconButtonIcon}
+                intent={intent}
+                onClick={onClickIcon}
+              />
+            )}
+          </div>
+          {!hiddenError && (
+            <Typography
+              color="red"
+              variant="body1"
+              className={`min-h-10 ${dir === 'rtl' && 'text-right'}`}
+            >
+              {error?.message ?? ''}
+            </Typography>
+          )}
+        </div>
       )}
-      {onClickIcon && (
-        <IconButtonInput
-          icon={iconButtonIcon}
-          intent={intent}
-          onClick={onClickIcon}
-        />
-      )}
-      <div className={`relative ${className}`}>
-        <input
-          id={id}
-          type={type}
-          dir={dir}
-          min={min}
-          max={max}
-          onKeyDownCapture={onKeyDown}
-          name={name}
-          value={pureValue}
-          defaultValue={defaultValue}
-          onChange={pureOnChange}
-          placeholder={placeholder}
-          className={baseInputStyles({
-            intent: pureError ? 'error' : intent,
-            className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'}`,
-            fullWidth,
-            size,
-          })}
-        />
-        {startIcon && <IconInput icon={startIcon} intent={intent} dir="rtl" />}
-        {endIcon && <IconInput icon={endIcon} intent={intent} />}
-      </div>
-      {hiddenError && (
-        <Typography
-          color="red"
-          variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
-        >
-          {pureError}
-        </Typography>
-      )}
-    </div>
+    />
   );
 }

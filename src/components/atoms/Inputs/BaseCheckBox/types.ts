@@ -23,4 +23,5 @@ export interface BaseCheckBoxProps<T extends FieldValues>
   pureValue?: string | number | readonly string[];
   pureError?: string;
   checked?: boolean;
+  ltrLabel?: boolean;
 }
