@@ -354,7 +354,7 @@ export function ListIcon({
       <Typography
         variant="body3"
         weight="bold"
-        className="pb-6 mb-2 border-b border-b-neutral-300"
+        className="pb-6 mb-2 border-b border-b-gray-300"
       >
         Phosphore - regular
       </Typography>
@@ -370,7 +370,7 @@ export function ListIcon({
       <Typography
         variant="body3"
         weight="bold"
-        className="pb-6 mb-2 border-b border-b-neutral-300"
+        className="pb-6 mb-2 border-b border-b-gray-300"
       >
         Phosphore - duotone
       </Typography>

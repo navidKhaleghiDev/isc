@@ -155,7 +155,7 @@ export function Dropdown<T extends FieldValues>({
             {value && (
               <button
                 type="button"
-                className={`w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md ml-auto ${
+                className={`w-[95%] hover:bg-gray-100 py-1 px-2 rounded-md ml-auto ${
                   leftLabel ? 'text-left' : 'text-right'
                 }`}
                 onClick={() => {
@@ -171,7 +171,7 @@ export function Dropdown<T extends FieldValues>({
 
             {options.map((option: IOptionSelect) => (
               <div
-                className="w-[95%] hover:bg-neutral-100 py-1 px-2 rounded-md cursor-pointer"
+                className="w-[95%] hover:bg-gray-100 py-1 px-2 rounded-md cursor-pointer"
                 key={option.id}
               >
                 {multiple ? (

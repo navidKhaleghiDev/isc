@@ -9,14 +9,14 @@ export const baseButtonStyles = cva(
         bg-teal-500 text-white 
         hover:bg-teal-600 active:bg-teal-700
         disabled:bg-teal-500 disabled:text-white disabled:opacity-40 
-        dark:bg-teal-400 dark:text-neutral-700
+        dark:bg-teal-400 dark:text-gray-700
         dark:hover:bg-teal-500 dark:active:bg-teal-600
         dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
         inactive: `
         bg-teal-500 text-white opacity-40
         hover:bg-teal-600 active:bg-teal-700
         disabled:bg-teal-500 disabled:text-white disabled:opacity-40 
-        dark:bg-teal-400 dark:text-neutral-700
+        dark:bg-teal-400 dark:text-gray-700
         dark:hover:bg-teal-500 dark:active:bg-teal-600
         dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
         red: ` 
@@ -27,21 +27,21 @@ export const baseButtonStyles = cva(
         dark:hover:bg-red-400 dark:active:bg-red-500  
         dark:disabled:bg-red-300 dark:disabled:text-white dark:disabled:opacity-40`,
         neutral: ` 
-        bg-white text-neutral-500 border-[0.063rem] border-neutral-100
-        hover:bg-neutral-100 hover:text-neutral-600 
-        active:bg-neutral-200 active:text-neutral-600 active:border-0
-        disabled:bg-neutral-200 disabled:text-neutral-900 disabled:opacity-40 disabled:border-0
-        dark:bg-neutral-600 dark:text-neutral-300 dark:border-neutral-500
-        dark:hover:bg-neutral-600 dark:hover:text-neutral-100 
-        dark:active:bg-neutral-800 dark:active:text-neutral-100
-        dark:disabled:bg-neutral-600 dark:disabled:text-neutral-100 dark:disabled:opacity-40`,
+        bg-white text-gray-500 border-[0.063rem] border-gray-100
+        hover:bg-gray-100 hover:text-gray-600 
+        active:bg-gray-200 active:text-gray-600 active:border-0
+        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40 disabled:border-0
+        dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
+        dark:hover:bg-gray-600 dark:hover:text-gray-100 
+        dark:active:bg-gray-800 dark:active:text-gray-100
+        dark:disabled:bg-gray-600 dark:disabled:text-gray-100 dark:disabled:opacity-40`,
         tertiary: ` 
-        text-neutral-500 
+        text-gray-500 
         hover:text-teal-500                            
-        disabled:text-neutral-300
-        dark:text-neutral-200
+        disabled:text-gray-300
+        dark:text-gray-200
         dark:hover:text-teal-400
-        dark:disabled:text-neutral-500`,
+        dark:disabled:text-gray-500`,
       },
       size: {
         sm: 'h-10 w-[5.94rem]',
@@ -65,7 +65,7 @@ export const loadingStyle = cva(
       type: {
         teal: 'bg-teal-700 dark:bg-teal-600',
         red: 'bg-red-300 dark:bg-red-500',
-        neutral: 'bg-neutral-200 dark:bg-neutral-800',
+        neutral: 'bg-gray-200 dark:bg-gray-800',
         inactive: '',
         tertiary: '',
       },
@@ -94,24 +94,24 @@ export const iconButtonStyles = cva(
         bg-teal-500 text-white 
         hover:bg-teal-600 active:bg-teal-700
         disabled:bg-teal-500 disabled:text-white disabled:opacity-40 
-        dark:bg-teal-400 dark:text-neutral-700
+        dark:bg-teal-400 dark:text-gray-700
         dark:hover:bg-teal-500 dark:active:bg-teal-600
         dark:disabled:bg-teal-400 dark:disabled:text-teal-700 dark:disabled:opacity-40`,
         redNoBg: `
         text-red-500 hover:text-red-600 active:text-red-700 disabled:opacity-40 
         dark:text-red-300 dark:hover:text-red-400 dark:active:text-red-500 dark:disabled:text-red-100`,
         neutral: `
-        bg-white text-neutral-500 border-[0.063rem] border-neutral-100
-        hover:bg-neutral-100 hover:text-neutral-600 hover:border-0
-        active:bg-neutral-200 active:text-neutral-600 active:border-0
-        disabled:bg-neutral-200 disabled:text-neutral-900 disabled:opacity-40 disabled:border-0
-        dark:bg-neutral-600 dark:text-neutral-300 dark:border-neutral-500
-        dark:hover:bg-neutral-600 dark:hover:text-neutral-100 
-        dark:active:bg-neutral-800 dark:active:text-neutral-100
-        dark:disabled:bg-neutral-600 dark:disabled:text-neutral-100 dark:disabled:opacity-40`,
+        bg-white text-gray-500 border-[0.063rem] border-gray-100
+        hover:bg-gray-100 hover:text-gray-600 hover:border-0
+        active:bg-gray-200 active:text-gray-600 active:border-0
+        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40 disabled:border-0
+        dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
+        dark:hover:bg-gray-600 dark:hover:text-gray-100 
+        dark:active:bg-gray-800 dark:active:text-gray-100
+        dark:disabled:bg-gray-600 dark:disabled:text-gray-100 dark:disabled:opacity-40`,
         neutralNoBg: `
-        text-neutral-500 hover:text-neutral-600 active:text-neutral-900 disabled:opacity-40 
-        dark:text-neutral-300 dark:hover:text-neutral-200 dark:active:text-neutral-100 dark:disabled:text-[#4B5563]`,
+        text-gray-500 hover:text-gray-600 active:text-gray-900 disabled:opacity-40 
+        dark:text-gray-300 dark:hover:text-gray-200 dark:active:text-gray-100 dark:disabled:text-[#4B5563]`,
       },
       size: {
         sm: 'h-7 w-7',

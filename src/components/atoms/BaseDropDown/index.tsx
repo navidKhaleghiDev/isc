@@ -24,8 +24,8 @@ export function BaseDropDown({
         <div
           className={`flex justify-center w-full rounded-md outline-0 ${
             isOpen
-              ? 'bg-neutral-300'
-              : 'bg-neutral-100 hover:bg-neutral-300 transition-all duration-500 ease-linear'
+              ? 'bg-gray-300'
+              : 'bg-gray-100 hover:bg-gray-300 transition-all duration-500 ease-linear'
           }`}
           onClick={handleToggle}
           role="button"

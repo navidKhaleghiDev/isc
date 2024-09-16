@@ -23,7 +23,7 @@ interface IOptionSelectProps {
 export function OptionSelect(props: IOptionSelectProps): JSX.Element {
   const { option } = props;
   return (
-    <option value={option.value} className="appearance-none text-neutral-400">
+    <option value={option.value} className="appearance-none text-gray-400">
       {option.label}
     </option>
   );

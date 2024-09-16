@@ -47,7 +47,7 @@ export function BaseTextarea(props: BaseTextareaProps<any>): JSX.Element {
           htmlFor={id}
           className={`mb-2 ${dir === 'ltr' ? 'text-left' : 'text-right'}`}
         >
-          <Typography color="neutral_light" variant="body4">
+          <Typography color="neutralLight" variant="body4">
             {label}
           </Typography>
         </label>
