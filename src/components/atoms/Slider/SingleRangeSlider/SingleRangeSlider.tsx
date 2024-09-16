@@ -55,23 +55,25 @@ export function SingleRangeSlider({
   };
 
   return (
-    <div className="relative w-64 h-1 m-10" ref={sliderRef}>
-      <div className={sliderStyles({ background: 'range' })} />
+    <div className="w-64 h-6 mx-auto mt-10">
+      <div className="relative w-64 h-1" ref={sliderRef}>
+        <div className={sliderStyles({ background: 'range' })} />
 
-      <div
-        className={sliderStyles({ background: 'fill' })}
-        style={{
-          width: `${percent(value)}%`,
-        }}
-      />
-      <div
-        className={thumbStyles()}
-        style={{ left: `${percent(value)}%` }}
-        onMouseDown={handleMouseDown}
-        tabIndex={0}
-        role="button"
-      >
-        <span className="flex items-center mt-3 text-xs">{value}</span>
+        <div
+          className={sliderStyles({ background: 'fill' })}
+          style={{
+            width: `${percent(value)}%`,
+          }}
+        />
+        <div
+          className={thumbStyles()}
+          style={{ left: `${percent(value)}%` }}
+          onMouseDown={handleMouseDown}
+          tabIndex={0}
+          role="button"
+        >
+          <span className="flex items-center mt-3 text-xs">{value}</span>
+        </div>
       </div>
     </div>
   );
