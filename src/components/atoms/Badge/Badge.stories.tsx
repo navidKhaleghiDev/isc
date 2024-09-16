@@ -72,6 +72,7 @@ export function Default({
   onClick,
   type,
   icon,
+  disabled
 }: BadgeProps) {
   const iconValue = icons[icon as keyof typeof icons];
   return (
@@ -85,6 +86,7 @@ export function Default({
       onClick={onClick}
       type={type}
       icon={iconValue}
+      disabled={disabled}
     />
   );
 }
