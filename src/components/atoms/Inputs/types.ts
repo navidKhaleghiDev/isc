@@ -38,7 +38,7 @@ export interface BaseInputProps<T extends FieldValues>
   startIcon?: string | IconifyIcon;
   endIcon?: string | IconifyIcon;
   placeholder: string;
-  ltrPlaceHolder: boolean;
+  ltrPlaceHolder?: boolean;
   hiddenError?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string | IconifyIcon;
