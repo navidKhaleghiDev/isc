@@ -29,6 +29,7 @@ const meta: Meta<typeof IconButton> = {
       options: ['sm', 'md', 'default'],
     },
     icon: { control: 'text' },
+    disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
   },
   args: { onClick: fn() },

@@ -43,7 +43,7 @@ export function BaseButton({
     <button
       type={submit ? 'submit' : 'button'}
       onClick={loading ? undefined : onClick}
-      disabled={disabled && true}
+      disabled={disabled}
       className={baseButtonStyle({
         type,
         fullWidth,
