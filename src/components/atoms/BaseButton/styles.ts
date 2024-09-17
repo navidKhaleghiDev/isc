@@ -29,8 +29,8 @@ export const baseButtonStyles = cva(
         neutral: ` 
         bg-white text-gray-500 border-[0.063rem] border-gray-100
         hover:bg-gray-100 hover:text-gray-600 
-        active:bg-gray-200 active:text-gray-600 active:border-0
-        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40 disabled:border-0
+        active:bg-gray-200 active:text-gray-600 
+        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
         dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
         dark:hover:bg-gray-600 dark:hover:text-gray-100 
         dark:active:bg-gray-800 dark:active:text-gray-100
@@ -102,9 +102,9 @@ export const iconButtonStyles = cva(
         dark:text-red-300 dark:hover:text-red-400 dark:active:text-red-500 dark:disabled:text-red-100`,
         neutral: `
         bg-white text-gray-500 border-[0.063rem] border-gray-100
-        hover:bg-gray-100 hover:text-gray-600 hover:border-0
-        active:bg-gray-200 active:text-gray-600 active:border-0
-        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40 disabled:border-0
+        hover:bg-gray-100 hover:text-gray-600 
+        active:bg-gray-200 active:text-gray-600 
+        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
         dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
         dark:hover:bg-gray-600 dark:hover:text-gray-100 
         dark:active:bg-gray-800 dark:active:text-gray-100
