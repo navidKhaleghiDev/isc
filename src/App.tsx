@@ -1,4 +1,3 @@
-import { BaseCheckBox } from '@ui/atoms/Inputs/BaseCheckBox';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 

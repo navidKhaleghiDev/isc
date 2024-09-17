@@ -17,6 +17,12 @@ const meta: Meta<typeof BaseCheckBox> = {
   },
   argTypes: {
     onChange: { action: 'changed' },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md'],
+    },
   },
   // Adding font family
   decorators: [
