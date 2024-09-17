@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 import { SingleRangeSliderProps } from '../types';
 
@@ -15,14 +16,10 @@ import { SingleRangeSliderProps } from '../types';
 export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
   const { min, max, initialValue, onChange } = props;
   const [value, setValue] = useState(initialValue);
-  const [rangeDistance, setRangeDistance] = useState(value - min);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (item: number) => ((item - min) / (max - min)) * 100;
 
-  useEffect(() => {
-    setRangeDistance(value - min);
-  }, [value, min]);
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     const start = e.clientX;
     const startValue = value;
@@ -40,7 +37,7 @@ export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
 
       if (newValue >= min && newValue <= max) {
         setValue(newValue);
-        if (onChange) onChange({ max: newValue, distance: rangeDistance });
+        if (onChange) onChange({ max: newValue });
       }
     };
 

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+
 import { DoubleRangeSliderProps } from '../types';
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 
@@ -7,10 +8,9 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
  * @param {DoubleRangeSliderProps} props The props for SingleRangeSlider component.
  * @param {number} props.min - The minimum value of the slider
  * @param {number} props.max - The maximum value of the slider
- * @param {number} props.initialMin - The initial value
- * @param {number} props.initialMax - The initial value
+ * @param {number} props.initialMin - The initialMin value
+ * @param {number} props.initialMax - The initialMax value
  * @param {number} props.step - The step size
- * @param {number} props.distance - The distance thumbs
  * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
  * @returns {JSX.Element} The rendered component
  */
@@ -19,14 +19,9 @@ export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
   const { min, max, initialMin, initialMax, onChange } = props;
   const [minValue, setMinValue] = useState(initialMin);
   const [maxValue, setMaxValue] = useState(initialMax);
-  const [rangeDistance, setRangeDistance] = useState(maxValue - minValue);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (value: number) => ((value - min) / (max - min)) * 100;
-
-  useEffect(() => {
-    setRangeDistance(maxValue - minValue);
-  }, [minValue, maxValue]);
 
   const handleMouseDown = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -48,15 +43,13 @@ export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
 
       if (thumb === 'min' && newValue <= maxValue && newValue >= min) {
         setMinValue(newValue);
-        if (onChange)
-          onChange({ min: newValue, max: maxValue, distance: rangeDistance });
+        if (onChange) onChange({ min: newValue, max: maxValue });
       } else if (thumb === 'max' && newValue >= minValue && newValue <= max) {
         setMaxValue(newValue);
         if (onChange)
           onChange({
             min: newValue,
             max: maxValue,
-            distance: rangeDistance,
           });
       }
     };
@@ -105,7 +98,6 @@ export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
           <span className={getValueStyles()}>{maxValue}</span>
         </div>
       </div>
-      <span className={getValueStyles()}>{rangeDistance}</span>
     </div>
   );
 }
