@@ -37,7 +37,7 @@ export function IconButton(props: IconButtonProps): JSX.Element {
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}
-      onClick={onClick}
+      onClick={loading ? undefined : onClick}
       className={iconButtonStyles({
         color,
         size,
@@ -46,7 +46,7 @@ export function IconButton(props: IconButtonProps): JSX.Element {
       disabled={disabled}
     >
       {loading ? (
-        <LoadingSvg />
+        <LoadingSvg type="neutral" />
       ) : (
         <BaseIcon icon={icon} size={size} className={classNameIcon} />
       )}

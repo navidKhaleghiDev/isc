@@ -32,8 +32,8 @@ export const baseButtonStyles = cva(
         active:bg-gray-200 active:text-gray-600 
         disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
         dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
-        dark:hover:bg-gray-600 dark:hover:text-gray-100 
-        dark:active:bg-gray-800 dark:active:text-gray-100
+        dark:hover:bg-gray-600 dark:hover:text-gray-100 dark:hover:border-gray-600
+        dark:active:bg-gray-800 dark:active:text-gray-100 dark:active:border-gray-800
         dark:disabled:bg-gray-600 dark:disabled:text-gray-100 dark:disabled:opacity-40`,
         tertiary: ` 
         text-gray-500 
@@ -106,8 +106,8 @@ export const iconButtonStyles = cva(
         active:bg-gray-200 active:text-gray-600 
         disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
         dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
-        dark:hover:bg-gray-600 dark:hover:text-gray-100 
-        dark:active:bg-gray-800 dark:active:text-gray-100
+        dark:hover:bg-gray-600 dark:hover:text-gray-100 dark:hover:border-gray-600
+        dark:active:bg-gray-800 dark:active:text-gray-100 dark:active:border-gray-800
         dark:disabled:bg-gray-600 dark:disabled:text-gray-100 dark:disabled:opacity-40`,
         neutralNoBg: `
         text-gray-500 hover:text-gray-600 active:text-gray-900 disabled:opacity-40 
