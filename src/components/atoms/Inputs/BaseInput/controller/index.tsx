@@ -1,9 +1,9 @@
 import { Controller } from 'react-hook-form';
+import { Typography } from '@ui/atoms/Typography';
 
-import { Typography } from '../../Typography';
-import { IconButtonInput } from '../IconButtonInput';
-import { IconInput } from '../IconInput';
-import { baseInputStyles } from '../styles';
+import { IconButtonInput } from '../../IconButtonInput';
+import { IconInput } from '../../IconInput';
+import { baseInputStyles, baseInputTextStyles } from '../styles';
 import { BaseInputControlProps } from '../types';
 
 /**
@@ -88,6 +88,7 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
               id={id}
               type={type}
               dir={dir}
+              disabled={field.disabled}
               name={field.name}
               value={type !== 'file' ? field.value ?? '' : undefined}
               onChange={(e) => {
@@ -123,12 +124,25 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
           {!hiddenError && (
             <Typography
               color="red"
-              variant="body1"
+              variant="body6"
               className={`min-h-10 ${dir === 'rtl' && 'text-right'}`}
             >
               {error?.message ?? ''}
             </Typography>
           )}
+          <span className={baseInputTextStyles({ size, fullWidth })}>
+            {!field.disabled && hiddenError && (
+              <Typography
+                color="red"
+                variant="body6"
+                className={`${
+                  dir === 'ltr' ? 'text-left' : 'text-right'
+                } min-h-10`}
+              >
+                {error?.message ?? ''}
+              </Typography>
+            )}
+          </span>
         </div>
       )}
     />

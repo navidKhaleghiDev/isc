@@ -20,7 +20,6 @@ const meta: Meta<typeof BaseInput> = {
   tags: ['autodocs'],
   args: {
     onClickIcon: fn(),
-    pureOnChange: fn(),
     name: 'base input',
     intent: 'default',
     size: 'md',
@@ -56,7 +55,6 @@ const meta: Meta<typeof BaseInput> = {
       name={args.name}
       id={args.id}
       type={args.type}
-      placeholder={args.placeholder}
       label={args.label}
       intent={args.intent}
       max={args.max}
@@ -65,12 +63,10 @@ const meta: Meta<typeof BaseInput> = {
       className={args.className}
       defaultValue={args.defaultValue}
       fullWidth={args.fullWidth}
-      hiddenError={args.hiddenError}
       iconButtonIcon={args.iconButtonIcon}
       dir={args.dir}
-      pureError={args.pureError}
-      pureValue={args.pureValue}
-      pureOnChange={args.pureOnChange}
+      error={args.error}
+      value={args.value}
       onClickIcon={args.onClickIcon}
       setError={args.setError}
     />
