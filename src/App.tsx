@@ -1,10 +1,7 @@
-import { BaseOtp } from '@ui/atoms/Inputs/BaseOtp';
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const { control } = useForm();
 
   useEffect(() => {
     if (darkMode) {
@@ -23,15 +20,7 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
-      <BaseOtp
-        control={control}
-        name="name"
-        dir="ltr"
-        disabled
-        size="md"
-        valueLength={6}
-        pureError="an error has been co"
-      />
+
       {/* Your components here */}
     </div>
   );

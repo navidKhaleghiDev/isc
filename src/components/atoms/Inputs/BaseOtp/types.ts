@@ -16,6 +16,7 @@ export interface BaseOtpProp<T extends FieldValues>
   rules?: RegisterOptions<T>;
   className?: string;
   disabled?: boolean;
+  hiddenError?: boolean;
   fullWidth?: boolean;
   pureError?: string;
   dir?: 'rtl' | 'ltr';

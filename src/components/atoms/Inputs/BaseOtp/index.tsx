@@ -30,6 +30,7 @@ export function BaseOtp({
   valueLength = 6,
   className,
   intent,
+  hiddenError,
   disabled,
   size,
   fullWidth,
@@ -107,7 +108,7 @@ export function BaseOtp({
           );
         }}
       />
-      {disabled && (
+      {!disabled && hiddenError && (
         <Typography
           color="red"
           variant="body6"
