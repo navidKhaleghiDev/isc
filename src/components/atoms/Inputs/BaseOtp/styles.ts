@@ -1,13 +1,13 @@
 import { cva } from 'class-variance-authority';
 
 export const baseOtpStyles = cva(
-  'block rounded-lg text-gray-400 outline-none text-center text-base',
+  'block rounded-lg outline-none text-center bg-white disabled:text-neutral-300 disabled:border-neutral-300 text-base',
   {
     variants: {
       intent: {
         default:
-          'border text-gray-300 border-gray-500 focus:border-gray-500 focus:text-gray-500 focus:placeholder-gray-500 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-300 disabled:shadow-none',
-        error: 'text-gray-900 border border-red-600 placeholder-red-400',
+          'border text-neutral-400 border-neutral-400 hover:text-neutral-500 hover:border-neutral-500 focus:border-gray-500 focus:text-gray-500 focus:placeholder-gray-500',
+        error: 'text-gray-900 border border-red-600 ',
       },
       fullWidth: {
         true: 'w-full',
@@ -22,7 +22,7 @@ export const baseOtpStyles = cva(
       },
     },
     defaultVariants: {
-      intent: 'error',
+      intent: 'default',
       size: 'md',
     },
   }

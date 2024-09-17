@@ -30,6 +30,7 @@ export function BaseOtp({
   valueLength = 6,
   className,
   intent,
+  disabled,
   size,
   fullWidth,
   pureError,
@@ -69,6 +70,7 @@ export function BaseOtp({
       <Controller
         name={name}
         control={control}
+        disabled={disabled}
         rules={{
           required: regexPattern.required,
           ...rules,
@@ -82,11 +84,13 @@ export function BaseOtp({
             setErrorMessage('');
           }
           return (
-            <div className="flex items-center gap-[0.17rem]">
+            <div className="flex items-center justify-center w-full gap-[0.17rem]">
               {Array.from({ length: valueLength }).map((_, index) => (
                 <input
+                  dir={dir}
                   key={index as number}
                   type="text"
+                  disabled={disabled}
                   className={baseOtpStyles({
                     intent: error?.message || pureError ? 'error' : intent,
                     className,

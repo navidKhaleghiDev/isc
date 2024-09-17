@@ -23,7 +23,14 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
-      <BaseOtp control={control} name="name" valueLength={6} />
+      <BaseOtp
+        control={control}
+        name="name"
+        dir="ltr"
+        size="md"
+        valueLength={6}
+        pureError=""
+      />
       {/* Your components here */}
     </div>
   );
