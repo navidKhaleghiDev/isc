@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Typography } from '@ui/atoms/Typography';
 import { BaseSwitchProps } from './types';
-import { baseSwitchStyles } from './styles';
 
 /**
  * BaseSwitch component renders a customizable toggle switch with optional labels and uncontrolled states.
@@ -24,20 +23,20 @@ import { baseSwitchStyles } from './styles';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitch({
-  size,
-  label,
-  name,
-  ltrLabel,
-  defaultValue,
-  onChange,
-  value,
-  defaultChecked,
-  error,
-  disabled = false,
-}: BaseSwitchProps<any>): JSX.Element {
+export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
+  const {
+    label,
+    name,
+    ltrLabel,
+    defaultValue,
+    onChange,
+    value,
+    defaultChecked,
+    error,
+    disabled = false,
+  } = props;
+
   const [isChecked, setIsChecked] = useState(false);
-  const translateClass = size === 'small' ? 'translate-x-4' : 'translate-x-6';
 
   return (
     <div dir="ltr">
@@ -72,9 +71,7 @@ export function BaseSwitch({
           }}
         />
         <span
-          className={`${baseSwitchStyles({
-            size,
-          })} ${
+          className={`slider flex items-center rounded-full p-1 duration-200 h-6 w-10 sm:w-12 ${
             isChecked
               ? 'bg-teal-500 dark:bg-teal-400'
               : 'bg-gray-200 dark:bg-gray-800'
@@ -82,7 +79,7 @@ export function BaseSwitch({
         >
           <span
             className={`dot size-4 rounded-full bg-white duration-200 ${
-              isChecked ? translateClass : ''
+              isChecked ? 'translate-x-4 sm:translate-x-6' : ''
             }`}
           />
         </span>

@@ -1,9 +1,6 @@
-import { VariantProps } from 'class-variance-authority';
 import { FieldPath, FieldValues } from 'react-hook-form';
-import { baseSwitchStyles } from './styles';
 
-export interface BaseSwitchProps<T extends FieldValues>
-  extends VariantProps<typeof baseSwitchStyles> {
+export interface BaseSwitchProps<T extends FieldValues> {
   name: FieldPath<T>;
   defaultValue?: string;
   defaultChecked?: boolean;

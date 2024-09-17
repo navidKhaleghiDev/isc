@@ -2,7 +2,6 @@
 import { Controller } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 import { BaseSwitchProps } from './types';
-import { baseSwitchStyles } from '../styles';
 
 /**
  * BaseSwitch component renders a customizable toggle switch with optional labels and controlled states.
@@ -24,19 +23,17 @@ import { baseSwitchStyles } from '../styles';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitch({
-  size,
-  label,
-  name,
-  control,
-  rules,
-  ltrLabel,
-  defaultValue,
-  onChange,
-  disabled,
-}: BaseSwitchProps<any>): JSX.Element {
-  const translateClass = size === 'small' ? 'translate-x-4' : 'translate-x-6';
-
+export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
+  const {
+    label,
+    name,
+    control,
+    rules,
+    ltrLabel,
+    defaultValue,
+    onChange,
+    disabled,
+  } = props;
   return (
     <Controller
       name={name}
@@ -74,9 +71,7 @@ export function BaseSwitch({
                 }}
               />
               <span
-                className={`${baseSwitchStyles({
-                  size,
-                })} ${
+                className={`slider flex items-center rounded-full p-1 duration-200 h-6 w-10 sm:w-12  ${
                   field.value
                     ? 'bg-teal-500 dark:bg-teal-400'
                     : 'bg-gray-200 dark:bg-gray-800'
@@ -84,7 +79,7 @@ export function BaseSwitch({
               >
                 <span
                   className={`dot size-4 rounded-full bg-white duration-200 ${
-                    field.value ? translateClass : ''
+                    field.value ? 'translate-x-4 sm:translate-x-6' : ''
                   }`}
                 />
               </span>

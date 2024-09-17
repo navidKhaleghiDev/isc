@@ -1,14 +1,11 @@
-import { VariantProps } from 'class-variance-authority';
 import {
   Control,
   FieldPath,
   FieldValues,
   RegisterOptions,
 } from 'react-hook-form';
-import { baseSwitchStyles } from '../styles';
 
-export interface BaseSwitchProps<T extends FieldValues>
-  extends VariantProps<typeof baseSwitchStyles> {
+export interface BaseSwitchProps<T extends FieldValues> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
