@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 import { SingleRangeSliderProps } from '../types';
@@ -20,40 +20,43 @@ export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
 
   const percent = (item: number) => ((item - min) / (max - min)) * 100;
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    const start = e.clientX;
-    const startValue = value;
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const start = e.clientX;
+      const startValue = value;
 
-    const onMouseMove = (moveEvent: MouseEvent) => {
-      if (!sliderRef.current) return;
+      const onMouseMove = (moveEvent: MouseEvent) => {
+        if (!sliderRef.current) return;
 
-      const dx = moveEvent.clientX - start;
-      const sliderWidth = sliderRef.current.offsetWidth;
+        const dx = moveEvent.clientX - start;
+        const sliderWidth = sliderRef.current.offsetWidth;
 
-      if (sliderWidth === 0) return;
+        if (sliderWidth === 0) return;
 
-      const percentMoved = (dx / sliderWidth) * (max - min);
-      const newValue = startValue + percentMoved;
+        const percentMoved = (dx / sliderWidth) * (max - min);
+        const newValue = startValue + percentMoved;
 
-      if (newValue >= min && newValue <= max) {
-        setValue(newValue);
-        if (onChange) onChange({ max: newValue });
-      }
-    };
+        if (newValue >= min && newValue <= max) {
+          setValue(newValue);
+          if (onChange) onChange({ max: newValue });
+        }
+      };
 
-    const onMouseUp = () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
-    };
+      const onMouseUp = () => {
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', onMouseUp);
+      };
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-  };
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+    },
+    [value, min, max, onChange]
+  );
 
   return (
-    <div className="w-64 h-6 mx-auto mt-10">
+    <div className="w-64 h-6 m-5">
       <div className="relative w-64 h-1" ref={sliderRef}>
-        <div className={sliderStyles({ background: 'range' })} />
+        <div className={sliderStyles()} />
 
         <div
           className={sliderStyles({ background: 'fill' })}

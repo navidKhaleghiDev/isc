@@ -1,11 +1,12 @@
 import { cva } from 'class-variance-authority';
 
 export const sliderStyles = cva(
-  'absolute top-1/2 w-64 h-1 rounded-lg transform -translate-y-1/2',
+  'absolute top-1/2 w-64 h-1 rounded-lg transform -translate-y-1/2 bg-gray-200 dark:bg-gray-500',
   {
     variants: {
       background: {
-        range: 'bg-neutral-200',
+        // range: 'bg-gray-200',
+        // rangeDark: 'bg-gray-500',
         fill: 'bg-teal-500',
       },
     },
@@ -17,10 +18,5 @@ export const thumbStyles = cva(
 );
 
 export const getValueStyles = cva(
-  'flex justify-center items-center mt-3 text-xs',
-  {
-    variants: {
-      border: {},
-    },
-  }
+  'flex justify-center items-center mt-3 text-xs'
 );
