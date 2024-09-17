@@ -36,7 +36,7 @@ import { BaseInputProps } from './types';
 
 /// I have error inside of how to handel helpText style in different classes
 
-export function BaseInput(props: BaseInputProps<any>): JSX.Element {
+export function BaseInput(props: BaseInputProps): JSX.Element {
   const {
     name,
     id,

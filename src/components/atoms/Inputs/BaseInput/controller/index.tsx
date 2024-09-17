@@ -1,4 +1,4 @@
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 
 import { IconButtonInput } from '../../IconButtonInput';
@@ -39,7 +39,9 @@ import { BaseInputControlProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
+export function BaseInput<T extends FieldValues>(
+  props: BaseInputControlProps<T>
+): JSX.Element {
   const {
     control,
     name,
@@ -110,9 +112,20 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
               max={max}
             />
             {startIcon && (
-              <IconInput icon={startIcon} intent={intent} dir="rtl" />
+              <IconInput
+                icon={startIcon}
+                intent={intent}
+                dir="rtl"
+                error={error?.message}
+              />
             )}
-            {endIcon && <IconInput icon={endIcon} intent={intent} />}
+            {endIcon && (
+              <IconInput
+                icon={endIcon}
+                intent={intent}
+                error={error?.message}
+              />
+            )}
             {onClickIcon && (
               <IconButtonInput
                 icon={iconButtonIcon}

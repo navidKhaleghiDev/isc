@@ -3,6 +3,8 @@ import {
   Control,
   FieldPath,
   FieldValues,
+  Path,
+  PathValue,
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
@@ -10,13 +12,9 @@ import { IconifyIcon } from '@iconify/react';
 
 import { baseInputStyles } from './styles';
 
-export interface BaseInputProps<T extends FieldValues>
-  extends VariantProps<typeof baseInputStyles> {
+export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   id: string;
-  name: FieldPath<T>;
-  control?: Control<T>;
-  rules?: RegisterOptions<T>;
-  setError?: UseFormSetError<T>;
+  name: string;
   defaultValue?: any;
   type?:
     | 'email'
@@ -57,7 +55,7 @@ export interface BaseInputControlProps<T extends FieldValues>
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;
-  defaultValue?: any;
+  defaultValue?: PathValue<T, Path<T>>;
   type?:
     | 'email'
     | 'number'

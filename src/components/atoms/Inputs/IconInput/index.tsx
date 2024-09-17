@@ -9,13 +9,14 @@ interface IconInputProps extends VariantProps<typeof iconBaseInputStyles> {
   intent: ColorIndent;
   icon: IconType;
   dir?: 'rtl' | 'ltr';
+  error: string | undefined;
 }
 
-export function IconInput({ icon, intent, dir }: IconInputProps) {
+export function IconInput({ icon, intent, dir, error }: IconInputProps) {
   return (
     <div
       className={iconBaseInputStyles({
-        intent,
+        intent: error ? 'error' : intent,
         className: `${dir === 'rtl' && 'right-0'} pointer-events-none`,
       })}
     >
