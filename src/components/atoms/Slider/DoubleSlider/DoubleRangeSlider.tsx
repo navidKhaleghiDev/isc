@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DoubleRangeSliderProps } from '../types';
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 
@@ -15,24 +15,20 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
  * @returns {JSX.Element} The rendered component
  */
 
-export function DoubleRangeSlider({
-  min,
-  max,
-  initialMin,
-  initialMax,
-}: DoubleRangeSliderProps): JSX.Element {
+export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
+  const { min, max, initialMin, initialMax, onChange } = props;
   const [minValue, setMinValue] = useState<number>(initialMin);
   const [maxValue, setMaxValue] = useState<number>(initialMax);
-  // const [rangeDistance, setRangeDistance] = useState<number>(
-  //   maxValue - minValue
-  // );
+  const [rangeDistance, setRangeDistance] = useState<number>(
+    maxValue - minValue
+  );
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (value: number) => ((value - min) / (max - min)) * 100;
 
-  // useEffect(() => {
-  //   setRangeDistance(maxValue - minValue);
-  // }, [minValue, maxValue]);
+  useEffect(() => {
+    setRangeDistance(maxValue - minValue);
+  }, [minValue, maxValue]);
 
   const handleMouseDown = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -54,12 +50,16 @@ export function DoubleRangeSlider({
 
       if (thumb === 'min' && newValue <= maxValue && newValue >= min) {
         setMinValue(newValue);
-        // onChange &&
-        //   onChange({ min: newValue, max: maxValue, distance: rangeDistance });
+        if (onChange)
+          onChange({ min: newValue, max: maxValue, distance: rangeDistance });
       } else if (thumb === 'max' && newValue >= minValue && newValue <= max) {
         setMaxValue(newValue);
-        // onChange &&
-        //   onChange({ min: minValue, max: newValue, distance: rangeDistance });
+        if (onChange)
+          onChange({
+            min: newValue,
+            max: maxValue,
+            distance: rangeDistance,
+          });
       }
     };
 
@@ -107,7 +107,7 @@ export function DoubleRangeSlider({
           <span className={getValueStyles()}>{maxValue}</span>
         </div>
       </div>
-      {/* <span className={getValueStyles()}>{rangeDistance}</span> */}
+      <span className={getValueStyles()}>{rangeDistance}</span>
     </div>
   );
 }

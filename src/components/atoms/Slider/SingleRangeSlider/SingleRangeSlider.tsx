@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 import { SingleRangeSliderProps } from '../types';
 
@@ -12,20 +12,17 @@ import { SingleRangeSliderProps } from '../types';
  * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
  * @returns {JSX.Element} The rendered component
  */
-export function SingleRangeSlider({
-  min,
-  max,
-  initialValue,
-}: SingleRangeSliderProps): JSX.Element {
+export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
+  const { min, max, initialValue, onChange } = props;
   const [value, setValue] = useState(initialValue);
-  // const [rangeDistance, setRangeDistance] = useState<number>(value - min);
+  const [rangeDistance, setRangeDistance] = useState<number>(value - min);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (item: number) => ((item - min) / (max - min)) * 100;
 
-  // useEffect(() => {
-  //   setRangeDistance(value - min);
-  // }, [value, min]);
+  useEffect(() => {
+    setRangeDistance(value - min);
+  }, [value, min]);
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     const start = e.clientX;
     const startValue = value;
@@ -43,7 +40,7 @@ export function SingleRangeSlider({
 
       if (newValue >= min && newValue <= max) {
         setValue(newValue);
-        // onChange && onChange({ max: newValue, distance: rangeDistance });
+        if (onChange) onChange({ max: newValue, distance: rangeDistance });
       }
     };
 
