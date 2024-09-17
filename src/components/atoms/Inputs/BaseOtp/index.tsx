@@ -32,11 +32,10 @@ export function BaseOtp({
   intent,
   hiddenError,
   disabled,
-  size,
   fullWidth,
   pureError,
   dir = 'ltr',
-}: BaseOtpProp<any>) {
+}: BaseOtpProp<any>): JSX.Element {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const handleChange: THandleChange = (e, index, field) => {
     const val = e.target.value;
@@ -96,7 +95,6 @@ export function BaseOtp({
                     intent: error?.message || pureError ? 'error' : intent,
                     className,
                     fullWidth,
-                    size,
                   })}
                   maxLength={1}
                   value={otpValue[index] || ''}
@@ -112,7 +110,7 @@ export function BaseOtp({
         <Typography
           color="red"
           variant="body6"
-          className=" mt-[0.375rem ] text-center"
+          className="mt-[0.375rem ] text-center"
         >
           {(pureError || errorMessage) ?? ''}
         </Typography>
