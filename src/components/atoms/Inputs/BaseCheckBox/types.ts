@@ -3,25 +3,36 @@ import {
   Control,
   FieldPath,
   FieldValues,
+  Path,
+  PathValue,
   RegisterOptions,
-  UseFormSetError,
 } from 'react-hook-form';
-import { baseCheckBoxStyles } from '../styles';
+import { baseCheckBoxStyles } from './styles';
 
-export interface BaseCheckBoxProps<T extends FieldValues>
+export interface BaseCheckBoxControllerProps<TInputValues extends FieldValues>
   extends VariantProps<typeof baseCheckBoxStyles> {
   id: string;
-  control?: Control<T>;
-  name: FieldPath<T>;
-  rules?: RegisterOptions<T>;
-  setError?: UseFormSetError<T>;
+  name: FieldPath<TInputValues>;
+  control: Control<TInputValues>;
+  rules?: RegisterOptions<TInputValues>;
+  defaultValue?: PathValue<TInputValues, Path<TInputValues>>;
+  label?: string;
+  className?: string;
+  checked?: boolean;
+  dir?: 'rtl' | 'ltr';
+}
+
+export interface BaseCheckBoxProps
+  extends VariantProps<typeof baseCheckBoxStyles> {
+  id: string;
+  name: string;
   defaultValue?: string;
   label?: string;
-  hiddenError?: boolean;
   className?: string;
-  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  pureValue?: string | number | readonly string[];
-  pureError?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number | readonly string[];
   checked?: boolean;
-  ltrLabel?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  dir?: 'rtl' | 'ltr';
 }
