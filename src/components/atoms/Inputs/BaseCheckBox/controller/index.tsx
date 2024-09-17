@@ -1,4 +1,4 @@
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { BaseIcon } from '@ui/atoms/BaseIcon';
 import { Typography } from '@ui/atoms/Typography';
 import checkBold from '@iconify-icons/ph/check-bold';
@@ -21,8 +21,8 @@ import { BaseCheckBoxControllerProps } from '../types';
  *
  * @returns {JSX.Element} The rendered checkbox component.
  */
-export function BaseCheckBox(
-  props: BaseCheckBoxControllerProps<any>
+export function BaseCheckBox<T extends FieldValues>(
+  props: BaseCheckBoxControllerProps<T>
 ): JSX.Element {
   const {
     id,
@@ -60,7 +60,9 @@ export function BaseCheckBox(
               </Typography>
             </label>
           )}
-          <div className={`inline-flex items-center relative ${className}`}>
+          <div
+            className={`inline-flex items-center relative ${className || ''}`}
+          >
             <input
               id={id}
               type="checkbox"

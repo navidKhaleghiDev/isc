@@ -10,13 +10,13 @@ import {
 
 import { baseCheckBoxStyles } from './styles';
 
-export interface BaseCheckBoxControllerProps<TInputValues extends FieldValues>
+export interface BaseCheckBoxControllerProps<T extends FieldValues>
   extends VariantProps<typeof baseCheckBoxStyles> {
   id: string;
-  name: FieldPath<TInputValues>;
-  control: Control<TInputValues>;
-  rules?: RegisterOptions<TInputValues>;
-  defaultValue?: PathValue<TInputValues, Path<TInputValues>>;
+  name: FieldPath<T>;
+  control: Control<T>;
+  rules?: RegisterOptions<T>;
+  defaultValue?: PathValue<T, Path<T>>;
   label?: string;
   disabled?: boolean;
   className?: string;

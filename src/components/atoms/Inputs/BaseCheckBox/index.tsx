@@ -18,6 +18,7 @@ import { BaseCheckBoxProps } from './types';
  * @param {function} [props.onChange] - Change handler for checking it.
  * @param {any} [props.value] - Note that when we use it we not have to use defaultValue.
  * @param {boolean} [props.checked] - when we want to set the checked active that DOM click event will not work (not recommended)
+ * @param {boolean} [props.dir] - direction of the label
  *
  * @returns {JSX.Element} The rendered checkbox component.
  */
@@ -40,7 +41,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
   return (
     <div
       className={`flex gap-2 ${
-        dir === 'rtl' && 'flex-row-reverse'
+        dir === 'ltr' && 'flex-row-reverse'
       } items-center justify-center`}
     >
       {label && (
@@ -48,13 +49,13 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
           <Typography
             color="neutralDark"
             variant="body6"
-            className={` ${disabled && 'opacity-50'}`}
+            className={`${disabled && 'opacity-50'} leading-4 dark:text-white`}
           >
             {label}
           </Typography>
         </label>
       )}
-      <div className={`inline-flex items-center relative ${className}`}>
+      <div className={`inline-flex items-center relative ${className || ''}`}>
         <input
           id={id}
           type="checkbox"
