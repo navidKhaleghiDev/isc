@@ -5,9 +5,7 @@ import { useForm } from 'react-hook-form';
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const { handleSubmit } = useForm();
-  const handelSubmitForm = () => {
-    console.log('done');
-  };
+  const handelSubmitForm = () => {};
 
   useEffect(() => {
     if (darkMode) {
@@ -27,13 +25,14 @@ function App() {
         Toggle Dark Mode
       </button>
       <form onSubmit={handleSubmit(handelSubmitForm)}>
-        <BaseCheckBox
+        {/* <BaseCheckBox
           id="name"
           name="name"
           label="navid"
           size="sm"
+          dir="rtl"
           onChange={(e) => console.log(e)}
-        />
+        /> */}
       </form>
       {/* Your components here */}
     </div>

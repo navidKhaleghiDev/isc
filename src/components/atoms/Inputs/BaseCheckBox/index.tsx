@@ -69,7 +69,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
             size,
           })}
         />
-        <span className="absolute text-neutral-100 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+        <span className="absolute text-neutral-100 dark:peer-disabled:hidden dark:peer-checked:text-neutral-100 dark:text-neutral-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
           <BaseIcon icon={checkBold} size={size === 'md' ? 'xs' : 'sm'} />
         </span>
       </div>
