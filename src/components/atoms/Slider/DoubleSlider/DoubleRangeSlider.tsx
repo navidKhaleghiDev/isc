@@ -17,11 +17,9 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 
 export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
   const { min, max, initialMin, initialMax, onChange } = props;
-  const [minValue, setMinValue] = useState<number>(initialMin);
-  const [maxValue, setMaxValue] = useState<number>(initialMax);
-  const [rangeDistance, setRangeDistance] = useState<number>(
-    maxValue - minValue
-  );
+  const [minValue, setMinValue] = useState(initialMin);
+  const [maxValue, setMaxValue] = useState(initialMax);
+  const [rangeDistance, setRangeDistance] = useState(maxValue - minValue);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (value: number) => ((value - min) / (max - min)) * 100;

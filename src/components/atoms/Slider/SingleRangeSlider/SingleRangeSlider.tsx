@@ -15,7 +15,7 @@ import { SingleRangeSliderProps } from '../types';
 export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
   const { min, max, initialValue, onChange } = props;
   const [value, setValue] = useState(initialValue);
-  const [rangeDistance, setRangeDistance] = useState<number>(value - min);
+  const [rangeDistance, setRangeDistance] = useState(value - min);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (item: number) => ((item - min) / (max - min)) * 100;
