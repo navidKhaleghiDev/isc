@@ -3,8 +3,8 @@ import { BaseIcon } from '@ui/atoms/BaseIcon';
 import { Typography } from '@ui/atoms/Typography';
 import checkBold from '@iconify-icons/ph/check-bold';
 
-import { baseCheckBoxStyles } from './styles';
-import { BaseCheckBoxControllerProps } from './types';
+import { baseCheckBoxStyles } from '../styles';
+import { BaseCheckBoxControllerProps } from '../types';
 /**
  * BaseCheckBox component.
  * It provides a customizable checkbox input with validation and error handling note that the method that we are using is react-hook-form.
