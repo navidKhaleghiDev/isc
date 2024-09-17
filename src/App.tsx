@@ -27,9 +27,10 @@ function App() {
         control={control}
         name="name"
         dir="ltr"
+        disabled
         size="md"
         valueLength={6}
-        pureError=""
+        pureError="an error has been co"
       />
       {/* Your components here */}
     </div>

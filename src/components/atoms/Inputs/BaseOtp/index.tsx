@@ -107,13 +107,15 @@ export function BaseOtp({
           );
         }}
       />
-      <Typography
-        color="red"
-        variant="body6"
-        className=" mt-[0.375rem ] text-center"
-      >
-        {(pureError || errorMessage) ?? ''}
-      </Typography>
+      {disabled && (
+        <Typography
+          color="red"
+          variant="body6"
+          className=" mt-[0.375rem ] text-center"
+        >
+          {(pureError || errorMessage) ?? ''}
+        </Typography>
+      )}
     </div>
   );
 }
