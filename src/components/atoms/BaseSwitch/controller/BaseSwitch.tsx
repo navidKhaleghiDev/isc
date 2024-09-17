@@ -33,6 +33,7 @@ export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
     defaultValue,
     onChange,
     disabled,
+    error,
   } = props;
   return (
     <Controller
@@ -84,6 +85,11 @@ export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
                 />
               </span>
             </label>
+            {error && (
+              <Typography color="red" variant="body1" className="h-6">
+                {error}
+              </Typography>
+            )}
           </div>
         );
       }}

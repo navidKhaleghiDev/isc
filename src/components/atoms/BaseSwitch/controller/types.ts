@@ -13,6 +13,7 @@ export interface BaseSwitchProps<T extends FieldValues> {
   className?: string;
   ltrLabel?: boolean;
   label?: string;
+  error?: string;
   disabled?: boolean;
   onChange?: (event: boolean) => void;
 }
