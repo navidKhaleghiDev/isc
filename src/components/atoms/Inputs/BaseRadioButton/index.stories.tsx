@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
 import { BaseRadioButton } from '.';
 
@@ -20,19 +19,10 @@ const meta: Meta<typeof BaseRadioButton> = {
   args: {
     name: 'radiobutton',
     id: 'radio',
-    intent: 'default',
-    size: 'md',
     label: 'label',
-    pureOnChange: fn(),
     className: 'font-kalameh',
   },
   argTypes: {
-    size: {
-      control: {
-        type: 'select',
-      },
-      options: ['sm', 'md'],
-    },
     checked: {
       control: {
         type: 'boolean',
@@ -51,27 +41,38 @@ const meta: Meta<typeof BaseRadioButton> = {
     },
   },
   render: (args) => (
-    <BaseRadioButton
-      id={args.id}
-      name={args.name}
-      checked={args.checked}
-      pureError={args.pureError}
-      className={args.className}
-      size={args.size}
-      dir={args.dir}
-      defaultValue={args.defaultValue}
-      hiddenError={args.hiddenError}
-      intent={args.intent}
-      label={args.label}
-      pureValue={args.pureValue}
-    />
+    <>
+      <BaseRadioButton
+        id={args.id}
+        name={args.name}
+        checked={args.checked}
+        error={args.error}
+        className={args.className}
+        dir={args.dir}
+        defaultValue={args.defaultValue}
+        hiddenError={args.hiddenError}
+        label={args.label}
+        value={args.value}
+      />
+      <br />
+      <BaseRadioButton
+        id={args.id + 1}
+        name={args.name}
+        checked={args.checked}
+        error={args.error}
+        className={args.className}
+        dir={args.dir}
+        defaultValue={args.defaultValue}
+        hiddenError={args.hiddenError}
+        label={args.label}
+        value={args.value}
+      />
+    </>
   ),
 };
 
 export const defaultRadioButton: StoryBaseRadioButton = {
   args: {
-    intent: 'default',
-    size: 'md',
     dir: 'rtl',
   },
 };

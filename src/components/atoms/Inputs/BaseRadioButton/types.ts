@@ -1,9 +1,6 @@
-import { VariantProps } from 'class-variance-authority';
 import { FieldPath, FieldValues, UseFormSetError } from 'react-hook-form';
-import { baseRadioButton } from './styles';
 
-export interface BaseRadioButtonProps<T extends FieldValues>
-  extends VariantProps<typeof baseRadioButton> {
+export interface BaseRadioButtonProps<T extends FieldValues> {
   id: string;
   name: FieldPath<T>;
   setError?: UseFormSetError<T>;
@@ -11,9 +8,9 @@ export interface BaseRadioButtonProps<T extends FieldValues>
   label?: string;
   hiddenError?: boolean;
   className?: string;
-  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  pureValue?: string | number | readonly string[];
-  pureError?: string;
+  onChange?: (event: string) => void;
+  value?: string | number | readonly string[];
+  error?: string;
   checked?: boolean;
   dir?: 'rtl' | 'ltr';
 }
