@@ -25,25 +25,11 @@ const meta: Meta<typeof ToggleButton> = {
       </div>
     ),
   ],
-  argTypes: {
-    size: {
-      control: {
-        type: 'select',
-      },
-      options: ['small', 'medium'],
-    },
-  },
 };
 export default meta;
 
-function RenderToggleButton({
-  buttonLabels,
-  onChange,
-  size,
-}: ToggleButtonProps) {
-  return (
-    <ToggleButton buttonLabels={buttonLabels} onChange={onChange} size={size} />
-  );
+function RenderToggleButton({ buttonLabels, onChange }: ToggleButtonProps) {
+  return <ToggleButton buttonLabels={buttonLabels} onChange={onChange} />;
 }
 export const toggleButton: StoryToggleButton = {
   render: RenderToggleButton,
