@@ -27,5 +27,16 @@ export const toastIconStyle = cva('', {
       warning: 'dark:text-yellow-300',
       default: '',
     },
+    size: {
+      sm: 'w-[17.188rem] h-14',
+      md: 'w-[21.875rem] h-20',
+      lg: 'w-[33.75rem] h-20',
+      responsive:
+        'w-[17.188rem] h-14 sm:w-[21.875rem] sm:h-20 md:w-[33.75rem] md:h-20',
+    },
+    dir: {
+      rtl: 'left-auto right-4',
+      ltr: 'right-auto left-4',
+    },
   },
 });

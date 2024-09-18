@@ -17,6 +17,7 @@ import { toastIconStyle, toastStyle } from './styles';
 
 interface ToastCustomContainerProps {
   dir?: 'rtl' | 'ltr';
+  size?: 'sm' | 'md' | 'lg' | 'responsive';
 }
 
 /**
@@ -58,6 +59,7 @@ function CloseButton({ closeToast, type }: CloseButtonProps): JSX.Element {
  */
 export function ToastCustomContainer({
   dir = 'rtl',
+  size = 'lg',
 }: ToastCustomContainerProps): JSX.Element {
   const toastOptions: ToastOptions = {
     closeButton: CloseButton,
@@ -129,9 +131,9 @@ export function ToastCustomContainer({
     const type = props?.type || 'default';
     return `flex items-center ${
       dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
-    } px-5 rounded-2xl shadow-lg w-[21.875rem] h-20 font-kalameh text-base gap-7 toast-custom ${toastStyle(
+    } px-5 rounded-2xl shadow-lg font-kalameh text-base gap-7 toast-custom ${toastStyle(
       { typeToast: type }
-    )}`;
+    )} ${toastIconStyle({ size })}`;
   };
 
   return (
@@ -140,7 +142,7 @@ export function ToastCustomContainer({
       closeOnClick={toastOptions.closeOnClick}
       transition={toastOptions.transition}
       hideProgressBar={toastOptions.hideProgressBar}
-      className="toast-container-custom"
+      className={`toast-container-custom ${toastIconStyle({ size, dir })}`}
       toastClassName={(props) => getToastClassName(props)}
       bodyClassName={`${
         dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'

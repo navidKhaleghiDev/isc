@@ -7,6 +7,7 @@ import { ToastCustomContainer } from '@ui/molecules/ToastCustomContainer';
 export type ToastPropsType = {
   className?: string;
   status: 'success' | 'error' | 'info';
+  size: 'sm' | 'md' | 'lg' | 'responsive';
   message: string;
   dir: 'rtl' | 'ltr';
   darkMode?: boolean;
@@ -33,6 +34,7 @@ export function Toast({
   message,
   dir,
   darkMode,
+  size,
 }: ToastPropsType) {
   const notify = () => {
     switch (status) {
@@ -60,7 +62,7 @@ export function Toast({
       >
         نمایش نوتیفیکیشن
       </button>
-      <ToastCustomContainer dir={dir} />
+      <ToastCustomContainer dir={dir} size={size} />
     </div>
   );
 }

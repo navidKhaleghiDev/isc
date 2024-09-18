@@ -28,6 +28,12 @@ const meta = {
       },
       options: ['success', 'error', 'info'],
     },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md', 'lg', 'responsive'],
+    },
     message: { control: 'text' },
     dir: {
       control: {
@@ -77,5 +83,6 @@ export const Default: Story = {
     status: 'success',
     message: 'این یک پیغام عمومی می باشد.',
     dir: 'rtl',
+    size: 'md',
   },
 };
