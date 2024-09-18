@@ -14,6 +14,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@iconify-icons/line-md": "^1.2.30",
     "@iconify-icons/ph": "^1.2.5",
     "@iconify/react": "^4.1.0",
     "axios": "^1.4.0",
