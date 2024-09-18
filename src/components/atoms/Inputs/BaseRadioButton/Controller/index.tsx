@@ -1,5 +1,5 @@
 import { Controller } from 'react-hook-form';
-import { BaseRadioButtonControlProps } from './types';
+import { BaseRadioButtonControlProps } from '../types';
 import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
 
 /**
