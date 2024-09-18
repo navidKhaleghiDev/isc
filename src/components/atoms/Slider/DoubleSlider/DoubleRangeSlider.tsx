@@ -66,7 +66,7 @@ export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
   return (
     <div className="w-64 h-6 m-5">
       <div className="relative w-64 h-1" ref={sliderRef}>
-        <div className={sliderStyles()} />
+        <div className={sliderStyles({ background: 'range' })} />
 
         <div
           className={sliderStyles({ background: 'fill' })}
