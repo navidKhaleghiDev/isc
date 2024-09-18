@@ -9,12 +9,11 @@ import { SingleRangeSliderProps } from '../types';
  * @param {number} props.min - The minimum value of the slider
  * @param {number} props.max - The maximum value of the slider
  * @param {number} props.initialValue - The initial value
- * @param {number} props.step - The step size
- * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
+ * @param {(values: { min: number, max: number }) => void} [props.onChange] - The onChnage method just gives us the max value
  * @returns {JSX.Element} The rendered component
  */
 export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
-  const { min, max, initialValue, onChange } = props;
+  const { min, max, initialValue, hiddenLable, onChange } = props;
   const [value, setValue] = useState(initialValue);
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -71,7 +70,7 @@ export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
           tabIndex={0}
           role="button"
         >
-          <span className={getValueStyles()}>{Math.round(value)}</span>
+          {hiddenLable && <span className={getValueStyles()}>{value}</span>}
         </div>
       </div>
     </div>

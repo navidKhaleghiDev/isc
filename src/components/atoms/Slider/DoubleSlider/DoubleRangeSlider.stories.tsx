@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { DoubleRangeSlider } from './DoubleRangeSlider';
 
 const meta: Meta<typeof DoubleRangeSlider> = {

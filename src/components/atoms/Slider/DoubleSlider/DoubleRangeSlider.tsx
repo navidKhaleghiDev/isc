@@ -10,13 +10,12 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
  * @param {number} props.max - The maximum value of the slider
  * @param {number} props.initialMin - The initialMin value
  * @param {number} props.initialMax - The initialMax value
- * @param {number} props.step - The step size
- * @param {(values: { min: number, max: number }) => void} [props.onChange] - Callback function triggered when the range values change
+ * @param {(values: { min: number, max: number }) => void} [props.onChange] - The onChnage method just gives us the max and min value
  * @returns {JSX.Element} The rendered component
  */
 
 export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
-  const { min, max, initialMin, initialMax, onChange } = props;
+  const { min, max, initialMin, initialMax, hiddenLable, onChange } = props;
   const [minValue, setMinValue] = useState(initialMin);
   const [maxValue, setMaxValue] = useState(initialMax);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -84,7 +83,7 @@ export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
           tabIndex={0}
           role="button"
         >
-          <span className={getValueStyles()}>{minValue}</span>
+          {hiddenLable && <span className={getValueStyles()}>{maxValue}</span>}
         </div>
         <div
           className={thumbStyles()}
@@ -95,7 +94,7 @@ export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
           tabIndex={0}
           role="button"
         >
-          <span className={getValueStyles()}>{maxValue}</span>
+          {hiddenLable && <span className={getValueStyles()}>{maxValue}</span>}
         </div>
       </div>
     </div>

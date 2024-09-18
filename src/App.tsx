@@ -1,3 +1,4 @@
+import { DoubleRangeSlider } from '@ui/atoms/Slider';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
+      <DoubleRangeSlider initialMax={50} initialMin={10} max={100} min={0} />
     </div>
   );
 }
