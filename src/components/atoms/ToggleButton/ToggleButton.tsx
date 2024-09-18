@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ToggleButtonProps } from './types';
+import { toggleStyles } from './styles';
 
 /**
  * ToggleButton component renders a group of buttons that allow for single selection.
@@ -16,7 +17,7 @@ import { ToggleButtonProps } from './types';
  */
 
 export function ToggleButton(props: ToggleButtonProps): JSX.Element {
-  const { buttonLabels, onChange, className } = props;
+  const { buttonLabels, onChange, className, size } = props;
 
   const [selected, setSelected] = useState<string | number>();
 
@@ -31,9 +32,9 @@ export function ToggleButton(props: ToggleButtonProps): JSX.Element {
   return (
     <div className="flex w-full">
       <div
-        className={`flex h-7 text-xs rounded-[0.25rem] sm:h-10 sm:text-sm sm:rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 py-1 font-kalameh  ${
-          className && ''
-        }`}
+        className={`${toggleStyles({
+          size,
+        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 py-1 font-kalameh  ${className}`}
       >
         {buttonLabels.map(({ id, label, name }) => (
           <button
