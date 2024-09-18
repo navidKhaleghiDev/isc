@@ -22,12 +22,13 @@ export interface BaseOtpProp<T extends FieldValues>
   dir?: 'rtl' | 'ltr';
 }
 
-export type THandleChange = (
+export type HandleChange = (
   e: React.ChangeEvent<HTMLInputElement>,
   index: number,
   field: { value: string; onChange: (value: string) => void }
 ) => void;
-export type THandleKeyDown = (
+
+export type HandleKeyDown = (
   e: React.KeyboardEvent<HTMLInputElement>,
   index: number
 ) => void;

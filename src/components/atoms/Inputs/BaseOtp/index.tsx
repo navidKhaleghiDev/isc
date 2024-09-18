@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 
 import { baseOtpStyles } from './styles';
-import { BaseOtpProp, THandleChange, THandleKeyDown } from './types';
+import { BaseOtpProp, HandleChange, HandleKeyDown } from './types';
 import { regexPattern } from '../utils/regexPattern';
 
 /**
@@ -23,21 +23,25 @@ import { regexPattern } from '../utils/regexPattern';
  * @returns {JSX.Element} - The BaseOtp component.
  */
 
-export function BaseOtp({
-  name,
-  control,
-  rules,
-  valueLength = 6,
-  className,
-  intent,
-  hiddenError,
-  disabled,
-  fullWidth,
-  pureError,
-  dir = 'ltr',
-}: BaseOtpProp<any>): JSX.Element {
+export function BaseOtp<T extends FieldValues>(
+  props: BaseOtpProp<T>
+): JSX.Element {
+  const {
+    name,
+    control,
+    rules,
+    valueLength = 6,
+    className,
+    intent,
+    hiddenError,
+    disabled,
+    fullWidth,
+    pureError,
+    dir = 'ltr',
+  } = props;
+
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const handleChange: THandleChange = (e, index, field) => {
+  const handleChange: HandleChange = (e, index, field) => {
     const val = e.target.value;
 
     const currentOtp = field.value || '';
@@ -55,7 +59,7 @@ export function BaseOtp({
     }
   };
 
-  const handleKeyDown: THandleKeyDown = (e, index) => {
+  const handleKeyDown: HandleKeyDown = (e, index) => {
     if (e.key === 'Backspace' && !e.currentTarget.value && index > 0) {
       const previousElement = e.currentTarget
         .previousElementSibling as HTMLInputElement | null;
