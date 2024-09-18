@@ -6,19 +6,19 @@ import { BaseIconProps } from './types';
 /**
  * BaseIcon Component
  *
- * This component renders a icon from Iconify library.
+ * This component renders an icon from Iconify library.
  *
  * @component
+ * @param {BaseIconProps} props - The props for the BaseIcon component, including:
+ *   @param {'neutral' | 'teal' | 'yellow' | 'red' | 'tealLink'} props.color - Determine the color of the icon.
+ *   @param {'default' | 'xs' | 'sm' | 'md' | 'lg'} props.size - Determine the size of the icon.
+ *   @param {'primary' | 'default'} props.hoverColor - Determine the hover color of the icon.
+ *   @param {string} [props.className] - Set custom className.
+ *   @param {string} [props.icon="fa:home"] - Set icon name from iconify library.
  *
- * @param {BaseIconProps} props - The props for the BaseIcon component.
- * @param {neutral | teal | yellow | red | tealLink} color - Determine the color of the icon between [neutral, teal, ...]
- * @param {default | xs | sm | md | lg} size - Determine the size of the icon between [default, xs, sm, md, ...]
- * @param {primary | default} hoverColor - Determine the hover color of the icon between [primary, default]
- * @param {string} [className] - Set custom className
- * @param {string} [icon="fa:home"] - Set icon name from iconify library
- *
- * @returns {JSX.Element} The returned a base icon component.
+ * @returns {JSX.Element} The returned base icon component.
  */
+
 export function BaseIcon(props: BaseIconProps): JSX.Element {
   const { color, size, hoverColor, className, icon = 'fa:home' } = props;
   return (
