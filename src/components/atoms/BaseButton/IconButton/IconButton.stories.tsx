@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import PhUser from '@iconify-icons/ph/user';
+
 import { IconButton } from './IconButton';
 
 const meta: Meta<typeof IconButton> = {
@@ -20,7 +21,7 @@ const meta: Meta<typeof IconButton> = {
       control: {
         type: 'select',
       },
-      options: ['teal', 'redNoBg', 'neutral', 'neutralNoBg', 'default'],
+      options: ['teal', 'redNoBg', 'neutral', 'neutralNoBg'],
     },
     size: {
       control: {

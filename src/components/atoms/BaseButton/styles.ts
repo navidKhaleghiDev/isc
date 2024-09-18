@@ -27,7 +27,7 @@ export const baseButtonStyles = cva(
         dark:hover:bg-red-400 dark:active:bg-red-500  
         dark:disabled:bg-red-300 dark:disabled:text-white dark:disabled:opacity-40`,
         neutral: ` 
-        bg-white text-gray-500 border-[0.063rem] border-gray-100
+        bg-white text-gray-500 border-[0.063rem] border-gray-200
         hover:bg-gray-100 hover:text-gray-600 
         active:bg-gray-200 active:text-gray-600 
         disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
@@ -101,7 +101,7 @@ export const iconButtonStyles = cva(
         text-red-500 hover:text-red-600 active:text-red-700 disabled:opacity-40 
         dark:text-red-300 dark:hover:text-red-400 dark:active:text-red-500 dark:disabled:text-red-100`,
         neutral: `
-        bg-white text-gray-500 border-[0.063rem] border-gray-100
+        bg-white text-gray-500 border-[0.063rem] border-gray-200
         hover:bg-gray-100 hover:text-gray-600 
         active:bg-gray-200 active:text-gray-600 
         disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
@@ -116,7 +116,6 @@ export const iconButtonStyles = cva(
       size: {
         sm: 'h-7 w-7',
         md: 'h-10 w-10',
-        default: 'h-fit w-fit',
       },
     },
     defaultVariants: {
