@@ -1,5 +1,11 @@
 import { VariantProps } from 'class-variance-authority';
-import { Control, FieldPath, FieldValues, RegisterOptions, UseFormSetError } from 'react-hook-form';
+import {
+  Control,
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+  UseFormSetError,
+} from 'react-hook-form';
 
 import { inputRadioButtonStyles } from './styles';
 
