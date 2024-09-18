@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 import { BaseSwitchProps } from './types';
+import { baseSwitchStyles } from '../styles';
 
 /**
  * BaseSwitch component renders a customizable toggle switch with optional labels and controlled states.
@@ -10,7 +11,7 @@ import { BaseSwitchProps } from './types';
  * @component
  *
  * @param {Object} props - The properties for the BaseSwitch component.
- * @param {'small' | 'medium' } props.size - Defines the size of the switch.
+ * @param {'small' | 'medium' |'responsive' } props.size - Defines the size of the switch.
  * @param {string} [props.label] - Optional label displayed next to the switch.
  * @param {string} props.name - The name of the switch input, used as its identifier.
  * @param {Object} [props.control] - `react-hook-form` control object for controlled forms.
@@ -23,8 +24,9 @@ import { BaseSwitchProps } from './types';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
+export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
   const {
+    size,
     label,
     name,
     control,
@@ -35,6 +37,17 @@ export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
     disabled,
     error,
   } = props;
+
+  const translateClassMap = {
+    sm: 'translate-x-4',
+    md: 'translate-x-6',
+    responsive: 'translate-x-4 sm:translate-x-6',
+  };
+
+  const translateClass = size
+    ? translateClassMap[size]
+    : 'translate-x-4 sm:translate-x-6';
+
   return (
     <Controller
       name={name}
@@ -72,7 +85,9 @@ export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
                 }}
               />
               <span
-                className={`slider flex items-center rounded-full p-1 duration-200 h-6 w-10 sm:w-12  ${
+                className={`${baseSwitchStyles({
+                  size,
+                })} ${
                   field.value
                     ? 'bg-teal-500 dark:bg-teal-400'
                     : 'bg-gray-200 dark:bg-gray-800'
@@ -80,7 +95,7 @@ export function BaseSwitch(props: BaseSwitchProps<any>): JSX.Element {
               >
                 <span
                   className={`dot size-4 rounded-full bg-white duration-200 ${
-                    field.value ? 'translate-x-4 sm:translate-x-6' : ''
+                    field.value ? translateClass : ''
                   }`}
                 />
               </span>

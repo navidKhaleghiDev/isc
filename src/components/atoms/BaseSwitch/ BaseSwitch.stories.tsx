@@ -22,6 +22,12 @@ const meta: Meta<typeof BaseSwitch> = {
     ),
   ],
   argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md', 'responsive'],
+    },
     disabled: { control: 'boolean' },
     error: { control: 'text' },
     onChange: { action: 'clicked' },
@@ -35,6 +41,7 @@ export const Default: Story = {
   args: {
     name: 'switch',
     defaultChecked: false,
+    size: 'responsive',
     disabled: false,
   },
 };
