@@ -51,7 +51,7 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
 export interface BaseInputControlProps<T extends FieldValues>
   extends VariantProps<typeof baseInputStyles> {
   id: string;
-  control?: Control<T>;
+  control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;

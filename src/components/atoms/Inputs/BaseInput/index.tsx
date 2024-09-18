@@ -2,7 +2,11 @@ import { Typography } from '@ui/atoms/Typography';
 
 import { IconButtonInput } from '../IconButtonInput';
 import { IconInput } from '../IconInput';
-import { baseInputStyles, baseInputTextStyles } from './styles';
+import {
+  baseInputStyles,
+  baseInputTextStyles,
+  baseInputWarperStyles,
+} from './styles';
 import { BaseInputProps } from './types';
 
 /**
@@ -46,7 +50,6 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     className,
     endIcon,
     defaultValue,
-    intent,
     disabled,
     size,
     type,
@@ -61,12 +64,27 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     error,
     min,
     max,
+    intent = 'default',
     dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
 
+  // Items-center added to the wrapper component remember to refactor it again
+  // Remember to ask about the default value that in error handling conditions it gives errors
+  // Handling that the startIcon and endIcon and iconButton error handling if we give all of them in same time
+  // Handling the the disable mode that when accrues that the icon cursor pointer remove
+  // Remember to merge the IconButton and the startIcon and endIcon
+  // For handling the icon added CVA to the wrapper div remember to handel it with another method
+  // When we hover in the input our helpText does not hover remember to handel this (also the disable of it)
+
   return (
-    <div className="flex flex-col">
+    <div
+      className={baseInputWarperStyles({
+        size,
+        fullWidth,
+        className: 'flex flex-col',
+      })}
+    >
       {label && (
         <label
           htmlFor={id}
@@ -79,7 +97,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           </Typography>
         </label>
       )}
-      <div className={`relative base-input ${className || ''}`}>
+      <div className={`relative ${className ?? ''}`}>
         <input
           id={id}
           type={type}
@@ -96,7 +114,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           className={baseInputStyles({
             intent: error ? 'error' : intent,
             className: `${(endIcon || onClickIcon) && 'pl-7'} ${
-              startIcon && 'pr-7'
+              startIcon || (onClickIcon && 'pr-7')
             }`,
             fullWidth,
             size,
@@ -111,6 +129,9 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
             icon={iconButtonIcon}
             intent={intent}
             onClick={onClickIcon}
+            disabled={disabled}
+            error={error}
+            dir={dir}
           />
         )}
       </div>

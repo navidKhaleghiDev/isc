@@ -12,7 +12,12 @@ interface IconInputProps extends VariantProps<typeof iconBaseInputStyles> {
   error: string | undefined;
 }
 
-export function IconInput({ icon, intent, dir, error }: IconInputProps) {
+export function IconInput({
+  icon,
+  dir,
+  error,
+  intent = 'default',
+}: IconInputProps) {
   return (
     <div
       className={iconBaseInputStyles({

@@ -29,8 +29,8 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
         name="ip"
         placeholder="جستجو کنید"
         id="ip"
-        pureOnChange={handleSearchChange}
-        pureValue={searchValue}
+        onChange={handleSearchChange}
+        value={searchValue}
         label={label}
         fullWidth
         startIcon={PhMagnifyingGlass}

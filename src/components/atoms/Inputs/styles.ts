@@ -34,12 +34,14 @@ export const baseInputStyles = cva(
   }
 );
 
+// Remember that this cva has been used in different modules and can not be in specific module
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center active:text-gray-500 fill-current',
+  'absolute inset-y-0 flex px-2 items-center peer-disabled:cursor-default peer-disabled:text-neutral-300 focus:text-gray-500 fill-current',
   {
     variants: {
       intent: {
-        default: 'text-gray-300 peer-focus:text-gray-500',
+        default:
+          'text-neutral-300 dark:text-neutral-400 peer-hover:text-neutral-500 peer-focus:text-gray-950 dark:peer-focus:text-neutral-300 dark:peer-hover:text-neutral-300',
         error: 'text-red-500 peer-focus:border-red-500',
       },
       right: {
