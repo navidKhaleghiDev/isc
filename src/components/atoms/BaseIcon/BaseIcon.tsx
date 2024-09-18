@@ -19,13 +19,8 @@ import { BaseIconProps } from './types';
  *
  * @returns {JSX.Element} The returned a base icon component.
  */
-export function BaseIcon({
-  color,
-  size,
-  hoverColor,
-  className,
-  icon = 'fa:home',
-}: BaseIconProps): JSX.Element {
+export function BaseIcon(props: BaseIconProps): JSX.Element {
+  const { color, size, hoverColor, className, icon = 'fa:home' } = props;
   return (
     <Icon
       className={baseIconStyles({ size, color, hoverColor, className })}
