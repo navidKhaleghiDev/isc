@@ -1,4 +1,4 @@
-// import ToolTip from '../Tooltip';
+import ToolTip from '../Tooltip';
 import { BackButton, BackButtonProps } from './BackButton';
 
 /**
@@ -17,10 +17,10 @@ export function PageBackButton({
   backToReferrer,
 }: BackButtonProps): JSX.Element {
   return !withLabel ? (
-    // <ToolTip tooltip="صفحه قبل" position="right">
-    <BackButton />
+    <ToolTip tooltip="صفحه قبل" position="right">
+      <BackButton />
+    </ToolTip>
   ) : (
-    // </ToolTip>
     <BackButton
       withLabel={withLabel}
       onClick={onClick}

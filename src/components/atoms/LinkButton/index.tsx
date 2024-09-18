@@ -1,9 +1,8 @@
-import { BaseButton } from '@ui/atoms';
 import { Link } from 'react-router-dom';
+import { BaseButton } from '@ui/atoms';
+import { BaseButtonProps } from '../BaseButton/types';
 
-import { IBaseButton } from '../BaseButton/types';
-
-interface ILinkButtonProps extends IBaseButton {
+interface LinkButtonProps extends BaseButtonProps {
   link: string;
   skip?: boolean;
 }
@@ -46,7 +45,7 @@ export function LinkButton({
   size,
   type,
   fullWidth,
-}: ILinkButtonProps) {
+}: LinkButtonProps) {
   const button = (
     <BaseButton
       onClick={onClick}

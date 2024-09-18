@@ -140,7 +140,6 @@ import chartBarDuotone from '@iconify-icons/ph/chart-bar-duotone';
 import rowsPlusBottomDuotone from '@iconify-icons/ph/rows-duotone';
 import gearSixDuotone from '@iconify-icons/ph/gear-six-duotone';
 import houseSimpleDuotone from '@iconify-icons/ph/house-simple-duotone';
-// import userCheckDuotone from '@iconify-icons/ph/user-check-duotone';
 import usersThreeDuotone from '@iconify-icons/ph/users-three-duotone';
 
 import { BaseIcon } from './BaseIcon';
@@ -363,7 +362,7 @@ export function ListIcon({
       <Typography
         variant="body3"
         weight="bold"
-        className="pb-6 mb-2 border-b border-b-neutral-300"
+        className="pb-6 mb-2 border-b border-b-gray-300"
       >
         Phosphore - regular
       </Typography>
@@ -379,7 +378,7 @@ export function ListIcon({
       <Typography
         variant="body3"
         weight="bold"
-        className="pb-6 mb-2 border-b border-b-neutral-300"
+        className="pb-6 mb-2 border-b border-b-gray-300"
       >
         Phosphore - duotone
       </Typography>

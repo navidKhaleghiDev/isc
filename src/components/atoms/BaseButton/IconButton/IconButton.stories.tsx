@@ -20,24 +20,16 @@ const meta: Meta<typeof IconButton> = {
       control: {
         type: 'select',
       },
-      options: [
-        'teal',
-        'tealNoBg',
-        'redNoBg',
-        'neutral',
-        'yellow',
-        'red',
-        'white',
-        'default',
-      ],
+      options: ['teal', 'redNoBg', 'neutral', 'neutralNoBg', 'default'],
     },
     size: {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg', 'xl', 'xxl', 'xxxl', 'default'],
+      options: ['sm', 'md', 'default'],
     },
     icon: { control: 'text' },
+    disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
   },
   args: { onClick: fn() },
@@ -48,9 +40,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    icon: PhUser, // مثال آیکون
+    icon: PhUser,
     color: 'teal',
-    size: 'xl',
+    size: 'sm',
     loading: false,
   },
 };

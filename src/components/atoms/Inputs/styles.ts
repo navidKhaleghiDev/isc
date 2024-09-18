@@ -2,27 +2,27 @@ import { SIZE, PALLET } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  `px-3 py-2.5 flex rounded-lg outline-none border focus:border-2 
-  placeholder:text-right placeholder:text-rtl shadow-sm`,
+  `peer p-2 flex text-sm rounded-lg outline-none border 
+    h-10`,
   {
     variants: {
       intent: {
-        default: `text-neutral-400 border focus:${PALLET.BORDER_COLOR.TEAL} border-neutral-300 focus:placeholder-neutral-900 focus:text-neutral-900  disabled:bg-neutral-100 disabled:text-neutral-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT} disabled:shadow-none`,
-        error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
+        default: `text-gray-500 border border-gray-300 focus:border-gray-500 focus:placeholder-gray-900 focus:text-gray-900  disabled:bg-gray-100 disabled:text-gray-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT}`,
+        error: `text-gray-900  border-2 ${PALLET.BORDER_COLOR.RED} placeholder-gray-900`,
       },
       fullWidth: {
         true: 'w-full',
       },
-      ltrPlaceHolder: {
-        true: 'placeholder:text-left',
-        false: 'placeholder:text-right placeholder:text-rtl',
-      },
+      // ltrPlaceHolder: {
+      //   true: 'placeholder:text-left',
+      //   false: 'placeholder:text-right placeholder:text-rtl',
+      // },
       size: {
-        none: ``,
-        xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-[18.75rem] h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
-        md: `${SIZE.INPUT.MEDIUM} ${SIZE.TYPOGRAPHY.BODY3}`,
-        lg: `${SIZE.INPUT.LARGE} ${SIZE.TYPOGRAPHY.BODY4}`,
+        none: '',
+        xs: `w-52 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
+        sm: `w-40`,
+        md: `w-[15.94rem]`,
+        lg: `w-[21.88rem]`,
         xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },
@@ -35,12 +35,12 @@ export const baseInputStyles = cva(
 );
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center fill-current',
+  'absolute inset-y-0 flex px-2 items-center active:text-gray-500 fill-current',
   {
     variants: {
       intent: {
-        default: 'text-neutral-500',
-        error: 'text-red-500',
+        default: 'text-gray-300 peer-focus:text-gray-500',
+        error: 'text-red-500 peer-focus:border-red-500',
       },
       right: {
         true: 'right-0',
@@ -49,69 +49,64 @@ export const iconBaseInputStyles = cva(
     },
     defaultVariants: {
       intent: 'default',
-      right: false,
     },
   }
 );
 
 export const baseTextareaStyles = cva(
-  'px-2.5 py-2.5 block rounded-lg outline-none placeholder:text-right placeholder:text-rtl',
+  'p-2 block rounded-lg border-2 outline-none border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 focus:border-gray-900 focus:placeholder:text-gray-900',
   {
     variants: {
       intent: {
         default: '',
-        error: '',
+        error: 'border-red-600',
       },
       fullWidth: {
         true: 'w-full',
       },
       size: {
-        xs: ``,
-        sm: ``,
-        md: ``,
-        lg: ``,
-        xl: ``,
+        sm: `w-40`,
+        md: `w-64`,
+        lg: `w-[21.875rem]`,
       },
     },
     defaultVariants: {
       intent: 'default',
-      size: 'sm',
+      size: 'md',
     },
   }
 );
 
 export const baseCheckBoxStyles = cva(
-  `before:content[''] peer relative size-5 cursor-pointer appearance-none rounded-md border border-teal-500 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
+  `before:content[''] peer relative cursor-pointer appearance-none border rounded transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
   {
     variants: {
       intent: {
-        default: '',
+        default:
+          'border-gray-200 bg-gray-100 dark:border-gray-400 dark:bg-gray-500',
         error: '',
       },
       size: {
-        xs: ``,
-        sm: `rounded size-4`,
-        md: `rounded-md size-5`,
-        lg: ``,
-        xl: ``,
+        sm: `size-4`,
+        md: `size-6`,
       },
     },
     defaultVariants: {
       intent: 'default',
-      size: 'sm',
+      size: 'md',
     },
   }
 );
 
 export const baseSelectStyles = cva(
-  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-neutral-300 placeholder:text-rtl relative`,
+  `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-gray-300 placeholder:text-rtl relative`,
   {
     variants: {
       intent: {
-        default: `text-neutral-900 focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-neutral-900 focus:text-neutral-900 disabled:bg-neutral-100 disabled:text-neutral-300 disabled:border-neutral-500 disabled:shadow-none`,
+        default: `text-gray-900 focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-gray-900 focus:text-gray-900 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-500 disabled:shadow-none`,
         primary:
-          'bg-white w-fit disabled:text-neutral-300 rounded-md text-xs text-neutral-600 cursor-pointer',
-        error: `text-neutral-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-neutral-900`,
+          'bg-white w-fit disabled:text-gray-300 rounded-md text-xs text-gray-600 cursor-pointer',
+        error: `text-gray-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-gray-900`,
       },
       fullWidth: {
         true: 'w-full',
@@ -132,6 +127,38 @@ export const baseSelectStyles = cva(
     },
     defaultVariants: {
       intent: 'default',
+      size: 'md',
+    },
+  }
+);
+
+export const baseOtpStyles = cva(
+  'block rounded-lg text-gray-400 outline-none text-center text-base',
+  {
+    variants: {
+      intent: {
+        default:
+          'border text-gray-300 border-gray-500 focus:border-gray-500 focus:text-gray-500 focus:placeholder-gray-500 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-300 disabled:shadow-none',
+        error: 'text-gray-900 border border-red-600 placeholder-red-400',
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
+      ltrPlaceHolder: {
+        true: 'placeholder:text-left',
+        false: 'placeholder:text-right placeholder:text-rtl',
+      },
+      size: {
+        none: ``,
+        xs: ``,
+        sm: ``,
+        md: `size-10 ${SIZE.TYPOGRAPHY.BODY3}`,
+        lg: `size-14 ${SIZE.TYPOGRAPHY.BODY2}`,
+        xl: ``,
+      },
+    },
+    defaultVariants: {
+      intent: 'error',
       size: 'md',
     },
   }
