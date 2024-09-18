@@ -53,5 +53,6 @@ export const toggleButton: StoryToggleButton = {
       { id: 2, label: 'ماهانه', name: 'monthly' },
       { id: 3, label: 'سالانه', name: 'yearly' },
     ],
+    size: 'md',
   },
 };
