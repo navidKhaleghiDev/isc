@@ -17,7 +17,6 @@ import { BaseSwitchControllerProps } from '../types';
  * @param {string} props.name - The name of the switch input, used as its identifier.
  * @param {Object} [props.control] - `react-hook-form` control object for controlled forms.
  * @param {Object} [props.rules] - Validation rules used with `react-hook-form`.
- * @param {boolean} [props.ltrLabel] - If true, label is aligned to the left (LTR); otherwise, it's aligned to the right.
  * @param {string} [props.defaultValue] - Default value (used with `react-hook-form`).
  * @param {(checked: boolean) => void} [props.onChange] - Callback function to handle onChange events.
  * @param {boolean} [props.disabled=false] - If true, disables the switch and prevents user interaction.

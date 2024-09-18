@@ -16,7 +16,6 @@ import { baseSwitchStyles } from './styles';
  * @param {'small' | 'medium' | 'responsive'} props.size - Defines the size of the switch.
  * @param {string} [props.label] - Optional label displayed next to the switch.
  * @param {string} props.name - The name of the switch input, used as its identifier.
- * @param {boolean} [props.ltrLabel] - If true, label is aligned to the left (LTR); otherwise, it's aligned to the right.
  * @param {boolean} [props.defaultValue] - Default value for the controlled state (used with `react-hook-form`).
  * @param {(checked: boolean) => void} [props.onClick] - Callback function to handle onChange events.
  * @param {string} [props.value] - External value
