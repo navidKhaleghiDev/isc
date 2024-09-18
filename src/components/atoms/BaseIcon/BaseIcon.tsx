@@ -12,7 +12,7 @@ import { BaseIconProps } from './types';
  *
  * @param {BaseIconProps} props - The props for the BaseIcon component.
  * @param {neutral | teal | yellow | red | tealLink} color - Determine the color of the icon between [neutral, teal, ...]
- * @param {default | xs | sm | md | lg | xl | xxl | xxxl} size - Determine the size of the icon between [default, xs, sm, md, ...]
+ * @param {default | xs | sm | md | lg} size - Determine the size of the icon between [default, xs, sm, md, ...]
  * @param {primary | default} hoverColor - Determine the hover color of the icon between [primary, default]
  * @param {string} [className] - Set custom className
  * @param {string} [icon="fa:home"] - Set icon name from iconify library
