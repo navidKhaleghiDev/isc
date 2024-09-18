@@ -37,7 +37,7 @@ export function ToggleButton({
       <div
         className={`${toggleStyles({
           size,
-        })} bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 py-1 font-kalameh  ${className}`}
+        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 py-1 font-kalameh  ${className}`}
       >
         {buttonLabels.map(({ id, label, name }) => (
           <button
@@ -46,9 +46,9 @@ export function ToggleButton({
             id={`${id}`}
             name={name}
             onClick={() => handleClick(id)}
-            className={`flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1  text-neutral-400 ${
+            className={`flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1  text-gray-400 ${
               selected === id
-                ? 'text-neutral-900 bg-white dark:text-white dark:bg-neutral-600'
+                ? 'text-gray-900 bg-white dark:text-white dark:bg-gray-600'
                 : ''
             }`}
           >

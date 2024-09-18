@@ -78,7 +78,7 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
                 dir === 'ltr' ? 'text-left' : 'text-right'
               }`}
             >
-              <Typography color="neutral_dark" variant="body4">
+              <Typography color="neutralDark" variant="body4">
                 {label}
               </Typography>
             </label>

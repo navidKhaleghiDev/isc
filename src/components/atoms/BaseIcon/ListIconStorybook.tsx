@@ -28,7 +28,7 @@ export function IconListStorybook({
     <div className="flex flex-wrap space-4 w-full justify-between">
       {icons.map((icon, indexKey) => (
         <div
-          className="flex flex-col items-center p-2.5 bg-neutral-100 rounded m-2"
+          className="flex flex-col items-center p-2.5 bg-gray-100 rounded m-2"
           title={title[indexKey]}
           key={title[indexKey]}
         >

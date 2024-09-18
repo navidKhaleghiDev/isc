@@ -18,9 +18,9 @@ export const outPath = cva('fill', {
 export const inPath = cva('fill', {
   variants: {
     type: {
-      teal: 'fill-white dark:fill-neutral-700',
+      teal: 'fill-white dark:fill-gray-700',
       red: 'fill-[#DC2626] dark:fill-white',
-      neutral: 'fill-neutral-900 dark:fill-white',
+      neutral: 'fill-gray-900 dark:fill-white',
       inactive: '',
       tertiary: '',
     },
