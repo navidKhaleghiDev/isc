@@ -38,6 +38,7 @@ export function BaseRadioButton(
     defaultValue,
     onChange,
     dir = 'rtl',
+    size,
   } = props;
 
   return (
@@ -62,7 +63,7 @@ export function BaseRadioButton(
               field.onChange(e.target.value);
               if (onChange) onChange(e.target.value);
             }}
-            className={inputRadioButtonStyles()}
+            className={inputRadioButtonStyles({ size })}
           />
           <label className={labelRadioButtonStyles()} htmlFor={id}>
             {label}

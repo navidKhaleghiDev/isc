@@ -31,6 +31,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
     value,
     checked,
     dir = 'rtl',
+    size,
   } = props;
 
   return (
@@ -48,7 +49,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
         onChange={(e) => {
           if (onChange) onChange(e.target.value);
         }}
-        className={inputRadioButtonStyles()}
+        className={inputRadioButtonStyles({ size })}
       />
       <label className={labelRadioButtonStyles()} htmlFor={id}>
         {label}
