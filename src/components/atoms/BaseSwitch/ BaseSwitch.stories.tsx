@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { BaseSwitch } from './BaseSwitch';
+import { BaseSwitch } from '.';
 
 const meta: Meta<typeof BaseSwitch> = {
   title: 'atoms/BaseSwitch',

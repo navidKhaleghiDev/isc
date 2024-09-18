@@ -1,5 +1,10 @@
 import { VariantProps } from 'class-variance-authority';
-import { FieldPath, FieldValues } from 'react-hook-form';
+import {
+  Control,
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+} from 'react-hook-form';
 import { baseSwitchStyles } from './styles';
 
 export interface BaseSwitchProps<T extends FieldValues>
@@ -8,11 +13,25 @@ export interface BaseSwitchProps<T extends FieldValues>
   defaultValue?: string;
   defaultChecked?: boolean;
   className?: string;
-  ltrLabel?: boolean;
   label?: string;
   disabled?: boolean;
   checked?: boolean;
   error?: string;
   value?: string | number | readonly string[];
+  dir?: 'ltr' | 'rtl';
+  onChange?: (event: boolean) => void;
+}
+
+export interface BaseSwitchControllerProps<T extends FieldValues>
+  extends VariantProps<typeof baseSwitchStyles> {
+  control: Control<T>;
+  name: FieldPath<T>;
+  rules?: RegisterOptions<T>;
+  defaultValue?: string;
+  className?: string;
+  label?: string;
+  error?: string;
+  disabled?: boolean;
+  dir?: 'ltr' | 'rtl';
   onChange?: (event: boolean) => void;
 }

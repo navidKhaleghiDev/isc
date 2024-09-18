@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
+
 import { BaseSwitchProps } from './types';
 import { baseSwitchStyles } from './styles';
 
@@ -30,12 +31,12 @@ export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
     size,
     label,
     name,
-    ltrLabel,
     defaultValue,
     onChange,
     value,
     defaultChecked,
     error,
+    dir = 'rtl',
     disabled = false,
   } = props;
 
@@ -52,20 +53,20 @@ export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
     : 'translate-x-4 sm:translate-x-6';
 
   return (
-    <div dir="ltr">
+    <div>
       {label && (
         <label
           htmlFor={name}
-          className={`block mb-1 ${ltrLabel && 'text-left uppercase'}`}
+          className={`block mb-1 ${dir === 'ltr' && 'text-left uppercase'}`}
         >
-          <Typography color="black" variant="body1">
+          <Typography color="black" variant="body6">
             {label}
           </Typography>
         </label>
       )}
       <label
         htmlFor={`${name}_input`}
-        className={`select-none items-center autoSaverSwitch relative inline-flex ${
+        className={`select-none items-center relative inline-flex ${
           disabled ? 'cursor-not-allowed' : 'cursor-pointer'
         }`}
       >
@@ -87,20 +88,22 @@ export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
           className={`${baseSwitchStyles({
             size,
           })} ${
-            isChecked
+            isChecked || defaultChecked
               ? 'bg-teal-500 dark:bg-teal-400'
               : 'bg-gray-200 dark:bg-gray-800'
-          }`}
+          }
+          ${disabled && 'opacity-40'}
+          `}
         >
           <span
-            className={`dot size-4 rounded-full bg-white duration-200 ${
-              isChecked ? translateClass : ''
+            className={`size-4 rounded-full bg-white duration-200 ${
+              isChecked || defaultChecked ? translateClass : ''
             }`}
           />
         </span>
       </label>
       {error && (
-        <Typography color="red" variant="body1" className="h-6">
+        <Typography color="red" variant="body6" className="h-6">
           {error}
         </Typography>
       )}

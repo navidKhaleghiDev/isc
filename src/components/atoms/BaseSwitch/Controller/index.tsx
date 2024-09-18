@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
-import { BaseSwitchProps } from './types';
+
 import { baseSwitchStyles } from '../styles';
+import { BaseSwitchControllerProps } from '../types';
 
 /**
  * BaseSwitch component renders a customizable toggle switch with optional labels and controlled states.
@@ -24,18 +25,20 @@ import { baseSwitchStyles } from '../styles';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
+export function BaseSwitch(
+  props: BaseSwitchControllerProps<FieldValues>
+): JSX.Element {
   const {
     size,
     label,
     name,
     control,
     rules,
-    ltrLabel,
     defaultValue,
     onChange,
     disabled,
     error,
+    dir = 'rtl',
   } = props;
 
   const translateClassMap = {
@@ -56,22 +59,23 @@ export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
       defaultValue={defaultValue || false}
       render={({ field }) => {
         return (
-          <div dir="ltr">
+          <div>
             {label && (
               <label
                 htmlFor={name}
-                className={`block mb-1 ${
-                  ltrLabel ? 'text-left uppercase' : 'text-right'
-                }`}
+                className={`block mb-1
+                  ${dir === 'ltr' ? 'text-left uppercase' : 'text-right'}`}
               >
-                <Typography color="teal" variant="body1">
+                <Typography color="teal" variant="body6">
                   {label}
                 </Typography>
               </label>
             )}
             <label
               htmlFor={`${name}_input`}
-              className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center"
+              className={`relative inline-flex cursor-pointer select-none items-center ${
+                disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+              }`}
             >
               <input
                 disabled={disabled}
@@ -91,17 +95,17 @@ export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
                   field.value
                     ? 'bg-teal-500 dark:bg-teal-400'
                     : 'bg-gray-200 dark:bg-gray-800'
-                }`}
+                } ${disabled && 'opacity-40'}`}
               >
                 <span
-                  className={`dot size-4 rounded-full bg-white duration-200 ${
+                  className={`size-4 rounded-full bg-white duration-200 ${
                     field.value ? translateClass : ''
                   }`}
                 />
               </span>
             </label>
             {error && (
-              <Typography color="red" variant="body1" className="h-6">
+              <Typography color="red" variant="body6" className="h-6">
                 {error}
               </Typography>
             )}
