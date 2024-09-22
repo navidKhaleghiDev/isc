@@ -6,7 +6,7 @@ import { StatusCircleProps } from './types';
  *
  * @component
  * @param {string | number} [props.content] - The content to display inside the circle (e.g., a number or a short text).
- * @param {'sm' | 'md' | 'lg'| 'responsive' | 'default'} [props.size] - The size of the circle. 'sm' for small, 'md' for medium, 'lg' for large, and 'default' for default size.
+ * @param {'sm' | 'md' | 'lg'| 'responsive' | 'default'} [props.size] - The size of the circle. 'sm' for small, 'md' for medium, 'lg' for large, 'responsive' for responsive and 'default' for default size.
  * @param {string} [props.className] - Additional custom class names for the container.
  * @param {string} [props.color] - The background color of the circle.
  * @param {'ltr' | 'rtl'} [props.dir='rtl'] - The direction of the component. 'ltr' for left-to-right, 'rtl' for right-to-left (default is 'rtl').
