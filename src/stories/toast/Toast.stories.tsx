@@ -11,8 +11,8 @@ const meta = {
     docs: {
       description: {
         component: `
-                نمایش نوتیف شناور و زمان دار با استفاده از کتابخانه Toast با سه حالت Success, Error و Default.
-                Displays timed floating notifications using the Toast library with three states: Success, Error, and Default.
+                نمایش نوتیف شناور و زمان دار با استفاده از کتابخانه Toast با سه حالت Success, Error و info.
+                Displays timed floating notifications using the Toast library with three states: Success, Error, and info.
                 `,
       },
     },

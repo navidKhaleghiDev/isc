@@ -144,9 +144,9 @@ export function ToastCustomContainer({
       hideProgressBar={toastOptions.hideProgressBar}
       className={`toast-container-custom ${toastIconStyle({ size, dir })}`}
       toastClassName={(props) => getToastClassName(props)}
-      bodyClassName={`${
-        dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
-      } sm:text-lg text-xs text-left font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom h-full overflow-hidden`}
+      bodyClassName={`${dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'} ${
+        size === 'sm' ? 'text-xs' : 'sm:text-lg text-xs'
+      } text-left font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom h-full overflow-hidden`}
       icon={(props) => getToastIcon(props)}
       rtl={dir === 'rtl'}
     />
