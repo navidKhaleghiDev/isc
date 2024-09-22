@@ -10,7 +10,8 @@ import {
 import { IconifyIcon } from '@iconify/react';
 import { DateObject } from 'react-multi-date-picker';
 
-import { baseInputStyles, baseSelectStyles, baseOtpStyles } from './styles';
+import { baseSelectStyles, baseOtpStyles } from './styles';
+import { baseInputStyles } from './BaseInput/styles';
 import { IOptionSelect } from './BaseSelect/OptionSelect';
 
 export interface BaseInputProps<T extends FieldValues>

@@ -76,6 +76,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
   // Remember to merge the IconButton and the startIcon and endIcon
   // For handling the icon added CVA to the wrapper div remember to handel it with another method
   // When we hover in the input our helpText does not hover remember to handel this (also the disable of it)
+  // Handling the label in disable mode of the dark mode
 
   return (
     <div
@@ -92,12 +93,16 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
             dir === 'ltr' ? 'text-left' : 'text-right'
           }`}
         >
-          <Typography color="neutralDark" variant="body4">
+          <Typography
+            color="neutralDark"
+            variant="body6"
+            className="dark:text-white disabled:text-gray-500"
+          >
             {label}
           </Typography>
         </label>
       )}
-      <div className={`relative ${className ?? ''}`}>
+      <div className={`relative peer ${className ?? ''}`}>
         <input
           id={id}
           type={type}
@@ -138,7 +143,6 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
       <span className={baseInputTextStyles({ size, fullWidth })}>
         {!hiddenError && hiddenHelpText && (
           <Typography
-            color="neutralLight"
             variant="body6"
             className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
           >
