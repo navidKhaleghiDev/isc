@@ -146,7 +146,7 @@ export function ToastCustomContainer({
       toastClassName={(props) => getToastClassName(props)}
       bodyClassName={`${
         dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
-      } text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom max-h-20 overflow-hidden`}
+      } text-left text-lg font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom h-full overflow-hidden`}
       icon={(props) => getToastIcon(props)}
       rtl={dir === 'rtl'}
     />

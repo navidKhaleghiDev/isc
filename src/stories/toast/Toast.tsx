@@ -10,7 +10,6 @@ export type ToastPropsType = {
   size: 'sm' | 'md' | 'lg' | 'responsive';
   message: string;
   dir: 'rtl' | 'ltr';
-  darkMode?: boolean;
 };
 
 /**
@@ -33,7 +32,6 @@ export function Toast({
   status,
   message,
   dir,
-  darkMode,
   size,
 }: ToastPropsType) {
   const notify = () => {
@@ -50,7 +48,7 @@ export function Toast({
   };
 
   return (
-    <div className={`${className}${darkMode && ' dark'}`}>
+    <div className={`${className}`}>
       <button
         onClick={notify}
         style={{

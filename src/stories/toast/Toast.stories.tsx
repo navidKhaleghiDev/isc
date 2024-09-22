@@ -42,12 +42,6 @@ const meta = {
       options: ['rtl', 'ltr'],
       defaultValue: 'rtl',
     },
-    darkMode: {
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
-    },
   },
   decorators: [
     (Story, context): ReactElement => {
@@ -55,7 +49,6 @@ const meta = {
       return (
         <div
           style={{
-            width: '50vw',
             height: '100vh',
             position: 'relative',
             display: 'flex',
@@ -63,6 +56,7 @@ const meta = {
             alignItems: 'center',
             direction: dir,
           }}
+          className="w-[17.188rem] sm:w-[21.875rem] md:w-[33.75rem]"
         >
           <Story />
         </div>
@@ -83,6 +77,6 @@ export const Default: Story = {
     status: 'success',
     message: 'این یک پیغام عمومی می باشد.',
     dir: 'rtl',
-    size: 'md',
+    size: 'lg',
   },
 };
