@@ -8,7 +8,7 @@ import {
   baseInputTextStyles,
   baseInputWarperStyles,
 } from '../styles';
-import { BaseInputControlProps } from '../types';
+import { BaseInputControllerProps } from '../types';
 
 /**
  * BaseInput component that integrates with react-hook-form.
@@ -44,7 +44,7 @@ import { BaseInputControlProps } from '../types';
  */
 
 export function BaseInput<T extends FieldValues>(
-  props: BaseInputControlProps<T>
+  props: BaseInputControllerProps<T>
 ): JSX.Element {
   const {
     control,

@@ -48,7 +48,7 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   max?: string | number;
 }
 
-export interface BaseInputControlProps<T extends FieldValues>
+export interface BaseInputControllerProps<T extends FieldValues>
   extends VariantProps<typeof baseInputStyles> {
   id: string;
   control: Control<T>;
