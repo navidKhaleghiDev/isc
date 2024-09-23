@@ -38,6 +38,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
     dir = 'ltr',
   } = props;
 
+  // BaseIcon has been modified in other branch so i had to add this condition to size of icon
   return (
     <div
       className={`flex gap-2 ${
@@ -55,7 +56,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
           </Typography>
         </label>
       )}
-      <div className={`inline-flex items-center relative ${className || ''}`}>
+      <div className={`inline-flex items-center relative ${className ?? ''}`}>
         <input
           id={id}
           type="checkbox"

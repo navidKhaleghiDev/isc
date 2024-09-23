@@ -10,20 +10,6 @@ import {
 
 import { baseCheckBoxStyles } from './styles';
 
-export interface BaseCheckBoxControllerProps<T extends FieldValues>
-  extends VariantProps<typeof baseCheckBoxStyles> {
-  id: string;
-  name: FieldPath<T>;
-  control: Control<T>;
-  rules?: RegisterOptions<T>;
-  defaultValue?: PathValue<T, Path<T>>;
-  label?: string;
-  disabled?: boolean;
-  className?: string;
-  checked?: boolean;
-  dir?: 'rtl' | 'ltr';
-}
-
 export interface BaseCheckBoxProps
   extends VariantProps<typeof baseCheckBoxStyles> {
   id: string;
@@ -37,4 +23,12 @@ export interface BaseCheckBoxProps
   defaultChecked?: boolean;
   disabled?: boolean;
   dir?: 'rtl' | 'ltr';
+}
+
+export interface BaseCheckBoxControllerProps<T extends FieldValues>
+  extends BaseCheckBoxProps {
+  name: FieldPath<T>;
+  control: Control<T>;
+  rules?: RegisterOptions<T>;
+  defaultValue?: PathValue<T, Path<T>>;
 }

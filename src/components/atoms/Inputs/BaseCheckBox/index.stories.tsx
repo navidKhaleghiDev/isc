@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
+
 import { BaseCheckBox } from '.';
 
 // Custom Types for storyBook
@@ -10,6 +11,11 @@ const meta: Meta<typeof BaseCheckBox> = {
   component: BaseCheckBox,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'PassWordInput',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

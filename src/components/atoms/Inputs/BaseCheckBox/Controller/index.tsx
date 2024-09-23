@@ -21,7 +21,7 @@ import { BaseCheckBoxControllerProps } from '../types';
  *
  * @returns {JSX.Element} The rendered checkbox component.
  */
-export function BaseCheckBox<T extends FieldValues>(
+export function BaseCheckBoxController<T extends FieldValues>(
   props: BaseCheckBoxControllerProps<T>
 ): JSX.Element {
   const {
@@ -61,7 +61,7 @@ export function BaseCheckBox<T extends FieldValues>(
             </label>
           )}
           <div
-            className={`inline-flex items-center relative ${className || ''}`}
+            className={`inline-flex items-center relative ${className ?? ''}`}
           >
             <input
               id={id}
