@@ -3,6 +3,8 @@ import {
   Control,
   FieldPath,
   FieldValues,
+  Path,
+  PathValue,
   RegisterOptions,
 } from 'react-hook-form';
 import { baseSwitchStyles } from './styles';
@@ -26,4 +28,5 @@ export interface BaseSwitchControllerProps<T extends FieldValues>
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
+  defaultValue?: PathValue<T, Path<T>>;
 }

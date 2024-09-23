@@ -23,8 +23,8 @@ import { BaseSwitchControllerProps } from '../types';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitchController(
-  props: BaseSwitchControllerProps<FieldValues>
+export function BaseSwitchController<T extends FieldValues>(
+  props: BaseSwitchControllerProps<T>
 ): JSX.Element {
   const {
     size,
@@ -53,7 +53,7 @@ export function BaseSwitchController(
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue || false}
+      defaultValue={defaultValue}
       render={({ field }) => {
         return (
           <div>
@@ -71,10 +71,10 @@ export function BaseSwitchController(
                 id={`${name}_input`}
                 type="checkbox"
                 className="sr-only"
-                checked={field.value}
-                onChange={(e) => {
-                  field.onChange(e.target.checked);
-                }}
+                value={field.value}
+                name={field.name}
+                checked={Boolean(field.value)}
+                onChange={field.onChange}
               />
               <span
                 className={`${baseSwitchStyles({
