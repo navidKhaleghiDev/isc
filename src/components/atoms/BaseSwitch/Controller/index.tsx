@@ -63,7 +63,7 @@ export function BaseSwitch(
               <label
                 htmlFor={name}
                 className={`block mb-1
-                  ${dir === 'ltr' ? 'text-left uppercase' : 'text-right'}`}
+                  ${dir === 'ltr' ? 'text-left' : 'text-right'}`}
               >
                 <Typography color="teal" variant="body6">
                   {label}

@@ -7,9 +7,8 @@ import {
 } from 'react-hook-form';
 import { baseSwitchStyles } from './styles';
 
-export interface BaseSwitchProps<T extends FieldValues>
-  extends VariantProps<typeof baseSwitchStyles> {
-  name: FieldPath<T>;
+export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
+  name: string;
   defaultValue?: string;
   defaultChecked?: boolean;
   className?: string;

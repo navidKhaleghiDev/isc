@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import { useState } from 'react';
-import { FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 
 import { BaseSwitchProps } from './types';
@@ -25,7 +24,7 @@ import { baseSwitchStyles } from './styles';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
+export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
   const {
     size,
     label,
@@ -56,7 +55,7 @@ export function BaseSwitch(props: BaseSwitchProps<FieldValues>): JSX.Element {
       {label && (
         <label
           htmlFor={name}
-          className={`block mb-1 ${dir === 'ltr' && 'text-left uppercase'}`}
+          className={`block mb-1 ${dir === 'ltr' && 'text-left'}`}
         >
           <Typography color="black" variant="body6">
             {label}
