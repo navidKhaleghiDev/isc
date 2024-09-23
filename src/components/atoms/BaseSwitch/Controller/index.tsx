@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 
@@ -34,7 +33,6 @@ export function BaseSwitch(
     control,
     rules,
     defaultValue,
-    onChange,
     disabled,
     error,
     dir = 'rtl',
@@ -59,23 +57,15 @@ export function BaseSwitch(
       render={({ field }) => {
         return (
           <div>
-            {label && (
-              <label
-                htmlFor={name}
-                className={`block mb-1
-                  ${dir === 'ltr' ? 'text-left' : 'text-right'}`}
-              >
-                <Typography color="teal" variant="body6">
-                  {label}
-                </Typography>
-              </label>
-            )}
             <label
               htmlFor={`${name}_input`}
               className={`relative inline-flex cursor-pointer select-none items-center ${
                 disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-              }`}
+              }${dir === 'ltr' ? 'text-left' : 'text-right'}`}
             >
+              <Typography color="neutral" variant="body6" className="mx-2">
+                {label}
+              </Typography>
               <input
                 disabled={disabled}
                 id={`${name}_input`}
@@ -84,7 +74,6 @@ export function BaseSwitch(
                 checked={field.value}
                 onChange={(e) => {
                   field.onChange(e.target.checked);
-                  if (onChange) onChange(e.target.checked);
                 }}
               />
               <span

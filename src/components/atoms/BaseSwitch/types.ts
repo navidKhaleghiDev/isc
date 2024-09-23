@@ -18,19 +18,12 @@ export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
   error?: string;
   value?: string | number | readonly string[];
   dir?: 'ltr' | 'rtl';
-  onChange?: (event: boolean) => void;
+  onChange: (event: boolean) => void;
 }
 
 export interface BaseSwitchControllerProps<T extends FieldValues>
-  extends VariantProps<typeof baseSwitchStyles> {
+  extends Omit<BaseSwitchProps, 'onChange' | 'checked' | 'value'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
-  defaultValue?: string;
-  className?: string;
-  label?: string;
-  error?: string;
-  disabled?: boolean;
-  dir?: 'ltr' | 'rtl';
-  onChange?: (event: boolean) => void;
 }

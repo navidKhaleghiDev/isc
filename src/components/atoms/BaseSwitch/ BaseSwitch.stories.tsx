@@ -16,7 +16,7 @@ const meta: Meta<typeof BaseSwitch> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'kalameh' }}>
+      <div style={{ fontFamily: 'kalameh' }}>
         <Story />
       </div>
     ),

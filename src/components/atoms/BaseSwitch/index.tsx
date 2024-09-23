@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
 import { useState } from 'react';
 import { Typography } from '@ui/atoms/Typography';
 
@@ -52,22 +50,16 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
 
   return (
     <div>
-      {label && (
-        <label
-          htmlFor={name}
-          className={`block mb-1 ${dir === 'ltr' && 'text-left'}`}
-        >
-          <Typography color="black" variant="body6">
-            {label}
-          </Typography>
-        </label>
-      )}
       <label
         htmlFor={`${name}_input`}
         className={`select-none items-center relative inline-flex ${
           disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-        }`}
+        }
+        ${dir === 'ltr' && 'text-left'}`}
       >
+        <Typography color="black" variant="body6" className="mx-2">
+          {label}
+        </Typography>
         <input
           id={`${name}_input`}
           disabled={disabled}
