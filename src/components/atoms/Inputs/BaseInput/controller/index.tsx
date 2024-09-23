@@ -120,7 +120,7 @@ export function BaseInput<T extends FieldValues>(
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
                 className: `${(endIcon || onClickIcon) && 'pl-7'} ${
-                  startIcon || (onClickIcon && 'pr-7')
+                  (startIcon || onClickIcon) && 'pr-7'
                 }`,
                 fullWidth,
                 size,

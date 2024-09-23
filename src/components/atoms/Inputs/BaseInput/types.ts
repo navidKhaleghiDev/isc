@@ -78,10 +78,7 @@ export interface BaseInputControllerProps<T extends FieldValues>
   helpText?: string;
   hiddenHelpText?: boolean;
   iconButtonIcon?: string | IconifyIcon;
-  pureOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  pureValue?: string;
-  pureError?: string;
   dir?: 'rtl' | 'ltr';
   min?: string | number;
   max?: string | number;
