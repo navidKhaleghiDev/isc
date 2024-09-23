@@ -43,8 +43,8 @@ import { BaseInputControllerProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInput<T extends FieldValues>(
-  props: BaseInputControllerProps<T>
+export function BaseInput(
+  props: BaseInputControllerProps<FieldValues>
 ): JSX.Element {
   const {
     control,
