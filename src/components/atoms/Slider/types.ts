@@ -1,15 +1,15 @@
-export interface SingleRangeSliderProps {
+export interface BaseSliderProps {
   min: number;
   max: number;
   initialValue: number;
   hiddenLable?: boolean;
-  onChange?: (range: { max: number }) => void;
+  onChange: (range: { max: number }) => void;
 }
-export interface DoubleRangeSliderProps {
-  min: number;
-  max: number;
+
+export interface MultiBaseSliderProps
+  extends Omit<BaseSliderProps, 'onChange'> {
   initialMin: number;
   initialMax: number;
   hiddenLable?: boolean;
-  onChange?: (range: { min: number; max: number }) => void;
+  onChange: (range: { min: number; max: number }) => void;
 }

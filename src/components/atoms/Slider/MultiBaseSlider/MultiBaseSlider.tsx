@@ -1,11 +1,11 @@
 import { useCallback, useRef, useState } from 'react';
 
-import { DoubleRangeSliderProps } from '../types';
+import { MultiBaseSliderProps } from '../types';
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 
 /**
  * @component
- * @param {DoubleRangeSliderProps} props The props for SingleRangeSlider component.
+ * @param {MultiBaseSliderProps} props The props for MultiBaseSliderProps component.
  * @param {number} props.min - The minimum value of the slider
  * @param {number} props.max - The maximum value of the slider
  * @param {number} props.initialMin - The initialMin value
@@ -14,7 +14,7 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
  * @returns {JSX.Element} The rendered component
  */
 
-export function DoubleRangeSlider(props: DoubleRangeSliderProps): JSX.Element {
+export function MultiBaseSlider(props: MultiBaseSliderProps): JSX.Element {
   const { min, max, initialMin, initialMax, hiddenLable, onChange } = props;
   const [minValue, setMinValue] = useState(initialMin);
   const [maxValue, setMaxValue] = useState(initialMax);

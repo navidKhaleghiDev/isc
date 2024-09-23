@@ -1,18 +1,18 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
-import { SingleRangeSliderProps } from '../types';
+import { BaseSliderProps } from '../types';
 
 /**
  * @component
- * @param {SingleRangeSlider} props The props for SingleRangeSlider component.
+ * @param {BaseSlider} props The props for BaseSlider component.
  * @param {number} props.min - The minimum value of the slider
  * @param {number} props.max - The maximum value of the slider
  * @param {number} props.initialValue - The initial value
  * @param {(values: { min: number, max: number }) => void} [props.onChange] - The onChnage method just gives us the max value
  * @returns {JSX.Element} The rendered component
  */
-export function SingleRangeSlider(props: SingleRangeSliderProps): JSX.Element {
+export function BaseSlider(props: BaseSliderProps): JSX.Element {
   const { min, max, initialValue, hiddenLable, onChange } = props;
   const [value, setValue] = useState(initialValue);
   const sliderRef = useRef<HTMLDivElement>(null);

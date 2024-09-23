@@ -1,17 +1,17 @@
 import { ReactElement } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { DoubleRangeSlider } from './DoubleRangeSlider';
+import { BaseSlider } from './BaseSlider';
 
-const meta: Meta<typeof DoubleRangeSlider> = {
-  title: 'atoms/Slider/DoubleRangeSlider',
-  component: DoubleRangeSlider,
+const meta: Meta<typeof BaseSlider> = {
+  title: 'atoms/Slider/BaseSlider',
+  component: BaseSlider,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component: `
-          This DoubleRangeSlider component.
+          This BaseSlider component.
           `,
       },
     },
@@ -26,13 +26,9 @@ const meta: Meta<typeof DoubleRangeSlider> = {
       control: { type: 'number' },
       description: 'Maximum value for the slider',
     },
-    initialMin: {
+    initialValue: {
       control: { type: 'number' },
-      description: 'Initial minimum value selected',
-    },
-    initialMax: {
-      control: { type: 'number' },
-      description: 'Initial maximum value selected',
+      description: 'Initial Value',
     },
     onChange: {
       action: 'changed',
@@ -55,7 +51,6 @@ export const Default: Story = {
   args: {
     min: 0,
     max: 100,
-    initialMin: 20,
-    initialMax: 80,
+    initialValue: 20,
   },
 };
