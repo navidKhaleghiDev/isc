@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
-// import { useForm } from 'react-hook-form';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  // const { control } = useForm({
-  //   defaultValues: {
-  //     firstName: '',
-  //     lastName: '',
-  //   },
-  // });
 
   useEffect(() => {
     if (darkMode) {
@@ -27,7 +20,6 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
-      {/* <BaseCheckBox control={control} id="n" name="n" dir="rtl" label="nanna" /> */}
       {/* Your components here */}
     </div>
   );
