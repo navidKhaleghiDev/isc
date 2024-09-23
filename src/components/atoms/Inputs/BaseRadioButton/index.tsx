@@ -17,11 +17,13 @@ import { inputRadioButtonStyles, labelRadioButtonStyles } from './styles';
  * @param {string | number} props.value - The value of the radio button.
  * @param {boolean} [props.checked] - Whether the radio button is checked or not.
  * @param {'ltr' | 'rtl'} [props.dir='rtl'] - The direction of the layout (left-to-right or right-to-left).
+ * @param {'sm' | 'md' | 'responsive'} [props.size] - Determining the size of the radio button in three modes, which are both manually selected between sm and md, and responsive, which changes automatically according to the size of the device.
+ * @param {boolean} [props.disabled] - The radio button is disabled input or not.
  *
  * @returns {JSX.Element} Returns the rendered BaseRadioButton component.
  */
 
-export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
+export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
   const {
     name,
     id,
@@ -32,6 +34,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
     checked,
     dir = 'rtl',
     size,
+    disabled
   } = props;
 
   return (
@@ -47,9 +50,10 @@ export function BaseRadioButton(props: BaseRadioButtonProps<any>): JSX.Element {
         name={name}
         value={value}
         onChange={(e) => {
-          if (onChange) onChange(e.target.value);
+          if (onChange) onChange(e.target.checked);
         }}
         className={inputRadioButtonStyles({ size })}
+        disabled={disabled}
       />
       <label className={labelRadioButtonStyles()} htmlFor={id}>
         {label}

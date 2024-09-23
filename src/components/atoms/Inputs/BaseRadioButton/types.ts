@@ -4,29 +4,35 @@ import {
   FieldPath,
   FieldValues,
   RegisterOptions,
-  UseFormSetError,
 } from 'react-hook-form';
 
 import { inputRadioButtonStyles } from './styles';
 
-export interface BaseRadioButtonProps<T extends FieldValues>
-  extends VariantProps<typeof inputRadioButtonStyles> {
+export interface BaseRadioButtonProps extends VariantProps<typeof inputRadioButtonStyles> {
   id: string;
-  name: FieldPath<T>;
-  setError?: UseFormSetError<T>;
+  name: string;
   defaultValue?: string;
   label?: string;
-  hiddenError?: boolean;
   className?: string;
-  onChange?: (event: string) => void;
+  onChange?: (event: boolean) => void;
   value?: string | number | readonly string[];
-  error?: string;
   checked?: boolean;
   dir?: 'rtl' | 'ltr';
+  disabled?: boolean;
 }
 
 export interface BaseRadioButtonControlProps<T extends FieldValues>
-  extends BaseRadioButtonProps<any> {
-  control: Control<T>;
-  rules: RegisterOptions<T>;
+  extends VariantProps<typeof inputRadioButtonStyles> {
+  id: string;
+  name: FieldPath<T>;
+  defaultValue?: string;
+  label?: string;
+  className?: string;
+  onChange?: (event: boolean) => void;
+  value?: string | number | readonly string[];
+  checked?: boolean;
+  dir?: 'rtl' | 'ltr';
+  control?: Control<T>;
+  rules?: RegisterOptions<T>;
+  disabled?: boolean;
 }

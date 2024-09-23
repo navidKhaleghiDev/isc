@@ -1,4 +1,5 @@
 import { Controller } from 'react-hook-form';
+
 import { BaseRadioButtonControlProps } from '../types';
 import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
 
@@ -14,12 +15,12 @@ import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
  * @param {string} props.id - The unique ID for the radio input.
  * @param {string} [props.label] - The text label to display next to the radio button.
  * @param {string} [props.className] - Additional custom className for styling the component.
- * @param {boolean} [props.checked] - Whether the radio button is checked or not.
  * @param {Object} props.control - Control object provided by React Hook Form to manage form states.
  * @param {Object} [props.rules] - Validation rules for the radio button input.
- * @param {any} [props.defaultValue] - The default value of the radio button.
  * @param {Function} props.onChange - Callback function to handle changes to the radio button's checked state.
  * @param {'ltr' | 'rtl'} [props.dir='rtl'] - The direction of the layout (left-to-right or right-to-left).
+ * @param {'sm' | 'md' | 'responsive'} [props.size] - Determining the size of the radio button in three modes, which are both manually selected between sm and md, and responsive, which changes automatically according to the size of the device.
+ * @param {boolean} [props.disabled] - The radio button is disabled input or not.
  *
  * @returns {JSX.Element} Returns the rendered BaseRadioButton component.
  */
@@ -32,13 +33,12 @@ export function BaseRadioButton(
     id,
     label,
     className,
-    checked,
     control,
     rules,
-    defaultValue,
     onChange,
     dir = 'rtl',
     size,
+    disabled = false,
   } = props;
 
   return (
@@ -46,7 +46,7 @@ export function BaseRadioButton(
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
+      disabled={disabled}
       render={({ field }) => (
         <div
           className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
@@ -56,12 +56,12 @@ export function BaseRadioButton(
           <input
             id={id}
             type="radio"
-            checked={checked}
+            checked={Boolean(field.value)}
             name={field.name}
-            value={field.value ?? ''}
+            value={field.value ?? false}
             onChange={(e) => {
-              field.onChange(e.target.value);
-              if (onChange) onChange(e.target.value);
+              field.onChange(e.target.checked);
+              if (onChange) onChange(e.target.checked);
             }}
             className={inputRadioButtonStyles({ size })}
           />
