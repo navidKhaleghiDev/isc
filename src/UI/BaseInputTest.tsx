@@ -26,7 +26,9 @@ export function BaseInputTest() {
           iconButtonIcon={PhEyeSlash}
           fullWidth
           onClickIcon={() => setIconClicked(!iconClicked)}
-          error="there is an error"
+          helpText="there is an help text there is an help text there is an help text there is an help text"
+          hiddenHelpText
+          error="there is an erorr in our component"
           hiddenError
           dir="rtl"
           label="نام کاربری"
@@ -46,7 +48,6 @@ export function BaseInputTest() {
           rules={{ pattern: regexPattern.farsiLetters }}
           placeholder="نام کاربری"
           helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
-          hiddenHelpText
           fullWidth
           hiddenError
           startIcon={PhEyeSlash}

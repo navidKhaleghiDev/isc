@@ -27,7 +27,6 @@ import { BaseInputProps } from './types';
  * @param {string} [props.label] - The label to display above the input.
  * @param {boolean} [props.hiddenError] - Whether to hide the error message.
  * @param {function} [props.onChange] - Change handler for uncontrolled component.
- * @param {any} [props.value] - Value for uncontrolled component.
  * @param {function} [props.onClickIcon] - Click handler for the icon button input.
  * @param {string} [props.error] - Error message for uncontrolled component.
  * @param {number} [props.min] - Minimum value for the input.
