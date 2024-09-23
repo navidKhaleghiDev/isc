@@ -9,7 +9,7 @@ interface IconInputProps extends VariantProps<typeof iconBaseInputStyles> {
   intent: ColorIndent;
   icon: IconType;
   dir?: 'rtl' | 'ltr';
-  error: string | undefined;
+  error?: string | undefined;
 }
 
 export function IconInput({
