@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PhEye from '@iconify-icons/ph/eye';
 import PhEyeSlash from '@iconify-icons/ph/eye-slash';
-import { BaseInput } from '@ui/atoms/Inputs/BaseInput/controller';
+import { BaseInput } from '@ui/atoms/Inputs/BaseInput/Controller';
 
 import { BaseInputControllerProps } from '../BaseInput/types';
 import { regexPattern } from '../utils/regexPattern';

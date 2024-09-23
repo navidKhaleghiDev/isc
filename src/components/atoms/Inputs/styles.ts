@@ -24,30 +24,6 @@ export const iconBaseInputStyles = cva(
   }
 );
 
-export const baseTextareaStyles = cva(
-  'p-2 block rounded-lg border-2 outline-none border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 focus:border-gray-900 focus:placeholder:text-gray-900',
-  {
-    variants: {
-      intent: {
-        default: '',
-        error: 'border-red-600',
-      },
-      fullWidth: {
-        true: 'w-full',
-      },
-      size: {
-        sm: `w-40`,
-        md: `w-64`,
-        lg: `w-[21.875rem]`,
-      },
-    },
-    defaultVariants: {
-      intent: 'default',
-      size: 'md',
-    },
-  }
-);
-
 export const baseCheckBoxStyles = cva(
   `before:content[''] peer relative cursor-pointer appearance-none border rounded transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
   {
