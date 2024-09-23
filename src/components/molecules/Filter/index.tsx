@@ -18,12 +18,7 @@ export function FilterServices() {
             name="sortAs"
             placeholder="بنویسید"
           />
-          <BaseInput
-            control={control}
-            id="search"
-            name="search"
-            placeholder="... جستجو"
-          />
+          <BaseInput id="search" name="search" placeholder="... جستجو" />
         </div>
       </>
     </Card>

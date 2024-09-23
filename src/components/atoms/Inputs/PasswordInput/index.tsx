@@ -3,7 +3,7 @@ import PhEye from '@iconify-icons/ph/eye';
 import PhEyeSlash from '@iconify-icons/ph/eye-slash';
 import { BaseInput } from '@ui/atoms/Inputs/BaseInput/controller';
 
-import { BaseInputControlProps } from '../BaseInput/types';
+import { BaseInputControllerProps } from '../BaseInput/types';
 import { regexPattern } from '../utils/regexPattern';
 
 /**
@@ -25,7 +25,7 @@ export function PasswordInput({
   fullWidth = false,
   className,
 }: Pick<
-  BaseInputControlProps<any>,
+  BaseInputControllerProps<any>,
   'name' | 'control' | 'placeholder' | 'label' | 'fullWidth' | 'className'
 >) {
   const [showPassword, setShowPassword] = useState(false);
