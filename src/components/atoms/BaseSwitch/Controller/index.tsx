@@ -23,7 +23,7 @@ import { BaseSwitchControllerProps } from '../types';
  * @returns {JSX.Element} The BaseSwitch component.
  */
 
-export function BaseSwitch(
+export function BaseSwitchController(
   props: BaseSwitchControllerProps<FieldValues>
 ): JSX.Element {
   const {
