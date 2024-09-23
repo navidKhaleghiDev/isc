@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PhEye from '@iconify-icons/ph/eye';
 import PhEyeSlash from '@iconify-icons/ph/eye-slash';
-import { BaseInput } from '@ui/atoms/Inputs/BaseInput/Controller';
+import { BaseInputContorller } from '@ui/atoms/Inputs/BaseInput/Controller';
 
 import { BaseInputControllerProps } from '../BaseInput/types';
 import { regexPattern } from '../utils/regexPattern';
@@ -31,7 +31,7 @@ export function PasswordInput({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <BaseInput
+    <BaseInputContorller
       name={name}
       size="lg"
       id={name}

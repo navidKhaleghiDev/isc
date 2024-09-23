@@ -27,15 +27,15 @@ const meta: Meta<typeof BaseTextarea> = {
   render: (args) => (
     <BaseTextarea
       name={args.name}
-      pureOnChange={args.pureOnChange}
+      onChange={args.onChange}
       id={args.id}
       placeholder={args.placeholder}
       label={args.label}
       intent={args.intent}
       disabled={args.disabled}
       dir={args.dir}
-      pureError={args.pureError}
-      pureValue={args.pureValue}
+      error={args.error}
+      value={args.value}
       size={args.size}
       className={args.className}
       defaultValue={args.defaultValue}
@@ -64,7 +64,7 @@ const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
       placeholder,
       intent,
       defaultValue,
-      pureOnChange,
+      onChange,
       fullWidth,
       size,
       label,
@@ -74,11 +74,11 @@ const renderBaseTextarea: StoryFn<typeof BaseTextarea> =
 
     return (
       <BaseTextarea
-        pureOnChange={pureOnChange}
+        onChange={onChange}
         disabled={args.disabled}
         dir={args.dir}
-        pureValue={args.pureValue}
-        pureError={args.pureError}
+        value={args.value}
+        error={args.error}
         id={id}
         name={name}
         placeholder={placeholder}

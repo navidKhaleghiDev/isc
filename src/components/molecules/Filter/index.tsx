@@ -1,4 +1,4 @@
-import { Card, Typography, BaseInput } from '@ui/atoms';
+import { Card, Typography } from '@ui/atoms';
 import { BaseSelect } from '@ui/atoms/Inputs/BaseSelect';
 import { useForm } from 'react-hook-form';
 
@@ -18,7 +18,7 @@ export function FilterServices() {
             name="sortAs"
             placeholder="بنویسید"
           />
-          <BaseInput id="search" name="search" placeholder="... جستجو" />
+          {/* <BaseInput id="search"  name="search" placeholder="... جستجو" /> */}
         </div>
       </>
     </Card>
