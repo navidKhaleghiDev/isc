@@ -31,21 +31,23 @@ interface LinkButtonProps extends BaseButtonProps {
  * @returns {JSX.Element} The LinkButton component.
  */
 
-export function LinkButton({
-  link,
-  skip,
-  onClick,
-  label,
-  disabled,
-  submit,
-  className,
-  startIcon,
-  endIcon,
-  loading,
-  size,
-  type,
-  fullWidth,
-}: LinkButtonProps) {
+export function LinkButton(props: LinkButtonProps): JSX.Element {
+  const {
+    link,
+    skip,
+    onClick,
+    label,
+    disabled,
+    submit,
+    className,
+    startIcon,
+    endIcon,
+    loading,
+    size,
+    type,
+    fullWidth,
+  } = props;
+
   const button = (
     <BaseButton
       onClick={onClick}

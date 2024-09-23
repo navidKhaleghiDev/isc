@@ -7,7 +7,7 @@ export const outPath = cva('fill', {
       red: 'fill-[#DC26264D] dark:fill-[#FFFFFF4D]',
       neutral: 'fill-[#0000004D] dark:fill-[#FFFFFF4D]',
       inactive: '',
-      tertiary: '',
+      tertiary: 'fill-[#0000004D] dark:fill-[#FFFFFF4D]',
     },
   },
   defaultVariants: {
@@ -22,7 +22,7 @@ export const inPath = cva('fill', {
       red: 'fill-[#DC2626] dark:fill-white',
       neutral: 'fill-gray-900 dark:fill-white',
       inactive: '',
-      tertiary: '',
+      tertiary: 'fill-gray-900 dark:fill-white',
     },
   },
   defaultVariants: {
