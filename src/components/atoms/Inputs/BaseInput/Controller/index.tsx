@@ -43,8 +43,8 @@ import { BaseInputControllerProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInputContorller(
-  props: BaseInputControllerProps<FieldValues>
+export function BaseInputController<T extends FieldValues>(
+  props: BaseInputControllerProps<T>
 ): JSX.Element {
   const {
     control,
@@ -71,6 +71,7 @@ export function BaseInputContorller(
     dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
+
   return (
     <Controller
       name={name}
@@ -94,7 +95,7 @@ export function BaseInputContorller(
             >
               <Typography
                 color="neutralDark"
-                variant="body4"
+                variant="body6"
                 className="dark:text-white disabled:text-gray-500"
               >
                 {label}

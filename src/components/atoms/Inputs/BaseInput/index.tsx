@@ -38,8 +38,6 @@ import { BaseInputProps } from './types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-/// I have error inside of how to handel helpText style in different classes
-
 export function BaseInput(props: BaseInputProps): JSX.Element {
   const {
     name,
@@ -59,7 +57,6 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     hiddenError,
     onChange,
     onKeyDown,
-    value,
     onClickIcon,
     error,
     min,
@@ -112,9 +109,8 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           max={max}
           onKeyDownCapture={onKeyDown}
           name={name}
-          value={value}
           defaultValue={defaultValue}
-          onChange={onChange}
+          onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
           className={baseInputStyles({
             intent: error ? 'error' : intent,

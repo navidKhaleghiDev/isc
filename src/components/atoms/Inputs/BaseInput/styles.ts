@@ -15,7 +15,6 @@ export const baseInputStyles = cva(
         sm: `w-40`,
         md: `w-[15.94rem]`,
         lg: `w-[21.88rem]`,
-        freeWidth: `w-full h-10 text-md`,
       },
     },
     defaultVariants: {
@@ -36,7 +35,6 @@ export const baseInputTextStyles = cva(
         sm: `w-40`,
         md: `w-[15.94rem]`,
         lg: `w-[21.88rem]`,
-        freeWidth: `h-10 text-md`,
       },
     },
     defaultVariants: {
@@ -54,7 +52,6 @@ export const baseInputWarperStyles = cva(``, {
       sm: `w-40`,
       md: `w-[15.94rem]`,
       lg: `w-[21.88rem]`,
-      freeWidth: `w-full h-10 text-md`,
     },
   },
   defaultVariants: {

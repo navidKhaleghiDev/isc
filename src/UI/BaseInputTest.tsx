@@ -1,28 +1,60 @@
 import { BaseInput } from '@ui/atoms';
 import { useState } from 'react';
 import PhEyeSlash from '@iconify-icons/ph/eye-slash';
+import { BaseInputController } from '@ui/atoms/Inputs/BaseInput/Controller';
+import { useForm } from 'react-hook-form';
+import { regexPattern } from '@ui/atoms/Inputs';
+
+type MyFormType = {
+  userName: string;
+};
 
 export function BaseInputTest() {
   const [userName, setUserName] = useState('');
+  const [iconClicked, setIconClicked] = useState(false);
+  const [showData, setShowData] = useState<MyFormType>();
+  const { control, handleSubmit } = useForm<MyFormType>({});
   return (
     <div className="font-kalameh">
-      <form>
+      <form className="without controller">
         <BaseInput
-          id="userName"
-          name="userName"
-          onChange={(e) => setUserName(e.target.value)}
-          value={userName}
-          startIcon={PhEyeSlash}
-          error="there is an error there is an error there is an error there is an error there is an error there is an error"
-          helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
-          hiddenHelpText
+          id="Name"
+          name="Name"
+          onChange={(value) => setUserName(value)}
+          defaultValue={userName}
+          placeholder="نام کاربری"
+          iconButtonIcon={PhEyeSlash}
           fullWidth
+          onClickIcon={() => setIconClicked(!iconClicked)}
+          error="there is an error"
+          hiddenError
           dir="rtl"
-          disabled
           label="نام کاربری"
         />
         <p>{userName}</p>
+        <p>{iconClicked && 'icon clicked'}</p>
         <button type="submit">submit form</button>
+      </form>
+      <form
+        className="with controller"
+        onSubmit={handleSubmit((data) => setShowData(data))}
+      >
+        <BaseInputController
+          id="userName"
+          name="userName"
+          control={control}
+          rules={{ pattern: regexPattern.farsiLetters }}
+          placeholder="نام کاربری"
+          helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
+          hiddenHelpText
+          fullWidth
+          hiddenError
+          startIcon={PhEyeSlash}
+          dir="rtl"
+          label="نام کاربری"
+        />
+        <p>{showData?.userName}</p>
+        <button type="submit">submit form control</button>
       </form>
     </div>
   );

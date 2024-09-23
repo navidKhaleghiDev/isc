@@ -38,9 +38,8 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   hiddenHelpText?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string | IconifyIcon;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: string) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  value: string;
   error?: string;
   disabled?: boolean;
   dir?: 'rtl' | 'ltr';
