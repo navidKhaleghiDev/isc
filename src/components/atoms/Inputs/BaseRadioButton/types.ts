@@ -22,7 +22,7 @@ export interface BaseRadioButtonProps
   disabled?: boolean;
 }
 
-export interface BaseRadioButtonControlProps<T extends FieldValues>
+export interface BaseRadioButtonControllerProps<T extends FieldValues>
   extends VariantProps<typeof inputRadioButtonStyles> {
   id: string;
   name: FieldPath<T>;

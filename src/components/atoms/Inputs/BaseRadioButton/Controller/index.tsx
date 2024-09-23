@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 
-import { BaseRadioButtonControlProps } from '../types';
+import { BaseRadioButtonControllerProps } from '../types';
 import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
 
 /**
@@ -26,7 +26,7 @@ import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
  */
 
 export function BaseRadioButton(
-  props: BaseRadioButtonControlProps<any>
+  props: BaseRadioButtonControllerProps<any>
 ): JSX.Element {
   const {
     name,
