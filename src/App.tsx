@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { BaseCheckBoxTest } from './UI/BaseCheckBox';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,6 +24,11 @@ function App() {
         Toggle Dark Mode
       </button>
       {/* Your components here */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/ui" element={<BaseCheckBoxTest />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

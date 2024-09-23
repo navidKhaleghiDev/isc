@@ -17,16 +17,14 @@ export interface BaseCheckBoxProps
   defaultValue?: string;
   label?: string;
   className?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string | number | readonly string[];
-  checked?: boolean;
+  onChange: (checkValue: boolean) => void;
   defaultChecked?: boolean;
   disabled?: boolean;
   dir?: 'rtl' | 'ltr';
 }
 
 export interface BaseCheckBoxControllerProps<T extends FieldValues>
-  extends BaseCheckBoxProps {
+  extends Omit<BaseCheckBoxProps, 'disabled'> {
   name: FieldPath<T>;
   control: Control<T>;
   rules?: RegisterOptions<T>;
