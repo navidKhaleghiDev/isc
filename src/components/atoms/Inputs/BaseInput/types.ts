@@ -15,7 +15,7 @@ import { baseInputStyles } from './styles';
 export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   id: string;
   name: string;
-  defaultValue?: any;
+  defaultValue?: string | number;
   type?:
     | 'email'
     | 'number'
@@ -49,37 +49,10 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
 }
 
 export interface BaseInputControllerProps<T extends FieldValues>
-  extends VariantProps<typeof baseInputStyles> {
-  id: string;
+  extends Omit<BaseInputProps, 'onChange' | 'value' | 'error' | 'disabled'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;
   defaultValue?: PathValue<T, Path<T>>;
-  type?:
-    | 'email'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'url'
-    | 'file'
-    | 'date'
-    | 'datetime-local'
-    | 'time';
-  label?: string;
-  placeholder?: string;
-  className?: string;
-  startIcon?: string | IconifyIcon;
-  endIcon?: string | IconifyIcon;
-  hiddenError?: boolean;
-  onClickIcon?: () => void;
-  helpText?: string;
-  hiddenHelpText?: boolean;
-  iconButtonIcon?: string | IconifyIcon;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  dir?: 'rtl' | 'ltr';
-  min?: string | number;
-  max?: string | number;
 }
