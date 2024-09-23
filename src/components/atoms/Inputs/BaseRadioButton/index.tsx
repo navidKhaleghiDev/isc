@@ -34,7 +34,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
     checked,
     dir = 'rtl',
     size,
-    disabled
+    disabled,
   } = props;
 
   return (

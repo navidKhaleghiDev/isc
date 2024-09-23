@@ -8,7 +8,8 @@ import {
 
 import { inputRadioButtonStyles } from './styles';
 
-export interface BaseRadioButtonProps extends VariantProps<typeof inputRadioButtonStyles> {
+export interface BaseRadioButtonProps
+  extends VariantProps<typeof inputRadioButtonStyles> {
   id: string;
   name: string;
   defaultValue?: string;

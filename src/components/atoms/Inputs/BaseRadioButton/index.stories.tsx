@@ -46,11 +46,9 @@ const meta: Meta<typeof BaseRadioButton> = {
         id={args.id}
         name={args.name}
         checked={args.checked}
-        error={args.error}
         className={args.className}
         dir={args.dir}
         defaultValue={args.defaultValue}
-        hiddenError={args.hiddenError}
         label={args.label}
         value={args.value}
       />
@@ -59,11 +57,9 @@ const meta: Meta<typeof BaseRadioButton> = {
         id={args.id + 1}
         name={args.name}
         checked={args.checked}
-        error={args.error}
         className={args.className}
         dir={args.dir}
         defaultValue={args.defaultValue}
-        hiddenError={args.hiddenError}
         label={args.label}
         value={args.value}
       />
