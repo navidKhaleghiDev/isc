@@ -48,7 +48,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
         } items-center justify-center`}
       >
         {label && (
-          <label htmlFor={id} className="cursor-pointer">
+          <label htmlFor={id}>
             <Typography
               color="neutralDark"
               variant="body6"
@@ -69,14 +69,14 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
             name={name}
             disabled={disabled}
             checked={checked}
-            onChange={(event) => onChange(event.target.checked)}
+            onChange={onChange}
             className={baseCheckBoxStyles({
               intent: error ? 'error' : intent,
               size,
             })}
           />
           {checked && (
-            <span className="absolute text-neutral-100 dark:peer-disabled:hidden dark:peer-checked:text-neutral-100 dark:text-neutral-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+            <span className="absolute text-gray-100 dark:peer-disabled:hidden dark:peer-checked:text-gray-100 dark:text-gray-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
               <BaseIcon icon={checkBold} size={size === 'md' ? 'xs' : 'sm'} />
             </span>
           )}

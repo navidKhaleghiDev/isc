@@ -31,6 +31,7 @@ export function BaseCheckBoxController<T extends FieldValues>(
     name,
     control,
     rules,
+    disabled,
     label,
     hiddenError,
     className,
@@ -42,6 +43,7 @@ export function BaseCheckBoxController<T extends FieldValues>(
     <Controller
       name={name}
       control={control}
+      disabled={disabled}
       rules={rules}
       render={({ field, fieldState: { error } }) => (
         <div className="flex flex-col items-center justify-center">
@@ -80,7 +82,7 @@ export function BaseCheckBoxController<T extends FieldValues>(
                 })}
               />
               {Boolean(field.value) && (
-                <span className="absolute text-neutral-100 dark:peer-disabled:hidden dark:peer-checked:text-neutral-100 dark:text-neutral-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                <span className="absolute text-gray-100 dark:peer-disabled:hidden dark:peer-checked:text-gray-100 dark:text-gray-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                   <BaseIcon
                     icon={checkBold}
                     size={size === 'md' ? 'xs' : 'sm'}

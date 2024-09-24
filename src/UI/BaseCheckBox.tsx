@@ -24,7 +24,7 @@ export function BaseCheckBoxTest() {
         <BaseCheckBox
           id="item"
           name="item"
-          onChange={(value) => setCheckItem(value)}
+          onChange={(value) => setCheckItem(value.target.checked)}
           label="گزینه"
           checked={checkItem}
           error="there is an error"
@@ -41,7 +41,7 @@ export function BaseCheckBoxTest() {
         )}
       >
         <BaseCheckBoxController
-          id="item"
+          id="checkboxController"
           name="checkBoxState"
           control={control}
           label="گزینه"

@@ -1,4 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
+import { ChangeEvent } from 'react';
 import {
   Control,
   FieldPath,
@@ -13,7 +14,7 @@ export interface BaseCheckBoxProps
   id: string;
   name: string;
   checked: boolean;
-  onChange: (value: boolean) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   className?: string;
   error?: string;
@@ -23,7 +24,7 @@ export interface BaseCheckBoxProps
 }
 
 export interface BaseCheckBoxControllerProps<T extends FieldValues>
-  extends Omit<BaseCheckBoxProps, 'disabled' | 'onChange' | 'checked'> {
+  extends Omit<BaseCheckBoxProps, 'onChange' | 'checked'> {
   name: FieldPath<T>;
   control: Control<T>;
   rules?: RegisterOptions<T>;
