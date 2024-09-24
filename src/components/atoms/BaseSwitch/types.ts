@@ -12,15 +12,15 @@ import { baseSwitchStyles } from './styles';
 export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
   id: string;
   name: string;
-  defaultValue?: string;
-  className?: string;
-  label?: string;
-  disabled?: boolean;
   checked?: boolean;
-  error?: string;
-  value?: string | number | readonly string[];
-  dir?: 'ltr' | 'rtl';
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
+  className?: string;
+  error?: string;
+  hiddenError?: boolean;
+  value?: string | number | readonly string[];
+  disabled?: boolean;
+  dir?: 'rtl' | 'ltr';
 }
 
 export interface BaseSwitchControllerProps<T extends FieldValues>

@@ -27,13 +27,13 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
     size,
     label,
     name,
-    defaultValue,
     onChange,
     value,
     checked,
     error,
     dir = 'rtl',
     disabled = false,
+    hiddenError,
   } = props;
 
   return (
@@ -49,7 +49,6 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           name={name}
           type="checkbox"
           value={value}
-          defaultValue={defaultValue}
           className="sr-only peer"
           onChange={onChange}
           disabled={disabled}
@@ -67,9 +66,13 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           </Typography>
         </span>
       </label>
-      {error && (
-        <Typography color="red" variant="body6" className="h-6">
-          {error}
+      {hiddenError && (
+        <Typography
+          color="red"
+          variant="body6"
+          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+        >
+          {error || ''}
         </Typography>
       )}
     </div>
