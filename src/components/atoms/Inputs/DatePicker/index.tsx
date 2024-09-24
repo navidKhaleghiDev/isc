@@ -112,7 +112,6 @@ export const DatePicker = memo(function DatePicker({
     intent,
     className: `${fullWidth ? 'w-full' : 'w-36'} h-10 ${className || ''}`,
     fullWidth,
-    size: 'none',
   });
 
   return (

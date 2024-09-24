@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import PhEye from '@iconify-icons/ph/eye';
 import PhEyeSlash from '@iconify-icons/ph/eye-slash';
-import { BaseInput } from '@ui/atoms';
+import { BaseInputController } from '@ui/atoms/Inputs/BaseInput/Controller';
 
-import { BaseInputProps } from '../types';
+import { BaseInputControllerProps } from '../BaseInput/types';
 import { regexPattern } from '../utils/regexPattern';
 
 /**
@@ -25,13 +25,13 @@ export function PasswordInput({
   fullWidth = false,
   className,
 }: Pick<
-  BaseInputProps<any>,
+  BaseInputControllerProps<any>,
   'name' | 'control' | 'placeholder' | 'label' | 'fullWidth' | 'className'
 >) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <BaseInput
+    <BaseInputController
       name={name}
       size="lg"
       id={name}

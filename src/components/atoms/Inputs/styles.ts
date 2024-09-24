@@ -1,45 +1,16 @@
-import { SIZE, PALLET } from '@src/constants/theme';
+import { SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
 
-export const baseInputStyles = cva(
-  `peer p-2 flex text-sm rounded-lg outline-none border 
-    h-10`,
-  {
-    variants: {
-      intent: {
-        default: `text-gray-500 border border-gray-300 focus:border-gray-500 focus:placeholder-gray-900 focus:text-gray-900  disabled:bg-gray-100 disabled:text-gray-300 disabled:${PALLET.BORDER_COLOR.NEUTRAL_LIGHT}`,
-        error: `text-gray-900  border-2 ${PALLET.BORDER_COLOR.RED} placeholder-gray-900`,
-      },
-      fullWidth: {
-        true: 'w-full',
-      },
-      // ltrPlaceHolder: {
-      //   true: 'placeholder:text-left',
-      //   false: 'placeholder:text-right placeholder:text-rtl',
-      // },
-      size: {
-        none: '',
-        xs: `w-52 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-40`,
-        md: `w-[15.94rem]`,
-        lg: `w-[21.88rem]`,
-        xl: `w-[60rem] h-16 text-xl ${SIZE.TYPOGRAPHY.BODY2}`,
-        freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
-      },
-    },
-    defaultVariants: {
-      intent: 'default',
-      size: 'sm',
-    },
-  }
-);
+// Remember that this cva has been used in different modules and can not be in specific module
+// The color of the icon is better to be text-gray-700 when we are using it in the darkMode.
 
 export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center active:text-gray-500 fill-current',
+  'absolute inset-y-0 flex px-2 items-center dark:peer-disabled:text-gray-700 peer-disabled:cursor-default peer-disabled:text-gray-300 fill-current',
   {
     variants: {
       intent: {
-        default: 'text-gray-300 peer-focus:text-gray-500',
+        default:
+          'text-gray-400 dark:text-gray-500 peer-hover:text-gray-500 peer-focus:text-gray-900 dark:peer-focus:text-gray-300 dark:peer-hover:text-gray-300',
         error: 'text-red-500 peer-focus:border-red-500',
       },
       right: {
@@ -49,30 +20,6 @@ export const iconBaseInputStyles = cva(
     },
     defaultVariants: {
       intent: 'default',
-    },
-  }
-);
-
-export const baseTextareaStyles = cva(
-  'p-2 block rounded-lg border-2 outline-none border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 focus:border-gray-900 focus:placeholder:text-gray-900',
-  {
-    variants: {
-      intent: {
-        default: '',
-        error: 'border-red-600',
-      },
-      fullWidth: {
-        true: 'w-full',
-      },
-      size: {
-        sm: `w-40`,
-        md: `w-64`,
-        lg: `w-[21.875rem]`,
-      },
-    },
-    defaultVariants: {
-      intent: 'default',
-      size: 'md',
     },
   }
 );
@@ -103,10 +50,10 @@ export const baseSelectStyles = cva(
   {
     variants: {
       intent: {
-        default: `text-gray-900 focus:border-teal-500 border shadow-sm focus:border-2 ${PALLET.BORDER_COLOR.NEUTRAL_MIDDLE} focus:placeholder-gray-900 focus:text-gray-900 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-500 disabled:shadow-none`,
+        default: `text-gray-900 focus:border-teal-500 border shadow-sm focus:border-2 focus:placeholder-gray-900 focus:text-gray-900 disabled:bg-gray-100 disabled:text-gray-300 disabled:border-gray-500 disabled:shadow-none`,
         primary:
           'bg-white w-fit disabled:text-gray-300 rounded-md text-xs text-gray-600 cursor-pointer',
-        error: `text-gray-900 border-2 ${PALLET.BORDER_COLOR.RED} placeholder-gray-900`,
+        error: `text-gray-900 border-2 placeholder-gray-900`,
       },
       fullWidth: {
         true: 'w-full',
@@ -159,6 +106,31 @@ export const baseOtpStyles = cva(
     },
     defaultVariants: {
       intent: 'error',
+      size: 'md',
+    },
+  }
+);
+
+export const baseInputStyles = cva(
+  `peer p-2 flex text-sm rounded-lg outline-none border h-10 disabled:bg-white disabled:border-gray-300 dark:text-white disabled:placeholder-gray-300 disabled:opacity-50 dark:border-gray-400 dark:placeholder-gray-500 dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:placeholder-gray-500`,
+  {
+    variants: {
+      intent: {
+        default: `text-gray-900 dark:focus:border-white dark:border-gray-400 dark:focus:placeholder-white border-gray-300 hover:border-gray-500 dark:hover:placeholder-gray-300 dark:hover:border-gray-300 hover:placeholder-gray-500 focus:border-gray-900 focus:placeholder-gray-900`,
+        error: `border-red-600 dark:text-white dark:placeholder-white placeholder-gray-900 dark:focus:border-red-500 dark:border-red-500 `,
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
+      size: {
+        sm: `w-40`,
+        md: `w-[15.94rem]`,
+        lg: `w-[21.88rem]`,
+        freeWidth: `w-full h-10 text-md`,
+      },
+    },
+    defaultVariants: {
+      intent: 'default',
       size: 'md',
     },
   }

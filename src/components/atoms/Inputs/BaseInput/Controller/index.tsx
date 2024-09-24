@@ -1,10 +1,14 @@
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
+import { Typography } from '@ui/atoms/Typography';
 
-import { Typography } from '../../Typography';
-import { IconButtonInput } from '../IconButtonInput';
-import { IconInput } from '../IconInput';
-import { baseInputStyles } from '../styles';
-import { BaseInputControlProps } from '../types';
+import { IconButtonInput } from '../../IconButtonInput';
+import { IconInput } from '../../IconInput';
+import {
+  baseInputStyles,
+  baseInputTextStyles,
+  baseInputWarperStyles,
+} from '../styles';
+import { BaseInputControllerProps } from '../types';
 
 /**
  * BaseInput component that integrates with react-hook-form.
@@ -39,7 +43,9 @@ import { BaseInputControlProps } from '../types';
  * @returns {JSX.Element} The rendered input component.
  */
 
-export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
+export function BaseInputController<T extends FieldValues>(
+  props: BaseInputControllerProps<T>
+): JSX.Element {
   const {
     control,
     name,
@@ -48,9 +54,11 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
     rules,
     className,
     startIcon,
+    helpText,
     endIcon,
     fullWidth,
     defaultValue,
+    hiddenHelpText,
     intent,
     size,
     type,
@@ -63,6 +71,7 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
     dir = 'rtl',
     iconButtonIcon = 'ph:x',
   } = props;
+
   return (
     <Controller
       name={name}
@@ -70,7 +79,13 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
       rules={rules}
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
-        <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
+        <div
+          className={baseInputWarperStyles({
+            size,
+            fullWidth,
+            className: `flex flex-col ${className ?? ''}`,
+          })}
+        >
           {label && (
             <label
               htmlFor={id}
@@ -78,16 +93,21 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
                 dir === 'ltr' ? 'text-left' : 'text-right'
               }`}
             >
-              <Typography color="neutralDark" variant="body4">
+              <Typography
+                color="neutralDark"
+                variant="body6"
+                className="dark:text-white disabled:text-gray-500"
+              >
                 {label}
               </Typography>
             </label>
           )}
-          <div className="relative base-input">
+          <div className="relative peer">
             <input
               id={id}
               type={type}
               dir={dir}
+              disabled={field.disabled}
               name={field.name}
               value={type !== 'file' ? field.value ?? '' : undefined}
               onChange={(e) => {
@@ -100,7 +120,9 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
               onKeyDown={onKeyDown}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'} `,
+                className: `${(endIcon || onClickIcon) && 'pl-7'} ${
+                  (startIcon || onClickIcon) && 'pr-7'
+                }`,
                 fullWidth,
                 size,
               })}
@@ -109,26 +131,54 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
               max={max}
             />
             {startIcon && (
-              <IconInput icon={startIcon} intent={intent} dir="rtl" />
+              <IconInput
+                icon={startIcon}
+                intent={intent}
+                dir="rtl"
+                error={error?.message}
+              />
             )}
-            {endIcon && <IconInput icon={endIcon} intent={intent} />}
+            {endIcon && (
+              <IconInput
+                icon={endIcon}
+                intent={intent}
+                error={error?.message}
+              />
+            )}
             {onClickIcon && (
               <IconButtonInput
                 icon={iconButtonIcon}
                 intent={intent}
                 onClick={onClickIcon}
+                disabled={field.disabled}
+                error={error?.message}
+                dir={dir}
               />
             )}
           </div>
-          {!hiddenError && (
-            <Typography
-              color="red"
-              variant="body1"
-              className={`min-h-10 ${dir === 'rtl' && 'text-right'}`}
-            >
-              {error?.message ?? ''}
-            </Typography>
-          )}
+          <span className={baseInputTextStyles({ size, fullWidth })}>
+            {!hiddenError && hiddenHelpText && (
+              <Typography
+                variant="body6"
+                className={`${
+                  dir === 'ltr' ? 'text-left' : 'text-right'
+                } min-h-10`}
+              >
+                {helpText}
+              </Typography>
+            )}
+            {!field.disabled && hiddenError && (
+              <Typography
+                color="red"
+                variant="body6"
+                className={`${
+                  dir === 'ltr' ? 'text-left' : 'text-right'
+                } min-h-10`}
+              >
+                {error?.message ?? ''}
+              </Typography>
+            )}
+          </span>
         </div>
       )}
     />

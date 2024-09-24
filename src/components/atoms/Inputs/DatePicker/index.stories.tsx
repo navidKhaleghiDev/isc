@@ -63,12 +63,10 @@ const meta: Meta<typeof DatePicker> = {
       startIcon={args.startIcon}
       maxDate={args.maxDate}
       minDate={args.minDate}
-      pureError={args.pureError}
       showTimePicker={args.showTimePicker}
       dir={args.dir}
       iconButtonIcon={args.iconButtonIcon}
       hiddenError={args.hiddenError}
-      pureValue={args.pureError}
     />
   ),
   // Adding font family
@@ -98,11 +96,9 @@ const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
     endIcon,
     label,
     dir,
-    pureError,
     iconButtonIcon,
     format,
     placeholder,
-    pureOnChange,
     size,
     maxDate,
     fullWidth,
@@ -131,13 +127,10 @@ const renderDatePicker: StoryFn<typeof DatePicker> = function RenderDatePicker(
       startIcon={startIcon}
       maxDate={maxDate}
       minDate={minDate}
-      pureError={pureError}
       dir={dir}
       iconButtonIcon={iconButtonIcon}
       hiddenError={hiddenError}
-      pureOnChange={pureOnChange}
       onClickIcon={onClickIcon}
-      pureValue={pureError}
     />
   );
 };

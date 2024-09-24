@@ -8,23 +8,31 @@ type IconButtonInputProps = {
   intent: ColorIndent;
   icon: IconType;
   onClick: () => void;
+  disabled?: boolean;
+  error?: string | undefined;
+  dir?: 'rtl' | 'ltr';
 };
 
 export function IconButtonInput({
   icon,
-  intent,
+  intent = 'default',
+  disabled,
   onClick,
+  error,
+  dir,
 }: IconButtonInputProps) {
   return (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       className={iconBaseInputStyles({
-        intent,
+        intent: error ? 'error' : intent,
+        className: `${dir === 'rtl' && 'right-0'}`,
       })}
       aria-label="button"
     >
-      <BaseIcon icon={icon} className="mx-1 text-gray-400" size="md" />
+      <BaseIcon icon={icon} size="xs" />
     </button>
   );
 }

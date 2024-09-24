@@ -26,6 +26,8 @@ const meta: Meta<typeof PasswordInput> = {
   },
   render: (args) => (
     <PasswordInput
+      fullWidth={args.fullWidth}
+      className={args.className}
       name={args.name}
       placeholder={args.placeholder}
       label={args.label}
@@ -47,11 +49,13 @@ const meta: Meta<typeof PasswordInput> = {
 const RenderBaseInput: StoryFn<typeof PasswordInput> = function RenderBaseInput(
   args
 ) {
-  const { label, name, placeholder } = args;
+  const { label, name, placeholder, className, fullWidth } = args;
   const { control } = useForm();
   return (
     <PasswordInput
       control={control}
+      className={className}
+      fullWidth={fullWidth}
       label={label}
       name={name}
       placeholder={placeholder}
