@@ -1,4 +1,5 @@
 import { Icon, IconifyIcon } from '@iconify/react';
+
 import { baseIconStyles } from './styles';
 import { BaseIconProps } from './types';
 

@@ -20,7 +20,7 @@ import { BaseIconProps } from './types';
  */
 
 export function BaseIcon(props: BaseIconProps): JSX.Element {
-  const { color, size, hoverColor, className, icon = 'fa:home' } = props;
+  const { color, size, hoverColor, className, icon } = props;
   return (
     <Icon
       className={baseIconStyles({ size, color, hoverColor, className })}

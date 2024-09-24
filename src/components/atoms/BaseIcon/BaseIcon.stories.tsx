@@ -345,7 +345,26 @@ const meta = {
       control: {
         type: 'select',
       },
-      options: ['neutral', 'red', 'teal', 'tealLink', 'yellow'],
+      options: [
+        'default',
+        'neutralLight',
+        'neutral',
+        'tealLight',
+        'teal',
+        'yellowLight',
+        'yellow',
+        'redLight',
+        'red',
+        'blueLight',
+        'blue',
+        'purpleLight',
+        'purple',
+        'neutralLightNoBg',
+        'neutralNoBg',
+        'tealNoBg',
+        'redLightNoBg',
+        'redNoBg',
+      ],
     },
     size: {
       control: {
