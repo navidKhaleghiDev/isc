@@ -41,8 +41,11 @@ const meta: Meta<typeof BaseInput> = {
 };
 
 // Define story
-export const searchInput: StorySearchInput = {
-  args: {},
+export const baseInput: StorySearchInput = {
+  args: {
+    id: 'baseInput',
+    name: 'baseInput',
+  },
 };
 
 export default meta;
