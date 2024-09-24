@@ -22,7 +22,6 @@ export interface BaseTextareaProps
   value: string | number | readonly string[];
   dir?: 'rtl' | 'ltr';
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   className?: string;
   hiddenError?: boolean;
 }

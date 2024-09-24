@@ -1,8 +1,9 @@
 import { Controller, FieldValues } from 'react-hook-form';
+import { Typography } from '@ui/atoms/Typography';
 
 import { baseTextareaStyles } from '../styles';
-import { Typography } from '../../../Typography';
 import { BaseTextareaControllerProps } from '../types';
+import { baseInputTextStyles } from '../../BaseInput/styles';
 
 /**
  * BaseTextarea component that integrates with react-hook-form.
@@ -35,10 +36,13 @@ export function BaseTextareaController<T extends FieldValues>(
     placeholder,
     rules,
     className,
+    hiddenHelpText,
+    helpText,
     fullWidth,
-    intent,
     size,
     hiddenError,
+    intent = 'default',
+    dir = 'rtl',
   } = props;
   return (
     <Controller
@@ -63,11 +67,29 @@ export function BaseTextareaController<T extends FieldValues>(
             })}
             placeholder={placeholder}
           />
-          {hiddenError && (
-            <Typography color="red" variant="body6" className="h-10">
-              {error?.message ?? ''}
-            </Typography>
-          )}
+          <span className={baseInputTextStyles({ size, fullWidth })}>
+            {!hiddenError && hiddenHelpText && (
+              <Typography
+                variant="body6"
+                className={`${
+                  dir === 'ltr' ? 'text-left' : 'text-right'
+                } min-h-10`}
+              >
+                {helpText}
+              </Typography>
+            )}
+            {!field.disabled && hiddenError && (
+              <Typography
+                color="red"
+                variant="body6"
+                className={`${
+                  dir === 'ltr' ? 'text-left' : 'text-right'
+                } min-h-10`}
+              >
+                {error?.message ?? ''}
+              </Typography>
+            )}
+          </span>
         </div>
       )}
     />
