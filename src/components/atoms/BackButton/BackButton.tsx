@@ -25,11 +25,8 @@ export type BackButtonProps = {
  * @returns {JSX.Element} The BackButton component.
  */
 
-export function BackButton({
-  withLabel,
-  onClick,
-  backToReferrer,
-}: BackButtonProps): JSX.Element {
+export function BackButton(props: BackButtonProps): JSX.Element {
+  const { withLabel, onClick, backToReferrer } = props;
   const navigate = useNavigate();
   const location = useLocation();
 

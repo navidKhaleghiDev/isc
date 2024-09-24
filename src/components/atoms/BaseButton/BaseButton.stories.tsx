@@ -1,7 +1,7 @@
-// import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import CaretCircleUpDown from '@iconify-icons/ph/caret-circle-up-down';
+
 import { BaseButton } from './BaseButton';
 
 const meta: Meta<typeof BaseButton> = {
@@ -36,7 +36,7 @@ const meta: Meta<typeof BaseButton> = {
       control: {
         type: 'select',
       },
-      options: ['default', 'red', 'neutral', 'tertiary'],
+      options: ['teal', 'red', 'neutral', 'tertiary'],
     },
 
     loading: { control: 'boolean' },
@@ -50,7 +50,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: 'Button',
-
     submit: false,
     fullWidth: false,
     disabled: false,
