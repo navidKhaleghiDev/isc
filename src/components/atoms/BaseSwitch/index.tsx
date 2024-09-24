@@ -31,7 +31,6 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
     onChange,
     value,
     checked,
-    defaultChecked,
     error,
     dir = 'rtl',
     disabled = false,
@@ -55,7 +54,6 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           onChange={onChange}
           disabled={disabled}
           checked={checked}
-          defaultChecked={defaultChecked}
         />
         <div
           className={`${baseSwitchStyles({

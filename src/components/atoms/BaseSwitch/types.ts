@@ -13,7 +13,6 @@ export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
   id: string;
   name: string;
   defaultValue?: string;
-  defaultChecked?: boolean;
   className?: string;
   label?: string;
   disabled?: boolean;
