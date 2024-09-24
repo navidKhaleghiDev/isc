@@ -48,15 +48,8 @@ const meta = {
       const { dir } = context;
       return (
         <div
-          style={{
-            height: '100vh',
-            position: 'relative',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            direction: dir,
-          }}
-          className="w-[17.188rem] sm:w-[21.875rem] md:w-[33.75rem]"
+          className="container mx-auto justify-center min-h-40"
+          style={{ direction: dir }}
         >
           <Story />
         </div>
@@ -76,7 +69,7 @@ export const Default: Story = {
   args: {
     status: 'success',
     message: 'این یک پیغام عمومی می باشد.',
-    dir: 'rtl',
-    size: 'lg',
+    dir: 'ltr',
+    size: 'responsive',
   },
 };

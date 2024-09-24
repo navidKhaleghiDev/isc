@@ -1,4 +1,8 @@
-.toast-storybook,
-.toast-storybook * {
-  font-family: 'kalameh' !important;
+:root {
+  --toastify-toast-width: 540px;
+}
+
+.toast-storybook {
+  height: 160px;
+  display: flex;
 }

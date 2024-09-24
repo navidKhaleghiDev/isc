@@ -2,12 +2,11 @@ import Check from '@iconify-icons/ph/check';
 import Warning from '@iconify-icons/ph/warning';
 import Info from '@iconify-icons/ph/info';
 import X from '@iconify-icons/ph/x';
+
 import { BaseIcon } from '@ui/atoms';
 
 import {
-  CloseButtonProps,
   Flip,
-  IconProps,
   ToastContainer,
   ToastOptions,
   TypeOptions,
@@ -20,17 +19,30 @@ interface ToastCustomContainerProps {
   size?: 'sm' | 'md' | 'lg' | 'responsive';
 }
 
+type CustomTypeOptions = Exclude<TypeOptions, 'warning' | 'default'>;
+
+interface CloseButtonCustomProps {
+  closeToast: (e: React.MouseEvent<HTMLElement>) => void;
+  type: CustomTypeOptions;
+}
+
 /**
  * Custom close button component for the toast notification.
  *
+ * Renders a button with a close icon that, when clicked, closes the toast notification.
+ *
  * @component
  *
- * @param {CloseButtonProps} props - The props for the close button component.
- * @param {Function} props.closeToast - Function to close the toast notification.
+ * @param {CloseButtonCustomProps} props - The props for the close button component.
+ * @param {Function} props.closeToast - The function to close the toast notification.
+ * @param {CustomTypeOptions} props.type - The type of the toast notification.
  *
  * @returns {JSX.Element} The rendered close button component.
  */
-function CloseButton({ closeToast, type }: CloseButtonProps): JSX.Element {
+function CloseButton({
+  closeToast,
+  type,
+}: CloseButtonCustomProps): JSX.Element {
   return (
     <button
       className="text-white self-center justify-start"
@@ -49,93 +61,105 @@ function CloseButton({ closeToast, type }: CloseButtonProps): JSX.Element {
 }
 
 /**
+ * Returns the appropriate icon for the toast notification based on its type.
+ *
+ * @function
+ *
+ * @param {Object} [props] - The props for the icon component.
+ * @param {CustomTypeOptions} [props.type] - The type of the toast notification.
+ *
+ * @returns {JSX.Element | null} The icon component or null if the type is not recognized.
+ */
+function getToastIcon(type: CustomTypeOptions = 'success') {
+  switch (type) {
+    case 'success':
+      return (
+        <BaseIcon
+          icon={Check}
+          size="md"
+          color="neutralNoBg"
+          className="shrink-0 w-5 h-5"
+        />
+      );
+    case 'error':
+      return (
+        <BaseIcon
+          icon={Warning}
+          size="md"
+          color="neutralNoBg"
+          className="shrink-0"
+        />
+      );
+    case 'info':
+      return (
+        <BaseIcon
+          icon={Info}
+          size="md"
+          color="neutralNoBg"
+          className="shrink-0"
+        />
+      );
+    default:
+      return null;
+  }
+}
+
+/**
+ * Returns the appropriate class name for the toast notification based on its direction, size, and type.
+ *
+ * @function
+ *
+ * @param {'rtl' | 'ltr'} dir - The direction of the layout, either 'rtl' or 'ltr'.
+ * @param {'sm' | 'md' | 'lg' | 'responsive'} size - The size of the toast notification.
+ * @param {CustomTypeOptions} [type='success'] - The type of the toast notification. Defaults to 'success'.
+ *
+ * @returns {string} The class name for the toast notification.
+ */
+function getToastClassName(
+  dir: 'rtl' | 'ltr',
+  size: 'sm' | 'md' | 'lg' | 'responsive',
+  type: CustomTypeOptions = 'success'
+) {
+  return `flex items-center ${
+    dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
+  } px-5 rounded-2xl shadow-lg font-kalameh text-base gap-7 toast-custom ${toastStyle(
+    { typeToast: type }
+  )} ${toastIconStyle({ size })}`;
+}
+
+const toastOptions: ToastOptions = {
+  closeButton: (props) => {
+    const { closeToast } = props;
+    const customType =
+      props?.type && ['info', 'success', 'error'].includes(props.type)
+        ? (props.type as CustomTypeOptions)
+        : 'info';
+
+    return <CloseButton closeToast={closeToast} type={customType} />;
+  },
+  closeOnClick: false,
+  transition: Flip,
+  hideProgressBar: true,
+};
+
+/**
  * ToastCustomContainer Component
  *
- * A custom container for displaying toast notifications with custom icons and styles.
+ * Renders a custom container for displaying toast notifications with custom icons,
+ * styles, and settings based on the direction (`rtl` or `ltr`) and size options.
  *
  * @component
+ *
+ * @param {ToastCustomContainerProps} props - The props for the custom toast container.
+ * @param {string} [props.dir='rtl'] - The direction of the layout, either 'rtl' or 'ltr'.
+ * @param {string} [props.size='responsive'] - The size of the toast notification ('sm', 'md', 'lg', or 'responsive').
  *
  * @returns {JSX.Element} The rendered ToastContainer component.
  */
 export function ToastCustomContainer({
   dir = 'rtl',
-  size = 'lg',
+  size = 'responsive',
 }: ToastCustomContainerProps): JSX.Element {
-  const toastOptions: ToastOptions = {
-    closeButton: CloseButton,
-    closeOnClick: false,
-    transition: Flip,
-    hideProgressBar: true,
-  };
-
-  /**
-   * Returns the appropriate icon for the toast notification based on its type.
-   *
-   * @param {IconProps} props - The props for the icon component.
-   * @param {TypeOptions} props.type - The type of the toast notification.
-   *
-   * @returns {JSX.Element | null} The icon component or null if type is not recognized.
-   */
-  const getToastIcon = ({ type }: IconProps) => {
-    switch (type) {
-      case 'success':
-        return (
-          <BaseIcon
-            icon={Check}
-            size="md"
-            color="neutralNoBg"
-            className={`shrink-0 w-5 h-5 ${toastIconStyle({ type })}`}
-          />
-        );
-      case 'error':
-        return (
-          <BaseIcon
-            icon={Warning}
-            size="md"
-            color="neutralNoBg"
-            className={`shrink-0 ${toastIconStyle({ type })}`}
-          />
-        );
-      case 'info':
-        return (
-          <BaseIcon
-            icon={Info}
-            size="md"
-            color="neutralNoBg"
-            className={`shrink-0 ${toastIconStyle({ type })}`}
-          />
-        );
-      case 'warning':
-        return (
-          <BaseIcon
-            icon={Warning}
-            size="md"
-            color="neutralNoBg"
-            className={`shrink-0 w-5 h-5 ${toastIconStyle({ type })}`}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
-  /**
-   * Returns the appropriate class name for the toast notification based on its type.
-   *
-   * @param {Object} [props] - The props for the toast notification.
-   * @param {TypeOptions} [props.type] - The type of the toast notification.
-   *
-   * @returns {string} The class name for the toast notification.
-   */
-  const getToastClassName = (props?: { type?: TypeOptions }) => {
-    const type = props?.type || 'default';
-    return `flex items-center ${
-      dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'
-    } px-5 rounded-2xl shadow-lg font-kalameh text-base gap-7 toast-custom ${toastStyle(
-      { typeToast: type }
-    )} ${toastIconStyle({ size })}`;
-  };
-
   return (
     <ToastContainer
       closeButton={toastOptions.closeButton}
@@ -143,11 +167,23 @@ export function ToastCustomContainer({
       transition={toastOptions.transition}
       hideProgressBar={toastOptions.hideProgressBar}
       className={`toast-container-custom ${toastIconStyle({ size, dir })}`}
-      toastClassName={(props) => getToastClassName(props)}
+      toastClassName={(props) => {
+        const customType =
+          props?.type && ['info', 'success', 'error'].includes(props.type)
+            ? (props.type as CustomTypeOptions)
+            : undefined;
+        return getToastClassName(dir, size, customType);
+      }}
       bodyClassName={`${dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'} ${
         size === 'sm' ? 'text-xs' : 'sm:text-lg text-xs'
       } text-left font-normal leading-7 gap-7 sm:p-1.5 toast-body-custom h-full overflow-hidden`}
-      icon={(props) => getToastIcon(props)}
+      icon={(props) => {
+        const customType =
+          props?.type && ['info', 'success', 'error'].includes(props.type)
+            ? (props.type as CustomTypeOptions)
+            : undefined;
+        return getToastIcon(customType);
+      }}
       rtl={dir === 'rtl'}
     />
   );
