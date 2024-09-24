@@ -3,6 +3,8 @@ import {
   Control,
   FieldPath,
   FieldValues,
+  Path,
+  PathValue,
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
@@ -13,7 +15,7 @@ import { baseInputStyles } from './styles';
 export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   id: string;
   name: string;
-  value: string | number | readonly string[];
+  defaultValue?: string | number;
   type?:
     | 'email'
     | 'number'
@@ -51,4 +53,5 @@ export interface BaseInputControllerProps<T extends FieldValues>
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;
+  defaultValue?: PathValue<T, Path<T>>;
 }

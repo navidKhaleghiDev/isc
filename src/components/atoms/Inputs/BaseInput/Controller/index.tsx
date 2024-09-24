@@ -57,6 +57,7 @@ export function BaseInputController<T extends FieldValues>(
     helpText,
     endIcon,
     fullWidth,
+    defaultValue,
     hiddenHelpText,
     intent,
     size,
@@ -76,6 +77,7 @@ export function BaseInputController<T extends FieldValues>(
       name={name}
       control={control}
       rules={rules}
+      defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <div
           className={baseInputWarperStyles({
