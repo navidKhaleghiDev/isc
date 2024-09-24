@@ -13,7 +13,7 @@ const meta: Meta<typeof BaseCheckBox> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'PassWordInput',
+        component: 'BaseCheckBox',
       },
     },
   },

@@ -3,8 +3,6 @@ import {
   Control,
   FieldPath,
   FieldValues,
-  Path,
-  PathValue,
   RegisterOptions,
 } from 'react-hook-form';
 
@@ -14,19 +12,19 @@ export interface BaseCheckBoxProps
   extends VariantProps<typeof baseCheckBoxStyles> {
   id: string;
   name: string;
-  defaultValue?: string;
+  checked: boolean;
+  onChange: (value: boolean) => void;
   label?: string;
   className?: string;
-  onChange: (checkValue: boolean) => void;
-  defaultChecked?: boolean;
+  error?: string;
+  hiddenError?: boolean;
   disabled?: boolean;
   dir?: 'rtl' | 'ltr';
 }
 
 export interface BaseCheckBoxControllerProps<T extends FieldValues>
-  extends Omit<BaseCheckBoxProps, 'disabled'> {
+  extends Omit<BaseCheckBoxProps, 'disabled' | 'onChange' | 'checked'> {
   name: FieldPath<T>;
   control: Control<T>;
   rules?: RegisterOptions<T>;
-  defaultValue?: PathValue<T, Path<T>>;
 }

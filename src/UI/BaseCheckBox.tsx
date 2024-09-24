@@ -11,7 +11,7 @@ export function BaseCheckBoxTest() {
   const [checkItem, setCheckItem] = useState(false);
   const [fromValue, setFormValue] = useState(false);
   const [formControllerValue, setFormControllerValue] = useState(false);
-  const { control, handleSubmit } = useForm<MyFormStyle>({ disabled: true });
+  const { control, handleSubmit } = useForm<MyFormStyle>();
 
   const handelFormSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,10 +26,8 @@ export function BaseCheckBoxTest() {
           name="item"
           onChange={(value) => setCheckItem(value)}
           label="گزینه"
-          size="md"
-          defaultValue="my default value"
-          disabled
-          dir="rtl"
+          checked={checkItem}
+          error="there is an error"
         />
         <p>{fromValue ? 'checked' : 'not Checked'}</p>
         <button type="submit" className="bg-slate-100">
@@ -45,11 +43,9 @@ export function BaseCheckBoxTest() {
         <BaseCheckBoxController
           id="item"
           name="checkBoxState"
-          onChange={(value) => setCheckItem(value)}
           control={control}
           label="گزینه"
-          dir="ltr"
-          defaultChecked
+          rules={{ required: true }}
         />
         <p>{formControllerValue ? 'checked' : 'not Checked'}</p>
         <button type="submit" className="bg-slate-100">
