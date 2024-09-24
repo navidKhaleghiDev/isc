@@ -22,21 +22,22 @@ import { IconButtonProps } from '../types';
  * @returns {JSX.Element} The IconButton component.
  */
 
-export function IconButton({
-  onClick,
-  className,
-  classNameIcon,
-  icon,
-  size,
-  color,
-  type,
-  loading,
-  disabled,
-}: IconButtonProps): JSX.Element {
+export function IconButton(props: IconButtonProps): JSX.Element {
+  const {
+    onClick,
+    className,
+    classNameIcon,
+    icon,
+    size,
+    color,
+    type,
+    loading,
+    disabled,
+  } = props;
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}
-      onClick={onClick}
+      onClick={loading ? undefined : onClick}
       className={iconButtonStyles({
         color,
         size,
@@ -45,7 +46,7 @@ export function IconButton({
       disabled={disabled}
     >
       {loading ? (
-        <LoadingSvg />
+        <LoadingSvg type="neutral" />
       ) : (
         <BaseIcon icon={icon} size={size} className={classNameIcon} />
       )}
