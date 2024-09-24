@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const baseOtpStyles = cva(
-  'block rounded-lg outline-none text-center size-10 sm:size-14 bg-white dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:text-gray-500 dark:text-gray-500 dark:border-gray-400 disabled:text-gray-300 disabled:border-gray-300 text-base',
+  'block rounded-lg outline-none text-center bg-white dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:text-gray-500 dark:text-gray-500 dark:border-gray-400 disabled:text-gray-300 disabled:border-gray-300 text-base',
   {
     variants: {
       intent: {
@@ -10,12 +10,10 @@ export const baseOtpStyles = cva(
         error:
           'text-gray-900 border border-red-600 dark:border-red-500 dark:text-white',
       },
-      fullWidth: {
-        true: 'w-full',
-      },
-      ltrPlaceHolder: {
-        true: 'placeholder:text-left',
-        false: 'placeholder:text-right placeholder:text-rtl',
+      size: {
+        sm: 'size-10',
+        md: 'size-14',
+        responsive: 'size-10 sm:size-14',
       },
     },
     defaultVariants: {

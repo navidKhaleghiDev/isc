@@ -1,10 +1,9 @@
-import { BaseOtp } from '@ui/atoms/Inputs/BaseOtp';
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import BaseOtpTest from './ui/BaseOtpTest';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const { control } = useForm();
 
   useEffect(() => {
     if (darkMode) {
@@ -23,9 +22,11 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
-      <form>
-        <BaseOtp control={control} name="co" valueLength={6} />
-      </form>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/ui" element={<BaseOtpTest />} />
+        </Routes>
+      </BrowserRouter>
       {/* Your components here */}
     </div>
   );

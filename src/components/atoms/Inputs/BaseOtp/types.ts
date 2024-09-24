@@ -12,12 +12,11 @@ export interface BaseOtpProp<T extends FieldValues>
   extends VariantProps<typeof baseOtpStyles> {
   name: FieldPath<T>;
   control: Control<T>;
-  valueLength: number;
+  valueLength?: number;
   rules?: RegisterOptions<T>;
   className?: string;
   disabled?: boolean;
   hiddenError?: boolean;
-  fullWidth?: boolean;
   pureError?: string;
   dir?: 'rtl' | 'ltr';
 }

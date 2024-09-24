@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 
@@ -35,12 +34,11 @@ export function BaseOtp<T extends FieldValues>(
     intent,
     hiddenError,
     disabled,
-    fullWidth,
     pureError,
+    size,
     dir = 'ltr',
   } = props;
 
-  const [errorMessage, setErrorMessage] = useState<string>('');
   const handleChange: HandleChange = (e, index, field) => {
     const val = e.target.value;
 
@@ -82,43 +80,40 @@ export function BaseOtp<T extends FieldValues>(
         }}
         render={({ field, fieldState: { error } }) => {
           const otpValue = field.value || '';
-          if (error?.message) {
-            setErrorMessage(error?.message);
-          } else {
-            setErrorMessage('');
-          }
           return (
-            <div className="flex items-center justify-center w-full gap-[0.17rem]">
-              {Array.from({ length: valueLength }).map((_, index) => (
-                <input
-                  dir={dir}
-                  key={index as number}
-                  type="text"
-                  disabled={disabled}
-                  className={baseOtpStyles({
-                    intent: error?.message || pureError ? 'error' : intent,
-                    className,
-                    fullWidth,
-                  })}
-                  maxLength={1}
-                  value={otpValue[index] || ''}
-                  onChange={(e) => handleChange(e, index, field)}
-                  onKeyDown={(e) => handleKeyDown(e, index)}
-                />
-              ))}
-            </div>
+            <>
+              <div className="flex items-center justify-center w-full gap-[0.17rem]">
+                {Array.from({ length: valueLength }).map((_, index) => (
+                  <input
+                    dir={dir}
+                    key={index as number}
+                    type="text"
+                    disabled={disabled}
+                    className={baseOtpStyles({
+                      intent: error?.message || pureError ? 'error' : intent,
+                      className,
+                      size,
+                    })}
+                    maxLength={1}
+                    value={otpValue[index] || ''}
+                    onChange={(e) => handleChange(e, index, field)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                  />
+                ))}
+              </div>
+              {!disabled && hiddenError && (
+                <Typography
+                  color="red"
+                  variant="body6"
+                  className="mt-[0.375rem ] text-center"
+                >
+                  {(pureError || error?.message) ?? ''}
+                </Typography>
+              )}
+            </>
           );
         }}
       />
-      {!disabled && hiddenError && (
-        <Typography
-          color="red"
-          variant="body6"
-          className="mt-[0.375rem ] text-center"
-        >
-          {(pureError || errorMessage) ?? ''}
-        </Typography>
-      )}
     </div>
   );
 }
