@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Typography } from '@ui/atoms/Typography';
 
 import { BaseSwitchProps } from './types';
@@ -24,72 +23,50 @@ import { baseSwitchStyles } from './styles';
 
 export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
   const {
+    id,
     size,
     label,
     name,
     defaultValue,
     onChange,
     value,
+    checked,
     defaultChecked,
     error,
     dir = 'rtl',
     disabled = false,
   } = props;
 
-  const [isChecked, setIsChecked] = useState(false);
-
-  const translateClassMap = {
-    sm: 'translate-x-4',
-    md: 'translate-x-6',
-    responsive: 'translate-x-4 sm:translate-x-6',
-  };
-
-  const translateClass = size
-    ? translateClassMap[size]
-    : 'translate-x-4 sm:translate-x-6';
-
   return (
     <div>
       <label
-        htmlFor={`${name}_input`}
-        className={`select-none items-center relative inline-flex ${
-          disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-        }
-        ${dir === 'ltr' && 'text-left'}`}
+        htmlFor={id}
+        className={`inline-flex items-center cursor-pointer  ${
+          dir === 'ltr' && 'text-left'
+        }`}
       >
-        <Typography color="black" variant="body6" className="mx-2">
-          {label}
-        </Typography>
         <input
-          id={`${name}_input`}
-          disabled={disabled}
+          id={id}
+          name={name}
           type="checkbox"
-          className="sr-only pear"
-          checked={isChecked}
           value={value}
           defaultValue={defaultValue}
+          className="sr-only peer"
+          onChange={onChange}
+          disabled={disabled}
+          checked={checked}
           defaultChecked={defaultChecked}
-          onChange={(e) => {
-            setIsChecked(e.target.checked);
-            if (onChange) onChange(e.target.checked);
-          }}
         />
-        <span
+        <div
           className={`${baseSwitchStyles({
             size,
-          })} ${
-            isChecked || defaultChecked
-              ? 'bg-teal-500 dark:bg-teal-400'
-              : 'bg-gray-200 dark:bg-gray-800'
-          }
-          ${disabled && 'opacity-40'}
-          `}
-        >
-          <span
-            className={`size-4 rounded-full bg-white duration-200 ${
-              isChecked || defaultChecked ? translateClass : ''
-            }`}
-          />
+          })} ${disabled && 'opacity-40'} 
+          ${disabled ? 'cursor-not-allowed' : 'cursor-default'}`}
+        />
+        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+          <Typography color="black" variant="body6" className="mx-2">
+            {label}
+          </Typography>
         </span>
       </label>
       {error && (

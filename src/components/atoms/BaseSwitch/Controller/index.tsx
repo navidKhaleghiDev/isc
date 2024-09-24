@@ -27,6 +27,7 @@ export function BaseSwitchController<T extends FieldValues>(
   props: BaseSwitchControllerProps<T>
 ): JSX.Element {
   const {
+    id,
     size,
     label,
     name,
@@ -34,19 +35,8 @@ export function BaseSwitchController<T extends FieldValues>(
     rules,
     defaultValue,
     disabled,
-    error,
     dir = 'rtl',
   } = props;
-
-  const translateClassMap = {
-    sm: 'translate-x-4',
-    md: 'translate-x-6',
-    responsive: 'translate-x-4 sm:translate-x-6',
-  };
-
-  const translateClass = size
-    ? translateClassMap[size]
-    : 'translate-x-4 sm:translate-x-6';
 
   return (
     <Controller
@@ -54,47 +44,39 @@ export function BaseSwitchController<T extends FieldValues>(
       control={control}
       rules={rules}
       defaultValue={defaultValue}
-      render={({ field }) => {
+      render={({ field, fieldState: { error } }) => {
         return (
           <div>
             <label
-              htmlFor={`${name}_input`}
-              className={`relative inline-flex cursor-pointer select-none items-center ${
-                disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-              }${dir === 'ltr' ? 'text-left' : 'text-right'}`}
+              htmlFor={id}
+              className={`inline-flex items-center cursor-pointer  
+                ${dir === 'ltr' && 'text-left'}`}
             >
-              <Typography color="neutral" variant="body6" className="mx-2">
-                {label}
-              </Typography>
               <input
                 disabled={disabled}
-                id={`${name}_input`}
+                id={id}
                 type="checkbox"
-                className="sr-only"
+                className="sr-only peer"
                 value={field.value}
                 name={field.name}
                 checked={Boolean(field.value)}
                 onChange={field.onChange}
               />
-              <span
+              <div
                 className={`${baseSwitchStyles({
                   size,
-                })} ${
-                  field.value
-                    ? 'bg-teal-500 dark:bg-teal-400'
-                    : 'bg-gray-200 dark:bg-gray-800'
-                } ${disabled && 'opacity-40'}`}
-              >
-                <span
-                  className={`size-4 rounded-full bg-white duration-200 ${
-                    field.value ? translateClass : ''
-                  }`}
-                />
+                })} ${disabled && 'opacity-40'} 
+              ${disabled ? 'cursor-not-allowed' : 'cursor-default'}`}
+              />
+              <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <Typography color="black" variant="body6" className="mx-2">
+                  {label}
+                </Typography>
               </span>
             </label>
-            {error && (
+            {error?.message && (
               <Typography color="red" variant="body6" className="h-6">
-                {error}
+                {error.message}
               </Typography>
             )}
           </div>

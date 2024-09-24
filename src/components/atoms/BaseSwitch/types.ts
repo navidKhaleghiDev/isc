@@ -10,6 +10,7 @@ import {
 import { baseSwitchStyles } from './styles';
 
 export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
+  id: string;
   name: string;
   defaultValue?: string;
   defaultChecked?: boolean;
@@ -20,11 +21,11 @@ export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
   error?: string;
   value?: string | number | readonly string[];
   dir?: 'ltr' | 'rtl';
-  onChange: (event: boolean) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseSwitchControllerProps<T extends FieldValues>
-  extends Omit<BaseSwitchProps, 'onChange' | 'checked' | 'value'> {
+  extends Omit<BaseSwitchProps, 'onChange' | 'error' | 'value'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
