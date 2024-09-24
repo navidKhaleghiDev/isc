@@ -6,7 +6,7 @@ export const baseCheckBoxStyles = cva(
     variants: {
       intent: {
         default: '',
-        error: 'border-red-500',
+        error: 'border-red-500 dark:border-red-500',
       },
       size: {
         sm: `size-4`,

@@ -32,9 +32,9 @@ export function BaseCheckBoxController<T extends FieldValues>(
     control,
     rules,
     label,
-    intent,
     hiddenError,
     className,
+    intent = 'default',
     size = 'md',
     dir = 'rtl',
   } = props;

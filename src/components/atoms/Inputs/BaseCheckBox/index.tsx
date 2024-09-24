@@ -52,9 +52,11 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
             <Typography
               color="neutralDark"
               variant="body6"
-              className={`${disabled && 'opacity-50'} ${
-                error && 'text-red-500'
-              } leading-4 dark:text-white`}
+              className={`${
+                disabled && 'opacity-50'
+              } leading-4 dark:text-white ${
+                error && 'text-red-500 dark:text-red-500'
+              } `}
             >
               {label}
             </Typography>
