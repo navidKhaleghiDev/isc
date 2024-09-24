@@ -2,7 +2,7 @@ import { Controller, FieldValues } from 'react-hook-form';
 
 import { baseTextareaStyles } from '../styles';
 import { Typography } from '../../../Typography';
-import { BaseTextareaPropsControl } from '../types';
+import { BaseTextareaControllerProps } from '../types';
 
 /**
  * BaseTextarea component that integrates with react-hook-form.
@@ -25,7 +25,9 @@ import { BaseTextareaPropsControl } from '../types';
  * @returns {JSX.Element} The rendered textarea component.
  */
 
-export function BaseTextarea(props: BaseTextareaPropsControl<FieldValues>) {
+export function BaseTextareaController<T extends FieldValues>(
+  props: BaseTextareaControllerProps<T>
+) {
   const {
     control,
     name,
@@ -34,7 +36,6 @@ export function BaseTextarea(props: BaseTextareaPropsControl<FieldValues>) {
     rules,
     className,
     fullWidth,
-    defaultValue,
     intent,
     size,
     hiddenError,
@@ -44,7 +45,6 @@ export function BaseTextarea(props: BaseTextareaPropsControl<FieldValues>) {
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <div className={`${className} ${fullWidth && 'w-full'}`}>
           <textarea
