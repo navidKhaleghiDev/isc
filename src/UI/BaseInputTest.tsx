@@ -20,8 +20,8 @@ export function BaseInputTest() {
         <BaseInput
           id="Name"
           name="Name"
-          onChange={(value) => setUserName(value)}
-          defaultValue={userName}
+          onChange={(item) => setUserName(item)}
+          value={userName}
           placeholder="نام کاربری"
           iconButtonIcon={PhEyeSlash}
           fullWidth

@@ -15,7 +15,7 @@ import { baseInputStyles } from './styles';
 export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   id: string;
   name: string;
-  defaultValue?: string | number;
+  value: string | number | readonly string[];
   type?:
     | 'email'
     | 'number'

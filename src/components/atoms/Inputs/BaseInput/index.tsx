@@ -46,7 +46,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     startIcon,
     className,
     endIcon,
-    defaultValue,
+    value,
     disabled,
     size,
     type,
@@ -108,7 +108,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           max={max}
           onKeyDownCapture={onKeyDown}
           name={name}
-          defaultValue={defaultValue}
+          value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
           className={baseInputStyles({

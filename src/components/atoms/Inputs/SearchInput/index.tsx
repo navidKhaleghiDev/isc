@@ -18,10 +18,6 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
     onChange(debouncedSearchValue);
   }, [debouncedSearchValue, onChange]);
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
-
   return (
     <div>
       <BaseInput
@@ -29,7 +25,7 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
         name="ip"
         placeholder="جستجو کنید"
         id="ip"
-        onChange={handleSearchChange}
+        onChange={(search) => setSearchValue(search)}
         value={searchValue}
         label={label}
         fullWidth
