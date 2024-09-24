@@ -39,6 +39,7 @@ export function BaseTextareaController<T extends FieldValues>(
     hiddenHelpText,
     helpText,
     fullWidth,
+    label,
     size,
     hiddenError,
     intent = 'default',
@@ -51,6 +52,22 @@ export function BaseTextareaController<T extends FieldValues>(
       rules={rules}
       render={({ field, fieldState: { error } }) => (
         <div className={`${className} ${fullWidth && 'w-full'}`}>
+          {label && (
+            <label
+              htmlFor={id}
+              className={`mb-[0.13rem] ${
+                dir === 'ltr' ? 'text-left' : 'text-right'
+              }`}
+            >
+              <Typography
+                color="neutralDark"
+                variant="body6"
+                className="dark:text-white disabled:text-gray-500"
+              >
+                {label}
+              </Typography>
+            </label>
+          )}
           <textarea
             id={id}
             rows={5}

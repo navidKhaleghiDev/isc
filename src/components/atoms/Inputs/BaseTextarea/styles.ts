@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const baseTextareaStyles = cva(
-  'p-2 block text-sm rounded-lg border outline-none disabled:bg-white dark:text-white disabled:placeholder-gray-300 disabled:opacity-50 dark:border-gray-400 dark:placeholder-gray-500 dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:placeholder-gray-500 border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 ',
+  'p-2 peer block text-sm rounded-lg border outline-none h-[4.375rem] disabled:bg-white dark:text-white disabled:placeholder-gray-300 disabled:opacity-50 dark:border-gray-400 dark:placeholder-gray-500 dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:placeholder-gray-500 border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 ',
   {
     variants: {
       intent: {

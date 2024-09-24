@@ -15,7 +15,7 @@ export interface BaseTextareaProps
   name: string;
   label?: string;
   error?: string;
-  disabled: boolean;
+  disabled?: boolean;
   placeholder?: string;
   helpText?: string;
   hiddenHelpText?: boolean;

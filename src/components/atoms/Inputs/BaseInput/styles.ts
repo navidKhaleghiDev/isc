@@ -25,7 +25,7 @@ export const baseInputStyles = cva(
 );
 
 export const baseInputTextStyles = cva(
-  `px-1 text-gray-400 peer-has-[:hover]:text-gray-500 text-xs peer-has-[:focus]:text-gray-900 peer-has-[:disabled]:text-gray-300 peer-has-[:disabled:hover]:text-gray-300 dark:text-white dark:peer-has-[:hover]:text-white dark:peer-has-[:disabled]:text-gray-500`,
+  `px-1 text-gray-400 peer-hover:text-gray-500 text-xs  peer-focus:text-gray-900 peer-disabled:text-gray-300 peer-disabled:hover:text-gray-300 dark:text-white dark:peer-hover:text-white dark:peer-disabled:text-gray-500 dark:peer-focus:text-white`,
   {
     variants: {
       fullWidth: {

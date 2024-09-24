@@ -2,7 +2,10 @@ import { Typography } from '@ui/atoms/Typography';
 
 import { baseTextareaStyles } from './styles';
 import { BaseTextareaProps } from './types';
-import { baseInputTextStyles } from '../BaseInput/styles';
+import {
+  baseInputTextStyles,
+  baseInputWarperStyles,
+} from '../BaseInput/styles';
 
 /**
  * BaseTextarea component that integrates with react-hook-form.
@@ -46,13 +49,25 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
     dir = 'rtl',
   } = props;
   return (
-    <div className={`flex-col items-center border-none ${className ?? ''}`}>
+    <div
+      className={baseInputWarperStyles({
+        size,
+        fullWidth,
+        className: 'flex flex-col',
+      })}
+    >
       {label && (
         <label
           htmlFor={id}
-          className={`mb-2 ${dir === 'ltr' ? 'text-left' : 'text-right'}`}
+          className={`mb-[0.13rem] ${
+            dir === 'ltr' ? 'text-left' : 'text-right'
+          }`}
         >
-          <Typography color="neutralLight" variant="body4">
+          <Typography
+            color="neutralDark"
+            variant="body6"
+            className="dark:text-white disabled:text-gray-500"
+          >
             {label}
           </Typography>
         </label>
@@ -60,7 +75,7 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
       <textarea
         id={id}
         disabled={disabled}
-        dir="auto"
+        dir={dir}
         name={name}
         value={value}
         onChange={onChange}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BaseInputTest } from './UI/BaseInputTest';
+import BaseTextAreaTest from './UI/BaseTextAreaTest';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -25,7 +26,7 @@ function App() {
       {/* Your components here */}
       <BrowserRouter>
         <Routes>
-          <Route path="/ui" element={<BaseInputTest />} />
+          <Route path="/ui" element={<BaseTextAreaTest />} />
         </Routes>
       </BrowserRouter>
     </div>
