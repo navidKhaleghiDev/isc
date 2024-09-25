@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ToggleButton } from './ToggleButton'; // Adjust the path as needed
+
+import { ToggleButton } from './ToggleButton';
 import { ToggleButtonProps } from './types';
 
 type StoryToggleButton = StoryObj<typeof ToggleButton>;
@@ -37,18 +38,18 @@ const meta: Meta<typeof ToggleButton> = {
 export default meta;
 
 function RenderToggleButton({
-  buttonLabels,
+  buttonOption,
   onChange,
   size,
 }: ToggleButtonProps) {
   return (
-    <ToggleButton buttonLabels={buttonLabels} onChange={onChange} size={size} />
+    <ToggleButton buttonOption={buttonOption} onChange={onChange} size={size} />
   );
 }
 export const toggleButton: StoryToggleButton = {
   render: RenderToggleButton,
   args: {
-    buttonLabels: [
+    buttonOption: [
       { id: 1, label: 'هفتگی', name: 'weekly' },
       { id: 2, label: 'ماهانه', name: 'monthly' },
       { id: 3, label: 'سالانه', name: 'yearly' },
