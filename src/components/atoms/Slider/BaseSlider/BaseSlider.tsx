@@ -12,9 +12,10 @@ import { BaseSliderProps } from '../types';
  * @param {(values: { min: number, max: number }) => void} [props.onChange] - The onChnage method just gives us the max value
  * @returns {JSX.Element} The rendered component
  */
+
 export function BaseSlider(props: BaseSliderProps): JSX.Element {
   const { min, max, initialValue, hiddenLable, onChange } = props;
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(Math.max(initialValue, 0));
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const percent = (item: number) => ((item - min) / (max - min)) * 100;
@@ -34,10 +35,12 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
 
         const percentMoved = (dx / sliderWidth) * (max - min);
         const newValue = startValue + percentMoved;
+        const nonNegative = Math.max(min, Math.min(newValue, max));
+        const newValueRound = nonNegative.toFixed();
 
-        if (newValue >= min && newValue <= max) {
+        if (+newValueRound >= min && +newValueRound <= max) {
           setValue(newValue);
-          if (onChange) onChange({ max: newValue });
+          if (onChange) onChange({ max: +newValueRound });
         }
       };
 
@@ -70,7 +73,9 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
           tabIndex={0}
           role="button"
         >
-          {hiddenLable && <span className={getValueStyles()}>{value}</span>}
+          {hiddenLable && (
+            <span className={getValueStyles()}>{value.toFixed()}</span>
+          )}
         </div>
       </div>
     </div>

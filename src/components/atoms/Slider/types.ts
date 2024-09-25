@@ -7,7 +7,7 @@ export interface BaseSliderProps {
 }
 
 export interface MultipleBaseSliderProps
-  extends Omit<BaseSliderProps, 'onChange'> {
+  extends Omit<BaseSliderProps, 'onChange' | 'initialValue'> {
   initialMin: number;
   initialMax: number;
   hiddenLable?: boolean;
