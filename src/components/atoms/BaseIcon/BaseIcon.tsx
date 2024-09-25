@@ -10,7 +10,7 @@ import { BaseIconProps } from './types';
  *
  * @component
  * @param {BaseIconProps} props - The props for the BaseIcon component, including:
- *   @param {'neutral' | 'teal' | 'yellow' | 'red' | 'tealLink'} props.color - Determine the color of the icon.
+ *   @param {colorsList} props.color - Determine the color of the icon.
  *   @param {'default' | 'xs' | 'sm' | 'md' | 'lg'} props.size - Determine the size of the icon.
  *   @param {'primary' | 'default'} props.hoverColor - Determine the hover color of the icon.
  *   @param {string} [props.className] - Set custom className.
