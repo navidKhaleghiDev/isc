@@ -7,6 +7,7 @@ import {
   PathValue,
   RegisterOptions,
 } from 'react-hook-form';
+
 import { baseSwitchStyles } from './styles';
 
 export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
