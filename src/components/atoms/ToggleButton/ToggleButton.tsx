@@ -14,6 +14,7 @@ import { toggleStyles } from './styles';
  * @param {(selected: ButtonOption) => void} props.onChange - Callback function triggered when a button is selected.
  *    It receives the currently selected button option(s) as an argument.
  * @param {'sm' | 'md' | 'responsive'} props.size - Defines the size of the switch.
+ * @param {string} props.className - className for optional style
  * @returns {JSX.Element} The ToggleButton component.
  */
 
@@ -35,7 +36,9 @@ export function ToggleButton(props: ToggleButtonProps): JSX.Element {
       <div
         className={`${toggleStyles({
           size,
-        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 py-1 font-kalameh ${className}`}
+        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 py-1 ${
+          className ?? ''
+        }`}
       >
         {buttonOption.map(({ id, label, name }) => (
           <button
@@ -45,9 +48,8 @@ export function ToggleButton(props: ToggleButtonProps): JSX.Element {
             name={name}
             onClick={() => handleClick(id)}
             className={`flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1 text-gray-400 ${
-              selected === id
-                ? 'text-gray-900 bg-white dark:text-white dark:bg-gray-600'
-                : ''
+              selected === id &&
+              'text-gray-900 bg-white dark:text-white dark:bg-gray-600'
             }`}
           >
             {label}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { ToggleButton } from '@ui/atoms/ToggleButton/ToggleButton';
 import { ButtonOptions } from '@ui/atoms/ToggleButton/types';
 
@@ -15,7 +16,7 @@ export function BaseToggleTest() {
     setActiveLabel(selected.name);
   };
   return (
-    <div>
+    <div className="font-kalameh">
       <h1>Selected: {selectedLabel ? `${selectedLabel}` : 'None'}</h1>
       <ToggleButton
         buttonOption={buttonOption}
