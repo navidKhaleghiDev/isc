@@ -81,14 +81,9 @@ export function BaseCheckBoxController<T extends FieldValues>(
                   size,
                 })}
               />
-              {Boolean(field.value) && (
-                <span className="absolute text-gray-100 dark:peer-disabled:hidden dark:peer-checked:text-gray-100 dark:text-gray-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                  <BaseIcon
-                    icon={checkBold}
-                    size={size === 'md' ? 'xs' : 'sm'}
-                  />
-                </span>
-              )}
+              <span className="absolute hidden peer-checked:block text-gray-100 dark:peer-disabled:hidden dark:peer-checked:text-gray-100 dark:text-gray-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                <BaseIcon icon={checkBold} size={size === 'md' ? 'xs' : 'sm'} />
+              </span>
             </div>
           </div>
           {hiddenError && (
