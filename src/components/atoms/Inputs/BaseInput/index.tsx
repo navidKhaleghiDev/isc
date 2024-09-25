@@ -90,9 +90,10 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           }`}
         >
           <Typography
-            color="neutralDark"
             variant="body6"
-            className="dark:text-white disabled:text-gray-500"
+            className={`dark:text-white ${
+              error && !disabled ? 'text-red-500' : 'neutralLight'
+            }  ${disabled && 'text-gray-300'}`}
           >
             {label}
           </Typography>
@@ -109,7 +110,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           onKeyDownCapture={onKeyDown}
           name={name}
           value={value}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={onChange}
           placeholder={placeholder}
           className={baseInputStyles({
             intent: error ? 'error' : intent,
@@ -120,6 +121,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
             size,
           })}
         />
+
         {startIcon && (
           <IconInput icon={startIcon} intent={intent} error={error} dir="rtl" />
         )}

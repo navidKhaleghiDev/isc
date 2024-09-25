@@ -38,7 +38,7 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   hiddenHelpText?: boolean;
   onClickIcon?: () => void;
   iconButtonIcon?: string | IconifyIcon;
-  onChange: (value: string) => void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   error?: string;
   disabled?: boolean;
@@ -48,7 +48,7 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
 }
 
 export interface BaseInputControllerProps<T extends FieldValues>
-  extends Omit<BaseInputProps, 'onChange' | 'value' | 'error' | 'disabled'> {
+  extends Omit<BaseInputProps, 'onChange' | 'value' | 'error'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
