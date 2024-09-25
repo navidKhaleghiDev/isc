@@ -45,7 +45,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
     <div className={`inline-flex flex-col ${className}`}>
       <div
         className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
-          dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
+          dir === 'ltr' ? 'flex-row-reverse' : 'flex-row'
         }`}
       >
         <input

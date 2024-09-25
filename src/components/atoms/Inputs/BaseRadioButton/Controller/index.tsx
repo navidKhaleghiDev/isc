@@ -52,8 +52,8 @@ export function BaseRadioButtonController(
       render={({ field, fieldState: { error } }) => (
         <div className={`inline-flex flex-col ${className}`}>
           <div
-            className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
-              dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
+            className={`flex items-center relative gap-2 text-xs leading-4 font-normal ${
+              dir === 'ltr' ? 'flex-row-reverse' : 'flex-row'
             }`}
           >
             <input
@@ -68,15 +68,11 @@ export function BaseRadioButtonController(
               className={inputRadioButtonStyles({ size })}
               disabled={field.disabled}
             />
-            <label htmlFor={id}>
-              <Typography
-                color="neutralDark"
-                variant="body6"
-                className={labelRadioButtonStyles()}
-              >
+            {label && (
+              <label htmlFor={id} className={labelRadioButtonStyles()}>
                 {label}
-              </Typography>
-            </label>
+              </label>
+            )}
           </div>
           {hiddenError && error?.message && (
             <Typography

@@ -19,6 +19,7 @@ function App() {
       className={`min-h-screen ${
         darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
       }`}
+      dir="lrt"
     >
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode

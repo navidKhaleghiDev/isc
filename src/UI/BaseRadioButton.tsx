@@ -44,7 +44,10 @@ export function BaseRadioButtonTest() {
         checked={selectedValue === 'radio2'}
       />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="bg-gray-200 max-w-60 rounded-lg"
+      >
         <BaseRadioButtonController
           id="radio3"
           name="radioSelection"
@@ -66,6 +69,7 @@ export function BaseRadioButtonTest() {
           control={control}
           label="second controlled radio"
         />
+        <br />
         <button type="submit">Submit</button>
       </form>
     </div>
