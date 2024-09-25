@@ -40,7 +40,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'switch',
-    defaultChecked: false,
     size: 'responsive',
     disabled: false,
   },
