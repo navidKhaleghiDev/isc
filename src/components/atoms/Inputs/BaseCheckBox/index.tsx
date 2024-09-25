@@ -80,7 +80,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
           </span>
         </div>
       </div>
-      {hiddenError && (
+      {!hiddenError && (
         <Typography
           color="red"
           variant="body6"
