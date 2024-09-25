@@ -62,7 +62,9 @@ export function BaseTextareaController<T extends FieldValues>(
               <Typography
                 color="neutralDark"
                 variant="body6"
-                className="dark:text-white disabled:text-gray-500"
+                className={`dark:text-white ${
+                  error && !field.disabled ? 'text-red-500' : 'neutralLight'
+                }  ${field.disabled && 'text-gray-300'}`}
               >
                 {label}
               </Typography>

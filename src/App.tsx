@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { BaseInputTest } from './UI/BaseInputTest';
 import BaseTextAreaTest from './UI/BaseTextAreaTest';
 
 function App() {
