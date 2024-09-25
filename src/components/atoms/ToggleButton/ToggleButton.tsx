@@ -35,7 +35,7 @@ export function ToggleButton(props: ToggleButtonProps): JSX.Element {
       <div
         className={`${toggleStyles({
           size,
-        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 py-1 font-kalameh ${className}`}
+        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 py-1 font-kalameh ${className}`}
       >
         {buttonOption.map(({ id, label, name }) => (
           <button
