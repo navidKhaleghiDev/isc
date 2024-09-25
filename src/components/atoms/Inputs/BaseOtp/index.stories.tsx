@@ -30,10 +30,8 @@ const meta: Meta<typeof BaseOtp> = {
       className={args.className}
       dir={args.dir}
       disabled={args.disabled}
-      fullWidth={args.fullWidth}
       hiddenError={args.hiddenError}
       intent={args.intent}
-      ltrPlaceHolder={args.ltrPlaceHolder}
       pureError={args.pureError}
       rules={args.rules}
       control={args.control}
@@ -58,10 +56,8 @@ const RenderBaseInput: StoryFn<typeof BaseOtp> = function RenderBaseInput(
     className,
     dir,
     disabled,
-    fullWidth,
     hiddenError,
     intent,
-    ltrPlaceHolder,
     pureError,
     rules,
     name,
@@ -74,10 +70,8 @@ const RenderBaseInput: StoryFn<typeof BaseOtp> = function RenderBaseInput(
       className={className}
       dir={dir}
       disabled={disabled}
-      fullWidth={fullWidth}
       hiddenError={hiddenError}
       intent={intent}
-      ltrPlaceHolder={ltrPlaceHolder}
       pureError={pureError}
       rules={rules}
       control={control}
