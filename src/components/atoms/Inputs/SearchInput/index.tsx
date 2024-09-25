@@ -25,7 +25,7 @@ export function SearchInput({ value, label, onChange }: SearchInputProps) {
         name="ip"
         placeholder="جستجو کنید"
         id="ip"
-        onChange={(search) => setSearchValue(search)}
+        onChange={(event) => setSearchValue(event.target.value)}
         value={searchValue}
         label={label}
         fullWidth
