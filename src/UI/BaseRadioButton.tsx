@@ -1,24 +1,30 @@
+import { useCallback, useEffect, useState } from 'react';
 import { BaseRadioButton } from '@ui/atoms/Inputs/BaseRadioButton';
 import { BaseRadioButtonController } from '@ui/atoms/Inputs/BaseRadioButton/Controller';
 
 import { useForm } from 'react-hook-form';
 
 export function BaseRadioButtonTest() {
+  const [selectedValue, setSelectedValue] = useState('radio2');
+
   const { handleSubmit, control } = useForm({
     defaultValues: {
       radioSelection: 'radio3',
     },
   });
 
-  const onChangeRadioButton = (e: any) => {
-    return e.target.value;
-    // console.log(e.target.value);
-  };
+  const onChangeRadioButton = useCallback((e: any) => {
+    setSelectedValue(e.target.value);
+  }, []);
 
   const onSubmit = (data: any) => {
     return data;
     // console.log('Selected Radio:', data);
   };
+
+  useEffect(() => {
+    // console.log(selectedValue);
+  }, [selectedValue]);
 
   return (
     <div className="font-kalameh">
@@ -35,6 +41,7 @@ export function BaseRadioButtonTest() {
         value="radio2"
         label="second radio unController"
         onChange={onChangeRadioButton}
+        checked={selectedValue === 'radio2'}
       />
 
       <form onSubmit={handleSubmit(onSubmit)}>
