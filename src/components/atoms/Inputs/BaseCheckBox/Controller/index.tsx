@@ -87,7 +87,7 @@ export function BaseCheckBoxController<T extends FieldValues>(
               </span>
             </div>
           </div>
-          {!hiddenError && (
+          {hiddenError && (
             <Typography
               color="red"
               variant="body6"
