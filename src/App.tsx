@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BaseToggleTest } from './UI/BaseToggleTest';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,6 +23,11 @@ function App() {
         Toggle Dark Mode
       </button>
       {/* Your components here */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/ui" element={<BaseToggleTest />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
