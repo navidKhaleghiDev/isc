@@ -63,6 +63,7 @@ export function BaseInputController<T extends FieldValues>(
     size,
     type,
     label,
+    disabled,
     hiddenError,
     onKeyDown,
     onClickIcon,
@@ -76,6 +77,7 @@ export function BaseInputController<T extends FieldValues>(
     <Controller
       name={name}
       control={control}
+      disabled={disabled}
       rules={rules}
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
@@ -94,9 +96,10 @@ export function BaseInputController<T extends FieldValues>(
               }`}
             >
               <Typography
-                color="neutralDark"
                 variant="body6"
-                className="dark:text-white disabled:text-gray-500"
+                className={`dark:text-white ${
+                  error && !disabled ? 'text-red-500' : 'neutralLight'
+                } ${disabled && 'text-gray-300'}`}
               >
                 {label}
               </Typography>

@@ -20,7 +20,7 @@ export function BaseInputTest() {
         <BaseInput
           id="Name"
           name="Name"
-          onChange={(item) => setUserName(item)}
+          onChange={(event) => setUserName(event.target.value)}
           value={userName}
           placeholder="نام کاربری"
           iconButtonIcon={PhEyeSlash}
@@ -50,6 +50,7 @@ export function BaseInputTest() {
           helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
           fullWidth
           hiddenError
+          // disabled
           startIcon={PhEyeSlash}
           dir="rtl"
           label="نام کاربری"
