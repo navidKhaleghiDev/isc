@@ -64,7 +64,7 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           </Typography>
         </span>
       </label>
-      {hiddenError && (
+      {!hiddenError && (
         <Typography
           color="red"
           variant="body6"
