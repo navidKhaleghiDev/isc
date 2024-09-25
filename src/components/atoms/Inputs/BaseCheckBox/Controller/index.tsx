@@ -16,6 +16,7 @@ import { BaseCheckBoxControllerProps } from '../types';
  * @param {string} [props.label] - The label to display next to the checkbox.
  * @param {default | error} [props.intent]
  * @param {boolean} [props.hiddenError] - Makes our error visible
+ * @param {boolean} [props.disabled]
  * @param {string} [props.className] - Additional class names for styling the checkbox.
  * @param {'sm' | 'md' | "responsive" } [props.size="md"] - The size of the checkbox.
  * @param {"rtl|ltr" } [props.dir="rtl"] - The size of the checkbox.
@@ -49,7 +50,7 @@ export function BaseCheckBoxController<T extends FieldValues>(
         <div className="flex flex-col items-center justify-center">
           <div
             className={`flex gap-2 ${
-              dir === 'rtl' && 'flex-row-reverse'
+              dir === 'ltr' && 'flex-row-reverse'
             } items-center justify-center`}
           >
             {label && (

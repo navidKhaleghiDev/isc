@@ -39,7 +39,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
     dir = 'rtl',
   } = props;
 
-  // BaseIcon has been modified in other branch so i had to add this condition to size of icon
+  // BaseIcon has been modified in other branch so i had to add this condition to size of icon also consider the responsive mode
   return (
     <div className="flex flex-col items-center justify-center">
       <div
