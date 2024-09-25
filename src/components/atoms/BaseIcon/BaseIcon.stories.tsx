@@ -370,7 +370,7 @@ const meta = {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg', 'default'],
+      options: ['sm', 'md', 'lg', 'responsive'],
     },
     hoverColor: { control: 'color' },
     className: { control: 'text' },

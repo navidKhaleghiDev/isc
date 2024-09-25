@@ -27,10 +27,11 @@ export const baseIconStyles = cva('fill-current', {
       default: '',
     },
     size: {
-      xs: 'h-3 w-3',
-      sm: 'h-4 w-4',
-      md: 'h-6 w-6',
-      lg: 'h-[2.375rem] w-[2.375rem]',
+      xs: 'size-3',
+      sm: 'size-4',
+      md: 'size-6',
+      lg: 'size-[2.375rem]',
+      responsive: 'size-4 sm:size-6 md:size-[2.375rem]',
     },
   },
 });
