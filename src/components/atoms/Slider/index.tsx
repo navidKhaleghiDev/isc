@@ -1,3 +1,3 @@
-export { MultiBaseSlider } from './MultiBaseSlider/MultiBaseSlider';
+export { MultiBaseSlider } from './MultipleBaseSlider/MultipleBaseSlider';
 export { BaseSlider } from './BaseSlider/BaseSlider';
 export * from './types';

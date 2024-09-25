@@ -6,7 +6,7 @@ export interface BaseSliderProps {
   onChange: (range: { max: number }) => void;
 }
 
-export interface MultiBaseSliderProps
+export interface MultipleBaseSliderProps
   extends Omit<BaseSliderProps, 'onChange'> {
   initialMin: number;
   initialMax: number;

@@ -7,7 +7,7 @@ export const sliderStyles = cva(
       background: {
         range: 'bg-gray-200 dark:bg-gray-500',
         // rangeDark: 'bg-gray-500',
-        fill: 'bg-teal-400',
+        fill: 'bg-teal-500',
       },
     },
   }
@@ -18,5 +18,5 @@ export const thumbStyles = cva(
 );
 
 export const getValueStyles = cva(
-  'flex justify-center items-center mt-3 text-xs'
+  'flex justify-center items-center mt-3 text-xs text-teal-500'
 );
