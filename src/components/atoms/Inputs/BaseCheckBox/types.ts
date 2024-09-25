@@ -24,7 +24,7 @@ export interface BaseCheckBoxProps
 }
 
 export interface BaseCheckBoxControllerProps<T extends FieldValues>
-  extends Omit<BaseCheckBoxProps, 'onChange' | 'checked'> {
+  extends Omit<BaseCheckBoxProps, 'onChange' | 'checked' | 'error'> {
   name: FieldPath<T>;
   control: Control<T>;
   rules?: RegisterOptions<T>;
