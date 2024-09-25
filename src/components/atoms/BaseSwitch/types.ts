@@ -18,7 +18,6 @@ export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
   className?: string;
   error?: string;
   hiddenError?: boolean;
-  value?: string | number | readonly string[];
   disabled?: boolean;
   dir?: 'rtl' | 'ltr';
 }

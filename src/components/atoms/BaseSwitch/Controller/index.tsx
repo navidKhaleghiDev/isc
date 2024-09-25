@@ -57,7 +57,6 @@ export function BaseSwitchController<T extends FieldValues>(
                 id={id}
                 type="checkbox"
                 className="sr-only peer"
-                value={field.value}
                 name={field.name}
                 checked={Boolean(field.value)}
                 onChange={field.onChange}

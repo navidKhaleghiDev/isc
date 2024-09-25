@@ -28,7 +28,6 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
     label,
     name,
     onChange,
-    value,
     checked,
     error,
     dir = 'rtl',
@@ -48,7 +47,6 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           id={id}
           name={name}
           type="checkbox"
-          value={value}
           className="sr-only peer"
           onChange={onChange}
           disabled={disabled}
