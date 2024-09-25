@@ -1,3 +1,5 @@
+import { Typography } from '@ui/atoms/Typography';
+
 import { BaseRadioButtonProps } from './types';
 import { inputRadioButtonStyles, labelRadioButtonStyles } from './styles';
 
@@ -33,31 +35,44 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
     value,
     checked,
     dir = 'rtl',
-    size,
+    size = 'responsive',
     disabled,
+    hiddenError,
+    error,
   } = props;
 
   return (
-    <div
-      className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
-        dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
-      } ${className}`}
-    >
-      <input
-        id={id}
-        type="radio"
-        checked={checked}
-        name={name}
-        value={value}
-        onChange={(e) => {
-          if (onChange) onChange(e.target.checked);
-        }}
-        className={inputRadioButtonStyles({ size })}
-        disabled={disabled}
-      />
-      <label className={labelRadioButtonStyles()} htmlFor={id}>
-        {label}
-      </label>
+    <div className={`inline-flex flex-col ${className}`}>
+      <div
+        className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
+          dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
+        }`}
+      >
+        <input
+          id={id}
+          type="radio"
+          checked={checked}
+          name={name}
+          value={value}
+          onChange={onChange}
+          className={inputRadioButtonStyles({ size })}
+          disabled={disabled}
+        />
+        {label && (
+          <label className={labelRadioButtonStyles()} htmlFor={id}>
+            {label}
+          </label>
+        )}
+      </div>
+      {hiddenError && error && (
+        <Typography
+          color="red"
+          variant="body6"
+          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+        >
+          {error || ''}
+        </Typography>
+      )}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
 import { BaseRadioButton } from '.';
 
@@ -21,8 +22,15 @@ const meta: Meta<typeof BaseRadioButton> = {
     id: 'radio',
     label: 'label',
     className: 'font-kalameh',
+    onChange: fn(),
+    size: 'responsive',
   },
   argTypes: {
+    value: {
+      control: {
+        type: 'text',
+      },
+    },
     checked: {
       control: {
         type: 'boolean',
@@ -39,6 +47,12 @@ const meta: Meta<typeof BaseRadioButton> = {
         type: 'text',
       },
     },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md', 'responsive'],
+    },
   },
   render: (args) => (
     <>
@@ -51,6 +65,8 @@ const meta: Meta<typeof BaseRadioButton> = {
         defaultValue={args.defaultValue}
         label={args.label}
         value={args.value}
+        onChange={args.onChange}
+        size={args.size}
       />
       <br />
       <BaseRadioButton
@@ -62,6 +78,8 @@ const meta: Meta<typeof BaseRadioButton> = {
         defaultValue={args.defaultValue}
         label={args.label}
         value={args.value}
+        onChange={args.onChange}
+        size={args.size}
       />
     </>
   ),

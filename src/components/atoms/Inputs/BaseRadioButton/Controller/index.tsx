@@ -1,4 +1,5 @@
 import { Controller } from 'react-hook-form';
+import { Typography } from '@ui/atoms/Typography';
 
 import { BaseRadioButtonControllerProps } from '../types';
 import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
@@ -25,7 +26,7 @@ import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
  * @returns {JSX.Element} Returns the rendered BaseRadioButton component.
  */
 
-export function BaseRadioButton(
+export function BaseRadioButtonController(
   props: BaseRadioButtonControllerProps<any>
 ): JSX.Element {
   const {
@@ -35,10 +36,11 @@ export function BaseRadioButton(
     className,
     control,
     rules,
-    onChange,
+    value,
     dir = 'rtl',
-    size,
+    size = 'responsive',
     disabled = false,
+    hiddenError,
   } = props;
 
   return (
@@ -47,27 +49,46 @@ export function BaseRadioButton(
       control={control}
       rules={rules}
       disabled={disabled}
-      render={({ field }) => (
-        <div
-          className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
-            dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
-          } ${className}`}
-        >
-          <input
-            id={id}
-            type="radio"
-            checked={Boolean(field.value)}
-            name={field.name}
-            value={field.value ?? false}
-            onChange={(e) => {
-              field.onChange(e.target.checked);
-              if (onChange) onChange(e.target.checked);
-            }}
-            className={inputRadioButtonStyles({ size })}
-          />
-          <label className={labelRadioButtonStyles()} htmlFor={id}>
-            {label}
-          </label>
+      render={({ field, fieldState: { error } }) => (
+        <div className={`inline-flex flex-col ${className}`}>
+          <div
+            className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
+              dir === 'ltr' ? 'flex-row' : 'flex-row-reverse'
+            }`}
+          >
+            <input
+              id={id}
+              type="radio"
+              checked={field.value === value}
+              name={field.name}
+              value={value}
+              onChange={(e) => {
+                field.onChange(e.target.value);
+              }}
+              className={inputRadioButtonStyles({ size })}
+              disabled={field.disabled}
+            />
+            <label htmlFor={id}>
+              <Typography
+                color="neutralDark"
+                variant="body6"
+                className={labelRadioButtonStyles()}
+              >
+                {label}
+              </Typography>
+            </label>
+          </div>
+          {hiddenError && error?.message && (
+            <Typography
+              color="red"
+              variant="body6"
+              className={`${
+                dir === 'ltr' ? 'text-left' : 'text-right'
+              } min-h-10`}
+            >
+              {error?.message || ''}
+            </Typography>
+          )}
         </div>
       )}
     />

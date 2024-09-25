@@ -15,25 +15,19 @@ export interface BaseRadioButtonProps
   defaultValue?: string;
   label?: string;
   className?: string;
-  onChange?: (event: boolean) => void;
-  value?: string | number | readonly string[];
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  value: string | number;
   checked?: boolean;
   dir?: 'rtl' | 'ltr';
   disabled?: boolean;
+  hiddenError?: boolean;
+  error?: string;
 }
 
 export interface BaseRadioButtonControllerProps<T extends FieldValues>
-  extends VariantProps<typeof inputRadioButtonStyles> {
-  id: string;
+  extends Omit<BaseRadioButtonProps, 'onChange' | 'checked' | 'error'> {
   name: FieldPath<T>;
-  defaultValue?: string;
-  label?: string;
-  className?: string;
-  onChange?: (event: boolean) => void;
-  value?: string | number | readonly string[];
-  checked?: boolean;
-  dir?: 'rtl' | 'ltr';
-  control?: Control<T>;
+  control: Control<T>;
   rules?: RegisterOptions<T>;
-  disabled?: boolean;
+  onChange?: (event: string) => void;
 }
