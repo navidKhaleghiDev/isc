@@ -24,7 +24,7 @@ export interface BaseSwitchProps extends VariantProps<typeof baseSwitchStyles> {
 }
 
 export interface BaseSwitchControllerProps<T extends FieldValues>
-  extends Omit<BaseSwitchProps, 'onChange' | 'error' | 'value'> {
+  extends Omit<BaseSwitchProps, 'onChange' | 'error' | 'checked'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
