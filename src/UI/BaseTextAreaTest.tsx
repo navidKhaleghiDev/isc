@@ -1,10 +1,13 @@
 import { BaseTextarea } from '@ui/atoms/Inputs/BaseTextarea';
-import { FormEventHandler, useState } from 'react';
+import { BaseTextareaController } from '@ui/atoms/Inputs/BaseTextarea/Controller';
+import { FormEvent, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function BaseTextAreaTest() {
   const [text, setText] = useState('');
   const [textShow, setTextShow] = useState('');
-  const handelMyForm = (e: FormEventHandler<HTMLFormElement>) => {
+  const { control } = useForm();
+  const handelMyForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTextShow(text);
   };
@@ -16,15 +19,27 @@ export default function BaseTextAreaTest() {
           name="myText"
           onChange={(e) => setText(e.target.value)}
           value={text}
-          dir="ltr"
-          fullWidth
           label="متن من"
-          helpText="there is an help text there is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help textthere is an help text"
+          helpText="there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text"
           hiddenHelpText
-          error="there is an error for this component there is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this componentthere is an error for this component"
-          // hiddenError
+          error="there is  there is an error for this component there is an error for this component there is an error for this component there is an error for this component there is an error for this component"
+          hiddenError
           placeholder="متن خود"
-          // disabled
+        />
+        <p>{textShow}</p>
+        <button type="submit">submit without control</button>
+      </form>
+      <form onSubmit={handelMyForm}>
+        <BaseTextareaController
+          id="myText"
+          name="myText"
+          control={control}
+          label="متن من"
+          helpText="there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text"
+          hiddenHelpText
+          hiddenError
+          dir="rtl"
+          placeholder="متن خود"
         />
         <p>{textShow}</p>
         <button type="submit">submit without control</button>

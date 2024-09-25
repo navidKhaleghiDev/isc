@@ -74,7 +74,7 @@ export function BaseTextareaController<T extends FieldValues>(
             id={id}
             rows={5}
             cols={50}
-            dir="auto"
+            dir={dir}
             name={field.name}
             value={field.value ?? ''}
             onChange={field.onChange}

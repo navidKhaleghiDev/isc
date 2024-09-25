@@ -65,7 +65,9 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
         >
           <Typography
             variant="body6"
-            className={`dark:${disabled ? 'text-gray-500' : 'text-white'} ${
+            className={`text-gray-500 dark:${
+              disabled ? 'text-gray-500' : 'text-white'
+            } ${
               error && !disabled
                 ? 'text-red-500 dark:text-red-500'
                 : 'text-gray-300'
