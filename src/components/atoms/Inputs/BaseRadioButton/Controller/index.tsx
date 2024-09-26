@@ -1,4 +1,4 @@
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { Typography } from '@ui/atoms/Typography';
 
 import { BaseRadioButtonControllerProps } from '../types';
@@ -26,8 +26,8 @@ import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
  * @returns {JSX.Element} Returns the rendered BaseRadioButton component.
  */
 
-export function BaseRadioButtonController(
-  props: BaseRadioButtonControllerProps<any>
+export function BaseRadioButtonController<T extends FieldValues>(
+  props: BaseRadioButtonControllerProps<T>
 ): JSX.Element {
   const {
     name,
@@ -38,7 +38,7 @@ export function BaseRadioButtonController(
     rules,
     value,
     dir = 'rtl',
-    size = 'responsive',
+    size,
     disabled = false,
     hiddenError,
   } = props;
@@ -62,9 +62,7 @@ export function BaseRadioButtonController(
               checked={field.value === value}
               name={field.name}
               value={value}
-              onChange={(e) => {
-                field.onChange(e.target.value);
-              }}
+              onChange={field.onChange}
               className={inputRadioButtonStyles({ size })}
               disabled={field.disabled}
             />
@@ -74,7 +72,7 @@ export function BaseRadioButtonController(
               </label>
             )}
           </div>
-          {hiddenError && error?.message && (
+          {!hiddenError && error?.message && (
             <Typography
               color="red"
               variant="body6"
@@ -82,7 +80,7 @@ export function BaseRadioButtonController(
                 dir === 'ltr' ? 'text-left' : 'text-right'
               } min-h-10`}
             >
-              {error?.message || ''}
+              {error?.message}
             </Typography>
           )}
         </div>
