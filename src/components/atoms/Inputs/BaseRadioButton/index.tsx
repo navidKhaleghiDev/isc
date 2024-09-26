@@ -35,7 +35,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
     value,
     checked,
     dir = 'rtl',
-    size = 'responsive',
+    size,
     disabled,
     hiddenError,
     error,
@@ -64,13 +64,13 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
           </label>
         )}
       </div>
-      {hiddenError && error && (
+      {!hiddenError && error && (
         <Typography
           color="red"
           variant="body6"
           className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
         >
-          {error || ''}
+          {error}
         </Typography>
       )}
     </div>
