@@ -32,9 +32,8 @@ export function ControllerMultipleBaseSlider(props: ControllerMultipleBaseSlider
             initialMin={field.value}
             initialMax={initialMax} 
             hiddenLabel={hiddenLabel}
-            onChange={({ min, max }) => {
+            onChange={({ min}) => {
               setValue('min', min);
-              setValue('max', max);
               field.onChange(min); 
             }}
           />
@@ -50,8 +49,7 @@ export function ControllerMultipleBaseSlider(props: ControllerMultipleBaseSlider
             initialMin={initialMin}
             initialMax={field.value}
             hiddenLabel={hiddenLabel}
-            onChange={({ min, max }) => {
-              setValue('min', min);
+            onChange={({ max }) => {
               setValue('max', max);
               field.onChange(max);
             }}
