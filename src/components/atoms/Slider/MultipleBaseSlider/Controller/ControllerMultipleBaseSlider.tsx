@@ -1,7 +1,7 @@
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm } from 'react-hook-form';
 
-import { MultipleBaseSlider } from "../MultipleBaseSlider"; 
-import { MultipleBaseSliderProps } from "../../types";
+import { MultipleBaseSlider } from '../MultipleBaseSlider'; 
+import { MultipleBaseSliderProps } from '../../types';
 
 export interface FormValue {
   min: number;
