@@ -1,30 +1,31 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BaseRadioButton } from '@ui/atoms/Inputs/BaseRadioButton';
 import { BaseRadioButtonController } from '@ui/atoms/Inputs/BaseRadioButton/Controller';
 
 import { useForm } from 'react-hook-form';
 
+interface MyFormStyle {
+  radioSelection: string;
+}
+
 export function BaseRadioButtonTest() {
   const [selectedValue, setSelectedValue] = useState('radio2');
 
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control } = useForm<MyFormStyle>({
     defaultValues: {
       radioSelection: 'radio3',
     },
   });
 
-  const onChangeRadioButton = useCallback((e: any) => {
-    setSelectedValue(e.target.value);
-  }, []);
+  const onChangeRadioButton = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);
+  };
 
+  // ⚠ During testing and reviewing, uncomment return, comment, and console.log. The reason for this is a lint error related to console.
   const onSubmit = (data: any) => {
     return data;
     // console.log('Selected Radio:', data);
   };
-
-  useEffect(() => {
-    // console.log(selectedValue);
-  }, [selectedValue]);
 
   return (
     <div className="font-kalameh">
@@ -60,7 +61,6 @@ export function BaseRadioButtonTest() {
             },
           }}
           label="first controlled radio"
-          hiddenError
         />
         <BaseRadioButtonController
           id="radio4"
@@ -72,6 +72,10 @@ export function BaseRadioButtonTest() {
         <br />
         <button type="submit">Submit</button>
       </form>
+
+      <div className="mt-5 dark:text-white">
+        <p>unController Answer: {selectedValue}</p>
+      </div>
     </div>
   );
 }
