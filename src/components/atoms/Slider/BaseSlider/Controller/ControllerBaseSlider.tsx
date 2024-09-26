@@ -1,7 +1,7 @@
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm } from 'react-hook-form';
 
-import { BaseSliderProps } from "../../types";
-import { BaseSlider } from "../BaseSlider";
+import { BaseSliderProps } from '../../types';
+import { BaseSlider } from '../BaseSlider';
 
 export interface FormValue{
     max:number;
