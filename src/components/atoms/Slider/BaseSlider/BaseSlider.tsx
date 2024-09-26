@@ -34,9 +34,9 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
         if (sliderWidth === 0) return;
 
         const percentMoved = (dx / sliderWidth) * (max - min);
-        const newValue = startValue + percentMoved;
-        const nonNegative = Math.max(min, Math.min(newValue, max));
-        const newValueRound = nonNegative.toFixed();
+        const newValue = startValue + percentMoved; 
+        const  nonNegative=newValue.toFixed()  
+        const newValueRound=nonNegative
 
         if (+newValueRound >= min && +newValueRound <= max) {
           setValue(newValue);
@@ -74,7 +74,7 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
           role="button"
         >
           {hiddenLable && (
-            <span className={getValueStyles()}>{value.toFixed()}</span>
+            <span className={getValueStyles()}>{Math.max(value, 0).toFixed()}</span>
           )}
         </div>
       </div>
