@@ -39,8 +39,8 @@ export function MultipleBaseSlider(
 
         const percentMoved = (dx / sliderWidth) * (max - min);
         const newValue = startValue + percentMoved;
-        const nonNegative = Math.max(Math.min(newValue, max), min);
-        const newValueRound = nonNegative.toFixed();
+        const  nonNegative=newValue.toFixed();  
+        const newValueRound=nonNegative;
 
         if (
           thumb === 'min' &&
