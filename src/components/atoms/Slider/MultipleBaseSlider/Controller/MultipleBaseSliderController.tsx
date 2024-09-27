@@ -1,20 +1,17 @@
 import { Controller, useForm } from 'react-hook-form';
 
-import { MultipleBaseSlider } from '../MultipleBaseSlider'; 
-import { MultipleBaseSliderProps } from '../../types';
+import { MultipleBaseSlider } from '../MultipleBaseSlider';
+import { MultipleBaseSliderControllerProps } from '../../types';
 
-export interface FormValue {
+interface FormValue {
   min: number;
   max: number;
 }
 
-export interface ControllerMultipleBaseSliderProps extends Omit<MultipleBaseSliderProps, 'onChange'> {
-  initialMin: number;
-  initialMax: number;
-}
-
-export function ControllerMultipleBaseSlider(props: ControllerMultipleBaseSliderProps) {
-  const { min, max, initialMin, initialMax, hiddenLabel } = props;
+export function MultipleBaseSliderController(
+  props: MultipleBaseSliderControllerProps
+) {
+  const { min, max, initialMin, initialMax, hiddenLabel, onChange } = props;
 
   const { control, setValue } = useForm<FormValue>({
     defaultValues: { min: initialMin, max: initialMax },
@@ -30,11 +27,12 @@ export function ControllerMultipleBaseSlider(props: ControllerMultipleBaseSlider
             min={min}
             max={max}
             initialMin={field.value}
-            initialMax={initialMax} 
+            initialMax={initialMax}
             hiddenLabel={hiddenLabel}
-            onChange={({ min}) => {
-              setValue('min', min);
-              field.onChange(min); 
+            onChange={({ min: newMin }) => {
+              setValue('min', newMin);
+              field.onChange(newMin);
+              onChange({ min: newMin, max: field.value });
             }}
           />
         )}
@@ -49,9 +47,10 @@ export function ControllerMultipleBaseSlider(props: ControllerMultipleBaseSlider
             initialMin={initialMin}
             initialMax={field.value}
             hiddenLabel={hiddenLabel}
-            onChange={({ max }) => {
-              setValue('max', max);
-              field.onChange(max);
+            onChange={({ max: newMax }) => {
+              setValue('max', newMax);
+              field.onChange(newMax);
+              onChange({ max: newMax, min: field.value });
             }}
           />
         )}
