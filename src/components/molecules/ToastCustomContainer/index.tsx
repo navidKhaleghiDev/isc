@@ -21,7 +21,7 @@ interface ToastCustomContainerProps {
 
 type CustomTypeOptions = Exclude<TypeOptions, 'warning' | 'default'>;
 
-interface CloseButtonCustomProps {
+interface CloseButtonProps {
   closeToast: (e: React.MouseEvent<HTMLElement>) => void;
   type: CustomTypeOptions;
 }
@@ -39,10 +39,7 @@ interface CloseButtonCustomProps {
  *
  * @returns {JSX.Element} The rendered close button component.
  */
-function CloseButton({
-  closeToast,
-  type,
-}: CloseButtonCustomProps): JSX.Element {
+function CloseButton({ closeToast, type }: CloseButtonProps): JSX.Element {
   return (
     <button
       className="text-white self-center justify-start"
@@ -68,40 +65,32 @@ function CloseButton({
  * @param {Object} [props] - The props for the icon component.
  * @param {CustomTypeOptions} [props.type] - The type of the toast notification.
  *
- * @returns {JSX.Element | null} The icon component or null if the type is not recognized.
+ * @returns {JSX.Element} The icon component or null if the type is not recognized.
  */
-function getToastIcon(type: CustomTypeOptions = 'success') {
-  switch (type) {
-    case 'success':
-      return (
-        <BaseIcon
-          icon={Check}
-          size="md"
-          color="neutralNoBg"
-          className="shrink-0 w-5 h-5"
-        />
-      );
-    case 'error':
-      return (
-        <BaseIcon
-          icon={Warning}
-          size="md"
-          color="neutralNoBg"
-          className="shrink-0"
-        />
-      );
-    case 'info':
-      return (
-        <BaseIcon
-          icon={Info}
-          size="md"
-          color="neutralNoBg"
-          className="shrink-0"
-        />
-      );
-    default:
-      return null;
-  }
+function getToastIcon(type: CustomTypeOptions = 'success'): JSX.Element {
+  const toastIconMap = {
+    success: {
+      icon: Check,
+      class: 'shrink-0 w-5 h-5',
+    },
+    error: {
+      icon: Warning,
+      class: 'shrink-0',
+    },
+    info: {
+      icon: Info,
+      class: 'shrink-0',
+    },
+  };
+
+  return (
+    <BaseIcon
+      icon={toastIconMap[type].icon}
+      size="md"
+      color="neutralNoBg"
+      className={toastIconMap[type].class}
+    />
+  );
 }
 
 /**
@@ -130,10 +119,9 @@ function getToastClassName(
 const toastOptions: ToastOptions = {
   closeButton: (props) => {
     const { closeToast } = props;
-    const customType =
-      props?.type && ['info', 'success', 'error'].includes(props.type)
-        ? (props.type as CustomTypeOptions)
-        : 'info';
+    const customType = ['info', 'success', 'error'].includes(props.type)
+      ? (props.type as CustomTypeOptions)
+      : 'info';
 
     return <CloseButton closeToast={closeToast} type={customType} />;
   },
