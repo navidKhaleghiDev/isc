@@ -88,7 +88,7 @@ function getToastIcon(type: CustomTypeOptions = 'success'): JSX.Element {
       icon={toastIconMap[type].icon}
       size="md"
       color="neutralNoBg"
-      className={toastIconMap[type].class}
+      className={`${toastIconMap[type].class} ${toastIconStyle({ type })}`}
     />
   );
 }
