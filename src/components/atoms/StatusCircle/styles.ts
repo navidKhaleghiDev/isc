@@ -14,6 +14,9 @@ export const statusCircleStyle = cva(
         teal: 'bg-teal-500 dark:bg-teal-400',
         red: 'bg-red-500 text-white dark:bg-red-400 text-xs leading-3',
       },
+      defaultVariants: {
+        size: 'lg',
+      },
     },
   }
 );

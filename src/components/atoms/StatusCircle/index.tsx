@@ -23,7 +23,7 @@ export function StatusCircle(props: StatusCircleProps): JSX.Element {
       ${className && ''}
       `}
     >
-    {content}
+      {content}
     </div>
   );
 }
