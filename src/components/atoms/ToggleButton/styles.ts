@@ -8,5 +8,8 @@ export const toggleStyles = cva('flex', {
       responsive:
         'h-7 text-xs rounded-[0.25rem] sm:h-10 sm:text-sm sm:rounded-lg',
     },
+    defaultVariants: {
+      size: 'md',
+    },
   },
 });
