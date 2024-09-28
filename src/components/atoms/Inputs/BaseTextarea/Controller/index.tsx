@@ -38,10 +38,11 @@ export function BaseTextareaController<T extends FieldValues>(
     className,
     hiddenHelpText,
     helpText,
+    disabled,
     fullWidth,
     label,
     size,
-    hiddenError,
+    showError,
     intent = 'default',
     dir = 'rtl',
   } = props;
@@ -60,11 +61,14 @@ export function BaseTextareaController<T extends FieldValues>(
               }`}
             >
               <Typography
-                color="neutralDark"
                 variant="body6"
-                className={`dark:text-white ${
-                  error && !field.disabled ? 'text-red-500' : 'neutralLight'
-                }  ${field.disabled && 'text-gray-300'}`}
+                className={`dark:${
+                  error && !disabled ? 'text-gray-500' : 'text-white'
+                } ${
+                  error && !disabled
+                    ? 'text-red-500 dark:text-red-500'
+                    : 'text-gray-300'
+                }  ${disabled ? 'text-gray-300' : 'text-gray-900'}`}
               >
                 {label}
               </Typography>
@@ -76,6 +80,7 @@ export function BaseTextareaController<T extends FieldValues>(
             cols={50}
             dir={dir}
             name={field.name}
+            disabled={disabled}
             value={field.value ?? ''}
             onChange={field.onChange}
             className={baseTextareaStyles({
@@ -87,7 +92,7 @@ export function BaseTextareaController<T extends FieldValues>(
             placeholder={placeholder}
           />
           <span className={baseInputTextStyles({ size, fullWidth })}>
-            {!hiddenError && hiddenHelpText && (
+            {!showError && hiddenHelpText && (
               <Typography
                 variant="body6"
                 className={`${
@@ -97,7 +102,7 @@ export function BaseTextareaController<T extends FieldValues>(
                 {helpText}
               </Typography>
             )}
-            {!field.disabled && hiddenError && (
+            {!field.disabled && showError && (
               <Typography
                 color="red"
                 variant="body6"

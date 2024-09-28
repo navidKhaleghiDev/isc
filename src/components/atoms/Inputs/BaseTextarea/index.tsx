@@ -44,7 +44,7 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
     helpText,
     hiddenHelpText,
     disabled,
-    hiddenError,
+    showError,
     intent = 'default',
     dir = 'rtl',
   } = props;
@@ -65,13 +65,13 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
         >
           <Typography
             variant="body6"
-            className={`text-gray-500 dark:${
-              disabled ? 'text-gray-500' : 'text-white'
+            className={`dark:${
+              error && !disabled ? 'text-gray-500' : 'text-white'
             } ${
               error && !disabled
                 ? 'text-red-500 dark:text-red-500'
                 : 'text-gray-300'
-            }  ${disabled && 'text-gray-300'}`}
+            }  ${disabled ? 'text-gray-300' : 'text-gray-900'}`}
           >
             {label}
           </Typography>
@@ -93,7 +93,7 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
         placeholder={placeholder}
       />
       <span className={baseInputTextStyles({ size, fullWidth })}>
-        {!hiddenError && hiddenHelpText && (
+        {!showError && !hiddenHelpText && (
           <Typography
             variant="body6"
             className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
@@ -101,7 +101,7 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
             {helpText}
           </Typography>
         )}
-        {!disabled && hiddenError && (
+        {!disabled && showError && (
           <Typography
             color="red"
             variant="body6"

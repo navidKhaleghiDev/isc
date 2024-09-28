@@ -23,11 +23,11 @@ export interface BaseTextareaProps
   dir?: 'rtl' | 'ltr';
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   className?: string;
-  hiddenError?: boolean;
+  showError?: boolean;
 }
 
 export interface BaseTextareaControllerProps<T extends FieldValues>
-  extends Omit<BaseTextareaProps, 'error' | 'value' | 'onChange' | 'disabled'> {
+  extends Omit<BaseTextareaProps, 'error' | 'value' | 'onChange'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
