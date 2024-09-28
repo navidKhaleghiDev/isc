@@ -15,8 +15,8 @@ export const baseTextareaStyles = cva(
       },
       size: {
         sm: `w-40`,
-        md: `w-64`,
-        lg: `w-[21.875rem]`,
+        md: `w-[15.94rem]`,
+        lg: `w-[21.88rem]`,
       },
     },
     defaultVariants: {

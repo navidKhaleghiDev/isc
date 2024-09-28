@@ -44,10 +44,10 @@ export default function BaseTextAreaTest() {
           label="متن من"
           helpText="there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text there is an help text"
           hiddenHelpText
-          showError
+          // showError
           rules={{ pattern: regexPattern.farsiLetters }}
-          disabled
-          dir="rtl"
+          // disabled
+          dir="ltr"
           placeholder="متن خود"
         />
         <p>{controllerText}</p>

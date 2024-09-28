@@ -1,9 +1,13 @@
 import { Controller, FieldValues } from 'react-hook-form';
+
 import { Typography } from '@ui/atoms/Typography';
 
 import { baseTextareaStyles } from '../styles';
 import { BaseTextareaControllerProps } from '../types';
-import { baseInputTextStyles } from '../../BaseInput/styles';
+import {
+  baseInputTextStyles,
+  baseInputWarperStyles,
+} from '../../BaseInput/styles';
 
 /**
  * BaseTextarea component that integrates with react-hook-form.
@@ -52,7 +56,13 @@ export function BaseTextareaController<T extends FieldValues>(
       control={control}
       rules={rules}
       render={({ field, fieldState: { error } }) => (
-        <div className={`${className} ${fullWidth && 'w-full'}`}>
+        <div
+          className={baseInputWarperStyles({
+            size,
+            fullWidth,
+            className: 'flex flex-col',
+          })}
+        >
           {label && (
             <label
               htmlFor={id}
@@ -99,7 +109,7 @@ export function BaseTextareaController<T extends FieldValues>(
                   dir === 'ltr' ? 'text-left' : 'text-right'
                 } min-h-10`}
               >
-                {helpText}
+                {helpText ?? ''}
               </Typography>
             )}
             {!field.disabled && showError && (

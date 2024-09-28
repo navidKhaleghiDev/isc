@@ -22,7 +22,6 @@ const meta: Meta<typeof BaseTextarea> = {
   tags: ['autodocs'],
   args: {
     label: 'متن مورد نظر',
-    value: '',
   },
   argTypes: {
     onChange: { action: 'changed' },

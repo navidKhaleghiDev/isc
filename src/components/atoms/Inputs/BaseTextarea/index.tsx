@@ -98,7 +98,7 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
             variant="body6"
             className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
           >
-            {helpText}
+            {helpText ?? ''}
           </Typography>
         )}
         {!disabled && showError && (
@@ -107,7 +107,7 @@ export function BaseTextarea(props: BaseTextareaProps): JSX.Element {
             variant="body6"
             className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
           >
-            {error}
+            {error ?? ''}
           </Typography>
         )}
       </span>
