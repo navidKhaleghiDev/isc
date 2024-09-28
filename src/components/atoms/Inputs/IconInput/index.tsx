@@ -19,7 +19,7 @@ export function IconInput({ icon, intent, dir }: IconInputProps) {
         className: `${dir === 'rtl' && 'right-0'} pointer-events-none`,
       })}
     >
-      <BaseIcon icon={icon} size="xs" />
+      <BaseIcon icon={icon} size="sm" />
     </div>
   );
 }

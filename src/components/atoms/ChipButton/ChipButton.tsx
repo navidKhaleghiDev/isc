@@ -1,13 +1,13 @@
 import X from '@iconify-icons/ph/x';
 
 import { chipButtonStyles } from './styles';
-import { BaseIcon, IBaseIcon } from '../BaseIcon';
+import { BaseIcon, BaseIconProps } from '../BaseIcon';
 
 type ChipButtonProps = {
   label: string;
-  icon?: IBaseIcon['icon'];
+  icon?: BaseIconProps['icon'];
   onClick?: () => void;
-  color: IBaseIcon['color'];
+  color: BaseIconProps['color'];
   dir?: 'rtl' | 'ltr';
   className?: string;
   disabled?: boolean;
