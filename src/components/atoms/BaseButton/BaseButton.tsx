@@ -25,19 +25,20 @@ import { LoadingSvg } from '../Svgs/LoadingSvg';
  * @returns {JSX.Element} The BaseButton component.
  */
 
-export function BaseButton({
-  onClick,
-  label,
-  submit,
-  fullWidth,
-  className,
-  startIcon,
-  endIcon,
-  disabled,
-  size,
-  type,
-  loading,
-}: BaseButtonProps): JSX.Element {
+export function BaseButton(props: BaseButtonProps): JSX.Element {
+  const {
+    onClick,
+    label,
+    submit,
+    fullWidth,
+    className,
+    startIcon,
+    endIcon,
+    disabled,
+    size,
+    type,
+    loading,
+  } = props;
   const baseButtonStyle = loading ? loadingStyle : baseButtonStyles;
   return (
     <button
