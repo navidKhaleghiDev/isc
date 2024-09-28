@@ -22,7 +22,7 @@ export function IconInput({
     <div
       className={iconBaseInputStyles({
         intent: error ? 'error' : intent,
-        className: `${dir === 'rtl' && 'right-0'} pointer-events-none`,
+        className: `${dir === 'rtl' && 'right-0'} pointer-events-none left-0`,
       })}
     >
       <BaseIcon icon={icon} size="xs" />

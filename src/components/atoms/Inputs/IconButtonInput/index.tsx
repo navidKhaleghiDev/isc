@@ -28,7 +28,7 @@ export function IconButtonInput({
       disabled={disabled}
       className={iconBaseInputStyles({
         intent: error ? 'error' : intent,
-        className: `${dir === 'rtl' && 'right-0'}`,
+        className: `${dir === 'rtl' ? 'right-0' : 'left-0'}`,
       })}
       aria-label="button"
     >

@@ -65,15 +65,6 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     iconButtonIcon = 'ph:x',
   } = props;
 
-  // Items-center added to the wrapper component remember to refactor it again
-  // Remember to ask about the default value that in error handling conditions it gives errors
-  // Handling that the startIcon and endIcon and iconButton error handling if we give all of them in same time
-  // Handling the the disable mode that when accrues that the icon cursor pointer remove
-  // Remember to merge the IconButton and the startIcon and endIcon
-  // For handling the icon added CVA to the wrapper div remember to handel it with another method
-  // When we hover in the input our helpText does not hover remember to handel this (also the disable of it)
-  // Handling the label in disable mode of the dark mode
-
   return (
     <div
       className={baseInputWarperStyles({
@@ -92,8 +83,8 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           <Typography
             variant="body6"
             className={`dark:text-white ${
-              error && !disabled ? 'text-red-500' : 'neutralLight'
-            }  ${disabled && 'text-gray-300'}`}
+              error && !disabled ? 'text-red-500' : 'text-gray-200'
+            }  ${disabled ? 'text-gray-200' : 'text-gray-500'}`}
           >
             {label}
           </Typography>
@@ -114,9 +105,9 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           placeholder={placeholder}
           className={baseInputStyles({
             intent: error ? 'error' : intent,
-            className: `${(endIcon || onClickIcon) && 'pl-7'} ${
-              (startIcon || onClickIcon) && 'pr-7'
-            }`,
+            className: `${
+              (endIcon || (onClickIcon && dir === 'ltr')) && 'pl-7'
+            } ${(startIcon || (onClickIcon && dir === 'rtl')) && 'pr-7'}`,
             fullWidth,
             size,
           })}
@@ -125,7 +116,9 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
         {startIcon && (
           <IconInput icon={startIcon} intent={intent} error={error} dir="rtl" />
         )}
-        {endIcon && <IconInput icon={endIcon} intent={intent} error={error} />}
+        {endIcon && (
+          <IconInput icon={endIcon} intent={intent} error={error} dir="ltr" />
+        )}
         {onClickIcon && (
           <IconButtonInput
             icon={iconButtonIcon}
@@ -143,7 +136,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
             variant="body6"
             className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
           >
-            {helpText}
+            {helpText ?? ''}
           </Typography>
         )}
         {!disabled && hiddenError && (
@@ -152,7 +145,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
             variant="body6"
             className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
           >
-            {error}
+            {error ?? ''}
           </Typography>
         )}
       </span>
