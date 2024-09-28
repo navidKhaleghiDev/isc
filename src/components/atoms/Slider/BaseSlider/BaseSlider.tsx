@@ -36,11 +36,11 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
 
         const percentMoved = (dx / sliderWidth) * (max - min);
         const newValue = startValue + percentMoved;
-        const nonNegative = Math.max(min, Math.min(newValue, max));
-        const newValueRound = nonNegative.toFixed();
+        const nonNegative = newValue.toFixed();
+        const newValueRound = nonNegative;
 
         if (+newValueRound >= min && +newValueRound <= max) {
-          setValue(newValue);
+          setValue(+newValueRound);
           if (onChange) onChange({ max: +newValueRound });
         }
       };

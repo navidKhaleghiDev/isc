@@ -1,4 +1,6 @@
+import { SliderTest } from '@ui/atoms/Slider/SliderTest';
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -20,6 +22,11 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/ui" element={<SliderTest />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
