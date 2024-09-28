@@ -15,7 +15,7 @@ export function BaseInputTest() {
   const [showData, setShowData] = useState<MyFormType>();
   const { control, handleSubmit } = useForm<MyFormType>({});
   return (
-    <div className="font-kalameh">
+    <div className="font-kalameh" dir="rtl">
       <form className="without controller">
         <BaseInput
           id="Name"
@@ -24,13 +24,14 @@ export function BaseInputTest() {
           value={userName}
           placeholder="نام کاربری"
           iconButtonIcon={PhEyeSlash}
-          fullWidth
+          // fullWidth
           onClickIcon={() => setIconClicked(!iconClicked)}
           helpText="there is an help text there is an help text there is an help text there is an help text"
           hiddenHelpText
           error="there is an erorr in our component"
-          hiddenError
-          dir="rtl"
+          // hiddenError
+          // endIcon={PhEyeSlash}
+          dir="ltr"
           label="نام کاربری"
         />
         <p>{userName}</p>
@@ -48,10 +49,13 @@ export function BaseInputTest() {
           rules={{ pattern: regexPattern.farsiLetters }}
           placeholder="نام کاربری"
           helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
-          fullWidth
+          // fullWidth
           hiddenError
           // disabled
-          startIcon={PhEyeSlash}
+          onClickIcon={() => setIconClicked(!iconClicked)}
+          iconButtonIcon={PhEyeSlash}
+          // startIcon={PhEyeSlash}
+          // endIcon={PhEyeSlash}
           dir="rtl"
           label="نام کاربری"
         />

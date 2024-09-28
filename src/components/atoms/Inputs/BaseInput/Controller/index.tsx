@@ -1,4 +1,5 @@
 import { Controller, FieldValues } from 'react-hook-form';
+
 import { Typography } from '@ui/atoms/Typography';
 
 import { IconButtonInput } from '../../IconButtonInput';
@@ -85,7 +86,7 @@ export function BaseInputController<T extends FieldValues>(
           className={baseInputWarperStyles({
             size,
             fullWidth,
-            className: `flex flex-col ${className ?? ''}`,
+            className: `flex flex-col`,
           })}
         >
           {label && (
@@ -98,34 +99,28 @@ export function BaseInputController<T extends FieldValues>(
               <Typography
                 variant="body6"
                 className={`dark:text-white ${
-                  error && !disabled ? 'text-red-500' : 'neutralLight'
-                } ${disabled && 'text-gray-300'}`}
+                  error && !disabled ? 'text-red-500' : 'text-gray-200'
+                } ${disabled ? 'text-gray-200' : 'text-gray-500'}`}
               >
                 {label}
               </Typography>
             </label>
           )}
-          <div className="relative peer">
+          <div className={`relative peer ${className ?? ''}`}>
             <input
               id={id}
               type={type}
               dir={dir}
               disabled={field.disabled}
               name={field.name}
-              value={type !== 'file' ? field.value ?? '' : undefined}
-              onChange={(e) => {
-                if (type !== 'file') {
-                  field.onChange(e);
-                } else {
-                  field.onChange(e.target.files);
-                }
-              }}
+              value={field.value}
+              onChange={field.onChange}
               onKeyDown={onKeyDown}
               className={baseInputStyles({
                 intent: error?.message ? 'error' : intent,
-                className: `${(endIcon || onClickIcon) && 'pl-7'} ${
-                  (startIcon || onClickIcon) && 'pr-7'
-                }`,
+                className: `${
+                  (endIcon || (onClickIcon && dir === 'ltr')) && 'pl-7'
+                } ${(startIcon || (onClickIcon && dir === 'rtl')) && 'pr-7'}`,
                 fullWidth,
                 size,
               })}
@@ -145,6 +140,7 @@ export function BaseInputController<T extends FieldValues>(
               <IconInput
                 icon={endIcon}
                 intent={intent}
+                dir="ltr"
                 error={error?.message}
               />
             )}
@@ -167,7 +163,7 @@ export function BaseInputController<T extends FieldValues>(
                   dir === 'ltr' ? 'text-left' : 'text-right'
                 } min-h-10`}
               >
-                {helpText}
+                {helpText ?? ''}
               </Typography>
             )}
             {!field.disabled && hiddenError && (
