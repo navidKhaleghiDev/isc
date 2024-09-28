@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 
-import { MultipleBaseSliderProps } from '../types';
 import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
+import { MultipleBaseSliderProps } from '../types';
 
 /**
  * @component
@@ -10,6 +10,7 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
  * @param {number} props.max - The maximum value of the slider
  * @param {number} props.initialMin - The initialMin value
  * @param {number} props.initialMax - The initialMax value
+ * @param {boolean} props.hiddenLabel -Hidden value of the slider
  * @param {(values: { min: number, max: number }) => void} [props.onChange] - The onChnage method just gives us the max and min value
  * @returns {JSX.Element} The rendered component
  */
@@ -17,7 +18,7 @@ import { getValueStyles, sliderStyles, thumbStyles } from '../styles';
 export function MultipleBaseSlider(
   props: MultipleBaseSliderProps
 ): JSX.Element {
-  const { min, max, initialMin, initialMax, hiddenLable, onChange } = props;
+  const { min, max, initialMin, initialMax, hiddenLabel, onChange } = props;
   const [minValue, setMinValue] = useState(initialMin);
   const [maxValue, setMaxValue] = useState(initialMax);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -39,8 +40,8 @@ export function MultipleBaseSlider(
 
         const percentMoved = (dx / sliderWidth) * (max - min);
         const newValue = startValue + percentMoved;
-        const  nonNegative=newValue.toFixed();  
-        const newValueRound=nonNegative;
+        const nonNegative = newValue.toFixed();
+        const newValueRound = nonNegative;
 
         if (
           thumb === 'min' &&
@@ -95,7 +96,7 @@ export function MultipleBaseSlider(
           tabIndex={0}
           role="button"
         >
-          {hiddenLable && <span className={getValueStyles()}>{minValue}</span>}
+          {hiddenLabel && <span className={getValueStyles()}>{minValue}</span>}
         </div>
         <div
           className={thumbStyles()}
@@ -106,7 +107,7 @@ export function MultipleBaseSlider(
           tabIndex={0}
           role="button"
         >
-          {hiddenLable && <span className={getValueStyles()}>{maxValue}</span>}
+          {hiddenLabel && <span className={getValueStyles()}>{maxValue}</span>}
         </div>
       </div>
     </div>
