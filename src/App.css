@@ -41,11 +41,20 @@
   --toastify-color-success: #14b8a6;
   --toastify-color-error: #f87171;
   --toastify-color-info: #6b7280;
-  --toastify-toast-max-height: 48px;
+  --toastify-toast-max-height: 80px;
+}
+
+.Toastify__toast-body > div:last-child {
+  text-align: right;
+}
+
+.Toastify__toast-container--rtl .Toastify__toast-body > div:last-child {
+  text-align: left;
 }
 
 .Toastify__toast-icon {
   margin: 0;
+  margin-inline-end: 0 !important;
 }
 
 .base-input .icon {
