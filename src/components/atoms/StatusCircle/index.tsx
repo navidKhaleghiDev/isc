@@ -10,17 +10,20 @@ import { StatusCircleProps } from './types';
  * @param {string} [props.className] - Additional custom class names for the container.
  * @param {string} [props.color] - The background color of the circle.
  * @param {'ltr' | 'rtl'} [props.dir='rtl'] - The direction of the component. 'ltr' for left-to-right, 'rtl' for right-to-left (default is 'rtl').
+ * @param {boolean} [props.disabled] - If true, disables has opacity-40.
+
  *
  * @returns {JSX.Element} Returns the rendered StatusCircle component.
  */
 
 export function StatusCircle(props: StatusCircleProps): JSX.Element {
-  const { content, size, color, dir = 'rtl', className } = props;
+  const { content, size, color, disabled, dir = 'rtl', className } = props;
   return (
     <div
       className={`${dir === 'ltr' ? 'left-0' : 'right-0'}
       ${statusCircleStyle({ size, color })}
-      ${className && ''}
+      ${disabled && 'opacity-40'}
+      ${className ?? ''}
       `}
     >
       {content}

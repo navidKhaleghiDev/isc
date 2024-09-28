@@ -1,4 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
+
 import { statusCircleStyle } from './styles';
 
 export interface StatusCircleProps
@@ -6,4 +7,5 @@ export interface StatusCircleProps
   content?: number | string;
   dir?: 'rtl' | 'ltr';
   className?: string;
+  disabled?: boolean;
 }
