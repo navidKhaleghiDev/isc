@@ -10,6 +10,9 @@ export const baseSwitchStyles = cva(
         responsive:
           'w-10 peer-checked:after:translate-x-4 sm:w-12 sm:peer-checked:after:translate-x-6',
       },
+      defaultVariants: {
+        size: 'md',
+      },
     },
   }
 );
