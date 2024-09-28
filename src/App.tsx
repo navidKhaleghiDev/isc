@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import BaseOtpTest from './ui/BaseOtpTest';
+import BaseIconTest from './UI';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,10 +24,9 @@ function App() {
       </button>
       <BrowserRouter>
         <Routes>
-          <Route path="/ui" element={<BaseOtpTest />} />
+          <Route path="/ui" element={<BaseIconTest />} />
         </Routes>
       </BrowserRouter>
-      {/* Your components here */}
     </div>
   );
 }
