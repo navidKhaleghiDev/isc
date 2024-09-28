@@ -46,11 +46,26 @@ export function BaseSwitchController<T extends FieldValues>(
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => {
         return (
-          <div>
+          <div className="flex">
+            {label && (
+              <label
+                htmlFor={id}
+                className={`inline-flex items-center cursor-pointer 
+            ${dir === 'ltr' && 'text-left'}
+            ${disabled && 'opacity-50'}`}
+              >
+                <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  <Typography color="black" variant="body6" className="mx-2">
+                    {label}
+                  </Typography>
+                </span>
+              </label>
+            )}
             <label
               htmlFor={id}
               className={`inline-flex items-center cursor-pointer  
                 ${dir === 'ltr' && 'text-left'}`}
+              aria-label="none"
             >
               <input
                 disabled={disabled}
@@ -67,14 +82,9 @@ export function BaseSwitchController<T extends FieldValues>(
                 })} ${disabled && 'opacity-40'} 
               ${disabled ? 'cursor-not-allowed' : 'cursor-default'}`}
               />
-              <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                <Typography color="black" variant="body6" className="mx-2">
-                  {label}
-                </Typography>
-              </span>
             </label>
             {error?.message && (
-              <Typography color="red" variant="body6" className="h-6">
+              <Typography color="red" variant="body6" className="h-6 ml-2">
                 {error.message}
               </Typography>
             )}

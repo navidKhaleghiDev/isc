@@ -36,12 +36,25 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
   } = props;
 
   return (
-    <div>
+    <div className="flex">
+      {label && (
+        <label
+          htmlFor={id}
+          className={`inline-flex items-center cursor-pointer 
+            ${dir === 'ltr' && 'text-left'}
+            ${disabled && 'opacity-50'}`}
+        >
+          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+            <Typography color="black" variant="body6" className="mx-2">
+              {label}
+            </Typography>
+          </span>
+        </label>
+      )}
       <label
         htmlFor={id}
-        className={`inline-flex items-center cursor-pointer  ${
-          dir === 'ltr' && 'text-left'
-        }`}
+        className={`select-none items-center relative inline-flex `}
+        aria-label="none"
       >
         <input
           id={id}
@@ -58,19 +71,16 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           })} ${disabled && 'opacity-40'} 
           ${disabled ? 'cursor-not-allowed' : 'cursor-default'}`}
         />
-        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-          <Typography color="black" variant="body6" className="mx-2">
-            {label}
-          </Typography>
-        </span>
       </label>
       {!hiddenError && (
         <Typography
           color="red"
           variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+          className={`${
+            dir === 'ltr' ? 'text-left' : 'text-right'
+          } min-h-6 ml-2`}
         >
-          {error}
+          {error ?? ''}
         </Typography>
       )}
     </div>
