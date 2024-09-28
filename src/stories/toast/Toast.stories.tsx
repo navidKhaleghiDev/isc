@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { ReactElement } from 'react';
 import { Toast } from './Toast';
 
@@ -10,8 +11,8 @@ const meta = {
     docs: {
       description: {
         component: `
-                نمایش نوتیف شناور و زمان دار با استفاده از کتابخانه Toast با سه حالت Success, Error و Default.
-                Displays timed floating notifications using the Toast library with three states: Success, Error, and Default.
+                نمایش نوتیف شناور و زمان دار با استفاده از کتابخانه Toast با سه حالت Success, Error و info.
+                Displays timed floating notifications using the Toast library with three states: Success, Error, and info.
                 `,
       },
     },
@@ -27,24 +28,33 @@ const meta = {
       },
       options: ['success', 'error', 'info'],
     },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md', 'lg', 'responsive'],
+    },
     message: { control: 'text' },
+    dir: {
+      control: {
+        type: 'radio',
+      },
+      options: ['rtl', 'ltr'],
+      defaultValue: 'rtl',
+    },
   },
   decorators: [
-    (Story): ReactElement => (
-      <div
-        style={{
-          width: '50vw',
-          height: '100vh',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          direction: 'rtl',
-        }}
-      >
-        <Story />
-      </div>
-    ),
+    (Story, context): ReactElement => {
+      const { dir } = context;
+      return (
+        <div
+          className="container mx-auto justify-center min-h-40"
+          style={{ direction: dir }}
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
 } satisfies Meta<typeof Toast>;
 
@@ -59,5 +69,7 @@ export const Default: Story = {
   args: {
     status: 'success',
     message: 'این یک پیغام عمومی می باشد.',
+    dir: 'ltr',
+    size: 'responsive',
   },
 };

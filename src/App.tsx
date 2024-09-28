@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import BaseTextAreaTest from './UI/BaseTextAreaTest';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastifyTest } from './UI';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -22,10 +22,9 @@ function App() {
       <button type="button" onClick={() => setDarkMode(!darkMode)}>
         Toggle Dark Mode
       </button>
-      {/* Your components here */}
       <BrowserRouter>
         <Routes>
-          <Route path="/ui" element={<BaseTextAreaTest />} />
+          <Route path="/ui" element={<ToastifyTest />} />
         </Routes>
       </BrowserRouter>
     </div>
