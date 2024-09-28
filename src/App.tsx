@@ -1,6 +1,6 @@
-import { SliderTest } from '@ui/atoms/Slider/SliderTest';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import BaseIconTest from './UI';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,7 +24,7 @@ function App() {
       </button>
       <BrowserRouter>
         <Routes>
-          <Route path="/ui" element={<SliderTest />} />
+          <Route path="/ui" element={<BaseIconTest />} />
         </Routes>
       </BrowserRouter>
     </div>
