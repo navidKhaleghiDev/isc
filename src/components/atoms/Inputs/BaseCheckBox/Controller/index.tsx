@@ -1,4 +1,5 @@
 import { Controller, FieldValues } from 'react-hook-form';
+
 import { BaseIcon } from '@ui/atoms/BaseIcon';
 import { Typography } from '@ui/atoms/Typography';
 import checkBold from '@iconify-icons/ph/check-bold';
@@ -95,7 +96,7 @@ export function BaseCheckBoxController<T extends FieldValues>(
                 dir === 'ltr' ? 'text-left' : 'text-right'
               } min-h-10`}
             >
-              {error?.message || ''}
+              {error?.message ?? ''}
             </Typography>
           )}
         </div>

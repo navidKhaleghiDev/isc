@@ -86,7 +86,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
           variant="body6"
           className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
         >
-          {error || ''}
+          {error ?? ''}
         </Typography>
       )}
     </div>
