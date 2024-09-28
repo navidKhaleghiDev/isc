@@ -27,20 +27,20 @@ export const baseButtonStyles = cva(
         dark:hover:bg-red-400 dark:active:bg-red-500  
         dark:disabled:bg-red-300 dark:disabled:text-white dark:disabled:opacity-40`,
         neutral: ` 
-        bg-white text-gray-500 border-[0.063rem] border-gray-100
+        bg-white text-gray-500 border-[0.063rem] border-gray-200
         hover:bg-gray-100 hover:text-gray-600 
-        active:bg-gray-200 active:text-gray-600 active:border-0
-        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40 disabled:border-0
+        active:bg-gray-200 active:text-gray-600 
+        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
         dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
-        dark:hover:bg-gray-600 dark:hover:text-gray-100 
-        dark:active:bg-gray-800 dark:active:text-gray-100
+        dark:hover:bg-gray-600 dark:hover:text-gray-100 dark:hover:border-gray-600
+        dark:active:bg-gray-800 dark:active:text-gray-100 dark:active:border-gray-800
         dark:disabled:bg-gray-600 dark:disabled:text-gray-100 dark:disabled:opacity-40`,
         tertiary: ` 
         text-gray-500 
-        hover:text-teal-500                            
+        hover:text-gray-700                            
         disabled:text-gray-300
         dark:text-gray-200
-        dark:hover:text-teal-400
+        dark:hover:text-gray-400
         dark:disabled:text-gray-500`,
       },
       size: {
@@ -101,13 +101,13 @@ export const iconButtonStyles = cva(
         text-red-500 hover:text-red-600 active:text-red-700 disabled:opacity-40 
         dark:text-red-300 dark:hover:text-red-400 dark:active:text-red-500 dark:disabled:text-red-100`,
         neutral: `
-        bg-white text-gray-500 border-[0.063rem] border-gray-100
-        hover:bg-gray-100 hover:text-gray-600 hover:border-0
-        active:bg-gray-200 active:text-gray-600 active:border-0
-        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40 disabled:border-0
+        bg-white text-gray-500 border-[0.063rem] border-gray-200
+        hover:bg-gray-100 hover:text-gray-600 
+        active:bg-gray-200 active:text-gray-600 
+        disabled:bg-gray-200 disabled:text-gray-900 disabled:opacity-40
         dark:bg-gray-600 dark:text-gray-300 dark:border-gray-500
-        dark:hover:bg-gray-600 dark:hover:text-gray-100 
-        dark:active:bg-gray-800 dark:active:text-gray-100
+        dark:hover:bg-gray-600 dark:hover:text-gray-100 dark:hover:border-gray-600
+        dark:active:bg-gray-800 dark:active:text-gray-100 dark:active:border-gray-800
         dark:disabled:bg-gray-600 dark:disabled:text-gray-100 dark:disabled:opacity-40`,
         neutralNoBg: `
         text-gray-500 hover:text-gray-600 active:text-gray-900 disabled:opacity-40 
@@ -116,7 +116,6 @@ export const iconButtonStyles = cva(
       size: {
         sm: 'h-7 w-7',
         md: 'h-10 w-10',
-        default: 'h-fit w-fit',
       },
     },
     defaultVariants: {
