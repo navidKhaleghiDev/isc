@@ -16,7 +16,6 @@ import { BaseCheckBoxControllerProps } from '../types';
  * @param {boolean} [props.disabled]
  * @param {string} [props.className] - Additional class names for styling the checkbox.
  * @param {'sm' | 'md' | "responsive" } [props.size="md"] - The size of the checkbox.
- * @param {"rtl|ltr" } [props.dir="rtl"] - The size of the checkbox.
  *
  * @returns {JSX.Element} The rendered checkbox component.
  */
@@ -31,10 +30,9 @@ export function BaseCheckBoxController<T extends FieldValues>(
     rules,
     disabled,
     label,
-    hiddenError,
+    showError,
     className,
     size = 'md',
-    dir = 'rtl',
   } = props;
   return (
     <Controller
@@ -44,17 +42,19 @@ export function BaseCheckBoxController<T extends FieldValues>(
       rules={rules}
       render={({ field, fieldState: { error } }) => (
         <BaseCheckBox
-        id={id}
-        name={name}
-        onChange={field.onChange}
-        label={label}
-        checked={Boolean(field.value)}
-        error={error}
-        value = {field.value}
-        className = {className}
-        disabled = {disabled}
-      />    
-   )}
+          id={id}
+          name={name}
+          onChange={field.onChange}
+          label={label}
+          checked={Boolean(field.value)}
+          error={error?.message}
+          value={field.value}
+          size={size}
+          showError={showError}
+          className={className}
+          disabled={disabled}
+        />
+      )}
     />
   );
 }
