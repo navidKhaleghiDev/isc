@@ -78,7 +78,7 @@ export function BaseSwitch(props: BaseSwitchProps): JSX.Element {
           variant="body6"
           className={`${
             dir === 'ltr' ? 'text-left' : 'text-right'
-          } min-h-6 ml-2`}
+          } min-h-6 mx-2`}
         >
           {error ?? ''}
         </Typography>
