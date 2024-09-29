@@ -20,7 +20,6 @@ export interface BaseCheckBoxProps
   error?: string;
   hiddenError?: boolean;
   disabled?: boolean;
-  dir?: 'rtl' | 'ltr';
 }
 
 export interface BaseCheckBoxControllerProps<T extends FieldValues>

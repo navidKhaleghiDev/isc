@@ -31,21 +31,17 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
     className,
     checked,
     error,
-    intent,
     hiddenError,
     disabled,
     onChange,
     size = 'md',
-    dir = 'rtl',
   } = props;
 
   // BaseIcon has been modified in other branch so i had to add this condition to size of icon also consider the responsive mode
   return (
     <div className="flex flex-col items-center justify-center">
       <div
-        className={`flex gap-2 ${
-          dir === 'ltr' && 'flex-row-reverse'
-        } items-center justify-center`}
+        className="flex gap-2 ltr:flex-row-revers items-center justify-center"
       >
         {label && (
           <label htmlFor={id}>
@@ -71,7 +67,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
             checked={checked}
             onChange={onChange}
             className={baseCheckBoxStyles({
-              intent: error ? 'error' : intent,
+              error,
               size,
             })}
           />
@@ -84,7 +80,7 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
         <Typography
           color="red"
           variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+          className="ltr:text-left text-right min-h-10"
         >
           {error ?? ''}
         </Typography>
