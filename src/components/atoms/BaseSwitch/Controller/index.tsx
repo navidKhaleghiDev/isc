@@ -1,8 +1,7 @@
 import { Controller, FieldValues } from 'react-hook-form';
-import { Typography } from '@ui/atoms/Typography';
 
-import { baseSwitchStyles } from '../styles';
 import { BaseSwitchControllerProps } from '../types';
+import { BaseSwitch } from '..';
 
 /**
  * BaseSwitch component renders a customizable toggle switch with optional labels and controlled states.
@@ -46,49 +45,17 @@ export function BaseSwitchController<T extends FieldValues>(
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => {
         return (
-          <div className="flex">
-            {label && (
-              <label
-                htmlFor={id}
-                className={`inline-flex items-center cursor-pointer 
-            ${dir === 'ltr' && 'text-left'}
-            ${disabled && 'opacity-50'}`}
-              >
-                <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                  <Typography color="black" variant="body6" className="mx-2">
-                    {label}
-                  </Typography>
-                </span>
-              </label>
-            )}
-            <label
-              htmlFor={id}
-              className={`inline-flex items-center cursor-pointer  
-                ${dir === 'ltr' && 'text-left'}`}
-              aria-label="none"
-            >
-              <input
-                disabled={disabled}
-                id={id}
-                type="checkbox"
-                className="sr-only peer"
-                name={field.name}
-                checked={Boolean(field.value)}
-                onChange={field.onChange}
-              />
-              <div
-                className={`${baseSwitchStyles({
-                  size,
-                })} ${disabled && 'opacity-40'} 
-              ${disabled ? 'cursor-not-allowed' : 'cursor-default'}`}
-              />
-            </label>
-            {error?.message && (
-              <Typography color="red" variant="body6" className="h-6 ml-2">
-                {error.message}
-              </Typography>
-            )}
-          </div>
+          <BaseSwitch
+            id={id}
+            name={field.name}
+            onChange={field.onChange}
+            disabled={disabled}
+            checked={Boolean(field.value)}
+            error={error?.message}
+            size={size}
+            label={label}
+            dir={dir}
+          />
         );
       }}
     />
