@@ -112,6 +112,7 @@ export const iconButtonStyles = cva(
         neutralNoBg: `
         text-gray-500 hover:text-gray-600 active:text-gray-900 disabled:opacity-40 
         dark:text-gray-300 dark:hover:text-gray-200 dark:active:text-gray-100 dark:disabled:text-[#4B5563]`,
+        neutralMedium: `absolute text-gray-400 group-has-[:focus]:text-gray-900 group-has-[:disabled]:text-gray-200 group-has-[:hover]:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200 dark:active:text-gray-100 dark:disabled:text-[#4B5563]`,
       },
       size: {
         sm: 'h-7 w-7',
