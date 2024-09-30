@@ -1,4 +1,6 @@
-import { ToggleButtonProps } from './types';
+/* eslint-disable jsx-a11y/no-autofocus */
+
+import { ButtonOption, ToggleButtonProps } from './types';
 import { toggleStyles } from './styles';
 
 /**
@@ -17,11 +19,9 @@ import { toggleStyles } from './styles';
  */
 
 export function ToggleButton(props: ToggleButtonProps): JSX.Element {
-  const { buttonOption, onChange, className, size } = props;
+  const { buttonOptions, onChange, className, size } = props;
 
-  const handleClick = (index: number) => {
-    onChange(index);
-  };
+  console.log(buttonOptions);
 
   return (
     <div className="flex w-full">
@@ -32,15 +32,15 @@ export function ToggleButton(props: ToggleButtonProps): JSX.Element {
           className ?? ''
         }`}
       >
-        {buttonOption.map(({ id, label }, index) => (
+        {buttonOptions.map((item: ButtonOption) => (
           <button
             type="button"
-            // autoFocus={id === 1}
-            key={id}
-            onClick={() => handleClick(index)}
+            autoFocus={item.active}
+            key={item.id}
+            onClick={() => onChange(item)}
             className="flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1 text-gray-400 focus:text-gray-900 focus:bg-white dark:focus:text-white dark:focus:bg-gray-600 focus:outline-none"
           >
-            {label}
+            {item.label}
           </button>
         ))}
       </div>

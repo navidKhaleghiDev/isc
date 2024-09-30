@@ -1,24 +1,24 @@
 import { useState } from 'react';
 
 import { ToggleButton } from '@ui/atoms/ToggleButton/ToggleButton';
-import { ButtonOptions } from '@ui/atoms/ToggleButton/types';
+import { ButtonOption } from '@ui/atoms/ToggleButton/types';
 
 export function BaseToggleTest() {
-  const buttonOption: ButtonOptions[] = [
-    { id: 1, label: 'روزانه' },
-    { id: 2, label: 'هفتگی' },
+  const buttonOptions: ButtonOption[] = [
+    { id: 5, label: 'روزانه', active: true },
+    { id: 10, label: 'هفتگی' },
     { id: 3, label: 'ماهیانه' },
   ];
-  const [selectedLabel, setActiveLabel] = useState<number | undefined>();
-  const handleToggleChange = (optionIndex: number) => {
-    setActiveLabel(optionIndex);
-    // console.log(optionIndex);
+  const [selectedIndex, setActiveIndex] = useState<ButtonOption | undefined>();
+  const handleToggleChange = (item: ButtonOption) => {
+    setActiveIndex(item);
+    console.log(item);
   };
   return (
     <div className="font-kalameh">
-      <h1>Selected: {selectedLabel ? `${selectedLabel}` : 'None'}</h1>
+      <h1>Selected: {selectedIndex ? `${selectedIndex.label}` : 'None'}</h1>
       <ToggleButton
-        buttonOption={buttonOption}
+        buttonOptions={buttonOptions}
         onChange={handleToggleChange}
         size="responsive"
       />
