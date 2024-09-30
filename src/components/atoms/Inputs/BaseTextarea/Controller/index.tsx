@@ -1,8 +1,8 @@
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 
 import { baseTextareaStyles } from '../styles';
-import { Typography } from '../../Typography';
-import { BaseTextareaPropsControl } from './types';
+import { Typography } from '../../../Typography';
+import { BaseTextareaPropsControl } from '../types';
 
 /**
  * BaseTextarea component that integrates with react-hook-form.
@@ -25,7 +25,7 @@ import { BaseTextareaPropsControl } from './types';
  * @returns {JSX.Element} The rendered textarea component.
  */
 
-export function BaseTextarea(props: BaseTextareaPropsControl<any>) {
+export function BaseTextarea(props: BaseTextareaPropsControl<FieldValues>) {
   const {
     control,
     name,
@@ -64,8 +64,8 @@ export function BaseTextarea(props: BaseTextareaPropsControl<any>) {
             placeholder={placeholder}
           />
           {hiddenError && (
-            <Typography color="red" variant="body6" className="h-6">
-              {error?.message ?? 'fdflfsd;'}
+            <Typography color="red" variant="body6" className="h-10">
+              {error?.message ?? ''}
             </Typography>
           )}
         </div>
