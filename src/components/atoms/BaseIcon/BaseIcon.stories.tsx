@@ -123,7 +123,11 @@ import caretDoubleRight from '@iconify-icons/ph/caret-double-right';
 import playCircle from '@iconify-icons/ph/play-circle';
 import sliders from '@iconify-icons/ph/sliders';
 import lockLaminated from '@iconify-icons/ph/lock-laminated';
-
+import scan from '@iconify-icons/ph/scan';
+import folderSimpleDashed from '@iconify-icons/ph/folder-simple-dashed';
+import folderOpen from '@iconify-icons/ph/folder-open';
+import wifiHigh from '@iconify-icons/ph/wifi-high';
+// list icons duotone
 import lockSimpleDuotone from '@iconify-icons/ph/lock-simple-duotone';
 import circleDashedDuotone from '@iconify-icons/ph/circle-dashed-duotone';
 import circleNotchDuotone from '@iconify-icons/ph/circle-notch-duotone';
@@ -138,8 +142,16 @@ import gearSixDuotone from '@iconify-icons/ph/gear-six-duotone';
 import houseSimpleDuotone from '@iconify-icons/ph/house-simple-duotone';
 import usersThreeDuotone from '@iconify-icons/ph/users-three-duotone';
 
+import sunnyOutline from '@iconify-icons/line-md/sunny-outline';
+import moonSimple from '@iconify-icons/line-md/moon';
+import bell from '@iconify-icons/line-md/bell';
+import sunRisingTwotoneLoop from '@iconify-icons/line-md/sun-rising-twotone-loop';
+import moonTwotoneAltLoop from '@iconify-icons/line-md/moon-twotone-alt-loop';
+import loadingTwotoneLoop from '@iconify-icons/line-md/loading-twotone-loop';
+import bellTwotoneAlertLoop from '@iconify-icons/line-md/bell-twotone';
+
 import { BaseIcon } from './BaseIcon';
-import { IIconListStorybook, IconListStorybook } from './ListIconStorybook';
+import { IconListStorybookProps, IconListStorybook } from './ListIconStorybook';
 import { Typography } from '../Typography';
 
 /**
@@ -273,6 +285,10 @@ const iconOptions = {
   PlayCircle: playCircle,
   Sliders: sliders,
   LockLaminated: lockLaminated,
+  Scan: scan,
+  FolderSimpleDashed: folderSimpleDashed,
+  FolderOpen: folderOpen,
+  WifiHigh: wifiHigh,
   Sun: sun,
   Moon: moon,
 };
@@ -291,6 +307,16 @@ const iconDuotoneOptions = {
   GearSixDuotone: gearSixDuotone,
   HouseSimpleDuotone: houseSimpleDuotone,
   UsersThreeDuotone: usersThreeDuotone,
+};
+
+const iconMaterialLineOptions = {
+  SunnyOutline: sunnyOutline,
+  Moon: moonSimple,
+  Bell: bell,
+  SunRisingTwotoneLoop: sunRisingTwotoneLoop,
+  MoonTwotoneAltLoop: moonTwotoneAltLoop,
+  LoadingTwotoneLoop: loadingTwotoneLoop,
+  BellTwotoneAlertLoop: bellTwotoneAlertLoop,
 };
 
 const meta = {
@@ -319,13 +345,32 @@ const meta = {
       control: {
         type: 'select',
       },
-      options: ['neutral', 'red', 'teal', 'tealLink', 'yellow'],
+      options: [
+        'default',
+        'neutralLight',
+        'neutral',
+        'tealLight',
+        'teal',
+        'yellowLight',
+        'yellow',
+        'redLight',
+        'red',
+        'blueLight',
+        'blue',
+        'purpleLight',
+        'purple',
+        'neutralLightNoBg',
+        'neutralNoBg',
+        'tealNoBg',
+        'redLightNoBg',
+        'redNoBg',
+      ],
     },
     size: {
       control: {
         type: 'select',
       },
-      options: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'],
+      options: ['sm', 'md', 'lg', 'responsive'],
     },
     hoverColor: { control: 'color' },
     className: { control: 'text' },
@@ -344,11 +389,13 @@ export function ListIcon({
   size,
   hoverColor,
   className,
-}: Omit<IIconListStorybook, 'icons'>) {
+}: Omit<IconListStorybookProps, 'icons'>) {
   const iconValue = Object.values(iconOptions);
   const iconValueDuotone = Object.values(iconDuotoneOptions);
+  const iconValueML = Object.values(iconMaterialLineOptions);
   const iconKey = Object.keys(iconOptions);
   const iconKeyDuotone = Object.keys(iconDuotoneOptions);
+  const iconKeyML = Object.keys(iconMaterialLineOptions);
   return (
     <>
       <Typography
@@ -381,6 +428,22 @@ export function ListIcon({
         hoverColor={hoverColor}
         className={className}
         title={iconKeyDuotone}
+      />
+
+      <Typography
+        variant="body3"
+        weight="bold"
+        className="pb-6 mb-2 border-b border-b-gray-300"
+      >
+        Material Line Icons
+      </Typography>
+      <IconListStorybook
+        icons={iconValueML}
+        color={color}
+        size={size}
+        hoverColor={hoverColor}
+        className={className}
+        title={iconKeyML}
       />
     </>
   );

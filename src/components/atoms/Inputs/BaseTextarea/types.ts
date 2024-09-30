@@ -6,21 +6,21 @@ import {
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
-import { baseTextareaStyles } from '../styles';
+import { baseTextareaStyles } from './styles';
 
-export interface BaseTextareaProps<T extends FieldValues>
+export interface BaseTextareaProps
   extends VariantProps<typeof baseTextareaStyles> {
   id: string;
-  name: FieldPath<T>;
-  setError?: UseFormSetError<T>;
+  name: string;
+  setError?: string;
   defaultValue?: string;
   label?: string;
-  pureError?: string;
+  error?: string;
   disabled: boolean;
   placeholder?: string;
-  pureValue?: string;
+  value?: string;
   dir?: 'rtl' | 'ltr';
-  pureOnChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   className?: string;
   hiddenError?: boolean;
 }
