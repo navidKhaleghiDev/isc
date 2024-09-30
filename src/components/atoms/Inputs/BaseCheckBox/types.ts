@@ -4,8 +4,6 @@ import {
   Control,
   FieldPath,
   FieldValues,
-  Path,
-  PathValue,
   RegisterOptions,
 } from 'react-hook-form';
 
