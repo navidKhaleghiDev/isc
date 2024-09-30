@@ -16,7 +16,7 @@ export function BaseInputTest() {
   const { control, handleSubmit } = useForm<MyFormType>({});
   return (
     <div className="font-kalameh">
-      <form className="without controller" dir="rtl">
+      <form className="without controller">
         <BaseInput
           id="Name"
           name="Name"
@@ -24,16 +24,16 @@ export function BaseInputTest() {
           value={userName}
           placeholder="نام کاربری"
           // fullWidth
-          onClickIcon={() => setIconClicked(!iconClicked)}
+          // onClickIcon={() => setIconClicked(!iconClicked)}
           // helpText="there is an help text there is an help text there is an help text there is an help text"
-          // error="there is an erorr in our component"
+          error="there is an erorr in our component"
           // size="lg"
-          // hiddenError
+          hiddenError
           // endIcon={PhEyeSlash}
           // disabled
           startIcon={PhEyeSlash}
-          dir="ltr"
           label="نام کاربری"
+          dir="rtl"
         />
         <p>{userName}</p>
         <p>{iconClicked && 'icon clicked'}</p>
@@ -48,16 +48,15 @@ export function BaseInputTest() {
           name="userName"
           control={control}
           rules={{ pattern: regexPattern.farsiLetters }}
-          placeholder="نام کاربری"
-          helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
+          placeholder="سلام"
+          // helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
           // fullWidth
           hiddenError
           // disabled
           onClickIcon={() => setIconClicked(!iconClicked)}
           // iconButtonIcon={PhEyeSlash}
-          // startIcon={PhEyeSlash}
+          startIcon={PhEyeSlash}
           // endIcon={PhEyeSlash}
-          dir="rtl"
           label="نام کاربری"
         />
         <p>{showData?.userName}</p>

@@ -50,7 +50,9 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     onChange,
     onClickIcon,
     error,
+    dir = 'rtl',
   } = props;
+  const rtl = dir === 'rtl';
   return (
     <div
       className={baseInputWarperStyles({
@@ -62,7 +64,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
       {label && (
         <label
           htmlFor={id}
-          className="mb-[0.13rem] rtl:text-right ltr:text-left"
+          className={`mb-[0.13rem] ${rtl ? 'text-right' : 'text-left'} `}
         >
           <Typography
             variant="body6"
@@ -79,16 +81,16 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           <IconButton
             icon={startIcon}
             onClick={onClickIcon}
-            color={error ? 'neutralNoBg' : 'neutralMedium'}
-            className="rtl:right-0"
+            color={error ? 'redNoBgInput' : 'neutralMedium'}
+            className="right-0"
           />
         )}
         {endIcon && (
           <IconButton
             icon={endIcon}
             onClick={onClickIcon}
-            color={error ? 'neutralNoBg' : 'neutralMedium'}
-            className="rtl:left-0 ltr:right-0"
+            color={error ? 'redNoBgInput' : 'neutralMedium'}
+            className="left-0"
           />
         )}
         <input
@@ -102,22 +104,20 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           placeholder={placeholder}
           className={baseInputStyles({
             intent: error ? 'error' : intent,
-            className: `${startIcon && 'ltr:pl-8 rtl:pr-8'} ${
-              endIcon && 'ltr:pr-8 rtl:pl-8'
-            }`,
+            className: `${startIcon && `pr-8`} ${endIcon && 'pl-8'}`,
             fullWidth,
             size,
           })}
         />
       </div>
       <span className={baseInputTextStyles({ size, fullWidth })}>
+        {helpText && <Typography>{helpText}</Typography>}
         {!disabled && !hiddenError && (
           <Typography
             color="red"
             variant="body6"
-            className="ltr:text-left text-right min-h-10"
+            className="text-left rtl:text-right min-h-10"
           >
-            {helpText ?? ''}
             {error ?? ''}
           </Typography>
         )}

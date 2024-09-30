@@ -1,4 +1,5 @@
 import { Controller, FieldValues } from 'react-hook-form';
+
 import { BaseInputControllerProps } from '../types';
 import { BaseInput } from '..';
 /**
@@ -47,30 +48,25 @@ export function BaseInputController<T extends FieldValues>(
     helpText,
     endIcon,
     fullWidth,
-    defaultValue,
     size,
     type,
     label,
     disabled,
     hiddenError,
     onClickIcon,
-    dir = 'rtl',
   } = props;
   return (
     <Controller
       name={name}
       control={control}
-      disabled={disabled}
       rules={rules}
-      defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
         <BaseInput
           id={id}
           name={name}
           onChange={field.onChange}
-          value={field.value}
+          value={field.value ?? ''}
           className={className}
-          dir={dir}
           disabled={disabled}
           endIcon={endIcon}
           size={size}
