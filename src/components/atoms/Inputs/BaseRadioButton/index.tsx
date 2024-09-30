@@ -34,7 +34,6 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
     onChange,
     value,
     checked,
-    dir = 'rtl',
     size,
     disabled,
     hiddenError,
@@ -43,11 +42,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
 
   return (
     <div className={`inline-flex flex-col ${className}`}>
-      <div
-        className={`inline-flex items-center relative gap-2 text-xs leading-4 font-normal ${
-          dir === 'ltr' ? 'flex-row-reverse' : 'flex-row'
-        }`}
-      >
+      <div className="inline-flex items-center relative gap-2 text-xs leading-4 font-normal flex-row ltr:flex-row-reverse">
         <input
           id={id}
           type="radio"
@@ -68,7 +63,7 @@ export function BaseRadioButton(props: BaseRadioButtonProps): JSX.Element {
         <Typography
           color="red"
           variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+          className="rtl:text-right ltr:text-left min-h-10"
         >
           {error}
         </Typography>

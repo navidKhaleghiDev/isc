@@ -1,8 +1,7 @@
 import { Controller, FieldValues } from 'react-hook-form';
-import { Typography } from '@ui/atoms/Typography';
 
 import { BaseRadioButtonControllerProps } from '../types';
-import { inputRadioButtonStyles, labelRadioButtonStyles } from '../styles';
+import { BaseRadioButton } from '..';
 
 /**
  * BaseRadioButton Component (Atomic Design - Atom)
@@ -37,7 +36,6 @@ export function BaseRadioButtonController<T extends FieldValues>(
     control,
     rules,
     value,
-    dir = 'rtl',
     size,
     disabled = false,
     hiddenError,
@@ -50,40 +48,19 @@ export function BaseRadioButtonController<T extends FieldValues>(
       rules={rules}
       disabled={disabled}
       render={({ field, fieldState: { error } }) => (
-        <div className={`inline-flex flex-col ${className}`}>
-          <div
-            className={`flex items-center relative gap-2 text-xs leading-4 font-normal ${
-              dir === 'ltr' ? 'flex-row-reverse' : 'flex-row'
-            }`}
-          >
-            <input
-              id={id}
-              type="radio"
-              checked={field.value === value}
-              name={field.name}
-              value={value}
-              onChange={field.onChange}
-              className={inputRadioButtonStyles({ size })}
-              disabled={field.disabled}
-            />
-            {label && (
-              <label htmlFor={id} className={labelRadioButtonStyles()}>
-                {label}
-              </label>
-            )}
-          </div>
-          {!hiddenError && error?.message && (
-            <Typography
-              color="red"
-              variant="body6"
-              className={`${
-                dir === 'ltr' ? 'text-left' : 'text-right'
-              } min-h-10`}
-            >
-              {error?.message}
-            </Typography>
-          )}
-        </div>
+        <BaseRadioButton
+          id={id}
+          name={name}
+          onChange={field.onChange}
+          value={value}
+          checked={field.value === value}
+          className={className}
+          disabled={field.disabled}
+          error={error?.message}
+          hiddenError={hiddenError}
+          label={label}
+          size={size}
+        />
       )}
     />
   );

@@ -18,7 +18,6 @@ export interface BaseRadioButtonProps
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string | number;
   checked?: boolean;
-  dir?: 'rtl' | 'ltr';
   disabled?: boolean;
   hiddenError?: boolean;
   error?: string;
