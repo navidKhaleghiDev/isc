@@ -25,6 +25,25 @@ export const baseCheckBoxStyles = cva(
   }
 );
 
+export const iconBaseInputStyles = cva(
+  'absolute inset-y-0 flex px-2 items-center active:text-gray-500 fill-current',
+  {
+    variants: {
+      intent: {
+        default: 'text-gray-300 peer-focus:text-gray-500',
+        error: 'text-red-500 peer-focus:border-red-500',
+      },
+      right: {
+        true: 'right-0',
+        false: 'left-0',
+      },
+    },
+    defaultVariants: {
+      intent: 'default',
+    },
+  }
+);
+
 export const baseSelectStyles = cva(
   `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-gray-300 placeholder:text-rtl relative`,
   {
