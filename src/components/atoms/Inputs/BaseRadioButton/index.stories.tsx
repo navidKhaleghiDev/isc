@@ -36,12 +36,6 @@ const meta: Meta<typeof BaseRadioButton> = {
         type: 'boolean',
       },
     },
-    dir: {
-      control: {
-        type: 'radio',
-      },
-      options: ['rtl', 'ltr'],
-    },
     label: {
       control: {
         type: 'text',
@@ -61,7 +55,6 @@ const meta: Meta<typeof BaseRadioButton> = {
         name={args.name}
         checked={args.checked}
         className={args.className}
-        dir={args.dir}
         defaultValue={args.defaultValue}
         label={args.label}
         value={args.value}
@@ -74,7 +67,6 @@ const meta: Meta<typeof BaseRadioButton> = {
         name={args.name}
         checked={args.checked}
         className={args.className}
-        dir={args.dir}
         defaultValue={args.defaultValue}
         label={args.label}
         value={args.value}
@@ -87,7 +79,7 @@ const meta: Meta<typeof BaseRadioButton> = {
 
 export const defaultRadioButton: StoryBaseRadioButton = {
   args: {
-    dir: 'rtl',
+    size: 'responsive',
   },
 };
 
