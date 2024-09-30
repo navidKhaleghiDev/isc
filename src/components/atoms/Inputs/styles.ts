@@ -44,30 +44,6 @@ export const iconBaseInputStyles = cva(
   }
 );
 
-export const baseTextareaStyles = cva(
-  'p-2 block rounded-lg border-2 outline-none border-gray-300 placeholder:text-right placeholder:text-rtl disabled:border-gray-300 disabled:text-gray-300 focus:border-gray-900 focus:placeholder:text-gray-900',
-  {
-    variants: {
-      intent: {
-        default: '',
-        error: 'border-red-600',
-      },
-      fullWidth: {
-        true: 'w-full',
-      },
-      size: {
-        sm: `w-40`,
-        md: `w-64`,
-        lg: `w-[21.875rem]`,
-      },
-    },
-    defaultVariants: {
-      intent: 'default',
-      size: 'md',
-    },
-  }
-);
-
 export const baseSelectStyles = cva(
   `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-gray-300 placeholder:text-rtl relative`,
   {
