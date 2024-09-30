@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { ToggleButtonProps } from './types';
 import { toggleStyles } from './styles';
 
@@ -21,14 +19,8 @@ import { toggleStyles } from './styles';
 export function ToggleButton(props: ToggleButtonProps): JSX.Element {
   const { buttonOption, onChange, className, size } = props;
 
-  const [selected, setSelected] = useState<string | number>();
-
-  const handleClick = (id: string | number) => {
-    const selectedButton = buttonOption.find((option) => option.id === id);
-    if (selectedButton) {
-      setSelected(id);
-      onChange(selectedButton);
-    }
+  const handleClick = (index: number) => {
+    onChange(index);
   };
 
   return (
@@ -40,17 +32,13 @@ export function ToggleButton(props: ToggleButtonProps): JSX.Element {
           className ?? ''
         }`}
       >
-        {buttonOption.map(({ id, label, name }) => (
+        {buttonOption.map(({ id, label }, index) => (
           <button
             type="button"
+            // autoFocus={id === 1}
             key={id}
-            id={`${id}`}
-            name={name}
-            onClick={() => handleClick(id)}
-            className={`flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1 text-gray-400 ${
-              selected === id &&
-              'text-gray-900 bg-white dark:text-white dark:bg-gray-600'
-            }`}
+            onClick={() => handleClick(index)}
+            className="flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1 text-gray-400 focus:text-gray-900 focus:bg-white dark:focus:text-white dark:focus:bg-gray-600 focus:outline-none"
           >
             {label}
           </button>
