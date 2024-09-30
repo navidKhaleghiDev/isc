@@ -13,12 +13,10 @@ import { BaseCheckBoxProps } from './types';
  * @param {string} [props.className]
  * @param {boolean} [props.checked] - To handel the input  with state.
  * @param {string} [props.error]
- * @param {'default' | 'error'} [props.intent] Different type of checkbox. (style)
- * @param {boolean} [props.hiddenError] - makes our error visible
+ * @param {boolean} [props.showError] - makes our error visible
  * @param {boolean} [props.disabled]
  * @param {function} [props.onChange] - Change handler for checking it.
  * @param {'sm' | 'md' | "responsive"} [props.size = "md"]
- * @param {boolean} [props.dir = "rtl"] - direction of the label
  *
  * @returns {JSX.Element} The rendered checkbox component.
  */
@@ -31,22 +29,35 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
     className,
     checked,
     error,
-    intent,
-    hiddenError,
+    showError,
     disabled,
+    value,
     onChange,
     size = 'md',
-    dir = 'rtl',
   } = props;
 
   // BaseIcon has been modified in other branch so i had to add this condition to size of icon also consider the responsive mode
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div
-        className={`flex gap-2 ${
-          dir === 'ltr' && 'flex-row-reverse'
-        } items-center justify-center`}
-      >
+    <div>
+      <div className={`flex gap-2 items-center ${className ?? ''}`}>
+        <div className="inline-flex items-center relative">
+          <input
+            id={id}
+            type="checkbox"
+            name={name}
+            disabled={disabled}
+            checked={checked}
+            onChange={onChange}
+            value={value}
+            className={baseCheckBoxStyles({
+              error: Boolean(error),
+              size,
+            })}
+          />
+          <span className="absolute hidden peer-checked:block text-gray-100 dark:peer-disabled:hidden dark:peer-checked:text-gray-100 dark:text-gray-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+            <BaseIcon icon={checkBold} size={size === 'md' ? 'xs' : 'sm'} />
+          </span>
+        </div>
         {label && (
           <label htmlFor={id}>
             <Typography
@@ -62,29 +73,12 @@ export function BaseCheckBox(props: BaseCheckBoxProps): JSX.Element {
             </Typography>
           </label>
         )}
-        <div className={`inline-flex items-center relative ${className ?? ''}`}>
-          <input
-            id={id}
-            type="checkbox"
-            name={name}
-            disabled={disabled}
-            checked={checked}
-            onChange={onChange}
-            className={baseCheckBoxStyles({
-              intent: error ? 'error' : intent,
-              size,
-            })}
-          />
-          <span className="absolute hidden peer-checked:block text-gray-100 dark:peer-disabled:hidden dark:peer-checked:text-gray-100 dark:text-gray-500 peer-disabled:opacity-50 transition-opacity pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-            <BaseIcon icon={checkBold} size={size === 'md' ? 'xs' : 'sm'} />
-          </span>
-        </div>
       </div>
-      {!hiddenError && (
+      {showError && (
         <Typography
           color="red"
           variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+          className="text-left rtl:text-right min-h-10"
         >
           {error ?? ''}
         </Typography>

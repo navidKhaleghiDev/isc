@@ -4,13 +4,15 @@ import {
   Control,
   FieldPath,
   FieldValues,
+  Path,
+  PathValue,
   RegisterOptions,
 } from 'react-hook-form';
 
 import { baseCheckBoxStyles } from './styles';
 
 export interface BaseCheckBoxProps
-  extends VariantProps<typeof baseCheckBoxStyles> {
+  extends Omit<VariantProps<typeof baseCheckBoxStyles>, 'error'> {
   id: string;
   name: string;
   checked: boolean;
@@ -18,13 +20,13 @@ export interface BaseCheckBoxProps
   label?: string;
   className?: string;
   error?: string;
-  hiddenError?: boolean;
+  value?: string | number | readonly string[];
+  showError?: boolean;
   disabled?: boolean;
-  dir?: 'rtl' | 'ltr';
 }
 
 export interface BaseCheckBoxControllerProps<T extends FieldValues>
-  extends Omit<BaseCheckBoxProps, 'onChange' | 'checked' | 'error'> {
+  extends Omit<BaseCheckBoxProps, 'onChange' | 'checked' | 'error' | 'value'> {
   name: FieldPath<T>;
   control: Control<T>;
   rules?: RegisterOptions<T>;
