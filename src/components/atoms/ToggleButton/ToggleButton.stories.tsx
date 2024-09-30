@@ -50,9 +50,9 @@ export const toggleButton: StoryToggleButton = {
   render: RenderToggleButton,
   args: {
     buttonOption: [
-      { id: 1, label: 'هفتگی', name: 'weekly' },
-      { id: 2, label: 'ماهانه', name: 'monthly' },
-      { id: 3, label: 'سالانه', name: 'yearly' },
+      { id: 1, label: 'هفتگی' },
+      { id: 2, label: 'ماهانه' },
+      { id: 3, label: 'سالانه' },
     ],
     size: 'md',
   },
