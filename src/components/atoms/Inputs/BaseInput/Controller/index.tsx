@@ -1,16 +1,6 @@
 import { Controller, FieldValues } from 'react-hook-form';
-
-import { Typography } from '@ui/atoms/Typography';
-
-import { IconButtonInput } from '../../IconButtonInput';
-import { IconInput } from '../../IconInput';
-import {
-  baseInputStyles,
-  baseInputTextStyles,
-  baseInputWarperStyles,
-} from '../styles';
 import { BaseInputControllerProps } from '../types';
-
+import { BaseInput } from '..';
 /**
  * BaseInput component that integrates with react-hook-form.
  * It provides a customizable input field with validation and error handling.
@@ -43,7 +33,6 @@ import { BaseInputControllerProps } from '../types';
  *
  * @returns {JSX.Element} The rendered input component.
  */
-
 export function BaseInputController<T extends FieldValues>(
   props: BaseInputControllerProps<T>
 ): JSX.Element {
@@ -59,21 +48,14 @@ export function BaseInputController<T extends FieldValues>(
     endIcon,
     fullWidth,
     defaultValue,
-    hiddenHelpText,
-    intent,
     size,
     type,
     label,
     disabled,
     hiddenError,
-    onKeyDown,
     onClickIcon,
-    min,
-    max,
     dir = 'rtl',
-    iconButtonIcon = 'ph:x',
   } = props;
-
   return (
     <Controller
       name={name}
@@ -82,103 +64,26 @@ export function BaseInputController<T extends FieldValues>(
       rules={rules}
       defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
-        <div
-          className={baseInputWarperStyles({
-            size,
-            fullWidth,
-            className: `flex flex-col`,
-          })}
-        >
-          {label && (
-            <label
-              htmlFor={id}
-              className={`mb-[0.13rem] ${
-                dir === 'ltr' ? 'text-left' : 'text-right'
-              }`}
-            >
-              <Typography
-                variant="body6"
-                className={`dark:text-white ${
-                  error && !disabled ? 'text-red-500' : 'text-gray-200'
-                } ${disabled ? 'text-gray-200' : 'text-gray-500'}`}
-              >
-                {label}
-              </Typography>
-            </label>
-          )}
-          <div className={`relative peer ${className ?? ''}`}>
-            <input
-              id={id}
-              type={type}
-              dir={dir}
-              disabled={field.disabled}
-              name={field.name}
-              value={field.value}
-              onChange={field.onChange}
-              onKeyDown={onKeyDown}
-              className={baseInputStyles({
-                intent: error?.message ? 'error' : intent,
-                className: `${
-                  (endIcon || (onClickIcon && dir === 'ltr')) && 'pl-7'
-                } ${(startIcon || (onClickIcon && dir === 'rtl')) && 'pr-7'}`,
-                fullWidth,
-                size,
-              })}
-              placeholder={placeholder}
-              min={min}
-              max={max}
-            />
-            {startIcon && (
-              <IconInput
-                icon={startIcon}
-                intent={intent}
-                dir="rtl"
-                error={error?.message}
-              />
-            )}
-            {endIcon && (
-              <IconInput
-                icon={endIcon}
-                intent={intent}
-                dir="ltr"
-                error={error?.message}
-              />
-            )}
-            {onClickIcon && (
-              <IconButtonInput
-                icon={iconButtonIcon}
-                intent={intent}
-                onClick={onClickIcon}
-                disabled={field.disabled}
-                error={error?.message}
-                dir={dir}
-              />
-            )}
-          </div>
-          <span className={baseInputTextStyles({ size, fullWidth })}>
-            {!hiddenError && hiddenHelpText && (
-              <Typography
-                variant="body6"
-                className={`${
-                  dir === 'ltr' ? 'text-left' : 'text-right'
-                } min-h-10`}
-              >
-                {helpText ?? ''}
-              </Typography>
-            )}
-            {!field.disabled && hiddenError && (
-              <Typography
-                color="red"
-                variant="body6"
-                className={`${
-                  dir === 'ltr' ? 'text-left' : 'text-right'
-                } min-h-10`}
-              >
-                {error?.message ?? ''}
-              </Typography>
-            )}
-          </span>
-        </div>
+        <BaseInput
+          id={id}
+          name={name}
+          onChange={field.onChange}
+          value={field.value}
+          className={className}
+          dir={dir}
+          disabled={disabled}
+          endIcon={endIcon}
+          size={size}
+          error={error?.message}
+          fullWidth={fullWidth}
+          helpText={helpText}
+          hiddenError={hiddenError}
+          label={label}
+          onClickIcon={onClickIcon}
+          placeholder={placeholder}
+          startIcon={startIcon}
+          type={type}
+        />
       )}
     />
   );
