@@ -1,5 +1,5 @@
-import { VariantProps } from 'class-variance-authority';
 import { ChangeEvent } from 'react';
+import { VariantProps } from 'class-variance-authority';
 import {
   Control,
   FieldPath,
