@@ -64,9 +64,9 @@ export const baseSelectStyles = cva(
       size: {
         none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-40 h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
+        sm: `w-40 h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
         md: `w-[13.75rem] h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
-        lg: `w-64 h-10  ${SIZE.TYPOGRAPHY.BODY4}`,
+        lg: `w-64 h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
         xl: '',
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },
