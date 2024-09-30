@@ -15,22 +15,23 @@ export function BaseInputTest() {
   const [showData, setShowData] = useState<MyFormType>();
   const { control, handleSubmit } = useForm<MyFormType>({});
   return (
-    <div className="font-kalameh" dir="rtl">
-      <form className="without controller">
+    <div className="font-kalameh">
+      <form className="without controller" dir="rtl">
         <BaseInput
           id="Name"
           name="Name"
           onChange={(event) => setUserName(event.target.value)}
           value={userName}
           placeholder="نام کاربری"
-          iconButtonIcon={PhEyeSlash}
           // fullWidth
           onClickIcon={() => setIconClicked(!iconClicked)}
-          helpText="there is an help text there is an help text there is an help text there is an help text"
-          hiddenHelpText
-          error="there is an erorr in our component"
+          // helpText="there is an help text there is an help text there is an help text there is an help text"
+          // error="there is an erorr in our component"
+          // size="lg"
           // hiddenError
           // endIcon={PhEyeSlash}
+          // disabled
+          startIcon={PhEyeSlash}
           dir="ltr"
           label="نام کاربری"
         />
@@ -53,7 +54,7 @@ export function BaseInputTest() {
           hiddenError
           // disabled
           onClickIcon={() => setIconClicked(!iconClicked)}
-          iconButtonIcon={PhEyeSlash}
+          // iconButtonIcon={PhEyeSlash}
           // startIcon={PhEyeSlash}
           // endIcon={PhEyeSlash}
           dir="rtl"
