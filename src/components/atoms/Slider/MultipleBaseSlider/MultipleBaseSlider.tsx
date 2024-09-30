@@ -40,26 +40,18 @@ export function MultipleBaseSlider(
 
         const percentMoved = (dx / sliderWidth) * (max - min);
         const newValue = startValue + percentMoved;
-        const nonNegative = newValue.toFixed();
+        const nonNegative = Math.max(min, Math.min(max, +newValue.toFixed()));
         const newValueRound = nonNegative;
 
-        if (
-          thumb === 'min' &&
-          +newValueRound <= maxValue &&
-          +newValueRound >= min
-        ) {
+        if (thumb === 'min' && +newValueRound <= maxValue) {
           setMinValue(+newValueRound);
           if (onChange) onChange({ min: +newValueRound, max: maxValue });
-        } else if (
-          thumb === 'max' &&
-          +newValueRound >= minValue &&
-          +newValueRound <= max
-        ) {
+        } else if (thumb === 'max' && +newValueRound >= minValue) {
           setMaxValue(+newValueRound);
           if (onChange)
             onChange({
-              min: +newValueRound,
-              max: maxValue,
+              min: minValue,
+              max: +newValueRound,
             });
         }
       };

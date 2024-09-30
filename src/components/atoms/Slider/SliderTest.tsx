@@ -16,9 +16,12 @@ export function SliderTest() {
 
   const handleMultipleSliderChange = () => {
     setSliderRange(sliderRange);
-    // values: { min: number; max: number }
-    // console.log(values.min);
-    // console.log(values.max);
+    // values: {
+    //   min: number;
+    //   max: number;
+    // }
+    // console.log('min', values.min);
+    // console.log('max', values.max);
   };
   return (
     <>
