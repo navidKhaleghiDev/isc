@@ -8,9 +8,9 @@ interface FormValue {
 }
 
 export function BaseSliderController(props: BaseSliderProps) {
-  const { min, max, initialValue, hiddenLabel } = props;
+  const { minValue, maxValue, defaultValue, showLabel } = props;
   const { control, setValue } = useForm<FormValue>({
-    defaultValues: { max: initialValue },
+    defaultValues: { max: defaultValue },
   });
 
   return (
@@ -19,10 +19,10 @@ export function BaseSliderController(props: BaseSliderProps) {
       control={control}
       render={({ field }) => (
         <BaseSlider
-          min={min}
-          max={max}
-          initialValue={field.value}
-          hiddenLabel={hiddenLabel}
+          minValue={minValue}
+          maxValue={maxValue}
+          defaultValue={field.value}
+          showLabel={showLabel}
           onChange={(range) => {
             setValue('max', range.max);
             field.onChange(range.max);
