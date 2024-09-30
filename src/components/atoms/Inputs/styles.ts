@@ -77,27 +77,6 @@ export const baseTextareaStyles = cva(
   }
 );
 
-export const baseCheckBoxStyles = cva(
-  `before:content[''] peer relative cursor-pointer appearance-none border rounded transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
-  {
-    variants: {
-      intent: {
-        default:
-          'border-gray-200 bg-gray-100 dark:border-gray-400 dark:bg-gray-500',
-        error: '',
-      },
-      size: {
-        sm: `size-4`,
-        md: `size-6`,
-      },
-    },
-    defaultVariants: {
-      intent: 'default',
-      size: 'md',
-    },
-  }
-);
-
 export const baseSelectStyles = cva(
   `px-2 py-1.5 appearance-none flex rounded-lg outline-none bg-white placeholder:text-right border-gray-300 placeholder:text-rtl relative`,
   {
@@ -118,9 +97,9 @@ export const baseSelectStyles = cva(
       size: {
         none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-40 h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
+        sm: `w-40 h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
         md: `w-[13.75rem] h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
-        lg: `w-64 h-10  ${SIZE.TYPOGRAPHY.BODY4}`,
+        lg: `w-64 h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
         xl: '',
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },

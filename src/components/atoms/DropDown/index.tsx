@@ -182,9 +182,7 @@ export function Dropdown<T extends FieldValues>({
                       checked={value?.some(
                         (v: IOptionSelect) => v.id === option.id
                       )}
-                      pureOnChange={() =>
-                        handleOnChange(option, value, onChange)
-                      }
+                      onChange={() => handleOnChange(option, value, onChange)}
                     />
                     <Typography type="p" variant="body5">
                       {option.label}
