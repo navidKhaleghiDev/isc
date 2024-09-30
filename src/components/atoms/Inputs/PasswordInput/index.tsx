@@ -40,7 +40,7 @@ export function PasswordInput({
       placeholder={placeholder}
       type={showPassword ? 'text' : 'password'}
       onClickIcon={() => setShowPassword(!showPassword)}
-      iconButtonIcon={showPassword ? PhEye : PhEyeSlash}
+      startIcon={showPassword ? PhEye : PhEyeSlash}
       rules={{
         required: regexPattern.required,
         pattern: regexPattern.password,
