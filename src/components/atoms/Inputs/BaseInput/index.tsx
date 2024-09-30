@@ -64,7 +64,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
       {label && (
         <label
           htmlFor={id}
-          className={`mb-[0.13rem] ${rtl ? 'text-right' : 'text-left'} `}
+          className={`mb-[0.13rem] ${rtl ? 'text-right' : 'text-left'}`}
         >
           <Typography
             variant="body6"
@@ -114,13 +114,18 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           })}
         />
       </div>
-      <span className={baseInputTextStyles({ size, fullWidth })}>
+      <span
+        className={baseInputTextStyles({
+          size,
+          fullWidth,
+        })}
+      >
         {helpText && <Typography>{helpText}</Typography>}
         {!disabled && !hiddenError && (
           <Typography
             color="red"
             variant="body6"
-            className="text-left rtl:text-right min-h-10"
+            className={`text-left ${rtl && 'text-right'} min-h-10`}
           >
             {error ?? ''}
           </Typography>

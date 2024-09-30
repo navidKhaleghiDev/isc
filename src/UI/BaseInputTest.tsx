@@ -16,7 +16,7 @@ export function BaseInputTest() {
   const { control, handleSubmit } = useForm<MyFormType>({});
   return (
     <div className="font-kalameh">
-      <form className="without controller">
+      <form className="without controller" dir="rtl">
         <BaseInput
           id="Name"
           name="Name"
@@ -51,13 +51,14 @@ export function BaseInputTest() {
           placeholder="سلام"
           // helpText="there is help text there is help text there is help text there is help text there is help text there is help text"
           // fullWidth
-          hiddenError
+          // hiddenError
           // disabled
           onClickIcon={() => setIconClicked(!iconClicked)}
           // iconButtonIcon={PhEyeSlash}
           startIcon={PhEyeSlash}
           // endIcon={PhEyeSlash}
           label="نام کاربری"
+          dir="rtl"
         />
         <p>{showData?.userName}</p>
         <button type="submit">submit form control</button>

@@ -51,6 +51,7 @@ export function BaseInputController<T extends FieldValues>(
     size,
     type,
     label,
+    dir,
     disabled,
     hiddenError,
     onClickIcon,
@@ -78,6 +79,7 @@ export function BaseInputController<T extends FieldValues>(
           onClickIcon={onClickIcon}
           placeholder={placeholder}
           startIcon={startIcon}
+          dir={dir}
           type={type}
         />
       )}
