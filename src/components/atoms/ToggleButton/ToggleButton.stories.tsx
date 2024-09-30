@@ -38,18 +38,22 @@ const meta: Meta<typeof ToggleButton> = {
 export default meta;
 
 function RenderToggleButton({
-  buttonOption,
+  buttonOptions,
   onChange,
   size,
 }: ToggleButtonProps) {
   return (
-    <ToggleButton buttonOption={buttonOption} onChange={onChange} size={size} />
+    <ToggleButton
+      buttonOptions={buttonOptions}
+      onChange={onChange}
+      size={size}
+    />
   );
 }
 export const toggleButton: StoryToggleButton = {
   render: RenderToggleButton,
   args: {
-    buttonOption: [
+    buttonOptions: [
       { id: 1, label: 'هفتگی' },
       { id: 2, label: 'ماهانه' },
       { id: 3, label: 'سالانه' },
