@@ -28,6 +28,7 @@ export function BaseCheckBoxTest() {
           label="گزینه"
           checked={checkItem}
           error="there is an error"
+          size="sm"
         />
         <p>{fromValue ? 'checked' : 'not Checked'}</p>
         <button type="submit" className="bg-slate-100">
