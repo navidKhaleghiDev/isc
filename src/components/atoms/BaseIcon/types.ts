@@ -3,7 +3,7 @@ import { IconifyIcon } from '@iconify/react';
 
 import { baseIconStyles } from './styles';
 
-export interface IBaseIcon extends VariantProps<typeof baseIconStyles> {
+export interface BaseIconProps extends VariantProps<typeof baseIconStyles> {
   className?: string;
-  icon?: string | IconifyIcon;
+  icon: string | IconifyIcon;
 }
