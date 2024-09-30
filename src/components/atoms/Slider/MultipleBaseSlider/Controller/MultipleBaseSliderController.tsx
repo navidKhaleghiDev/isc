@@ -11,10 +11,17 @@ interface FormValue {
 export function MultipleBaseSliderController(
   props: MultipleBaseSliderControllerProps
 ) {
-  const { min, max, initialMin, initialMax, hiddenLabel, onChange } = props;
+  const {
+    minValue,
+    maxValue,
+    defaultMinValue,
+    defaultMaxValue,
+    showLabel,
+    onChange,
+  } = props;
 
   const { control, setValue } = useForm<FormValue>({
-    defaultValues: { min: initialMin, max: initialMax },
+    defaultValues: { min: defaultMinValue, max: defaultMaxValue },
   });
 
   return (
@@ -24,11 +31,11 @@ export function MultipleBaseSliderController(
         control={control}
         render={({ field }) => (
           <MultipleBaseSlider
-            min={min}
-            max={max}
-            initialMin={field.value}
-            initialMax={initialMax}
-            hiddenLabel={hiddenLabel}
+            minValue={minValue}
+            maxValue={maxValue}
+            defaultMinValue={field.value}
+            defaultMaxValue={defaultMaxValue}
+            showLabel={showLabel}
             onChange={({ min: newMin }) => {
               setValue('min', newMin);
               field.onChange(newMin);
@@ -42,11 +49,11 @@ export function MultipleBaseSliderController(
         control={control}
         render={({ field }) => (
           <MultipleBaseSlider
-            min={min}
-            max={max}
-            initialMin={initialMin}
-            initialMax={field.value}
-            hiddenLabel={hiddenLabel}
+            minValue={minValue}
+            maxValue={maxValue}
+            defaultMinValue={defaultMinValue}
+            defaultMaxValue={field.value}
+            showLabel={showLabel}
             onChange={({ max: newMax }) => {
               setValue('max', newMax);
               field.onChange(newMax);

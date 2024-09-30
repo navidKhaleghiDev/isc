@@ -15,11 +15,12 @@ import { BaseSliderProps } from '../types';
  */
 
 export function BaseSlider(props: BaseSliderProps): JSX.Element {
-  const { min, max, initialValue, hiddenLabel, onChange } = props;
-  const [value, setValue] = useState(Math.max(initialValue, 0));
+  const { minValue, maxValue, defaultValue = 0, showLabel, onChange } = props;
+  const [value, setValue] = useState(Math.max(defaultValue, 0));
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const percent = (item: number) => ((item - min) / (max - min)) * 100;
+  const percent = (item: number) =>
+    ((item - minValue) / (maxValue - minValue)) * 100;
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -34,12 +35,12 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
 
         if (sliderWidth === 0) return;
 
-        const percentMoved = (dx / sliderWidth) * (max - min);
+        const percentMoved = (dx / sliderWidth) * (maxValue - minValue);
         const newValue = startValue + percentMoved;
         const nonNegative = newValue.toFixed();
         const newValueRound = nonNegative;
 
-        if (+newValueRound >= min && +newValueRound <= max) {
+        if (+newValueRound >= minValue && +newValueRound <= maxValue) {
           setValue(+newValueRound);
           if (onChange) onChange({ max: +newValueRound });
         }
@@ -53,7 +54,7 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
       window.addEventListener('mousemove', onMouseMove);
       window.addEventListener('mouseup', onMouseUp);
     },
-    [value, min, max, onChange]
+    [value, minValue, maxValue, onChange]
   );
 
   return (
@@ -74,7 +75,7 @@ export function BaseSlider(props: BaseSliderProps): JSX.Element {
           tabIndex={0}
           role="button"
         >
-          {hiddenLabel && (
+          {showLabel && (
             <span className={getValueStyles()}>{value.toFixed()}</span>
           )}
         </div>

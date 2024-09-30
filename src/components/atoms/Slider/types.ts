@@ -1,22 +1,21 @@
 export interface BaseSliderProps {
-  min: number;
-  max: number;
-  initialValue: number;
-  hiddenLabel?: boolean;
-  onChange: (range: { max: number }) => void;
+  minValue: number;
+  maxValue: number;
+  defaultValue?: number;
+  showLabel?: boolean;
+  onChange: (range: Omit<RangeType, 'min'>) => void;
 }
 
 export interface MultipleBaseSliderProps
-  extends Omit<BaseSliderProps, 'onChange' | 'initialValue'> {
-  initialMin: number;
-  initialMax: number;
-  hiddenLabel?: boolean;
-  onChange: (range: { min: number; max: number }) => void;
+  extends Omit<BaseSliderProps, 'onChange' | 'defaultValue'> {
+  defaultMinValue: number;
+  defaultMaxValue: number;
+  onChange: (range: RangeType) => void;
 }
 
 export interface MultipleBaseSliderControllerProps
-  extends Omit<MultipleBaseSliderProps, 'onChange'> {
-  initialMin: number;
-  initialMax: number;
-  onChange: (range: { min: number; max: number }) => void;
+  extends MultipleBaseSliderProps {
+  control?: any;
 }
+
+type RangeType = { min: number; max: number };

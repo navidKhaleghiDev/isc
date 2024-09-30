@@ -18,17 +18,25 @@ import { MultipleBaseSliderProps } from '../types';
 export function MultipleBaseSlider(
   props: MultipleBaseSliderProps
 ): JSX.Element {
-  const { min, max, initialMin, initialMax, hiddenLabel, onChange } = props;
-  const [minValue, setMinValue] = useState(initialMin);
-  const [maxValue, setMaxValue] = useState(initialMax);
+  const {
+    minValue,
+    maxValue,
+    defaultMinValue,
+    defaultMaxValue,
+    showLabel,
+    onChange,
+  } = props;
+  const [min, setMinValue] = useState(defaultMinValue);
+  const [max, setMaxValue] = useState(defaultMaxValue);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const percent = (value: number) => ((value - min) / (max - min)) * 100;
+  const percent = (value: number) =>
+    ((value - minValue) / (maxValue - minValue)) * 100;
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>, thumb: string) => {
       const start = e.clientX;
-      const startValue = thumb === 'min' ? minValue : maxValue;
+      const startValue = thumb === 'minValue' ? min : max;
 
       const onMouseMove = (moveEvent: { clientX: number }) => {
         if (!sliderRef.current) return;
@@ -38,19 +46,22 @@ export function MultipleBaseSlider(
 
         if (sliderWidth === 0) return;
 
-        const percentMoved = (dx / sliderWidth) * (max - min);
+        const percentMoved = (dx / sliderWidth) * (maxValue - minValue);
         const newValue = startValue + percentMoved;
-        const nonNegative = Math.max(min, Math.min(max, +newValue.toFixed()));
+        const nonNegative = Math.max(
+          minValue,
+          Math.min(maxValue, +newValue.toFixed())
+        );
         const newValueRound = nonNegative;
 
-        if (thumb === 'min' && +newValueRound <= maxValue) {
+        if (thumb === 'minValue' && +newValueRound <= max) {
           setMinValue(+newValueRound);
-          if (onChange) onChange({ min: +newValueRound, max: maxValue });
-        } else if (thumb === 'max' && +newValueRound >= minValue) {
+          if (onChange) onChange({ min: +newValueRound, max });
+        } else if (thumb === 'maxValue' && +newValueRound >= min) {
           setMaxValue(+newValueRound);
           if (onChange)
             onChange({
-              min: minValue,
+              min,
               max: +newValueRound,
             });
         }
@@ -64,7 +75,7 @@ export function MultipleBaseSlider(
       window.addEventListener('mousemove', onMouseMove);
       window.addEventListener('mouseup', onMouseUp);
     },
-    [minValue, maxValue, min, max, onChange]
+    [min, max, minValue, maxValue, onChange]
   );
 
   return (
@@ -75,31 +86,31 @@ export function MultipleBaseSlider(
         <div
           className={sliderStyles({ background: 'fill' })}
           style={{
-            left: `${percent(minValue)}%`,
-            width: `${percent(maxValue) - percent(minValue)}%`,
+            left: `${percent(min)}%`,
+            width: `${percent(max) - percent(min)}%`,
           }}
         />
         <div
           className={thumbStyles()}
-          style={{ left: `${percent(minValue)}%` }}
+          style={{ left: `${percent(min)}%` }}
           onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
-            handleMouseDown(e, 'min')
+            handleMouseDown(e, 'minValue')
           }
           tabIndex={0}
           role="button"
         >
-          {hiddenLabel && <span className={getValueStyles()}>{minValue}</span>}
+          {showLabel && <span className={getValueStyles()}>{min}</span>}
         </div>
         <div
           className={thumbStyles()}
-          style={{ left: `${percent(maxValue)}% ` }}
+          style={{ left: `${percent(max)}% ` }}
           onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
-            handleMouseDown(e, 'max')
+            handleMouseDown(e, 'maxValue')
           }
           tabIndex={0}
           role="button"
         >
-          {hiddenLabel && <span className={getValueStyles()}>{maxValue}</span>}
+          {showLabel && <span className={getValueStyles()}>{max}</span>}
         </div>
       </div>
     </div>
