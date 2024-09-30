@@ -17,19 +17,19 @@ const meta: Meta<typeof MultipleBaseSlider> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    min: {
+    minValue: {
       control: { type: 'number' },
       description: 'Minimum value for the slider',
     },
-    max: {
+    maxValue: {
       control: { type: 'number' },
       description: 'Maximum value for the slider',
     },
-    initialMin: {
+    defaultMinValue: {
       control: { type: 'number' },
       description: 'Initial minimum value selected',
     },
-    initialMax: {
+    defaultMaxValue: {
       control: { type: 'number' },
       description: 'Initial maximum value selected',
     },
@@ -52,9 +52,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    min: 0,
-    max: 100,
-    initialMin: 20,
-    initialMax: 80,
+    minValue: 0,
+    maxValue: 100,
+    defaultMinValue: 20,
+    defaultMaxValue: 80,
   },
 };
