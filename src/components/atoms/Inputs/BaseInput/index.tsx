@@ -69,8 +69,12 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
           <Typography
             variant="body6"
             className={`dark:text-white ${
-              error && !disabled ? 'text-red-500' : 'text-gray-200'
-            }  ${disabled ? 'text-gray-200' : 'text-gray-500'}`}
+              error && !disabled
+                ? 'text-red-500 dark:text-red-500'
+                : 'text-gray-200'
+            }  ${
+              disabled ? 'text-gray-200 dark:text-gray-800' : 'text-gray-500'
+            }`}
           >
             {label}
           </Typography>
