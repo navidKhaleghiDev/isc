@@ -18,15 +18,15 @@ const meta: Meta<typeof BaseSlider> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    min: {
+    minValue: {
       control: { type: 'number' },
       description: 'Minimum value for the slider',
     },
-    max: {
+    maxValue: {
       control: { type: 'number' },
       description: 'Maximum value for the slider',
     },
-    initialValue: {
+    defaultValue: {
       control: { type: 'number' },
       description: 'Initial Value',
     },
@@ -49,8 +49,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    min: 0,
-    max: 100,
-    initialValue: 20,
+    minValue: 0,
+    maxValue: 100,
+    defaultValue: 20,
   },
 };
