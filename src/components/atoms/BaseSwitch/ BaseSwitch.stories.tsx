@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { BaseSwitch } from './BaseSwitch';
+import { BaseSwitch } from '.';
 
 const meta: Meta<typeof BaseSwitch> = {
   title: 'atoms/BaseSwitch',
@@ -16,7 +16,7 @@ const meta: Meta<typeof BaseSwitch> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'kalameh' }}>
+      <div style={{ fontFamily: 'kalameh' }}>
         <Story />
       </div>
     ),
@@ -26,7 +26,7 @@ const meta: Meta<typeof BaseSwitch> = {
       control: {
         type: 'select',
       },
-      options: ['small', 'medium'],
+      options: ['sm', 'md', 'responsive'],
     },
     disabled: { control: 'boolean' },
     error: { control: 'text' },
@@ -40,8 +40,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'switch',
-    defaultChecked: false,
-    size: 'medium',
+    size: 'responsive',
     disabled: false,
   },
 };

@@ -3,12 +3,12 @@ import { toggleStyles } from './styles';
 
 export interface ButtonOption {
   id: string | number;
-  name?: string;
   label: string;
+  active?: boolean;
 }
 
 export interface ToggleButtonProps extends VariantProps<typeof toggleStyles> {
-  buttonLabels: ButtonOption[];
+  buttonOptions: ButtonOption[];
   onChange: (selected: ButtonOption) => void;
   className?: string;
 }

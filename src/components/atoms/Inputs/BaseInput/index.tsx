@@ -1,123 +1,136 @@
-import { Typography } from '../../Typography';
-import { IconButtonInput } from '../IconButtonInput';
-import { IconInput } from '../IconInput';
-import { baseInputStyles } from '../styles';
-import { BaseInputProps } from '../types';
+import { Typography } from '@ui/atoms/Typography';
+import { IconButton } from '@ui/atoms/BaseButton';
 
+import {
+  baseInputStyles,
+  baseInputTextStyles,
+  baseInputWarperStyles,
+} from './styles';
+import { BaseInputProps } from './types';
 /**
- * BaseInput component that integrates with react-hook-form.
- * It provides a customizable input field with validation and error handling.
+ * Base input
  *
  * @template T - The type of the form values.
- * @param {BaseInputProps<T>} props - The properties for the input component.
- * @param {object} props.control - The control object from react-hook-form.
- * @param {string} props.name - The name of the field in the form.
- * @param {string} props.id - The id for the input element.
- * @param {string} [props.placeholder] - The placeholder text for the input.
- * @param {object} [props.rules] - The validation rules for the input.
- * @param {string} [props.className] - Additional class names for styling the input.
- * @param {boolean} [props.fullWidth] - Whether the input should take the full width of its container.
- * @param {any} [props.defaultValue] - The default value for the input.
+ * @param {string} props.name
+ * @param {string} props.id
+ * @param {string} [props.placeholder]
+ * @param {string} [props.className]
+ * @param {boolean} [props.fullWidth]
  * @param {React.ReactNode} [props.startIcon] - Icon to display at the start of the input.
  * @param {React.ReactNode} [props.endIcon] - Icon to display at the end of the input.
- * @param {'default' | 'error'} [props.intent] - The intent state of the input, determining its styling.
  * @param {'sm' | 'md' | 'lg'} [props.size] - The size of the input.
  * @param {string} [props.type] - The type of the input.
  * @param {string} [props.label] - The label to display above the input.
  * @param {boolean} [props.hiddenError] - Whether to hide the error message.
- * @param {function} [props.pureOnChange] - Change handler for uncontrolled component.
- * @param {any} [props.pureValue] - Value for uncontrolled component.
+ * @param {function} [props.onChange] - Change handler for uncontrolled component.
  * @param {function} [props.onClickIcon] - Click handler for the icon button input.
- * @param {string} [props.pureError] - Error message for uncontrolled component.
- * @param {number} [props.min] - Minimum value for the input.
- * @param {number} [props.max] - Maximum value for the input.
- * @param {boolean} [props.ltrLabel] - Whether the label should be left-to-right.
- * @param {string} [props.iconButtonIcon] - Icon for the icon button input.
+ * @param {string} [props.error] - Error message for uncontrolled component.
+ * @param {boolean} [props.dir] - Whether the label should be left-to-right.
+ * @param {string} [props.iconButtonIcon] - Icon for the icon button input (you should add the onClick func to see the icon).
  *
  * @returns {JSX.Element} The rendered input component.
  */
-
-export function BaseInput(props: BaseInputProps<any>): JSX.Element {
+export function BaseInput(props: BaseInputProps): JSX.Element {
   const {
     name,
     id,
     placeholder,
     fullWidth,
     startIcon,
+    intent,
     className,
     endIcon,
-    defaultValue,
-    intent,
+    value,
+    disabled,
     size,
     type,
+    helpText,
     label,
     hiddenError,
-    pureOnChange,
-    onKeyDown,
-    pureValue,
+    onChange,
     onClickIcon,
-    pureError,
-    min,
-    max,
+    error,
     dir = 'rtl',
-    iconButtonIcon = 'ph:x',
   } = props;
-
-  // Remember to check the input and the icon for iconButtonClick
-
+  const rtl = dir === 'rtl';
   return (
-    <div className="w-full flex flex-col">
+    <div
+      className={baseInputWarperStyles({
+        size,
+        fullWidth,
+        className: 'flex flex-col',
+      })}
+    >
       {label && (
         <label
           htmlFor={id}
-          className={`mb-[0.13rem] ${
-            dir === 'ltr' ? 'text-left' : 'text-right'
-          }`}
+          className={`mb-[0.13rem] ${rtl ? 'text-right' : 'text-left'}`}
         >
-          <Typography color="neutralDark" variant="body4">
+          <Typography
+            variant="body6"
+            className={`dark:text-white ${
+              error && !disabled
+                ? 'text-red-500 dark:text-red-500'
+                : 'text-gray-200'
+            }  ${
+              disabled ? 'text-gray-200 dark:text-gray-800' : 'text-gray-500'
+            }`}
+          >
             {label}
           </Typography>
         </label>
       )}
-      {onClickIcon && (
-        <IconButtonInput
-          icon={iconButtonIcon}
-          intent={intent}
-          onClick={onClickIcon}
-        />
-      )}
-      <div className={`relative ${className}`}>
+      <div className={`relative peer group ${className ?? ''}`}>
+        {startIcon && (
+          <IconButton
+            icon={startIcon}
+            onClick={onClickIcon}
+            color={error ? 'redNoBgInput' : 'neutralMedium'}
+            className="right-0"
+          />
+        )}
+        {endIcon && (
+          <IconButton
+            icon={endIcon}
+            onClick={onClickIcon}
+            color={error ? 'redNoBgInput' : 'neutralMedium'}
+            className="left-0"
+          />
+        )}
         <input
           id={id}
           type={type}
-          dir={dir}
-          min={min}
-          max={max}
-          onKeyDownCapture={onKeyDown}
+          dir="auto"
+          disabled={disabled}
           name={name}
-          value={pureValue}
-          defaultValue={defaultValue}
-          onChange={pureOnChange}
+          value={value}
+          onChange={onChange}
           placeholder={placeholder}
           className={baseInputStyles({
-            intent: pureError ? 'error' : intent,
-            className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'}`,
+            intent: error ? 'error' : intent,
+            className: `${startIcon && `pr-8`} ${endIcon && 'pl-8'}`,
             fullWidth,
             size,
           })}
         />
-        {startIcon && <IconInput icon={startIcon} intent={intent} dir="rtl" />}
-        {endIcon && <IconInput icon={endIcon} intent={intent} />}
       </div>
-      {hiddenError && (
-        <Typography
-          color="red"
-          variant="body6"
-          className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
-        >
-          {pureError}
-        </Typography>
-      )}
+      <span
+        className={baseInputTextStyles({
+          size,
+          fullWidth,
+        })}
+      >
+        {helpText && <Typography>{helpText}</Typography>}
+        {!disabled && !hiddenError && (
+          <Typography
+            color="red"
+            variant="body6"
+            className={`text-left ${rtl && 'text-right'} min-h-10`}
+          >
+            {error ?? ''}
+          </Typography>
+        )}
+      </span>
     </div>
   );
 }

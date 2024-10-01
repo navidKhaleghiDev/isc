@@ -1,11 +1,7 @@
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 
-import { Typography } from '../../Typography';
-import { IconButtonInput } from '../IconButtonInput';
-import { IconInput } from '../IconInput';
-import { baseInputStyles } from '../styles';
-import { BaseInputControlProps } from '../types';
-
+import { BaseInputControllerProps } from '../types';
+import { BaseInput } from '..';
 /**
  * BaseInput component that integrates with react-hook-form.
  * It provides a customizable input field with validation and error handling.
@@ -38,8 +34,9 @@ import { BaseInputControlProps } from '../types';
  *
  * @returns {JSX.Element} The rendered input component.
  */
-
-export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
+export function BaseInputController<T extends FieldValues>(
+  props: BaseInputControllerProps<T>
+): JSX.Element {
   const {
     control,
     name,
@@ -48,88 +45,43 @@ export function BaseInput(props: BaseInputControlProps<any>): JSX.Element {
     rules,
     className,
     startIcon,
+    helpText,
     endIcon,
     fullWidth,
-    defaultValue,
-    intent,
     size,
     type,
     label,
+    dir,
+    disabled,
     hiddenError,
-    onKeyDown,
     onClickIcon,
-    min,
-    max,
-    dir = 'rtl',
-    iconButtonIcon = 'ph:x',
   } = props;
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
       render={({ field, fieldState: { error } }) => (
-        <div className={`${className ?? ''} ${fullWidth && 'w-full'}`}>
-          {label && (
-            <label
-              htmlFor={id}
-              className={`mb-[0.13rem] ${
-                dir === 'ltr' ? 'text-left' : 'text-right'
-              }`}
-            >
-              <Typography color="neutralDark" variant="body4">
-                {label}
-              </Typography>
-            </label>
-          )}
-          <div className="relative base-input">
-            <input
-              id={id}
-              type={type}
-              dir={dir}
-              name={field.name}
-              value={type !== 'file' ? field.value ?? '' : undefined}
-              onChange={(e) => {
-                if (type !== 'file') {
-                  field.onChange(e);
-                } else {
-                  field.onChange(e.target.files);
-                }
-              }}
-              onKeyDown={onKeyDown}
-              className={baseInputStyles({
-                intent: error?.message ? 'error' : intent,
-                className: `${endIcon && 'pl-7'} ${startIcon && 'pr-7'} `,
-                fullWidth,
-                size,
-              })}
-              placeholder={placeholder}
-              min={min}
-              max={max}
-            />
-            {startIcon && (
-              <IconInput icon={startIcon} intent={intent} dir="rtl" />
-            )}
-            {endIcon && <IconInput icon={endIcon} intent={intent} />}
-            {onClickIcon && (
-              <IconButtonInput
-                icon={iconButtonIcon}
-                intent={intent}
-                onClick={onClickIcon}
-              />
-            )}
-          </div>
-          {!hiddenError && (
-            <Typography
-              color="red"
-              variant="body1"
-              className={`min-h-10 ${dir === 'rtl' && 'text-right'}`}
-            >
-              {error?.message ?? ''}
-            </Typography>
-          )}
-        </div>
+        <BaseInput
+          id={id}
+          name={name}
+          onChange={field.onChange}
+          value={field.value ?? ''}
+          className={className}
+          disabled={disabled}
+          endIcon={endIcon}
+          size={size}
+          error={error?.message}
+          fullWidth={fullWidth}
+          helpText={helpText}
+          hiddenError={hiddenError}
+          label={label}
+          onClickIcon={onClickIcon}
+          placeholder={placeholder}
+          startIcon={startIcon}
+          dir={dir}
+          type={type}
+        />
       )}
     />
   );

@@ -1,9 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+
 import { BaseInput } from '.';
 
-// Type definition for a story based on BaseInput
-type StoryBaseInput = StoryObj<typeof BaseInput>;
+// Custom Types for storyBook
+
+type StorySearchInput = StoryObj<typeof BaseInput>;
 
 // Main instruction for story
 const meta: Meta<typeof BaseInput> = {
@@ -19,74 +20,29 @@ const meta: Meta<typeof BaseInput> = {
   },
   tags: ['autodocs'],
   args: {
-    onClickIcon: fn(),
-    pureOnChange: fn(),
-    name: 'base input',
-    intent: 'default',
-    size: 'md',
-    type: 'text',
-    min: 5,
-    max: 15,
+    label: 'نام کاربری',
   },
   argTypes: {
     size: {
       control: {
         type: 'select',
       },
-      options: ['none', 'xs', 'sm', 'md', 'lg', 'xl', 'freeWidth'],
-    },
-    intent: {
-      control: {
-        type: 'select',
-      },
-      options: ['default', 'error'],
+      options: ['sm', 'md', 'lg', 'freeWidth'],
     },
   },
   // Adding font family
   decorators: [
     (Story) => (
-      <div dir="rtl" style={{ fontFamily: 'on' }}>
+      <div className="font-kalameh">
         <Story />
       </div>
     ),
   ],
+};
 
-  render: (args) => (
-    <BaseInput
-      name={args.name}
-      id={args.id}
-      type={args.type}
-      placeholder={args.placeholder}
-      label={args.label}
-      intent={args.intent}
-      max={args.max}
-      min={args.min}
-      size={args.size}
-      className={args.className}
-      defaultValue={args.defaultValue}
-      fullWidth={args.fullWidth}
-      hiddenError={args.hiddenError}
-      iconButtonIcon={args.iconButtonIcon}
-      dir={args.dir}
-      pureError={args.pureError}
-      pureValue={args.pureValue}
-      pureOnChange={args.pureOnChange}
-      onClickIcon={args.onClickIcon}
-      setError={args.setError}
-    />
-  ),
+// Define story
+export const searchInput: StorySearchInput = {
+  args: {},
 };
 
 export default meta;
-
-// Defining  stories based on size & intent
-export const defaultInput: StoryBaseInput = {
-  args: {
-    id: 'username',
-    placeholder: 'Label',
-    type: 'text',
-    intent: 'default',
-    dir: 'ltr',
-    size: 'md',
-  },
-};
