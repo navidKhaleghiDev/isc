@@ -21,7 +21,7 @@ export default function BaseOtpTest() {
         dir="ltr"
         control={control}
         size="md"
-        disabled
+        // disabled
         // pureError="there is an error there is an errorthere is an error v there is an error there is an error there is an error there is an error there is an error"
         // hiddenError
       />
