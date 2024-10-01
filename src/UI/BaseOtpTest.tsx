@@ -18,11 +18,11 @@ export default function BaseOtpTest() {
       <BaseOtp
         name="otpPassword"
         valueLength={6}
-        dir="rtl"
+        dir="ltr"
         control={control}
         size="md"
         disabled
-        pureError="there is an error there is an errorthere is an error v there is an error there is an error there is an error there is an error there is an error"
+        // pureError="there is an error there is an errorthere is an error v there is an error there is an error there is an error there is an error there is an error"
         // hiddenError
       />
       <p>{otpValue ?? ''}</p>

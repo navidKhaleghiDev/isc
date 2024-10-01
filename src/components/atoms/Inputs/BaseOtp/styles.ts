@@ -22,13 +22,12 @@ export const baseOtpStyles = cva(
   }
 );
 
-export const otpTextStyles = cva('', {
+export const otpTextStyles = cva('text-center', {
   variants: {
     size: {
-      sm: `w-40`,
-      md: `w-[15.94rem]`,
-      lg: `w-[21.88rem]`,
-      responsive: 'w-40 sm:w-[15.94rem]',
+      sm: 'w-[15.625rem]',
+      md: 'w-[21.875rem]',
+      responsive: 'w-[15.625rem] sm:w-[21.875rem]',
     },
   },
 });

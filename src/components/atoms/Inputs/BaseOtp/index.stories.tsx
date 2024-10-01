@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
+
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { BaseOtp } from '.';
 
 // Custom Types for storyBook
-
 type StoryPasswordInput = StoryObj<typeof BaseOtp>;
 
 // Main instruction for story
@@ -23,6 +23,14 @@ const meta: Meta<typeof BaseOtp> = {
   args: {
     name: 'BaseOtp',
   },
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'md', 'responsive'],
+    },
+  },
   render: (args) => (
     <BaseOtp
       valueLength={args.valueLength}
@@ -35,6 +43,7 @@ const meta: Meta<typeof BaseOtp> = {
       pureError={args.pureError}
       rules={args.rules}
       control={args.control}
+      size={args.size}
     />
   ),
   // Adding font family
@@ -60,6 +69,7 @@ const RenderBaseInput: StoryFn<typeof BaseOtp> = function RenderBaseInput(
     intent,
     pureError,
     rules,
+    size,
     name,
     valueLength,
   } = args;
@@ -76,6 +86,7 @@ const RenderBaseInput: StoryFn<typeof BaseOtp> = function RenderBaseInput(
       rules={rules}
       control={control}
       name={name}
+      size={size}
     />
   );
 };
