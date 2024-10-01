@@ -1,10 +1,10 @@
 import BaseOtpTest from '@src/UI/BaseOtpTest';
-// import { SliderTest } from '@ui/atoms/Slider/SliderTest';
+import { SliderTest } from '@ui/atoms/Slider/SliderTest';
 
 export function UiPage() {
   return (
     <div>
-      {/* <SliderTest /> */}
+      <SliderTest />
       <BaseOtpTest />
     </div>
   );

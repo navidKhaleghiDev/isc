@@ -35,6 +35,7 @@ export function BaseOtp<T extends FieldValues>(
     intent,
     hiddenError,
     disabled,
+    helpText,
     pureError,
     size = 'md',
     dir = 'ltr',
@@ -111,6 +112,17 @@ export function BaseOtp<T extends FieldValues>(
                   })}
                 >
                   {errorForm ?? ''}
+                </Typography>
+              )}
+              {helpText && (
+                <Typography
+                  variant="body6"
+                  className={otpTextStyles({
+                    intent: disabled ? 'disabled' : 'default',
+                    size,
+                  })}
+                >
+                  {helpText}
                 </Typography>
               )}
             </div>

@@ -24,10 +24,17 @@ export const baseOtpStyles = cva(
 
 export const otpTextStyles = cva('text-center', {
   variants: {
+    intent: {
+      default: 'dark:text-white',
+      disabled: 'text-gray-300 dark:text-gray-500',
+    },
     size: {
       sm: 'w-[15.625rem]',
       md: 'w-[21.875rem]',
       responsive: 'w-[15.625rem] sm:w-[21.875rem]',
     },
+  },
+  defaultVariants: {
+    intent: 'default',
   },
 });

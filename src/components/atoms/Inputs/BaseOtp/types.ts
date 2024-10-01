@@ -17,6 +17,7 @@ export interface BaseOtpProp<T extends FieldValues>
   valueLength?: number;
   disabled?: boolean;
   hiddenError?: boolean;
+  helpText?: string;
   pureError?: string;
   dir?: 'rtl' | 'ltr';
 }
