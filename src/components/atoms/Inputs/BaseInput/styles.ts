@@ -34,6 +34,7 @@ export const baseInputTextStyles = cva(
         sm: `w-40`,
         md: `w-[15.94rem]`,
         lg: `w-[21.88rem]`,
+        responsive: '',
       },
     },
     defaultVariants: {

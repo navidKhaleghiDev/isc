@@ -1,7 +1,8 @@
 import { Controller, FieldValues } from 'react-hook-form';
+
 import { Typography } from '@ui/atoms/Typography';
 
-import { baseOtpStyles } from './styles';
+import { baseOtpStyles, otpTextStyles } from './styles';
 import { BaseOtpProp, HandleChange, HandleKeyDown } from './types';
 import { regexPattern } from '../utils/regexPattern';
 
@@ -35,10 +36,9 @@ export function BaseOtp<T extends FieldValues>(
     hiddenError,
     disabled,
     pureError,
-    size,
+    size = 'md',
     dir = 'ltr',
   } = props;
-
   const handleChange: HandleChange = (e, index, field) => {
     const val = e.target.value;
 
@@ -80,9 +80,10 @@ export function BaseOtp<T extends FieldValues>(
         }}
         render={({ field, fieldState: { error } }) => {
           const otpValue = field.value || '';
+          const errorForm = pureError || error?.message;
           return (
-            <>
-              <div className="flex items-center justify-center w-full gap-[0.17rem]">
+            <div className="flex-col">
+              <div className="flex w-full gap-[0.17rem]">
                 {Array.from({ length: valueLength }).map((_, index) => (
                   <input
                     dir={dir}
@@ -101,16 +102,18 @@ export function BaseOtp<T extends FieldValues>(
                   />
                 ))}
               </div>
-              {!disabled && hiddenError && (
+              {!disabled && !hiddenError && (
                 <Typography
                   color="red"
                   variant="body6"
-                  className="mt-[0.375rem ] text-center"
+                  className={otpTextStyles({
+                    size,
+                  })}
                 >
-                  {(pureError || error?.message) ?? ''}
+                  {errorForm ?? ''}
                 </Typography>
               )}
-            </>
+            </div>
           );
         }}
       />

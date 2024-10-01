@@ -21,3 +21,14 @@ export const baseOtpStyles = cva(
     },
   }
 );
+
+export const otpTextStyles = cva('', {
+  variants: {
+    size: {
+      sm: `w-40`,
+      md: `w-[15.94rem]`,
+      lg: `w-[21.88rem]`,
+      responsive: 'w-40 sm:w-[15.94rem]',
+    },
+  },
+});
