@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { ToggleButtonProps } from './types';
+/* eslint-disable jsx-a11y/no-autofocus */
+
+import { ButtonOption, ToggleButtonProps } from './types';
 import { toggleStyles } from './styles';
 
 /**
@@ -12,47 +13,34 @@ import { toggleStyles } from './styles';
  * @param {Array<ButtonOption>} props.buttonLabels - An array of button options to display.
  * @param {(selected: ButtonOption) => void} props.onChange - Callback function triggered when a button is selected.
  *    It receives the currently selected button option(s) as an argument.
- *
+ * @param {'sm' | 'md' | 'responsive'} props.size - Defines the size of the switch.
+ * @param {string} props.className - className for optional style
  * @returns {JSX.Element} The ToggleButton component.
  */
 
-export function ToggleButton({
-  buttonLabels,
-  onChange,
-  size,
-  className,
-}: ToggleButtonProps): JSX.Element {
-  const [selected, setSelected] = useState<string | number>();
+export function ToggleButton(props: ToggleButtonProps): JSX.Element {
+  const { buttonOptions, onChange, className, size } = props;
 
-  const handleClick = (id: string | number) => {
-    const selectedButton = buttonLabels.find((button) => button.id === id);
-    if (selectedButton) {
-      setSelected(id);
-      onChange(selectedButton);
-    }
-  };
+  console.log(buttonOptions);
 
   return (
     <div className="flex w-full">
       <div
         className={`${toggleStyles({
           size,
-        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 py-1 font-kalameh  ${className}`}
+        })} bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 py-1 ${
+          className ?? ''
+        }`}
       >
-        {buttonLabels.map(({ id, label, name }) => (
+        {buttonOptions.map((item: ButtonOption) => (
           <button
             type="button"
-            key={id}
-            id={`${id}`}
-            name={name}
-            onClick={() => handleClick(id)}
-            className={`flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1  text-gray-400 ${
-              selected === id
-                ? 'text-gray-900 bg-white dark:text-white dark:bg-gray-600'
-                : ''
-            }`}
+            autoFocus={item.active}
+            key={item.id}
+            onClick={() => onChange(item)}
+            className="flex items-center justify-center cursor-pointer rounded-[0.25rem] text-center w-16 mx-1 text-gray-400 focus:text-gray-900 focus:bg-white dark:focus:text-white dark:focus:bg-gray-600 focus:outline-none"
           >
-            {label}
+            {item.label}
           </button>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const baseInputStyles = cva(
-  `peer p-2 flex text-sm rounded-lg outline-none border h-10 disabled:bg-white disabled:border-gray-300 dark:text-white disabled:placeholder-gray-300 disabled:opacity-50 dark:border-gray-400 dark:placeholder-gray-500 dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:placeholder-gray-500`,
+  `peer p-2 flex text-sm rounded-lg outline-none border h-10 disabled:bg-white disabled:border-gray-300 dark:text-white disabled:placeholder-gray-300 rtl:placeholder:text-right disabled:opacity-50 dark:border-gray-400 dark:placeholder-gray-500 dark:bg-transparent dark:disabled:border-gray-500 dark:disabled:placeholder-gray-500`,
   {
     variants: {
       intent: {
@@ -23,7 +23,6 @@ export const baseInputStyles = cva(
     },
   }
 );
-
 export const baseInputTextStyles = cva(
   `px-1 text-gray-400 peer-hover:text-gray-500 text-xs  peer-focus:text-gray-900 peer-disabled:text-gray-300 peer-disabled:hover:text-gray-300 dark:text-white dark:peer-hover:text-white dark:peer-disabled:text-gray-500 dark:peer-focus:text-white`,
   {
@@ -42,7 +41,6 @@ export const baseInputTextStyles = cva(
     },
   }
 );
-
 export const baseInputWarperStyles = cva(``, {
   variants: {
     fullWidth: {

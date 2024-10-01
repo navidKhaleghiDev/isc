@@ -1,14 +1,12 @@
 import { Typography } from '@ui/atoms/Typography';
+import { IconButton } from '@ui/atoms/BaseButton';
 
-import { IconButtonInput } from '../IconButtonInput';
-import { IconInput } from '../IconInput';
 import {
   baseInputStyles,
   baseInputTextStyles,
   baseInputWarperStyles,
 } from './styles';
 import { BaseInputProps } from './types';
-
 /**
  * Base input
  *
@@ -18,10 +16,8 @@ import { BaseInputProps } from './types';
  * @param {string} [props.placeholder]
  * @param {string} [props.className]
  * @param {boolean} [props.fullWidth]
- * @param {any} [props.defaultValue]
  * @param {React.ReactNode} [props.startIcon] - Icon to display at the start of the input.
  * @param {React.ReactNode} [props.endIcon] - Icon to display at the end of the input.
- * @param {'default' | 'error'} [props.intent] - The intent state of the input (style)
  * @param {'sm' | 'md' | 'lg'} [props.size] - The size of the input.
  * @param {string} [props.type] - The type of the input.
  * @param {string} [props.label] - The label to display above the input.
@@ -29,14 +25,11 @@ import { BaseInputProps } from './types';
  * @param {function} [props.onChange] - Change handler for uncontrolled component.
  * @param {function} [props.onClickIcon] - Click handler for the icon button input.
  * @param {string} [props.error] - Error message for uncontrolled component.
- * @param {number} [props.min] - Minimum value for the input.
- * @param {number} [props.max] - Maximum value for the input.
  * @param {boolean} [props.dir] - Whether the label should be left-to-right.
  * @param {string} [props.iconButtonIcon] - Icon for the icon button input (you should add the onClick func to see the icon).
  *
  * @returns {JSX.Element} The rendered input component.
  */
-
 export function BaseInput(props: BaseInputProps): JSX.Element {
   const {
     name,
@@ -44,6 +37,7 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     placeholder,
     fullWidth,
     startIcon,
+    intent,
     className,
     endIcon,
     value,
@@ -51,20 +45,14 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
     size,
     type,
     helpText,
-    hiddenHelpText,
     label,
     hiddenError,
     onChange,
-    onKeyDown,
     onClickIcon,
     error,
-    min,
-    max,
-    intent = 'default',
     dir = 'rtl',
-    iconButtonIcon = 'ph:x',
   } = props;
-
+  const rtl = dir === 'rtl';
   return (
     <div
       className={baseInputWarperStyles({
@@ -76,74 +64,68 @@ export function BaseInput(props: BaseInputProps): JSX.Element {
       {label && (
         <label
           htmlFor={id}
-          className={`mb-[0.13rem] ${
-            dir === 'ltr' ? 'text-left' : 'text-right'
-          }`}
+          className={`mb-[0.13rem] ${rtl ? 'text-right' : 'text-left'}`}
         >
           <Typography
             variant="body6"
             className={`dark:text-white ${
-              error && !disabled ? 'text-red-500' : 'text-gray-200'
-            }  ${disabled ? 'text-gray-200' : 'text-gray-500'}`}
+              error && !disabled
+                ? 'text-red-500 dark:text-red-500'
+                : 'text-gray-200'
+            }  ${
+              disabled ? 'text-gray-200 dark:text-gray-800' : 'text-gray-500'
+            }`}
           >
             {label}
           </Typography>
         </label>
       )}
-      <div className={`relative peer ${className ?? ''}`}>
+      <div className={`relative peer group ${className ?? ''}`}>
+        {startIcon && (
+          <IconButton
+            icon={startIcon}
+            onClick={onClickIcon}
+            color={error ? 'redNoBgInput' : 'neutralMedium'}
+            className="right-0"
+          />
+        )}
+        {endIcon && (
+          <IconButton
+            icon={endIcon}
+            onClick={onClickIcon}
+            color={error ? 'redNoBgInput' : 'neutralMedium'}
+            className="left-0"
+          />
+        )}
         <input
           id={id}
           type={type}
-          dir={dir}
-          min={min}
+          dir="auto"
           disabled={disabled}
-          max={max}
-          onKeyDownCapture={onKeyDown}
           name={name}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
           className={baseInputStyles({
             intent: error ? 'error' : intent,
-            className: `${
-              (endIcon || (onClickIcon && dir === 'ltr')) && 'pl-7'
-            } ${(startIcon || (onClickIcon && dir === 'rtl')) && 'pr-7'}`,
+            className: `${startIcon && `pr-8`} ${endIcon && 'pl-8'}`,
             fullWidth,
             size,
           })}
         />
-
-        {startIcon && (
-          <IconInput icon={startIcon} intent={intent} error={error} dir="rtl" />
-        )}
-        {endIcon && (
-          <IconInput icon={endIcon} intent={intent} error={error} dir="ltr" />
-        )}
-        {onClickIcon && (
-          <IconButtonInput
-            icon={iconButtonIcon}
-            intent={intent}
-            onClick={onClickIcon}
-            disabled={disabled}
-            error={error}
-            dir={dir}
-          />
-        )}
       </div>
-      <span className={baseInputTextStyles({ size, fullWidth })}>
-        {!hiddenError && hiddenHelpText && (
-          <Typography
-            variant="body6"
-            className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
-          >
-            {helpText ?? ''}
-          </Typography>
-        )}
-        {!disabled && hiddenError && (
+      <span
+        className={baseInputTextStyles({
+          size,
+          fullWidth,
+        })}
+      >
+        {helpText && <Typography>{helpText}</Typography>}
+        {!disabled && !hiddenError && (
           <Typography
             color="red"
             variant="body6"
-            className={`${dir === 'ltr' ? 'text-left' : 'text-right'} min-h-10`}
+            className={`text-left ${rtl && 'text-right'} min-h-10`}
           >
             {error ?? ''}
           </Typography>

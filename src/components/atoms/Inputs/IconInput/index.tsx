@@ -25,7 +25,7 @@ export function IconInput({
         className: `${dir === 'rtl' && 'right-0'} pointer-events-none left-0`,
       })}
     >
-      <BaseIcon icon={icon} size="xs" />
+      <BaseIcon icon={icon} size="sm" />
     </div>
   );
 }

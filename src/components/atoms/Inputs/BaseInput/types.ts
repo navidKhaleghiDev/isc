@@ -3,16 +3,16 @@ import {
   Control,
   FieldPath,
   FieldValues,
-  Path,
-  PathValue,
   RegisterOptions,
   UseFormSetError,
 } from 'react-hook-form';
-import { IconifyIcon } from '@iconify/react';
+
+import { BaseIconProps } from '@ui/atoms/BaseIcon';
 
 import { baseInputStyles } from './styles';
 
-export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
+export interface BaseInputProps
+  extends Omit<VariantProps<typeof baseInputStyles>, 'error'> {
   id: string;
   name: string;
   value: string | number | readonly string[];
@@ -31,27 +31,20 @@ export interface BaseInputProps extends VariantProps<typeof baseInputStyles> {
   label?: string;
   placeholder?: string;
   className?: string;
-  startIcon?: string | IconifyIcon;
-  endIcon?: string | IconifyIcon;
+  startIcon?: BaseIconProps['icon'];
+  endIcon?: BaseIconProps['icon'];
   hiddenError?: boolean;
   helpText?: string;
-  hiddenHelpText?: boolean;
   onClickIcon?: () => void;
-  iconButtonIcon?: string | IconifyIcon;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   error?: string;
   disabled?: boolean;
   dir?: 'rtl' | 'ltr';
-  min?: string | number;
-  max?: string | number;
 }
-
 export interface BaseInputControllerProps<T extends FieldValues>
   extends Omit<BaseInputProps, 'onChange' | 'value' | 'error'> {
   control: Control<T>;
   name: FieldPath<T>;
   rules?: RegisterOptions<T>;
   setError?: UseFormSetError<T>;
-  defaultValue?: PathValue<T, Path<T>>;
 }

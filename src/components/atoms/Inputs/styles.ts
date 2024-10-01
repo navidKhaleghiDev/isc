@@ -1,28 +1,8 @@
-import { SIZE } from '@src/constants/theme';
 import { cva } from 'class-variance-authority';
+import { SIZE } from '@src/constants/theme';
 
 // Remember that this cva has been used in different modules and can not be in specific module
 // The color of the icon is better to be text-gray-700 when we are using it in the darkMode.
-
-export const iconBaseInputStyles = cva(
-  'absolute inset-y-0 flex px-2 items-center dark:peer-disabled:text-gray-700 peer-disabled:cursor-default peer-disabled:text-gray-300 fill-current',
-  {
-    variants: {
-      intent: {
-        default:
-          'text-gray-400 dark:text-gray-500 peer-hover:text-gray-500 peer-focus:text-gray-900 dark:peer-focus:text-gray-300 dark:peer-hover:text-gray-300',
-        error: 'text-red-500 peer-focus:border-red-500',
-      },
-      right: {
-        true: 'right-0',
-        false: 'left-0',
-      },
-    },
-    defaultVariants: {
-      intent: 'default',
-    },
-  }
-);
 
 export const baseCheckBoxStyles = cva(
   `before:content[''] peer relative cursor-pointer appearance-none border rounded transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-teal-400 before:opacity-0 before:transition-opacity checked:border-teal-500 checked:bg-teal-500 checked:before:bg-teal-500`,
@@ -41,6 +21,25 @@ export const baseCheckBoxStyles = cva(
     defaultVariants: {
       intent: 'default',
       size: 'md',
+    },
+  }
+);
+
+export const iconBaseInputStyles = cva(
+  'absolute inset-y-0 flex px-2 items-center active:text-gray-500 fill-current',
+  {
+    variants: {
+      intent: {
+        default: 'text-gray-300 peer-focus:text-gray-500',
+        error: 'text-red-500 peer-focus:border-red-500',
+      },
+      right: {
+        true: 'right-0',
+        false: 'left-0',
+      },
+    },
+    defaultVariants: {
+      intent: 'default',
     },
   }
 );
@@ -65,9 +64,9 @@ export const baseSelectStyles = cva(
       size: {
         none: ``,
         xs: `w-52 h-6 py-1 ${SIZE.TYPOGRAPHY.BODY4}`,
-        sm: `w-40 h-10 text-md${SIZE.TYPOGRAPHY.BODY3}`,
+        sm: `w-40 h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
         md: `w-[13.75rem] h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
-        lg: `w-64 h-10  ${SIZE.TYPOGRAPHY.BODY4}`,
+        lg: `w-64 h-10 ${SIZE.TYPOGRAPHY.BODY4}`,
         xl: '',
         freeWidth: `w-full h-10 text-md ${SIZE.TYPOGRAPHY.BODY3}`,
       },
